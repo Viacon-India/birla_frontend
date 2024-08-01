@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect }  from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -13,8 +13,53 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import GradualSpacing from "@/components/GradualSpacing";
 import prodSvg from "../../assets/images/product-svg.png";
+import tyreMark from "../../assets/images/tyreMark.png";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Product() {
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  useEffect(() => {
+
+ 
+ 
+    gsap.fromTo(".product-card-image ", {
+      top: "-154px",
+      opacity: 0.9,
+      position:"absolute",
+    },{
+      top: 0,
+      position:"absolute",
+      opacity: 1,
+      duration: 0.5,
+      // stagger: 0.1,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: ".product-sec",
+        start: "top 60%",
+        end: "top 20%",
+        scrub: 2,
+        // markers: true, // Optional: For debugging, remove or set to false in production
+      },
+    });
+ 
+
+ 
+  }, []);
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <section className="product-sec mt-[100px]">
       <div className="container mx-auto overflow-hidden">
@@ -23,7 +68,10 @@ export default function Product() {
             <span className="section-heading">our products</span>
             {/* <h3 className="section-title">product range</h3> */}
             <div className="section-title-wrapper">
-              <GradualSpacing className="section-title" text="Featuring Our Product Range" />
+              <GradualSpacing
+                className="section-title"
+                text="Featuring Our Product Range"
+              />
             </div>
           </div>
           <div class="cat-btn-sec flex items-center gap-3">
@@ -45,6 +93,11 @@ export default function Product() {
             className="mySwiper !overflow-visible"
           >
             <SwiperSlide>
+              <Image
+                className="absolute right-[20px] top-[-100%] -z-1"
+                src={tyreMark}
+                alt="card"
+              />
               <div className="product-card">
                 <span class="product-card-tag">Premium</span>
                 <figure>
@@ -67,6 +120,11 @@ export default function Product() {
               </div>
             </SwiperSlide>
             <SwiperSlide>
+              <Image
+                className="absolute right-[20px] top-[-100%] -z-1"
+                src={tyreMark}
+                alt="card"
+              />
               <div className="product-card">
                 <span class="product-card-tag">Premium</span>
                 <figure>
@@ -89,6 +147,11 @@ export default function Product() {
               </div>
             </SwiperSlide>
             <SwiperSlide>
+              <Image
+                className="absolute right-[20px] top-[-100%] -z-1"
+                src={tyreMark}
+                alt="card"
+              />
               <div className="product-card">
                 <span class="product-card-tag">Premium</span>
                 <figure>
@@ -111,6 +174,11 @@ export default function Product() {
               </div>
             </SwiperSlide>
             <SwiperSlide>
+              <Image
+                className="absolute right-[20px] top-[-100%] -z-1"
+                src={tyreMark}
+                alt="card"
+              />
               <div className="product-card">
                 <span class="product-card-tag">Premium</span>
                 <figure>

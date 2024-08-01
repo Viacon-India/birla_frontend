@@ -7,7 +7,7 @@ import Homepage from "./components/homepage/homepage";
 import Footer from "./components/footer/footer";
 import Loader from "./components/loader"
 import Cursor from "../app/components/Cursor"
-// import ScrollerAnimation from "./components/homepage/ScrollerAnimation"
+
 
 
 export default function Home() {
@@ -29,7 +29,6 @@ export default function Home() {
       <Navbar />
       <Homepage />
       <Footer />
-      {/* <ScrollerAnimation /> */}
     </>
   );
 }

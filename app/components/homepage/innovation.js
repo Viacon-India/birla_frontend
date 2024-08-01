@@ -1,5 +1,6 @@
-"use client";
 
+"use client";
+ 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,13 +14,50 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import TypingAnimation from "@/components/TypingAnimation";
 import GradualSpacing from "@/components/GradualSpacing";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+ 
 export default function Innovation() {
-
+  gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
     AOS.init();
+ 
+ 
+    gsap.fromTo(".innovation-sec .container ", {
+      x: "-100%",
+      opacity: 0,
+      rotation: 5,
+      // scale: 2.5,
+      zIndex: 99,
+    },{
+      x: 0,
+      opacity: 1,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: "power1.out",
+      rotation: 0,
+      // scale: 1,
+      zIndex: 0,
+      scrollTrigger: {
+        trigger: ".innovation-sec",
+        start: "top 60%",
+        end: "top 20%",
+        scrub: 2,
+        // markers: true, // Optional: For debugging, remove or set to false in production
+      },
+    });
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   }, []);
-
   return (
     <section className="innovation-sec mt-[100px]">
       <div className="container mx-auto">
@@ -28,7 +66,10 @@ export default function Innovation() {
             <span className="section-heading">our Segments</span>
             {/* <h3 className="section-title">Our Innovations. Your Solution</h3> */}
             <div className="section-title-wrapper">
-              <GradualSpacing className="section-title" text="Our Innovations. Your Solution" />
+              <GradualSpacing
+                className="section-title"
+                text="Our Innovations. Your Solution"
+              />
             </div>
           </div>
           <Link className="tertiary-button" href="">
@@ -46,7 +87,11 @@ export default function Innovation() {
             className="mySwiper"
           >
             <SwiperSlide>
-              <div className="innovation-card" data-aos="fade-up" data-aos-duration="2000">
+              <div
+                className="innovation-card"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+              >
                 <figure>
                   <Image
                     className="innovation-card-image"
@@ -64,7 +109,8 @@ export default function Innovation() {
             <SwiperSlide>
               <div
                 className="innovation-card"
-                data-aos="fade-up" data-aos-duration="2000"
+                data-aos="fade-up"
+                data-aos-duration="2000"
                 data-aos-delay="500"
               >
                 <figure>
@@ -84,7 +130,8 @@ export default function Innovation() {
             <SwiperSlide>
               <div
                 className="innovation-card"
-                data-aos="fade-up" data-aos-duration="2000"
+                data-aos="fade-up"
+                data-aos-duration="2000"
                 data-aos-delay="1000"
               >
                 <figure>
@@ -104,7 +151,8 @@ export default function Innovation() {
             <SwiperSlide>
               <div
                 className="innovation-card"
-                data-aos="fade-up" data-aos-duration="2000"
+                data-aos="fade-up"
+                data-aos-duration="2000"
                 data-aos-delay="1500"
               >
                 <figure>
@@ -127,3 +175,5 @@ export default function Innovation() {
     </section>
   );
 }
+ 
+ 

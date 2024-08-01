@@ -27,60 +27,49 @@ body {
   font-family: Oak Sans, sans-serif;
   src: url(../app/assets/variable/OakSansVF.ttf);
 }
-.flare {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border: 2px solid rgba(245, 129, 30, 1);
-  background-color: rgba(245, 129, 30, 1);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 999999 !important;
-  backdrop-filter: blur(1px);
-  background-color: #0000005e;
-  transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
-  cursor: none !important; /* Let's hide the default cursor so it looks way better */
+.cursor {
+  transition: all 200ms ease-out;
+  transform: translate(calc(-50% + 15px), -50%);
+  @apply w-[42px] h-[42px] fixed pointer-events-none left-0 top-0 z-[26];
 }
 
-.flare::after {
-  content: "";
+.inner-cursor {
+  transition: all 200ms ease-out;
+  animation: moveCursor1 0.5s infinite alternate;
+  @apply absolute w-[42px] h-[42px] left-0 top-0 rounded-[100%] border-[4px] border-solid border-black;
+}
+
+.inner-cursor::after {
+  content: url('data:image/svg+xml,<svg id="Capa_1" fill="%23000000" enable-background="new 0 0 511.106 511.106" height="25" viewBox="0 0 511.106 511.106" width="25" xmlns="http://www.w3.org/2000/svg"><g><path d="m205.355 240.553c1.035-3.457 2.409-6.768 4.099-9.886l-59.511-59.511c-15.592 19.472-25.919 43.328-28.809 69.398h84.221z"/><path d="m305.751 270.553c-1.035 3.457-2.409 6.768-4.099 9.886l59.512 59.511c15.592-19.472 25.919-43.328 28.809-69.398h-84.222z"/><path d="m478.863 270.553v-30h32.243c-1.27-22.117-5.335-43.704-12.039-64.349l-30.134 11.813-10.949-27.931 30.136-11.814c-10.462-22.648-24.3-43.794-41.257-62.816l-22.8 22.8-21.213-21.213 22.8-22.8c-16.537-14.741-34.676-27.13-54.015-36.989l-12.955 29.661-27.492-12.008 12.956-29.663c-23.412-8.616-48.15-13.784-73.591-15.244v32.243h-30v-32.243c-22.117 1.27-43.704 5.335-64.35 12.039l11.813 30.134-27.931 10.949-11.814-30.136c-22.647 10.462-43.794 24.3-62.816 41.257l22.8 22.8-21.213 21.213-22.799-22.8c-14.741 16.537-27.13 34.676-36.989 54.015l29.661 12.955-12.008 27.492-29.663-12.955c-8.616 23.411-13.784 48.149-15.244 73.59h32.243v30h-32.243c1.27 22.117 5.335 43.704 12.039 64.349l30.134-11.813 10.949 27.931-30.136 11.813c10.462 22.647 24.3 43.794 41.257 62.816l22.799-22.799 21.213 21.213-22.8 22.8c16.537 14.741 34.676 27.13 54.015 36.989l12.955-29.661 27.492 12.008-12.956 29.663c23.412 8.616 48.15 13.784 73.591 15.245v-32.243h30v32.243c22.117-1.27 43.704-5.336 64.35-12.039l-11.813-30.134 27.93-10.949 11.813 30.136c22.648-10.462 43.794-24.3 62.816-41.257l-22.8-22.8 21.213-21.213 22.8 22.8c14.741-16.537 27.131-34.676 36.989-54.015l-29.661-12.955 12.008-27.492 29.663 12.956c8.616-23.412 13.784-48.15 15.244-73.591h-32.241zm-223.31 150.255c-91.122 0-165.255-74.133-165.255-165.255s74.133-165.255 165.255-165.255 165.256 74.133 165.256 165.255-74.134 165.255-165.256 165.255z"/><path d="m301.652 230.667c1.69 3.118 3.064 6.43 4.099 9.886h84.221c-2.89-26.07-13.217-49.926-28.809-69.398z"/><path d="m280.439 301.652c-3.118 1.69-6.43 3.064-9.886 4.099v84.221c26.07-2.89 49.926-13.217 69.398-28.809z"/><path d="m209.454 280.44c-1.69-3.118-3.064-6.43-4.099-9.886h-84.221c2.89 26.07 13.217 49.926 28.809 69.398z"/><path d="m240.553 305.751c-3.457-1.035-6.768-2.409-9.886-4.099l-59.511 59.511c19.472 15.592 43.328 25.919 69.398 28.809v-84.221z"/><path d="m230.667 209.454c3.118-1.69 6.43-3.064 9.886-4.099v-84.221c-26.07 2.89-49.926 13.217-69.398 28.809z"/><path d="m270.553 121.134v84.221c3.457 1.035 6.768 2.409 9.886 4.099l59.512-59.511c-19.472-15.593-43.328-25.919-69.398-28.809z"/><circle cx="255.553" cy="255.553" r="22.397"/></g></svg>');
   position: absolute;
-  top: 50%;
+  top: 57%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: rgba(46, 49, 146, 1); /* Blue color */
-  border: 2px solid rgba(46, 49, 146, 1);
-  transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+  z-index: 99;
 }
-
-/* We need to remove this custom cursor in mobile devices */
-@media screen and (max-width: 768px) {
-  .flare {
-    width: 0;
-    height: 0;
-    transition: width 0.2s ease-in-out, height 0.2s ease-in-out,
-      opacity 0.2s ease-in-out;
+@keyframes moveCursor1 {
+  from {
+    transform: scale(1);
   }
-  .flare::after {
-    width: 0;
-    height: 0;
-    transition: width 0.2s ease-in-out, height 0.2s ease-in-out,
-      opacity 0.2s ease-in-out;
+
+  to {
+    transform: scale(0.8);
   }
 }
 
-.flare.pointer {
-  opacity: 0 !important;
-  transition: width 0.2s ease-in-out, height 0.2s ease-in-out, opacity 0.2s ease-in-out;
-  &::after {
-    opacity: 0 !important;
-    transition: width 0.2s ease-in-out, height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+@keyframes softTop {
+  0% {
+    transform: translate(0, 10%);
+    top: 2rem;
+  }
+
+  100% {
+    transform: translate(0, 0);
+    top: 0;
   }
 }
+
+
 
 
 
@@ -496,7 +485,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply !bg-primary
 }
 .product-card{
-  @apply relative border border-secondary rounded-[16px]
+  @apply relative border border-secondary rounded-[16px] bg-[#FFFFFF] z-10
 }
 .product-card figure{
   @apply w-[180px] h-[280px] absolute right-[20px] top-[-25%]
@@ -529,7 +518,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }
 .swiper-button-prev{
-  @apply !w-12 !h-12 !bg-[#DEE1E5] absolute rounded-[4px] !top-[112%] !left-[92%]
+  @apply !w-12 !h-12 !bg-[#DEE1E5] absolute rounded-[4px] !top-[112%] !left-[88%] 2xl:!left-[91%]
 }
 .swiper-button-prev::after{
   content: url('data:image/svg+xml,<svg width="12" height="30" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2674 19.8801C11.6834 20.2961 11.6834 20.6801 11.2674 21.0321C10.8514 21.4481 10.4674 21.4481 10.1154 21.0321L0.707434 11.5761C0.323434 11.1921 0.323434 10.7921 0.707434 10.3761L10.1154 0.920149C10.4674 0.504148 10.8514 0.504148 11.2674 0.920149C11.6834 1.27215 11.6834 1.65615 11.2674 2.07215L2.67543 11.0001L11.2674 19.8801Z" fill="%234F5662"/></svg>') !important; 
@@ -543,7 +532,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply w-[100%] mt-8 
 }
 .video-content video{
-  @apply w-[300px] h-[300px]
+  @apply w-[300px] h-[300px] rounded-[20px]
 }
 
 .sustainabilityVideo{
@@ -1058,3 +1047,108 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 .address-input{
   @apply bg-[#F4F5F6] py-[12px] pl-4 border border-[#DEE1E5] w-full rounded-[2px] outline-none placeholder:font-normal
 }
+
+
+
+
+
+/* About us Animation css */
+section.split-section-wrapper {
+  overflow: hidden;
+}
+.split-section-before h4,
+.split-section-after h4 {
+  font-size: 44px;
+  margin-block-end: 30px;
+}
+ 
+.split-section {
+  position: relative;
+  display: grid;
+  grid-gap: 40px;
+  padding-block: 80px;
+}
+@media (width >= 768px) {
+  .split-section {
+    padding-block: 0px;
+    grid-template-columns: 50% auto;
+  }
+}
+.split-section .split-images {
+  height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+@media (width >= 768px) {
+  .split-section .split-images {
+    display: flex;
+  }
+}
+.split-section .image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.split-section .images-wrapper {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 70%;
+}
+.split-section .images-wrapper .image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.split-section .split-details {
+  position: relative;
+}
+@media (width <= 768px) {
+  .split-section .details-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+}
+.split-section .detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+@media (width >= 768px) {
+  .split-section .detail {
+    max-width: 95%;
+    min-height: 100vh;
+  }
+}
+.split-section .detail .image {
+  height: 300px;
+  display: block;
+}
+@media (width >= 768px) {
+  .split-section .detail .image {
+    display: none;
+  }
+}
+.split-section .detail .heading {
+  font-size: 40px;
+}
+.split-section .detail .meta {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.split-section .detail .meta .subheading {
+  font-size: 24px;
+}
+.split-section .images-wrapper {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 70%;
+  top: 25%;
+}
+ 
