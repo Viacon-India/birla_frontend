@@ -26,7 +26,6 @@ export default function Home() {
   return (
     <main>
       <Cursor />
-      
       <Navbar />
       <Homepage />
       <Footer />
