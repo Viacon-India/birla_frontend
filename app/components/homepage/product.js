@@ -9,6 +9,13 @@ import Image from "next/image";
 import tyre1 from "../../assets/images/tyre1.png";
 import tyre2 from "../../assets/images/tyre2.png";
 import tyre3 from "../../assets/images/tyre3.png";
+import tyre4 from "../../assets/images/tyre4.png";
+import tyre5 from "../../assets/images/tyre5.png";
+import tyre6 from "../../assets/images/tyre6.png";
+import tyre7 from "../../assets/images/tyre7.png";
+import tyre8 from "../../assets/images/tyre8.png";
+import tyre9 from "../../assets/images/tyre9.png";
+
 import "swiper/css/navigation";
 import GradualSpacing from "@/components/GradualSpacing";
 import prodSvg from "../../assets/images/product-svg.png";
@@ -25,14 +32,14 @@ const productData = {
     { title: "Road Miler", description: "Lorem Ipsum product short details", image: tyre3 },
   ],
   OTR: [
-    { title: "Bruck Bus Bias", description: "Fortifying Commercial Vehicles", image: tyre1 },
-    { title: "Ultra Miler Platina", description: "Lorem Ipsum product short details", image: tyre2 },
-    { title: "Road Miler", description: "Lorem Ipsum product short details", image: tyre3 },
+    { title: "Kalapatthar (new)", description: "Fortifying Commercial Vehicles", image: tyre4 },
+    { title: "Grader Max", description: "Lorem Ipsum product short details", image: tyre5 },
+    { title: "Ultra Trac", description: "Lorem Ipsum product short details", image: tyre6 },
   ],
   AGR: [
-    { title: "Aruck Bus Bias", description: "Fortifying Commercial Vehicles", image: tyre1 },
-    { title: "Ultra Miler Platina", description: "Lorem Ipsum product short details", image: tyre2 },
-    { title: "Road Miler", description: "Lorem Ipsum product short details", image: tyre3 },
+    { title: "Farm Haul Platina - Front (new)", description: "Fortifying Commercial Vehicles", image: tyre7 },
+    { title: "Farm Haul Platina - Rear (new)", description: "Lorem Ipsum product short details", image: tyre8 },
+    { title: "Chakra", description: "Lorem Ipsum product short details", image: tyre9 },
   ],
 };
 
