@@ -429,7 +429,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply text-[#1A1D21] text-[30px] 2xl:text-[40px] font-medium mt-3
 }
 .about-usp-detail{
-  @apply text-[#606977] text-[18px] 2xl:text-[20px] mt-2 leading-[1.5]
+  @apply text-[#606977] text-[16px] 2xl:text-[20px] mt-2 leading-[1.5]
 }
 .about-centre-fig{
   @apply absolute z-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 w-[126px] h-[136px] bg-[#ffffff] rounded-[20px]
