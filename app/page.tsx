@@ -24,13 +24,13 @@ export default function Home() {
   // if (isLoading) return <Loader />;
 
   return (
-    <main>
+    <>
       <Cursor />
       <Navbar />
       <Homepage />
       <Footer />
       {/* <ScrollerAnimation /> */}
-    </main>
+    </>
   );
 }
 
