@@ -46,17 +46,14 @@ export default function Innovation() {
         // markers: true, // Optional: For debugging, remove or set to false in production
       },
     });
+    
  
  
  
  
  
  
- 
- 
- 
- 
- 
+
   }, []);
   return (
     <section className="innovation-sec mt-[100px]">
@@ -142,7 +139,7 @@ export default function Innovation() {
                   />
                 </figure>
                 <h2>Agriculture</h2>
-                <p>The Power to Strengthen Your Fields</p>
+                <p>The Power to Strengthen Fields</p>
                 <Link href="" className="primary-btn w-fit !px-6">
                   Explore Products
                 </Link>

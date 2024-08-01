@@ -9,7 +9,7 @@ import Custumpage from "./sample/page"
 import Dealer from "./dealer"
 
 
-export default function homepage() {
+export default function Homepage() {
   return (
     <>
     
