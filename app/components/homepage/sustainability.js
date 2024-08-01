@@ -3,7 +3,8 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 // import {useGSAP} from "@gsap/react"
-import { ScrollTrigger } from "gsap/dist/Scrolltrigger";
+// import { ScrollTrigger } from "gsap/dist/Scrolltrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GradualSpacing from "@/components/GradualSpacing";
 
 export default function Sustainability() {
