@@ -23,6 +23,18 @@ export default function Navbar() {
         console.log(header);
         setNavMenu(header.data.attributes.menus.data[0].attributes.menu);
       });
+
+    
+    const searchWrapper = document.querySelector(".search-wrapper");
+    searchWrapper.addEventListener("click", () => {
+      searchWrapper.classList.add("active");
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!searchWrapper.contains(event.target)) {
+        searchWrapper.classList.remove("active");
+      }
+    });
   }, []);
 
   return (

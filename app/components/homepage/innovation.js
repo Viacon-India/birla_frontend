@@ -1,6 +1,5 @@
-
 "use client";
- 
+
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,44 +15,39 @@ import TypingAnimation from "@/components/TypingAnimation";
 import GradualSpacing from "@/components/GradualSpacing";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
- 
+
 export default function Innovation() {
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
     AOS.init();
- 
- 
-    gsap.fromTo(".innovation-sec .container ", {
-      x: "-100%",
-      opacity: 0,
-      rotation: 5,
-      // scale: 2.5,
-      zIndex: 99,
-    },{
-      x: 0,
-      opacity: 1,
-      duration: 0.5,
-      stagger: 0.1,
-      ease: "power1.out",
-      rotation: 0,
-      // scale: 1,
-      zIndex: 0,
-      scrollTrigger: {
-        trigger: ".innovation-sec",
-        start: "top 60%",
-        end: "top 20%",
-        scrub: 2,
-        // markers: true, // Optional: For debugging, remove or set to false in production
-      },
-    });
-    
- 
- 
- 
- 
- 
- 
 
+    gsap.fromTo(
+      ".innovation-sec .container ",
+      {
+        x: "-100%",
+        opacity: 0,
+        rotation: 5,
+        // scale: 2.5,
+        zIndex: 99,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "power1.out",
+        rotation: 0,
+        // scale: 1,
+        zIndex: 0,
+        scrollTrigger: {
+          trigger: ".innovation-sec",
+          start: "top 60%",
+          end: "top 20%",
+          scrub: 2,
+          // markers: true, // Optional: For debugging, remove or set to false in production
+        },
+      }
+    );
   }, []);
   return (
     <section className="innovation-sec mt-[100px]">
@@ -98,8 +92,11 @@ export default function Innovation() {
                 </figure>
                 <h2>Truck Bus Bias</h2>
                 <p>Fortifying Commercial Vehicles</p>
-                <Link href="" className="primary-btn w-fit !px-6">
-                  Explore Products
+                <Link
+                  href="#"
+                  className="primary-btn w-fit !px-6 flip-animate-2"
+                >
+                  <span data-hover="Explore Products">Explore Products</span>
                 </Link>
               </div>
             </SwiperSlide>
@@ -119,8 +116,11 @@ export default function Innovation() {
                 </figure>
                 <h2>Off The Road</h2>
                 <p>Designed for Durability & Strength</p>
-                <Link href="" className="primary-btn w-fit !px-6">
-                  Explore Products
+                <Link
+                  href="#"
+                  className="primary-btn w-fit !px-6 flip-animate-2"
+                >
+                  <span data-hover="Explore Products">Explore Products</span>
                 </Link>
               </div>
             </SwiperSlide>
@@ -140,8 +140,11 @@ export default function Innovation() {
                 </figure>
                 <h2>Agriculture</h2>
                 <p>The Power to Strengthen Fields</p>
-                <Link href="" className="primary-btn w-fit !px-6">
-                  Explore Products
+                <Link
+                  href="#"
+                  className="primary-btn w-fit !px-6 flip-animate-2"
+                >
+                  <span data-hover="Explore Products">Explore Products</span>
                 </Link>
               </div>
             </SwiperSlide>
@@ -161,8 +164,11 @@ export default function Innovation() {
                 </figure>
                 <h2>Truck Bus Bias</h2>
                 <p>Fortifying Commercial Vehicles</p>
-                <Link href="" className="primary-btn w-fit !px-6">
-                  Explore Products
+                <Link
+                  href="#"
+                  className="primary-btn w-fit !px-6 flip-animate-2"
+                >
+                  <span data-hover="Explore Products">Explore Products</span>
                 </Link>
               </div>
             </SwiperSlide>
@@ -172,5 +178,3 @@ export default function Innovation() {
     </section>
   );
 }
- 
- 
