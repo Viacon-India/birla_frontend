@@ -16,9 +16,10 @@ export default function Sustainability() {
     const container = containerRef.current;
 
     gsap.to(".sustainabilityVideo", {
-      width: "100vw",
-      height: "100vh",
+      width: "100%",
+      height: "100%",
       borderRadius: "20px",
+      boxShadow : "0px -10px 10px rgba(0, 0, 0, 0.25)",
       scrollTrigger: {
         trigger: ".video-content",
         scroller: "body",

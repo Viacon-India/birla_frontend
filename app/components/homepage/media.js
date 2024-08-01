@@ -1,13 +1,46 @@
 import React from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import gallary1 from "../../assets/images/gallary1.jpg";
 import gallary2 from "../../assets/images/gallary2.jpg";
 import gallary3 from "../../assets/images/gallary3.jpg";
 import Link from "next/link";
 import GradualSpacing from "@/components/GradualSpacing";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Media() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useEffect(() => {
+    gsap.fromTo(
+      ".media-sec .upper-title-sec ",
+      {
+        x: "100%",
+        opacity: 0,
+        rotation: 5,
+        // scale: 2.5,
+        zIndex: 99,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "power1.out",
+        rotation: 0,
+        // scale: 1,
+        zIndex: 0,
+        scrollTrigger: {
+          trigger: ".media-sec",
+          start: "top 20%",
+          end: "top 0%",
+          scrub: 2,
+          markers: true, // Optional: For debugging, remove or set to false in production
+        },
+      }
+    );
+  }, []);
   return (
     <section className="media-sec mt-[100px]">
       <div className="container mx-auto overflow-hidden">
