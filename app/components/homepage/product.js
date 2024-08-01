@@ -27,19 +27,55 @@ gsap.registerPlugin(ScrollTrigger);
 
 const productData = {
   TBB: [
-    { title: "Truck Bus Bias", description: "Fortifying Commercial Vehicles", image: tyre1 },
-    { title: "Ultra Miler Platina", description: "Lorem Ipsum product short details", image: tyre2 },
-    { title: "Road Miler", description: "Lorem Ipsum product short details", image: tyre3 },
+    {
+      title: "Truck Bus Bias",
+      description: "Fortifying Commercial Vehicles",
+      image: tyre1,
+    },
+    {
+      title: "Ultra Miler Platina",
+      description: "Lorem Ipsum product short details",
+      image: tyre2,
+    },
+    {
+      title: "Road Miler",
+      description: "Lorem Ipsum product short details",
+      image: tyre3,
+    },
   ],
   OTR: [
-    { title: "Kalapatthar (new)", description: "Fortifying Commercial Vehicles", image: tyre4 },
-    { title: "Grader Max", description: "Lorem Ipsum product short details", image: tyre5 },
-    { title: "Ultra Trac", description: "Lorem Ipsum product short details", image: tyre6 },
+    {
+      title: "Kalapatthar (new)",
+      description: "Fortifying Commercial Vehicles",
+      image: tyre4,
+    },
+    {
+      title: "Grader Max",
+      description: "Lorem Ipsum product short details",
+      image: tyre5,
+    },
+    {
+      title: "Ultra Trac",
+      description: "Lorem Ipsum product short details",
+      image: tyre6,
+    },
   ],
   AGR: [
-    { title: "Farm Haul Platina - Front (new)", description: "Fortifying Commercial Vehicles", image: tyre7 },
-    { title: "Farm Haul Platina - Rear (new)", description: "Lorem Ipsum product short details", image: tyre8 },
-    { title: "Chakra", description: "Lorem Ipsum product short details", image: tyre9 },
+    {
+      title: "Farm Haul Platina - Front (new)",
+      description: "Fortifying Commercial Vehicles",
+      image: tyre7,
+    },
+    {
+      title: "Farm Haul Platina - Rear (new)",
+      description: "Lorem Ipsum product short details",
+      image: tyre8,
+    },
+    {
+      title: "Chakra",
+      description: "Lorem Ipsum product short details",
+      image: tyre9,
+    },
   ],
 };
 
@@ -87,7 +123,9 @@ export default function Product() {
             {["TBB", "OTR", "AGR"].map((tab) => (
               <button
                 key={tab}
-                className={`tablinks cat-btn ${activeTab === tab ? "active-cat-btn" : ""}`}
+                className={`tablinks cat-btn ${
+                  activeTab === tab ? "active-cat-btn" : ""
+                }`}
                 onClick={() => handleTabClick(tab)}
               >
                 {tab}
@@ -100,7 +138,9 @@ export default function Product() {
           <div
             key={tab}
             id={tab}
-            className={`tabcontent product-slider mt-[140px] pb-[100px] ${activeTab === tab ? "" : "hidden"}`}
+            className={`tabcontent product-slider mt-[140px] pb-[100px] ${
+              activeTab === tab ? "" : "hidden"
+            }`}
           >
             <Swiper
               navigation={true}
@@ -129,12 +169,21 @@ export default function Product() {
                     </figure>
                     <div className="product-card-detail">
                       <div className="product-svg-wrapper">
-                        <Image className="w-[65px] h-8" src={prodSvg} alt="card" />
+                        <Image
+                          className="w-[65px] h-8"
+                          src={prodSvg}
+                          alt="card"
+                        />
                       </div>
                       <h2>{product.title}</h2>
                       <p>{product.description}</p>
-                      <Link href="#" className="primary-btn w-fit !px-6">
-                        Explore Products
+                      <Link
+                        href="#"
+                        className="primary-btn w-fit !px-6 flip-animate-2"
+                      >
+                        <span data-hover="Explore Products">
+                          Explore Products
+                        </span>
                       </Link>
                     </div>
                   </div>

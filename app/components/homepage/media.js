@@ -68,8 +68,11 @@ export default function Media() {
                   Maecenas dignissim justo eget nulla rutrum molestie Maecenas
                   dignissim justo eget nulla rutrum....
                 </p>
-                <Link href="" className="primary-btn w-fit !px-6">
-                  Read more
+                <Link
+                  href="#"
+                  className="primary-btn w-fit !px-6 flip-animate-2"
+                >
+                  <span data-hover="Read More">Read More</span>
                 </Link>
               </div>
             </div>
@@ -90,8 +93,11 @@ export default function Media() {
                   Maecenas dignissim justo eget nulla rutrum molestie Maecenas
                   dignissim justo eget nulla rutrum....
                 </p>
-                <Link href="" className="primary-btn w-fit !px-6">
-                  Read more
+                <Link
+                  href="#"
+                  className="primary-btn w-fit !px-6 flip-animate-2"
+                >
+                  <span data-hover="Read More">Read More</span>
                 </Link>
               </div>
             </div>
@@ -112,8 +118,11 @@ export default function Media() {
                   Maecenas dignissim justo eget nulla rutrum molestie Maecenas
                   dignissim justo eget nulla rutrum....
                 </p>
-                <Link href="" className="primary-btn w-fit !px-6">
-                  Read more
+                <Link
+                  href="#"
+                  className="primary-btn w-fit !px-6 flip-animate-2"
+                >
+                  <span data-hover="Read More">Read More</span>
                 </Link>
               </div>
             </div>
