@@ -15,7 +15,7 @@ import birla from "../../assets/images/birla-logo-65.png";
 import Image from "next/image";
 
 
-export default function slider() {
+export default function Slider() {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {

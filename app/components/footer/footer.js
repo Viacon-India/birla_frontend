@@ -81,11 +81,11 @@ export default function Footer() {
 
         <ul className="footer-list-sec py-10 grid grid-cols-5">
           {footerMenu.map((newMenu) => (
-            <li className="footer-list-box">
+            <li className="footer-list-box" key={newMenu.id}>
               <h3>{newMenu.attributes.menu[0].menu_item.name}</h3>
               <ul className="footer-list">
                 {newMenu.attributes.menu[0].sub_menu_item.map((submenu) => (
-                  <li>
+                  <li key={submenu.id}>
                     <Link
                       href={`/${submenu.link}`}
                       className="footer-list-item"
@@ -262,9 +262,9 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-end">
           {creditTexts.map((newText) => (
-            <p className="text-[14px] text-[#000000]">
+            <p className="text-[14px] text-[#000000]" key={newText.id}>
               {newText.children.map((extractText) => (
-                <span>{extractText.text}</span>
+                <span key={extractText.id}>{extractText.text}</span>
               ))}
             </p>
           ))}
