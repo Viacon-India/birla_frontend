@@ -36,7 +36,7 @@ export default function Media() {
           start: "top 20%",
           end: "top 0%",
           scrub: 2,
-          markers: true, // Optional: For debugging, remove or set to false in production
+          // markers: true, // Optional: For debugging, remove or set to false in production
         },
       }
     );
