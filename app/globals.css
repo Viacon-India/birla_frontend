@@ -100,13 +100,13 @@ body {
 
 @media only screen and (min-width: 1280px) and (max-width: 1535px) {
   .container {
-    @apply px-[4rem] max-w-[1240px];
+    @apply px-[4rem];
   }
 }
 
 @media only screen and (min-width: 1536px) and (max-width: 1680px) {
   .container {
-    @apply px-[5rem] max-w-[1240px];
+    @apply px-[5rem];
   }
 }
 
