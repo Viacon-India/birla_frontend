@@ -19,65 +19,132 @@ import GradualSpacing from "@/components/GradualSpacing";
 export default function Page() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-
-    gsap.utils.toArray(".split-details").forEach((details) => {
-      gsap.fromTo(
-        details,
-        {
-          x: 150,
-          opacity: 0,
-          rotation: 5,
-          scale: 2.5,
-          zIndex: 99,
-        },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "power1.out",
-          rotation: 0,
-          scale: 1,
-          zIndex: 0,
-          scrollTrigger: {
-            trigger: details,
-            start: "top 0",
-            end: "top -50%",
-            scrub: 2,
-            // markers: true, // Optional: For debugging, remove or set to false in production
+    let mm = gsap.matchMedia();
+//-------------------Media Query for Laptop
+    mm.add("(max-width: 1440px)", () => {
+      // Gsap for About Us Image
+      gsap.utils.toArray(".split-images").forEach((images) => {
+        gsap.fromTo(
+          images,
+          {
+            x: -150,
+            opacity: 0,
+            rotation: -5,
+            scale: 2.5,
+            zIndex: 99,
           },
-        }
-      );
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power1.out",
+            rotation: 0,
+            scale: 1,
+            zIndex: 0,
+            scrollTrigger: {
+              trigger: images,
+              start: "top 0",
+              end: "top -50%",
+              scrub: 2,
+              // markers: true,
+            },
+          }
+        );
+      });
+      // Gsap for About Us Details
+      gsap.utils.toArray(".split-details").forEach((details) => {
+        gsap.fromTo(
+          details,
+          {
+            x: 150,
+            opacity: 0,
+            rotation: 5,
+            scale: 2.5,
+            zIndex: 99,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power1.out",
+            rotation: 0,
+            scale: 1,
+            zIndex: 0,
+            scrollTrigger: {
+              trigger: details,
+              start: "top 0",
+              end: "top -50%",
+              scrub: 2,
+              // markers: true, // Optional: For debugging, remove or set to false in production
+            },
+          }
+        );
+      });
     });
-
-    gsap.utils.toArray(".split-images").forEach((images) => {
-      gsap.fromTo(
-        images,
-        {
-          x: -150,
-          opacity: 0,
-          rotation: -5,
-          scale: 2.5,
-          zIndex: 99,
-        },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "power1.out",
-          rotation: 0,
-          scale: 1,
-          zIndex: 0,
-          scrollTrigger: {
-            trigger: images,
-            start: "top 0",
-            end: "top -50%",
-            scrub: 2,
-            // markers: true,
+//-------------------Media Query for Desktop
+    mm.add("(min-width: 1441px)", () => {
+      // Gsap for About Us Image
+      gsap.utils.toArray(".split-images").forEach((images) => {
+        gsap.fromTo(
+          images,
+          {
+            x: -150,
+            opacity: 0,
+            rotation: -5,
+            scale: 2.5,
+            zIndex: 99,
           },
-        }
-      );
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power1.out",
+            rotation: 0,
+            scale: 1,
+            zIndex: 0,
+            scrollTrigger: {
+              trigger: images,
+              start: "top 20%",
+              end: "top -30%",
+              scrub: 2,
+              // markers: true,
+            },
+          }
+        );
+      });
+      // Gsap for About Us Details
+      gsap.utils.toArray(".split-details").forEach((details) => {
+        gsap.fromTo(
+          details,
+          {
+            x: 150,
+            opacity: 0,
+            rotation: 5,
+            scale: 2.5,
+            zIndex: 99,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power1.out",
+            rotation: 0,
+            scale: 1,
+            zIndex: 0,
+            scrollTrigger: {
+              trigger: details,
+              start: "top 20%",
+              end: "top -30%",
+              scrub: 2,
+              // markers: true, // Optional: For debugging, remove or set to false in production
+            },
+          }
+        );
+      });
     });
   }, []);
 

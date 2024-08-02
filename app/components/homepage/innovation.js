@@ -41,8 +41,8 @@ export default function Innovation() {
         zIndex: 0,
         scrollTrigger: {
           trigger: ".innovation-sec",
-          start: "top 60%",
-          end: "top 20%",
+          start: "top 80%",
+          end: "top 70%",
           scrub: 2,
           // markers: true, // Optional: For debugging, remove or set to false in production
         },
@@ -81,7 +81,7 @@ export default function Innovation() {
               <div
                 className="innovation-card"
                 data-aos="fade-up"
-                data-aos-duration="2000"
+                data-aos-duration="1000"
               >
                 <figure>
                   <Image
@@ -104,8 +104,8 @@ export default function Innovation() {
               <div
                 className="innovation-card"
                 data-aos="fade-up"
-                data-aos-duration="2000"
-                data-aos-delay="500"
+                data-aos-duration="1000"
+                data-aos-delay="250"
               >
                 <figure>
                   <Image
@@ -128,8 +128,8 @@ export default function Innovation() {
               <div
                 className="innovation-card"
                 data-aos="fade-up"
-                data-aos-duration="2000"
-                data-aos-delay="1000"
+                data-aos-duration="1000"
+                data-aos-delay="500"
               >
                 <figure>
                   <Image
@@ -152,8 +152,8 @@ export default function Innovation() {
               <div
                 className="innovation-card"
                 data-aos="fade-up"
-                data-aos-duration="2000"
-                data-aos-delay="1500"
+                data-aos-duration="1000"
+                data-aos-delay="750"
               >
                 <figure>
                   <Image

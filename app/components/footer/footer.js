@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import logo1 from "../../assets/images/logo1.png";
 import Link from "next/link";
+import logo2 from "../../assets/images/himadri-logo-65.png";
 
 export default function Footer() {
   const [footerMenu, setFooterMenu] = useState([]);
@@ -70,13 +71,23 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <figure className="rounded-none m-0 w-[180px] h-[80px]">
-            <Image
-              src={logo1}
-              alt="logo"
-              className="w-full h-full object-cover"
-            />
-          </figure>
+          <div class="flex items-center gap-4">
+            <figure className="rounded-none m-0 w-fit h-[80px]">
+              <Image
+                src={logo2}
+                alt="logo"
+                className="w-full h-full object-cover"
+              />
+            </figure>
+            <div class="line "></div>
+            <figure className="rounded-none m-0 w-[180px] h-[80px]">
+              <Image
+                src={logo1}
+                alt="logo"
+                className="w-full h-full object-cover"
+              />
+            </figure>
+          </div>
         </div>
 
         <ul className="footer-list-sec py-10 grid grid-cols-5">

@@ -30,7 +30,7 @@ body {
 .cursor {
   transition: all 200ms ease-out;
   transform: translate(calc(-50% + 15px), -50%);
-  @apply w-[42px] h-[42px] fixed pointer-events-none left-0 top-0 z-[26];
+  @apply w-[42px] h-[42px] fixed pointer-events-none left-0 top-0 z-[99];
 }
 
 .inner-cursor {
@@ -1003,6 +1003,9 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   justify-content: center;
   position: relative;
 }
+.split-section .split-images img{
+  @apply !rounded-[20px]
+}
 @media (width >= 768px) {
   .split-section .split-images {
     display: flex;
@@ -1072,6 +1075,16 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   width: 100%;
   height: 70%;
   top: 25%;
+}
+
+
+@media (width >= 1441px) {
+  .split-section .split-images {
+   height: 65vh !important;
+  }
+  .split-section .detail{
+    min-height: 65vh !important;
+  }
 }
 
 

@@ -43,7 +43,7 @@ export default function Slider() {
   return (
     <div className="relative">
       
-      <div className="loader-sec w-full h-[100vh] bg-transparent flex flex-col gap-3 justify-center items-center absolute z-80">
+      <div className="loader-sec w-full h-[100vh] bg-transparent flex flex-col gap-3 justify-center items-center fixed z-100">
         <div class="loader">
           <div class="truckWrapper">
             <div class="truckBody">
@@ -362,7 +362,7 @@ export default function Slider() {
                   <GradualSpacing className="hero-sec-heading" text="TBB" />
                   <LetterPullup
                     className="section-subheading"
-                    words={"Fortifying Commercial Vehicle"}
+                    words={"Fortifying Commercial Vehicles"}
                     delay={0.05}
                   />
                   <Link href="#" class="explore-btn">
@@ -441,7 +441,7 @@ export default function Slider() {
                   />
                   <LetterPullup
                     className="section-subheading"
-                    words={"The Power To strengthen your field"}
+                    words={"The Power To Strengthen Your Field"}
                     delay={0.05}
                   />
                   <Link href="#" class="explore-btn">
@@ -461,6 +461,7 @@ export default function Slider() {
             </video>
           </div>
         </SwiperSlide>
+
       </Swiper>
     </div>
   );

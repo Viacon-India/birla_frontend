@@ -19,7 +19,11 @@ import tyre9 from "../../assets/images/tyre9.png";
 import "swiper/css/navigation";
 import GradualSpacing from "@/components/GradualSpacing";
 import prodSvg from "../../assets/images/product-svg.png";
+import prodSvg2 from "../../assets/images/product-svg2.png";
+import prodSvg3 from "../../assets/images/product-svg3.png";
 import tyreMark from "../../assets/images/tyreMark.png";
+import tyreMark2 from "../../assets/images/tyreMark2.png";
+import tyreMark3 from "../../assets/images/tyreMark3.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -31,16 +35,22 @@ const productData = {
       title: "Truck Bus Bias",
       description: "Fortifying Commercial Vehicles",
       image: tyre1,
+      icon: prodSvg,
+      tyreMark: tyreMark
     },
     {
       title: "Ultra Miler Platina",
       description: "Lorem Ipsum product short details",
       image: tyre2,
+      icon: prodSvg,
+      tyreMark: tyreMark
     },
     {
       title: "Road Miler",
       description: "Lorem Ipsum product short details",
       image: tyre3,
+      icon: prodSvg,
+      tyreMark: tyreMark
     },
   ],
   OTR: [
@@ -48,16 +58,22 @@ const productData = {
       title: "Kalapatthar (new)",
       description: "Fortifying Commercial Vehicles",
       image: tyre4,
+      icon: prodSvg2,
+      tyreMark: tyreMark3
     },
     {
       title: "Grader Max",
       description: "Lorem Ipsum product short details",
       image: tyre5,
+      icon: prodSvg2,
+      tyreMark: tyreMark3
     },
     {
       title: "Ultra Trac",
       description: "Lorem Ipsum product short details",
       image: tyre6,
+      icon: prodSvg2,
+      tyreMark: tyreMark3
     },
   ],
   AGR: [
@@ -65,16 +81,22 @@ const productData = {
       title: "Farm Haul Platina - Front (new)",
       description: "Fortifying Commercial Vehicles",
       image: tyre7,
+      icon: prodSvg3,
+      tyreMark: tyreMark3
     },
     {
       title: "Farm Haul Platina - Rear (new)",
       description: "Lorem Ipsum product short details",
       image: tyre8,
+      icon: prodSvg3,
+      tyreMark: tyreMark3
     },
     {
       title: "Chakra",
       description: "Lorem Ipsum product short details",
       image: tyre9,
+      icon: prodSvg3,
+      tyreMark: tyreMark3
     },
   ],
 };
@@ -154,8 +176,8 @@ export default function Product() {
               {productData[tab].map((product, index) => (
                 <SwiperSlide key={index}>
                   <Image
-                    className="absolute right-[20px] top-[-100%] -z-1"
-                    src={tyreMark}
+                    className="absolute right-[35px] top-[-65%] -z-1"
+                    src={product.tyreMark}
                     alt="card"
                   />
                   <div className="product-card">
@@ -170,8 +192,8 @@ export default function Product() {
                     <div className="product-card-detail">
                       <div className="product-svg-wrapper">
                         <Image
-                          className="w-[65px] h-8"
-                          src={prodSvg}
+                          className="w-[65px] h-8 object-contain"
+                          src={product.icon}
                           alt="card"
                         />
                       </div>
