@@ -14,7 +14,6 @@ import himadari from "../../assets/images/himadri-logo-65.png";
 import birla from "../../assets/images/birla-logo-65.png";
 import Image from "next/image";
 
-
 export default function Slider() {
   const [counter, setCounter] = useState(0);
 
@@ -42,7 +41,6 @@ export default function Slider() {
 
   return (
     <div className="relative">
-      
       <div className="loader-sec w-full h-[100vh] bg-transparent flex flex-col gap-3 justify-center items-center fixed z-100">
         <div class="loader">
           <div class="truckWrapper">
@@ -167,7 +165,9 @@ export default function Slider() {
             />
           </figure>
         </div>
-        <p className="text-primary text-[60px] absolute left-2 !bottom-0 !translate-Y-[80px]">{counter}%</p>
+        <p className="text-primary text-[60px] absolute left-2 !bottom-0 !translate-Y-[80px]">
+          {counter}%
+        </p>
       </div>
 
       <div className="fixed right-0 z-50 top-[30%] overflow-hidden">
@@ -310,6 +310,21 @@ export default function Slider() {
         </Link>
         <Link className="sideNav !bg-secondary" href="">
           <svg
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.4767 7.61786L17.0302 0H15.4772L9.78685 6.61448L5.24198 0H0L6.87274 10.0023L0 17.9908H1.55305L7.56222 11.0056L12.3619 17.9908H17.6039L10.4763 7.61786H10.4767ZM8.34961 10.0904L7.65326 9.09439L2.11263 1.16911H4.49802L8.96937 7.56506L9.66572 8.56106L15.4779 16.8748H13.0926L8.34961 10.0908V10.0904Z"
+              fill="#F4F5F6"
+            />
+          </svg>
+          Twiter
+        </Link>
+        <Link className="sideNav !bg-secondary" href="">
+          <svg
             width="22"
             height="18"
             viewBox="0 0 22 18"
@@ -334,7 +349,7 @@ export default function Slider() {
           Youtube
         </Link>
       </div>
-      
+
       <Swiper
         loop={true}
         speed={1000}
@@ -383,7 +398,7 @@ export default function Slider() {
           </div>
         </SwiperSlide>
 
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <div className="swiper-card-main relative">
             <span className="slider-overlay"></span>
             <div className="w-full h-[100vh] flex items-end pb-[60px]">
@@ -420,7 +435,7 @@ export default function Slider() {
             </video>
           </div>
         </SwiperSlide>
-        
+
         <SwiperSlide>
           <div className="swiper-card-main relative">
             <span className="slider-overlay"></span>
@@ -460,7 +475,7 @@ export default function Slider() {
               <source src={"/assets/videos/AGR.mp4"} type="video/mp4" />
             </video>
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
 
       </Swiper>
     </div>

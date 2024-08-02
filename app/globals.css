@@ -112,7 +112,7 @@ body {
 
 @media only screen and (min-width: 1681px) and (max-width: 1920px) {
   .container {
-    @apply  max-w-[1536px]
+    @apply  max-w-[1400px]
   }
 }
 
@@ -298,8 +298,8 @@ a.flip-animate {
 /* end new animate */
 
 .primary-btn{
-  @apply p-3 bg-primary text-[#FFFFFF] text-[14px] font-medium rounded-[4px] 
-  flex gap-2 border border-[#FFFFFF] w-fit relative inline-block overflow-hidden
+  @apply p-2 bg-primary text-[#FFFFFF] text-[14px] font-medium rounded-[4px] 
+  flex gap-2 border border-[#FFFFFF] w-fit relative overflow-hidden
   transition-all duration-[.3s] ease-in-out
 }
 
@@ -317,7 +317,7 @@ a.flip-animate {
   top: -55%;
   transform: rotate(-70deg);
   transition: .6s ease-in-out right;
-  width: 80px;
+  width: 60px;
   z-index: 0;
 }
 

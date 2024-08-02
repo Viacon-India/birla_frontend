@@ -78,14 +78,14 @@ const productData = {
   ],
   AGR: [
     {
-      title: "Farm Haul Platina - Front (new)",
+      title: "Farm Haul Platina - Front",
       description: "Fortifying Commercial Vehicles",
       image: tyre7,
       icon: prodSvg3,
       tyreMark: tyreMark3
     },
     {
-      title: "Farm Haul Platina - Rear (new)",
+      title: "Farm Haul Platina - Rear",
       description: "Lorem Ipsum product short details",
       image: tyre8,
       icon: prodSvg3,
