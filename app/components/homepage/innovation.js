@@ -72,9 +72,15 @@ export default function Innovation() {
             slidesPerView={3}
             spaceBetween={48}
             freeMode={true}
+            loop={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
             pagination={{
               clickable: true,
             }}
+            modules={[Autoplay]}
             className="mySwiper"
           >
             <SwiperSlide>
