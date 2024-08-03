@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Autoplay } from "swiper/modules";
+import {  FreeMode, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import img1 from "../../assets/images/truck1.jpg";
 import img2 from "../../assets/images/truck2.jpg";
@@ -72,6 +72,7 @@ export default function Innovation() {
             slidesPerView={3}
             spaceBetween={48}
             freeMode={true}
+            speed= {2400}
             loop={true}
             autoplay={{
               delay: 2500,
@@ -80,7 +81,7 @@ export default function Innovation() {
             pagination={{
               clickable: true,
             }}
-            modules={[Autoplay]}
+            modules={[FreeMode, Autoplay]}
             className="mySwiper"
           >
             <SwiperSlide>
@@ -159,7 +160,6 @@ export default function Innovation() {
                 className="innovation-card"
                 data-aos="fade-up"
                 data-aos-duration="1000"
-                data-aos-delay="750"
               >
                 <figure>
                   <Image
@@ -170,6 +170,54 @@ export default function Innovation() {
                 </figure>
                 <h2>Truck Bus Bias</h2>
                 <p>Fortifying Commercial Vehicles</p>
+                <Link
+                  href="#"
+                  className="primary-btn w-fit !px-6 flip-animate-2"
+                >
+                  <span data-hover="Explore Products">Explore Products</span>
+                </Link>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div
+                className="innovation-card"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="250"
+              >
+                <figure>
+                  <Image
+                    className="innovation-card-image"
+                    src={img2}
+                    alt="card"
+                  />
+                </figure>
+                <h2>Off The Road</h2>
+                <p>Designed for Durability & Strength</p>
+                <Link
+                  href="#"
+                  className="primary-btn w-fit !px-6 flip-animate-2"
+                >
+                  <span data-hover="Explore Products">Explore Products</span>
+                </Link>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div
+                className="innovation-card"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="500"
+              >
+                <figure>
+                  <Image
+                    className="innovation-card-image"
+                    src={img3}
+                    alt="card"
+                  />
+                </figure>
+                <h2>Agriculture</h2>
+                <p>The Power to Strengthen Fields</p>
                 <Link
                   href="#"
                   className="primary-btn w-fit !px-6 flip-animate-2"

@@ -398,7 +398,7 @@ export default function Slider() {
           </div>
         </SwiperSlide>
 
-        {/* <SwiperSlide>
+        <SwiperSlide>
           <div className="swiper-card-main relative">
             <span className="slider-overlay"></span>
             <div className="w-full h-[100vh] flex items-end pb-[60px]">
@@ -475,7 +475,7 @@ export default function Slider() {
               <source src={"/assets/videos/AGR.mp4"} type="video/mp4" />
             </video>
           </div>
-        </SwiperSlide> */}
+        </SwiperSlide>
 
       </Swiper>
     </div>
