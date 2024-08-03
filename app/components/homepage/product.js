@@ -15,12 +15,13 @@ import tyre6 from "../../assets/images/tyre6.png";
 import tyre7 from "../../assets/images/tyre7.png";
 import tyre8 from "../../assets/images/tyre8.png";
 import tyre9 from "../../assets/images/tyre9.png";
-
 import "swiper/css/navigation";
 import GradualSpacing from "@/components/GradualSpacing";
 import prodSvg from "../../assets/images/product-svg.png";
 import prodSvg2 from "../../assets/images/product-svg2.png";
 import prodSvg3 from "../../assets/images/product-svg3.png";
+import ultra from "../../assets/images/ultra-trac.svg";
+import chakra from "../../assets/images/chakra-svg.svg";
 import tyreMark from "../../assets/images/tyreMark.png";
 import tyreMark2 from "../../assets/images/tyreMark2.png";
 import tyreMark3 from "../../assets/images/tyreMark3.png";
@@ -32,25 +33,25 @@ gsap.registerPlugin(ScrollTrigger);
 const productData = {
   TBB: [
     {
-      title: "Truck Bus Bias",
+      title: "Ultra Drive Platina",
       description: "Fortifying Commercial Vehicles",
       image: tyre1,
       icon: prodSvg,
-      tyreMark: tyreMark
+      tyreMark: tyreMark,
     },
     {
       title: "Ultra Miler Platina",
       description: "Lorem Ipsum product short details",
       image: tyre2,
       icon: prodSvg,
-      tyreMark: tyreMark
+      tyreMark: tyreMark,
     },
     {
       title: "Road Miler",
       description: "Lorem Ipsum product short details",
       image: tyre3,
       icon: prodSvg,
-      tyreMark: tyreMark
+      tyreMark: tyreMark,
     },
   ],
   OTR: [
@@ -59,50 +60,71 @@ const productData = {
       description: "Fortifying Commercial Vehicles",
       image: tyre4,
       icon: prodSvg2,
-      tyreMark: tyreMark3
+      tyreMark: tyreMark3,
     },
     {
       title: "Grader Max",
       description: "Lorem Ipsum product short details",
       image: tyre5,
       icon: prodSvg2,
-      tyreMark: tyreMark3
+      tyreMark: tyreMark3,
     },
     {
       title: "Ultra Trac",
       description: "Lorem Ipsum product short details",
       image: tyre6,
-      icon: prodSvg2,
-      tyreMark: tyreMark3
+      icon: ultra,
+      tyreMark: tyreMark3,
     },
   ],
-  AGR: [
+  Agriculture: [
     {
       title: "Farm Haul Platina - Front",
       description: "Fortifying Commercial Vehicles",
       image: tyre7,
       icon: prodSvg3,
-      tyreMark: tyreMark3
+      tyreMark: tyreMark3,
     },
     {
       title: "Farm Haul Platina - Rear",
       description: "Lorem Ipsum product short details",
       image: tyre8,
       icon: prodSvg3,
-      tyreMark: tyreMark3
+      tyreMark: tyreMark3,
     },
     {
       title: "Chakra",
       description: "Lorem Ipsum product short details",
       image: tyre9,
-      icon: prodSvg3,
-      tyreMark: tyreMark3
+      icon: chakra,
+      tyreMark: tyreMark3,
     },
   ],
 };
 
 export default function Product() {
   const [activeTab, setActiveTab] = useState("TBB");
+
+  // Define the animation function
+  const animateProductCardImage = () => {
+    gsap.fromTo(
+      ".product-card-image",
+      { top: "-154px", opacity: 0.9, position: "absolute" },
+      {
+        top: 0,
+        position: "absolute",
+        opacity: 1,
+        duration: 2.5,
+        ease: "power1.out",
+      }
+    );
+  };
+
+  // Call the animation function on tab change
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    animateProductCardImage();
+  };
 
   useEffect(() => {
     gsap.fromTo(
@@ -112,7 +134,7 @@ export default function Product() {
         top: 0,
         position: "absolute",
         opacity: 1,
-        duration: 0.5,
+        duration: 2.5,
         ease: "power1.out",
         scrollTrigger: {
           trigger: ".product-sec",
@@ -123,10 +145,6 @@ export default function Product() {
       }
     );
   }, []);
-
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
 
   return (
     <section className="product-sec mt-[100px]">
@@ -142,7 +160,7 @@ export default function Product() {
             </div>
           </div>
           <div className="cat-btn-sec flex items-center gap-3 relative z-10">
-            {["TBB", "OTR", "AGR"].map((tab) => (
+            {["TBB", "OTR", "Agriculture"].map((tab) => (
               <button
                 key={tab}
                 className={`tablinks cat-btn ${

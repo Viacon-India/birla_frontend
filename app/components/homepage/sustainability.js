@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GradualSpacing from "@/components/GradualSpacing";
 
+
 export default function Sustainability() {
   const containerRef = useRef(null);
 
@@ -47,7 +48,7 @@ export default function Sustainability() {
           </p>
           <div class="video-content">
             <video className="sustainabilityVideo" loop autoPlay muted>
-              <source src={"/assets/videos/vid6.mp4"} type="video/mp4" />
+              <source src={"/assets/videos/vid5.mp4"} type="video/mp4" />
             </video>
           </div>
         </div>

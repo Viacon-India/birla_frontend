@@ -145,7 +145,7 @@ body {
 
 
 .center-dropdown {
-  @apply absolute w-[180px] h-0 overflow-hidden invisible transition-[height] duration-[0.2s] ease-[ease-in-out]
+  @apply absolute w-[180px] h-0 overflow-hidden invisible transition-[height] duration-[0.2s] ease-[ease-in-out] border border-t-secondary
    flex flex-col mt-0 top-[84px] left-[-16px] bg-secondary p-0 overflow-y-auto
 }
 .nav-drop {
@@ -413,14 +413,9 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 .section-subheading{
   @apply text-[32px] text-[#FFFFFF] mb-8 leading-[1.2]
 }
-/* .explore-btn{
-  @apply bg-[#FFFFFF] text-secondary rounded-[4px] px-6 py-4 flex items-center gap-1 font-medium text-[16px] w-fit
-}
-.explore-btn::after{
-  content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="%232E3192" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-} */
+
 .explore-btn {
-  @apply relative inline-block px-6 py-4 text-secondary bg-white font-medium text-[16px] rounded-[4px] overflow-hidden;
+  @apply relative inline-block px-6 py-3 text-secondary bg-white font-medium text-[16px] rounded-[4px] overflow-hidden;
   text-decoration: none;
   display: block;
   width: fit-content;
@@ -429,15 +424,14 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 .explore-btn span {
   position: relative;
   z-index: 1;
-  color: #2E3192; /* Adjust based on your text color */
+  color: #F5811E; 
   letter-spacing: 2px;
 }
 
 .explore-btn .wave {
   width: 200px;
   height: 200px;
-  background-color: #2E3192;
-  /* box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5); */
+  background-color: #F5811E;
   position: absolute;
   left: -16px;
   top: -60px;
@@ -465,7 +459,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 .explore-btn .wave::before {
   border-radius: 45%;
-  background-color: #2E3192;
+  background-color: #F5811E;
   animation: wave 5s linear infinite;
 }
 
@@ -558,10 +552,10 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply w-[132px] py-2 bg-secondary text-[#FFFFFF]
   focus:bg-primary focus:font-bold text-[16px]
   rounded-[4px] uppercase px-5 flex justify-center
-  font-[300]
+  font-[300] hover:bg-primary hover:text-[#FFFFFF] hover:font-normal last:capitalize
 }
 .active-cat-btn{
-  @apply !bg-primary
+  @apply !bg-primary font-normal
 }
 .product-card{
   @apply relative border border-secondary rounded-[16px] bg-[#FFFFFF] z-10
