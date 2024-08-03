@@ -17,6 +17,9 @@ const config: Config = {
         'primary': '#F5811E',
         'secondary': '#2E3192'
       },
+      fontFamily: {
+        'oak-sans': ['Oak Sans', 'sans-serif']
+      },
       zIndex: {
         '1': '1',
         '2': '2',

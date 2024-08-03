@@ -170,7 +170,7 @@ export default function Slider() {
         </p>
       </div>
 
-      <div className="fixed right-0 z-50 top-[30%] overflow-hidden">
+      <div className="fixed right-0 z-50 top-[20%] 2xl:top-[25%] overflow-hidden">
         <Link className="sideNav" href="">
           <svg
             width="18"
@@ -393,7 +393,7 @@ export default function Slider() {
               autoPlay
               muted
             >
-              <source src={"/assets/videos/TBB.mp4"} type="video/mp4" />
+              <source src={"/assets/videos/TBB-vid.mp4"} type="video/mp4" />
             </video>
           </div>
         </SwiperSlide>
@@ -431,7 +431,7 @@ export default function Slider() {
               autoPlay
               muted
             >
-              <source src={"/assets/videos/OTR.mp4"} type="video/mp4" />
+              <source src={"/assets/videos/OTR-vid.mp4"} type="video/mp4" />
             </video>
           </div>
         </SwiperSlide>
@@ -478,6 +478,7 @@ export default function Slider() {
         </SwiperSlide>
 
       </Swiper>
+      
     </div>
   );
 }

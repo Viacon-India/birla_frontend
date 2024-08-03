@@ -2,12 +2,12 @@ import React from "react";
 import GradualSpacing from "@/components/GradualSpacing";
 import Link from "next/link";
 import Image from "next/image";
-import tigerMask from "../../assets/images/tiger-mask2.png"
+import tigerMask from "../../assets/images/tiger-mask2.png";
 
 export default function Dealer() {
   return (
     <section className="dealer-sec relative overflow-hidden">
-        <Image src={tigerMask} className="absolute left-8 top-0" />
+      <Image src={tigerMask} className="absolute left-8 top-0" />
       <div className="container mx-auto overflow-hidden">
         <div className="upper-title-sec">
           <span className="section-heading">Find a dealer</span>
@@ -331,7 +331,15 @@ export default function Dealer() {
           </div>
           <div class="map-sec lg:w-[70%]">
             <div class="flex justify-between gap-2 mb-2 items-center">
-              <div class="address-input-wrapper relative w-[70%]">
+              <div class="pincode-input-wrapper relative w-[25%]">
+                <input
+                  className="address-input"
+                  type="text"
+                  placeholder="Enter Pincode"
+                />
+              </div>
+              <span className="">Or</span>
+              <div class="address-input-wrapper relative w-[50%]">
                 <input
                   className="address-input pr-[60px]"
                   type="search"
@@ -354,14 +362,6 @@ export default function Dealer() {
                     />
                   </svg>
                 </span>
-              </div>
-              <span className="">Or</span>
-              <div class="pincode-input-wrapper relative w-[25%]">
-                <input
-                  className="address-input"
-                  type="text"
-                  placeholder="Enter Pincode"
-                />
               </div>
             </div>
             <iframe src="//maps.google.com/maps?q=53.3381768,-6.2613077&z=15&output=embed"></iframe>

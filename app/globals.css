@@ -19,7 +19,7 @@
 body {
   
   background-color: #FFFFFF;
-  font-family: Oak Sans;
+  font-family: Oak-Sans;
   overflow-x: hidden;
 
 }
@@ -47,6 +47,7 @@ body {
   transform: translate(-50%, -50%);
   z-index: 99;
 }
+
 @keyframes moveCursor1 {
   from {
     transform: scale(1);
@@ -124,8 +125,8 @@ body {
 }
 
 .nav-links{
-  @apply text-[#101010] text-[15px] hover:bg-transparent rounded-none font-medium flex items-center relative group-hover:text-primary
-  uppercase
+  @apply text-[#1A1D21] text-[15px] hover:bg-transparent rounded-none font-medium flex items-center relative group-hover:text-primary
+  uppercase font-oak-sans
 }
 .line{
   @apply w-[2px] h-[50px] bg-[#C9CDD3] mt-4
@@ -336,9 +337,9 @@ a.flip-animate {
 }
 
 .primary-btn-1:hover {
-  background-color: #232455; /* Change to your desired hover background color */
-  transform: scale(1.05); /* Slightly scale up the button */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  background-color: #232455; 
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
 .primary-btn-1::before{
@@ -350,9 +351,9 @@ a.flip-animate {
 }
 
 .primary-btn-2:hover {
-  background-color: #d8731a; /* Change to your desired hover background color */
-  transform: scale(1.05); /* Slightly scale up the button */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add a more pronounced shadow */
+  background-color: #d8731a; 
+  transform: scale(1.05); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
 }
 
 .primary-btn-2::before{
@@ -408,10 +409,10 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply absolute top-0 left-0 w-full h-full z-10
 }
 .hero-sec-heading{
-  @apply text-[72px] text-[#FFFFFF] font-extrabold
+  @apply text-[60px] 2xl:text-[72px] text-[#FFFFFF] font-extrabold font-oak-sans
 }
 .section-subheading{
-  @apply text-[32px] text-[#FFFFFF] mb-8 leading-[1.2]
+  @apply text-[24px] 2xl:text-[32px] text-[#FFFFFF] mb-8 leading-[1.2]
 }
 
 .explore-btn {
@@ -518,8 +519,6 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="%23F5811E" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 
-
-
 .innovation-card figure{
   @apply w-full h-[280px] mb-5 relative overflow-hidden transition-all duration-500
   rounded-[24px]
@@ -561,7 +560,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply relative border border-secondary rounded-[16px] bg-[#FFFFFF] z-10
 }
 .product-card figure{
-  @apply w-[180px] h-[280px] absolute right-[20px] top-[-25%]
+  @apply w-[186px] h-[286px] absolute right-[20px] top-[-25%]
 }
 .product-card-image{
   @apply w-full h-full object-cover
@@ -599,7 +598,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 
 
-/* sustainablity */
+/* sustainability */
 
 .video-content{
   @apply w-[100%] mt-8 
@@ -831,147 +830,9 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 
 
-/* styles/globals.css */
-
-.scroller {
-  height: 100vh;
-}
-
-.orange {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  background-color: #753500;
-}
-
-.text {
-  color: #fff;
-}
-
-.black {
-  display: flex;
-  height: 100vh;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #070707;
-}
-
-.blue {
-  height: 100vh;
-  background-color: #00026d;
-}
-
-.text-wrap,
-.p-wrap {
-  position: relative;
-  overflow: hidden;
-  width: 450px;
-  height: 80vh;
-}
-
-.panel-text {
-  position: absolute;
-  left: 0%;
-  top: 0%;
-  right: 0%;
-  bottom: 0%;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  font-size: 40px;
-  text-transform: uppercase;
-  font-weight: 900;
-  text-align: center;
-  background-color: #070707;
-  transform: translateY(100%);
-  opacity: 0;
-}
-
-.panel-text.blue-text {
-  color: blue;
-}
-
-.panel-text.red-text {
-  color: red;
-}
-
-.panel-text.purple-text {
-  color: purple;
-}
-
-.panel-text.orange-text {
-  color: orange;
-}
-
-.panel {
-  position: absolute;
-  left: 0%;
-  top: 0%;
-  right: 0%;
-  bottom: 0%;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  background-position: 50% 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.panel.red {
-  background-color: red;
-  background-image: none;
-}
-
-.panel.orange {
-  background-color: #cf5d00;
-  background-image: none;
-}
-
-.panel.purple {
-  background-color: #808;
-  background-image: none;
-}
 
 
-/* Verticle slider */
-
-.list {
-  padding: 200px 50px 50px;
-  background: #fff;
-}
-.list__item:nth-child(even) .card__aside {
-  background: #ddd;
-}
-
-.verticle-card{
-  /* overflow: hidden; */
-  height: 50vh;
-  display: flex;
-  gap: 60px;
-  align-items: center;
-}
-.card__content {
-  float: right;
-  width: 50%;
-}
-.card__inner {
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transform: translateY(-85vh);
-}
-.card__aside {
-  float: left;
-  width: 50%;
-  height: 450px;
-}
-
-
-
-
-/* test */
+/* About us Animation css */
 .split-section-before h4,
 .split-section-after h4 {
   font-size: 44px;
@@ -1035,7 +896,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px;
+  padding-top: 40px;
 }
 @media (width >= 768px) {
   .split-section .detail {
@@ -1074,10 +935,10 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 @media (width >= 1441px) {
   .split-section .split-images {
-   height: 65vh !important;
+   height: 100vh !important;
   }
   .split-section .detail{
-    min-height: 65vh !important;
+    min-height: 100vh !important;
   }
 }
 
@@ -1091,19 +952,6 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 .listing-card{
   @apply p-3 bg-[#FFFFFF] border border-[#DEE1E5] rounded-[6px] mr-2
 }
-
-
-/* .listing-card-wrapper::-webkit-scrollbar {
-  width: 3px;
-}
-
-.listing-card-wrapper::-webkit-scrollbar-track {
-  background: #e7e7e7;
-}
-
-.listing-card-wrapper::-webkit-scrollbar-thumb {
-  background: red;
-} */
 
 .listing-card-title{
   @apply text-[#1A1D21] text-[20px] font-bold mb-[4px]
@@ -1138,103 +986,8 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 
 
-/* About us Animation css */
-section.split-section-wrapper {
-  overflow: hidden;
-}
-.split-section-before h4,
-.split-section-after h4 {
-  font-size: 44px;
-  margin-block-end: 30px;
-}
- 
-.split-section {
-  position: relative;
-  display: grid;
-  grid-gap: 40px;
-  padding-block: 80px;
-}
-@media (width >= 768px) {
-  .split-section {
-    padding-block: 0px;
-    grid-template-columns: 50% auto;
-  }
-}
-.split-section .split-images {
-  height: 100vh;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-@media (width >= 768px) {
-  .split-section .split-images {
-    display: flex;
-  }
-}
-.split-section .image {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-.split-section .images-wrapper {
-  position: absolute;
-  overflow: hidden;
-  width: 100%;
-  height: 70%;
-}
-.split-section .images-wrapper .image {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.split-section .split-details {
-  position: relative;
-}
-@media (width <= 768px) {
-  .split-section .details-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-  }
-}
-.split-section .detail {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-}
-@media (width >= 768px) {
-  .split-section .detail {
-    max-width: 95%;
-    min-height: 100vh;
-  }
-}
-.split-section .detail .image {
-  height: 300px;
-  display: block;
-}
-@media (width >= 768px) {
-  .split-section .detail .image {
-    display: none;
-  }
-}
-.split-section .detail .heading {
-  font-size: 40px;
-}
-.split-section .detail .meta {
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-}
-.split-section .detail .meta .subheading {
-  font-size: 24px;
-}
-.split-section .images-wrapper {
-  position: absolute;
-  overflow: hidden;
-  width: 100%;
-  height: 70%;
-  top: 25%;
-}
+
+
+
+
  

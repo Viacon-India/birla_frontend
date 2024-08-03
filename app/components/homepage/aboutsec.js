@@ -142,219 +142,227 @@
 
 
 
-// import { useEffect } from "react";
-// import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-// import Image from "next/image";
-// import img1 from "../../assets/images/about-img1.jpg";
-// import img2 from "../../assets/images/about-img2.jpg";
-// import img3 from "../../assets/images/about-img3.jpg";
-// import img4 from "../../assets/images/about-img4.jpg";
-// import trust from "../../assets/images/trust-icon.png";
-// import icon from "../../assets/images/icon.png";
-// import icon1 from "../../assets/images/icon1.png";
-// import icon2 from "../../assets/images/icon2.png";
-// import TypingAnimation from "@/components/TypingAnimation";
-// import tiger from "../../assets/images/tiger-mask.png"
-// import ring1 from "../../assets/images/ring1.png"
-// import ring2 from "../../assets/images/ring2.png"
+"use client";
 
+import React, { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import trust from "../../assets/images/trust-icon.png";
+import icon from "../../assets/images/icon.png";
+import icon1 from "../../assets/images/icon1.png";
+import icon2 from "../../assets/images/icon2.png";
+import img1 from "../../assets/images/about-img-1.jpg";
+import img2 from "../../assets/images/about-img-2.jpg";
+import img3 from "../../assets/images/about-img-3.jpg";
+import img4 from "../../assets/images/about-img-4.jpg";
+import TypingAnimation from "@/components/TypingAnimation";
+import ring3 from "../../assets/images/ring3.png";
 
+export default function AboutSec() {
+  gsap.registerPlugin(ScrollTrigger);
 
+  useEffect(() => {
+    const images = gsap.utils.toArray(".split-images .image:not(:first-child)");
+    const details = gsap.utils.toArray(
+      ".split-details .detail:not(:first-child)"
+    );
 
-// const Aboutsec = () => {
-//   gsap.registerPlugin(ScrollTrigger);
-//   useEffect(() => {
-   
+    gsap.set(images, { yPercent: 101 });
 
-//     gsap.to(".card__aside",{
-//       ScrollTrigger:{
-//         trigger: ".card__aside",
-//         scroller:"body",
-//         start:'top 90%',
-//         end:'top 60%',
-//         markers:true,
-//         pin:true,
-//         scrub:2,
-        
-//       }
-//     })
-//     let panels = gsap.utils.toArray(".card__content");
-//     panels.forEach((item, i) => {
-//       const contentElements = item.querySelectorAll(".card__inner > *");
+    let mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      ScrollTrigger.create({
+        trigger: ".split-section",
+        start: "top top",
+        end: "bottom bottom",
+        pin: ".split-images",
+      });
 
-//       contentElements.forEach((el, i) => {
-//         gsap.set(el, {
-//           y: 0,
-//           opacity: 0,
-//         });
-//       });
+      details.forEach((detail, index) => {
+        let target = detail.querySelector("h3");
+        let animation = gsap
+          .timeline()
+          .to(images[index], { yPercent: 0, ease: "power1", duration: 0.5 });
 
-//       ScrollTrigger.create({
-//         trigger: item,
-//         // markers: true,
+        ScrollTrigger.create({
+          trigger: target,
+          start: "top 90%",
+          end: "top 30%",
+          animation: animation,
+          scrub: 0.1,
+          snap: 1,
+        //   markers: true
+        });
+      });
+    });
 
-//         pin: true,
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
-//         // start: "50% 50%",
-//         // end: "bottom+=50% 50%",
+  return (
+    <>
 
-//         start: "top 20%",
-//         end: "bottom 20%",
+      <section className="split-section-wrapper" >
 
-//         snap: { snapTo: [0.5], duration: 1, delay: 0 },
+        <div class="container mx-auto">
+          <div className="split-section">
 
-//         onEnter: ({ progress, direction, isActive }) => {
-//           console.log("onEnter", progress, direction, isActive);
-//           gsap.fromTo(
-//             contentElements,
-//             { y: 80, opacity: 0 },
-//             { y: 0, opacity: 1, stagger: 0.05 }
-//           );
-//         },
-//         onLeave: ({ progress, direction, isActive }) => {
-//           console.log("onLeave", progress, direction, isActive);
-//           gsap.fromTo(
-//             contentElements,
-//             { y: 0, opacity: 1 },
-//             { y: -80, opacity: 0, stagger: 0.05 }
-//           );
-//         },
-//         onLeaveBack: ({ progress, direction, isActive }) => {
-//           console.log("onLeaveBack", progress, direction, isActive);
-//           gsap.fromTo(
-//             contentElements,
-//             { y: 0, opacity: 1 },
-//             { y: -80, opacity: 0, stagger: 0.05 }
-//           );
-//         },
-//         onEnterBack: ({ progress, direction, isActive }) => {
-//           console.log("onEnterBack", progress, direction, isActive);
-//           gsap.fromTo(
-//             contentElements,
-//             { y: -80, opacity: 0 },
-//             { y: 0, opacity: 1, stagger: 0.05 }
-//           );
-//         },
-//       });
-//     });
-//   }, []);
-
-//   return (
-//     <div className="about-sec mt-[100px] relative">
-//       <section class="container mx-auto">
-//         <span className="section-heading">company brief</span>
-//         {/* <h3 className="section-title">About us</h3> */}
-//         <div className="section-title-wrapper">
-//           <TypingAnimation className="section-title" text="About us" />
-//         </div>
-//         <ul class="list relative">
-//           <li class="list__item">
-//             <article class="verticle-card">
-//               <section class="card__content">
-//                 <section class="card__inner">
-//                   <Image
-//                     src={trust}
-//                     alt="card"
-//                     className="w-10 h-10 object-cover"
-//                   />
-//                   <h2 className="about-usp-title">Legacy of Trust</h2>
-//                   <p className="about-usp-detail">
-//                   With a rich heritage spanning over three decades, Birla Tyres has built a reputation for reliability and excellence in the tyre industry. Over the past three decades, we have achieved numerous milestones, which is a testament to our commitment to quality and customer focus. We take pride in being a trusted partner for drivers across the country.
-//                   </p>
-//                 </section>
-//               </section>
-//               <div class="card__aside">
-//                     <Image
-//                       src={img1}
-//                       alt="card"
-//                       className="w-full h-full object-cover rounded-[12px]"
-//                     />
-//                   </div>
-
-//             </article>
-//           </li>
-//           <li class="list__item">
-//             <article class="verticle-card">
-//               <section class="card__content">
-//                 <section class="card__inner">
-//                   <Image
-//                     src={icon}
-//                     alt="card"
-//                     className="w-10 h-10 object-cover"
-//                   />
-//                   <h2 className="about-usp-title">Vast Range of Products</h2>
-//                   <p className="about-usp-detail">
-//                   Our company is proud to offer a comprehensive tyre portfolio that caters to the diverse and unique needs of our customers. With our extensive range of products, including Truck Bus Bias (TBB) tyres, agricultural tyres, and off-the-road tyres, we are equipped to provide solutions for various applications and industries.
-//                   </p>
-//                 </section>
-//               </section>
-//               <div class="card__aside">
-//                     <Image
-//                       src={img1}
-//                       alt="card"
-//                       className="w-full h-full object-cover rounded-[12px]"
-//                     />
-//                   </div>
-//             </article>
-//           </li>
-//           <li class="list__item">
-//             <article class="verticle-card">
-//               <section class="card__content">
-//                 <section class="card__inner">
-//                   <Image
-//                     src={icon1}
-//                     alt="card"
-//                     className="w-10 h-10 object-cover"
-//                   />
-//                   <h2 className="about-usp-title">Commitment to Quality Excellence</h2>
-//                   <p className="about-usp-detail">
-//                   At Birla Tyres, we continuously invest in research and development to stay at the forefront of tyre technology. Our dedicated R&D team works tirelessly to innovate and introduce advanced features that enhance performance, safety and durability. Every tyre produced by Birla Tyres undergoes rigorous testing and quality checks at various stages of production to ensure that it meets our stringent standards for performance and safety.
-//                   </p>
-//                 </section>
-//               </section>
-//               <div class="card__aside">
-//                     <Image
-//                       src={img1}
-//                       alt="card"
-//                       className="w-full h-full object-cover rounded-[12px]"
-//                     />
-//                   </div>
-//             </article>
-//           </li>
-//           <li class="list__item">
-//             <article class="verticle-card">
-//               <section class="card__content">
-//                 <section class="card__inner">
-//                   <Image
-//                     src={icon2}
-//                     alt="card"
-//                     className="w-10 h-10 object-cover"
-//                   />
-//                   <h2 className="about-usp-title">Customer-Centric Approach</h2>
-//                   <p className="about-usp-detail">
-//                   Our customer-centric approach is the cornerstone of our business philosophy. We prioritize understanding and addressing the unique needs and preferences of our customers, ensuring that every interaction and product is tailored to deliver exceptional value.
-//                   </p>
-//                 </section>
-//               </section>
-//               <div class="card__aside">
-//                     <Image
-//                       src={img1}
-//                       alt="card"
-//                       className="w-full h-full object-cover rounded-[12px]"
-//                     />
-//                   </div>
-//             </article>
-//           </li>
-//         </ul>
-//       </section>
-//     </div>
-//   );
-// };
-
-
-
-
-
-
-export default Aboutsec;
+            <div className="split-images">
+            <div
+        class="mainBg"
+        style={{
+          backgroundImage: `url(${ring3.src})`,
+          backgroundSize: "cover",
+          height:"100vh",
+          width: "132vw",
+          position: "absolute",
+          zIndex:0,
+          
+        }}
+      ></div>
+      <span className="section-heading" style={{
+        position: "fixed",
+        top:"100px",
+        left:0,
+      }}>company brief</span>
+          <div className="section-title-wrapper">
+            {/* <TypingAnimation className="section-title" text="About us" /> */}
+            <h2 className="about-title" style={{
+              position: "fixed",
+              top:"118px",
+              left:0
+            }}>
+              About Us
+            </h2>
+          </div>
+              <div className="images-wrapper rounded-[20px]">
+                <div
+                  className="image"
+                  style={{
+                    backgroundImage: `url(${img1.src})`,
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+                <div
+                  className="image"
+                  style={{
+                    backgroundImage: `url(${img2.src})`,
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+                <div
+                  className="image"
+                  style={{
+                    backgroundImage: `url(${img3.src})`,
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+                <div
+                  className="image"
+                  style={{
+                    backgroundImage: `url(${img4.src})`,
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+              </div>
+            </div>
+            <div className="split-details">
+              <div className="details-wrapper">
+                <div className="detail">
+                  {/* <Image
+                     src={trust}
+                     alt="card"
+                     className="w-10 h-10 object-cover"
+                   /> */}
+                  <p
+                    style={{
+                      backgroundImage: `url(${trust.src})`,
+                      backgroundSize: "cover",
+                      width: "61px",
+                      height: "60px",
+                      display: "block",
+                    }}
+                  ></p>
+                  <h2 className="about-usp-title">Legacy of Trust</h2>
+                  <p className="about-usp-detail">
+                    With a rich heritage spanning over three decades, Birla
+                    Tyres has built a reputation for reliability and excellence
+                    in the tyre industry. Over the past three decades, we have
+                    achieved numerous milestones, which is a testament to our
+                    commitment to quality and customer focus. We take pride in
+                    being a trusted partner for drivers across the country.
+                  </p>
+                </div>
+                <div className="detail">
+                  <p
+                    style={{
+                      backgroundImage: `url(${icon.src})`,
+                      backgroundSize: "cover",
+                      width: "61px",
+                      height: "60px",
+                      display: "block",
+                    }}
+                  ></p>
+                  <h3 className="about-usp-title">Vast Range of Products</h3>
+                  <p className="about-usp-detail">
+                    Our company is proud to offer a comprehensive tyre portfolio
+                    that caters to the diverse and unique needs of our
+                    customers. With our extensive range of products, including
+                    Truck Bus Bias (TBB) tyres, agricultural tyres, and
+                    off-the-road tyres, we are equipped to provide solutions for
+                    various applications and industries.
+                  </p>
+                </div>
+                <div className="detail">
+                  <p
+                    style={{
+                      backgroundImage: `url(${icon1.src})`,
+                      backgroundSize: "cover",
+                      width: "61px",
+                      height: "60px",
+                      display: "block",
+                    }}
+                  ></p>
+                  <h3 className="about-usp-title">
+                    Commitment to Quality Excellence
+                  </h3>
+                  <p className="about-usp-detail">
+                    At Birla Tyres, we continuously invest in research and
+                    development to stay at the forefront of tyre technology. Our
+                    dedicated R&D team works tirelessly to innovate and
+                    introduce advanced features that enhance performance, safety
+                    and durability. Every tyre produced by Birla Tyres undergoes
+                    rigorous testing and quality checks at various stages of
+                    production to ensure that it meets our stringent standards
+                    for performance and safety.
+                  </p>
+                </div>
+                <div className="detail">
+                  <p
+                    style={{
+                      backgroundImage: `url(${icon2.src})`,
+                      backgroundSize: "cover",
+                      width: "61px",
+                      height: "60px",
+                      display: "block",
+                    }}
+                  ></p>
+                  <h3 className="about-usp-title">Customer-Centric Approach</h3>
+                  <p className="about-usp-detail">
+                    Our customer-centric approach is the cornerstone of our
+                    business philosophy. We prioritize understanding and
+                    addressing the unique needs and preferences of our
+                    customers, ensuring that every interaction and product is
+                    tailored to deliver exceptional value.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
