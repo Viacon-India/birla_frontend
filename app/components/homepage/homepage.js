@@ -13,7 +13,7 @@ export default function Homepage() {
   return (
     <>
     
-      {/* <Slider /> */}
+      <Slider />
       <Hero />
       <AboutSec />
       <Innovation />
