@@ -13,7 +13,7 @@ export default function Hero() {
     const nav = slider.querySelector("nav");
     const navA = Array.from(nav.querySelectorAll("a"));
     let cur = 0;
-    let slideInterval = setInterval(goNext, 3000);
+    let slideInterval = setInterval(goNext, 2000);
     let playing = true;
 
     function updateSlider() {

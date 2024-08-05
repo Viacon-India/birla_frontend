@@ -700,7 +700,6 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 .rtl{
   animation: example1 2s linear;
-  
 }
 @keyframes example1 {
   from {
