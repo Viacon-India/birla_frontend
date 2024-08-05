@@ -661,16 +661,21 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 .footer-list{
   @apply flex flex-col gap-3 mt-5
 }
-.footer-list-item{
-  @apply text-[#0E0E11] text-[16px] leading-[1.2] capitalize relative flex gap-2
+
+.footer-list-item {
+  @apply text-[#0E0E11] text-[13px] 2xl:text-[16px] leading-[1.2] capitalize relative flex gap-2 hover:text-primary 
+  w-fit transition-all duration-500
+  
 }
-/* .footer-list-item::after{
-  display: none;
+
+.footer-list-item::after {
   content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="%23F5811E" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  display: none;
 }
-.footer-list-item:hover .footer-list-item::after{
-  display: flex;
-} */
+
+.footer-list-item:hover::after {
+  display: inline-block; 
+}
 .footer-list-box{
   @apply text-secondary text-[20px] leading-[1.2] capitalize 
 }
@@ -681,7 +686,9 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 .bottom-top-btn{
   @apply w-10 h-10 bg-primary flex justify-center items-center rounded-[4px]
 }
-
+.icon-box{
+  @apply bg-secondary w-10 h-10 flex justify-center items-center rounded-[4px]
+}
 
 /* loader animation */
 
@@ -700,7 +707,6 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 .rtl{
   animation: example1 2s linear;
-  
 }
 @keyframes example1 {
   from {
@@ -771,12 +777,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   background-size: cover;
   background-position: center;
 }
-.split-section .images-wrapper {
-  position: absolute;
-  overflow: hidden;
-  width: 100%;
-  height: 70%;
-}
+
 .split-section .images-wrapper .image {
   position: absolute;
   width: 100%;
@@ -793,10 +794,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   }
 }
 .split-section .detail {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 40px;
+  @apply flex flex-col justify-center pt-[120px] 2xl:pt-10
 }
 @media (width >= 768px) {
   .split-section .detail {
@@ -825,11 +823,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   font-size: 24px;
 }
 .split-section .images-wrapper {
-  position: absolute;
-  overflow: hidden;
-  width: 100%;
-  height: 70%;
-  top: 25%;
+  @apply absolute overflow-hidden w-full h-[65%] 2xl:h-[70%] top-[30%] 2xl:top-[25%]
 }
 
 
@@ -971,7 +965,7 @@ nav a {
   min-height: 12px;
   background: #fff;
   margin: 0 1rem;
-  transition: transform .3s;
+  transition: transform .4s;
 }
 
 a.current_dot {
@@ -983,4 +977,6 @@ a.current_dot {
     width: 100%;
   }
 }
+
+
 

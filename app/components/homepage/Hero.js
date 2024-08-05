@@ -3,17 +3,16 @@ import Link from "next/link";
 import GradualSpacing from "@/components/GradualSpacing";
 import LetterPullup from "@/components/LetterPullup";
 
-
 export default function Hero() {
   useEffect(() => {
     const slider = document.querySelector(".slider");
-    if (!slider) return; // Exit if slider not found
+    if (!slider) return;
 
     const slides = Array.from(slider.querySelectorAll(".tiles"));
     const nav = slider.querySelector("nav");
     const navA = Array.from(nav.querySelectorAll("a"));
-    let cur = 0;
-    let slideInterval = setInterval(goNext, 3000);
+    let cur = -1;
+    let slideInterval = setInterval(goNext, 7000);
     let playing = true;
 
     function updateSlider() {
@@ -31,20 +30,18 @@ export default function Hero() {
       updateSlider();
     }
 
-    function goPrev() {
-      cur = (cur - 1 + slides.length) % slides.length;
-      updateSlider();
-    }
-
-    function pauseSlideshow() {
-      if (playing) {
-        playing = false;
-        clearInterval(slideInterval);
-      } else {
-        playing = true;
-        slideInterval = setInterval(goNext, 4000);
+    function startVideo() {
+      const videoElement = document.querySelector(".your-video-class"); // Adjust selector as needed
+      if (videoElement) {
+        videoElement.play();
       }
     }
+
+    // Start the video on page load
+    startVideo();
+
+    // Start slider functionality
+    goNext();
 
     if (nav) {
       nav.addEventListener("click", function (event) {
@@ -56,53 +53,17 @@ export default function Hero() {
       });
     }
 
-    const nextBtn = document.getElementById("next");
-    const prevBtn = document.getElementById("prev");
-
-    if (nextBtn) {
-      nextBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-        goNext();
-      });
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-        goPrev();
-      });
-    }
-
-    slider.addEventListener("mouseenter", pauseSlideshow);
-    slider.addEventListener("mouseleave", pauseSlideshow);
-
-    // Cleanup on unmount
+    // Clean up interval on component unmount
     return () => {
       clearInterval(slideInterval);
-      slider.removeEventListener("mouseenter", pauseSlideshow);
-      slider.removeEventListener("mouseleave", pauseSlideshow);
-      if (nextBtn) {
-        nextBtn.removeEventListener("click", goNext);
-      }
-      if (prevBtn) {
-        prevBtn.removeEventListener("click", goPrev);
-      }
       if (nav) {
-        nav.removeEventListener("click", function (event) {
-          if (event.target.tagName === "A") {
-            event.preventDefault();
-            cur = navA.indexOf(event.target);
-            updateSlider();
-          }
-        });
+        nav.removeEventListener("click", () => {});
       }
     };
-    
   }, []);
 
   return (
     <div className="relative">
-
       <section className="intro">
         <div className="slider">
           <div>
