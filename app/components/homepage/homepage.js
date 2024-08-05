@@ -7,6 +7,7 @@ import Sustainability from "./sustainability";
 import Media from "./media";
 // import Custumpage from "./sample/page"
 import Dealer from "./dealer"
+import Hero from "../../components/homepage/Hero"
 
 
 export default function Homepage() {
@@ -14,6 +15,7 @@ export default function Homepage() {
     <>
     
       <Slider />
+      <Hero />
       <AboutSec />
       {/* <Custumpage /> */}
       <Innovation />

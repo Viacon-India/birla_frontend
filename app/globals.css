@@ -247,6 +247,7 @@ a.flip-animate {
 }
 
 
+
 /* new animate */
 .flip-animate-2 {
   perspective: 1000px;
@@ -981,6 +982,9 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 .address-input{
   @apply bg-[#F4F5F6] py-[12px] pl-4 border border-[#DEE1E5] w-full rounded-[2px] outline-none placeholder:font-normal
 }
+.select-box{
+  @apply bg-[#F4F5F6] py-[12px] border border-[#DEE1E5] w-1/2 rounded-[2px] px-2
+}
 
 
 
@@ -988,6 +992,135 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 
 
+/* Hero sec */
 
 
- 
+.intro {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: gray; /* Fixed typo: backgound to background */
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Ensure overflow is hidden so images don’t spill out */
+}
+
+.slider .tiles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: clip .7s ease-in-out, z-index 0s .7s;
+  clip: rect(0, 100vw, 100vh, 100vw); /* Ensure clip doesn’t hide images */
+  display: table;
+}
+
+.center-y {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: #fff;
+}
+
+h3 {
+  font-size: 5rem;
+  font-style: italic;
+}
+
+h3 + a {
+  font-size: 1.6rem;
+  display: inline-block;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+h3, h3 + a {
+  opacity: 0;
+  transition: opacity .7s 0s, transform .5s .2s;
+  transform: translate3d(0, 50%, 0);
+}
+
+.tiles.current h3, .tiles.current h3 + a {
+  opacity: 1;
+  transition-delay: 1s;
+  transform: translate3d(0, 0, 0);
+}
+
+.tiles.current {
+  z-index: 1;
+  clip: rect(0, 100vw, 100vh, 0);
+}
+
+.tiles.prev {
+  clip: rect(0, 0, 100vh, 0);
+}
+
+.slider nav {
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+
+nav a {
+  display: inline-block;
+  border-radius: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  min-width: 12px;
+  min-height: 12px;
+  background: #fff;
+  margin: 0 1rem;
+  transition: transform .3s;
+}
+
+a.current_dot {
+  transform: scale(1.4);
+}
+
+@media screen and (max-width: 700px) {
+  .slider {
+    width: 100%;
+  }
+}
+
+#next, #prev {
+  position: absolute;
+  top: 50%;
+  display: block;
+  transform: translateY(-50%) scale(.4);
+  transition: all .3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  color: gray;
+  background: white;
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  line-height: 40px;
+  margin: 0;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+#next {
+  right: 5px;
+}
+
+#prev {
+  left: 5px;
+}
+
+#prev:hover, #next:hover {
+  transform: scale(1);
+  top: 46%;
+}
