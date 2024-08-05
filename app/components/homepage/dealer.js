@@ -331,12 +331,19 @@ export default function Dealer() {
           </div>
           <div class="map-sec lg:w-[70%]">
             <div class="flex justify-between gap-2 mb-2 items-center">
-              <div class="pincode-input-wrapper relative w-[25%]">
-                <input
-                  className="address-input"
-                  type="text"
-                  placeholder="Enter Pincode"
-                />
+              <div class="area-input-wrapper relative flex gap-4 w-[50%]">
+                <select className="select-box" name="state" id="state">
+                  <option value="Select State">Select State</option>
+                  <option value="West Bengal">West Bengal</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                </select>
+                <select className="select-box" name="city" id="city">
+                  <option value="Select City">Select City</option>
+                  <option value="Kolkata">Kolkata</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Hydrabad">Hydrabad</option>
+                </select>
               </div>
               <span className="">Or</span>
               <div class="address-input-wrapper relative w-[50%]">

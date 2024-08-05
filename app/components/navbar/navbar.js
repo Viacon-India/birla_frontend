@@ -9,8 +9,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function Navbar() {
+  // hamburger menu
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [navMenu, setNavMenu] = useState([]);
+  const [hamMenu, setHamMenu] = useState([]);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -22,9 +25,9 @@ export default function Navbar() {
       .then((header) => {
         console.log(header);
         setNavMenu(header.data.attributes.menus.data[0].attributes.menu);
+        setHamMenu(header.data.attributes.menus.data[0].attributes.menu);
       });
 
-    
     const searchWrapper = document.querySelector(".search-wrapper");
     searchWrapper.addEventListener("click", () => {
       searchWrapper.classList.add("active");
@@ -35,6 +38,8 @@ export default function Navbar() {
         searchWrapper.classList.remove("active");
       }
     });
+
+    // Megamenu
   }, []);
 
   return (
@@ -172,17 +177,43 @@ export default function Navbar() {
             ></path>
           </svg>
         </span>
-        <ul className="p-[60px] w-full h-[100vh] bg-[#FFFFFF]">
-          {navMenu.map((menu) => (
-            <li className="ham-drop group" key={menu.id}>
-              <Link href={`/${menu.menu_item.link}`} className="ham-links">
-                <span data-hover={menu.menu_item.name}>
+        <div className="bg-[#FFFFFF] p-[60px] w-full h-[100vh]">
+          <ul className="h-full overflow-auto">
+            {hamMenu.map((menu) => (
+              <li className="ham-drop group" key={menu.id}>
+                <Link href={`/${menu.menu_item.link}`} className="ham-links">
                   {menu.menu_item.name}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+                </Link>
+                {menu.sub_menu && menu.sub_menu.length > 0 && (
+                  <ul className="">
+                    {menu.sub_menu.map((subMenu) => (
+                      <li key={subMenu.id}>
+                        <Link
+                          href={`/${subMenu.sub_menu_item.link}`}
+                          className="text-primary pl-4"
+                        >
+                          {subMenu.sub_menu_item.name}
+                        </Link>
+                        {subMenu.sub_sub_menu_item &&
+                          subMenu.sub_sub_menu_item.length > 0 && (
+                            <ul className="">
+                              {subMenu.sub_sub_menu_item.map((subSubMenu) => (
+                                <li className="text-secondary pl-8" key={subSubMenu.id}>
+                                  <Link href={`/${subSubMenu.link}`}>
+                                    {subSubMenu.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

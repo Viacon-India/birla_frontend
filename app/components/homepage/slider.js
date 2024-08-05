@@ -350,7 +350,7 @@ export default function Slider() {
         </Link>
       </div>
 
-      <Swiper
+      {/* <Swiper
         loop={true}
         speed={1000}
         autoplay={{
@@ -477,7 +477,7 @@ export default function Slider() {
           </div>
         </SwiperSlide>
 
-      </Swiper>
+      </Swiper> */}
       
     </div>
   );
