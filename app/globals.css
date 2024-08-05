@@ -674,6 +674,9 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 .footer-list-box{
   @apply text-secondary text-[20px] leading-[1.2] capitalize 
 }
+.footer-list-box h2{
+  @apply text-secondary text-[20px] leading-[1.2] capitalize opacity-100 font-normal
+}
 
 .bottom-top-btn{
   @apply w-10 h-10 bg-primary flex justify-center items-center rounded-[4px]
@@ -688,31 +691,32 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 @keyframes example {
   from {
     opacity: 0.2;
-    scale: 10%;
+    transform:translateX(-500%);
   }
   to {
     opacity: 1;
-    scale: 100%;
+    transform:translateX(0%);
   }
 }
 .rtl{
   animation: example1 2s linear;
+  
 }
 @keyframes example1 {
   from {
     opacity: 0.2;
-    scale: 10%;
+    transform:translateX(500%);
   }
   to {
     opacity: 1;
-    scale: 100%;
+    transform:translateX(0%);
   }
 }
 
 .loader-sec {
   animation: reveal-c 1s linear;
   animation-delay: 3s;
-  animation-fill-mode: forwards; /* Ensures styles set in last keyframe persist */
+  animation-fill-mode: forwards; 
   background-color: white;
   animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.2);
 }
@@ -948,7 +952,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 /* dealer sec */
 .listing-card-wrapper{
-  @apply flex flex-col gap-[8px] h-[550px] overflow-y-auto
+  @apply flex flex-col gap-[8px] h-[360px] overflow-y-auto
 }
 .listing-card{
   @apply p-3 bg-[#FFFFFF] border border-[#DEE1E5] rounded-[6px] mr-2
@@ -973,11 +977,20 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 .map-sec iframe {
   @apply w-full h-[400px] lg:h-[550px] rounded-[4px]
 }
+.nearest-card{
+  @apply p-3 bg-[#F4F5F6] rounded-[4px] mt-5 mb-5
+}
+.nearest-card h2{
+  @apply text-[#1A1D21] text-[24px] mb-3
+}
+.nearest-card p{
+  @apply text-[#1A1D21] text-[24px] mb-3
+}
 .result-number{
-  @apply text-[24px] mb-2
+  @apply text-[24px] mb-5 text-[#4F5662]
 }
 .result-number span{
-  @apply text-primary
+  @apply text-secondary
 }
 .address-input{
   @apply bg-[#F4F5F6] py-[12px] pl-4 border border-[#DEE1E5] w-full rounded-[2px] outline-none placeholder:font-normal
@@ -1028,24 +1041,6 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   vertical-align: middle;
   text-align: center;
   color: #fff;
-}
-
-h3 {
-  font-size: 5rem;
-  font-style: italic;
-}
-
-h3 + a {
-  font-size: 1.6rem;
-  display: inline-block;
-  color: #fff;
-  margin-top: 2rem;
-}
-
-h3, h3 + a {
-  opacity: 0;
-  transition: opacity .7s 0s, transform .5s .2s;
-  transform: translate3d(0, 50%, 0);
 }
 
 .tiles.current h3, .tiles.current h3 + a {

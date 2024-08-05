@@ -93,7 +93,7 @@ export default function Footer() {
         <ul className="footer-list-sec py-10 grid grid-cols-5">
           {footerMenu.map((newMenu) => (
             <li className="footer-list-box" key={newMenu.id}>
-              <h3>{newMenu.attributes.menu[0].menu_item.name}</h3>
+              <h2>{newMenu.attributes.menu[0].menu_item.name}</h2>
               <ul className="footer-list">
                 {newMenu.attributes.menu[0].sub_menu_item.map((submenu) => (
                   <li key={submenu.id}>
