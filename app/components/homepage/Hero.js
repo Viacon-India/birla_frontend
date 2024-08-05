@@ -13,7 +13,7 @@ export default function Hero() {
     const nav = slider.querySelector("nav");
     const navA = Array.from(nav.querySelectorAll("a"));
     let cur = 0;
-    let slideInterval = setInterval(goNext, 4000);
+    let slideInterval = setInterval(goNext, 3000);
     let playing = true;
 
     function updateSlider() {
@@ -222,8 +222,6 @@ export default function Hero() {
               <a href="javascript:void(0)"></a>
             </nav>
           </div>
-          <button id="prev">&lt;</button>
-          <button id="next">&gt;</button>
         </div>
       </section>
     </div>
