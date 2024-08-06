@@ -183,7 +183,7 @@ export default function Footer() {
                 className="w-full h-full object-cover"
               />
             </figure>
-            <div class="line "></div>
+            <div class="line !h-[80px]"></div>
             <figure className="rounded-none m-0 w-[180px] h-[80px]">
               <Image
                 src={logo1}

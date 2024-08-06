@@ -156,12 +156,12 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`hamburger-menu w-full h-[100%] absolute top-0 left-0 z-50 ${
+        className={`hamburger-menu w-[35%] h-[100%] absolute top-0 left-0 z-50 ${
           isMenuOpen ? "open" : ""
         }`}
       >
         <span
-          className="close text-[40px] absolute right-4 top-4"
+          className="close text-[40px] absolute right-8 top-8"
           onClick={toggleMenu}
         >
           <svg
