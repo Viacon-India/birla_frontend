@@ -80,10 +80,10 @@ export default function Hero() {
                     </Link>
                   </div>
                   <div className="swiper-card relative z-10">
-                    <GradualSpacing className="hero-sec-heading" text="TBB" />
+                    <GradualSpacing className="hero-sec-heading" text="Truck Bus Bias" />
                     <LetterPullup
                       className="section-subheading"
-                      words={"Fortifying Commercial Vehicles"}
+                      words={"Progess in Every Mile"}
                       delay={0.05}
                     />
                     <Link href="#" class="explore-btn">
@@ -115,10 +115,10 @@ export default function Hero() {
                     </Link>
                   </div>
                   <div className="swiper-card relative z-10">
-                    <GradualSpacing className="hero-sec-heading" text="OTR" />
+                    <GradualSpacing className="hero-sec-heading" text="Off The Road" />
                     <LetterPullup
                       className="section-subheading"
-                      words={"Designed for Durability and Strength"}
+                      words={"Ready for Every Challenge"}
                       delay={0.05}
                     />
                     <Link href="#" class="explore-btn">
@@ -156,7 +156,7 @@ export default function Hero() {
                     />
                     <LetterPullup
                       className="section-subheading"
-                      words={"The Power To Strengthen Your Field"}
+                      words={"Strength in Every Turn"}
                       delay={0.05}
                     />
                     <Link href="#" class="explore-btn">

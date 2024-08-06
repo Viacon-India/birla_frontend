@@ -959,8 +959,8 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 nav a {
   display: inline-block;
   border-radius: 50%;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
   min-width: 12px;
   min-height: 12px;
   background: #fff;
