@@ -390,7 +390,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 /* Style for the menu items */
 .ham-links{
-  @apply text-[#101010] text-[48px] hover:bg-transparent rounded-none font-medium flex items-center relative group-hover:text-primary
+  @apply text-[#101010] text-[40px] hover:bg-transparent rounded-none font-medium flex items-center relative group-hover:text-primary
   capitalize w-fit
 }
 .ham-links {
@@ -491,7 +491,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 
 .about-title{
-  @apply text-secondary text-[36px] xl:text-[48px] font-bold leading-[1.2] flex gap-3 items-center !capitalize pl-3
+  @apply text-secondary text-[40px] xl:text-[48px] font-bold leading-[1.2] flex gap-3 items-center !capitalize pl-3
   before:content-[""] before:w-[3px] before:h-[80%] before:bg-primary before:absolute before:left-0 before:rounded-[100px]
 }
 .about-heading{
@@ -721,7 +721,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 .loader-sec {
   animation: reveal-c 1s linear;
-  animation-delay: 3s;
+  animation-delay: 4s;
   animation-fill-mode: forwards; 
   background-color: white;
   animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.2);

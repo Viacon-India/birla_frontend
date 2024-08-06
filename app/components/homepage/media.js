@@ -56,7 +56,7 @@ export default function Media() {
             <div
               class="media-card"
               data-aos="fade-right"
-              data-aos-duration="1000"
+              data-aos-duration="700"
               data-aos-offset="400"
             >
               <figure>
@@ -86,7 +86,7 @@ export default function Media() {
             <div
               class="media-card"
               data-aos="fade-right"
-              data-aos-duration="1500"
+              data-aos-duration="900"
               data-aos-offset="200"
             >
               <figure>

@@ -99,7 +99,7 @@ export default function Hero() {
                 autoPlay
                 muted
               >
-                <source src={"/assets/videos/TBB-vid.mp4"} type="video/mp4" />
+                <source src={"/assets/videos/TBB2.mp4"} type="video/mp4" />
               </video>
             </div>
             <div className="tiles swiper-card-main relative">
@@ -172,7 +172,7 @@ export default function Hero() {
                 autoPlay
                 muted
               >
-                <source src={"/assets/videos/AGR.mp4"} type="video/mp4" />
+                <source src={"/assets/videos/AGR3.mp4"} type="video/mp4" />
               </video>
             </div>
           </div>

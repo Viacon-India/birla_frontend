@@ -228,7 +228,6 @@ export default function AboutSec() {
         left:0,
       }}>company brief</span>
           <div className="section-title-wrapper">
-            {/* <TypingAnimation className="section-title" text="About us" /> */}
             <h2 className="about-title" style={{
               position: "fixed",
               top:"118px",

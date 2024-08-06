@@ -42,31 +42,11 @@ export default function Slider() {
   return (
     <div className="relative">
       <div className="loader-sec w-full h-[100vh] bg-transparent flex flex-col gap-3 justify-center items-center fixed z-100">
-        <div class="video-wrapper w-[200px] h-[220px]">
+        <div class="video-wrapper w-[80%] h-[80%]">
           <video className="w-full h-fit object-contain" loop autoPlay muted>
-            <source src={"/assets/videos/tyre-loader.mp4"} type="video/mp4" />
+            <source src={"/assets/videos/tyre-loader-1.mp4"} type="video/mp4" />
           </video>
         </div>
-        <div class="flex gap-8 justify-center items-center pl-[50px] 2xl:pl-[80px]">
-          <figure className="rounded-none m-0 ltr">
-            <Image
-              src={himadari}
-              alt="logo"
-              className="w-full h-fit object-cover pt-2"
-            />
-          </figure>
-          <div class="line !h-full"></div>
-          <figure className="rounded-none m-0 rtl">
-            <Image
-              src={birla}
-              alt="logo"
-              className="w-full h-full object-cover"
-            />
-          </figure>
-        </div>
-        <p className="text-primary text-[60px] absolute left-2 !bottom-0 !translate-Y-[80px]">
-          {counter}%
-        </p>
       </div>
 
       <div className="fixed right-0 z-50 top-[20%] 2xl:top-[25%] overflow-hidden">
