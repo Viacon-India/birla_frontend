@@ -720,8 +720,8 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 
 .loader-sec {
-  animation: reveal-c 1s linear;
-  animation-delay: 4s;
+  animation: reveal-c 5s linear;
+  animation-delay: 5s;
   animation-fill-mode: forwards; 
   background-color: white;
   animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.2);
