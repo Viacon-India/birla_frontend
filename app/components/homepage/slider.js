@@ -13,6 +13,11 @@ import BoxReveal from "@/components/BoxRevealDemo";
 import himadari from "../../assets/images/himadri-logo-100.png";
 import birla from "../../assets/images/birla-logo-100.png";
 import Image from "next/image";
+import { Mousewheel, Pagination, EffectFade, Navigation } from 'swiper/modules';
+// import { EffectFade } from 'swiper/css/effect-fade';
+// import { Navigation } from 'swiper/css/navigation';
+// import { Pagination } from 'swiper/css/pagination';
+// import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 
 export default function Slider() {
   const [counter, setCounter] = useState(0);
@@ -229,14 +234,20 @@ export default function Slider() {
         </Link>
       </div>
 
-      {/* <Swiper
+      <Swiper
         loop={true}
         speed={1000}
+        spaceBetween={30}
+        effect={'fade'}
+        navigation={true}
+        pagination={{
+          clickable: true,
+        }}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,
         }}
-        modules={[Autoplay]}
+        modules={[Autoplay, EffectFade, Navigation, Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>
@@ -253,10 +264,10 @@ export default function Slider() {
                   </Link>
                 </div>
                 <div className="swiper-card relative z-10">
-                  <GradualSpacing className="hero-sec-heading" text="TBB" />
+                  <GradualSpacing className="hero-sec-heading" text="Truck Bus Bias" />
                   <LetterPullup
                     className="section-subheading"
-                    words={"Fortifying Commercial Vehicles"}
+                    words={"Progess in Every Mile"}
                     delay={0.05}
                   />
                   <Link href="#" class="explore-btn">
@@ -272,7 +283,7 @@ export default function Slider() {
               autoPlay
               muted
             >
-              <source src={"/assets/videos/TBB-vid.mp4"} type="video/mp4" />
+              <source src={"/assets/videos/TBB2.mp4"} type="video/mp4" />
             </video>
           </div>
         </SwiperSlide>
@@ -291,10 +302,10 @@ export default function Slider() {
                   </Link>
                 </div>
                 <div className="swiper-card relative z-10">
-                  <GradualSpacing className="hero-sec-heading" text="OTR" />
+                  <GradualSpacing className="hero-sec-heading" text="Off The Road" />
                   <LetterPullup
                     className="section-subheading"
-                    words={"Designed for Durability and Strength"}
+                    words={"Ready for Every Challenge"}
                     delay={0.05}
                   />
                   <Link href="#" class="explore-btn">
@@ -335,7 +346,7 @@ export default function Slider() {
                   />
                   <LetterPullup
                     className="section-subheading"
-                    words={"The Power To Strengthen Your Field"}
+                    words={"Strength in Every Turn"}
                     delay={0.05}
                   />
                   <Link href="#" class="explore-btn">
@@ -351,12 +362,12 @@ export default function Slider() {
               autoPlay
               muted
             >
-              <source src={"/assets/videos/AGR.mp4"} type="video/mp4" />
+              <source src={"/assets/videos/AGR3.mp4"} type="video/mp4" />
             </video>
           </div>
         </SwiperSlide>
 
-      </Swiper> */}
+      </Swiper>
     </div>
   );
 }
