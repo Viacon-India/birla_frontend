@@ -26,8 +26,8 @@ export default function Media() {
             <div
               class="media-card"
               data-aos="fade-right"
-              data-aos-duration="500"
-              data-aos-offset="600"
+              data-aos-duration="1000"
+              // data-aos-offset="650"
             >
               <figure>
                 <Image className="media-card-image" src={gallary1} alt="card" />
@@ -55,8 +55,8 @@ export default function Media() {
             <div
               class="media-card"
               data-aos="fade-right"
-              data-aos-duration="700"
-              data-aos-offset="400"
+              data-aos-duration="1500"
+              // data-aos-offset="650"
             >
               <figure>
                 <Image className="media-card-image" src={gallary2} alt="card" />
@@ -84,8 +84,8 @@ export default function Media() {
             <div
               class="media-card"
               data-aos="fade-right"
-              data-aos-duration="900"
-              data-aos-offset="200"
+              data-aos-duration="2000"
+              // data-aos-offset="650"
             >
               <figure>
                 <Image className="media-card-image" src={gallary3} alt="card" />

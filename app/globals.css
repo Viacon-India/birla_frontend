@@ -816,7 +816,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   }
 }
 .split-section .detail {
-  @apply flex flex-col justify-center pt-[120px] 2xl:pt-10
+  @apply flex flex-col justify-center pt-[120px] 2xl:pt-10 gap-3
 }
 @media (width >= 768px) {
   .split-section .detail {

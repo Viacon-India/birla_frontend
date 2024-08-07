@@ -14,7 +14,7 @@ import BoxReveal from "@/components/BoxRevealDemo";
 import himadari from "../../assets/images/himadri-logo-100.png";
 import birla from "../../assets/images/birla-logo-100.png";
 import Image from "next/image";
-import { Mousewheel, Pagination, EffectFade, Navigation } from 'swiper/modules';
+import { Pagination, EffectFade } from 'swiper/modules';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import { EffectFade } from 'swiper/css/effect-fade';
 // import { Navigation } from 'swiper/css/navigation';
@@ -278,7 +278,6 @@ export default function Slider() {
         speed={1000}
         spaceBetween={30}
         effect={'fade'}
-        navigation={true}
         pagination={{
           clickable: true,
         }}
@@ -286,7 +285,7 @@ export default function Slider() {
           delay: 4000,
           disableOnInteraction: false,
         }}
-        modules={[Autoplay, EffectFade, Navigation, Pagination]}
+        modules={[Autoplay, EffectFade, Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>
