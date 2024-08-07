@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import Image from "next/image";
-import gallary1 from "../../assets/images/gallary1.jpg";
-import gallary2 from "../../assets/images/gallary2.jpg";
+import gallary1 from "../../assets/images/gallary1-original.webp";
+import gallary2 from "../../assets/images/gallary2-original.jpg";
 import gallary3 from "../../assets/images/gallary3.jpg";
 import Link from "next/link";
 import GradualSpacing from "@/components/GradualSpacing";
@@ -39,11 +39,10 @@ export default function Media() {
                   <span className="card-date">24 June 2024</span>
                 </div>
                 <h2 className="media-title">
-                  2024 BMW ALPINA XB7 with exclusive details, extraordinary
+                  Birla Tyres to re-enter mkt with new products in Q4
                 </h2>
                 <p className="media-detail">
-                  Maecenas dignissim justo eget nulla rutrum molestie Maecenas
-                  dignissim justo eget nulla rutrum....
+                  Birla Tyres is likely to re-enter the market with a new range of products in the fourth quarter of this fiscal, said Anurag Choudhary....
                 </p>
                 <Link
                   href="#"
@@ -69,11 +68,10 @@ export default function Media() {
                   <span className="card-date">24 June 2024</span>
                 </div>
                 <h2 className="media-title">
-                  2024 BMW ALPINA XB7 with exclusive details, extraordinary
+                  Birla Tyres set to roll again, acquisition finalised by consortium of Himadri and Dalmia
                 </h2>
                 <p className="media-detail">
-                  Maecenas dignissim justo eget nulla rutrum molestie Maecenas
-                  dignissim justo eget nulla rutrum....
+                Birla Tyres will resurface on Indian roads a year from now, courtesy the new owners of the company and the brand....
                 </p>
                 <Link
                   href="#"

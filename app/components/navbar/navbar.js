@@ -39,6 +39,29 @@ export default function Navbar() {
       }
     });
 
+
+    // var acc2 = document.getElementsByClassName("ham-accordion");
+    // var hamLinks = document.querySelectorAll(".ham-links");
+    // for (var j = 0; j < acc2.length; j++) {
+    //   acc2[j].addEventListener("click", function() {
+    //     this.classList.toggle("active");
+        // var newPanel = this.nextElementSibling;
+        // newPanel.classList.toggle("py-2");
+        // if (this.classList.contains("active")) {
+        //   this.style.background = "#FFA500";
+        //   this.style.color = "#FFFFFF";
+        // } else {
+        //   this.style.background = "";
+        //   this.style.color = "#FFA500";
+        // }
+        // if (newPanel.style.maxHeight) {
+        //   newPanel.style.maxHeight = null;
+        // } else {
+        //   newPanel.style.maxHeight = newPanel.scrollHeight + "px";
+        // }
+    //   });
+    // }
+
     // Megamenu
   }, []);
 
@@ -156,17 +179,17 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`hamburger-menu w-[35%] h-[100%] absolute top-0 left-0 z-50 ${
+        className={`hamburger-menu h-[100%] absolute top-0 left-0 z-50 ${
           isMenuOpen ? "open" : ""
         }`}
       >
         <span
-          className="close text-[40px] absolute right-8 top-8"
+          className="close text-[40px] absolute right-8 top-4"
           onClick={toggleMenu}
         >
           <svg
-            width="32"
-            height="32"
+            width="24"
+            height="24"
             viewBox="0 0 32 32"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -177,8 +200,8 @@ export default function Navbar() {
             ></path>
           </svg>
         </span>
-        <div className="bg-[#FFFFFF] p-[60px] w-full h-[100vh]">
-          <ul className="h-full overflow-auto">
+        <div className="bg-[#FFFFFF] pt-[40px] pr-[4px] pb-[16px] pl-[16px] w-fit h-[100vh]">
+          <ul className="h-full overflow-auto pr-[16px]">
             {hamMenu.map((menu) => (
               <li className="ham-drop group" key={menu.id}>
                 <Link href={`/${menu.menu_item.link}`} className="ham-links">
@@ -188,17 +211,17 @@ export default function Navbar() {
                   <ul className="">
                     {menu.sub_menu.map((subMenu) => (
                       <li key={subMenu.id}>
-                        <Link
+                        <span className="ham-accordion"><Link
                           href={`/${subMenu.sub_menu_item.link}`}
-                          className="text-primary pl-4"
+                          className="text-primary pl-2"
                         >
                           {subMenu.sub_menu_item.name}
-                        </Link>
+                        </Link></span>
                         {subMenu.sub_sub_menu_item &&
                           subMenu.sub_sub_menu_item.length > 0 && (
-                            <ul className="">
+                            <ul className="text-[14px] ham-submenu newPanel">
                               {subMenu.sub_sub_menu_item.map((subSubMenu) => (
-                                <li className="text-secondary pl-8" key={subSubMenu.id}>
+                                <li className="text-secondary pl-4" key={subSubMenu.id}>
                                   <Link href={`/${subSubMenu.link}`}>
                                     {subSubMenu.name}
                                   </Link>
