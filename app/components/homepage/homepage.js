@@ -6,6 +6,7 @@ import Product from "./product";
 import Sustainability from "./sustainability";
 import Media from "./media";
 import Dealer from "./dealer"
+import Link from "next/link";
 // import Hero from "../../components/homepage/Hero"
 
 
@@ -21,7 +22,8 @@ export default function Homepage() {
       <Dealer />
       <Sustainability />
       <Media />
-      
+      {/* <Link className='btn btn-outline btn-primary' href="/users">go to user page</Link>
+        <Link className='btn btn-outline btn-secondary' href="/users/product">product page</Link> */}
     </>
   );
 }

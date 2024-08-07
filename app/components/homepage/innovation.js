@@ -63,7 +63,7 @@ export default function Innovation() {
               />
             </div>
           </div>
-          <Link className="tertiary-button" href="">
+          <Link className="tertiary-button" href="/users/product">
             Discover Our Categories
           </Link>
         </div>

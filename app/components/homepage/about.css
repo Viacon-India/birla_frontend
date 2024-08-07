@@ -1,0 +1,93 @@
+/* Ashutosh css2 */
+
+.hoverBoxContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .hoverBoxContainer .split-section {
+    width: 48%;
+    display: block;
+    position: relative;
+    margin: auto;
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, .07);
+    background-color: #fff;
+    border: 5px solid #f5f5f5;
+    position: relative;
+    overflow: hidden;
+    /* max-height: 240px;
+    max-width: 350px; */
+    background: #3085a3;
+    text-align: center;
+    cursor: pointer;
+    transition: all .8s ease;
+    margin-bottom: 30px;
+    border-radius: 12px;
+  }
+  .hoverBoxContainer .split-section .split-images {
+    display: flex;
+    height: auto;
+    position: relative;
+    max-width: none;
+    width: calc(100% + 60px);
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1.12);
+    transition: all .35s;
+    -webkit-transform: translate3d(0, 0, 0) scale(1.12);
+    -webkit-transition: all .35s;
+  }
+  .hoverBoxContainer .split-section .split-images:hover img {
+    transform: translate3d(-20px, 0, 0) scale(1);
+    -webkit-transform: translate3d(-20px, 0, 0) scale(1);
+    opacity: .5;
+  }
+   .hoverBoxContainer .split-section .detail {
+    min-height: auto;
+   
+  }
+  .hoverBoxContainer .imageHeading {
+    display: flex;
+  }
+  .hoverBoxContainer .about-usp-title {
+    margin-top: 0;
+    font-size: 25px;
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: #fff;
+  }
+  /* .hoverBoxContainer .imageHeading {
+    position: absolute;
+    background: #ff0000;
+    bottom: 0;
+    width: 100%;
+  } */
+  .hoverBoxContainer .split-section .split-details {
+    position: absolute;
+    bottom: -340px;
+    background: rgba(46, 49, 146, .85);
+    transition: all .6s linear;
+    max-width: 100%;
+    padding: 12px;
+    height: 400px;
+   
+  }
+   
+   
+  .hoverBoxContainer .about-usp-detail {
+    margin-top: 0;
+    font-size: 16px;
+    --tw-text-opacity: 1;
+    color: #fff;
+    text-align: left;
+  }
+  .hoverBoxContainer .split-section .split-images {
+    height: auto !important;
+  }
+  .hoverBoxContainer .split-section:hover .split-details{
+    bottom: 0px;
+    height: 100%;
+    padding:40px 20px
+  }
+  .split-section.split-section2 p,
+  .split-section.split-section3 p {
+    margin-right: 6px;
+  }
