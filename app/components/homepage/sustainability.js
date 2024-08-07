@@ -40,19 +40,19 @@ export default function Sustainability() {
           <div className="section-title-wrapper">
             <GradualSpacing className="section-title" text="Sustainability" />
           </div>
-          <p className="text-[#3D434C] text-[18px] font-medium leading-[1.7] mt-6">
+          <p className="text-[#3D434C] text-[18px] font-medium leading-[1.7] mt-8">
             Lorem ipsum dolor sit amet, contur adipiscing elit. Maecenas
             dignissim justo eget nulla rutrum molestie et. Lorem ipsum dolor sit
             amet, contur adipiscing elit. Maecenas dignissim justo eget nulla
             rutrum molestie et. Lorem ipsum dolor sit amet.
           </p>
+        </div>
+      </div>
           <div class="video-content">
             <video className="sustainabilityVideo" loop autoPlay muted>
               <source src={"/assets/videos/vid10.mp4"} type="video/mp4" />
             </video>
           </div>
-        </div>
-      </div>
     </section>
   );
 }
