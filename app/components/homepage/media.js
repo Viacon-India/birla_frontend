@@ -114,6 +114,7 @@ export default function Media() {
           </div>
         </div>
       </div>
+      <div className="media-sec-marker"></div>
     </section>
   );
 }

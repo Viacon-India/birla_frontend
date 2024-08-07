@@ -24,7 +24,7 @@ export default function Sustainability() {
       scrollTrigger: {
         trigger: ".video-content",
         scroller: "body",
-        start: "top 80%",
+        start: "top 70%",
         end: "bottom 20%",
         scrub: 2,
         // markers: true

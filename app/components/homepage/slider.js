@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
+import { gsap } from "gsap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Link from "next/link";
@@ -14,6 +15,7 @@ import himadari from "../../assets/images/himadri-logo-100.png";
 import birla from "../../assets/images/birla-logo-100.png";
 import Image from "next/image";
 import { Mousewheel, Pagination, EffectFade, Navigation } from 'swiper/modules';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import { EffectFade } from 'swiper/css/effect-fade';
 // import { Navigation } from 'swiper/css/navigation';
 // import { Pagination } from 'swiper/css/pagination';
@@ -21,8 +23,45 @@ import { Mousewheel, Pagination, EffectFade, Navigation } from 'swiper/modules';
 
 export default function Slider() {
   const [counter, setCounter] = useState(0);
-
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
   useEffect(() => {
+
+
+    gsap.fromTo(
+      '.sideNav-wrapper',
+      { right: "-40px",},
+      {
+        right: "0px",
+        scrollTrigger: {
+          trigger: ".media-sec-marker",
+          scroller: "body",
+          start: "top top",
+          end: "top 60%",
+          scrub: 2,
+          // markers: true
+        },
+      }
+    );
+
+    gsap.fromTo(
+      '.sideNav-wrapper',
+      { right: "0px",},
+      {
+        right: "-40px",
+        scrollTrigger: {
+          trigger: ".video-content",
+          scroller: "body",
+          start: "top 40%",
+          end: "top top",
+          scrub: 2,
+          // markers: true
+        },
+      }
+    );
+
+
     const loader = document.querySelector(".loader-sec");
 
     setTimeout(() => {
@@ -54,7 +93,7 @@ export default function Slider() {
         </div>
       </div>
 
-      <div className="fixed right-0 z-50 top-[20%] 2xl:top-[25%] overflow-hidden">
+      <div className="fixed right-0 z-50 top-[20%] 2xl:top-[25%] overflow-hidden sideNav-wrapper">
         <Link className="sideNav" href="">
           <svg
             width="18"
