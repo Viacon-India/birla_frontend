@@ -390,19 +390,41 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 /* Style for the menu items */
 .ham-links{
-  @apply text-[#101010] text-[40px] hover:bg-transparent rounded-none font-medium flex items-center relative group-hover:text-primary
+  @apply text-[#101010] text-[20px] hover:bg-transparent rounded-none font-medium flex items-center relative group-hover:text-primary
   capitalize w-fit
 }
 .ham-links {
   transition: color 0.3s ease;
 }
 .ham-drop {
-  @apply relative py-4 md:py-[8px] w-fit
+  @apply relative py-4 md:py-[8px] w-full
 }
 .ham-drop:hover .center-dropdown {
   @apply h-auto transition-[height] duration-[0.5s] ease-[ease-in-out] visible;
 }
+.ham-submenu {
+  @apply relative w-full flex flex-col gap-4 pl-6;
+}
+.ham-accordion {
+  @apply cursor-pointer w-full transition-all duration-300 m-0;
+}
 
+.ham-accordion::after {
+  content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none"><path d="M6.9997 5.17238L11.9495 0.222656L13.3637 1.63687L6.9997 8.00088L0.635742 1.63687L2.04996 0.222656L6.9997 5.17238Z" fill="%23101010"/></svg>');
+  @apply float-right transition-all duration-300;
+}
+
+.ham-accordion.active:after {
+  content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none"><path d="M6.9997 5.17238L11.9495 0.222656L13.3637 1.63687L6.9997 8.00088L0.635742 1.63687L2.04996 0.222656L6.9997 5.17238Z" fill="%23101010"/></svg>');
+  @apply rotate-180;
+}
+
+.newPanel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #dadada;
+}
 
 /* hero-section */
 .slider-overlay{
@@ -491,7 +513,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 
 .about-title{
-  @apply text-secondary text-[40px] xl:text-[48px] font-bold leading-[1.2] flex gap-3 items-center !capitalize pl-3
+  @apply text-secondary text-[36px] md:text-[40px] 2xl:text-[48px] font-bold leading-[1.2] flex gap-3 items-center !capitalize pl-3 mt-3
   before:content-[""] before:w-[3px] before:h-[80%] before:bg-primary before:absolute before:left-0 before:rounded-[100px]
 }
 .about-heading{

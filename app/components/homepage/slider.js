@@ -42,9 +42,9 @@ export default function Slider() {
   return (
     <div className="relative">
       <div className="loader-sec w-full h-[100vh] bg-transparent flex flex-col gap-3 justify-center items-center fixed z-100">
-        <div class="video-wrapper w-[80%] h-[80%]">
+        <div class="video-wrapper">
           <video className="w-full h-fit object-contain" loop autoPlay muted>
-            <source src={"/assets/videos/tyre-loader-1.mp4"} type="video/mp4" />
+            <source src={"/assets/videos/tyre-loader-2.mp4"} type="video/mp4" />
           </video>
         </div>
       </div>
