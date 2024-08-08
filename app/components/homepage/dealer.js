@@ -35,7 +35,7 @@ export default function Dealer() {
               </svg>
             </div>
             <div class="nearest-card">
-              <h2 className="">Nearest shop is just 1.5KM away</h2>
+              <h2 className="">Nearest Dealer is just 1.5KM away</h2>
               <Link className="tertiary-button underline underline-offset-2" href="#">Get Contact Details</Link>
             </div>
             <h4 className="result-number">Showing <span>15 Results</span></h4>

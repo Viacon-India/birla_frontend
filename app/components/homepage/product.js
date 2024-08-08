@@ -21,10 +21,8 @@ import prodSvg from "../../assets/images/product-svg.png";
 import prodSvg2 from "../../assets/images/product-svg2.png";
 import prodSvg3 from "../../assets/images/product-svg3.png";
 import ultra from "../../assets/images/ultra-trac.svg";
+import iconW2img from "../../assets/images/iconW2img.png";
 import chakra from "../../assets/images/chakra-svg.svg";
-import tyreMark from "../../assets/images/tyreMark.png";
-import tyreMark2 from "../../assets/images/tyreMark2.png";
-import tyreMark3 from "../../assets/images/tyreMark3.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -37,67 +35,58 @@ const productData = {
       description: "Fortifying Commercial Vehicles",
       image: tyre1,
       icon: prodSvg,
-      tyreMark: tyreMark,
     },
     {
       title: "Ultra Miler Platina",
       description: "Lorem Ipsum product short details",
       image: tyre2,
       icon: prodSvg,
-      tyreMark: tyreMark,
     },
     {
       title: "Road Miler",
       description: "Lorem Ipsum product short details",
       image: tyre3,
-      icon: prodSvg,
-      tyreMark: tyreMark,
+      icon: iconW2img,
     },
   ],
   OTR: [
     {
-      title: "Kalapatthar (new)",
+      title: "Kalapatthar",
       description: "Fortifying Commercial Vehicles",
       image: tyre4,
       icon: prodSvg2,
-      tyreMark: tyreMark3,
     },
     {
       title: "Grader Max",
       description: "Lorem Ipsum product short details",
       image: tyre5,
       icon: prodSvg2,
-      tyreMark: tyreMark3,
     },
     {
       title: "Ultra Trac",
       description: "Lorem Ipsum product short details",
       image: tyre6,
       icon: ultra,
-      tyreMark: tyreMark3,
     },
   ],
   Agriculture: [
     {
-      title: "Farm Haul Platina - Front",
+      title: "Farm Haul Platina",
       description: "Fortifying Commercial Vehicles",
       image: tyre7,
       icon: prodSvg3,
-      tyreMark: tyreMark3,
     },
     {
-      title: "Farm Haul Platina - Rear",
+      title: "Farm Haul Platina",
       description: "Lorem Ipsum product short details",
       image: tyre8,
       icon: prodSvg3,
-      tyreMark: tyreMark3,
     },
     {
       title: "Chakra",
       description: "Lorem Ipsum product short details",
       image: tyre9,
       icon: chakra,
-      tyreMark: tyreMark3,
     },
   ],
 };
@@ -193,11 +182,6 @@ export default function Product() {
             >
               {productData[tab].map((product, index) => (
                 <SwiperSlide key={index}>
-                  <Image
-                    className="absolute right-[35px] top-[-65%] -z-1"
-                    src={product.tyreMark}
-                    alt="card"
-                  />
                   <div className="product-card">
                     <span className="product-card-tag">Premium</span>
                     <figure>

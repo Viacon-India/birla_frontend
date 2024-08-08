@@ -9,16 +9,21 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function Navbar() {
-  // hamburger menu
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [navMenu, setNavMenu] = useState([]);
   const [hamMenu, setHamMenu] = useState([]);
+  const [expandedSubMenu, setExpandedSubMenu] = useState(null);
+
+  // mega menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // button for navbar
+  // Toggle submenu
+  const toggleSubMenu = (id) => {
+    setExpandedSubMenu(expandedSubMenu === id ? null : id);
+  };
+
   useEffect(() => {
     fetch("http://birlatyres.viaconprojects.com:1337/api/header")
       .then((res) => res.json())
@@ -28,41 +33,16 @@ export default function Navbar() {
         setHamMenu(header.data.attributes.menus.data[0].attributes.menu);
       });
 
+    // Searchbar
     const searchWrapper = document.querySelector(".search-wrapper");
     searchWrapper.addEventListener("click", () => {
       searchWrapper.classList.add("active");
     });
-
     document.addEventListener("click", (event) => {
       if (!searchWrapper.contains(event.target)) {
         searchWrapper.classList.remove("active");
       }
     });
-
-
-    // var acc2 = document.getElementsByClassName("ham-accordion");
-    // var hamLinks = document.querySelectorAll(".ham-links");
-    // for (var j = 0; j < acc2.length; j++) {
-    //   acc2[j].addEventListener("click", function() {
-    //     this.classList.toggle("active");
-        // var newPanel = this.nextElementSibling;
-        // newPanel.classList.toggle("py-2");
-        // if (this.classList.contains("active")) {
-        //   this.style.background = "#FFA500";
-        //   this.style.color = "#FFFFFF";
-        // } else {
-        //   this.style.background = "";
-        //   this.style.color = "#FFA500";
-        // }
-        // if (newPanel.style.maxHeight) {
-        //   newPanel.style.maxHeight = null;
-        // } else {
-        //   newPanel.style.maxHeight = newPanel.scrollHeight + "px";
-        // }
-    //   });
-    // }
-
-    // Megamenu
   }, []);
 
   return (
@@ -184,7 +164,7 @@ export default function Navbar() {
         }`}
       >
         <span
-          className="close text-[40px] absolute right-8 top-4"
+          className="close text-[40px] absolute right-4 top-4"
           onClick={toggleMenu}
         >
           <svg
@@ -200,28 +180,61 @@ export default function Navbar() {
             ></path>
           </svg>
         </span>
-        <div className="bg-[#FFFFFF] pt-[40px] pr-[4px] pb-[16px] pl-[16px] w-fit h-[100vh]">
+        <div className="dropdown-wrapper">
+          
           <ul className="h-full overflow-auto pr-[16px]">
             {hamMenu.map((menu) => (
-              <li className="ham-drop group" key={menu.id}>
-                <Link href={`/${menu.menu_item.link}`} className="ham-links">
-                  {menu.menu_item.name}
-                </Link>
+              <li className="mb-4" key={menu.id}>
+                <button className="ham-links">{menu.menu_item.name}</button>
                 {menu.sub_menu && menu.sub_menu.length > 0 && (
-                  <ul className="">
+                  <ul className="transition-all duration-300 pl-4">
                     {menu.sub_menu.map((subMenu) => (
                       <li key={subMenu.id}>
-                        <span className="ham-accordion"><Link
-                          href={`/${subMenu.sub_menu_item.link}`}
-                          className="text-primary pl-2"
-                        >
-                          {subMenu.sub_menu_item.name}
-                        </Link></span>
+                        <div className="flex justify-between">
+                          <button className="text-secondary text-[16px] py-[6px]" onClick={() => toggleSubMenu(subMenu.id)}>
+                              {subMenu.sub_menu_item.name}
+                          </button>
+                          {subMenu.sub_sub_menu_item &&
+                            subMenu.sub_sub_menu_item.length > 0 && (
+                              <button
+                                onClick={() => toggleSubMenu(subMenu.id)}
+                                className={`transition-transform duration-300 ${
+                                  expandedSubMenu === subMenu.id
+                                    ? "rotate-180"
+                                    : ""
+                                }`}
+                              >
+                                <svg
+                                  width="14"
+                                  height="10"
+                                  viewBox="0 0 10 6"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M9.375 0.75L5 5.125L0.625 0.75"
+                                    stroke="#2E3192"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </button>
+                            )}
+                        </div>
                         {subMenu.sub_sub_menu_item &&
                           subMenu.sub_sub_menu_item.length > 0 && (
-                            <ul className="text-[14px] ham-submenu newPanel">
+                            <ul
+                              className={`transition-all duration-1000 ${
+                                expandedSubMenu === subMenu.id
+                                  ? "max-h-screen"
+                                  : "max-h-0 overflow-hidden"
+                              }`}
+                            >
                               {subMenu.sub_sub_menu_item.map((subSubMenu) => (
-                                <li className="text-secondary pl-4" key={subSubMenu.id}>
+                                <li
+                                  className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500"
+                                  key={subSubMenu.id}
+                                >
                                   <Link href={`/${subSubMenu.link}`}>
                                     {subSubMenu.name}
                                   </Link>
@@ -236,6 +249,7 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+
         </div>
       </div>
     </div>
