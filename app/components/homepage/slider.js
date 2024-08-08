@@ -359,7 +359,7 @@ export default function Slider() {
               autoPlay
               muted
             >
-              <source src={"/assets/videos/OTR-vid.mp4"} type="video/mp4" />
+              <source src={"/assets/videos/OTR2.mp4"} type="video/mp4" />
             </video>
           </div>
         </SwiperSlide>
@@ -400,7 +400,7 @@ export default function Slider() {
               autoPlay
               muted
             >
-              <source src={"/assets/videos/AGR.mp4"} type="video/mp4" />
+              <source src={"/assets/videos/AGR5.mp4"} type="video/mp4" />
             </video>
           </div>
         </SwiperSlide>
