@@ -224,7 +224,7 @@ export default function Navbar() {
                         {subMenu.sub_sub_menu_item &&
                           subMenu.sub_sub_menu_item.length > 0 && (
                             <ul
-                              className={`transition-all duration-1000 ${
+                              className={`transition-all duration-1000 overflow-hidden ${
                                 expandedSubMenu === subMenu.id
                                   ? "max-h-screen"
                                   : "max-h-0 overflow-hidden"

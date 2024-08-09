@@ -4,34 +4,21 @@ import React, { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import 'swiper/css/effect-fade'
 import Link from "next/link";
-import { Autoplay } from "swiper/modules";
 import GradualSpacing from "@/components/GradualSpacing";
 import LetterPullup from "@/components/LetterPullup";
-import TypingAnimation from "@/components/TypingAnimation";
-import { BoxRevealDemo } from "@/components/BoxRevealDemo";
-import BoxReveal from "@/components/BoxRevealDemo";
-import himadari from "../../assets/images/himadri-logo-100.png";
-import birla from "../../assets/images/birla-logo-100.png";
-import Image from "next/image";
-import { Pagination, EffectFade } from 'swiper/modules';
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import { EffectFade } from 'swiper/css/effect-fade';
-// import { Navigation } from 'swiper/css/navigation';
-// import { Pagination } from 'swiper/css/pagination';
-// import { EffectFade, Navigation, Pagination } from 'swiper/modules';
+
 
 export default function Slider() {
-  const [counter, setCounter] = useState(0);
-  
   gsap.registerPlugin(ScrollTrigger);
-  
+
   useEffect(() => {
-
-
     gsap.fromTo(
-      '.sideNav-wrapper',
-      { right: "-40px",},
+      ".sideNav-wrapper",
+      { right: "-40px" },
       {
         right: "0px",
         scrollTrigger: {
@@ -46,8 +33,8 @@ export default function Slider() {
     );
 
     gsap.fromTo(
-      '.sideNav-wrapper',
-      { right: "0px",},
+      ".sideNav-wrapper",
+      { right: "0px" },
       {
         right: "-40px",
         scrollTrigger: {
@@ -60,32 +47,11 @@ export default function Slider() {
         },
       }
     );
-
-
-    const loader = document.querySelector(".loader-sec");
-
-    setTimeout(() => {
-      loader.style.display = "none";
-    }, 5000);
-
-    if (counter > 100) return;
-
-    const interval = setInterval(() => {
-      setCounter((prevCounter) => {
-        if (prevCounter >= 100) {
-          clearInterval(interval);
-          return prevCounter;
-        }
-        return prevCounter + 1;
-      });
-    }, 10);
-
-    return () => clearInterval(interval);
-  }, [counter]);
+  });
 
   return (
     <div className="relative">
-      <div className="loader-sec w-full h-[100vh] bg-transparent flex flex-col gap-3 justify-center items-center fixed z-100">
+      <div className="loader-sec">
         <div class="video-wrapper">
           <video className="w-full h-fit object-contain" loop autoPlay muted>
             <source src={"/assets/videos/tyre-loader-2.mp4"} type="video/mp4" />
@@ -93,7 +59,7 @@ export default function Slider() {
         </div>
       </div>
 
-      <div className="fixed right-0 z-50 top-[20%] 2xl:top-[25%] overflow-hidden sideNav-wrapper">
+      <div className="sideNav-wrapper">
         <Link className="sideNav" href="">
           <svg
             width="18"
@@ -275,14 +241,13 @@ export default function Slider() {
 
       <Swiper
         loop={true}
-        speed={1000}
-        spaceBetween={30}
+        speed={3000}
         effect={'fade'}
         pagination={{
           clickable: true,
         }}
         autoplay={{
-          delay: 4000,
+          delay: 2000,
           disableOnInteraction: false,
         }}
         modules={[Autoplay, EffectFade, Pagination]}
@@ -302,7 +267,10 @@ export default function Slider() {
                   </Link>
                 </div>
                 <div className="swiper-card relative z-10">
-                  <GradualSpacing className="hero-sec-heading" text="Truck Bus Bias" />
+                  <GradualSpacing
+                    className="hero-sec-heading"
+                    text="Truck Bus Bias"
+                  />
                   <LetterPullup
                     className="section-subheading"
                     words={"Progess in Every Mile"}
@@ -340,7 +308,10 @@ export default function Slider() {
                   </Link>
                 </div>
                 <div className="swiper-card relative z-10">
-                  <GradualSpacing className="hero-sec-heading" text="Off The Road" />
+                  <GradualSpacing
+                    className="hero-sec-heading"
+                    text="Off The Road"
+                  />
                   <LetterPullup
                     className="section-subheading"
                     words={"Ready for Every Challenge"}
@@ -404,7 +375,6 @@ export default function Slider() {
             </video>
           </div>
         </SwiperSlide>
-
       </Swiper>
     </div>
   );
