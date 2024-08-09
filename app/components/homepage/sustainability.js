@@ -50,7 +50,7 @@ export default function Sustainability() {
       </div>
           <div class="video-content">
             <video className="sustainabilityVideo" loop autoPlay muted>
-              <source src={"/assets/videos/vid10.mp4"} type="video/mp4" />
+              <source src={"/assets/videos/vid11.mp4"} type="video/mp4" />
             </video>
           </div>
     </section>
