@@ -1191,7 +1191,7 @@ body .section-heading:after {
   @apply !w-[50%] h-[600px] 
 }
 .about-detail-sec{
-  @apply w-[50%] bg-[#2E3192] p-10 
+  @apply w-[50%] bg-primary p-10 
 }
 .about-card-title{
   @apply text-[36px] text-[#FFFFFF] font-medium mt-6
@@ -1201,7 +1201,7 @@ body .section-heading:after {
 }
 .read-btn{
   background-color: rgba(255, 255, 255, 0.15);
-  @apply text-[16px] font-medium text-[#FFFFFF] rounded-[4px] flex gap-1 hover:bg-[#F5811E]
+  @apply text-[16px] font-medium text-[#FFFFFF] rounded-[4px] flex gap-1 hover:bg-[#FFFFFF] hover:text-primary
   px-[12px] py-[6px] items-center w-fit border-b border-[#FFFFFF] mt-6 transition-all duration-500
 }
 .prev-btn::after{
