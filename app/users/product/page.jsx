@@ -1,8 +1,12 @@
-"use client";
 
-import React, { useEffect } from "react";
+"use client"
+import React  from "react";
+import { useEffect } from "react";
+import Navbar from "../../../app/components/navbar/navbar"
+import Footer from "../../../app/components/footer/footer"
+import NewHomepage from "../../../app/components/homepage/NewHomepage";
 
-const ProductPage = async () => {
+const ProductPage = () => {
   return (
     <>
       {/* <h1>product page</h1>
@@ -19,7 +23,9 @@ const ProductPage = async () => {
     </div>
     )}
   </div> */}
-  <section>NEW</section>
+  <Navbar />
+  <NewHomepage />
+  <Footer />
     </>
   );
 };
