@@ -3,9 +3,10 @@ import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import 'swiper/css/effect-fade'
+import "swiper/css/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Autoplay, EffectFade } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation } from "swiper/modules";
 import img1 from "../../assets/images/about-img-1.jpg"
 import img2 from "../../assets/images/about-img-2.jpg"
 import img3 from "../../assets/images/about-img-3.jpg"
@@ -19,8 +20,8 @@ import icon2 from "../../assets/images/about-icon4.png";
 export default function NewAbout() {
   return (
     <>
-      <section class="new-about-sec">
-        <div class="container mx-auto flex items-center mt-[120px] relative">
+      <section class="new-about-sec relative z-20">
+        <div class="flex items-center mt-[120px] relative">
         <div class="about-description-sec w-[35%] pl-[100px]">
           <svg
             class="absolute left-0 top-0"
@@ -56,15 +57,16 @@ export default function NewAbout() {
         </div>
         <div class="about-slider-sec w-[65%]">
         <Swiper
+        navigation={true}
         loop={true}
         speed={3000}
         effect={'fade'}
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
-        modules={[Autoplay, EffectFade,]}
-        className="mySwiper"
+        // autoplay={{
+        //   delay: 2000,
+        //   disableOnInteraction: false,
+        // }}
+        modules={[Autoplay, EffectFade, Navigation]}
+        className="mySwiper !relative"
       >
         <SwiperSlide>
         <div class="about-card">
