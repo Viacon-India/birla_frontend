@@ -330,7 +330,7 @@ export default function Slider() {
               autoPlay
               muted
             >
-              <source src={"/assets/videos/OTR2.mp4"} type="video/mp4" />
+              <source src={"/assets/videos/OTR-3.mp4"} type="video/mp4" />
             </video>
           </div>
         </SwiperSlide>
