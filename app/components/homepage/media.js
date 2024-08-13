@@ -22,7 +22,7 @@ export default function Media() {
             <GradualSpacing className="section-title" text="Media Presence" />
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 md:mt-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 md:mt-10">
             <div
               class="media-card"
               data-aos="fade-right"
@@ -81,7 +81,7 @@ export default function Media() {
                 </Link>
               </div>
             </div>
-            <div
+            {/* <div
               class="media-card"
               data-aos="fade-right"
               data-aos-duration="2000"
@@ -110,7 +110,7 @@ export default function Media() {
                   <span data-hover="Read More">Read More</span>
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

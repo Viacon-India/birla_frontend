@@ -69,7 +69,7 @@ const productData = {
       icon: prodSvg2,
     },
   ],
-  Agriculture: [
+  AGRI: [
     {
       title: "Shaan",
       description: "Durable Front Tractor Tyre",
@@ -149,7 +149,7 @@ export default function Product() {
             </div>
           </div>
           <div className="cat-btn-sec flex items-center gap-3 relative z-10">
-            {["TBB", "OTR", "Agriculture"].map((tab) => (
+            {["TBB", "OTR", "AGRI"].map((tab) => (
               <button
                 key={tab}
                 className={`tablinks cat-btn ${

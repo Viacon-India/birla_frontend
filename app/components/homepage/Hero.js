@@ -12,7 +12,7 @@ import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
-export default function Slider() {
+export default function Hero() {
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
@@ -330,7 +330,7 @@ export default function Slider() {
               autoPlay
               muted
             >
-              <source src={"/assets/videos/OTR.mp4"} type="video/mp4" />
+              <source src={"/assets/videos/OTR-3.mp4"} type="video/mp4" />
             </video>
           </div>
         </SwiperSlide>
