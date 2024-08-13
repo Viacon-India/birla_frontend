@@ -614,7 +614,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 /* media-card-section */
 
 .media-card figure{
-  @apply w-full h-[270px] mb-6 overflow-hidden relative rounded-[24px]
+  @apply w-full h-[320px] 2xl:h-[360px] mb-6 overflow-hidden relative rounded-[24px]
 }
 .media-card-image{
   @apply w-full h-full object-cover rounded-[24px]
@@ -1114,99 +1114,139 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 
 /* NewAbout js */
-
-.loader-line {
-  width: 200px;
-  height: 3px;
-  position: relative;
-  overflow: hidden;
-  background-color: #ffffff;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
+.hoverBoxContainer-2 .detailImg {
+  position: absolute;
+  top: 0;
+  border-radius: 10px;
+}
+.hoverBoxContainer-2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.hoverBoxContainer-2 .split-section {
+  width: 48%;
   display: block;
+  position: relative;
+  margin: auto;
+  /* box-shadow: 0 0 15px 5px rgba(0, 0, 0, .07); */
+  background-color: transparent;
+  /* border: 5px solid #f5f5f5; */
+  position: relative;
+  /* overflow: hidden; */
+  /* max-height: 240px;
+  max-width: 350px; */
+  /* background: #3085a3; */
+  text-align: center;
+  cursor: pointer;
+  transition: all .8s ease;
+  /* margin-bottom: 30px; */
+  /* border-radius: 12px; */
 }
-.loader-line:after{
-
-content: "";
-
-  position: absolute;
-
-height: 3px;
-
-  width: 70px;
-
-background-image: url(../app//assets/images/sunderline.png); 
-
-right:0
-
+.hoverBoxContainer-2 .split-section .split-images {
+  display: flex;
+  /* height: auto; */
+  position: relative;
+  max-width: none;
+  width: calc(100% + 60px);
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1.12);
+  transition: all .35s;
+  -webkit-transform: translate3d(0, 0, 0) scale(1.12);
+  -webkit-transition: all .35s;
 }
-
-
-.loader-line:before {
-  content: "";
-  position: absolute;
-  left: -50%;
-  height: 3px;
-  width: 90%;
-  background-color: coral;
-  -webkit-animation: lineAnim 3s linear infinite;
-  -moz-animation: lineAnim 3s linear infinite;
-  animation: lineAnim 3s linear infinite;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
+/* .hoverBoxContainer-2 .split-section .split-images:hover img {
+  transform: translate3d(-20px, 0, 0) scale(1);
+  -webkit-transform: translate3d(-20px, 0, 0) scale(1);
+  opacity: .5;
+} */
+ .hoverBoxContainer-2 .split-section .detail {
+  min-height: auto;
+  background: #fff;
+  padding: 40px;
+  width: 47%;
   border-radius: 20px;
+  box-shadow: 6px 3px 11px rgba(0, 0, 0, 0.6);
 }
-body .section-heading:after {
-  display: none;
+.hoverBoxContainer-2 .split-section .detail .colorIcon{
+ 
+  display: block!important;
 }
-
-@keyframes lineAnim {
-  0% {
-      left: -40%;
-  }
-  50% {
-      left: 20%;
-      width: 80%;
-  }
-  100% {
-      left: 100%;
-      width: 100%;
-  }
+.hoverBoxContainer-2 .split-section .detail .colorHIcon{
+  display: none!important;
 }
-.section-heading{
-  @apply text-[20px] font-semibold text-[#2E3192] relative uppercase
+.hoverBoxContainer-2 .split-section .detail:hover{
+  background: #F5811E;
 }
-.section-heading::after{
-  content: url('data:image/svg+xml,<svg width="220" height="5" viewBox="0 0 220 5" fill="none" xmlns="http://www.w3.org/2000/svg"><line y1="2.5" x2="150" y2="2.5" stroke="%23F5811E" stroke-width="4"/><line x1="155" y1="2.5" x2="180" y2="2.5" stroke="%23F5811E" stroke-width="4"/><line x1="185" y1="2.5" x2="200" y2="2.5" stroke="%23F5811E" stroke-width="4"/><line x1="205" y1="2.5" x2="210" y2="2.5" stroke="%23F5811E" stroke-width="4"/><line x1="215" y1="2.5" x2="220" y2="2.5" stroke="%23F5811E" stroke-width="4"/></svg>');
-  @apply absolute left-0 top-4
+.hoverBoxContainer-2 .split-section .detail:hover .colorHIcon{
+  display: block !important;
 }
-.section-title{
-  @apply text-[40px] font-bold text-[#1A1D21]
+.hoverBoxContainer-2 .split-section .detail:hover .colorIcon{
+  display: none !important;
 }
-.about-card{
-  @apply flex 
+ 
+.hoverBoxContainer-2 .split-section .detail p{
+  color: #606977;
 }
-.about-img-part{
-  @apply !w-[50%] md:h-[550px] 2xl:h-[600px] 
+.hoverBoxContainer-2 .split-section .detail .about-usp-title{
+  color: #1A1D21;
 }
-.about-detail-sec{
-  @apply w-[50%] bg-primary p-10 
+.hoverBoxContainer-2 .split-section .detail .tertiary-button{
+  color: #2E3192;
 }
-.about-card-title{
-  @apply text-[36px] text-[#FFFFFF] font-medium mt-6
+ 
+.hoverBoxContainer-2 .split-section .detail:hover p{
+  color: #fff;
 }
-.about-card-desc{
-  @apply text-[16px] text-[#FFFFFF] leading-[1.7] font-medium mt-6
+.hoverBoxContainer-2 .split-section .detail:hover .about-usp-title{
+  color: #fff;
 }
-.read-btn{
-  background-color: rgba(255, 255, 255, 0.15);
-  @apply text-[16px] font-medium text-[#FFFFFF] rounded-[4px] flex gap-1 hover:bg-[#FFFFFF] hover:text-primary
-  px-[12px] py-[6px] items-center w-fit border-b border-[#FFFFFF] mt-6 transition-all duration-500
+.hoverBoxContainer-2 .split-section .detail:hover .tertiary-button{
+  color: #fff;
 }
-.about-slider-sec.swiper-button-prev::after{
-  content: url('data:image/svg+xml,<svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.807812 12.442L12.0578 23.692C12.1751 23.8093 12.3341 23.8752 12.5 23.8752C12.6659 23.8752 12.8249 23.8093 12.9422 23.692C13.0595 23.5748 13.1253 23.4157 13.1253 23.2499C13.1253 23.084 13.0595 22.9249 12.9422 22.8077L2.75938 12.6249H28.75C28.9158 12.6249 29.0747 12.559 29.1919 12.4418C29.3092 12.3246 29.375 12.1656 29.375 11.9999C29.375 11.8341 29.3092 11.6751 29.1919 11.5579C29.0747 11.4407 28.9158 11.3749 28.75 11.3749H2.75938L12.9422 1.19205C13.0595 1.07477 13.1253 0.915712 13.1253 0.749859C13.1253 0.584007 13.0595 0.424947 12.9422 0.307672C12.8249 0.190397 12.6659 0.124512 12.5 0.124512C12.3341 0.124512 12.1751 0.190396 12.0578 0.307671L0.807812 11.5577C0.749702 11.6157 0.703602 11.6846 0.67215 11.7605C0.640697 11.8364 0.624508 11.9177 0.624508 11.9999C0.624508 12.082 0.640697 12.1633 0.67215 12.2392C0.703602 12.3151 0.749702 12.384 0.807812 12.442Z" fill="white"/></svg>');
+ 
+ 
+.hoverBoxContainer-2 .imageHeading {
+  display: flex;
 }
-.about-slider-sec .swiper-button-next::after{
-  content: url('data:image/svg+xml,<svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M29.1922 12.442L17.9422 23.692C17.8249 23.8093 17.6659 23.8752 17.5 23.8752C17.3341 23.8752 17.1751 23.8093 17.0578 23.692C16.9405 23.5748 16.8747 23.4157 16.8747 23.2499C16.8747 23.084 16.9405 22.9249 17.0578 22.8077L27.2406 12.6249H1.25C1.08424 12.6249 0.925269 12.559 0.808058 12.4418C0.690848 12.3246 0.625 12.1656 0.625 11.9999C0.625 11.8341 0.690848 11.6751 0.808058 11.5579C0.925269 11.4407 1.08424 11.3749 1.25 11.3749H27.2406L17.0578 1.19205C16.9405 1.07477 16.8747 0.915712 16.8747 0.749859C16.8747 0.584007 16.9405 0.424947 17.0578 0.307672C17.1751 0.190397 17.3341 0.124512 17.5 0.124512C17.6659 0.124512 17.8249 0.190396 17.9422 0.307671L29.1922 11.5577C29.2503 11.6157 29.2964 11.6846 29.3279 11.7605C29.3593 11.8364 29.3755 11.9177 29.3755 11.9999C29.3755 12.082 29.3593 12.1633 29.3279 12.2392C29.2964 12.3151 29.2503 12.384 29.1922 12.442Z" fill="white"/></svg>');
+.hoverBoxContainer-2 .about-usp-title {
+  margin-top: 0;
+  font-size: 25px;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: #fff;
+}
+/* .hoverBoxContainer-2 .imageHeading {
+  position: absolute;
+  background: #ff0000;
+  bottom: 0;
+  width: 100%;
+} */
+.hoverBoxContainer-2 .split-section .split-details {
+  position: absolute;
+  bottom: 140px;
+  /* background: rgba(46, 49, 146, .85); */
+  transition: all .6s linear;
+  max-width: 100%;
+  padding: 12px;
+  height: 400px;
+  display: flex;
+  gap: 30px;
+}
+.detailImg {
+  position: absolute;
+  top:0;
+}
+.detail2Img{
+  opacity: 0;
+}
+.hoverBoxContainer-2 .split-section .split-details .detail2:hover ~ .split-images .detail2Img{
+  opacity: 1;
+}
+ 
+.hoverBoxContainer-2 .about-usp-detail {
+  margin-top: 0;
+  font-size: 16px;
+  --tw-text-opacity: 1;
+  color: #fff;
+  text-align: left;
 }
