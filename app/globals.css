@@ -516,7 +516,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply text-primary text-[16px] font-medium flex gap-1 items-center 
 }
 .tertiary-button::after{
-  content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="%23F5811E" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="%232E3192" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 
 .innovation-card figure{
@@ -1119,10 +1119,10 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   top: 0;
   border-radius: 10px;
 }
-.hoverBoxContainer-2 {
+/* .hoverBoxContainer-2 {
   display: flex;
   flex-wrap: wrap;
-}
+} */
 .hoverBoxContainer-2 .split-section {
   width: 48%;
   display: block;
@@ -1166,9 +1166,20 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   width: 47%;
   border-radius: 20px;
   box-shadow: 6px 3px 11px rgba(0, 0, 0, 0.6);
+  transform: scale(0.80);
+  @apply transition-all duration-500
 }
-.hoverBoxContainer-2 .split-section .detail .colorIcon{
- 
+.hoverBoxContainer-2 .split-section .detail:hover,
+.hoverBoxContainer-2 .split-section .swiper-slide-active .detail{
+  background: #F5811E;
+  transform: scale(1);
+}
+.hoverBoxContainer-2 .split-section .detail:hover .tertiary-button::after,
+.hoverBoxContainer-2 .split-section .swiper-slide-active .tertiary-button::after{
+  content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="%23FFFFFF" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+.hoverBoxContainer-2 .split-section .detail .colorIcon,
+.hoverBoxContainer-2 .split-section .swiper-slide-active .detail .colorHIcon{
   display: block!important;
 }
 .hoverBoxContainer-2 .split-section .detail .colorHIcon{
@@ -1177,10 +1188,12 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 .hoverBoxContainer-2 .split-section .detail:hover{
   background: #F5811E;
 }
-.hoverBoxContainer-2 .split-section .detail:hover .colorHIcon{
+.hoverBoxContainer-2 .split-section .detail:hover .colorHIcon,
+.hoverBoxContainer-2 .split-section .swiper-slide-active .details .colorHIcon{
   display: block !important;
 }
-.hoverBoxContainer-2 .split-section .detail:hover .colorIcon{
+.hoverBoxContainer-2 .split-section .detail:hover .colorIcon,
+.hoverBoxContainer-2 .split-section .swiper-slide-active .detail .colorIcon{
   display: none !important;
 }
  
@@ -1194,23 +1207,28 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   color: #2E3192;
 }
  
-.hoverBoxContainer-2 .split-section .detail:hover p{
+.hoverBoxContainer-2 .split-section .detail:hover p,
+.hoverBoxContainer-2 .split-section .swiper-slide-active .detail p{
   color: #fff;
 }
-.hoverBoxContainer-2 .split-section .detail:hover .about-usp-title{
+.hoverBoxContainer-2 .split-section .detail:hover .about-usp-title,
+.hoverBoxContainer-2 .split-section .swiper-slide-active .detail .about-usp-title{
   color: #fff;
 }
-.hoverBoxContainer-2 .split-section .detail:hover .tertiary-button{
+.hoverBoxContainer-2 .split-section .detail:hover .tertiary-button,
+.hoverBoxContainer-2 .split-section .swiper-slide-active  .detail .tertiary-button{
   color: #fff;
 }
  
  
 .hoverBoxContainer-2 .imageHeading {
   display: flex;
+  gap: 4px;
+  align-items: center;
 }
 .hoverBoxContainer-2 .about-usp-title {
   margin-top: 0;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 500;
   --tw-text-opacity: 1;
   color: #fff;
@@ -1236,9 +1254,9 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   position: absolute;
   top:0;
 }
-.detail2Img{
+/* .detail2Img{
   opacity: 0;
-}
+} */
 .hoverBoxContainer-2 .split-section .split-details .detail2:hover ~ .split-images .detail2Img{
   opacity: 1;
 }
@@ -1249,4 +1267,31 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   --tw-text-opacity: 1;
   color: #fff;
   text-align: left;
+  @apply !line-clamp-5
+}
+
+
+@media (min-width:1281px){
+  .hoverBoxContainer-2 .split-section .split-images {
+      width: calc(85% + 60px);
+      margin: 100px auto 0;
+      /* transform: translateY(36px); */
+  }
+  .hoverBoxContainer-2 .split-section {
+      width: 100%;
+      margin: 0 auto;
+  }
+  .hoverBoxContainer-2 .split-section .detail {
+    width: 100%;
+  }
+  .hoverBoxContainer-2 .split-section .detail{
+    min-height: unset!important;
+  }
+  .hoverBoxContainer-2 .split-section .split-details {
+      width: 90%;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      @apply bottom-[10%] 2xl:bottom-[25%]
+  }
 }
