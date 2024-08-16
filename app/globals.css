@@ -114,6 +114,7 @@ body {
 
 /* Navbar css */
 
+
 .nav-main{
   @apply w-full p-0 bg-[#FFFFFF] fixed top-0 z-40 backdrop-blur-[50px] border-b border-[#C9CDD3]
 }
