@@ -50,7 +50,7 @@ export default function Innovation() {
     );
   }, []);
   return (
-    <section className="innovation-sec mt-[100px]">
+    <section className="innovation-sec">
       <div className="container mx-auto">
         <div className="upper-title-sec flex justify-between items-end">
           <div className="new">
