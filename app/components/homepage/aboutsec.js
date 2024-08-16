@@ -18,7 +18,7 @@ import GradualSpacing from "@/components/GradualSpacing";
 export default function AboutSec() {
   return (
     <>
-      <section className="split-section-wrapper mt-[120px]">
+      <section className="split-section-wrapper mt-[100px] mb-[100px]">
         <div className="container mx-auto">
         <div class="new">
             <span className="section-heading">company brief</span>

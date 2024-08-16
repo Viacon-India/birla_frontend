@@ -21,6 +21,10 @@ import img3 from "../../assets/images/about-img-3.jpg";
 import img4 from "../../assets/images/about-img-4.jpg";
 import img1H from "../../assets/images/about-icon1.png";
 import GradualSpacing from "@/components/GradualSpacing";
+import mask1 from "../../assets/images/iconmask-1.png"
+import mask2 from "../../assets/images/iconmask-2.png"
+import mask3 from "../../assets/images/iconmask-3.png"
+import mask4 from "../../assets/images/iconmask-4.png"
 
 import { FreeMode, Thumbs, EffectFade } from "swiper/modules";
 
@@ -90,6 +94,7 @@ export default function NewAbout() {
               <Link href="" className="about-button">
                 Read more
               </Link>
+              <Image className="maskIcon" src={mask1} />
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -108,6 +113,7 @@ export default function NewAbout() {
               <Link href="" className="about-button">
                 Read more
               </Link>
+              <Image className="maskIcon" src={mask2} />
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -127,6 +133,7 @@ export default function NewAbout() {
               <Link href="" className="about-button">
                 Read more
               </Link>
+              <Image className="maskIcon" src={mask3} />
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -144,6 +151,7 @@ export default function NewAbout() {
               <Link href="" className="about-button">
                 Read more
               </Link>
+              <Image className="maskIcon" src={mask4} />
             </div>
           </SwiperSlide>
         </Swiper>

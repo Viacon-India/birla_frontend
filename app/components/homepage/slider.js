@@ -50,7 +50,7 @@ export default function Slider() {
   });
 
   return (
-    <div className="relative mb-[100px]">
+    <div className="relative">
       <div className="loader-sec">
         <div class="video-wrapper">
           <video className="w-full h-fit object-contain" loop autoPlay muted>
