@@ -114,7 +114,6 @@ body {
 
 /* Navbar css */
 
-
 .nav-main{
   @apply w-full p-0 bg-[#FFFFFF] fixed top-0 z-40 backdrop-blur-[50px] border-b border-[#C9CDD3]
 }
@@ -517,7 +516,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply text-primary text-[16px] font-medium flex gap-1 items-center 
 }
 .tertiary-button::after{
-  content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="%232E3192" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="%23F5811E" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 
 .innovation-card figure{
@@ -564,7 +563,19 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply w-[186px] h-[286px] absolute right-[20px] top-[-25%]
 }
 .product-card-image{
+  animation: 10s linear infinite spin-anim;
   @apply w-full h-full object-cover
+}
+@keyframes spin-anim {
+  0%{
+    transform: rotateY(0deg);
+  }  
+  50%{
+    transform: rotateY(360deg);
+  }
+  100%{
+    transform: rotateY(0deg);
+  }
 }
 .product-card-tag{
   @apply text-[18px] text-[#FFFFFF] bg-secondary px-6 py-2 rounded-tl-[12px] flex justify-center items-center w-fit
@@ -1111,188 +1122,47 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 
 
-
-
-
-/* NewAbout js */
-.hoverBoxContainer-2 .detailImg {
-  position: absolute;
-  top: 0;
-  border-radius: 10px;
-}
-/* .hoverBoxContainer-2 {
-  display: flex;
-  flex-wrap: wrap;
-} */
-.hoverBoxContainer-2 .split-section {
-  width: 48%;
-  display: block;
-  position: relative;
-  margin: auto;
-  /* box-shadow: 0 0 15px 5px rgba(0, 0, 0, .07); */
-  background-color: transparent;
-  /* border: 5px solid #f5f5f5; */
-  position: relative;
-  /* overflow: hidden; */
-  /* max-height: 240px;
-  max-width: 350px; */
-  /* background: #3085a3; */
-  text-align: center;
-  cursor: pointer;
-  transition: all .8s ease;
-  /* margin-bottom: 30px; */
-  /* border-radius: 12px; */
-}
-.hoverBoxContainer-2 .split-section .split-images {
-  display: flex;
-  /* height: auto; */
-  position: relative;
-  max-width: none;
-  width: calc(100% + 60px);
-  opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1.12);
-  transition: all .35s;
-  -webkit-transform: translate3d(0, 0, 0) scale(1.12);
-  -webkit-transition: all .35s;
-}
-/* .hoverBoxContainer-2 .split-section .split-images:hover img {
-  transform: translate3d(-20px, 0, 0) scale(1);
-  -webkit-transform: translate3d(-20px, 0, 0) scale(1);
-  opacity: .5;
-} */
- .hoverBoxContainer-2 .split-section .detail {
-  min-height: auto;
-  background: #fff;
-  padding: 40px;
-  width: 47%;
-  border-radius: 20px;
+/* about-sec-new */
+.new-about-card{
   box-shadow: 6px 3px 11px rgba(0, 0, 0, 0.6);
-  transform: scale(0.80);
-  @apply transition-all duration-500
+  @apply bg-white rounded-[12px] p-6 flex flex-col gap-3 transition-all duration-500 scale-90
 }
-.hoverBoxContainer-2 .split-section .detail:hover,
-.hoverBoxContainer-2 .split-section .swiper-slide-active .detail{
-  background: #F5811E;
-  transform: scale(1);
+.new-about-card .swiper-slide{
+  @apply !w-full
 }
-.hoverBoxContainer-2 .split-section .detail:hover .tertiary-button::after,
-.hoverBoxContainer-2 .split-section .swiper-slide-active .tertiary-button::after{
+.about-usp-title-2{
+  @apply text-[#1A1D21] text-[26px] 2xl:text-[32px] font-medium mt-3
+}
+.about-usp-detail-2{
+  @apply text-[#606977] text-[16px] 2xl:text-[16px] mt-2 leading-[1.5] line-clamp-4
+}
+.new-about-slider .swiper-slide-active .new-about-card{
+  @apply bg-primary scale-100
+}
+.new-about-slider .swiper-slide-active .new-about-card .about-usp-title-2{
+  @apply text-[#FFFFFF]
+}
+.new-about-slider .swiper-slide-active .new-about-card .about-usp-detail-2{
+  @apply text-[#FFFFFF]
+}
+.new-about-slider .swiper-slide-active .new-about-card .about-button{
+  @apply text-[#FFFFFF]
+}
+.about-button{
+  @apply text-secondary text-[16px] font-medium flex gap-1 items-center 
+}
+.about-button::after{
+  content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="%232E3192" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+.new-about-slider .swiper-slide-active .new-about-card .about-button::after{
   content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="%23FFFFFF" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
-.hoverBoxContainer-2 .split-section .detail .colorIcon,
-.hoverBoxContainer-2 .split-section .swiper-slide-active .detail .colorHIcon{
-  display: block!important;
+.new-about-slider .swiper-slide-active .new-about-card .colorHIcon{
+  @apply !hidden
 }
-.hoverBoxContainer-2 .split-section .detail .colorHIcon{
-  display: none!important;
+.new-about-slider .swiper-slide-active .new-about-card .colorIcon{
+  @apply !block
 }
-.hoverBoxContainer-2 .split-section .detail:hover{
-  background: #F5811E;
-}
-.hoverBoxContainer-2 .split-section .detail:hover .colorHIcon,
-.hoverBoxContainer-2 .split-section .swiper-slide-active .details .colorHIcon{
-  display: block !important;
-}
-.hoverBoxContainer-2 .split-section .detail:hover .colorIcon,
-.hoverBoxContainer-2 .split-section .swiper-slide-active .detail .colorIcon{
-  display: none !important;
-}
- 
-.hoverBoxContainer-2 .split-section .detail p{
-  color: #606977;
-}
-.hoverBoxContainer-2 .split-section .detail .about-usp-title{
-  color: #1A1D21;
-}
-.hoverBoxContainer-2 .split-section .detail .tertiary-button{
-  color: #2E3192;
-}
- 
-.hoverBoxContainer-2 .split-section .detail:hover p,
-.hoverBoxContainer-2 .split-section .swiper-slide-active .detail p{
-  color: #fff;
-}
-.hoverBoxContainer-2 .split-section .detail:hover .about-usp-title,
-.hoverBoxContainer-2 .split-section .swiper-slide-active .detail .about-usp-title{
-  color: #fff;
-}
-.hoverBoxContainer-2 .split-section .detail:hover .tertiary-button,
-.hoverBoxContainer-2 .split-section .swiper-slide-active  .detail .tertiary-button{
-  color: #fff;
-}
- 
- 
-.hoverBoxContainer-2 .imageHeading {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-}
-.hoverBoxContainer-2 .about-usp-title {
-  margin-top: 0;
-  font-size: 20px;
-  font-weight: 500;
-  --tw-text-opacity: 1;
-  color: #fff;
-}
-/* .hoverBoxContainer-2 .imageHeading {
-  position: absolute;
-  background: #ff0000;
-  bottom: 0;
-  width: 100%;
-} */
-.hoverBoxContainer-2 .split-section .split-details {
-  position: absolute;
-  bottom: 140px;
-  /* background: rgba(46, 49, 146, .85); */
-  transition: all .6s linear;
-  max-width: 100%;
-  padding: 12px;
-  height: 400px;
-  display: flex;
-  gap: 30px;
-}
-.detailImg {
-  position: absolute;
-  top:0;
-}
-/* .detail2Img{
-  opacity: 0;
-} */
-.hoverBoxContainer-2 .split-section .split-details .detail2:hover ~ .split-images .detail2Img{
-  opacity: 1;
-}
- 
-.hoverBoxContainer-2 .about-usp-detail {
-  margin-top: 0;
-  font-size: 16px;
-  --tw-text-opacity: 1;
-  color: #fff;
-  text-align: left;
-  @apply !line-clamp-5
-}
-
-
-@media (min-width:1281px){
-  .hoverBoxContainer-2 .split-section .split-images {
-      width: calc(85% + 60px);
-      margin: 100px auto 0;
-      /* transform: translateY(36px); */
-  }
-  .hoverBoxContainer-2 .split-section {
-      width: 100%;
-      margin: 0 auto;
-  }
-  .hoverBoxContainer-2 .split-section .detail {
-    width: 100%;
-  }
-  .hoverBoxContainer-2 .split-section .detail{
-    min-height: unset!important;
-  }
-  .hoverBoxContainer-2 .split-section .split-details {
-      width: 90%;
-      margin: 0 auto;
-      left: 0;
-      right: 0;
-      @apply bottom-[10%] 2xl:bottom-[25%]
-  }
+.new-about-slider .new-about-card .colorIcon{
+  @apply !hidden
 }
