@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Controller } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 import Link from "next/link";
 
@@ -26,10 +27,15 @@ import mask2 from "../../assets/images/iconmask-2.png"
 import mask3 from "../../assets/images/iconmask-3.png"
 import mask4 from "../../assets/images/iconmask-4.png"
 
+
 import { FreeMode, Thumbs, EffectFade } from "swiper/modules";
 
 export default function NewAbout() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  //const [firstSwiper, setFirstSwiper] = useState({});
+  // const [secondSwiper, setSecondSwiper] = useState({});
+
   return (
     <section className="new-about-slider mt-[100px]">
       <div className="container mx-auto">
@@ -41,13 +47,17 @@ export default function NewAbout() {
           loop={true}
           speed={2000}
           effect={"fade"}
-          autoplay={{
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
+          // autoplay={{
+          //   disableOnInteraction: false,
+          //   pauseOnMouseEnter: false,
+          // }}
           spaceBetween={10}
-          thumbs={{ swiper: thumbsSwiper }}
-          modules={[Autoplay, EffectFade, FreeMode, Thumbs]}
+          // thumbs={{ swiper: thumbsSwiper }}
+          modules={[Autoplay, EffectFade, FreeMode, Thumbs, Controller]}
+          watchSlidesProgress={true}
+          onSwiper={setThumbsSwiper}
+          
+          // controller={{ control: secondSwiper }}
           className="mySwiper2 mt-8"
         >
           <SwiperSlide>
@@ -72,11 +82,16 @@ export default function NewAbout() {
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
-          onSwiper={setThumbsSwiper}
+          modules={[Autoplay, FreeMode, Thumbs, Controller]}
+          thumbs={{ swiper: thumbsSwiper }}
+          // onSwiper={setThumbsSwiper}
           effect={"fade"}
-          watchSlidesProgress={true}
-          modules={[Autoplay, FreeMode, Thumbs]}
-          className="mySwiper translate-y-[-30%] w-[96%]"
+          
+          // onSwiper={setSecondSwiper}
+            
+         
+          // controller={{ control: firstSwiper }}
+          className="mySwiper2 translate-y-[-30%] w-[96%]"
         >
           <SwiperSlide>
             <div class="new-about-card">
