@@ -563,7 +563,9 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply w-[186px] h-[286px] absolute right-[20px] top-[-25%]
 }
 .product-card-image{
-  animation: 10s linear spin-anim;
+  /* animation: 6s linear spin-anim infinite;
+  transform-style: preserve-3d; */
+
   @apply w-full h-full object-cover
 }
 @keyframes spin-anim {
@@ -571,10 +573,10 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
     transform: rotateY(0deg);
   }  
   50%{
-    transform: rotateY(360deg);
+    transform: rotateY(180deg);
   }
   100%{
-    transform: rotateY(0deg);
+    transform: rotateY(360deg);
   }
 }
 .product-card-tag{
