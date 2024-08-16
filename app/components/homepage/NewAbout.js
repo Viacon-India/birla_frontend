@@ -79,9 +79,6 @@ export default function NewAbout() {
         $('.detail4Img').fadeIn(600);
       }
   
-
-
-  
   }, []);
 
   return (
