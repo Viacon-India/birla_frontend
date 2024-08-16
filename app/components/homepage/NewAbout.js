@@ -22,7 +22,7 @@ import img4 from "../../assets/images/about-img-4.jpg";
 import img1H from "../../assets/images/about-icon1.png";
 import GradualSpacing from "@/components/GradualSpacing";
 
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { FreeMode, Thumbs, EffectFade } from "swiper/modules";
 
 export default function NewAbout() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -36,15 +36,15 @@ export default function NewAbout() {
         <Swiper
           loop={true}
           speed={2000}
+          effect={"fade"}
           autoplay={{
-            delay: 2000,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
           spaceBetween={10}
-          navigation={true}
           thumbs={{ swiper: thumbsSwiper }}
-          modules={[Autoplay]}
-          className="mySwiper2"
+          modules={[Autoplay, EffectFade, FreeMode, Thumbs]}
+          className="mySwiper2 mt-8"
         >
           <SwiperSlide>
             <Image src={img1} className="w-full h-full object-cover" />
@@ -61,13 +61,18 @@ export default function NewAbout() {
         </Swiper>
 
         <Swiper
+          loop={true}
+          slidesPerView={2.1}
+          speed={2000}
+          autoplay={{
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
           onSwiper={setThumbsSwiper}
-          spaceBetween={10}
-          slidesPerView={2.2}
-          freeMode={true}
+          effect={"fade"}
           watchSlidesProgress={true}
-          modules={[FreeMode, Navigation, Thumbs]}
-          className="mySwiper"
+          modules={[Autoplay, FreeMode, Thumbs]}
+          className="mySwiper translate-y-[-30%] w-[96%]"
         >
           <SwiperSlide>
             <div class="new-about-card">
