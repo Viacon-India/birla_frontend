@@ -1133,10 +1133,10 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply !w-full
 }
 .about-usp-title-2{
-  @apply text-[#1A1D21] text-[26px] 2xl:text-[32px] font-medium mt-3
+  @apply text-[#1A1D21] text-[26px] 2xl:text-[32px] font-medium 2xl:mt-3
 }
 .about-usp-detail-2{
-  @apply text-[#606977] text-[16px] 2xl:text-[16px] mt-2 leading-[1.5] line-clamp-4
+  @apply text-[#606977] text-[16px] 2xl:text-[16px] leading-[1.5] line-clamp-2 2xl:line-clamp-4
 }
 .new-about-slider .swiper-slide-active .new-about-card{
   @apply bg-primary scale-100
@@ -1163,11 +1163,14 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply !hidden
 }
 .new-about-slider .swiper-slide-active .new-about-card .colorIcon{
-  @apply !block
+  @apply !block w-[40px] h-[40px]
 }
 .new-about-slider .new-about-card .colorIcon{
-  @apply !hidden
+  @apply !hidden w-[40px] h-[40px]
 }
 .maskIcon{
-  @apply absolute right-0 top-0
+  @apply w-[200px] h-[200px] object-cover 2xl:w-[300px] 2xl:h-[300px] absolute right-0 top-0
+}
+.newAboutImg{
+  @apply w-full h-[300px] 2xl:h-[400px] rounded-[12px]
 }

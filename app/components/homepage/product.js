@@ -15,6 +15,7 @@ import tyre6 from "../../assets/images/tyre6.png";
 import tyre7 from "../../assets/images/tyre7.png";
 import tyre8 from "../../assets/images/tyre8.png";
 import tyre9 from "../../assets/images/tyre9.png";
+import tyre10 from "../../assets/images/tyre-totate.gif"
 import "swiper/css/navigation";
 import GradualSpacing from "@/components/GradualSpacing";
 import prodSvg from "../../assets/images/product-svg.png";
