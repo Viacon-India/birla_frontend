@@ -41,10 +41,7 @@ export default function Sustainability() {
             <GradualSpacing className="section-title" text="Sustainability" />
           </div>
           <p className="text-[#3D434C] text-[18px] font-medium leading-[1.7] mt-8">
-            Lorem ipsum dolor sit amet, contur adipiscing elit. Maecenas
-            dignissim justo eget nulla rutrum molestie et. Lorem ipsum dolor sit
-            amet, contur adipiscing elit. Maecenas dignissim justo eget nulla
-            rutrum molestie et. Lorem ipsum dolor sit amet.
+          Our unwavering commitment to sustainability is deeply rooted in our operations. Our factory is a testament to this, housing a diverse array of plants that enhance our environment and symbolize our dedication to preserving nature. We believe in nurturing our products and the planet, ensuring a greener future for future generations.
           </p>
         </div>
       </div>
