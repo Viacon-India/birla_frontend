@@ -1035,8 +1035,6 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 /* Ashutosh css2 */
 
 .hoverBoxContainer {
-  /* display: flex;
-  flex-wrap: wrap; */
   @apply grid grid-cols-1 md:grid-cols-2 gap-8
 }
 .hoverBoxContainer .split-section {
@@ -1057,7 +1055,6 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 .hoverBoxContainer .split-section .split-images {
   display: flex;
-  height: auto;
   position: relative;
   max-width: none;
   width: calc(100% + 60px);
@@ -1066,6 +1063,9 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   transition: all .35s;
   -webkit-transform: translate3d(0, 0, 0) scale(1.12);
   -webkit-transition: all .35s;
+}
+.hoverBoxContainer .split-section .split-images img{
+  @apply h-[100%]
 }
 .hoverBoxContainer .split-section .split-images:hover img {
   transform: translate3d(-20px, 0, 0) scale(1);
@@ -1086,12 +1086,6 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   --tw-text-opacity: 1;
   color: #fff;
 }
-/* .hoverBoxContainer .imageHeading {
-  position: absolute;
-  background: #ff0000;
-  bottom: 0;
-  width: 100%;
-} */
 .hoverBoxContainer .split-section .split-details {
   position: absolute;
   bottom: -343px;

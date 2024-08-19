@@ -96,19 +96,19 @@ export default function Product() {
   const [activeTab, setActiveTab] = useState("TBB");
 
   // Define the animation function
-  const animateProductCardImage = () => {
-    gsap.fromTo(
-      ".product-card-image",
-      { top: "-154px", opacity: 0.9, position: "absolute" },
-      {
-        top: 0,
-        position: "absolute",
-        opacity: 1,
-        duration: 2.5,
-        ease: "power1.out",
-      }
-    );
-  };
+  // const animateProductCardImage = () => {
+  //   gsap.fromTo(
+  //     ".product-card-image",
+  //     { top: "-154px", opacity: 0.9, position: "absolute" },
+  //     {
+  //       top: 0,
+  //       position: "absolute",
+  //       opacity: 1,
+  //       duration: 2.5,
+  //       ease: "power1.out",
+  //     }
+  //   );
+  // };
 
   // Call the animation function on tab change
   const handleTabClick = (tab) => {
@@ -116,25 +116,25 @@ export default function Product() {
     animateProductCardImage();
   };
 
-  useEffect(() => {
-    gsap.fromTo(
-      ".product-card-image",
-      { top: "-154px", opacity: 0.9, position: "absolute" },
-      {
-        top: 0,
-        position: "absolute",
-        opacity: 1,
-        duration: 2.5,
-        ease: "power1.out",
-        scrollTrigger: {
-          trigger: ".product-sec",
-          start: "top 60%",
-          end: "top 20%",
-          scrub: 2,
-        },
-      }
-    );
-  }, []);
+  // useEffect(() => {
+  //   gsap.fromTo(
+  //     ".product-card-image",
+  //     { top: "-154px", opacity: 0.9, position: "absolute" },
+  //     {
+  //       top: 0,
+  //       position: "absolute",
+  //       opacity: 1,
+  //       duration: 2.5,
+  //       ease: "power1.out",
+  //       scrollTrigger: {
+  //         trigger: ".product-sec",
+  //         start: "top 60%",
+  //         end: "top 20%",
+  //         scrub: 2,
+  //       },
+  //     }
+  //   );
+  // }, []);
 
   return (
     <section className="product-sec mt-[100px]">
