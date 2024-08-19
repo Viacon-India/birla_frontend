@@ -15,7 +15,7 @@ import tyre6 from "../../assets/images/tyre6.png";
 import tyre7 from "../../assets/images/tyre7.png";
 import tyre8 from "../../assets/images/tyre8.png";
 import tyre9 from "../../assets/images/tyre9.png";
-import tyre10 from "../../assets/images/tyre-totate.gif"
+import tyre10 from "../../assets/images/tyre-totate.gif";
 import "swiper/css/navigation";
 import GradualSpacing from "@/components/GradualSpacing";
 import prodSvg from "../../assets/images/product-svg.png";
@@ -26,6 +26,11 @@ import iconW2img from "../../assets/images/iconW2img.png";
 import chakra from "../../assets/images/chakra-svg.svg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import load from "../../assets/images/load.png";
+import pattern from "../../assets/images/pattern.png";
+import axle from "../../assets/images/axle.jpg";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -95,46 +100,16 @@ const productData = {
 export default function newProduct() {
   const [activeTab, setActiveTab] = useState("TBB");
 
-  // Define the animation function
-  // const animateProductCardImage = () => {
-  //   gsap.fromTo(
-  //     ".product-card-image",
-  //     { top: "-154px", opacity: 0.9, position: "absolute" },
-  //     {
-  //       top: 0,
-  //       position: "absolute",
-  //       opacity: 1,
-  //       duration: 2.5,
-  //       ease: "power1.out",
-  //     }
-  //   );
-  // };
 
   // Call the animation function on tab change
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    // animateProductCardImage();
+    
   };
 
-  // useEffect(() => {
-  //   gsap.fromTo(
-  //     ".product-card-image",
-  //     { top: "-154px", opacity: 0.9, position: "absolute" },
-  //     {
-  //       top: 0,
-  //       position: "absolute",
-  //       opacity: 1,
-  //       duration: 2.5,
-  //       ease: "power1.out",
-  //       scrollTrigger: {
-  //         trigger: ".product-sec",
-  //         start: "top 60%",
-  //         end: "top 20%",
-  //         scrub: 2,
-  //       },
-  //     }
-  //   );
-  // }, []);
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   return (
     <section className="product-sec mt-[100px]">
@@ -168,7 +143,7 @@ export default function newProduct() {
           <div
             key={tab}
             id={tab}
-            className={`tabcontent product-slider mt-[140px] pb-[100px] ${
+            className={`tabcontent product-slider mt-[32px] pb-[100px] ${
               activeTab === tab ? "" : "hidden"
             }`}
           >
@@ -176,40 +151,64 @@ export default function newProduct() {
               navigation={true}
               modules={[Navigation]}
               slidesPerView={3}
-              spaceBetween={30}
+              spaceBetween={50}
               freeMode={true}
               pagination={{ clickable: true }}
               className="mySwiper !overflow-visible"
             >
               {productData[tab].map((product, index) => (
                 <SwiperSlide key={index}>
-                  <div className="product-card">
-                    <span className="product-card-tag">Premium</span>
-                    <figure>
-                      <Image
-                        className="product-card-image"
-                        src={product.image}
-                        alt="card"
-                      />
-                    </figure>
-                    <div className="product-card-detail">
-                      <div className="product-svg-wrapper">
-                        <Image
-                          className="w-[65px] h-8 object-contain"
-                          src={product.icon}
-                          alt="card"
-                        />
+                  <div className="new-product-card">
+                    <span className="new-product-card-tag">Premium</span>
+                    <div class="flex gap-8 px-6 pt-6">
+                      <div class="new-product-iconListSec flex flex-col gap-10">
+                        <div class="flex gap-[6px] items-center">
+                          <Image src={load} alt="icon" />
+                          <span>
+                            <p className="text-[18px] font-semibold !text-[#727C8D] !mb-0">
+                              Load Type
+                            </p>
+                            <p className="text-[15px] !text-[#727C8D] !mb-0">
+                              Moderate
+                            </p>
+                          </span>
+                        </div>
+                        <div class="flex gap-[6px] items-center">
+                          <Image src={pattern} alt="icon" />
+                          <span>
+                            <p className="text-[18px] font-semibold !text-[#727C8D] !mb-0">
+                              Pattern
+                            </p>
+                            <p className="text-[15px] !text-[#727C8D] !mb-0">
+                              Lug
+                            </p>
+                          </span>
+                        </div>
+                        <div class="flex gap-[6px] items-center">
+                          <Image src={axle} alt="icon" />
+                          <span>
+                            <p className="text-[18px] font-semibold !text-[#727C8D] !mb-0">
+                              Axle
+                            </p>
+                            <p className="text-[15px] !text-[#727C8D] !mb-0">
+                              Driver/Rear
+                            </p>
+                          </span>
+                        </div>
                       </div>
+                      <figure>
+                        <Image
+                          className="new-product-card-image"
+                          src={product.image}
+                          alt="card"
+                          data-aos="zoom-in-left"
+                          data-aos-duration="1000"
+                        />
+                      </figure>
+                    </div>
+                    <div className="new-product-card-detail">
                       <h2>{product.title}</h2>
                       <p>{product.description}</p>
-                      <Link
-                        href="#"
-                        className="primary-btn w-fit !px-6 flip-animate-2"
-                      >
-                        <span data-hover="Explore Products">
-                          Explore Products
-                        </span>
-                      </Link>
                     </div>
                   </div>
                 </SwiperSlide>
