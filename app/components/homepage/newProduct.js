@@ -97,7 +97,7 @@ const productData = {
   ],
 };
 
-export default function newProduct() {
+export default function NewProduct() {
   const [activeTab, setActiveTab] = useState("TBB");
 
 
