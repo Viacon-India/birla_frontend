@@ -92,7 +92,7 @@ const productData = {
   ],
 };
 
-export default function Product() {
+export default function newProduct() {
   const [activeTab, setActiveTab] = useState("TBB");
 
   // Define the animation function
@@ -187,7 +187,7 @@ export default function Product() {
                     <span className="product-card-tag">Premium</span>
                     <figure>
                       <Image
-                        className="product-card-image new-anim"
+                        className="product-card-image"
                         src={product.image}
                         alt="card"
                       />
