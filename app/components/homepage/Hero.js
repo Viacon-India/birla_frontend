@@ -1,16 +1,17 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { gsap } from "gsap";
+import $ from "jquery";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import 'swiper/css/effect-fade'
+import "swiper/css/effect-fade";
+import 'swiper/css/effect-creative';
+import { Autoplay, Pagination, EffectFade, EffectCreative } from "swiper/modules";
 import Link from "next/link";
 import GradualSpacing from "@/components/GradualSpacing";
 import LetterPullup from "@/components/LetterPullup";
-import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 
 export default function Hero() {
   gsap.registerPlugin(ScrollTrigger);
@@ -47,6 +48,55 @@ export default function Hero() {
         },
       }
     );
+
+    // $(document).ready(function () {
+    //   var slide = $(".slide");
+    //   var viewWidth = $(window).width();
+    //   var sliderInner = $(".slider-inner");
+    //   var childrenNo = sliderInner.children().length;
+
+    //   sliderInner.width(viewWidth * childrenNo);
+
+    //   $(window).resize(function () {
+    //     viewWidth = $(window).width();
+    //   });
+
+    //   function setWidth() {
+    //     slide.each(function () {
+    //       $(this).width(viewWidth);
+    //       $(this).css("left", viewWidth * $(this).index());
+    //     });
+    //   }
+
+    //   function setActive(element) {
+    //     var clickedIndex = element.index();
+
+    //     $(".slider-nav .active").removeClass("active");
+    //     element.addClass("active");
+
+    //     sliderInner.css(
+    //       "transform",
+    //       "translateX(-" + clickedIndex * viewWidth + "px) translateZ(0)"
+    //     );
+
+    //     $(".slider-inner .active").removeClass("active");
+    //     $(".slider-inner .slide").eq(clickedIndex).addClass("active");
+    //   }
+
+    //   setWidth();
+
+    //   $(".slider-nav > div").on("click", function () {
+    //     setActive($(this));
+    //   });
+
+    //   $(window).resize(function () {
+    //     setWidth();
+    //   });
+
+    //   setTimeout(function () {
+    //     $(".slider").fadeIn(500);
+    //   }, 2000);
+    // });
   });
 
   return (
@@ -242,7 +292,17 @@ export default function Hero() {
       <Swiper
         loop={true}
         speed={3000}
-        effect={'fade'}
+        // effect={'fade'}
+        effect={'creative'}
+        creativeEffect={{
+          prev: {
+            shadow: true,
+            translate: [0, 0, -300],
+          },
+          next: {
+            translate: ['100%', 0, 0],
+          },
+        }}
         pagination={{
           clickable: true,
         }}
@@ -250,7 +310,7 @@ export default function Hero() {
           delay: 2000,
           disableOnInteraction: false,
         }}
-        modules={[Autoplay, EffectFade, Pagination]}
+        modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>
@@ -330,7 +390,7 @@ export default function Hero() {
               autoPlay
               muted
             >
-              <source src={"/assets/videos/OTR-vid.mp4"} type="video/mp4" />
+              <source src={"/assets/videos/OTR-3.mp4"} type="video/mp4" />
             </video>
           </div>
         </SwiperSlide>
@@ -376,6 +436,128 @@ export default function Hero() {
           </div>
         </SwiperSlide>
       </Swiper>
+
+      {/* <div className="slider">
+        <div className="slider-inner">
+          <div className="slide active">
+            <div className="swiper-card-main relative">
+              <span className="slider-overlay"></span>
+              <div class="container mx-auto">
+                <div className="swiper-card relative z-10">
+                  <GradualSpacing
+                    className="hero-sec-heading"
+                    text="Off The Road"
+                  />
+                  <LetterPullup
+                    className="section-subheading"
+                    words={"Ready for Every Challenge"}
+                    delay={0.05}
+                  />
+                  <Link href="#" class="explore-btn">
+                    <span>Explore Now</span>
+                    <div class="wave"></div>
+                  </Link>
+                </div>
+              </div>
+              <video
+                className="absolute top-0 w-full h-fit object-contain"
+                loop
+                autoPlay
+                muted
+              >
+                <source src={"/assets/videos/TBB-vid.mp4"} type="video/mp4" />
+              </video>
+            </div>
+          </div>
+          <div className="slide">
+            <div className="swiper-card-main relative">
+              <span className="slider-overlay"></span>
+              <div className="w-full h-[100vh] flex items-end pb-[60px]">
+                <div class="container mx-auto flex flex-col justify-between h-[80%]">
+                  <div class="flex flex-col gap-5 relative z-10">
+                    <Link href="" className="primary-btn-1">
+                      Find a Tyre
+                    </Link>
+                    <Link href="" className="primary-btn-2">
+                      Find a Dealer
+                    </Link>
+                  </div>
+                  <div className="swiper-card relative z-10">
+                    <GradualSpacing
+                      className="hero-sec-heading"
+                      text="Off The Road"
+                    />
+                    <LetterPullup
+                      className="section-subheading"
+                      words={"Ready for Every Challenge"}
+                      delay={0.05}
+                    />
+                    <Link href="#" class="explore-btn">
+                      <span>Explore Now</span>
+                      <div class="wave"></div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              <video
+                className="absolute top-0 w-full h-fit object-contain"
+                loop
+                autoPlay
+                muted
+              >
+                <source src={"/assets/videos/OTR-vid.mp4"} type="video/mp4" />
+              </video>
+            </div>
+          </div>
+          <div className="slide">
+            <div className="swiper-card-main relative">
+              <span className="slider-overlay"></span>
+              <div className="w-full h-[100vh] flex items-end pb-[60px]">
+                <div class="container mx-auto flex flex-col justify-between h-[80%]">
+                  <div class="flex flex-col gap-5 relative z-10">
+                    <Link href="" className="primary-btn-1">
+                      Find a Tyre
+                    </Link>
+                    <Link href="" className="primary-btn-2">
+                      Find a Dealer
+                    </Link>
+                  </div>
+                  <div className="swiper-card relative z-10">
+                    <GradualSpacing
+                      className="hero-sec-heading"
+                      text="Agriculture"
+                    />
+                    <LetterPullup
+                      className="section-subheading"
+                      words={"Strength in Every Turn"}
+                      delay={0.05}
+                    />
+                    <Link href="#" class="explore-btn">
+                      <span>Explore Now</span>
+                      <div class="wave"></div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              <video
+                className="absolute top-0 w-full h-fit object-contain"
+                loop
+                autoPlay
+                muted
+              >
+                <source src={"/assets/videos/AGR5.mp4"} type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <nav className="slider-nav">
+          <div className="active"></div>
+          <div></div>
+          <div></div>
+        </nav>
+      </div> */}
+
     </div>
   );
 }

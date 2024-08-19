@@ -289,7 +289,7 @@ export default function Slider() {
               autoPlay
               muted
             >
-              <source src={"/assets/videos/TBB2.mp4"} type="video/mp4" />
+              <source src={"/assets/videos/TBB-1.mp4"} type="video/mp4" />
             </video>
           </div>
         </SwiperSlide>
