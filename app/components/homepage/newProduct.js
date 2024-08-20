@@ -28,9 +28,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import load from "../../assets/images/load.png";
 import pattern from "../../assets/images/pattern.png";
-import axle from "../../assets/images/axle.jpg";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import construction from "../../assets/images/axle.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,18 +39,21 @@ const productData = {
       description: "High Mileage Premium Lug",
       image: tyre1,
       icon: prodSvg,
+      size: [100, 1200, 300]
     },
     {
       title: "Ultra Miler Platina",
       description: "High Mileage Premium Rib",
       image: tyre2,
       icon: prodSvg,
+      size: [100, 800, 200]
     },
     {
       title: "Rustom",
       description: "Regional Semi Lug",
       image: tyre3,
       icon: iconW2img,
+      size: [50, 400, 700]
     },
   ],
   OTR: [
@@ -61,18 +62,21 @@ const productData = {
       description: "Premium tyre for the toughest mining envs.",
       image: tyre4,
       icon: prodSvg2,
+      size: [100, 1200, 300]
     },
     {
       title: "Kalapatthar Plus",
       description: "Premium tyre for the toughest mining envs.",
       image: tyre5,
       icon: ultra,
+      size: [100, 800, 200]
     },
     {
       title: "Grader Max",
       description: "Premium Grader Tyre",
       image: tyre6,
       icon: prodSvg2,
+      size: [50, 400, 700]
     },
   ],
   AGRI: [
@@ -81,18 +85,21 @@ const productData = {
       description: "Durable Front Tractor Tyre",
       image: tyre7,
       icon: prodSvg3,
+      size: [100, 1200, 300]
     },
     {
       title: "Shaan+",
       description: "Durable Rear Tractor Tyre",
       image: tyre8,
       icon: prodSvg3,
+      size: [100, 800, 200]
     },
     {
       title: "Chakra",
       description: "Tractor Trailer Tyre",
       image: tyre9,
       icon: chakra,
+      size: [50, 400, 700]
     },
   ],
 };
@@ -122,7 +129,24 @@ export default function NewProduct() {
   };
 
   useEffect(() => {
-    AOS.init();
+    gsap.fromTo(
+      ".new-product-card-image",
+      { scale: "0.2", opacity: 0.9, position: "absolute", transition: "1s" },
+      {
+        scale: 1,
+        position: "absolute",
+        opacity: 1,
+        duration: 0.1,
+        // ease: "power1.out",
+        scrollTrigger: {
+          trigger: ".product-sec",
+          start: "top 65%",
+          end: "top 65%",
+          scrub: 1,
+          // markers: true,
+        },
+      }
+    );
   }, []);
 
   return (
@@ -199,13 +223,13 @@ export default function NewProduct() {
                           </span>
                         </div>
                         <div class="flex gap-[6px] items-center">
-                          <Image src={axle} alt="icon" />
+                          <Image src={construction} alt="icon" />
                           <span>
                             <p className="text-[18px] font-semibold !text-[#727C8D] !mb-0">
-                              Axle
+                              construction
                             </p>
                             <p className="text-[15px] !text-[#727C8D] !mb-0">
-                              Driver/Rear
+                              Bias
                             </p>
                           </span>
                         </div>
@@ -215,14 +239,17 @@ export default function NewProduct() {
                           className="new-product-card-image"
                           src={product.image}
                           alt="card"
-                          data-aos="zoom-in-left"
-                          data-aos-duration="1000"
                         />
                       </figure>
                     </div>
                     <div className="new-product-card-detail">
                       <h2>{product.title}</h2>
-                      <p>{product.description}</p>
+                      <p className="!h-[44px]">{product.description}</p>
+                      <div class="flex gap-3 mt-2">
+                        {product.size.map((size, ind) =>(
+                          <button className="size-chip" key={ind}>{size}</button>
+                        ))}
+                      </div>
                       <div className="new-product-svg-wrapper">
                         <Image
                           className="h-8 object-contain"
