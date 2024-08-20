@@ -174,7 +174,7 @@ export default function NewProduct() {
                 <SwiperSlide key={index}>
                   <div className="new-product-card">
                     <span className="new-product-card-tag">Premium</span>
-                    <div class="flex gap-8 px-6 pt-6">
+                    <div class="flex gap-8 px-4 pt-4">
                       <div class="new-product-iconListSec flex flex-col gap-10">
                         <div class="flex gap-[6px] items-center">
                           <Image src={load} alt="icon" />
@@ -223,6 +223,13 @@ export default function NewProduct() {
                     <div className="new-product-card-detail">
                       <h2>{product.title}</h2>
                       <p>{product.description}</p>
+                      <div className="new-product-svg-wrapper">
+                        <Image
+                          className="h-8 object-contain"
+                          src={product.icon}
+                          alt="icon"
+                        />
+                      </div>
                     </div>
                   </div>
                 </SwiperSlide>

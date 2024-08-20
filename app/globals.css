@@ -1261,14 +1261,33 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 
 .new-product-card-detail{
-  @apply p-4 2xl:p-6 bg-[#F4F5F6] rounded-bl-[16px] rounded-br-[16px]
+  @apply p-4 bg-[#F4F5F6] rounded-bl-[16px] rounded-br-[16px] relative
 }
 .new-product-svg-wrapper{
-  @apply w-[90px] h-[54px] bg-[#E2DCF4] rounded-[12px] flex justify-center items-center p-2 mb-3
+  @apply w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] flex justify-center items-center p-2 absolute right-4 top-4
 }
+#TBB .swiper-wrapper .swiper-slide:last-child .new-product-svg-wrapper img{
+  color: transparent;
+  /* width: 128px; */
+  object-fit: cover;
+  animation: moveLtoR 6s infinite;
+}
+@keyframes moveLtoR {
+  /* 0 & 100% might not be needed */
+    0% {
+      object-position: -9% 50%;
+    }
+    50% {
+      object-position: 97% 50%;
+    }
+    100% {
+      object-position: -9% 50%;
+    }
+   
+  }
 .new-product-card h2{
   @apply text-[#050B20] text-[24px] mb-3 font-bold
 }
 .new-product-card p{
-  @apply text-[#050B20] text-[15px] mb-3
+  @apply text-[#050B20] text-[15px]
 }
