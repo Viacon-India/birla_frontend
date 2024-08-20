@@ -632,7 +632,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply text-primary text-[14px] capitalize
 }
 .media-title{
-  @apply text-[#0E0E11] text-[18px] font-bold leading-[1.5] mb-2
+  @apply text-[#0E0E11] text-[18px] font-bold leading-[1.5] mb-2 !h-[50px]
 }
 .media-detail{
   @apply text-[#4F5662] text-[14px] mb-3
@@ -1268,26 +1268,15 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 #TBB .swiper-wrapper .swiper-slide:last-child .new-product-svg-wrapper img{
   color: transparent;
-  /* width: 128px; */
   object-fit: cover;
   animation: moveLtoR 6s infinite;
 }
-@keyframes moveLtoR {
-  /* 0 & 100% might not be needed */
-    0% {
-      object-position: -9% 50%;
-    }
-    50% {
-      object-position: 97% 50%;
-    }
-    100% {
-      object-position: -9% 50%;
-    }
-   
-  }
 .new-product-card h2{
-  @apply text-[#050B20] text-[24px] mb-3 font-bold
+  @apply text-[#050B20] text-[24px] font-bold
 }
 .new-product-card p{
   @apply text-[#050B20] text-[15px]
+}
+.size-chip{
+  @apply bg-secondary px-4 py-2 rounded-[24px] text-[14px] text-[#FFFFFF] 
 }

@@ -163,7 +163,7 @@ export default function NewAbout() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div class="new-about-card !hidden">
+            <div class="new-about-card">
               <div class="flex flex-row items-center 2xl:flex-col 2xl:items-start">
                 <Image className="colorIcon" src={icon1} />
                 <Image className="colorHIcon" src={icon5} />
