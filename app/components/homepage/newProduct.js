@@ -100,11 +100,25 @@ const productData = {
 export default function NewProduct() {
   const [activeTab, setActiveTab] = useState("TBB");
 
+  // Define the animation function
+  const animateProductCardImage = () => {
+    gsap.fromTo(
+      ".new-product-card-image",
+      { scale: "0.4", opacity: 0.9, position: "absolute" },
+      {
+        scale: 1,
+        position: "absolute",
+        opacity: 1,
+        duration: 0.5,
+        ease: "power1.out",
+      }
+    );
+  };
 
   // Call the animation function on tab change
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    
+    animateProductCardImage();
   };
 
   useEffect(() => {
