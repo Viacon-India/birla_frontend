@@ -1272,7 +1272,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   animation: moveLtoR 6s infinite;
 }
 .new-product-card h2{
-  @apply text-[#050B20] text-[24px] mb-3 font-bold
+  @apply text-[#050B20] text-[24px] font-bold
 }
 .new-product-card p{
   @apply text-[#050B20] text-[15px]
