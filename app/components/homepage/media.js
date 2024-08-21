@@ -14,7 +14,7 @@ export default function Media() {
     AOS.init();
   }, []);
   return (
-    <section className="media-sec mt-[100px]">
+    <section className="media-sec mt-[60px] 2xl:mt-[100px]">
       <div className="container mx-auto overflow-hidden">
         <div className="upper-title-sec">
           <span className="section-heading">our presence</span>
@@ -22,7 +22,7 @@ export default function Media() {
             <GradualSpacing className="section-title" text="Media Presence" />
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 md:mt-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-5 2xl:mt-8">
             <div
               class="media-card"
               data-aos="fade-right"
