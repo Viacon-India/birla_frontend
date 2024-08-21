@@ -67,7 +67,7 @@ export default function Innovation() {
             Discover Our Categories
           </Link>
         </div>
-        <div class="innovative-slider mt-8">
+        <div class="innovative-slider mt-5 2xl:mt-8">
           <Swiper
             slidesPerView={3}
             spaceBetween={48}

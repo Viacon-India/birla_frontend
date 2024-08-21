@@ -486,7 +486,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   before:content-[""] before:w-[3px] before:h-[80%] before:bg-primary before:absolute before:left-0 before:rounded-[100px]
 }
 .section-title{
-  @apply text-secondary text-[36px] md:text-[40px] 2xl:text-[48px] font-bold leading-[1.2] flex gap-3 items-center
+  @apply text-secondary text-[36px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center
 }
 
 .about-title{
@@ -520,7 +520,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 
 .innovation-card figure{
-  @apply w-full h-[280px] mb-5 relative overflow-hidden transition-all duration-500
+  @apply w-full h-[244px] 2xl:h-[280px] mb-2 2xl:mb-5 relative overflow-hidden transition-all duration-500
   rounded-[24px]
 }
 .innovation-card-image{
@@ -591,17 +591,17 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply text-[#050B20] text-[15px] mb-3
 }
 
-.swiper-button-next{
+.mySwiper .swiper-button-next{
   @apply !w-12 !h-12 !bg-[#DEE1E5] absolute rounded-[4px] !top-[92%]
 }
-.swiper-button-next::after{
+.mySwiper .swiper-button-next::after{
   content: url('data:image/svg+xml,<svg width="22" height="30" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.731556 19.8801L9.32356 11.0001L0.731556 2.07215C0.315556 1.65615 0.315556 1.27215 0.731556 0.920149C1.14756 0.504148 1.53156 0.504148 1.88356 0.920149L11.2916 10.3761C11.6756 10.7921 11.6756 11.1921 11.2916 11.5761L1.88356 21.0321C1.53156 21.4481 1.14756 21.4481 0.731556 21.0321C0.315556 20.6801 0.315556 20.2961 0.731556 19.8801Z" fill="%234F5662"/></svg>') !important; 
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }
-.swiper-button-prev{
+.mySwiper .swiper-button-prev{
   @apply !w-12 !h-12 !bg-[#DEE1E5] absolute rounded-[4px] !top-[92%] !left-[86%] 2xl:!left-[91%]
 }
-.swiper-button-prev::after{
+.mySwiper .swiper-button-prev::after{
   content: url('data:image/svg+xml,<svg width="12" height="30" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2674 19.8801C11.6834 20.2961 11.6834 20.6801 11.2674 21.0321C10.8514 21.4481 10.4674 21.4481 10.1154 21.0321L0.707434 11.5761C0.323434 11.1921 0.323434 10.7921 0.707434 10.3761L10.1154 0.920149C10.4674 0.504148 10.8514 0.504148 11.2674 0.920149C11.6834 1.27215 11.6834 1.65615 11.2674 2.07215L2.67543 11.0001L11.2674 19.8801Z" fill="%234F5662"/></svg>') !important; 
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }
@@ -610,7 +610,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 /* sustainability */
 
 .video-content{
-  @apply w-[100%] mt-8 
+  @apply w-[100%] mt-4 2xl:mt-8 
 }
 .video-content video{
   @apply w-[300px] h-[300px] rounded-[20px]
@@ -623,7 +623,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 /* media-card-section */
 
 .media-card figure{
-  @apply w-full h-[320px] 2xl:h-[360px] mb-6 overflow-hidden relative rounded-[24px]
+  @apply w-full h-[280px] 2xl:h-[360px] mb-6 overflow-hidden relative rounded-[24px]
 }
 .media-card-image{
   @apply w-full h-full object-cover rounded-[24px]
@@ -871,7 +871,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 /* dealer sec */
 .listing-card-wrapper{
-  @apply flex flex-col gap-[8px] h-[360px] overflow-y-auto
+  @apply flex flex-col gap-[8px] h-[200px] 2xl:h-[360px] overflow-y-auto
 }
 .listing-card{
   @apply p-3 bg-[#FFFFFF] border border-[#DEE1E5] rounded-[6px] mr-2
@@ -894,19 +894,19 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   after:gap-[6px] after:items-center after:rounded-full
 }
 .map-sec iframe {
-  @apply w-full h-[400px] lg:h-[550px] rounded-[4px]
+  @apply w-full !h-[335px] 2xl:!h-[550px] rounded-[4px]
 }
 .nearest-card{
-  @apply p-3 bg-[#F4F5F6] rounded-[4px] mt-5 mb-5
+  @apply p-3 bg-[#F4F5F6] rounded-[4px] my-1 2xl:my-5
 }
 .nearest-card h2{
-  @apply text-[#1A1D21] text-[24px] mb-3
+  @apply text-[#1A1D21] text-[20px] 2xl:text-[24px] 2xl:mb-3
 }
 .nearest-card p{
   @apply text-[#1A1D21] text-[24px] mb-3
 }
 .result-number{
-  @apply text-[24px] mb-5 text-[#4F5662]
+  @apply text-[20px] 2xl:text-[24px] mb-1 2xl:mb-5 text-[#4F5662]
 }
 .result-number span{
   @apply text-secondary
@@ -1250,14 +1250,14 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply relative border border-secondary rounded-[16px] bg-[#FFFFFF] z-10
 }
 .new-product-card figure{
-  @apply w-[140px] h-[232px] 2xl:w-[186px] 2xl:h-[286px] translate-y-[-40px]
+  @apply w-[145px] h-[195px] 2xl:w-[180px] 2xl:h-[280px] translate-y-[-30px]
 }
 .new-product-card-image{
-  @apply w-full h-full object-cover transition-all duration-500
+  @apply w-full h-full object-contain transition-all duration-500
 }
 
 .new-product-card-tag{
-  @apply text-[18px] text-[#FFFFFF] bg-primary px-6 py-2 rounded-tl-[16px] flex justify-center items-center w-fit
+  @apply text-[12px] 2xl:text-[16px] text-[#FFFFFF] bg-primary px-6 py-2 rounded-tl-[16px] flex justify-center items-center w-fit
 }
 
 .new-product-card-detail{
@@ -1280,3 +1280,19 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 .size-chip{
   @apply bg-secondary px-4 py-2 rounded-[24px] text-[14px] text-[#FFFFFF] 
 }
+
+.chipSwiper .swiper-button-next{
+  @apply !w-0 !h-0 !bg-transparent absolute rounded-[4px] !top-[92%]
+}
+.chipSwiper .swiper-button-next::after{
+  content: url('data:image/svg+xml,<svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.25L7.75 7.5L1.5 13.75" stroke="%231A1D21" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') !important; 
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+}
+.chipSwiper .swiper-button-prev{
+  @apply !w-2 !h-2 !bg-transparent absolute rounded-[4px] !top-[92%] !left-[86%] 2xl:!left-[91%] !hidden
+}
+.chipSwiper .swiper-button-prev::after{
+  content: url('data:image/svg+xml,<svg width="12" height="30" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2674 19.8801C11.6834 20.2961 11.6834 20.6801 11.2674 21.0321C10.8514 21.4481 10.4674 21.4481 10.1154 21.0321L0.707434 11.5761C0.323434 11.1921 0.323434 10.7921 0.707434 10.3761L10.1154 0.920149C10.4674 0.504148 10.8514 0.504148 11.2674 0.920149C11.6834 1.27215 11.6834 1.65615 11.2674 2.07215L2.67543 11.0001L11.2674 19.8801Z" fill="%234F5662"/></svg>') !important; 
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 !hidden
+}
+  

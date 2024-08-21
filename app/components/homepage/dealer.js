@@ -16,8 +16,8 @@ export default function Dealer() {
             <GradualSpacing className="section-title" text="Dealer Locator" />
           </div>
         </div>
-        <div class="flex flex-col lg:flex-row gap-6 mt-10">
-          <div class="listing-card-sec lg:w-[30%]">
+        <div class="flex flex-col lg:flex-row gap-6 mt-5 2xl:mt-10">
+          <div class="listing-card-sec lg:w-[30%] relative">
             <div class="relative">
               <input className="px-4 py-3 bg-[#FFFFFF] border border-[#DEE1E5] rounded-[4px] w-full outline-none" type="text" placeholder="Search By Pincode" />
               <svg

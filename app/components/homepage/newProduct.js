@@ -39,21 +39,21 @@ const productData = {
       description: "High Mileage Premium Lug",
       image: tyre1,
       icon: prodSvg,
-      size: [100, 1200, 300]
+      size: ["10.00-20", "8.25-20"],
     },
     {
       title: "Ultra Miler Platina",
       description: "High Mileage Premium Rib",
       image: tyre2,
       icon: prodSvg,
-      size: [100, 800, 200]
+      size: ["10.00-20", "8.25-20"],
     },
     {
       title: "Rustom",
       description: "Regional Semi Lug",
       image: tyre3,
       icon: iconW2img,
-      size: [50, 400, 700]
+      size: ["9.00-20"],
     },
   ],
   OTR: [
@@ -62,21 +62,21 @@ const productData = {
       description: "Premium tyre for the toughest mining envs.",
       image: tyre4,
       icon: prodSvg2,
-      size: [100, 1200, 300]
+      size: ["9.00-20(16PR)", "10.00-20(18PR)", "11.00-20 (18PR)", "12.00-20 (18PR)", "12.00-24 (20PR)" ]
     },
     {
       title: "Kalapatthar Plus",
       description: "Premium tyre for the toughest mining envs.",
       image: tyre5,
       icon: ultra,
-      size: [100, 800, 200]
+      size: ["9.00-20(16PR)", "10.00-20(18PR)", "11.00-20 (18PR)", "12.00-20 (18PR)", "12.00-24 (20PR)" ]
     },
     {
       title: "Grader Max",
       description: "Premium Grader Tyre",
       image: tyre6,
       icon: prodSvg2,
-      size: [50, 400, 700]
+      size: ["13.00-24(12PR)", "13.00-24(16PR)", "14.00-24(12PR)", "14.00-24(16PR)"]
     },
   ],
   AGRI: [
@@ -85,21 +85,21 @@ const productData = {
       description: "Durable Front Tractor Tyre",
       image: tyre7,
       icon: prodSvg3,
-      size: [100, 1200, 300]
+      size: ["6.00-16", "7.50-16", "7.50-16", "6.50-20"]
     },
     {
       title: "Shaan+",
       description: "Durable Rear Tractor Tyre",
       image: tyre8,
       icon: prodSvg3,
-      size: [100, 800, 200]
+      size: ["12.4-28", "13.6-28", "14.9-28", "16.9-28", "18.4-30"]
     },
     {
       title: "Chakra",
       description: "Tractor Trailer Tyre",
       image: tyre9,
       icon: chakra,
-      size: [50, 400, 700]
+      size: ["9.00-16"],
     },
   ],
 };
@@ -131,10 +131,9 @@ export default function NewProduct() {
   useEffect(() => {
     gsap.fromTo(
       ".new-product-card-image",
-      { scale: "0.2", opacity: 0.9, position: "absolute", transition: "1s" },
+      { scale: "0.2", opacity: 0.9, transition: "1s" },
       {
         scale: 1,
-        position: "absolute",
         opacity: 1,
         duration: 0.1,
         // ease: "power1.out",
@@ -150,7 +149,7 @@ export default function NewProduct() {
   }, []);
 
   return (
-    <section className="product-sec mt-[100px]">
+    <section className="product-sec mt-[60px] 2xl:mt-[100px]">
       <div className="container mx-auto overflow-hidden">
         <div className="upper-title-sec flex justify-between items-end">
           <div className="new">
@@ -181,7 +180,7 @@ export default function NewProduct() {
           <div
             key={tab}
             id={tab}
-            className={`tabcontent product-slider mt-[32px] pb-[100px] ${
+            className={`tabcontent product-slider mt-5 2xl:mt-[32px] pb-[60px] 2xl:pb-[100px] ${
               activeTab === tab ? "" : "hidden"
             }`}
           >
@@ -199,7 +198,7 @@ export default function NewProduct() {
                   <div className="new-product-card">
                     <span className="new-product-card-tag">Premium</span>
                     <div class="flex gap-8 px-4 pt-4">
-                      <div class="new-product-iconListSec flex flex-col gap-10">
+                      <div class="new-product-iconListSec flex flex-col gap-6 2xl:gap-10">
                         <div class="flex gap-[6px] items-center">
                           <Image src={load} alt="icon" />
                           <span>
@@ -226,7 +225,7 @@ export default function NewProduct() {
                           <Image src={construction} alt="icon" />
                           <span>
                             <p className="text-[18px] font-semibold !text-[#727C8D] !mb-0">
-                              construction
+                              Construction
                             </p>
                             <p className="text-[15px] !text-[#727C8D] !mb-0">
                               Bias
@@ -244,11 +243,26 @@ export default function NewProduct() {
                     </div>
                     <div className="new-product-card-detail">
                       <h2>{product.title}</h2>
-                      <p className="!h-[44px]">{product.description}</p>
-                      <div class="flex gap-3 mt-2">
-                        {product.size.map((size, ind) =>(
-                          <button className="size-chip" key={ind}>{size}</button>
-                        ))}
+                      <p className="!h-[44px] !w-[75%] !line-clamp-2">
+                        {product.description}
+                      </p>
+                      <div class="flex gap-3 mt-2 relative">
+                        <Swiper
+                          navigation={true}
+                          modules={[Navigation]}
+                          spaceBetween={10}
+                          slidesPerView={1.2}
+                          freeMode={true}
+                          className="chipSwiper !w-[90%] !ml-0 !static"
+                        >
+                          {product.size.map((size, ind) => (
+                            <SwiperSlide className="!w-fit">
+                              <button className="size-chip" key={ind}>
+                                {size}
+                              </button>
+                            </SwiperSlide>
+                          ))}
+                        </Swiper>
                       </div>
                       <div className="new-product-svg-wrapper">
                         <Image

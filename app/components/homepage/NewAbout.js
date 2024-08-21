@@ -32,7 +32,7 @@ export default function NewAbout() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
-    <section className="new-about-slider mt-[100px]">
+    <section className="new-about-slider mt-[60px] 2xl:mt-[100px]">
       <div className="container mx-auto">
         <span className="section-heading">company brief</span>
         <div className="section-title-wrapper">
@@ -46,7 +46,7 @@ export default function NewAbout() {
           modules={[Autoplay, EffectFade, FreeMode, Thumbs, Controller]}
           watchSlidesProgress={true}
           onSwiper={setThumbsSwiper}
-          className="mySwiper3 mt-2 2xl:mt-8"
+          className="mySwiper3 mt-5 2xl:mt-8"
         >
           <SwiperSlide>
             <Image src={img1} className="newAboutImg" />
@@ -76,7 +76,7 @@ export default function NewAbout() {
           modules={[Autoplay, FreeMode, Thumbs, Controller]}
           thumbs={{ swiper: thumbsSwiper }}
           effect={"fade"}
-          className="mySwiper2 translate-y-[-30%] w-[96%]"
+          className="mySwiper2 translate-y-[-40%] 2xl:translate-y-[-30%] w-[96%]"
         >
           <SwiperSlide>
             <div class="new-about-card">
