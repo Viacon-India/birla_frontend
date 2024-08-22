@@ -30,12 +30,12 @@ export default function Footer() {
   };
 
   return (
-    <div className="footer-main py-[60px] mt-[80px] 2xl:mt-[120px] bg-[#F4F5F6]">
+    <div className="footer-main py-5 md:py-10 2xl:py-[60px] mt-[60px] md:mt-[80px] 2xl:mt-[120px] bg-[#F4F5F6]">
       <div className="container mx-auto">
-        <div className="footer-detail-sec pb-10 border-b border-[#727C8D]">
-          <div className="footer-description-sec w-[65%]">
+        <div className="footer-detail-sec pb-4 md:pb-10 border-b border-[#727C8D]">
+          <div className="footer-description-sec md:w-[65%]">
             <p className="footer-description-text">{detail.description}</p>
-            <div className="flex gap-4 items-center mt-4">
+            <div className="flex flex-col md:flex-row gap-4 md:items-center mt-4">
               <div className="footer-detail-box">
                 <svg
                   width="20"
@@ -70,8 +70,8 @@ export default function Footer() {
                 <span>ESS Portal</span>
               </div>
             </div>
-            <div class="follow-sec flex flex-col md:flex-row md:items-center gap-4 mt-6">
-              <span className="text-[#1A1D21] text-[24px]">Follow us on :</span>
+            <div class="follow-sec flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mt-3 md:mt-6">
+              <span className="text-[#1A1D21] text-[18px] md:text-[24px]">Follow us on :</span>
               <div class="flex items-center gap-4">
                 <Link className="icon-box" href="">
                   <svg
@@ -90,7 +90,6 @@ export default function Footer() {
                       fill="#F4F5F6"
                     />
                   </svg>
-                
                 </Link>
                 <Link className="icon-box" href="">
                   <svg
@@ -175,16 +174,16 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div class="flex items-center gap-4">
-            <figure className="rounded-none m-0 w-fit h-[80px]">
+          <div class="flex items-center gap-3 md:gap-4">
+            <figure className="rounded-none m-0 w-[60px] h-[54px] md:w-fit md:h-[80px]">
               <Image
                 src={logo2}
                 alt="logo"
                 className="w-full h-full object-cover"
               />
             </figure>
-            <div class="line !h-[80px]"></div>
-            <figure className="rounded-none m-0 w-[180px] h-[80px]">
+            <div class="line !h-[54px] md!h-[80px]"></div>
+            <figure className="rounded-none m-0 w-[94px] h-[42px] md:w-[180px] md:h-[80px]">
               <Image
                 src={logo1}
                 alt="logo"
@@ -194,7 +193,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <ul className="footer-list-sec py-10 grid grid-cols-2 md:grid-cols-5">
+        <ul className="footer-list-sec py-4 md:py-10 grid grid-cols-2 gap-x-2 gap-y-8 md:gap-y-0 md:grid-cols-5">
           {footerMenu.map((newMenu) => (
             <li className="footer-list-box" key={newMenu.id}>
               <h2>{newMenu.attributes.menu[0].menu_item.name}</h2>
@@ -214,9 +213,9 @@ export default function Footer() {
           ))}
         </ul>
 
-        <div className="flex flex-col md:flex-row justify-between items-end">
+        <div className="flex flex-col-reverse md:flex-row justify-between items-center">
           {creditTexts.map((newText) => (
-            <p className="text-[14px] text-[#000000]" key={newText.id}>
+            <p className="text-[14px] text-[#000000] text-center" key={newText.id}>
               {newText.children.map((extractText) => (
                 <span key={extractText.id}>{extractText.text}</span>
               ))}
