@@ -50,7 +50,7 @@ export default function Navbar() {
       <div className="container mx-auto">
         <div className="w-full flex justify-between items-center relative">
           <div className="navbar-start w-fit">
-            <div className="hamburger-button" onClick={toggleMenu}>
+            <button className="hamburger-button" onClick={toggleMenu}>
               <svg
                 width="32"
                 height="32"
@@ -66,7 +66,7 @@ export default function Navbar() {
                   stroke-linejoin="round"
                 />
               </svg>
-            </div>
+            </button>
           </div>
 
           <div className="navbar-center flex items-center gap-6 lg:flex md:pl-7 ml-[-15%] md:ml-0">
@@ -167,7 +167,7 @@ export default function Navbar() {
           isMenuOpen ? "open" : ""
         }`}
       >
-        <span
+        <button
           className="close text-[40px] absolute right-4 top-[18px] md:top-4 z-1"
           onClick={toggleMenu}
         >
@@ -183,7 +183,7 @@ export default function Navbar() {
               fill="#1A1D21"
             ></path>
           </svg>
-        </span>
+        </button>
         <div className="dropdown-wrapper">
           <div class="search-wrapper relative flex md:hidden my-[3px] mx-2">
             <input

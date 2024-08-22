@@ -40,6 +40,9 @@ const productData = {
       image: tyre1,
       icon: prodSvg,
       size: ["10.00-20", "8.25-20"],
+      load: "Moderate",
+      pattern: "Lug",
+      construction: "Bias"
     },
     {
       title: "Ultra Miler Platina",
@@ -47,6 +50,9 @@ const productData = {
       image: tyre2,
       icon: prodSvg,
       size: ["10.00-20", "8.25-20"],
+      load: "Moderate",
+      pattern: "Rib",
+      construction: "Bias"
     },
     {
       title: "Rustom",
@@ -54,6 +60,9 @@ const productData = {
       image: tyre3,
       icon: iconW2img,
       size: ["9.00-20"],
+      load: "Rated",
+      pattern: "Semi Lug",
+      construction: "Bias"
     },
   ],
   OTR: [
@@ -62,21 +71,30 @@ const productData = {
       description: "Premium tyre for the toughest mining envs.",
       image: tyre4,
       icon: prodSvg2,
-      size: ["9.00-20(16PR)", "10.00-20(18PR)", "11.00-20 (18PR)", "12.00-20 (18PR)", "12.00-24 (20PR)" ]
+      size: ["9.00-20(16PR)", "10.00-20(18PR)", "11.00-20 (18PR)", "12.00-20 (18PR)", "12.00-24 (20PR)" ],
+      load: "Lorem",
+      pattern: "Lorem Ipsum",
+      construction: "Lorem"
     },
     {
       title: "Kalapatthar Plus",
       description: "Premium tyre for the toughest mining envs.",
       image: tyre5,
       icon: ultra,
-      size: ["9.00-20(16PR)", "10.00-20(18PR)", "11.00-20 (18PR)", "12.00-20 (18PR)", "12.00-24 (20PR)" ]
+      size: ["9.00-20(16PR)", "10.00-20(18PR)", "11.00-20 (18PR)", "12.00-20 (18PR)", "12.00-24 (20PR)" ],
+      load: "Lorem",
+      pattern: "Lorem Ipsum",
+      construction: "Lorem"
     },
     {
       title: "Grader Max",
       description: "Premium Grader Tyre",
       image: tyre6,
       icon: prodSvg2,
-      size: ["13.00-24(12PR)", "13.00-24(16PR)", "14.00-24(12PR)", "14.00-24(16PR)"]
+      size: ["13.00-24(12PR)", "13.00-24(16PR)", "14.00-24(12PR)", "14.00-24(16PR)"],
+      load: "Lorem",
+      pattern: "Lorem Ipsum",
+      construction: "Lorem"
     },
   ],
   AGRI: [
@@ -85,14 +103,20 @@ const productData = {
       description: "Durable Front Tractor Tyre",
       image: tyre7,
       icon: prodSvg3,
-      size: ["6.00-16", "7.50-16", "7.50-16", "6.50-20"]
+      size: ["6.00-16", "7.50-16", "7.50-16", "6.50-20"],
+      load: "Lorem",
+      pattern: "Lorem Ipsum",
+      construction: "Lorem"
     },
     {
       title: "Shaan+",
       description: "Durable Rear Tractor Tyre",
       image: tyre8,
       icon: prodSvg3,
-      size: ["12.4-28", "13.6-28", "14.9-28", "16.9-28", "18.4-30"]
+      size: ["12.4-28", "13.6-28", "14.9-28", "16.9-28", "18.4-30"],
+      load: "Lorem",
+      pattern: "Lorem Ipsum",
+      construction: "Lorem"
     },
     {
       title: "Chakra",
@@ -100,6 +124,9 @@ const productData = {
       image: tyre9,
       icon: chakra,
       size: ["9.00-16"],
+      load: "Lorem",
+      pattern: "Lorem Ipsum",
+      construction: "Lorem"
     },
   ],
 };
@@ -213,7 +240,7 @@ export default function NewProduct() {
                               Load Type
                             </p>
                             <p className="text-[15px] !text-[#727C8D] !mb-0">
-                              Moderate
+                              {product.load}
                             </p>
                           </span>
                         </div>
@@ -224,7 +251,7 @@ export default function NewProduct() {
                               Pattern
                             </p>
                             <p className="text-[15px] !text-[#727C8D] !mb-0">
-                              Lug
+                            {product.pattern}
                             </p>
                           </span>
                         </div>
@@ -235,7 +262,7 @@ export default function NewProduct() {
                               Construction
                             </p>
                             <p className="text-[15px] !text-[#727C8D] !mb-0">
-                              Bias
+                            {product.construction}
                             </p>
                           </span>
                         </div>
@@ -258,7 +285,7 @@ export default function NewProduct() {
                           navigation={true}
                           modules={[Navigation]}
                           spaceBetween={10}
-                          slidesPerView={1.2}
+                          slidesPerView={2.5}
                           freeMode={true}
                           className="chipSwiper !w-[90%] !ml-0 !static"
                         >
