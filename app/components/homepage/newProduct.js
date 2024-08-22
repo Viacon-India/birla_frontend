@@ -256,8 +256,8 @@ export default function NewProduct() {
                           className="chipSwiper !w-[90%] !ml-0 !static"
                         >
                           {product.size.map((size, ind) => (
-                            <SwiperSlide className="!w-fit">
-                              <button className="size-chip" key={ind}>
+                            <SwiperSlide className="!w-fit" key={ind}>
+                              <button className="size-chip" >
                                 {size}
                               </button>
                             </SwiperSlide>

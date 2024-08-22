@@ -1145,16 +1145,16 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply !hidden
 }
 .new-about-slider .swiper-slide-active .new-about-card .colorIcon{
-  @apply !block w-[40px] h-[40px]
+  @apply !block w-[28px] h-[28px] md:w-[40px] md:h-[40px]
 }
 .new-about-slider .new-about-card .colorIcon{
-  @apply !hidden w-[40px] h-[40px]
+  @apply !hidden w-[28px] h-[28px] md:w-[40px] md:h-[40px]
 }
 .maskIcon{
   @apply w-[200px] h-[200px] object-cover 2xl:w-[300px] 2xl:h-[300px] absolute right-0 top-0
 }
 .newAboutImg{
-  @apply w-full h-[300px] 2xl:h-[400px] rounded-[12px]
+  @apply w-full h-[236px] 2xl:h-[400px] rounded-[12px]
 }
 
 

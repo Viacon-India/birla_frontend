@@ -32,14 +32,13 @@ export default function NewAbout() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
-    <section className="new-about-slider mt-[60px] 2xl:mt-[100px]">
+    <section className="new-about-slider mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden">
       <div className="container mx-auto">
         <span className="section-heading">company brief</span>
         <div className="section-title-wrapper">
           <GradualSpacing className="section-title" text="About Us" />
         </div>
         <Swiper
-          // loop={true}
           speed={2000}
           effect={"fade"}
           spaceBetween={10}
@@ -66,25 +65,23 @@ export default function NewAbout() {
         </Swiper>
 
         <Swiper
-          // loop={true}
-          // slidesPerView={2.1}
           speed={2000}
-          autoplay={{
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
+          // autoplay={{
+          //   disableOnInteraction: false,
+          //   pauseOnMouseEnter: true,
+          // }}
           modules={[Autoplay, FreeMode, Thumbs, Controller]}
           thumbs={{ swiper: thumbsSwiper }}
           effect={"fade"}
           breakpoints={{
             0: {
-              slidesPerView: 1.2,
+              slidesPerView: 1.4,
             },
             768: {
               slidesPerView: 2.1,
             },
           }}
-          className="mySwiper2 translate-y-[-40%] 2xl:translate-y-[-30%] w-[96%]"
+          className="mySwiper2 translate-y-[-25%] md:translate-y-[-40%] 2xl:translate-y-[-30%] w-[120%] md:w-[96%]"
         >
           <SwiperSlide>
             <div class="new-about-card">
