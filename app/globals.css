@@ -123,7 +123,7 @@ body {
   uppercase font-oak-sans
 }
 .line{
-  @apply w-[2px] h-[50px] bg-[#C9CDD3] mt-4
+  @apply w-[2px] h-[30px] md:h-[50px] bg-[#C9CDD3] mt-4
 }
 .nav-arrow{
   @apply ml-[3px] mt-[2px] group-hover:rotate-180 transition-all duration-300 group-hover:fill-primary
@@ -389,7 +389,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 /* Style for the menu items */
 .dropdown-wrapper{
   box-shadow: 0 4px 16px #999;
-  @apply bg-[#FFFFFF] pt-[85px] pr-[4px] pb-[16px] pl-[20px] w-fit h-[100vh]
+  @apply bg-[#FFFFFF] pt-2 2xl:pt-[85px] pb-[16px] w-fit h-[100vh]
 }
 .ham-links{
   @apply text-secondary text-[22px] hover:bg-transparent rounded-none font-bold flex items-center relative
@@ -404,22 +404,23 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 
 /* hero-section */
+
+.multi-btn-sec{
+  @apply hidden md:flex flex-col gap-5 relative z-10
+}
 .slider-overlay{
   background: linear-gradient(to right, rgba(0,0,0,0.40), rgba(0,0,0,0));
   @apply absolute top-0 left-0 w-full h-full z-10
 }
 .hero-sec-heading{
-  @apply text-[60px] 2xl:text-[72px] text-[#FFFFFF] font-extrabold font-oak-sans
+  @apply text-[36px] md:text-[60px] 2xl:text-[72px] text-[#FFFFFF] font-extrabold font-oak-sans
 }
 .section-subheading{
-  @apply text-[24px] 2xl:text-[32px] text-[#FFFFFF] mb-8 leading-[1.2]
+  @apply text-[14px] md:text-[24px] 2xl:text-[32px] text-[#FFFFFF] mb-8 leading-[1.2] hidden md:flex
 }
 
 .explore-btn {
-  @apply relative inline-block px-6 py-3 text-secondary bg-white font-medium text-[16px] rounded-[4px] overflow-hidden;
-  text-decoration: none;
-  display: block;
-  width: fit-content;
+  @apply relative inline-block p-2 md:px-6 md:py-3 text-secondary bg-white font-medium text-[12px] md:text-[16px] rounded-[4px] overflow-hidden w-fit;
 }
 
 .explore-btn span {
@@ -430,15 +431,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 
 .explore-btn .wave {
-  width: 200px;
-  height: 200px;
-  background-color: #F5811E;
-  position: absolute;
-  left: -16px;
-  top: -60px;
-  transition: 0.4s;
-  z-index: 0;
-  border-radius: 50%;
+  @apply w-[200px] h-[200px] bg-primary absolute left-[-16px] top-[-72px] md:top-[-60px] transition-all duration-[0.4s] z-0 rounded-[50%]
 }
 
 .explore-btn:hover .wave {

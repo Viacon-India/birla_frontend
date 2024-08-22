@@ -69,8 +69,8 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="navbar-center flex items-center gap-6 lg:flex pl-7">
-            <ul className="menu menu-horizontal relative text-lg lg:gap-4 xl:gap-7 p-0">
+          <div className="navbar-center flex items-center gap-6 lg:flex md:pl-7">
+            <ul className="menu menu-horizontal hidden md:flex relative text-lg lg:gap-4 xl:gap-7 p-0">
               {navMenu.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
                   <Link
@@ -110,7 +110,7 @@ export default function Navbar() {
                 </li>
               ))}
             </ul>
-            <div class="search-wrapper relative">
+            <div class="search-wrapper relative hidden md:flex">
               <input
                 className="search-input"
                 type="text"
@@ -132,11 +132,15 @@ export default function Navbar() {
                 />
               </svg>
             </div>
+            <div class="flex md:hidden gap-2 relative z-10">
+              <Link href="" className="primary-btn-1 !w-[42px] h-[36px]"></Link>
+              <Link href="" className="primary-btn-2 !w-[42px] h-[36px]"></Link>
+            </div>
           </div>
 
-          <div className="navbar-end gap-2 md:gap-3 group flex justify-end items-center">
+          <div className="navbar-end gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
             <Link href="/">
-              <figure className="rounded-none m-0 w-[65px] h-[65px]">
+              <figure className="rounded-none m-0 w-[50px] h-[50px] md:w-[65px] md:h-[65px]">
                 <Image
                   src={logo2}
                   alt="logo"
@@ -144,9 +148,9 @@ export default function Navbar() {
                 />
               </figure>
             </Link>
-            <div class="line "></div>
+            <div class="line"></div>
             <Link href="/">
-              <figure className="rounded-none m-0 w-[136px] h-[60px]">
+              <figure className="rounded-none m-0 w-[80px] h-[35px] md:w-[136px] md:h-[60px]">
                 <Image
                   src={logo1}
                   alt="logo"
@@ -164,7 +168,7 @@ export default function Navbar() {
         }`}
       >
         <span
-          className="close text-[40px] absolute right-4 top-4"
+          className="close text-[40px] absolute right-4 top-[18px] md:top-4 z-1"
           onClick={toggleMenu}
         >
           <svg
@@ -181,8 +185,29 @@ export default function Navbar() {
           </svg>
         </span>
         <div className="dropdown-wrapper">
-          
-          <ul className="h-full overflow-auto pr-[16px]">
+          <div class="search-wrapper relative flex md:hidden my-[3px] mx-2">
+            <input
+              className="search-input"
+              type="text"
+              placeholder="Search website"
+            />
+            <svg
+              width="20"
+              height="21"
+              viewBox="0 0 20 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13.7026 14.2032L17.4995 18.0001M15.625 9.5625C15.625 13.1869 12.6869 16.125 9.0625 16.125C5.43813 16.125 2.5 13.1869 2.5 9.5625C2.5 5.93813 5.43813 3 9.0625 3C12.6869 3 15.625 5.93813 15.625 9.5625Z"
+                stroke="#1A1D21"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <ul className="h-full overflow-auto px-[16px] border border-t-2 pt-4 md:pt-0">
             {hamMenu.map((menu) => (
               <li className="mb-4" key={menu.id}>
                 <button className="ham-links">{menu.menu_item.name}</button>
@@ -191,8 +216,11 @@ export default function Navbar() {
                     {menu.sub_menu.map((subMenu) => (
                       <li key={subMenu.id}>
                         <div className="flex justify-between">
-                          <button className="text-secondary text-[16px] py-[6px]" onClick={() => toggleSubMenu(subMenu.id)}>
-                              {subMenu.sub_menu_item.name}
+                          <button
+                            className="text-secondary text-[16px] py-[6px]"
+                            onClick={() => toggleSubMenu(subMenu.id)}
+                          >
+                            {subMenu.sub_menu_item.name}
                           </button>
                           {subMenu.sub_sub_menu_item &&
                             subMenu.sub_sub_menu_item.length > 0 && (
@@ -249,7 +277,6 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-
         </div>
       </div>
     </div>
