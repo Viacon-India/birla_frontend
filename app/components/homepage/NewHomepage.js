@@ -16,11 +16,11 @@ export default function NewHomepage() {
       {/* <Slider /> */}
       <Hero />
       <NewAboutUs />
-      <Innovation />
+      {/* <Innovation />
       <NewProduct />
       <Dealer />
       <Sustainability />
-      <Media />
+      <Media /> */}
     </>
   );
 }

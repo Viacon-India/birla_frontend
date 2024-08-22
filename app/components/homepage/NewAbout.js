@@ -67,7 +67,7 @@ export default function NewAbout() {
 
         <Swiper
           // loop={true}
-          slidesPerView={2.1}
+          // slidesPerView={2.1}
           speed={2000}
           autoplay={{
             disableOnInteraction: false,
@@ -76,6 +76,14 @@ export default function NewAbout() {
           modules={[Autoplay, FreeMode, Thumbs, Controller]}
           thumbs={{ swiper: thumbsSwiper }}
           effect={"fade"}
+          breakpoints={{
+            0: {
+              slidesPerView: 1.2,
+            },
+            768: {
+              slidesPerView: 2.1,
+            },
+          }}
           className="mySwiper2 translate-y-[-40%] 2xl:translate-y-[-30%] w-[96%]"
         >
           <SwiperSlide>
@@ -163,7 +171,7 @@ export default function NewAbout() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div class="new-about-card">
+            <div class="new-about-card !hidden md:!flex">
               <div class="flex flex-row items-center 2xl:flex-col 2xl:items-start">
                 <Image className="colorIcon" src={icon1} />
                 <Image className="colorHIcon" src={icon5} />

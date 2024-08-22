@@ -292,7 +292,6 @@ export default function Hero() {
       <Swiper
         loop={true}
         speed={3000}
-        // effect={'fade'}
         effect={'creative'}
         creativeEffect={{
           prev: {
@@ -306,19 +305,20 @@ export default function Hero() {
         pagination={{
           clickable: true,
         }}
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 2000,
+        //   disableOnInteraction: false,
+        // }}
         modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
-        className="mySwiper"
+        className="mySwiper !pt-[54px] md:!pt-0 !h-[280px] md:!h-full"
       >
+
         <SwiperSlide>
           <div className="swiper-card-main relative">
             <span className="slider-overlay"></span>
-            <div className="w-full h-[100vh] flex items-end pb-[60px]">
-              <div class="container mx-auto flex flex-col justify-between h-[80%]">
-                <div class="flex flex-col gap-5 relative z-10">
+            <div className="w-full h-[32vh] md:h-[100vh] flex items-end pb-[60px]">
+              <div class="container mx-auto flex flex-col justify-between md:h-[80%]">
+                <div class="multi-btn-sec">
                   <Link href="" className="primary-btn-1">
                     Find a Tyre
                   </Link>
@@ -357,9 +357,9 @@ export default function Hero() {
         <SwiperSlide>
           <div className="swiper-card-main relative">
             <span className="slider-overlay"></span>
-            <div className="w-full h-[100vh] flex items-end pb-[60px]">
-              <div class="container mx-auto flex flex-col justify-between h-[80%]">
-                <div class="flex flex-col gap-5 relative z-10">
+            <div className="w-full h-[32vh] md:h-[100vh] flex items-end pb-[60px]">
+              <div class="container mx-auto flex flex-col justify-between md:h-[80%]">
+                <div class="multi-btn-sec">
                   <Link href="" className="primary-btn-1">
                     Find a Tyre
                   </Link>
@@ -398,9 +398,9 @@ export default function Hero() {
         <SwiperSlide>
           <div className="swiper-card-main relative">
             <span className="slider-overlay"></span>
-            <div className="w-full h-[100vh] flex items-end pb-[60px]">
-              <div class="container mx-auto flex flex-col justify-between h-[80%]">
-                <div class="flex flex-col gap-5 relative z-10">
+            <div className="w-full h-[32vh] md:h-[100vh] flex items-end pb-[60px]">
+              <div class="container mx-auto flex flex-col justify-between md:h-[80%]">
+                <div class="multi-btn-sec">
                   <Link href="" className="primary-btn-1">
                     Find a Tyre
                   </Link>
