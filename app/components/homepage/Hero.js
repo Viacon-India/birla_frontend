@@ -305,10 +305,10 @@ export default function Hero() {
         pagination={{
           clickable: true,
         }}
-        // autoplay={{
-        //   delay: 2000,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
         modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
         className="mySwiper !pt-[54px] md:!pt-0 !h-[280px] md:!h-full"
       >
