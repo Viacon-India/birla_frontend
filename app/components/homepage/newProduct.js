@@ -152,7 +152,7 @@ export default function NewProduct() {
     <section className="product-sec mt-10 md:mt-[60px] 2xl:mt-[100px]">
       <div className="container mx-auto overflow-hidden">
         <div className="upper-title-sec flex gap-3 md:gap-0 flex-col md:flex-row justify-between items-end">
-          <div className="new">
+          <div className="self-start">
             <span className="section-heading">our products</span>
             <div className="section-title-wrapper">
               <GradualSpacing
@@ -180,7 +180,7 @@ export default function NewProduct() {
           <div
             key={tab}
             id={tab}
-            className={`tabcontent product-slider mt-5 2xl:mt-[32px] pb-[60px] 2xl:pb-[100px] ${
+            className={`tabcontent product-slider mt-5 2xl:mt-[32px] ${
               activeTab === tab ? "" : "hidden"
             }`}
           >

@@ -361,7 +361,7 @@ a.flip-animate {
   content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="white" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 .sideNav-wrapper{
-  @apply fixed right-0 z-10 top-[20%] 2xl:top-[25%] overflow-hidden
+  @apply fixed right-0 z-10 top-[20%] 2xl:top-[25%] overflow-hidden hidden md:block
 }
 
 .sideNav{
@@ -472,16 +472,15 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   }
 }
 .section-heading{
-  @apply text-primary text-[16px] uppercase 
+  @apply text-primary text-[12px] md:text-[16px] uppercase 
 }
 .section-title-wrapper{
   @apply relative pl-3 flex items-center
   before:content-[""] before:w-[3px] before:h-[80%] before:bg-primary before:absolute before:left-0 before:rounded-[100px]
 }
 .section-title{
-  @apply text-secondary text-[32px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center
+  @apply text-secondary text-[24px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center
 }
-
 .about-title{
   @apply text-secondary text-[36px] md:text-[40px] 2xl:text-[48px] font-bold leading-[1.2] flex gap-3 items-center !capitalize pl-3 mt-3
   before:content-[""] before:w-[3px] before:h-[80%] before:bg-primary before:absolute before:left-0 before:rounded-[100px]
@@ -648,19 +647,19 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 /* footer-section */
 .footer-detail-sec{
-  @apply flex justify-between items-center 
+  @apply flex flex-col-reverse md:flex-row justify-between md:items-center 
 }
 .footer-description-text{
-  @apply text-[#0E0E11] text-[16px] leading-[1.5] 
+  @apply text-[#0E0E11] text-[14px] md:text-[16px] leading-[1.5] pt-2 md:pt-0
 }
 .footer-detail-box{
-  @apply flex items-center gap-3 border border-[#727C8D] px-4 py-2 rounded-[4px]
+  @apply flex items-center gap-3 border border-[#727C8D] px-4 py-2 rounded-[4px] w-fit
 }
 .footer-detail-box span{
-  @apply text-[18px] text-secondary
+  @apply text-[14px] md:text-[18px] text-secondary
 }
 .footer-list{
-  @apply flex flex-col gap-3 mt-5
+  @apply flex flex-col gap-3 mt-2 md:mt-5
 }
 
 .footer-list-item {
@@ -686,7 +685,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 
 .bottom-top-btn{
-  @apply w-10 h-10 bg-primary flex justify-center items-center rounded-[4px]
+  @apply w-10 h-10 bg-primary flex justify-center items-center rounded-[4px] self-end
 }
 .icon-box{
   @apply bg-secondary w-10 h-10 flex justify-center items-center rounded-[4px]
