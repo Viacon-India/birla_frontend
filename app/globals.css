@@ -294,7 +294,7 @@ a.flip-animate {
 /* end new animate */
 
 .primary-btn{
-  @apply p-2 bg-primary text-[#FFFFFF] text-[14px] font-medium rounded-[4px] 
+  @apply p-2 bg-primary text-[#FFFFFF] text-[12px] md:text-[14px] font-medium rounded-[4px] 
   flex gap-2 border border-[#FFFFFF] w-fit relative overflow-hidden
   transition-all duration-[.3s] ease-in-out
 }
@@ -479,7 +479,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   before:content-[""] before:w-[3px] before:h-[80%] before:bg-primary before:absolute before:left-0 before:rounded-[100px]
 }
 .section-title{
-  @apply text-secondary text-[36px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center
+  @apply text-secondary text-[32px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center
 }
 
 .about-title{
@@ -513,17 +513,17 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 
 .innovation-card figure{
-  @apply w-full h-[244px] 2xl:h-[280px] mb-2 2xl:mb-5 relative overflow-hidden transition-all duration-500
+  @apply w-full h-[220px] 2xl:h-[280px] mb-2 2xl:mb-5 relative overflow-hidden transition-all duration-500
   rounded-[24px]
 }
 .innovation-card-image{
   @apply w-full h-full object-cover rounded-[24px]
 }
 .innovation-card h2{
-  @apply text-[#0E0E11] text-[32px] mb-2 font-semibold
+  @apply text-[#0E0E11] text-[26px] md:text-[32px] mb-1 md:mb-2 font-semibold leading-[1.2]
 }
 .innovation-card p{
-  @apply text-[#0E0E11] text-[20px] mb-2 
+  @apply text-[#0E0E11] text-[16px] md:text-[20px] mb-2 
 }
 
 
@@ -541,7 +541,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 /* product section */
 .cat-btn{
-  @apply w-[132px] py-2 bg-secondary text-[#FFFFFF]
+  @apply md:w-[132px] py-2 bg-secondary text-[#FFFFFF]
   focus:bg-primary focus:font-bold text-[16px]
   rounded-[4px] uppercase px-5 flex justify-center
   font-[300] hover:bg-primary hover:text-[#FFFFFF] hover:font-normal last:capitalize
@@ -585,17 +585,17 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 
 .mySwiper .swiper-button-next{
-  @apply !w-12 !h-12 !bg-[#DEE1E5] absolute rounded-[4px] !top-[92%]
+  @apply !w-10 !h-10 !bg-[#DEE1E5] absolute rounded-[4px] !top-[108%]
 }
 .mySwiper .swiper-button-next::after{
-  content: url('data:image/svg+xml,<svg width="22" height="30" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.731556 19.8801L9.32356 11.0001L0.731556 2.07215C0.315556 1.65615 0.315556 1.27215 0.731556 0.920149C1.14756 0.504148 1.53156 0.504148 1.88356 0.920149L11.2916 10.3761C11.6756 10.7921 11.6756 11.1921 11.2916 11.5761L1.88356 21.0321C1.53156 21.4481 1.14756 21.4481 0.731556 21.0321C0.315556 20.6801 0.315556 20.2961 0.731556 19.8801Z" fill="%234F5662"/></svg>') !important; 
+  content: url('data:image/svg+xml,<svg width="22" height="28" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.731556 19.8801L9.32356 11.0001L0.731556 2.07215C0.315556 1.65615 0.315556 1.27215 0.731556 0.920149C1.14756 0.504148 1.53156 0.504148 1.88356 0.920149L11.2916 10.3761C11.6756 10.7921 11.6756 11.1921 11.2916 11.5761L1.88356 21.0321C1.53156 21.4481 1.14756 21.4481 0.731556 21.0321C0.315556 20.6801 0.315556 20.2961 0.731556 19.8801Z" fill="%234F5662"/></svg>') !important; 
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }
 .mySwiper .swiper-button-prev{
-  @apply !w-12 !h-12 !bg-[#DEE1E5] absolute rounded-[4px] !top-[92%] !left-[86%] 2xl:!left-[91%]
+  @apply !w-10 !h-10 !bg-[#DEE1E5] absolute rounded-[4px] !top-[108%] !left-[73%] 2xl:!left-[91%]
 }
 .mySwiper .swiper-button-prev::after{
-  content: url('data:image/svg+xml,<svg width="12" height="30" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2674 19.8801C11.6834 20.2961 11.6834 20.6801 11.2674 21.0321C10.8514 21.4481 10.4674 21.4481 10.1154 21.0321L0.707434 11.5761C0.323434 11.1921 0.323434 10.7921 0.707434 10.3761L10.1154 0.920149C10.4674 0.504148 10.8514 0.504148 11.2674 0.920149C11.6834 1.27215 11.6834 1.65615 11.2674 2.07215L2.67543 11.0001L11.2674 19.8801Z" fill="%234F5662"/></svg>') !important; 
+  content: url('data:image/svg+xml,<svg width="22" height="28" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2674 19.8801C11.6834 20.2961 11.6834 20.6801 11.2674 21.0321C10.8514 21.4481 10.4674 21.4481 10.1154 21.0321L0.707434 11.5761C0.323434 11.1921 0.323434 10.7921 0.707434 10.3761L10.1154 0.920149C10.4674 0.504148 10.8514 0.504148 11.2674 0.920149C11.6834 1.27215 11.6834 1.65615 11.2674 2.07215L2.67543 11.0001L11.2674 19.8801Z" fill="%234F5662"/></svg>') !important; 
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }
 
@@ -616,7 +616,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 /* media-card-section */
 
 .media-card figure{
-  @apply w-full h-[280px] 2xl:h-[360px] mb-6 overflow-hidden relative rounded-[24px]
+  @apply w-full h-[280px] 2xl:h-[360px] mb-2 md:mb-6 overflow-hidden relative rounded-[24px]
 }
 .media-card-image{
   @apply w-full h-full object-cover rounded-[24px]
@@ -625,10 +625,10 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply text-primary text-[14px] capitalize
 }
 .media-title{
-  @apply text-[#0E0E11] text-[18px] font-bold leading-[1.5] mb-2 !h-[50px]
+  @apply text-[#0E0E11] text-[18px] font-bold leading-[1.5] mb-2 !h-[50px] line-clamp-2
 }
 .media-detail{
-  @apply text-[#4F5662] text-[14px] mb-3
+  @apply text-[#4F5662] text-[14px] mb-3 line-clamp-2
 }
 
 .media-card figure img {
@@ -1115,7 +1115,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply !w-full
 }
 .about-usp-title-2{
-  @apply text-[#1A1D21] text-[26px] 2xl:text-[32px] font-medium 2xl:mt-3
+  @apply text-[#1A1D21] text-[24px] 2xl:text-[32px] font-medium 2xl:mt-3
 }
 .about-usp-detail-2{
   @apply text-[#606977] text-[16px] 2xl:text-[16px] leading-[1.5] line-clamp-2 2xl:line-clamp-4
@@ -1145,16 +1145,19 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply !hidden
 }
 .new-about-slider .swiper-slide-active .new-about-card .colorIcon{
-  @apply !block w-[28px] h-[28px] md:w-[40px] md:h-[40px]
+  @apply !block w-[32px] h-[32px] md:w-[40px] md:h-[40px]
 }
 .new-about-slider .new-about-card .colorIcon{
-  @apply !hidden w-[28px] h-[28px] md:w-[40px] md:h-[40px]
+  @apply !hidden w-[32px] h-[32px] md:w-[40px] md:h-[40px]
 }
 .maskIcon{
   @apply w-[200px] h-[200px] object-cover 2xl:w-[300px] 2xl:h-[300px] absolute right-0 top-0
 }
 .newAboutImg{
   @apply w-full h-[236px] 2xl:h-[400px] rounded-[12px]
+}
+.about-icon-wrapper{
+  @apply flex flex-col md:flex-row md:items-center 2xl:flex-col 2xl:items-start
 }
 
 

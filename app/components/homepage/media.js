@@ -14,7 +14,7 @@ export default function Media() {
     AOS.init();
   }, []);
   return (
-    <section className="media-sec mt-[60px] 2xl:mt-[100px]">
+    <section className="media-sec mt-10 md:mt-[60px] 2xl:mt-[100px]">
       <div className="container mx-auto overflow-hidden">
         <div className="upper-title-sec">
           <span className="section-heading">our presence</span>
