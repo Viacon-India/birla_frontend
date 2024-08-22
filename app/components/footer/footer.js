@@ -70,7 +70,7 @@ export default function Footer() {
                 <span>ESS Portal</span>
               </div>
             </div>
-            <div class="follow-sec flex items-center gap-4 mt-6">
+            <div class="follow-sec flex flex-col md:flex-row md:items-center gap-4 mt-6">
               <span className="text-[#1A1D21] text-[24px]">Follow us on :</span>
               <div class="flex items-center gap-4">
                 <Link className="icon-box" href="">
@@ -194,7 +194,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <ul className="footer-list-sec py-10 grid grid-cols-5">
+        <ul className="footer-list-sec py-10 grid grid-cols-2 md:grid-cols-5">
           {footerMenu.map((newMenu) => (
             <li className="footer-list-box" key={newMenu.id}>
               <h2>{newMenu.attributes.menu[0].menu_item.name}</h2>

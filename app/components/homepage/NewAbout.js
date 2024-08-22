@@ -32,7 +32,7 @@ export default function NewAbout() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
-    <section className="new-about-slider mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden">
+    <section className="new-about-slider mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden h-[500px] md:h-[100%]">
       <div className="container mx-auto">
         <span className="section-heading">company brief</span>
         <div className="section-title-wrapper">
@@ -66,16 +66,16 @@ export default function NewAbout() {
 
         <Swiper
           speed={2000}
-          // autoplay={{
-          //   disableOnInteraction: false,
-          //   pauseOnMouseEnter: true,
-          // }}
+          autoplay={{
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
           modules={[Autoplay, FreeMode, Thumbs, Controller]}
           thumbs={{ swiper: thumbsSwiper }}
           effect={"fade"}
           breakpoints={{
             0: {
-              slidesPerView: 1.4,
+              slidesPerView: 1.3,
             },
             768: {
               slidesPerView: 2.1,
@@ -85,7 +85,7 @@ export default function NewAbout() {
         >
           <SwiperSlide>
             <div class="new-about-card">
-              <div class="flex flex-row items-center 2xl:flex-col 2xl:items-start">
+              <div class="about-icon-wrapper">
                 <Image className="colorIcon" src={icon1} />
                 <Image className="colorHIcon" src={icon5} />
                 <h2 className="about-usp-title-2">Legacy of Trust</h2>
@@ -106,7 +106,7 @@ export default function NewAbout() {
           </SwiperSlide>
           <SwiperSlide>
             <div class="new-about-card">
-              <div class="flex flex-row items-center 2xl:flex-col 2xl:items-start">
+              <div class="about-icon-wrapper">
                 <Image className="colorIcon" src={icon2} />
                 <Image className="colorHIcon" src={icon6} />
                 <h2 className="about-usp-title-2">Vast Range of Products</h2>
@@ -127,7 +127,7 @@ export default function NewAbout() {
           </SwiperSlide>
           <SwiperSlide>
             <div class="new-about-card">
-              <div class="flex flex-row items-center 2xl:flex-col 2xl:items-start">
+              <div class="about-icon-wrapper">
                 <Image className="colorIcon" src={icon3} />
                 <Image className="colorHIcon" src={icon7} />
                 <h2 className="about-usp-title-2">
@@ -149,7 +149,7 @@ export default function NewAbout() {
           </SwiperSlide>
           <SwiperSlide>
             <div class="new-about-card">
-              <div class="flex flex-row items-center 2xl:flex-col 2xl:items-start">
+              <div class="about-icon-wrapper">
                 <Image className="colorIcon" src={icon4} />
                 <Image className="colorHIcon" src={icon8} />
                 <h2 className="about-usp-title-2">Customer-Centric Approach</h2>
@@ -167,9 +167,9 @@ export default function NewAbout() {
               <Image className="maskIcon" src={mask4} />
             </div>
           </SwiperSlide>
-          <SwiperSlide>
-            <div class="new-about-card !hidden md:!flex">
-              <div class="flex flex-row items-center 2xl:flex-col 2xl:items-start">
+          <SwiperSlide className="!hidden md:!flex">
+            <div class="new-about-card">
+              <div class="about-icon-wrapper">
                 <Image className="colorIcon" src={icon1} />
                 <Image className="colorHIcon" src={icon5} />
                 <h2 className="about-usp-title-2">Legacy of Trust</h2>

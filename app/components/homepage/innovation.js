@@ -63,14 +63,12 @@ export default function Innovation() {
               />
             </div>
           </div>
-          <Link className="tertiary-button" href="/users/product">
+          <Link className="tertiary-button !hidden md:!flex" href="/users/product">
             Discover Our Categories
           </Link>
         </div>
         <div class="innovative-slider mt-5 2xl:mt-8">
           <Swiper
-            slidesPerView={3}
-            spaceBetween={48}
             freeMode={true}
             speed= {2400}
             loop={true}
@@ -80,6 +78,16 @@ export default function Innovation() {
             }}
             pagination={{
               clickable: true,
+            }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1.2,
+                spaceBetween : 20
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 48
+              },
             }}
             modules={[FreeMode, Autoplay]}
             className="mySwiper"
@@ -101,7 +109,7 @@ export default function Innovation() {
                 <p>Fortifying Commercial Vehicles</p>
                 <Link
                   href="#"
-                  className="primary-btn w-fit !px-6 flip-animate-2"
+                  className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
                 >
                   <span data-hover="Explore Products">Explore Products</span>
                 </Link>
@@ -125,7 +133,7 @@ export default function Innovation() {
                 <p>Designed for Durability & Strength</p>
                 <Link
                   href="#"
-                  className="primary-btn w-fit !px-6 flip-animate-2"
+                  className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
                 >
                   <span data-hover="Explore Products">Explore Products</span>
                 </Link>
@@ -149,7 +157,7 @@ export default function Innovation() {
                 <p>The Power to Strengthen Fields</p>
                 <Link
                   href="#"
-                  className="primary-btn w-fit !px-6 flip-animate-2"
+                  className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
                 >
                   <span data-hover="Explore Products">Explore Products</span>
                 </Link>
@@ -172,7 +180,7 @@ export default function Innovation() {
                 <p>Fortifying Commercial Vehicles</p>
                 <Link
                   href="#"
-                  className="primary-btn w-fit !px-6 flip-animate-2"
+                  className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
                 >
                   <span data-hover="Explore Products">Explore Products</span>
                 </Link>
@@ -196,7 +204,7 @@ export default function Innovation() {
                 <p>Designed for Durability & Strength</p>
                 <Link
                   href="#"
-                  className="primary-btn w-fit !px-6 flip-animate-2"
+                  className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
                 >
                   <span data-hover="Explore Products">Explore Products</span>
                 </Link>
@@ -220,7 +228,7 @@ export default function Innovation() {
                 <p>The Power to Strengthen Fields</p>
                 <Link
                   href="#"
-                  className="primary-btn w-fit !px-6 flip-animate-2"
+                  className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
                 >
                   <span data-hover="Explore Products">Explore Products</span>
                 </Link>

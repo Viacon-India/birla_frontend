@@ -6,7 +6,7 @@ import tigerMask from "../../assets/images/tiger-mask2.png";
 
 export default function Dealer() {
   return (
-    <section className="dealer-sec relative overflow-hidden">
+    <section className="dealer-sec mt-10 relative overflow-hidden">
       <Image src={tigerMask} className="absolute left-8 top-0" />
       <div className="container mx-auto overflow-hidden">
         <div className="upper-title-sec">
@@ -348,8 +348,8 @@ export default function Dealer() {
             </div>
           </div>
           <div class="map-sec lg:w-[70%]">
-            <div class="flex justify-between gap-2 mb-2 items-center">
-              <div class="area-input-wrapper relative flex gap-4 w-[50%]">
+            <div class="flex flex-col md:flex-row justify-between gap-2 mb-2 items-center">
+              <div class="area-input-wrapper relative flex gap-4 w-full md:w-[50%]">
                 <select className="select-box" name="state" id="state">
                   <option value="Select State">Select State</option>
                   <option value="West Bengal">West Bengal</option>
@@ -364,7 +364,7 @@ export default function Dealer() {
                 </select>
               </div>
               <span className="">Or</span>
-              <div class="address-input-wrapper relative w-[50%]">
+              <div class="address-input-wrapper relative w-full md:w-[50%]">
                 <input
                   className="address-input pr-[60px]"
                   type="search"
