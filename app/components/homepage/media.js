@@ -30,8 +30,13 @@ export default function Media() {
               // data-aos-offset="650"
             >
               <figure>
-                <Image className="media-card-image" src={gallary1} alt="card" />
-                <span></span>
+                <Link href="https://timesofindia.indiatimes.com/city/kolkata/birla-tyres-to-re-enter-market-with-new-products-in-q4/articleshow/111793517.cms">
+                  <Image
+                    className="media-card-image"
+                    src={gallary1}
+                    alt="card"
+                  />
+                </Link>
               </figure>
               <div className="media-card-detail">
                 <div className="flex justify-between items-center mb-3">
@@ -39,13 +44,17 @@ export default function Media() {
                   <span className="card-date">24 June 2024</span>
                 </div>
                 <h2 className="media-title">
-                  Birla Tyres to re-enter mkt with new products in Q4
+                  <Link href="https://timesofindia.indiatimes.com/city/kolkata/birla-tyres-to-re-enter-market-with-new-products-in-q4/articleshow/111793517.cms">
+                    Birla Tyres to re-enter mkt with new products in Q4
+                  </Link>
                 </h2>
                 <p className="media-detail">
-                  Birla Tyres is likely to re-enter the market with a new range of products in the fourth quarter of this fiscal, said Anurag Choudhary....
+                  Birla Tyres is likely to re-enter the market with a new range
+                  of products in the fourth quarter of this fiscal, said Anurag
+                  Choudhary....
                 </p>
                 <Link
-                  href="#"
+                  href="https://timesofindia.indiatimes.com/city/kolkata/birla-tyres-to-re-enter-market-with-new-products-in-q4/articleshow/111793517.cms"
                   className="primary-btn w-fit !px-6 flip-animate-2"
                 >
                   <span data-hover="Read More">Read More</span>
@@ -59,7 +68,13 @@ export default function Media() {
               // data-aos-offset="650"
             >
               <figure>
-                <Image className="media-card-image" src={gallary2} alt="card" />
+                <Link href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074">
+                  <Image
+                    className="media-card-image"
+                    src={gallary2}
+                    alt="card"
+                  />
+                </Link>
                 <span></span>
               </figure>
               <div className="media-card-detail">
@@ -68,13 +83,17 @@ export default function Media() {
                   <span className="card-date">24 June 2024</span>
                 </div>
                 <h2 className="media-title">
-                  Birla Tyres set to roll again, acquisition finalised by consortium of Himadri and Dalmia
+                  <Link href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074">
+                    Birla Tyres set to roll again, acquisition finalised by
+                    consortium of Himadri and Dalmia
+                  </Link>
                 </h2>
                 <p className="media-detail">
-                Birla Tyres will resurface on Indian roads a year from now, courtesy the new owners of the company and the brand....
+                  Birla Tyres will resurface on Indian roads a year from now,
+                  courtesy the new owners of the company and the brand....
                 </p>
                 <Link
-                  href="#"
+                  href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
                   className="primary-btn w-fit !px-6 flip-animate-2"
                 >
                   <span data-hover="Read More">Read More</span>

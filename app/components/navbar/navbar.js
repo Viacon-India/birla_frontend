@@ -69,7 +69,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          <div className="navbar-center flex items-center gap-6 lg:flex md:pl-7 ml-[-15%] md:ml-0">
+          <div className="navbar-center flex items-center gap-6 lg:flex md:pl-7 ml-[-10%] md:ml-0">
             <ul className="menu menu-horizontal hidden md:flex relative text-lg lg:gap-4 xl:gap-7 p-0">
               {navMenu.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
