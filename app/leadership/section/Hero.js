@@ -1,20 +1,12 @@
 "use client";
 
-
 import Hero from "../../assets/images/leadership-hero.jpg";
-
-// import React, { useRef, useState, useEffect } from "react";
-// import "swiper/css";
-// import 'swiper/css/effect-fade'
 import Link from "next/link";
 import Image from "next/image";
 
-
 import GradualSpacing from "@/components/GradualSpacing";
-// import LetterPullup from "@/components/LetterPullup";
 
 export default function Slider() {
-
   return (
     <div className="relative">
       <div className="sideNav-wrapper">
@@ -198,9 +190,8 @@ export default function Slider() {
       </div>
 
       <div className="swiper-card-main relative">
-        {/* <span className="slider-overlay"></span> */}
-        <div className="w-full h-[83vh] flex items-end pb-[60px]">
-          <div class="container mx-auto flex flex-col justify-between h-[80%]">
+        <div className="w-full h-[83vh] flex items-end 2xl:pb-[60px]">
+          <div class="container mx-auto flex flex-col justify-around 2xl:justify-between h-[80%]">
             <div class="flex flex-col gap-5 relative z-10">
               <Link href="" className="primary-btn-1">
                 Find a Tyre
@@ -218,10 +209,10 @@ export default function Slider() {
           </div>
         </div>
         <Image
-                  src={Hero}
-                  alt="Hero-Banner"
-                  className="absolute top-0 w-full h-full object-cover"
-                />
+          src={Hero}
+          alt="Hero-Banner"
+          className="absolute top-0 w-full h-full object-cover"
+        />
       </div>
     </div>
   );
