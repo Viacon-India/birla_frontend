@@ -32,7 +32,7 @@ export default function NewAbout() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
-    <section className="new-about-slider mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden h-[500px] md:h-[100%]">
+    <section className="new-about-slider mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden h-[100%]">
       <div className="container mx-auto">
         <span className="section-heading">company brief</span>
         <div className="section-title-wrapper">
@@ -75,13 +75,13 @@ export default function NewAbout() {
           effect={"fade"}
           breakpoints={{
             0: {
-              slidesPerView: 1.3,
+              slidesPerView: 1.2,
             },
             768: {
               slidesPerView: 2.1,
             },
           }}
-          className="mySwiper2 translate-y-[-25%] md:translate-y-[-40%] 2xl:translate-y-[-30%] w-[120%] md:w-[96%]"
+          className="mySwiper2 translate-y-[-25%] md:translate-y-[-40%] 2xl:translate-y-[-30%] w-[100%] md:w-[96%]"
         >
           <SwiperSlide>
             <div class="new-about-card">
@@ -131,7 +131,7 @@ export default function NewAbout() {
                 <Image className="colorIcon" src={icon3} />
                 <Image className="colorHIcon" src={icon7} />
                 <h2 className="about-usp-title-2">
-                  Commitment to Quality Excellence
+                  Commitment to Excellence
                 </h2>
               </div>
               <p className="about-usp-detail-2">
@@ -152,7 +152,7 @@ export default function NewAbout() {
               <div class="about-icon-wrapper">
                 <Image className="colorIcon" src={icon4} />
                 <Image className="colorHIcon" src={icon8} />
-                <h2 className="about-usp-title-2">Customer-Centric Approach</h2>
+                <h2 className="about-usp-title-2">Customer-Approach</h2>
               </div>
               <p className="about-usp-detail-2">
                 Our customer-centric approach is the cornerstone of our business
