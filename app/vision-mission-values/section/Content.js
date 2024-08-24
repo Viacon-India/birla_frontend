@@ -1,9 +1,8 @@
 "use client";
 
 import GradualSpacing from "@/components/GradualSpacing";
-import Link from "next/link";
 import Image from "next/image";
-import Vision from "../../assets/images/Vision.jpg";
+import Vision from "../../assets/images/vision.jpg";
 import MissionBackground from "../../assets/images/mission-background.jpg";
 import ValuesBackground from "../../assets/images/values-background.jpg";
 
