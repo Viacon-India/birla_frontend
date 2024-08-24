@@ -13,7 +13,13 @@ export default function NewAbout() {
   return (
     <section className="mt-10 md:mt-[60px] 2xl:mt-[100px] pt-6 overflow-hidden">
       <div className="container mx-auto flex flex-col gap-10">
-        <div className="flex gap-10">
+        <div className="flex flex-col gap-3">
+          <span className="section-heading">Board of Directors</span>
+          <div className="section-title-wrapper">
+            <GradualSpacing className="section-title" text="The people who inspire us" />
+          </div>
+        </div>
+        <div className="flex gap-10 pt-[23px]">
           <figure className="pl-[23px] relative w-[47.5%]">
             <Image src={Director1} className="w-full rounded-xl relative z-1" />
             <svg className="absolute left-[-10px] top-[-23px] w-full h-full" width="550" height="500" viewBox="0 0 550 500" fill="none" xmlns="http://www.w3.org/2000/svg">

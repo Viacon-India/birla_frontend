@@ -27,10 +27,10 @@ export default function GradualSpacing({
   const isInView = useInView(ref, { once: false }); // Set once to false to trigger animation every time
 
   return (
-    <div ref={ref} className="flex flex-wrap">
+    <div ref={ref} className="flex flex-wrap w-fit">
       {isInView && (
         <AnimatePresence>
-          {text.split("").map((char, i) => (
+          {text.split("").map((char, i, array) => (
             <motion.h1
               key={i}
               initial="hidden"
@@ -38,7 +38,7 @@ export default function GradualSpacing({
               exit="hidden"
               variants={framerProps}
               transition={{ duration, delay: i * delayMultiple }}
-              className={cn("drop-shadow-sm ", className)}
+              className={cn("drop-shadow-sm ", className) + ( i!=0?array.length - 1 === i?' pr-5':'':' pl-5')}
               
             >
               {char === " " ? <span>&nbsp;</span> : char}
