@@ -138,7 +138,7 @@ export default function Hero() {
           disableOnInteraction: false,
         }}
         modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
-        className="mySwiper !pt-[60px] md:!pt-0 !h-[270px] md:!h-full"
+        className="mySwiper !pt-[58px] md:!pt-0 !h-[264px] md:!h-full"
       >
         <SwiperSlide>
           <div className="swiper-card-main">

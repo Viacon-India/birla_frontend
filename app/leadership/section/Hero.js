@@ -24,7 +24,7 @@ export default function Slider() {
             <div className="swiper-card relative z-10">
               <GradualSpacing
                 className="leadership-hero-sec-heading font-bold text-[56px] text-[#1A1D21] bg-white"
-                text="Leadership"
+                text="Leadership" padding="5"
               />
             </div>
           </div>
