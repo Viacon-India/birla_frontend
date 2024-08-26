@@ -9,6 +9,7 @@ import Dealer from "./dealer";
 import NewAboutUs from "../homepage/NewAbout"
 import Link from "next/link";
 import Hero from "../../components/homepage/Hero"
+import Faq from "../../components/homepage/faq"
 
 export default function NewHomepage() {
   return (
@@ -21,6 +22,7 @@ export default function NewHomepage() {
       <Dealer />
       <Sustainability />
       <Media />
+      <Faq />
     </>
   );
 }

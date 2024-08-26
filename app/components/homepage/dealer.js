@@ -16,29 +16,83 @@ export default function Dealer() {
             <GradualSpacing className="section-title" text="Dealer Locator" />
           </div>
         </div>
-        <div class="flex flex-col lg:flex-row gap-6 mt-5 2xl:mt-10">
-          <div class="listing-card-sec lg:w-[30%] relative">
-            <div class="relative">
-              <input className="px-4 py-3 bg-[#FFFFFF] border border-[#DEE1E5] rounded-[4px] w-full outline-none" type="text" placeholder="Search By Pincode" />
-              <svg
+        <div class="w-full flex gap-2 md:gap-6 flex-col md:flex-row mt-5 2xl:mt-10">
+          <div class="relative md:w-[30%]">
+            <input
+              className="px-4 py-3 bg-[#FFFFFF] border border-[#DEE1E5] rounded-[4px] w-full outline-none"
+              type="text"
+              placeholder="Search By Pincode"
+            />
+            <svg
               className="absolute top-4 right-4"
-                width="18"
-                height="18"
-                viewBox="0 0 18 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.6 18L10.3 11.7C9.8 12.1 9.225 12.4167 8.575 12.65C7.925 12.8833 7.23333 13 6.5 13C4.68333 13 3.146 12.3707 1.888 11.112C0.63 9.85333 0.000667196 8.316 5.29101e-07 6.5C-0.000666138 4.684 0.628667 3.14667 1.888 1.888C3.14733 0.629333 4.68467 0 6.5 0C8.31533 0 9.853 0.629333 11.113 1.888C12.373 3.14667 13.002 4.684 13 6.5C13 7.23333 12.8833 7.925 12.65 8.575C12.4167 9.225 12.1 9.8 11.7 10.3L18 16.6L16.6 18ZM6.5 11C7.75 11 8.81267 10.5627 9.688 9.688C10.5633 8.81333 11.0007 7.75067 11 6.5C10.9993 5.24933 10.562 4.187 9.688 3.313C8.814 2.439 7.75133 2.00133 6.5 2C5.24867 1.99867 4.18633 2.43633 3.313 3.313C2.43967 4.18967 2.002 5.252 2 6.5C1.998 7.748 2.43567 8.81067 3.313 9.688C4.19033 10.5653 5.25267 11.0027 6.5 11Z"
-                  fill="black"
-                />
-              </svg>
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.6 18L10.3 11.7C9.8 12.1 9.225 12.4167 8.575 12.65C7.925 12.8833 7.23333 13 6.5 13C4.68333 13 3.146 12.3707 1.888 11.112C0.63 9.85333 0.000667196 8.316 5.29101e-07 6.5C-0.000666138 4.684 0.628667 3.14667 1.888 1.888C3.14733 0.629333 4.68467 0 6.5 0C8.31533 0 9.853 0.629333 11.113 1.888C12.373 3.14667 13.002 4.684 13 6.5C13 7.23333 12.8833 7.925 12.65 8.575C12.4167 9.225 12.1 9.8 11.7 10.3L18 16.6L16.6 18ZM6.5 11C7.75 11 8.81267 10.5627 9.688 9.688C10.5633 8.81333 11.0007 7.75067 11 6.5C10.9993 5.24933 10.562 4.187 9.688 3.313C8.814 2.439 7.75133 2.00133 6.5 2C5.24867 1.99867 4.18633 2.43633 3.313 3.313C2.43967 4.18967 2.002 5.252 2 6.5C1.998 7.748 2.43567 8.81067 3.313 9.688C4.19033 10.5653 5.25267 11.0027 6.5 11Z"
+                fill="black"
+              />
+            </svg>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between gap-2 mb-2 items-center md:w-[70%]">
+            <div class="area-input-wrapper relative flex gap-4 w-full md:w-[50%]">
+              <select className="select-box" name="state" id="state">
+                <option value="Select State">Select State</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Maharashtra">Maharashtra</option>
+              </select>
+              <select className="select-box" name="city" id="city">
+                <option value="Select City">Select City</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Hydrabad">Hydrabad</option>
+              </select>
             </div>
+            <span className="hidden md:block">Or</span>
+            <div class="address-input-wrapper relative w-full md:w-[50%]">
+              <input
+                className="address-input pr-[60px]"
+                type="search"
+                placeholder="Mani Casadona 11F, 04, Street Number 372, Action Area I, IIF , Kolkata , ..."
+              />
+              <span className="w-9 h-9 rounded-[4px] bg-secondary flex justify-center items-center absolute right-[8px] top-[8px]">
+                <svg
+                  width="14"
+                  height="18"
+                  viewBox="0 0 14 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.00009 14.625V17.125M7.00009 14.625C8.38377 14.625 9.7189 14.1151 10.7503 13.1927C11.7816 12.2703 12.4369 11.0001 12.5908 9.62501M7.00009 14.625C5.61642 14.625 4.28128 14.1151 3.24991 13.1927C2.21854 12.2702 1.56329 11.0001 1.40942 9.625M7.00009 0.875C7.82889 0.875 8.62375 1.20424 9.2098 1.79029C9.79585 2.37634 10.1251 3.1712 10.1251 4V9C10.1251 9.8288 9.79585 10.6237 9.2098 11.2097C8.62375 11.7958 7.82889 12.125 7.00009 12.125C6.58971 12.125 6.18334 12.0442 5.8042 11.8871C5.42506 11.7301 5.08056 11.4999 4.79038 11.2097C4.5002 10.9195 4.27001 10.575 4.11297 10.1959C3.95592 9.81675 3.87509 9.41039 3.87509 9.00001V3.99999C3.87509 3.17119 4.20433 2.37634 4.79038 1.79029C5.37643 1.20424 6.17129 0.875 7.00009 0.875Z"
+                    stroke="#F4F5F6"
+                    stroke-width="1.25"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="listing-card-sec lg:w-[30%] relative">
             <div class="nearest-card">
               <h2 className="">Nearest Dealer is just 1.5KM away</h2>
-              <Link className="tertiary-button underline underline-offset-2" href="#">Get Contact Details</Link>
+              <Link
+                className="tertiary-button underline underline-offset-2"
+                href="#"
+              >
+                Get Contact Details
+              </Link>
             </div>
-            <h4 className="result-number">Showing <span>15 Results</span></h4>
+            <h4 className="result-number">
+              Showing <span>15 Results</span>
+            </h4>
             <div class="listing-card-wrapper">
               <div class="listing-card">
                 <div class="flex items-center justify-between">
@@ -348,47 +402,6 @@ export default function Dealer() {
             </div>
           </div>
           <div class="map-sec lg:w-[70%]">
-            <div class="flex flex-col md:flex-row justify-between gap-2 mb-2 items-center">
-              <div class="area-input-wrapper relative flex gap-4 w-full md:w-[50%]">
-                <select className="select-box" name="state" id="state">
-                  <option value="Select State">Select State</option>
-                  <option value="West Bengal">West Bengal</option>
-                  <option value="Bihar">Bihar</option>
-                  <option value="Maharashtra">Maharashtra</option>
-                </select>
-                <select className="select-box" name="city" id="city">
-                  <option value="Select City">Select City</option>
-                  <option value="Kolkata">Kolkata</option>
-                  <option value="Delhi">Delhi</option>
-                  <option value="Hydrabad">Hydrabad</option>
-                </select>
-              </div>
-              <span className="">Or</span>
-              <div class="address-input-wrapper relative w-full md:w-[50%]">
-                <input
-                  className="address-input pr-[60px]"
-                  type="search"
-                  placeholder="Mani Casadona 11F, 04, Street Number 372, Action Area I, IIF , Kolkata , ..."
-                />
-                <span className="w-9 h-9 rounded-[4px] bg-secondary flex justify-center items-center absolute right-[8px] top-[8px]">
-                  <svg
-                    width="14"
-                    height="18"
-                    viewBox="0 0 14 18"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7.00009 14.625V17.125M7.00009 14.625C8.38377 14.625 9.7189 14.1151 10.7503 13.1927C11.7816 12.2703 12.4369 11.0001 12.5908 9.62501M7.00009 14.625C5.61642 14.625 4.28128 14.1151 3.24991 13.1927C2.21854 12.2702 1.56329 11.0001 1.40942 9.625M7.00009 0.875C7.82889 0.875 8.62375 1.20424 9.2098 1.79029C9.79585 2.37634 10.1251 3.1712 10.1251 4V9C10.1251 9.8288 9.79585 10.6237 9.2098 11.2097C8.62375 11.7958 7.82889 12.125 7.00009 12.125C6.58971 12.125 6.18334 12.0442 5.8042 11.8871C5.42506 11.7301 5.08056 11.4999 4.79038 11.2097C4.5002 10.9195 4.27001 10.575 4.11297 10.1959C3.95592 9.81675 3.87509 9.41039 3.87509 9.00001V3.99999C3.87509 3.17119 4.20433 2.37634 4.79038 1.79029C5.37643 1.20424 6.17129 0.875 7.00009 0.875Z"
-                      stroke="#F4F5F6"
-                      stroke-width="1.25"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </span>
-              </div>
-            </div>
             <iframe src="//maps.google.com/maps?q=53.3381768,-6.2613077&z=15&output=embed"></iframe>
           </div>
         </div>
