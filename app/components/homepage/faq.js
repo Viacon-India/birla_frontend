@@ -17,7 +17,7 @@ export default function Faq() {
               text="Frequently Asked Questions"
             />
           </div>
-          <p className="text-[#3D434C] text-[16px] md:text-[18px] font-medium leading-[1.7] mt-5 2xl:mt-8">
+          <p className="text-[#3D434C] text-[14px] md:text-[16px] 2xl:text-[18px] font-medium leading-[1.7] mt-5 2xl:mt-8">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec
             vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque
@@ -28,19 +28,19 @@ export default function Faq() {
           </p>
         </div>
         <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-4 md:mt-8 2xl:mt-10">
-          <figure className="w-full md:w-[50%] h-[350px] md:h-[450px] 2xl:h-[650px] mb-0">
-            <Image
-              className="w-full h-full object-cover rounded-[12px]"
-              src={faqImage}
-              alt=""
-            />
-          </figure>
+          <div class="w-full md:w-[50%] h-[100%] sticky top-0">
+            <figure className="w-full h-[350px] md:h-[450px] 2xl:h-[650px] mb-0">
+              <Image
+                className="w-full h-full object-cover rounded-[12px]"
+                src={faqImage}
+                alt="faqImg"
+              />
+            </figure>
+          </div>
           <div class="accordion-list-sec md:w-[50%]">
             <div className="collapse collapse-plus">
               <input type="radio" name="my-accordion-3" defaultChecked />
-              <div className="collapse-title">
-                Lorem ipsum question 1
-              </div>
+              <div className="collapse-title">Lorem ipsum question 1</div>
               <div className="collapse-content">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -53,9 +53,7 @@ export default function Faq() {
             </div>
             <div className="collapse collapse-plus">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title">
-                Lorem ipsum question 2
-              </div>
+              <div className="collapse-title">Lorem ipsum question 2</div>
               <div className="collapse-content">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -68,9 +66,7 @@ export default function Faq() {
             </div>
             <div className="collapse collapse-plus">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title">
-                Lorem ipsum question 3
-              </div>
+              <div className="collapse-title">Lorem ipsum question 3</div>
               <div className="collapse-content">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -83,9 +79,7 @@ export default function Faq() {
             </div>
             <div className="collapse collapse-plus">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title">
-                Lorem ipsum question 4
-              </div>
+              <div className="collapse-title">Lorem ipsum question 4</div>
               <div className="collapse-content">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -98,9 +92,7 @@ export default function Faq() {
             </div>
             <div className="collapse collapse-plus">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title">
-                Lorem ipsum question 5
-              </div>
+              <div className="collapse-title">Lorem ipsum question 5</div>
               <div className="collapse-content">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -113,9 +105,7 @@ export default function Faq() {
             </div>
             <div className="collapse collapse-plus">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title">
-                Lorem ipsum question 6
-              </div>
+              <div className="collapse-title">Lorem ipsum question 6</div>
               <div className="collapse-content">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -128,9 +118,7 @@ export default function Faq() {
             </div>
             <div className="collapse collapse-plus">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title">
-                Lorem ipsum question 7
-              </div>
+              <div className="collapse-title">Lorem ipsum question 7</div>
               <div className="collapse-content">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -143,9 +131,7 @@ export default function Faq() {
             </div>
             <div className="collapse collapse-plus">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title">
-                Lorem ipsum question 8
-              </div>
+              <div className="collapse-title">Lorem ipsum question 8</div>
               <div className="collapse-content">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -158,9 +144,7 @@ export default function Faq() {
             </div>
             <div className="collapse collapse-plus">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title">
-                Lorem ipsum question 9
-              </div>
+              <div className="collapse-title">Lorem ipsum question 9</div>
               <div className="collapse-content">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -173,9 +157,7 @@ export default function Faq() {
             </div>
             <div className="collapse collapse-plus">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title">
-                Lorem ipsum question 10
-              </div>
+              <div className="collapse-title">Lorem ipsum question 10</div>
               <div className="collapse-content">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -186,6 +168,7 @@ export default function Faq() {
                 </p>
               </div>
             </div>
+            
           </div>
         </div>
       </div>
