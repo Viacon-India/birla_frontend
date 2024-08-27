@@ -215,7 +215,7 @@ export default function Navbar() {
               Find a Dealer
             </Link>
           </div>
-          <ul className="h-full overflow-auto px-[16px] pt-4 md:pt-0">
+          <ul className="h-full overflow-auto px-[16px] pt-4 md:pt-0 xl:pt-[80px] 2xl:!pt-0">
             {hamMenu.map((menu) => (
               <li className="mb-4" key={menu.id}>
                 <button className="ham-links">{menu.menu_item.name}</button>
