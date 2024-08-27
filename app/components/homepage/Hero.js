@@ -25,7 +25,7 @@ export default function Hero() {
   useEffect(() => {
     gsap.fromTo(
       ".sideNav-wrapper",
-      { right: "-40px" },
+      { right: "-48px" },
       {
         right: "0px",
         scrollTrigger: {
@@ -43,7 +43,7 @@ export default function Hero() {
       ".sideNav-wrapper",
       { right: "0px" },
       {
-        right: "-40px",
+        right: "-48px",
         scrollTrigger: {
           trigger: ".video-content",
           scroller: "body",
@@ -275,11 +275,11 @@ export default function Hero() {
           </div>
         </SwiperSlide>
       </Swiper>
-      <div class="relative flex md:hidden gap-5 p-2">
-        <Link href="" className="primary-btn-1">
+      <div class="relative w-full flex md:hidden gap-2 p-2">
+        <Link href="" className="primary-btn-1 !w-[50%] !justify-center">
           Find a Tyre
         </Link>
-        <Link href="" className="primary-btn-2">
+        <Link href="" className="primary-btn-2 !w-[50%] !justify-center">
           Find a Dealer
         </Link>
       </div>
