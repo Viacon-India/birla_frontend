@@ -28,7 +28,7 @@ export default function Faq() {
           </p>
         </div>
         <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-4 md:mt-8 2xl:mt-10">
-          <div class="w-full md:w-[50%] h-[100%] sticky top-0">
+          <div class="w-full md:w-[50%] h-fit sticky top-0">
             <figure className="w-full h-[350px] md:h-[450px] 2xl:h-[650px] mb-0">
               <Image
                 className="w-full h-full object-cover rounded-[12px]"

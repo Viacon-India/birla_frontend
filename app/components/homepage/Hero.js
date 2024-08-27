@@ -110,7 +110,7 @@ export default function Hero() {
       <div className="loader-sec">
         <div class="video-wrapper">
           <video className="w-full h-fit object-contain" loop autoPlay muted>
-            <source src={"/assets/videos/tyre-loader-2.mp4"} type="video/mp4" />
+            <source src={"/assets/videos/tyre-loader-3.mp4"} type="video/mp4" />
           </video>
         </div>
       </div>
@@ -275,6 +275,14 @@ export default function Hero() {
           </div>
         </SwiperSlide>
       </Swiper>
+      <div class="relative flex md:hidden gap-5 p-2">
+        <Link href="" className="primary-btn-1">
+          Find a Tyre
+        </Link>
+        <Link href="" className="primary-btn-2">
+          Find a Dealer
+        </Link>
+      </div>
 
       {/* <div className="slider">
         <div className="slider-inner">

@@ -1301,6 +1301,8 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 
 .accordion-list-sec .collapse-title{
-  @apply text-[#1A1D21] py-[10px]
+  @apply text-[#1A1D21] !p-0
 }
-  
+.accordion-list-sec .collapse-content{
+  @apply !pl-0
+}
