@@ -110,33 +110,31 @@ export default function NewAbout() {
               <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]">
                 Anurag Choudhary is a visionary leader who has spearheaded the
                 transformation of Himadri&apos;s from a coal tar pitch
-                manufacturer to a global leader in the carbon segment.
+                manufacturer to a global leader in the carbon segment. Under his
+                leadership, the company has achieved market dominance in its
+                core products and expanded into new areas - carbon black,
+                lithium-ion battery materials, and construction chemicals.
               </p>
-              <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]">
-                Under his leadership, the company has achieved market dominance
-                in its core products and expanded into new areas - carbon black,
-                lithium-ion battery materials, and construction chemicals. He
-                was instrumental in bringing in institutional investors as
-                Himadri&apos;s equity partners. Recognizing the transformative
-                potential of electric vehicles and energy storage, he is
-                pioneering the development of lithium-ion battery materials in
-                India.
-              </p>
-              <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]">His leadership has been a driving force behind Himadris
-            transformative growth – Himadri has achieved a significant milestone
-            of becoming debt-free by following disciplined capital deployment
-            and efficient working capital utilization.</p>
             </div>
           </div>
         </div>
         <div className="flex flex-col gap-6">
           <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]">
-             Birla Tyres is a
-            strategic fit for Himadri and aligns with the company&apos;s play in
-            the electric vehicle (EV) space. Under his guidance, Birla Tyres has
-            been completely revitalized after years of inactivity. His passion
-            and exceptional leadership will continue to propel Birla Tyres to
-            aggressive growth path & newer heights.
+            His leadership has been a driving force behind Himadris
+            transformative growth – Himadri has achieved a significant milestone
+            of becoming debt-free by following disciplined capital deployment
+            and efficient working capital utilization.
+          </p>
+          <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]">
+            He was instrumental in bringing in institutional investors as
+            Himadri&apos;s equity partners. Recognizing the transformative
+            potential of electric vehicles and energy storage, he is pioneering
+            the development of lithium-ion battery materials in India. Birla
+            Tyres is a strategic fit for Himadri and aligns with the
+            company&apos;s play in the electric vehicle (EV) space. Under his
+            guidance, Birla Tyres has been completely revitalized after years of
+            inactivity. His passion and exceptional leadership will continue to
+            propel Birla Tyres to aggressive growth path & newer heights.
           </p>
         </div>
         <span className="h-[1px] w-full bg-[#C9CDD3]"></span>
@@ -144,7 +142,7 @@ export default function NewAbout() {
           <figure className="pr-[23px] relative w-[47.5%]">
             <Image src={Director2} className="rounded-xl w-full relative z-1" />
             <svg
-              className="absolute right-[-10px] top-[-23px] w-full h-full"
+              className="absolute right-[-6px] 2xl:right-[-10px] top-[-42px] 2xl:top-[-23px] w-full h-full"
               width="550"
               height="500"
               viewBox="0 0 550 500"
@@ -163,7 +161,7 @@ export default function NewAbout() {
             <div className="flex flex-col justify-start gap-10 relative">
               <div className="flex flex-col gap-5">
                 <div className="text-[#2E3192] font-oak-sans gap-2 flex flex-col">
-                  <h2 className="capitalize text-[48px] leading-[48px] font-bold">
+                  <h2 className="capitalize text-[42px] 2xl:text-[48px] leading-[48px] font-bold">
                     Amit Choudhary
                   </h2>
                   <h3 className="uppercase text-[#2E3192] font-medium text-2xl">
@@ -272,7 +270,7 @@ export default function NewAbout() {
           <figure className="pr-[23px] relative w-[47.5%]">
             <Image src={Director3} className="rounded-xl w-full relative z-1" />
             <svg
-              className="absolute right-[-10px] top-[-23px] w-full h-full"
+              className="absolute right-[-6px] 2xl:right-[-10px] top-[-42px] 2xl:top-[-23px] w-full h-full"
               width="550"
               height="500"
               viewBox="0 0 550 500"
@@ -291,7 +289,7 @@ export default function NewAbout() {
             <div className="flex flex-col justify-start gap-10 relative">
               <div className="flex flex-col gap-5">
                 <div className="text-[#2E3192] font-oak-sans gap-2 flex flex-col">
-                  <h2 className="capitalize text-[48px] leading-[48px] font-bold">
+                  <h2 className="capitalize text-[42px] 2xl:text-[48px] leading-[48px] font-bold">
                     Shyam Sundar Choudhary
                   </h2>
                   <h3 className="uppercase text-[#2E3192] font-medium text-2xl">
