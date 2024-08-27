@@ -207,7 +207,15 @@ export default function Navbar() {
               />
             </svg>
           </div>
-          <ul className="h-full overflow-auto px-[16px] border border-t-2 pt-4 md:pt-0">
+          <div class="relative flex gap-5 border-t-2 p-2 md:hidden">
+            <Link href="" className="primary-btn-1">
+              Find a Tyre
+            </Link>
+            <Link href="" className="primary-btn-2">
+              Find a Dealer
+            </Link>
+          </div>
+          <ul className="h-full overflow-auto px-[16px] pt-4 md:pt-0">
             {hamMenu.map((menu) => (
               <li className="mb-4" key={menu.id}>
                 <button className="ham-links">{menu.menu_item.name}</button>
