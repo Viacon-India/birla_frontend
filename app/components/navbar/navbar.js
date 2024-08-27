@@ -132,10 +132,7 @@ export default function Navbar() {
                 />
               </svg>
             </div>
-            <div class="flex md:hidden gap-2 relative z-10">
-              <Link href="" className="primary-btn-1 !w-[42px] h-[36px]"></Link>
-              <Link href="" className="primary-btn-2 !w-[42px] h-[36px]"></Link>
-            </div>
+
           </div>
 
           <div className="navbar-end gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
