@@ -115,16 +115,16 @@ export default function NewAbout() {
                 core products and expanded into new areas - carbon black,
                 lithium-ion battery materials, and construction chemicals.
               </p>
+              <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]">
+                His leadership has been a driving force behind Himadris
+                transformative growth – Himadri has achieved a significant
+                milestone of becoming debt-free by following disciplined capital
+                deployment and efficient working capital utilization.
+              </p>
             </div>
           </div>
         </div>
         <div className="flex flex-col gap-6">
-          <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]">
-            His leadership has been a driving force behind Himadris
-            transformative growth – Himadri has achieved a significant milestone
-            of becoming debt-free by following disciplined capital deployment
-            and efficient working capital utilization.
-          </p>
           <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]">
             He was instrumental in bringing in institutional investors as
             Himadri&apos;s equity partners. Recognizing the transformative
@@ -324,9 +324,10 @@ export default function NewAbout() {
                 </Link>
               </div>
               <p className="font-oak-sans text-[#1A1D21] text-[17px] leading-[27px] line-clamp-6 2xl:line-clamp-none">
-                He has been the executive director of Himadri since its
-                commencement. He is a commerce graduate and has decades of
-                experience in Industrial and Commercial activities.
+                Shyam Sundar Choudhary has been the executive director of
+                Himadri since its commencement. He is a commerce graduate and
+                has decades of experience in Industrial and Commercial
+                activities.
               </p>
               <p className="font-oak-sans text-[#1A1D21] text-[17px] leading-[27px] line-clamp-6 2xl:line-clamp-none">
                 He is responsible for the project expansions and implementation

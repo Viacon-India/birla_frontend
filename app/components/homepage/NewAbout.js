@@ -152,7 +152,7 @@ export default function NewAbout() {
               <div class="about-icon-wrapper">
                 <Image className="colorIcon" src={icon4} />
                 <Image className="colorHIcon" src={icon8} />
-                <h2 className="about-usp-title-2">Customer-Approach</h2>
+                <h2 className="about-usp-title-2">Customer Centricity</h2>
               </div>
               <p className="about-usp-detail-2">
                 Our customer-centric approach is the cornerstone of our business
