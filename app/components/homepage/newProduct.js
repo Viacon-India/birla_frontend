@@ -166,8 +166,8 @@ export default function NewProduct() {
         // ease: "power1.out",
         scrollTrigger: {
           trigger: ".product-sec",
-          start: "top 65%",
-          end: "top 65%",
+          start: "top 55%",
+          end: "top 55%",
           scrub: 1,
           // markers: true,
         },

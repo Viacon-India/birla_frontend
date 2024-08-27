@@ -98,6 +98,11 @@ body {
     @apply px-[4rem];
   }
 }
+@media only screen and (min-width: 1281px) and (max-width: 1535px) {
+  .newAboutImg{
+    @apply !h-[380px]
+  }
+}
 
 @media only screen and (min-width: 1536px) and (max-width: 1680px) {
   .container {
@@ -1156,8 +1161,9 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply w-[200px] h-[200px] object-cover 2xl:w-[300px] 2xl:h-[300px] absolute right-0 top-0
 }
 .newAboutImg{
-  @apply w-full h-[210px] 2xl:h-[400px] rounded-[12px]
+  @apply w-full h-[210px] md:h-[320px] 2xl:h-[400px] rounded-[12px]
 }
+
 .about-icon-wrapper{
   @apply flex flex-col md:flex-row md:items-center 2xl:flex-col 2xl:items-start
 }
