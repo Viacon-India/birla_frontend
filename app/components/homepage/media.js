@@ -43,7 +43,7 @@ export default function Media() {
               </figure>
               <div className="media-card-detail">
                 <div className="flex justify-between items-center mb-3">
-                  <span className="card-cat">Blogs</span>
+                  <span className="card-cat">Media</span>
                   <span className="card-date">24 June 2024</span>
                 </div>
                 <h2 className="media-title">
@@ -89,7 +89,7 @@ export default function Media() {
               </figure>
               <div className="media-card-detail">
                 <div className="flex justify-between items-center mb-3">
-                  <span className="card-cat">Blogs</span>
+                  <span className="card-cat">Media</span>
                   <span className="card-date">24 June 2024</span>
                 </div>
                 <h2 className="media-title">
@@ -136,7 +136,7 @@ export default function Media() {
               </figure>
               <div className="media-card-detail">
                 <div className="flex justify-between items-center mb-3">
-                  <span className="card-cat">Blogs</span>
+                  <span className="card-cat">Media</span>
                   <span className="card-date">24 June 2024</span>
                 </div>
                 <h2 className="media-title">
