@@ -22,7 +22,7 @@ export default function NewAbout() {
         </div>
         <div className="flex gap-10 pt-[23px]">
           <figure className="pl-[23px] relative w-[47.5%]">
-            <Image src={Director1} className="w-full rounded-xl relative z-1" />
+            <Image src={Director1} alt="img" className="w-full rounded-xl relative z-1" />
             <svg
               className="absolute left-[-10px] top-[-23px] w-full h-full"
               width="550"
@@ -140,7 +140,7 @@ export default function NewAbout() {
         <span className="h-[1px] w-full bg-[#C9CDD3]"></span>
         <div className="flex gap-10 pt-[23px]">
           <figure className="pr-[23px] relative w-[47.5%]">
-            <Image src={Director2} className="rounded-xl w-full relative z-1" />
+            <Image src={Director2} alt="img" className="rounded-xl w-full relative z-1" />
             <svg
               className="absolute right-[-6px] 2xl:right-[-10px] top-[-42px] 2xl:top-[-23px] w-full h-full"
               width="550"
@@ -268,7 +268,7 @@ export default function NewAbout() {
         <span className="h-[1px] w-full bg-[#C9CDD3]"></span>
         <div className="flex gap-10 pt-[23px] flex-row-reverse">
           <figure className="pr-[23px] relative w-[47.5%]">
-            <Image src={Director3} className="rounded-xl w-full relative z-1" />
+            <Image src={Director3} alt="img" className="rounded-xl w-full relative z-1" />
             <svg
               className="absolute right-[-6px] 2xl:right-[-10px] top-[-42px] 2xl:top-[-23px] w-full h-full"
               width="550"

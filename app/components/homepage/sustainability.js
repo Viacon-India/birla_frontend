@@ -39,7 +39,7 @@ export default function Sustainability() {
             <GradualSpacing className="section-title" text="Sustainability" />
           </div>
           <p className="text-[#3D434C] text-[14px] md:text-[16px] 2xl:text-[18px] font-medium leading-[1.7] mt-5 2xl:mt-8">
-          Our unwavering commitment to sustainability is deeply rooted in our operations. Our factory is a testament to this, housing a diverse array of plants that enhance our environment and symbolize our dedication to preserving nature. We believe in nurturing our products and the planet, ensuring a greener future to come.
+          Our unwavering commitment to sustainability is deeply rooted in our operations. Our factory is a testament to this, housing a diverse array of plants that enhance our environment and symbolize our dedication to preserving nature. We believe in nurturing our products and the planet simultaneously. Birla Tyres ensures a greener future for generations to come.
           </p>
         </div>
       </div>
