@@ -132,7 +132,6 @@ export default function Navbar() {
                 />
               </svg>
             </div>
-
           </div>
 
           <div className="navbar-end gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
@@ -145,7 +144,22 @@ export default function Navbar() {
                 />
               </figure>
             </Link>
-            <div class="line"></div>
+            <svg
+              width="2"
+              height="65"
+              viewBox="0 0 2 65"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="1.31543"
+                y1="65"
+                x2="1.31543"
+                stroke="#C9CDD3"
+                stroke-dasharray="5 6"
+              />
+            </svg>
+
             <Link href="/">
               <figure className="rounded-none m-0 w-[80px] h-[35px] md:w-[136px] md:h-[60px]">
                 <Image

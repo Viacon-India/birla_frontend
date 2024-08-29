@@ -225,7 +225,7 @@ export default function NewProduct() {
               spaceBetween={50}
               freeMode={true}
               pagination={{ clickable: true }}
-              className="mySwiper !overflow-visible"
+              className="myProductSwiper !overflow-visible"
             >
               {productData[tab].map((product, index) => (
                 <SwiperSlide key={index}>
