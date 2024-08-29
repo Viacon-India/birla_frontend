@@ -26,8 +26,8 @@ export default function WhoWeAre() {
         <div className="relative">
           <Float />
           <div className="relative">
-            <div className="w-full h-[40vh] md:h-[83vh] flex items-end 2xl:pb-[60px]">
-              <div class="container mx-auto flex flex-col justify-around 2xl:justify-between h-full">
+            <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
+              <div class="container mx-auto flex flex-col justify-between h-full pt-5 pb-[60px]">
                 <div class="flex flex-col gap-5 relative z-10">
                   <Link href="" className="primary-btn-1">
                     Find a Tyre

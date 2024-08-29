@@ -2,20 +2,20 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import gallary1 from "../../assets/images/gallary1-original.webp";
-import gallary2 from "../../assets/images/gallary2-original.jpg";
+import gallary1 from "../../assets/images/blog1.jpg";
+import gallary2 from "../../assets/images/blog2.jpg";
 import GradualSpacing from "@/components/GradualSpacing";
 import Link from "next/link";
 import faqImage from "../../assets/images/faq-img.jpg";
 
 export default function Faq() {
-  // State to manage the active tab
+
   const [activeTab, setActiveTab] = useState("faq");
 
   return (
     <section className="faq-sec mt-10 md:mt-[60px] 2xl:mt-[100px] mb-[60px] md:mb-[80px] 2xl:mb-[120px] relative">
       <div className="container mx-auto overflow-hidden relative">
-        <div className="flex gap-2 items-center absolute right-0 top-0 z-20">
+        <div className="flex gap-2 items-center absolute !right-[20px] md:right-[64px] 2xl:right-0 top-[54px] md:top-[32px] z-20">
           <button
             className={`cat-btn ${activeTab === "faq" ? "active-cat-btn" : ""}`}
             onClick={() => setActiveTab("faq")}
@@ -30,7 +30,6 @@ export default function Faq() {
           </button>
         </div>
 
-        {/* Conditionally render sections based on the active tab */}
         {activeTab === "faq" && (
           <div className="content-wrapper" id="faq">
             <div className="upper-sec">
@@ -41,13 +40,17 @@ export default function Faq() {
                   text="Frequently Asked Questions"
                 />
               </div>
-              <p className="text-[#3D434C] text-[14px] md:text-[16px] 2xl:text-[18px] font-medium leading-[1.7] mt-5 2xl:mt-8">
+              <p className="text-[#3D434C] text-[14px] md:text-[16px] 2xl:text-[18px] font-medium leading-[1.7] !mt-14 md:!mt-6 2xl:mt-8">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
               </p>
               <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
-                <div class="w-full md:w-[50%] h-fit sticky top-0">
+                <div
+                  class="w-full md:w-[50%]"
+                  data-aos="fade-right"
+                  data-aos-duration="1000"
+                >
                   <figure className="w-full h-[360px] 2xl:h-[550px] mb-0">
                     <Image
                       className="w-full h-full object-cover rounded-[12px]"
@@ -56,7 +59,11 @@ export default function Faq() {
                     />
                   </figure>
                 </div>
-                <div class="faq-accordion md:w-[50%]">
+                <div
+                  class="faq-accordion md:w-[50%]"
+                  data-aos="fade-right"
+                  data-aos-duration="1500"
+                >
                   <div className="collapse collapse-plus">
                     <input type="radio" name="my-accordion-3" defaultChecked />
                     <div className="collapse-title">What is TBB</div>
@@ -71,20 +78,9 @@ export default function Faq() {
                   </div>
                   <div className="collapse collapse-plus">
                     <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">What is the basic information about tyres?</div>
-                    <div className="collapse-content">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Donec vitae mi vulputate, suscipit urna
-                        in, malesuada nisl. Pellentesque laoreet pretium nisl.
-                        
-                      </p>
+                    <div className="collapse-title">
+                      What is the basic information about tyres?
                     </div>
-                  </div>
-                  <div className="collapse collapse-plus">
-                    <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">How good are TBB tires?</div>
                     <div className="collapse-content">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -96,7 +92,9 @@ export default function Faq() {
                   </div>
                   <div className="collapse collapse-plus">
                     <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">What is the main purpose of a tyre?</div>
+                    <div className="collapse-title">
+                      How good are TBB tires?
+                    </div>
                     <div className="collapse-content">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -108,7 +106,9 @@ export default function Faq() {
                   </div>
                   <div className="collapse collapse-plus">
                     <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">Where are TBB tires made?</div>
+                    <div className="collapse-title">
+                      What is the main purpose of a tyre?
+                    </div>
                     <div className="collapse-content">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -120,7 +120,23 @@ export default function Faq() {
                   </div>
                   <div className="collapse collapse-plus">
                     <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">What is tyre famous for?</div>
+                    <div className="collapse-title">
+                      Where are TBB tires made?
+                    </div>
+                    <div className="collapse-content">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Donec vitae mi vulputate, suscipit urna
+                        in, malesuada nisl. Pellentesque laoreet pretium nisl.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="collapse collapse-plus">
+                    <input type="radio" name="my-accordion-3" />
+                    <div className="collapse-title">
+                      What is tyre famous for?
+                    </div>
                     <div className="collapse-content">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -142,45 +158,33 @@ export default function Faq() {
             <div className="section-title-wrapper">
               <GradualSpacing className="section-title" text="Blog" />
             </div>
-            <div className="grid grid-cols-2 gap-8 mt-5 2xl:mt-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 !mt-14 md:!mt-6 2xl:mt-10">
               <div
                 className="media-card"
                 data-aos="fade-right"
                 data-aos-duration="1000"
               >
                 <figure>
-                  <Link
-                    target="_blank"
-                    href="https://timesofindia.indiatimes.com/city/kolkata/birla-tyres-to-re-enter-market-with-new-products-in-q4/articleshow/111793517.cms"
-                  >
-                    <Image
-                      className="media-card-image"
-                      src={gallary1}
-                      alt="card"
-                    />
-                  </Link>
+                  <Image
+                    className="media-card-image"
+                    src={gallary1}
+                    alt="card"
+                  />
                 </figure>
                 <div className="media-card-detail">
                   <div className="flex justify-between items-center mb-3">
-                    <span className="card-cat">Media</span>
+                    <span className="card-cat">Blog</span>
                     <span className="card-date">24 June 2024</span>
                   </div>
                   <h2 className="media-title">
-                    <Link
-                      target="_blank"
-                      href="https://timesofindia.indiatimes.com/city/kolkata/birla-tyres-to-re-enter-market-with-new-products-in-q4/articleshow/111793517.cms"
-                    >
-                      Birla Tyres to re-enter mkt with new products in Q4
-                    </Link>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet
                   </h2>
                   <p className="media-detail">
-                    Birla Tyres is likely to re-enter the market with a new
-                    range of products in the fourth quarter of this fiscal, said
-                    Anurag Choudhary....
+                    Maecenas dignissim justo eget nulla rutrum molestie Maecenas
+                    dignissim justo eget nulla rutrum....
                   </p>
                   <Link
-                    target="_blank"
-                    href="https://timesofindia.indiatimes.com/city/kolkata/birla-tyres-to-re-enter-market-with-new-products-in-q4/articleshow/111793517.cms"
+                    href=""
                     className="primary-btn w-fit !px-6 flip-animate-2"
                   >
                     <span data-hover="Read More">Read More</span>
@@ -193,38 +197,26 @@ export default function Faq() {
                 data-aos-duration="1500"
               >
                 <figure>
-                  <Link
-                    target="_blank"
-                    href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
-                  >
-                    <Image
-                      className="media-card-image"
-                      src={gallary2}
-                      alt="card"
-                    />
-                  </Link>
+                  <Image
+                    className="media-card-image"
+                    src={gallary2}
+                    alt="card"
+                  />
                 </figure>
                 <div className="media-card-detail">
                   <div className="flex justify-between items-center mb-3">
-                    <span className="card-cat">Media</span>
+                    <span className="card-cat">Blog</span>
                     <span className="card-date">24 June 2024</span>
                   </div>
                   <h2 className="media-title">
-                    <Link
-                      target="_blank"
-                      href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
-                    >
-                      Birla Tyres set to roll again, acquisition finalised by
-                      consortium of Himadri and Dalmia
-                    </Link>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
                   </h2>
                   <p className="media-detail">
-                    Birla Tyres will resurface on Indian roads a year from now,
-                    courtesy the new owners of the company and the brand....
+                    Maecenas dignissim justo eget nulla rutrum molestie Maecenas
+                    dignissim justo eget nulla rutrum....
                   </p>
                   <Link
-                    target="_blank"
-                    href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
+                    href=""
                     className="primary-btn w-fit !px-6 flip-animate-2"
                   >
                     <span data-hover="Read More">Read More</span>

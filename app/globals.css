@@ -626,7 +626,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 /* media-card-section */
 
 .media-card figure{
-  @apply w-full h-[280px] 2xl:h-[360px] mb-2 md:mb-6 overflow-hidden relative rounded-[24px]
+  @apply w-full h-[250px] 2xl:h-[360px] mb-2 2xl:mb-6 overflow-hidden relative rounded-[24px]
 }
 .media-card-image{
   @apply w-full h-full object-cover rounded-[24px]
@@ -1274,9 +1274,12 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 .new-product-svg-wrapper{
   @apply w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] flex justify-center items-center p-2 absolute right-4 top-4
 }
-#TBB .swiper-wrapper .swiper-slide:last-child .new-product-svg-wrapper img{
+#TBB .swiper-wrapper .swiper-slide .new-product-svg-wrapper img{
+  object-fit: cover !important;
+}
+.myProductSwiper .swiper-wrapper .swiper-slide .new-product-svg-wrapper img{
   color: transparent;
-  object-fit: cover;
+  object-fit: contain;
   animation: moveLtoR 6s infinite;
 }
 .new-product-card h2{
@@ -1314,6 +1317,22 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 .more-btn:hover::after {
   content: url('data:image/svg+xml,<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 9L9 1M9 1H2.5M9 1V7.5" stroke="%23FFFFFF" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+
+
+/* faq section */
+.faq-accordion .collapse-title{
+  @apply text-[#1A1D21] text-[18px] font-semibold !px-0
+}
+.faq-accordion .collapse-content{
+  @apply !pl-0
+}
+.faq-accordion .collapse-content p{
+  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[17px]
+}
+.faq-accordion .collapse{
+  @apply border-t border-[#C9CDD3] !rounded-none first:border-t-0
 }
 
 
@@ -1376,3 +1395,35 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 .accordion-list-sec .collapse-content{
   @apply !pl-0
 }
+
+
+/* manufacture page */
+.box-card div{
+  @apply w-full h-[132px] rounded-[12px] bg-[#ECECF9] mb-4 flex justify-center items-center
+}
+.box-card div h3{
+  @apply text-[56px] font-medium text-[#2E3192]
+}
+.box-card p{
+  @apply text-[20px] text-[#1A1D21] font-medium text-center capitalize
+ }
+
+ /* contact-page */
+ .contact-detail-box h3{
+  @apply text-[28px] 2xl:text-[32px] text-[#454545] font-bold mb-2
+ }
+ .contact-detail-box p{
+  @apply text-[14px] md:text-[16px] 2xl:text-[17px] text-[#454545]
+ }
+ .form-content{
+  @apply bg-[#FFFFFF] border border-[#DEE1E5] p-6 md:p-[40px] 2xl:p-[60px] rounded-[12px]
+ }
+ .form-btn-sec{
+  @apply flex w-full mb-6 2xl:mb-10 border border-secondary rounded-[12px] 
+ }
+ .form-btn-sec button{
+  @apply w-1/2 flex justify-center items-center py-[12px] rounded-[10px] text-[18px] font-semibold text-secondary
+ }
+ .form-btn-sec button:focus{
+  @apply bg-secondary text-white
+ }

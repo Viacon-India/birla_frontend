@@ -71,7 +71,9 @@ export default function Footer() {
               </div>
             </div>
             <div class="follow-sec flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mt-3 md:mt-6">
-              <span className="text-[#1A1D21] text-[18px] md:text-[24px]">Follow us on :</span>
+              <span className="text-[#1A1D21] text-[18px] md:text-[24px]">
+                Follow us on :
+              </span>
               <div class="flex items-center gap-4">
                 <Link className="icon-box" href="">
                   <svg
@@ -111,7 +113,6 @@ export default function Footer() {
                       fill="#F4F5F6"
                     />
                   </svg>
-                  
                 </Link>
                 <Link className="icon-box" href="">
                   <svg
@@ -129,7 +130,6 @@ export default function Footer() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  
                 </Link>
                 <Link className="icon-box" href="">
                   <svg
@@ -144,7 +144,6 @@ export default function Footer() {
                       fill="#F4F5F6"
                     />
                   </svg>
-                  
                 </Link>
                 <Link className="icon-box" href="">
                   <svg
@@ -169,20 +168,35 @@ export default function Footer() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  
                 </Link>
               </div>
             </div>
           </div>
           <div class="flex items-center gap-3 md:gap-4">
-            <figure className="rounded-none m-0 w-[60px] h-[54px] md:w-fit md:h-[80px]">
+            <figure className="rounded-none m-0 w-[60px] h-[54px] md:w-fit md:h-[80px] fig-line">
               <Image
                 src={logo2}
                 alt="logo"
                 className="w-full h-full object-cover"
               />
             </figure>
-            <div class="line !h-[54px] md!h-[80px]"></div>
+            <svg
+              width="2"
+              height="81"
+              viewBox="0 0 2 81"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="0.850586"
+                y1="80.5"
+                x2="0.850586"
+                y2="0.5"
+                stroke="#C9CDD3"
+                stroke-dasharray="5 6"
+              />
+            </svg>
+
             <figure className="rounded-none m-0 w-[94px] h-[42px] md:w-[180px] md:h-[80px]">
               <Image
                 src={logo1}
@@ -215,7 +229,10 @@ export default function Footer() {
 
         <div className="flex flex-col-reverse md:flex-row justify-between items-center">
           {creditTexts.map((newText) => (
-            <p className="text-[14px] text-[#000000] text-center" key={newText.id}>
+            <p
+              className="text-[14px] text-[#000000] text-center"
+              key={newText.id}
+            >
               {newText.children.map((extractText) => (
                 <span key={extractText.id}>{extractText.text}</span>
               ))}
