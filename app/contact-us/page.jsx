@@ -1,10 +1,13 @@
-import React from "react";
+"use client";
+
+import { useState } from "react";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import Float from "../components/float/float";
 import GradualSpacing from "@/components/GradualSpacing";
 
 export default function Contact() {
+  const [activeTab, setActiveTab] = useState("general");
   return (
     <>
       <Navbar />
@@ -45,9 +48,32 @@ export default function Contact() {
             <div className="w-full md:w-1/2">
               <div className="form-content">
                 <div className="form-btn-sec">
-                  <button>General Inquiry</button>
-                  <button>Partner Inquiry</button>
+                  <button
+                    className={`form-btn ${
+                      activeTab === "general" ? "form-active-btn" : ""
+                    }`}
+                    onClick={() => setActiveTab("general")}
+                  >
+                    General Inquiry
+                  </button>
+                  <button
+                    className={`form-btn ${
+                      activeTab === "partner" ? "form-active-btn" : ""
+                    }`}
+                    onClick={() => setActiveTab("partner")}
+                  >
+                    Partner Inquiry
+                  </button>
                 </div>
+                {activeTab === "general" && (
+                  <div id="general">
+                    <form>
+                      <label htmlFor=""></label>
+                      <input type="text" />
+                    </form>
+                  </div>
+                )}
+                {activeTab === "partner" && <div id="partner">partner</div>}
               </div>
             </div>
           </div>
