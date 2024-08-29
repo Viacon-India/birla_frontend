@@ -17,7 +17,7 @@ export default function Faq() {
       <div className="container mx-auto overflow-hidden relative">
         <div className="flex gap-2 items-center absolute right-0 top-0 z-20">
           <button
-            className={`cat-btn ${activeTab === "faq" ? "active" : ""}`}
+            className={`cat-btn ${activeTab === "faq" ? "active-cat-btn" : ""}`}
             onClick={() => setActiveTab("faq")}
           >
             FAQs
@@ -56,82 +56,77 @@ export default function Faq() {
                     />
                   </figure>
                 </div>
-                <div class="accordion-list-sec md:w-[50%]">
+                <div class="faq-accordion md:w-[50%]">
                   <div className="collapse collapse-plus">
                     <input type="radio" name="my-accordion-3" defaultChecked />
-                    <div className="collapse-title">Lorem ipsum question 1</div>
+                    <div className="collapse-title">What is TBB</div>
                     <div className="collapse-content">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Donec vitae mi vulputate, suscipit urna
-                        in, malesuada nisl. Pellentesque laoreet pretium nisl.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        in, malesuada nisl.
                       </p>
                     </div>
                   </div>
                   <div className="collapse collapse-plus">
                     <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">Lorem ipsum question 2</div>
+                    <div className="collapse-title">What is the basic information about tyres?</div>
                     <div className="collapse-content">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Donec vitae mi vulputate, suscipit urna
                         in, malesuada nisl. Pellentesque laoreet pretium nisl.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        
                       </p>
                     </div>
                   </div>
                   <div className="collapse collapse-plus">
                     <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">Lorem ipsum question 3</div>
+                    <div className="collapse-title">How good are TBB tires?</div>
                     <div className="collapse-content">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Donec vitae mi vulputate, suscipit urna
                         in, malesuada nisl. Pellentesque laoreet pretium nisl.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       </p>
                     </div>
                   </div>
                   <div className="collapse collapse-plus">
                     <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">Lorem ipsum question 4</div>
+                    <div className="collapse-title">What is the main purpose of a tyre?</div>
                     <div className="collapse-content">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Donec vitae mi vulputate, suscipit urna
                         in, malesuada nisl. Pellentesque laoreet pretium nisl.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       </p>
                     </div>
                   </div>
                   <div className="collapse collapse-plus">
                     <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">Lorem ipsum question 5</div>
+                    <div className="collapse-title">Where are TBB tires made?</div>
                     <div className="collapse-content">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Donec vitae mi vulputate, suscipit urna
                         in, malesuada nisl. Pellentesque laoreet pretium nisl.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       </p>
                     </div>
                   </div>
                   <div className="collapse collapse-plus">
                     <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">Lorem ipsum question 6</div>
+                    <div className="collapse-title">What is tyre famous for?</div>
                     <div className="collapse-content">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Donec vitae mi vulputate, suscipit urna
                         in, malesuada nisl. Pellentesque laoreet pretium nisl.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       </p>
                     </div>
                   </div>

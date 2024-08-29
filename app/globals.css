@@ -1327,6 +1327,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 /* Internal pages css  */
 
+
 /* who we are page */
 .top-banner-sec{
   @apply pt-[58px] md:pt-[84px]
