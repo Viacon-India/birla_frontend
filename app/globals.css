@@ -1421,9 +1421,9 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
  .form-btn-sec{
   @apply flex w-full mb-6 2xl:mb-10 border border-secondary rounded-[12px] 
  }
- .form-btn-sec button{
+ .form-btn{
   @apply w-1/2 flex justify-center items-center py-[12px] rounded-[10px] text-[18px] font-semibold text-secondary
  }
- .form-btn-sec button:focus{
+ .form-active-btn{
   @apply bg-secondary text-white
  }
