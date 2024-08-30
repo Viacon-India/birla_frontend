@@ -11,7 +11,6 @@ import who10 from "../assets/images/contact-img.jpg";
 import BGTiger from "../assets/images/tiger-mask3.png";
 import BGTiger2 from "../assets/images/tiger-mask2.png";
 
-
 export default function Contact() {
   const [activeTab, setActiveTab] = useState("general");
   return (
@@ -22,7 +21,11 @@ export default function Contact() {
         <div className="container mx-auto">
           <div className="contact-main flex flex-col md:flex-row items-center gap-4 md:gap-6 2xl:gap-10 mt-[60px]">
             <div className="contact-detail w-full md:w-1/2 flex flex-col gap-4 md:gap-6 xl:gap-10 overflow-hidden relative">
-            <Image className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] " src={BGTiger2} alt="img" />
+              <Image
+                className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] "
+                src={BGTiger2}
+                alt="img"
+              />
               <div className="contact-title-wrapper">
                 <span className="section-heading">Let’s get connected</span>
                 <div className="section-title-wrapper">
@@ -148,7 +151,6 @@ export default function Contact() {
                 )}
                 {activeTab === "partner" && (
                   <div id="partner">
-                    {" "}
                     <form className="w-full flex flex-col gap-3 md:gap-5">
                       <div className="form-row">
                         <label className="contact-label" htmlFor="">
@@ -180,6 +182,44 @@ export default function Contact() {
                           placeholder="Your preferred name"
                         />
                       </div>
+                      <div className="form-row">
+                        <label className="contact-label" htmlFor="">
+                          Last name
+                        </label>
+                        <input
+                          className="contact-input"
+                          type="text"
+                          placeholder="Your family name"
+                        />
+                      </div>
+                      <div className="form-row">
+                        <label className="contact-label" htmlFor="">
+                          Contact number
+                        </label>
+                        <input
+                          className="contact-input"
+                          type="text"
+                          placeholder="+91 (555) 000-0000"
+                        />
+                      </div>
+                      <div className="form-row">
+                        <label className="contact-label" htmlFor="">
+                          E-mail address
+                        </label>
+                        <input
+                          className="contact-input"
+                          type="text"
+                          placeholder="example@email.com"
+                        />
+                      </div>
+                      <Link
+                        href="thankyou"
+                        className="primary-btn w-fit flip-animate-2"
+                      >
+                        <span data-hover="Send Your Query">
+                          Send Your Query
+                        </span>
+                      </Link>
                     </form>
                   </div>
                 )}

@@ -46,8 +46,8 @@ export default function Research() {
           </div>
         </div>
       </section>
-      <section className="page-content-sec mt-[60px]">
-        <div className="container mx-auto flex flex-col gap-4 md:gap-[80px] mt-6 md:mt-10">
+      <section className="page-content-sec mt-[60px] mb-[80px] 2xl:mb-[60px]">
+        <div className="container mx-auto mt-6 md:mt-10">
           <div className="section-layer">
             <figure className="w-full md:w-[45%]">
               <Image
@@ -129,6 +129,10 @@ export default function Research() {
               </svg>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="bg-[#F8F8F8] py-[60px] mb-[80px] 2xl:mb-[60px]">
+        <div className="container mx-auto">
           <div className="excellence-sec">
             <span className="section-heading">What’s next</span>
             <div className="section-title-wrapper">
@@ -229,6 +233,10 @@ export default function Research() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="mb-[80px] 2xl:mb-[60px]">
+        <div className="container mx-auto">
           <div className="section-layer">
             <figure className="w-full md:w-[45%]">
               <Image
