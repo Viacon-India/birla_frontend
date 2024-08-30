@@ -57,10 +57,7 @@ export default function Esg() {
             <div className="w-full md:w-1/2">
               <span className="section-heading">our green initiative</span>
               <div className="section-title-wrapper">
-                <GradualSpacing
-                  className="section-title"
-                  text="Sub-headline for ESG goes here"
-                />
+                <h3 className="section-title">Sub-headline for ESG goes here</h3>
               </div>
             </div>
             <div className="w-full md:w-[45%] box-content-sec">
@@ -79,10 +76,7 @@ export default function Esg() {
           <div className="flex flex-col gap-3">
             <span className="section-heading">key objectives</span>
             <div className="section-title-wrapper">
-              <GradualSpacing
-                className="section-title"
-                text="Headline for ESG principles"
-              />
+              <h3 className="section-title">Headline for ESG principles</h3>
             </div>
           </div>
           <div>

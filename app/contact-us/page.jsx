@@ -29,10 +29,7 @@ export default function Contact() {
               <div className="contact-title-wrapper">
                 <span className="section-heading">Let’s get connected</span>
                 <div className="section-title-wrapper">
-                  <GradualSpacing
-                    className="section-title"
-                    text="Want To Connect?"
-                  />
+                  <h3 className="section-title">Want To Connect?</h3>
                 </div>
               </div>
               <div className="contact-detail-box">

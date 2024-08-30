@@ -85,10 +85,7 @@ export default function Manufacturing() {
             <div className="w-full md:w-[48%]">
               <span className="section-heading">Manufacturing Facility</span>
               <div className="section-title-wrapper">
-                <GradualSpacing
-                  className="section-title"
-                  text="Headline for manufacturing facility goes here"
-                />
+                <h3 className="section-title">Headline for manufacturing facility goes here</h3>
               </div>
             </div>
             <div className="w-full md:w-[50%] box-content-sec">
@@ -118,10 +115,7 @@ export default function Manufacturing() {
           <div className="manufacture-slider-sec">
             <span className="section-heading">Safety Philosophy</span>
             <div className="section-title-wrapper">
-              <GradualSpacing
-                className="section-title"
-                text="Headline for safety philosophy goes here"
-              />
+              <h3 className="section-title">Headline for safety philosophy goes her</h3>
             </div>
             <div class="mt-5 2xl:mt-8">
               <Swiper
