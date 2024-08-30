@@ -8,7 +8,7 @@ import Float from "../components/float/float";
 import Link from "next/link";
 import Image from "next/image";
 import Banner from "../assets/images/esg-banner.jpg";
-import Separator from "../assets/images/esg-Separator.jpg";
+import Separator from "../assets/images/esg-separator.jpg";
 import Man1 from "../assets/images/esg-man1.jpg";
 import Man2 from "../assets/images/esg-man2.jpg";
 import Man3 from "../assets/images/esg-man3.jpg";

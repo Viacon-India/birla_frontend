@@ -1322,17 +1322,35 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 
 /* faq section */
-.faq-accordion .collapse-title{
-  @apply text-[#1A1D21] text-[18px] font-semibold !px-0
-}
-.faq-accordion .collapse-content{
-  @apply !pl-0
-}
-.faq-accordion .collapse-content p{
-  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[17px]
-}
-.faq-accordion .collapse{
+.accordion-content-wrapper{
   @apply border-t border-[#C9CDD3] !rounded-none first:border-t-0
+}
+.accordion-title{
+  @apply text-[#1A1D21] text-[18px] font-semibold py-4 relative z-1
+}
+.accordion-content{
+  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[17px] overflow-hidden max-h-0;
+  transition: max-height 0.2s ease-out;
+}
+.ham-accordion.active::after{
+  @apply absolute block h-2 w-2 top-[0.9rem];
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 300ms;
+  inset-inline-end: 1.4rem;
+  content: "-";
+  pointer-events: none;
+}
+.ham-accordion::after{
+  @apply absolute block h-2 w-2 top-[0.9rem];
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 300ms;
+  inset-inline-end: 1.4rem;
+  content: "+";
+  pointer-events: none;
 }
 
 
