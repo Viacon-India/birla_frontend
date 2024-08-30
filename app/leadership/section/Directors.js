@@ -6,6 +6,7 @@ import Image from "next/image";
 import Director1 from "../../assets/images/director-1.jpg";
 import Director2 from "../../assets/images/director-2.jpg";
 import Director3 from "../../assets/images/director-3.jpg";
+import BGTiger2 from "../../assets/images/tiger-mask2.png";
 
 export default function NewAbout() {
   return (
@@ -92,6 +93,11 @@ export default function NewAbout() {
           </figure>
           <div className="flex flex-col justify-center gap-10 w-[60%] relative overflow-hidden">
             <div className="flex flex-col gap-6">
+              <Image
+                className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
+                src={BGTiger2}
+                alt=""
+              />
               <div className="flex gap-2 flex-col">
                 <h2 className="text-[48px] leading-[48px] font-bold">
                   Anurag Choudhary
@@ -208,6 +214,11 @@ export default function NewAbout() {
         <div className="flex items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
           <div className="flex flex-col justify-between w-[60%]">
             <div className="flex flex-col justify-start gap-10 relative">
+              <Image
+                className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
+                src={BGTiger2}
+                alt=""
+              />
               <div className="flex flex-col gap-5">
                 <div className="flex gap-2 flex-col">
                   <h2 className="capitalize text-[42px] 2xl:text-[48px] leading-[48px] font-bold">
@@ -330,8 +341,13 @@ export default function NewAbout() {
               className="w-full rounded-xl relative shadow-2xl"
             />
           </figure>
-          <div className="flex flex-col justify-between w-[52.5%]">
+          <div className="flex flex-col justify-between w-[60%]">
             <div className="flex flex-col justify-start gap-10 relative">
+              <Image
+                className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
+                src={BGTiger2}
+                alt=""
+              />
               <div className="flex flex-col gap-5">
                 <div className="gap-2 flex flex-col">
                   <h2 className="capitalize text-[42px] 2xl:text-[48px] leading-[48px] font-bold">
@@ -375,65 +391,65 @@ export default function NewAbout() {
                 activities.
               </p>
               <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]">
-              Shyam Sundar Choudhary is responsible for the project expansions and implementation
-                activities within the group. His ability to navigate complex
-                challenges and deliver results has been proven time and again.
-                His strategic vision and hands-on approach ensure that projects
-                are executed efficiently and effectively - he has successfully
-                commissioned various new projects of the company way ahead of
-                the scheduled time delivering the state of art technology
-                plants.
+                Shyam Sundar Choudhary is responsible for the project expansions
+                and implementation activities within the group. His ability to
+                navigate complex challenges and deliver results has been proven
+                time and again. His strategic vision and hands-on approach
+                ensure that projects are executed efficiently and effectively -
+                he has successfully commissioned various new projects of the
+                company way ahead of the scheduled time delivering the state of
+                art technology plants.
               </p>
             </div>
-              <svg
-                className="self-end"
-                width="128"
-                height="38"
-                viewBox="0 0 128 38"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <line
-                  x1="1.22698"
-                  y1="36.9704"
-                  x2="36.5823"
-                  y2="1.61505"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="41.5822"
-                  y1="36.9704"
-                  x2="69.8665"
-                  y2="8.68611"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="74.8666"
-                  y1="36.9704"
-                  x2="96.0798"
-                  y2="15.7572"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="101.08"
-                  y1="36.9704"
-                  x2="115.222"
-                  y2="22.8282"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="120.222"
-                  y1="36.9704"
-                  x2="127.293"
-                  y2="29.8993"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-              </svg>
+            <svg
+              className="self-end"
+              width="128"
+              height="38"
+              viewBox="0 0 128 38"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="1.22698"
+                y1="36.9704"
+                x2="36.5823"
+                y2="1.61505"
+                stroke="#F5811E"
+                stroke-width="2"
+              />
+              <line
+                x1="41.5822"
+                y1="36.9704"
+                x2="69.8665"
+                y2="8.68611"
+                stroke="#F5811E"
+                stroke-width="2"
+              />
+              <line
+                x1="74.8666"
+                y1="36.9704"
+                x2="96.0798"
+                y2="15.7572"
+                stroke="#F5811E"
+                stroke-width="2"
+              />
+              <line
+                x1="101.08"
+                y1="36.9704"
+                x2="115.222"
+                y2="22.8282"
+                stroke="#F5811E"
+                stroke-width="2"
+              />
+              <line
+                x1="120.222"
+                y1="36.9704"
+                x2="127.293"
+                y2="29.8993"
+                stroke="#F5811E"
+                stroke-width="2"
+              />
+            </svg>
           </div>
         </div>
       </div>
