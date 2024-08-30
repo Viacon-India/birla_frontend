@@ -65,10 +65,9 @@ export default function WhoWeAre() {
                 />
                 <span className="section-heading">Who we are</span>
                 <div className="section-title-wrapper">
-                  <GradualSpacing
-                    className="section-title"
-                    text="Headline for who we are goes here"
-                  />
+                  <h3 className="section-title">
+                    Headline for who we are goes here
+                  </h3>
                 </div>
               </div>
               <div className="box-content-sec w-full md:w-[60%] relative">
@@ -112,10 +111,7 @@ export default function WhoWeAre() {
               <div className="box-content-sec relative md:w-[55%]">
                 <span className="section-heading">Values & People</span>
                 <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
-                  <GradualSpacing
-                    className="section-title"
-                    text="Headline for Himadri"
-                  />
+                  <h3 className="section-title">Headline for Himadri</h3>
                 </div>
                 <p>
                   Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
@@ -200,10 +196,7 @@ export default function WhoWeAre() {
               <div className="box-content-sec relative md:w-[55%]">
                 <span className="section-heading">Product development</span>
                 <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
-                  <GradualSpacing
-                    className="section-title"
-                    text="Headline for DBRL"
-                  />
+                  <h3 className="section-title">Headline for DBRL</h3>
                 </div>
                 <p>
                   Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
@@ -308,10 +301,7 @@ export default function WhoWeAre() {
           <div>
             <span className="section-heading">OUR VAST RANGE OF PRODUCTS</span>
             <div className="section-title-wrapper">
-              <GradualSpacing
-                className="section-title"
-                text="Tailored to Your Needs"
-              />
+              <h3 className="section-title">Tailored to Your Needs</h3>
             </div>
           </div>
           <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
@@ -373,10 +363,7 @@ export default function WhoWeAre() {
           <div>
             <span className="section-heading">What Sets us Apart</span>
             <div className="section-title-wrapper">
-              <GradualSpacing
-                className="section-title"
-                text="Our Path to Excellence"
-              />
+              <h3 className="section-title">Our Path to Excellence</h3>
             </div>
           </div>
           <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">

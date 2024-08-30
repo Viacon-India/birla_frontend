@@ -11,6 +11,7 @@ import res3 from "../assets/images/res3.jpg";
 import res4 from "../assets/images/res4.jpg";
 import BGTiger from "../assets/images/tiger-mask3.png";
 
+
 export default function Research() {
   return (
     <>
@@ -59,10 +60,7 @@ export default function Research() {
             <div className="box-content-sec relative md:w-[55%]">
               <span className="section-heading">starting off</span>
               <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
-                <GradualSpacing
-                  className="section-title"
-                  text="Introduction To R&D"
-                />
+                <h3 className="section-title">Introduction To R&D</h3>
               </div>
               <p>
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
@@ -136,10 +134,7 @@ export default function Research() {
           <div className="excellence-sec">
             <span className="section-heading">What’s next</span>
             <div className="section-title-wrapper">
-              <GradualSpacing
-                className="section-title"
-                text="Our Capabilities"
-              />
+              <h3 className="section-title">Our Capabilities</h3>
             </div>
             <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
               <div class="w-full md:w-[45%] h-fit md:sticky top-[90px]">
@@ -248,10 +243,7 @@ export default function Research() {
             <div className="box-content-sec relative md:w-[55%]">
               <span className="section-heading">What’s next</span>
               <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
-                <GradualSpacing
-                  className="section-title"
-                  text="Current Focus of R&D"
-                />
+                <h3 className="section-title">Current Focus of R&D</h3>
               </div>
               <p>
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.

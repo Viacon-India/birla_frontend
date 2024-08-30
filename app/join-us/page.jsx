@@ -61,10 +61,7 @@ export default function JoinUs() {
             <div className="box-content-sec relative md:w-[50%]">
               <span className="section-heading">Talent Philosophy</span>
               <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
-                <GradualSpacing
-                  className="section-title"
-                  text="Headline for talent philosophy goes here"
-                />
+                <h3 className="section-title">Headline for talent philosophy goes here</h3>
               </div>
               <p>
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
@@ -95,10 +92,7 @@ export default function JoinUs() {
               Headline for Our Talents goes here
             </span>
             <div className="section-title-wrapper">
-              <GradualSpacing
-                className="section-title"
-                text="Headline for Our Talents  goes here"
-              />
+              <h3 className="section-title">Headline for Our Talents  goes here</h3>
             </div>
             <div className="grid grid-cols1 md:grid-cols-4 gap-6 md:gap-10 mt-6 md:mt-10">
               <div className="vast-card">
