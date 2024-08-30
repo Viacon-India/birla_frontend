@@ -9,8 +9,12 @@ import Link from "next/link";
 import faqImage from "../../assets/images/faq-img.jpg";
 
 export default function Faq() {
+
   const [activeTab, setActiveTab] = useState("faq");
   useEffect(() => {
+    var newPanel = document.getElementsByClassName("ham-accordion active")[0].nextElementSibling;
+    newPanel.style.maxHeight = newPanel.scrollHeight + "px";
+
     var acc2 = document.getElementsByClassName("ham-accordion");
     for (var j = 0; j < acc2.length; j++) {
       acc2[j].addEventListener("click", function () {
@@ -83,7 +87,6 @@ export default function Faq() {
                     </h4>
                     <p
                       className="accordion-content"
-                      style={{ "max-height": "fit-content" }}
                     >
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
