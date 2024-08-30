@@ -1,4 +1,6 @@
-import React from "react";
+"use client"
+
+import React, { useEffect } from "react";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import Float from "../components/float/float";
@@ -17,8 +19,13 @@ import who8 from "../assets/images/who8.jpg";
 import who9 from "../assets/images/who9.jpg";
 import who10 from "../assets/images/who10.jpg";
 import BGTiger from "../assets/images/tiger-mask3.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function WhoWeAre() {
+  useEffect(() =>{
+    AOS.init();
+  }, []);
   return (
     <>
       <Navbar />
@@ -57,7 +64,7 @@ export default function WhoWeAre() {
         <div className="container mx-auto">
           <div className="sub-section-wrapper">
             <div className="section-layer">
-              <div className="box-title-sec w-full md:w-[45%] relative">
+              <div className="box-title-sec w-full md:w-[45%] relative" data-aos="fade-right" data-aos-duration="1000">
                 <Image
                   alt="mask"
                   src={tigerMask}
@@ -70,7 +77,7 @@ export default function WhoWeAre() {
                   </h3>
                 </div>
               </div>
-              <div className="box-content-sec w-full md:w-[60%] relative">
+              <div className="box-content-sec w-full md:w-[60%] relative" data-aos="fade-left" data-aos-duration="1000">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
