@@ -1377,7 +1377,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply flex flex-col gap-4 md:gap-10 mt-6 md:mt-10
 }
 .section-layer{
-  @apply flex items-center flex-col md:flex-row gap-4 md:gap-8
+  @apply flex items-start flex-col md:flex-row gap-4 md:gap-8
 }
 .box-content-sec p{
   @apply text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mb-3 last:mb-0
