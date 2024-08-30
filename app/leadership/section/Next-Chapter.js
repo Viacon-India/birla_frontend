@@ -8,7 +8,7 @@ import BGTiger from "../../assets/images/tiger-mask3.png";
 
 export default function NewAbout() {
   return (
-    <section className="mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden flex">
+    <section className="pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden flex bg-[#F8F8F8]">
       <Image
         src={NextChapter}
         alt="bottom-img"

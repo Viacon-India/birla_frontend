@@ -6,7 +6,7 @@ import Banner from "../assets/images/who1.jpg";
 import Link from "next/link";
 import Image from "next/image";
 import GradualSpacing from "@/components/GradualSpacing";
-import tigerMask from "../assets/images/tiger-mask.png";
+import tigerMask from "../assets/images/tiger-mask3.png";
 import who2 from "../assets/images/who2.jpg";
 import who3 from "../assets/images/who3.jpg";
 import who4 from "../assets/images/who4.jpg";
@@ -55,26 +55,23 @@ export default function WhoWeAre() {
       </section>
       <section className="page-content-sec mt-[60px]">
         <div className="container mx-auto">
-          <span className="section-heading">Who we are</span>
-          <div className="section-title-wrapper">
-            <GradualSpacing
-              className="section-title"
-              text="Headline for who we are goes here"
-            />
-          </div>
           <div className="sub-section-wrapper">
             <div className="section-layer">
-              <div className="box-title-sec w-full md:w-[30%] relative">
+              <div className="box-title-sec w-full md:w-[45%] relative">
                 <Image
                   alt="mask"
                   src={tigerMask}
                   className="absolute left-0 top-0"
                 />
-                <h3 className="text-[#1A1D21] text-[36px] font-bold">
-                  Tagline for the who we are section goes here
-                </h3>
+                <span className="section-heading">Who we are</span>
+                <div className="section-title-wrapper">
+                  <GradualSpacing
+                    className="section-title"
+                    text="Headline for who we are goes here"
+                  />
+                </div>
               </div>
-              <div className="box-content-sec w-full md:w-[70%] relative">
+              <div className="box-content-sec w-full md:w-[60%] relative">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -100,12 +97,12 @@ export default function WhoWeAre() {
                 </p>
               </div>
             </div>
-            <div className="section-layer">
-              <figure>
-                <Image src={who2} alt=""></Image>
+            <div className="section-layer w-full">
+              <figure className="w-1/2">
+                <Image className="w-full" src={who2} alt=""></Image>
               </figure>
-              <figure>
-                <Image src={who3} alt=""></Image>
+              <figure className="w-1/2">
+                <Image className="w-full" src={who3} alt=""></Image>
               </figure>
             </div>
             <div className="section-layer">
@@ -308,12 +305,14 @@ export default function WhoWeAre() {
       </section>
       <section className="vast-product-sec bg-[#F4F5F6] py-6 md:py-10 2xl:py-[60px]">
         <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
-          <span className="section-heading">OUR VAST RANGE OF PRODUCTS</span>
-          <div className="section-title-wrapper">
-            <GradualSpacing
-              className="section-title"
-              text="Tailored to Your Needs"
-            />
+          <div>
+            <span className="section-heading">OUR VAST RANGE OF PRODUCTS</span>
+            <div className="section-title-wrapper">
+              <GradualSpacing
+                className="section-title"
+                text="Tailored to Your Needs"
+              />
+            </div>
           </div>
           <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -371,12 +370,14 @@ export default function WhoWeAre() {
       </section>
       <section className="excellence-sec pt-6 md:pt-10 2xl:pt-[60px]">
         <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
-          <span className="section-heading">What Sets us Apart</span>
-          <div className="section-title-wrapper">
-            <GradualSpacing
-              className="section-title"
-              text="Our Path to Excellence"
-            />
+          <div>
+            <span className="section-heading">What Sets us Apart</span>
+            <div className="section-title-wrapper">
+              <GradualSpacing
+                className="section-title"
+                text="Our Path to Excellence"
+              />
+            </div>
           </div>
           <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
