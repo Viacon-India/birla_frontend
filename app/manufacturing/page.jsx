@@ -81,8 +81,8 @@ export default function Manufacturing() {
               <p>lorem ipsum dolor ut amet maximus dilam</p>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-            <div className="w-full md:w-1/2">
+          <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8">
+            <div className="w-full md:w-[48%]">
               <span className="section-heading">Manufacturing Facility</span>
               <div className="section-title-wrapper">
                 <GradualSpacing
@@ -91,7 +91,7 @@ export default function Manufacturing() {
                 />
               </div>
             </div>
-            <div className="w-full md:w-[45%] box-content-sec">
+            <div className="w-full md:w-[50%] box-content-sec">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
