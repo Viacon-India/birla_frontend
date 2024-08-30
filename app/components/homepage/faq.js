@@ -10,6 +10,20 @@ import faqImage from "../../assets/images/faq-img.jpg";
 
 export default function Faq() {
   const [activeTab, setActiveTab] = useState("faq");
+  useEffect(() => {
+    var acc2 = document.getElementsByClassName("ham-accordion");
+    for (var j = 0; j < acc2.length; j++) {
+      acc2[j].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var newPanel = this.nextElementSibling;
+        if (newPanel.style.maxHeight) {
+          newPanel.style.maxHeight = null;
+        } else {
+          newPanel.style.maxHeight = newPanel.scrollHeight + "px";
+        }
+      });
+    }
+  }, []);
 
   return (
     <section className="faq-sec mt-10 md:mt-[60px] 2xl:mt-[100px] mb-[60px] md:mb-[80px] 2xl:mb-[120px] relative">
@@ -63,87 +77,74 @@ export default function Faq() {
                   data-aos="fade-right"
                   data-aos-duration="1500"
                 >
-                  <div className="collapse collapse-plus">
-                    <input type="radio" name="my-accordion-3" defaultChecked />
-                    <div className="collapse-title">What is TBB</div>
-                    <div className="collapse-content">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Donec vitae mi vulputate, suscipit urna
-                        in, malesuada nisl.
-                      </p>
-                    </div>
+                  <div class="accordion-content-wrapper">
+                    <h4 className="accordion-title ham-accordion active">
+                      What is TBB
+                    </h4>
+                    <p
+                      className="accordion-content"
+                      style={{ "max-height": "fit-content" }}
+                    >
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl.
+                    </p>
                   </div>
-                  <div className="collapse collapse-plus">
-                    <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">
+                  <div class="accordion-content-wrapper">
+                    <h4 className="accordion-title ham-accordion">
                       What is the basic information about tyres?
-                    </div>
-                    <div className="collapse-content">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Donec vitae mi vulputate, suscipit urna
-                        in, malesuada nisl. Pellentesque laoreet pretium nisl.
-                      </p>
-                    </div>
+                    </h4>
+                    <p className="accordion-content">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl.
+                    </p>
                   </div>
-                  <div className="collapse collapse-plus">
-                    <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">
+                  <div class="accordion-content-wrapper">
+                    <h4 className="accordion-title ham-accordion">
                       How good are TBB tires?
-                    </div>
-                    <div className="collapse-content">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Donec vitae mi vulputate, suscipit urna
-                        in, malesuada nisl. Pellentesque laoreet pretium nisl.
-                      </p>
-                    </div>
+                    </h4>
+                    <p className="accordion-content">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl.
+                    </p>
                   </div>
-                  <div className="collapse collapse-plus">
-                    <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">
+                  <div class="accordion-content-wrapper">
+                    <h4 className="accordion-title ham-accordion">
                       What is the main purpose of a tyre?
-                    </div>
-                    <div className="collapse-content">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Donec vitae mi vulputate, suscipit urna
-                        in, malesuada nisl. Pellentesque laoreet pretium nisl.
-                      </p>
-                    </div>
+                    </h4>
+                    <p className="accordion-content">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl.
+                    </p>
                   </div>
-                  <div className="collapse collapse-plus">
-                    <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">
+                  <div class="accordion-content-wrapper">
+                    <h4 className="accordion-title ham-accordion">
                       Where are TBB tires made?
-                    </div>
-                    <div className="collapse-content">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Donec vitae mi vulputate, suscipit urna
-                        in, malesuada nisl. Pellentesque laoreet pretium nisl.
-                      </p>
-                    </div>
+                    </h4>
+                    <p className="accordion-content">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl.
+                    </p>
                   </div>
-                  <div className="collapse collapse-plus">
-                    <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title">
+                  <div class="accordion-content-wrapper">
+                    <h4 className="accordion-title ham-accordion">
                       What is tyre famous for?
-                    </div>
-                    <div className="collapse-content">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Donec vitae mi vulputate, suscipit urna
-                        in, malesuada nisl. Pellentesque laoreet pretium nisl.
-                      </p>
-                    </div>
+                    </h4>
+                    <p className="accordion-content">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl.
+                    </p>
                   </div>
                 </div>
               </div>
