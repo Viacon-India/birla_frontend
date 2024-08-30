@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import gallary1 from "../../assets/images/blog1.jpg";
 import gallary2 from "../../assets/images/blog2.jpg";
@@ -9,7 +9,6 @@ import Link from "next/link";
 import faqImage from "../../assets/images/faq-img.jpg";
 
 export default function Faq() {
-
   const [activeTab, setActiveTab] = useState("faq");
 
   return (
@@ -177,7 +176,8 @@ export default function Faq() {
                     <span className="card-date">24 June 2024</span>
                   </div>
                   <h2 className="media-title">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    Lorem ipsum dolor sit amet
                   </h2>
                   <p className="media-detail">
                     Maecenas dignissim justo eget nulla rutrum molestie Maecenas

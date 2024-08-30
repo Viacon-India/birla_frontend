@@ -483,7 +483,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   }
 }
 .section-heading{
-  @apply text-primary text-[12px] md:text-[16px] uppercase 
+  @apply text-primary text-[12px] md:text-[16px] uppercase
 }
 .section-title-wrapper{
   @apply relative pl-2 md:pl-3 flex items-center
@@ -1427,3 +1427,15 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
  .form-active-btn{
   @apply bg-secondary text-white
  }
+ .form-row{
+  @apply w-full flex flex-col border-b border-[#727C8D]
+ }
+ .contact-label{
+  @apply text-[#3D434C] text-[14px] font-medium mb-[6px]
+ }
+ .contact-input{
+  @apply outline-none p-3 text-[14px] placeholder:text-[14px]
+ }
+
+
+ 
