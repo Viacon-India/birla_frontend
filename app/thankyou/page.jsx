@@ -14,7 +14,7 @@ export default function Thankyou() {
   return (
     <>
       <Navbar />
-      <section className="top-banner-sec bg-[#F8F8F8] relative">
+      <section className="top-banner-sec bg-[#F8F8F8] relative pb-[60px]">
         <Float />
         <div className="container mx-auto">
           <div className="thank-main flex flex-col md:flex-row items-center gap-4 md:gap-6 2xl:gap-10 mt-[60px]">
@@ -31,7 +31,7 @@ export default function Thankyou() {
               />
 
               <span className="section-heading 2xl:!text-[28px]">
-                Thanks for connecting with Birla Tyres
+                Thankyou for connecting with Birla Tyres
               </span>
               <h3 className="section-title 2xl:!text-[60px]">We have received your message!</h3>
               <h2 className="text-[32px] font-medium text-[#1A1D21]">
