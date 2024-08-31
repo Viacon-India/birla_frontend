@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect } from "react";
 import Navbar from "../components/navbar/navbar";
@@ -23,7 +23,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function WhoWeAre() {
-  useEffect(() =>{
+  useEffect(() => {
     AOS.init();
   }, []);
   return (
@@ -64,7 +64,11 @@ export default function WhoWeAre() {
         <div className="container mx-auto">
           <div className="sub-section-wrapper">
             <div className="section-layer">
-              <div className="box-title-sec w-full md:w-[45%] relative" data-aos="fade-right" data-aos-duration="1000">
+              <div
+                className="box-title-sec w-full md:w-[45%] relative"
+                data-aos="fade-right"
+                data-aos-duration="1000"
+              >
                 <Image
                   alt="mask"
                   src={tigerMask}
@@ -77,15 +81,15 @@ export default function WhoWeAre() {
                   </h3>
                 </div>
               </div>
-              <div className="box-content-sec w-full md:w-[60%] relative" data-aos="fade-left" data-aos-duration="1000">
-                <p>
+              <div className="box-content-sec w-full md:w-[60%] relative">
+                <p data-aos="fade-left" data-aos-duration="1000">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
                   Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
                   sed.
                 </p>
-                <p>
+                <p data-aos="fade-left" data-aos-duration="1000">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
@@ -93,7 +97,7 @@ export default function WhoWeAre() {
                   sed. Curabitur maximus mollis diam, vel varius sapien suscipit
                   eget.
                 </p>
-                <p>
+                <p data-aos="fade-left" data-aos-duration="1000">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
@@ -105,22 +109,69 @@ export default function WhoWeAre() {
             </div>
             <div className="section-layer w-full">
               <figure className="w-1/2">
-                <Image className="w-full" src={who2} alt=""></Image>
+                <Image
+                  className="w-full"
+                  src={who2}
+                  alt=""
+                  data-aos="zoom-in"
+                  data-aos-duration="1500"
+                />
               </figure>
               <figure className="w-1/2">
-                <Image className="w-full" src={who3} alt=""></Image>
+                <Image
+                  className="w-full"
+                  src={who3}
+                  alt=""
+                  data-aos="zoom-in"
+                  data-aos-duration="1500"
+                />
               </figure>
             </div>
-            <div className="section-layer">
-              <figure className="w-full md:w-[45%]">
-                <Image src={who4} alt="img" />
+            <div className="section-layer md:mt-[60px]">
+              <figure
+                className="w-full md:w-[45%] relative"
+                data-aos="zoom-in"
+                data-aos-duration="1500"
+              >
+                <svg
+                  className="absolute z-0"
+                  width="545"
+                  height="536"
+                  viewBox="0 0 545 536"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.72203 16.9614C6.74397 10.3496 12.1101 5.00122 18.722 5.00122H515.676C526.416 5.00122 531.747 18.0293 524.088 25.5587L25.5078 515.69C17.9055 523.164 5.06006 517.754 5.09544 507.093L6.72203 16.9614Z"
+                    fill="#2E3192"
+                  />
+                  <rect
+                    y="507.645"
+                    width="724"
+                    height="24"
+                    rx="12"
+                    transform="rotate(-44.5207 0 507.645)"
+                    fill="#F5811E"
+                  />
+                </svg>
+                <Image
+                  className="absolute top-8 left-8 rounded-[12px] shadow-2xl"
+                  src={who4}
+                  alt="img"
+                />
               </figure>
               <div className="box-content-sec relative md:w-[55%]">
                 <span className="section-heading">Values & People</span>
                 <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
-                  <h3 className="section-title">Headline for Himadri</h3>
+                  <h3
+                    className="section-title"
+                    data-aos="fade-left"
+                    data-aos-duration="1000"
+                  >
+                    Headline for Himadri
+                  </h3>
                 </div>
-                <p>
+                <p data-aos="fade-left" data-aos-duration="500">
                   Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
                   Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
                   sed. Curabitur maximus mollis diam, vel varius sapien suscipit
@@ -131,14 +182,14 @@ export default function WhoWeAre() {
                   sed. Curabitur maximus mollis diam, vel varius sapien suscipit
                   eget.
                 </p>
-                <p>
+                <p data-aos="fade-left" data-aos-duration="1000">
                   Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
                   Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
                   sed. Curabitur maximus mollis diam, vel varius sapien suscipit
                   eget. Cras sollicitudin ligula at volutpat ultrices. Donec
                   vitae mi vulputate, suscipit urna in, malesuada nisl.
                 </p>
-                <p>
+                <p data-aos="fade-left" data-aos-duration="1500">
                   Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
                   Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
                   sed. Curabitur maximus mollis diam, vel varius sapien suscipit
@@ -203,9 +254,15 @@ export default function WhoWeAre() {
               <div className="box-content-sec relative md:w-[55%]">
                 <span className="section-heading">Product development</span>
                 <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
-                  <h3 className="section-title">Headline for DBRL</h3>
+                  <h3
+                    className="section-title"
+                    data-aos="fade-left"
+                    data-aos-duration="1000"
+                  >
+                    Headline for DBRL
+                  </h3>
                 </div>
-                <p>
+                <p data-aos="fade-left" data-aos-duration="500">
                   Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
                   Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
                   sed. Curabitur maximus mollis diam, vel varius sapien suscipit
@@ -216,14 +273,14 @@ export default function WhoWeAre() {
                   sed. Curabitur maximus mollis diam, vel varius sapien suscipit
                   eget.
                 </p>
-                <p>
+                <p data-aos="fade-left" data-aos-duration="1000">
                   Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
                   Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
                   sed. Curabitur maximus mollis diam, vel varius sapien suscipit
                   eget. Cras sollicitudin ligula at volutpat ultrices. Donec
                   vitae mi vulputate, suscipit urna in, malesuada nisl.
                 </p>
-                <p>
+                <p data-aos="fade-left" data-aos-duration="1500">
                   Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
                   Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
                   sed. Curabitur maximus mollis diam, vel varius sapien suscipit
@@ -283,11 +340,44 @@ export default function WhoWeAre() {
                   />
                 </svg>
               </div>
-              <figure className="w-full md:w-[45%]">
-                <Image src={who5} alt="img" />
+              <figure
+                className="w-full md:w-[45%] relative"
+                data-aos="zoom-in"
+                data-aos-duration="1500"
+              >
+                <svg
+                  className="absolute z-0"
+                  width="545"
+                  height="536"
+                  viewBox="0 0 545 536"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.72203 16.9614C6.74397 10.3496 12.1101 5.00122 18.722 5.00122H515.676C526.416 5.00122 531.747 18.0293 524.088 25.5587L25.5078 515.69C17.9055 523.164 5.06006 517.754 5.09544 507.093L6.72203 16.9614Z"
+                    fill="#2E3192"
+                  />
+                  <rect
+                    y="507.645"
+                    width="724"
+                    height="24"
+                    rx="12"
+                    transform="rotate(-44.5207 0 507.645)"
+                    fill="#F5811E"
+                  />
+                </svg>
+                <Image
+                  className="absolute top-8 left-8 rounded-[12px] shadow-2xl"
+                  src={who5}
+                  alt="img"
+                />
               </figure>
             </div>
-            <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mb-3 md:mb-10 2xl:mb-[60px]">
+            <p
+              className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mb-3 md:mb-10 2xl:mb-[60px]"
+              data-aos="fade-left"
+              data-aos-duration="2000"
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec
               vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque
@@ -326,7 +416,12 @@ export default function WhoWeAre() {
             ultrices.
           </p>
           <div className="grid grid-cols1 md:grid-cols-3 gap-6 md:gap-10">
-            <div className="vast-card">
+            <div
+              className="vast-card"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-offset="100"
+            >
               <figure>
                 <Image className="vast-card-image" src={who6} alt="card" />
               </figure>
@@ -338,7 +433,12 @@ export default function WhoWeAre() {
                 Pellentesque laoreet pretium nisl.
               </p>
             </div>
-            <div className="vast-card">
+            <div
+              className="vast-card"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-offset="200"
+            >
               <figure>
                 <Image className="vast-card-image" src={who7} alt="card" />
               </figure>
@@ -350,7 +450,12 @@ export default function WhoWeAre() {
                 Pellentesque laoreet pretium nisl.
               </p>
             </div>
-            <div className="vast-card">
+            <div
+              className="vast-card"
+              data-aos="fade-up"
+              data-aos-duration="3000"
+              data-aos-offset="300"
+            >
               <figure>
                 <Image className="vast-card-image" src={who8} alt="card" />
               </figure>
@@ -387,9 +492,10 @@ export default function WhoWeAre() {
             varius sapien suscipit eget. Cras sollicitudin ligula at volutpat
             ultrices.
           </p>
-          <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
+          <div class="flex flex-col md:flex-row gap-4 md:gap-10">
             <div class="w-full md:w-[50%] h-fit md:sticky top-[90px]">
-              <figure className="w-full mb-0">
+              <figure className="w-full mb-0" data-aos="zoom-in"
+                data-aos-duration="1000">
                 <Image
                   className="w-full h-full object-cover rounded-[12px]"
                   src={who9}
@@ -397,7 +503,7 @@ export default function WhoWeAre() {
                 />
               </figure>
             </div>
-            <div class="accordion-list-sec md:w-[50%]">
+            <div class="accordion-list-sec md:w-[50%]" data-aos="fade-left" data-aos-duration="1000">
               <div className="collapse collapse-plus">
                 <input type="radio" name="my-accordion-3" defaultChecked />
                 <div className="collapse-title">Capability point 1</div>
