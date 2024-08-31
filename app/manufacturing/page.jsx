@@ -17,8 +17,33 @@ import BGTiger from "../assets/images/tiger-mask3.png";
 import man4 from "../assets/images/man4.jpg";
 import man5 from "../assets/images/man5.jpg";
 import man6 from "../assets/images/man6.jpg";
+import man8 from "../assets/images/man8.png";
+import man9 from "../assets/images/man9.png";
+import man10 from "../assets/images/man10.png";
+import man11 from "../assets/images/man11.png";
+import tiger from "../assets/images/tiger.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Manufacturing() {
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    AOS.init();
+    if (counter > 300) return;
+
+    const interval = setInterval(() => {
+      setCounter((prevCounter) => {
+        if (prevCounter >= 300) {
+          clearInterval(interval);
+          return prevCounter;
+        }
+        return prevCounter + 1;
+      });
+    }, 10);
+
+    return () => clearInterval(interval);
+  }, [counter]);
   return (
     <>
       <Navbar />
@@ -56,40 +81,68 @@ export default function Manufacturing() {
       <section className="page-content-sec mt-[60px]">
         <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-10">
-            <div className="box-card">
+            <div
+              className="box-card"
+              data-aos="zoom-in"
+              data-aos-duration="1500"
+            >
               <div>
-                <h3>1234</h3>
+                <h3>{counter}</h3>
               </div>
               <p>lorem ipsum dolor ut amet maximus dilam</p>
             </div>
-            <div className="box-card">
+            <div
+              className="box-card"
+              data-aos="zoom-in"
+              data-aos-duration="1500"
+            >
               <div>
-                <h3>1234</h3>
+                <h3>{counter}</h3>
               </div>
               <p>lorem ipsum dolor ut amet maximus dilam</p>
             </div>
-            <div className="box-card">
+            <div
+              className="box-card"
+              data-aos="zoom-in"
+              data-aos-duration="1500"
+            >
               <div>
-                <h3>1234</h3>
+                <h3>{counter}</h3>
               </div>
               <p>lorem ipsum dolor ut amet maximus dilam</p>
             </div>
-            <div className="box-card">
+            <div
+              className="box-card"
+              data-aos="zoom-in"
+              data-aos-duration="1500"
+            >
               <div>
-                <h3>1234</h3>
+                <h3>{counter}</h3>
               </div>
               <p>lorem ipsum dolor ut amet maximus dilam</p>
             </div>
           </div>
           <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8">
-            <div className="w-full md:w-[48%]">
-              <span className="section-heading">Manufacturing Facility</span>
-              <div className="section-title-wrapper">
-                <h3 className="section-title">Headline for manufacturing facility goes here</h3>
+            <div className="w-full md:w-[50%]">
+              <span
+                className="section-heading"
+                data-aos="fade-right"
+                data-aos-duration="1000"
+              >
+                Manufacturing Facility
+              </span>
+              <div
+                className="section-title-wrapper"
+                data-aos="fade-right"
+                data-aos-duration="1000"
+              >
+                <h3 className="section-title">
+                  Headline for manufacturing facility goes here
+                </h3>
               </div>
             </div>
             <div className="w-full md:w-[50%] box-content-sec">
-              <p>
+              <p data-aos="fade-left" data-aos-duration="500">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
@@ -98,7 +151,7 @@ export default function Manufacturing() {
                 eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
                 mi vulputate, suscipit urna in.
               </p>
-              <p>
+              <p data-aos="fade-left" data-aos-duration="1000">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
@@ -109,13 +162,65 @@ export default function Manufacturing() {
               </p>
             </div>
           </div>
-          <figure className="w-full h-full">
-            <Image className="w-full h-full object-cover" src={man2} alt="" />
-          </figure>
+          <div className="grid grid-cols-2 gap-6 md:gap-10 relative">
+            <figure className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+              <Image
+                data-aos="zoom-out" data-aos-duration="2000"
+                src={tiger}
+                alt="img"
+              />
+            </figure>
+            <figure
+              className="w-full h-full"
+              data-aos="fade-down-right"
+              data-aos-duration="1000"
+            >
+              <Image
+                className="w-full h-full object-cover"
+                src={man8}
+                alt="img"
+              />
+            </figure>
+            <figure
+              className="w-full h-full"
+              data-aos="fade-down-left"
+              data-aos-duration="1000"
+            >
+              <Image
+                className="w-full h-full object-cover"
+                src={man9}
+                alt="img"
+              />
+            </figure>
+            <figure
+              className="w-full h-full"
+              data-aos="fade-up-right"
+              data-aos-duration="1000"
+            >
+              <Image
+                className="w-full h-full object-cover"
+                src={man10}
+                alt="img"
+              />
+            </figure>
+            <figure
+              className="w-full h-full"
+              data-aos="fade-up-left"
+              data-aos-duration="1000"
+            >
+              <Image
+                className="w-full h-full object-cover"
+                src={man11}
+                alt="img"
+              />
+            </figure>
+          </div>
           <div className="manufacture-slider-sec">
             <span className="section-heading">Safety Philosophy</span>
             <div className="section-title-wrapper">
-              <h3 className="section-title">Headline for safety philosophy goes her</h3>
+              <h3 className="section-title">
+                Headline for safety philosophy goes her
+              </h3>
             </div>
             <div class="mt-5 2xl:mt-8">
               <Swiper

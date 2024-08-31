@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import Float from "../components/float/float";
@@ -9,10 +11,15 @@ import GradualSpacing from "@/components/GradualSpacing";
 import res2 from "../assets/images/res2.jpg";
 import res3 from "../assets/images/res3.jpg";
 import res4 from "../assets/images/res4.jpg";
+import res5 from "../assets/images/res5.jpg";
 import BGTiger from "../assets/images/tiger-mask3.png";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Research() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
       <Navbar />
@@ -47,29 +54,64 @@ export default function Research() {
           </div>
         </div>
       </section>
-      <section className="page-content-sec mt-[60px] mb-[80px] 2xl:mb-[60px]">
+      <section className="mt-[60px]">
         <div className="container mx-auto mt-6 md:mt-10">
-          <div className="section-layer">
-            <figure className="w-full md:w-[45%]">
+          <div className="section-layer !pb-[100px]">
+            <figure
+              className="w-full md:w-[45%] h-[480px] relative"
+              data-aos="zoom-in"
+              data-aos-duration="1500"
+            >
+              <svg
+                className="absolute z-0"
+                width="545"
+                height="536"
+                viewBox="0 0 545 536"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.72203 16.9614C6.74397 10.3496 12.1101 5.00122 18.722 5.00122H515.676C526.416 5.00122 531.747 18.0293 524.088 25.5587L25.5078 515.69C17.9055 523.164 5.06006 517.754 5.09544 507.093L6.72203 16.9614Z"
+                  fill="#2E3192"
+                />
+                <rect
+                  y="507.645"
+                  width="724"
+                  height="24"
+                  rx="12"
+                  transform="rotate(-44.5207 0 507.645)"
+                  fill="#F5811E"
+                />
+              </svg>
               <Image
-                className="rounded-[12px] shadow-xl"
+                className="absolute top-8 left-8 rounded-[12px] shadow-2xl"
                 src={res2}
                 alt="img"
               />
             </figure>
             <div className="box-content-sec relative md:w-[55%]">
-              <span className="section-heading">starting off</span>
-              <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
+              <span
+                className="section-heading"
+                data-aos="fade-left"
+                data-aos-duration="500"
+              >
+                starting off
+              </span>
+              <div
+                className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+                data-aos="fade-left"
+                data-aos-duration="500"
+              >
                 <h3 className="section-title">Introduction To R&D</h3>
               </div>
-              <p>
+              <p data-aos="fade-left" data-aos-duration="1000">
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
                 Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
                 sed. Curabitur maximus mollis diam, vel varius sapien suscipit
                 eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
                 mi vulputate, suscipit urna in, malesuada nisl.
               </p>
-              <p>
+              <p data-aos="fade-left" data-aos-duration="1500">
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
                 Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
                 sed. Curabitur maximus mollis diam, vel varius sapien suscipit
@@ -138,7 +180,11 @@ export default function Research() {
             </div>
             <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
               <div class="w-full md:w-[45%] h-fit md:sticky top-[90px]">
-                <figure className="w-full mb-0">
+                <figure
+                  className="w-full mb-0"
+                  data-aos="zoom-in"
+                  data-aos-duration="1500"
+                >
                   <Image
                     className="w-full h-full object-cover rounded-[12px] shadow-xl"
                     src={res3}
@@ -146,7 +192,11 @@ export default function Research() {
                   />
                 </figure>
               </div>
-              <div class="accordion-list-sec md:w-[55%]">
+              <div
+                class="accordion-list-sec md:w-[55%]"
+                data-aos="fade-left"
+                data-aos-duration="1500"
+              >
                 <div className="collapse collapse-plus">
                   <input type="radio" name="my-accordion-3" defaultChecked />
                   <div className="collapse-title">Capability point 1</div>
@@ -233,25 +283,28 @@ export default function Research() {
       <section className="mb-[80px] 2xl:mb-[60px]">
         <div className="container mx-auto">
           <div className="section-layer">
-            <figure className="w-full md:w-[45%]">
-              <Image
-                className="rounded-[12px] shadow-xl"
-                src={res2}
-                alt="img"
-              />
-            </figure>
             <div className="box-content-sec relative md:w-[55%]">
-              <span className="section-heading">What’s next</span>
-              <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
+              <span
+                data-aos="fade-left"
+                data-aos-duration="1000"
+                className="section-heading"
+              >
+                What’s next
+              </span>
+              <div
+                data-aos="fade-left"
+                data-aos-duration="1000"
+                className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+              >
                 <h3 className="section-title">Current Focus of R&D</h3>
               </div>
-              <p>
+              <p data-aos="fade-left" data-aos-duration="1000">
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
                 Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
                 sed. Curabitur maximus mollis diam, vel varius sapien suscipit
                 eget. Cras sollicitudin ligula at volutpat ultrices.
               </p>
-              <p>
+              <p data-aos="fade-left" data-aos-duration="1500">
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
                 Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
                 sed. Curabitur maximus mollis diam, vel varius sapien suscipit
@@ -309,6 +362,38 @@ export default function Research() {
                 />
               </svg>
             </div>
+            <figure
+              className="w-full md:w-[45%] h-[480px] relative"
+              data-aos="zoom-in"
+              data-aos-duration="1500"
+            >
+              <svg
+                className="absolute z-0"
+                width="545"
+                height="536"
+                viewBox="0 0 545 536"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.72203 16.9614C6.74397 10.3496 12.1101 5.00122 18.722 5.00122H515.676C526.416 5.00122 531.747 18.0293 524.088 25.5587L25.5078 515.69C17.9055 523.164 5.06006 517.754 5.09544 507.093L6.72203 16.9614Z"
+                  fill="#2E3192"
+                />
+                <rect
+                  y="507.645"
+                  width="724"
+                  height="24"
+                  rx="12"
+                  transform="rotate(-44.5207 0 507.645)"
+                  fill="#F5811E"
+                />
+              </svg>
+              <Image
+                className="absolute top-8 left-8 rounded-[12px] shadow-2xl"
+                src={res5}
+                alt="img"
+              />
+            </figure>
           </div>
         </div>
       </section>
