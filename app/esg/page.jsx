@@ -118,7 +118,7 @@ export default function Esg() {
             <span className="section-heading">key objectives</span>
             <div className="section-title-wrapper">
               <h3 className="section-title">Headline for ESG principles</h3>
-            </div> data-aos="fade-down" data-aos-duration="2000"
+            </div>
           </div>
           <div>
             <div className="flex justify-between text-[#4F5662] ">
