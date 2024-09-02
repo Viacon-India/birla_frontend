@@ -1452,8 +1452,13 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply text-[#3D434C] text-[14px] font-medium mb-[6px]
  }
  .contact-input{
-  @apply outline-none p-3 text-[14px] placeholder:text-[14px]
+  @apply outline-none p-3 text-[14px] placeholder:text-[14px] placeholder:text-[#9DA4B0]
  }
-
+ .contact-select{
+  @apply p-3 text-[#9DA4B0] text-[14px] outline-none
+ }
+ .contact-select option{
+  @apply !p-2 text-[#000000] text-[16px]
+ }
 
  
