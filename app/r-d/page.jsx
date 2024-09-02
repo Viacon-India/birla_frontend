@@ -13,8 +13,8 @@ import res3 from "../assets/images/res3.jpg";
 import res4 from "../assets/images/res4.jpg";
 import res5 from "../assets/images/res5.jpg";
 import BGTiger from "../assets/images/tiger-mask3.png";
-import Triangle1 from "../assets/images/triangle1.png"
-import Triangle2 from "../assets/images/triangle2.png"
+import Triangle1 from "../assets/images/triangle1.png";
+import Triangle2 from "../assets/images/triangle2.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -59,23 +59,23 @@ export default function Research() {
       <section className="mt-[60px]">
         <div className="container mx-auto mt-6 md:mt-10">
           <div className="section-layer !pb-[100px]">
-          <figure
-                className="w-full md:w-[45%] h-[480px] relative glare"
-                data-aos="flip-right"
-                data-aos-duration="1500"
-              >
-                <Image
-                  className="absolute -z-1 w-full h-full"
-                  src={Triangle1}
-                  alt="triangle"
-                />
-                <Image
-                  className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
-                  src={res5}
-                  alt="img"
-                />
-              </figure>
-            <div className="box-content-sec relative md:w-[55%]">
+            <figure
+              className="w-full md:w-[45%] h-[480px] relative glare"
+              data-aos="flip-right"
+              data-aos-duration="1500"
+            >
+              <Image
+                className="absolute -z-1 w-full h-full"
+                src={Triangle1}
+                alt="triangle"
+              />
+              <Image
+                className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+                src={res5}
+                alt="img"
+              />
+            </figure>
+            <div className="box-content-sec relative md:w-[55%] flex flex-col">
               <span
                 className="section-heading"
                 data-aos="fade-left"
@@ -104,55 +104,11 @@ export default function Research() {
                 eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
                 mi vulputate, suscipit urna in, malesuada nisl.
               </p>
-              <svg
-                className="absolute right-0 bottom-[-20%]"
-                width="128"
-                height="38"
-                viewBox="0 0 128 38"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <line
-                  x1="1.22649"
-                  y1="36.9704"
-                  x2="36.5818"
-                  y2="1.61505"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="41.582"
-                  y1="36.9704"
-                  x2="69.8662"
-                  y2="8.68611"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="74.8661"
-                  y1="36.9704"
-                  x2="96.0793"
-                  y2="15.7572"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="101.079"
-                  y1="36.9704"
-                  x2="115.221"
-                  y2="22.8282"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="120.222"
-                  y1="36.9704"
-                  x2="127.293"
-                  y2="29.8993"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-              </svg>
+              <div class="line-loader self-end">
+                <div class="bar bar1"></div>
+                <div class="bar bar2"></div>
+                <div class="bar bar3"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -269,7 +225,7 @@ export default function Research() {
       <section className="mb-[80px] 2xl:mb-[60px]">
         <div className="container mx-auto">
           <div className="section-layer">
-            <div className="box-content-sec relative md:w-[55%]">
+            <div className="box-content-sec relative md:w-[55%] flex flex-col">
               <span
                 data-aos="fade-left"
                 data-aos-duration="1000"
@@ -297,73 +253,28 @@ export default function Research() {
                 eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
                 mi vulputate, suscipit urna in, malesuada nisl.
               </p>
-
-              <svg
-                className="absolute right-0 bottom-[-20%]"
-                width="128"
-                height="38"
-                viewBox="0 0 128 38"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <line
-                  x1="1.22649"
-                  y1="36.9704"
-                  x2="36.5818"
-                  y2="1.61505"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="41.582"
-                  y1="36.9704"
-                  x2="69.8662"
-                  y2="8.68611"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="74.8661"
-                  y1="36.9704"
-                  x2="96.0793"
-                  y2="15.7572"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="101.079"
-                  y1="36.9704"
-                  x2="115.221"
-                  y2="22.8282"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="120.222"
-                  y1="36.9704"
-                  x2="127.293"
-                  y2="29.8993"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-              </svg>
+              <div class="line-loader self-end">
+                <div class="bar bar1"></div>
+                <div class="bar bar2"></div>
+                <div class="bar bar3"></div>
+              </div>
             </div>
             <figure
-                className="w-full md:w-[45%] h-[480px] relative glare"
-                data-aos="flip-left"
-                data-aos-duration="1500"
-              >
-                <Image
-                  className="absolute -z-1 w-full h-full"
-                  src={Triangle2}
-                  alt="triangle"
-                />
-                <Image
-                  className="w-[90%] h-[90%] translate-y-8 translate-x-8 rounded-[12px]"
-                  src={res2}
-                  alt="img"
-                />
-              </figure>
+              className="w-full md:w-[45%] h-[480px] relative glare"
+              data-aos="flip-left"
+              data-aos-duration="1500"
+            >
+              <Image
+                className="absolute -z-1 w-full h-full"
+                src={Triangle2}
+                alt="triangle"
+              />
+              <Image
+                className="w-[90%] h-[90%] translate-y-8 translate-x-8 rounded-[12px]"
+                src={res2}
+                alt="img"
+              />
+            </figure>
           </div>
         </div>
       </section>
