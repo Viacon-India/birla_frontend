@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useInView, Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface GradualSpacingProps {
-  text: string;
+  text?: string;
   padding?:string;
   duration?: number;
   delayMultiple?: number;
@@ -15,7 +15,7 @@ interface GradualSpacingProps {
 }
 
 export default function GradualSpacing({
-  text,
+  text = "",
   padding = "0",
   duration = 3,
   delayMultiple = 0.06,

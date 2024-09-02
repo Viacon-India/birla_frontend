@@ -19,6 +19,8 @@ import who8 from "../assets/images/who8.jpg";
 import who9 from "../assets/images/who9.jpg";
 import who10 from "../assets/images/who10.jpg";
 import BGTiger from "../assets/images/tiger-mask3.png";
+import Triangle1 from "../assets/images/triangle1.png";
+import Triangle2 from "../assets/images/triangle2.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -26,6 +28,7 @@ export default function WhoWeAre() {
   useEffect(() => {
     AOS.init();
   }, []);
+
   return (
     <>
       <Navbar />
@@ -113,7 +116,7 @@ export default function WhoWeAre() {
                   className="w-full"
                   src={who2}
                   alt=""
-                  data-aos="zoom-in"
+                  data-aos="flip-up"
                   data-aos-duration="1500"
                 />
               </figure>
@@ -122,40 +125,24 @@ export default function WhoWeAre() {
                   className="w-full"
                   src={who3}
                   alt=""
-                  data-aos="zoom-in"
+                  data-aos="flip-up"
                   data-aos-duration="1500"
                 />
               </figure>
             </div>
             <div className="section-layer md:mt-[60px]">
               <figure
-                className="w-full md:w-[45%] relative"
-                data-aos="zoom-in"
+                className="w-full md:w-[45%] h-[480px] relative glare"
+                data-aos="flip-right"
                 data-aos-duration="1500"
               >
-                <svg
-                  className="absolute z-0"
-                  width="545"
-                  height="536"
-                  viewBox="0 0 545 536"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6.72203 16.9614C6.74397 10.3496 12.1101 5.00122 18.722 5.00122H515.676C526.416 5.00122 531.747 18.0293 524.088 25.5587L25.5078 515.69C17.9055 523.164 5.06006 517.754 5.09544 507.093L6.72203 16.9614Z"
-                    fill="#2E3192"
-                  />
-                  <rect
-                    y="507.645"
-                    width="724"
-                    height="24"
-                    rx="12"
-                    transform="rotate(-44.5207 0 507.645)"
-                    fill="#F5811E"
-                  />
-                </svg>
                 <Image
-                  className="absolute top-8 left-8 rounded-[12px] shadow-2xl"
+                  className="absolute -z-1 w-full h-full"
+                  src={Triangle1}
+                  alt="triangle"
+                />
+                <Image
+                  className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
                   src={who4}
                   alt="img"
                 />
@@ -199,55 +186,20 @@ export default function WhoWeAre() {
                 <Link href="#" className="more-btn">
                   Know More
                 </Link>
-                <svg
-                  className="absolute right-0 bottom-0"
-                  width="128"
-                  height="38"
-                  viewBox="0 0 128 38"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line
-                    x1="1.22649"
-                    y1="36.9704"
-                    x2="36.5818"
-                    y2="1.61505"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="41.582"
-                    y1="36.9704"
-                    x2="69.8662"
-                    y2="8.68611"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="74.8661"
-                    y1="36.9704"
-                    x2="96.0793"
-                    y2="15.7572"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="101.079"
-                    y1="36.9704"
-                    x2="115.221"
-                    y2="22.8282"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="120.222"
-                    y1="36.9704"
-                    x2="127.293"
-                    y2="29.8993"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                </svg>
+                {/* <div className="line-svg-wrapper w-[125px] h-[50px] absolute right-0 bottom-0 flex justify-between items-end">
+                  <span className="stick1"></span>
+                  <span className="stick2"></span>
+                  <span className="stick3"></span>
+                  <span className="stick3"></span>
+                  <span className="stick4"></span>
+                </div> */}
+                <div className="line-svg-wrapper w-[125px] h-[50px] absolute right-0 bottom-0 flex justify-between items-end">
+                  <span className="stick stick1"></span>
+                  <span className="stick stick2"></span>
+                  <span className="stick stick3"></span>
+                  <span className="stick stick4"></span>
+                  <span className="stick stick5"></span>
+                </div>
               </div>
             </div>
             <div className="section-layer">
@@ -341,33 +293,17 @@ export default function WhoWeAre() {
                 </svg>
               </div>
               <figure
-                className="w-full md:w-[45%] relative"
-                data-aos="zoom-in"
+                className="w-full md:w-[45%] h-[480px] relative glare"
+                data-aos="flip-left"
                 data-aos-duration="1500"
               >
-                <svg
-                  className="absolute z-0"
-                  width="545"
-                  height="536"
-                  viewBox="0 0 545 536"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6.72203 16.9614C6.74397 10.3496 12.1101 5.00122 18.722 5.00122H515.676C526.416 5.00122 531.747 18.0293 524.088 25.5587L25.5078 515.69C17.9055 523.164 5.06006 517.754 5.09544 507.093L6.72203 16.9614Z"
-                    fill="#2E3192"
-                  />
-                  <rect
-                    y="507.645"
-                    width="724"
-                    height="24"
-                    rx="12"
-                    transform="rotate(-44.5207 0 507.645)"
-                    fill="#F5811E"
-                  />
-                </svg>
                 <Image
-                  className="absolute top-8 left-8 rounded-[12px] shadow-2xl"
+                  className="absolute -z-1 w-full h-full"
+                  src={Triangle2}
+                  alt="triangle"
+                />
+                <Image
+                  className="w-[90%] h-[90%] translate-y-8 translate-x-8 rounded-[12px]"
                   src={who5}
                   alt="img"
                 />
@@ -494,8 +430,11 @@ export default function WhoWeAre() {
           </p>
           <div class="flex flex-col md:flex-row gap-4 md:gap-10">
             <div class="w-full md:w-[50%] h-fit md:sticky top-[90px]">
-              <figure className="w-full mb-0" data-aos="zoom-in"
-                data-aos-duration="1000">
+              <figure
+                className="w-full mb-0"
+                data-aos="zoom-in"
+                data-aos-duration="1000"
+              >
                 <Image
                   className="w-full h-full object-cover rounded-[12px]"
                   src={who9}
@@ -503,7 +442,11 @@ export default function WhoWeAre() {
                 />
               </figure>
             </div>
-            <div class="accordion-list-sec md:w-[50%]" data-aos="fade-left" data-aos-duration="1000">
+            <div
+              class="accordion-list-sec md:w-[50%]"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+            >
               <div className="collapse collapse-plus">
                 <input type="radio" name="my-accordion-3" defaultChecked />
                 <div className="collapse-title">Capability point 1</div>

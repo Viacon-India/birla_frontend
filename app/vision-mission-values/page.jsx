@@ -1,4 +1,6 @@
-import React from "react";
+"use client"
+
+import React, { useEffect } from "react";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import Link from "next/link";
@@ -11,8 +13,15 @@ import BGTiger from "../assets/images/tiger-mask3.png";
 import Vision from "../assets/images/vision.jpg";
 import MissionBackground from "../assets/images/mission-background.jpg";
 import ValuesBackground from "../assets/images/values-background.jpg";
+import Triangle1 from "../assets/images/triangle1.png"
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Leadership() {
+  useEffect(() =>{
+    AOS.init();
+  })
+
   return (
     <>
       <Navbar />
@@ -49,26 +58,49 @@ export default function Leadership() {
       </section>
       <section className="overflow-hidden">
         <div className="container mx-auto">
-          <div className="flex gap-10 py-[60px]">
-            <figure className="relative w-[50%]">
-              <Image src={Vision} className="w-full rounded-xl relative z-1" />
-            </figure>
-            <div className="w-[50%] flex flex-col justify-center gap-10">
-              <div className="flex flex-col gap-3">
+        <div className="section-layer md:mt-[60px]">
+              <figure
+                className="w-full md:w-[45%] h-[480px] relative glare"
+                data-aos="flip-right"
+                data-aos-duration="1500"
+              >
+                <Image
+                  className="absolute -z-1 w-full h-full"
+                  src={Triangle1}
+                  alt="triangle"
+                />
+                <Image
+                  className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+                  src={Vision}
+                  alt="img"
+                />
+              </figure>
+              <div className="box-content-sec relative md:w-[55%]">
                 <span className="section-heading">Vision</span>
-                <div className="section-title-wrapper">
-                  <h3 className="section-title">Our Vision</h3>
+                <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
+                  <h3
+                    className="section-title"
+                    data-aos="fade-left"
+                    data-aos-duration="1000"
+                  >
+                    Our Vision
+                  </h3>
                 </div>
+                <p data-aos="fade-left" data-aos-duration="1000">
+                  Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
+                  Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
+                  sed. Curabitur maximus mollis diam, vel varius sapien suscipit
+                  eget. Cras sollicitudin ligula at volutpat ultrices. Donec
+                  vitae mi vulputate, suscipit urna in, malesuada nisl.
+                </p>
+                <p data-aos="fade-left" data-aos-duration="1500">
+                  Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
+                  Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
+                  sed. Curabitur maximus mollis diam, vel varius sapien suscipit
+                  eget.
+                </p>
               </div>
-              <p>
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
-                mi vulputate, suscipit urna in, malesuada nisl.
-              </p>
             </div>
-          </div>
           <div className="py-[60px] flex flex-col gap-10">
             <div className="flex flex-col gap-3">
               <span className="section-heading">Mission</span>

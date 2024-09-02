@@ -1367,7 +1367,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 /* who we are page */
 .top-banner-sec{
-  @apply pt-[58px] md:pt-[84px]
+  @apply pt-[58px] md:pt-[84px] relative
 }
 .top-banner-sec-heading{
   @apply font-bold text-[32px] md:text-[48px] 2xl:text-[56px] text-[#1A1D21]
@@ -1460,5 +1460,128 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
  .contact-select option{
   @apply !p-2 text-[#000000] text-[16px]
  }
+
+
+ .glare {
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  transition: background 0.5s ease;
+}
+
+.glare:after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  height: 200%;
+  width: 200%;
+  background: linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 0%);
+  filter: blur(33px);
+  animation: slide 2s infinite;
+}
+
+.glare:hover:after {
+  animation: slide 2s infinite;
+}
+
+@keyframes slide {
+  from {
+    top: -100%;
+    left: -100%;
+  }
+  to {
+    top: 100%;
+    left: 100%;
+  }
+}
+
+.glare:after {
+  animation: slide 2s 2s infinite;
+}
+
+.glare:hover:after {
+  animation: slide 2s 0s infinite;
+}
+
+
+/* svg-botttom-code */
+/* .stick1{
+  animation: increaseLine 10s infinite linear;
+  @apply w-[2px] h-[50px] bg-primary rotate-[30deg] block
+}
+.stick2{
+  animation: increaseLine 8s infinite linear;
+  @apply w-[2px] h-[30px] bg-primary rotate-[30deg] block
+}
+.stick3{
+  animation: increaseLine 6s infinite linear;
+  @apply w-[2px] h-[20px] bg-primary rotate-[30deg] block
+}
+.stick4{
+  animation: increaseLine 4s infinite linear;
+  @apply w-[2px] h-[10px] bg-primary rotate-[30deg] block
+}
+.stick5{
+  animation: increaseLine 2s infinite linear;
+  @apply w-[2px] h-[5px] bg-primary rotate-[30deg] block
+}
+
+@keyframes increaseLine {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+} */
+
+.stick {
+  @apply w-[2px] bg-primary rotate-[30deg] block;
+  animation: increaseLine 2s infinite linear;
+}
+
+.stick1 {
+  animation-delay: 0s;
+  --height: 50px;
+}
+
+.stick2 {
+  animation-delay: 2s;
+  --height: 30px;
+}
+
+.stick3 {
+  animation-delay: 4s;
+  --height: 20px;
+}
+
+.stick4 {
+  animation-delay: 6s;
+  --height: 10px;
+}
+
+.stick5 {
+  animation-delay: 8s;
+  --height: 5px;
+}
+
+@keyframes increaseLine {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    height: var(--height);
+    opacity: 1;
+  }
+  100% {
+    height: var(--height);
+    opacity: 1;
+  }
+}
+
+
+
 
  
