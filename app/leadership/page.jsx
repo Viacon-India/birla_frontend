@@ -130,7 +130,7 @@ export default function Leadership() {
           </div>
 
           <div className="flex items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
-            <figure className="relative w-[40%]" data-aos="zoom-in-right" data-aos-duration="1000">
+            <figure className="relative w-[40%] glare" data-aos="zoom-in-right" data-aos-duration="1000">
               <Image
                 src={Director1}
                 alt="img"
@@ -380,7 +380,7 @@ export default function Leadership() {
                 </svg>
               </div>
             </div>
-            <figure className="relative w-[40%]" data-aos="zoom-in-left" data-aos-duration="1000">
+            <figure className="relative w-[40%] glare" data-aos="zoom-in-left" data-aos-duration="1000">
               <Image
                 src={Director2}
                 alt="img"
@@ -390,7 +390,7 @@ export default function Leadership() {
           </div>
 
           <div className="flex items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
-            <figure className="relative w-[40%]" data-aos="zoom-in-right" data-aos-duration="1000">
+            <figure className="relative w-[40%] glare" data-aos="zoom-in-right" data-aos-duration="1000">
               <Image
                 src={Director3}
                 alt="img"

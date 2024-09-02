@@ -13,6 +13,8 @@ import res3 from "../assets/images/res3.jpg";
 import res4 from "../assets/images/res4.jpg";
 import res5 from "../assets/images/res5.jpg";
 import BGTiger from "../assets/images/tiger-mask3.png";
+import Triangle1 from "../assets/images/triangle1.png"
+import Triangle2 from "../assets/images/triangle2.png"
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -57,38 +59,22 @@ export default function Research() {
       <section className="mt-[60px]">
         <div className="container mx-auto mt-6 md:mt-10">
           <div className="section-layer !pb-[100px]">
-            <figure
-              className="w-full md:w-[45%] h-[480px] relative"
-              data-aos="zoom-in"
-              data-aos-duration="1500"
-            >
-              <svg
-                className="absolute z-0"
-                width="545"
-                height="536"
-                viewBox="0 0 545 536"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+          <figure
+                className="w-full md:w-[45%] h-[480px] relative glare"
+                data-aos="flip-right"
+                data-aos-duration="1500"
               >
-                <path
-                  d="M6.72203 16.9614C6.74397 10.3496 12.1101 5.00122 18.722 5.00122H515.676C526.416 5.00122 531.747 18.0293 524.088 25.5587L25.5078 515.69C17.9055 523.164 5.06006 517.754 5.09544 507.093L6.72203 16.9614Z"
-                  fill="#2E3192"
+                <Image
+                  className="absolute -z-1 w-full h-full"
+                  src={Triangle1}
+                  alt="triangle"
                 />
-                <rect
-                  y="507.645"
-                  width="724"
-                  height="24"
-                  rx="12"
-                  transform="rotate(-44.5207 0 507.645)"
-                  fill="#F5811E"
+                <Image
+                  className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+                  src={res5}
+                  alt="img"
                 />
-              </svg>
-              <Image
-                className="absolute top-8 left-8 rounded-[12px] shadow-2xl"
-                src={res2}
-                alt="img"
-              />
-            </figure>
+              </figure>
             <div className="box-content-sec relative md:w-[55%]">
               <span
                 className="section-heading"
@@ -363,37 +349,21 @@ export default function Research() {
               </svg>
             </div>
             <figure
-              className="w-full md:w-[45%] h-[480px] relative"
-              data-aos="zoom-in"
-              data-aos-duration="1500"
-            >
-              <svg
-                className="absolute z-0"
-                width="545"
-                height="536"
-                viewBox="0 0 545 536"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+                className="w-full md:w-[45%] h-[480px] relative glare"
+                data-aos="flip-left"
+                data-aos-duration="1500"
               >
-                <path
-                  d="M6.72203 16.9614C6.74397 10.3496 12.1101 5.00122 18.722 5.00122H515.676C526.416 5.00122 531.747 18.0293 524.088 25.5587L25.5078 515.69C17.9055 523.164 5.06006 517.754 5.09544 507.093L6.72203 16.9614Z"
-                  fill="#2E3192"
+                <Image
+                  className="absolute -z-1 w-full h-full"
+                  src={Triangle2}
+                  alt="triangle"
                 />
-                <rect
-                  y="507.645"
-                  width="724"
-                  height="24"
-                  rx="12"
-                  transform="rotate(-44.5207 0 507.645)"
-                  fill="#F5811E"
+                <Image
+                  className="w-[90%] h-[90%] translate-y-8 translate-x-8 rounded-[12px]"
+                  src={res2}
+                  alt="img"
                 />
-              </svg>
-              <Image
-                className="absolute top-8 left-8 rounded-[12px] shadow-2xl"
-                src={res5}
-                alt="img"
-              />
-            </figure>
+              </figure>
           </div>
         </div>
       </section>
