@@ -79,11 +79,13 @@ export default function Contact() {
                         <label className="contact-label" htmlFor="">
                           Query type
                         </label>
-                        <input
-                          className="contact-input"
-                          type="text"
-                          placeholder="Tell us the type of query"
-                        />
+                        <select className="contact-select" name="" id="">
+                          <option value="">Tell us the type of query</option>
+                          <option value="Query Type 1">Query Type 1</option>
+                          <option value="Query Type 2">Query Type 2</option>
+                          <option value="Query Type 3">Query Type 3</option>
+                          <option value="Query Type 4">Query Type 4</option>
+                        </select>
                       </div>
                       <div className="form-row">
                         <label className="contact-label" htmlFor="">
