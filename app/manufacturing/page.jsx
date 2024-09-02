@@ -44,6 +44,7 @@ export default function Manufacturing() {
 
     return () => clearInterval(interval);
   }, [counter]);
+  
   return (
     <>
       <Navbar />
