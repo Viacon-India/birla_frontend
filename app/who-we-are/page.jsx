@@ -186,19 +186,10 @@ export default function WhoWeAre() {
                 <Link href="#" className="more-btn">
                   Know More
                 </Link>
-                {/* <div className="line-svg-wrapper w-[125px] h-[50px] absolute right-0 bottom-0 flex justify-between items-end">
-                  <span className="stick1"></span>
-                  <span className="stick2"></span>
-                  <span className="stick3"></span>
-                  <span className="stick3"></span>
-                  <span className="stick4"></span>
-                </div> */}
-                <div className="line-svg-wrapper w-[125px] h-[50px] absolute right-0 bottom-0 flex justify-between items-end">
-                  <span className="stick stick1"></span>
-                  <span className="stick stick2"></span>
-                  <span className="stick stick3"></span>
-                  <span className="stick stick4"></span>
-                  <span className="stick stick5"></span>
+                <div class="line-loader absolute right-0 bottom-0">
+                  <div class="bar bar1"></div>
+                  <div class="bar bar2"></div>
+                  <div class="bar bar3"></div>
                 </div>
               </div>
             </div>
@@ -242,55 +233,11 @@ export default function WhoWeAre() {
                 <Link href="#" className="more-btn">
                   Know More
                 </Link>
-                <svg
-                  className="absolute right-0 bottom-0"
-                  width="128"
-                  height="38"
-                  viewBox="0 0 128 38"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line
-                    x1="1.22649"
-                    y1="36.9704"
-                    x2="36.5818"
-                    y2="1.61505"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="41.582"
-                    y1="36.9704"
-                    x2="69.8662"
-                    y2="8.68611"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="74.8661"
-                    y1="36.9704"
-                    x2="96.0793"
-                    y2="15.7572"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="101.079"
-                    y1="36.9704"
-                    x2="115.221"
-                    y2="22.8282"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="120.222"
-                    y1="36.9704"
-                    x2="127.293"
-                    y2="29.8993"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                </svg>
+                <div class="line-loader absolute right-0 bottom-0">
+                  <div class="bar bar1"></div>
+                  <div class="bar bar2"></div>
+                  <div class="bar bar3"></div>
+                </div>
               </div>
               <figure
                 className="w-full md:w-[45%] h-[480px] relative glare"

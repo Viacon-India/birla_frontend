@@ -130,7 +130,11 @@ export default function Leadership() {
           </div>
 
           <div className="flex items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
-            <figure className="relative w-[40%] glare" data-aos="zoom-in-right" data-aos-duration="1000">
+            <figure
+              className="relative w-[40%] glare"
+              data-aos="flip-left"
+              data-aos-duration="1000"
+            >
               <Image
                 src={Director1}
                 alt="img"
@@ -145,14 +149,26 @@ export default function Leadership() {
                   alt=""
                 />
                 <div className="flex gap-2 flex-col">
-                  <h2 className="text-[48px] leading-[48px] font-bold text-secondary" data-aos="fade-left" data-aos-duration="200">
+                  <h2
+                    className="text-[48px] leading-[48px] font-bold text-secondary"
+                    data-aos="fade-left"
+                    data-aos-duration="200"
+                  >
                     Anurag Choudhary
                   </h2>
-                  <h3 className="uppercase text-primary font-medium text-2xl" data-aos="fade-left" data-aos-duration="400">
+                  <h3
+                    className="uppercase text-primary font-medium text-2xl"
+                    data-aos="fade-left"
+                    data-aos-duration="400"
+                  >
                     Director
                   </h3>
                 </div>
-                <div class="flex gap-2" data-aos="fade-left" data-aos-duration="600">
+                <div
+                  class="flex gap-2"
+                  data-aos="fade-left"
+                  data-aos-duration="600"
+                >
                   <p className="text-[#1A1D21] text-[24px] font-medium">
                     Follow:
                   </p>
@@ -183,7 +199,11 @@ export default function Leadership() {
                     </svg>
                   </Link>
                 </div>
-                <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]" data-aos="fade-left" data-aos-duration="800">
+                <p
+                  className="text-[17px] leading-[27px] font-oak-sans text-[#606977]"
+                  data-aos="fade-left"
+                  data-aos-duration="800"
+                >
                   Anurag Choudhary is a visionary leader who has spearheaded the
                   transformation of Himadri&apos;s from a coal tar pitch
                   manufacturer to a global leader in the carbon segment. Under
@@ -191,13 +211,21 @@ export default function Leadership() {
                   its core products and expanded into new areas - carbon black,
                   lithium-ion battery materials, and construction chemicals.
                 </p>
-                <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]" data-aos="fade-left" data-aos-duration="1000">
+                <p
+                  className="text-[17px] leading-[27px] font-oak-sans text-[#606977]"
+                  data-aos="fade-left"
+                  data-aos-duration="1000"
+                >
                   His leadership has been a driving force behind Himadris
                   transformative growth – Himadri has achieved a significant
                   milestone of becoming debt-free by following disciplined
                   capital deployment and efficient working capital utilization.
                 </p>
-                <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]" data-aos="fade-left" data-aos-duration="1200">
+                <p
+                  className="text-[17px] leading-[27px] font-oak-sans text-[#606977]"
+                  data-aos="fade-left"
+                  data-aos-duration="1200"
+                >
                   He was instrumental in bringing in institutional investors as
                   Himadri&apos;s equity partners. Recognizing the transformative
                   potential of electric vehicles and energy storage, he is
@@ -209,55 +237,11 @@ export default function Leadership() {
                   exceptional leadership will continue to propel Birla Tyres to
                   aggressive growth path & newer heights.
                 </p>
-                <svg
-                  className="self-end"
-                  width="128"
-                  height="38"
-                  viewBox="0 0 128 38"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line
-                    x1="1.22698"
-                    y1="36.3589"
-                    x2="36.5823"
-                    y2="1.00359"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="41.5822"
-                    y1="36.3589"
-                    x2="69.8665"
-                    y2="8.07466"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="74.8666"
-                    y1="36.3589"
-                    x2="96.0798"
-                    y2="15.1457"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="101.08"
-                    y1="36.3589"
-                    x2="115.222"
-                    y2="22.2168"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="120.222"
-                    y1="36.3589"
-                    x2="127.293"
-                    y2="29.2879"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                </svg>
+                <div class="line-loader self-end">
+                  <div class="bar bar1"></div>
+                  <div class="bar bar2"></div>
+                  <div class="bar bar3"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -272,14 +256,26 @@ export default function Leadership() {
                 />
                 <div className="flex flex-col gap-5">
                   <div className="flex gap-2 flex-col">
-                    <h2 className="capitalize text-[42px] 2xl:text-[48px] leading-[48px] font-bold text-secondary" data-aos="fade-right" data-aos-duration="800">
+                    <h2
+                      className="capitalize text-[42px] 2xl:text-[48px] leading-[48px] font-bold text-secondary"
+                      data-aos="fade-right"
+                      data-aos-duration="800"
+                    >
                       Amit Choudhary
                     </h2>
-                    <h3 className="uppercase text-primary font-medium text-2xl" data-aos="fade-right" data-aos-duration="800">
+                    <h3
+                      className="uppercase text-primary font-medium text-2xl"
+                      data-aos="fade-right"
+                      data-aos-duration="800"
+                    >
                       Director
                     </h3>
                   </div>
-                  <div class="flex gap-2" data-aos="fade-right" data-aos-duration="800">
+                  <div
+                    class="flex gap-2"
+                    data-aos="fade-right"
+                    data-aos-duration="800"
+                  >
                     <p className="text-[#1A1D21] text-[24px] font-medium">
                       Follow:
                     </p>
@@ -311,12 +307,20 @@ export default function Leadership() {
                     </Link>
                   </div>
                 </div>
-                <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]" data-aos="fade-right" data-aos-duration="800">
+                <p
+                  className="text-[17px] leading-[27px] font-oak-sans text-[#606977]"
+                  data-aos="fade-right"
+                  data-aos-duration="800"
+                >
                   Amit Choudhary leverages his extensive expertise and strong
                   leadership skills to play a pivotal role in driving project
                   expansions and overseeing implementation activities.
                 </p>
-                <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]" data-aos="fade-right" data-aos-duration="800">
+                <p
+                  className="text-[17px] leading-[27px] font-oak-sans text-[#606977]"
+                  data-aos="fade-right"
+                  data-aos-duration="800"
+                >
                   Under his leadership, Himadri has experienced remarkable
                   multi-fold capacity expansions across all business verticals,
                   highlighting his strategic acumen and steadfast dedication to
@@ -328,59 +332,17 @@ export default function Leadership() {
                   in driving Birla Tyres’ long-term success.
                 </p>
               </div>
-              <div className="flex justify-end">
-                <svg
-                  className=""
-                  width="128"
-                  height="38"
-                  viewBox="0 0 128 38"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line
-                    x1="1.22698"
-                    y1="36.9704"
-                    x2="36.5823"
-                    y2="1.61505"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="41.5822"
-                    y1="36.9704"
-                    x2="69.8665"
-                    y2="8.68611"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="74.8666"
-                    y1="36.9704"
-                    x2="96.0798"
-                    y2="15.7572"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="101.08"
-                    y1="36.9704"
-                    x2="115.222"
-                    y2="22.8282"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                  <line
-                    x1="120.222"
-                    y1="36.9704"
-                    x2="127.293"
-                    y2="29.8993"
-                    stroke="#F5811E"
-                    stroke-width="2"
-                  />
-                </svg>
+              <div class="line-loader self-end">
+                <div class="bar bar1"></div>
+                <div class="bar bar2"></div>
+                <div class="bar bar3"></div>
               </div>
             </div>
-            <figure className="relative w-[40%] glare" data-aos="zoom-in-left" data-aos-duration="1000">
+            <figure
+              className="relative w-[40%] glare"
+               data-aos="flip-right"
+              data-aos-duration="1000"
+            >
               <Image
                 src={Director2}
                 alt="img"
@@ -390,7 +352,11 @@ export default function Leadership() {
           </div>
 
           <div className="flex items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
-            <figure className="relative w-[40%] glare" data-aos="zoom-in-right" data-aos-duration="1000">
+            <figure
+              className="relative w-[40%] glare"
+              data-aos="flip-left"
+              data-aos-duration="1000"
+            >
               <Image
                 src={Director3}
                 alt="img"
@@ -406,14 +372,26 @@ export default function Leadership() {
                 />
                 <div className="flex flex-col gap-5">
                   <div className="gap-2 flex flex-col">
-                    <h2 className="capitalize text-[42px] 2xl:text-[48px] leading-[48px] font-bold text-secondary" data-aos="fade-left" data-aos-duration="400">
+                    <h2
+                      className="capitalize text-[42px] 2xl:text-[48px] leading-[48px] font-bold text-secondary"
+                      data-aos="fade-left"
+                      data-aos-duration="400"
+                    >
                       Shyam Sundar Choudhary
                     </h2>
-                    <h3 className="uppercase text-primary font-medium text-2xl" data-aos="fade-left" data-aos-duration="600">
+                    <h3
+                      className="uppercase text-primary font-medium text-2xl"
+                      data-aos="fade-left"
+                      data-aos-duration="600"
+                    >
                       Director
                     </h3>
                   </div>
-                  <div class="flex gap-2" data-aos="fade-left" data-aos-duration="800">
+                  <div
+                    class="flex gap-2"
+                    data-aos="fade-left"
+                    data-aos-duration="800"
+                  >
                     <p className="text-[#1A1D21] text-[24px] font-medium">
                       Follow:
                     </p>
@@ -445,13 +423,21 @@ export default function Leadership() {
                     </Link>
                   </div>
                 </div>
-                <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]" data-aos="fade-left" data-aos-duration="1000">
+                <p
+                  className="text-[17px] leading-[27px] font-oak-sans text-[#606977]"
+                  data-aos="fade-left"
+                  data-aos-duration="1000"
+                >
                   Shyam Sundar Choudhary has been the executive director of
                   Himadri since its commencement. He is a commerce graduate and
                   has decades of experience in Industrial and Commercial
                   activities.
                 </p>
-                <p className="text-[17px] leading-[27px] font-oak-sans text-[#606977]" data-aos="fade-left" data-aos-duration="1200">
+                <p
+                  className="text-[17px] leading-[27px] font-oak-sans text-[#606977]"
+                  data-aos="fade-left"
+                  data-aos-duration="1200"
+                >
                   Shyam Sundar Choudhary is responsible for the project
                   expansions and implementation activities within the group. His
                   ability to navigate complex challenges and deliver results has
@@ -462,60 +448,16 @@ export default function Leadership() {
                   delivering the state of art technology plants.
                 </p>
               </div>
-              <svg
-                className="self-end"
-                width="128"
-                height="38"
-                viewBox="0 0 128 38"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <line
-                  x1="1.22698"
-                  y1="36.9704"
-                  x2="36.5823"
-                  y2="1.61505"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="41.5822"
-                  y1="36.9704"
-                  x2="69.8665"
-                  y2="8.68611"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="74.8666"
-                  y1="36.9704"
-                  x2="96.0798"
-                  y2="15.7572"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="101.08"
-                  y1="36.9704"
-                  x2="115.222"
-                  y2="22.8282"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-                <line
-                  x1="120.222"
-                  y1="36.9704"
-                  x2="127.293"
-                  y2="29.8993"
-                  stroke="#F5811E"
-                  stroke-width="2"
-                />
-              </svg>
+              <div class="line-loader self-end">
+                <div class="bar bar1"></div>
+                <div class="bar bar2"></div>
+                <div class="bar bar3"></div>
+              </div>
             </div>
           </div>
-          
         </div>
       </section>
+      
       <section className="pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden flex bg-[#F8F8F8]">
         <Image
           src={NextChapter}

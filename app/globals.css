@@ -1506,82 +1506,51 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 
 /* svg-botttom-code */
-/* .stick1{
-  animation: increaseLine 10s infinite linear;
-  @apply w-[2px] h-[50px] bg-primary rotate-[30deg] block
+.line-loader,
+.bar {
+	width: 120px;
+	height: 50px;
 }
-.stick2{
-  animation: increaseLine 8s infinite linear;
-  @apply w-[2px] h-[30px] bg-primary rotate-[30deg] block
+.bar {
+	position: absolute;
+	display: flex;
+	align-items: center;
+  transform: rotate(10deg);
 }
-.stick3{
-  animation: increaseLine 6s infinite linear;
-  @apply w-[2px] h-[20px] bg-primary rotate-[30deg] block
-}
-.stick4{
-  animation: increaseLine 4s infinite linear;
-  @apply w-[2px] h-[10px] bg-primary rotate-[30deg] block
-}
-.stick5{
-  animation: increaseLine 2s infinite linear;
-  @apply w-[2px] h-[5px] bg-primary rotate-[30deg] block
-}
-
-@keyframes increaseLine {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-} */
-
-.stick {
-  @apply w-[2px] bg-primary rotate-[30deg] block;
-  animation: increaseLine 2s infinite linear;
+.bar::before,
+.bar::after {
+	content: "";
+	position: absolute;
+	display: block;
+	/* width: 2px;
+	height: 20px; */
+	background: #F5811E;
+	background: #F5811E;
+	opacity: 0;
+	box-shadow: 1px 1px 4px rgba(0,0,0,.15),
+					2px 2px 0 rgba(0,0,0,.1);
+	border-radius: 2px;
+	animation: slideleft 3s ease-in-out infinite;
 }
 
-.stick1 {
-  animation-delay: 0s;
-  --height: 50px;
+.bar1::before { animation-delay: 0.00s; width: 2px; height: 50px; }
+.bar1::after  { animation-delay: 0.3s; width: 2px; height: 40px; }
+.bar2::before { animation-delay: 0.60s; width: 2px; height: 30px; }
+.bar2::after  { animation-delay: 0.90s; width: 2px; height: 20px; }
+.bar3::after  { animation-delay: 1.20s; width: 2px; height: 10px; }
+@keyframes slideleft {
+	20% {
+		right: 0;
+		opacity: 0;
+		/* transform: scale(.5); */
+	}
+	30% { opacity: 1 }
+	50% { transform: scale(1) }
+	70% { opacity: 1 }
+	80% {
+		right: calc(100% - 2px);
+		opacity: 0;
+		/* transform: scale(.5); */
+	}
 }
 
-.stick2 {
-  animation-delay: 2s;
-  --height: 30px;
-}
-
-.stick3 {
-  animation-delay: 4s;
-  --height: 20px;
-}
-
-.stick4 {
-  animation-delay: 6s;
-  --height: 10px;
-}
-
-.stick5 {
-  animation-delay: 8s;
-  --height: 5px;
-}
-
-@keyframes increaseLine {
-  0% {
-    height: 0;
-    opacity: 0;
-  }
-  50% {
-    height: var(--height);
-    opacity: 1;
-  }
-  100% {
-    height: var(--height);
-    opacity: 1;
-  }
-}
-
-
-
-
- 
