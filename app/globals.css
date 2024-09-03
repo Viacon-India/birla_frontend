@@ -1515,7 +1515,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 	position: absolute;
 	display: flex;
 	align-items: center;
-  transform: rotate(10deg);
+  transform: rotate(20deg);
 }
 .bar::before,
 .bar::after {
@@ -1542,7 +1542,6 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 	20% {
 		right: 0;
 		opacity: 0;
-		/* transform: scale(.5); */
 	}
 	30% { opacity: 1 }
 	50% { transform: scale(1) }
@@ -1550,7 +1549,25 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 	80% {
 		right: calc(100% - 2px);
 		opacity: 0;
-		/* transform: scale(.5); */
 	}
 }
+
+
+
+/* vision-page */
+.mission-card{
+  @apply relative shadow-2xl mb-8
+}
+.mission-box{
+  @apply p-5 rounded-[12px] bg-white absolute left-20 top-1/2 -translate-y-1/2 w-[400px]
+}
+.vision-title{
+  @apply text-[#1A1D21] text-[22px] !p-0 flex gap-2 items-center font-semibold
+}
+.vision-title::before{
+  content: url('data:image/svg+xml,<svg width="22" height="22" viewBox="0 0 18 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.16713H17" stroke="%231A1D21" stroke-width="1.5" stroke-linecap="round"/><path d="M1 1.5H17V19.2778C17 19.8671 16.7592 20.4324 16.3305 20.8491C15.9019 21.2659 15.3205 21.5 14.7143 21.5H3.28571C2.67951 21.5 2.09812 21.2659 1.66947 20.8491C1.24082 20.4324 1 19.8671 1 19.2778V1.5Z" stroke="%231A1D21" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.57031 12.6113H6.71317M11.2846 12.6113H12.4275M5.57031 17.0558H6.71317M11.2846 17.0558H12.4275" stroke="%231A1D21" stroke-width="1.5" stroke-linecap="round"/></svg>');
+  @apply w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center
+}
+
+
 

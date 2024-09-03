@@ -20,7 +20,6 @@ import Triangle1 from "../assets/images/triangle1.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-
 import icon1 from "../assets/images/about-icon1.png";
 import icon2 from "../assets/images/about-icon2.png";
 import icon3 from "../assets/images/about-icon3.png";
@@ -29,10 +28,10 @@ import icon5 from "../assets/images/about-icon5.png";
 import icon6 from "../assets/images/about-icon6.png";
 import icon7 from "../assets/images/about-icon7.png";
 import icon8 from "../assets/images/about-icon8.png";
-import img1 from "../assets/images/about-img-1.jpg";
-import img2 from "../assets/images/about-img-2.jpg";
-import img3 from "../assets/images/about-img-3.jpg";
-import img4 from "../assets/images/about-img-4.jpg";
+import img1 from "../assets/images/mission-img-1.jpg";
+import img2 from "../assets/images/mission-img-2.jpg";
+import img3 from "../assets/images/mission-img-3.jpg";
+import img4 from "../assets/images/mission-img-4.jpg";
 import mask1 from "../assets/images/iconmask-1.png";
 import mask2 from "../assets/images/iconmask-2.png";
 import mask3 from "../assets/images/iconmask-3.png";
@@ -42,6 +41,7 @@ import { FreeMode, Thumbs, EffectFade } from "swiper/modules";
 
 export default function Leadership() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
   useEffect(() => {
     AOS.init();
   });
@@ -130,212 +130,206 @@ export default function Leadership() {
               </div>
             </div>
           </div>
-          <div className="new-about-slider py-[60px] flex flex-col gap-10">
+          <div className="mt-[60px] flex flex-col gap-10">
             <div className="flex flex-col gap-3">
               <span className="section-heading">Mission</span>
               <div className="section-title-wrapper">
                 <h3 className="section-title">Our Mission</h3>
               </div>
             </div>
-            <Swiper
-              speed={2000}
-              effect={"fade"}
-              spaceBetween={10}
-              modules={[Autoplay, EffectFade, FreeMode, Thumbs, Controller]}
-              watchSlidesProgress={true}
-              onSwiper={setThumbsSwiper}
-              className="mySwiper3 mt-5 2xl:mt-8"
-            >
-              <SwiperSlide>
-                <Image src={img1} className="newAboutImg" alt="image"/>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Image src={img2} className="newAboutImg" alt="image"/>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Image src={img3} className="newAboutImg" alt="image"/>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Image src={img4} className="newAboutImg" alt="image"/>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Image src={img1} className="newAboutImg !hidden" alt="image"/>
-              </SwiperSlide>
-            </Swiper>
+            <div className="new-about-slider">
+              <Swiper
+                speed={2000}
+                effect={"fade"}
+                spaceBetween={10}
+                modules={[Autoplay, EffectFade, FreeMode, Thumbs, Controller]}
+                watchSlidesProgress={true}
+                onSwiper={setThumbsSwiper}
+                className="mySwiper3"
+              >
+                <SwiperSlide>
+                  <Image
+                    src={img1}
+                    className="newAboutImg object-cover"
+                    alt="image"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Image
+                    src={img2}
+                    className="newAboutImg object-cover"
+                    alt="image"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Image
+                    src={img3}
+                    className="newAboutImg object-cover"
+                    alt="image"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Image
+                    src={img4}
+                    className="newAboutImg object-cover"
+                    alt="image"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Image
+                    src={img1}
+                    className="newAboutImg !hidden"
+                    alt="image"
+                  />
+                </SwiperSlide>
+              </Swiper>
 
-            <Swiper
-              speed={2000}
-              autoplay={{
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-              }}
-              modules={[Autoplay, FreeMode, Thumbs, Controller]}
-              thumbs={{ swiper: thumbsSwiper }}
-              effect={"fade"}
-              breakpoints={{
-                0: {
-                  slidesPerView: 1.2,
-                },
-                768: {
-                  slidesPerView: 2.1,
-                },
-              }}
-              className="mySwiper2 translate-y-[-25%] md:translate-y-[-40%] 2xl:translate-y-[-30%] w-[100%] md:w-[96%]"
-            >
-              <SwiperSlide>
-                <div class="new-about-card">
-                  <div class="about-icon-wrapper">
-                    <Image className="colorIcon" src={icon1} />
-                    <Image className="colorHIcon" src={icon5} />
-                    <h2 className="about-usp-title-2">Legacy of Trust</h2>
+              <Swiper
+                speed={2000}
+                autoplay={{
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                modules={[Autoplay, FreeMode, Thumbs, Controller]}
+                thumbs={{ swiper: thumbsSwiper }}
+                effect={"fade"}
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1.2,
+                  },
+                  768: {
+                    slidesPerView: 2.1,
+                  },
+                }}
+                className="mySwiper2 translate-y-[-25%] md:translate-y-[-40%] 2xl:translate-y-[-30%] w-[100%] md:w-[96%]"
+              >
+                <SwiperSlide>
+                  <div class="new-about-card">
+                    <div class="about-icon-wrapper">
+                      <Image className="colorIcon" src={icon1} />
+                      <Image className="colorHIcon" src={icon5} />
+                      <h2 className="about-usp-title-2">Mission headline 1</h2>
+                    </div>
+                    <p className="about-usp-detail-2">
+                      With a rich heritage spanning over three decades, Birla
+                      Tyres has built a reputation for reliability and
+                      excellence in the tyre industry. Over the past three
+                      decades, we have achieved numerous milestones, which is a
+                      testament to our commitment to quality and customer focus.
+                      We take pride in being a trusted partner for drivers
+                      across the country.
+                    </p>
+                    <Link href="" className="about-button">
+                      Read more
+                    </Link>
+                    <Image className="maskIcon" src={mask1} />
                   </div>
-                  <p className="about-usp-detail-2">
-                    With a rich heritage spanning over three decades, Birla
-                    Tyres has built a reputation for reliability and excellence
-                    in the tyre industry. Over the past three decades, we have
-                    achieved numerous milestones, which is a testament to our
-                    commitment to quality and customer focus. We take pride in
-                    being a trusted partner for drivers across the country.
-                  </p>
-                  <Link href="" className="about-button">
-                    Read more
-                  </Link>
-                  <Image className="maskIcon" src={mask1} />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div class="new-about-card">
-                  <div class="about-icon-wrapper">
-                    <Image className="colorIcon" src={icon2} />
-                    <Image className="colorHIcon" src={icon6} />
-                    <h2 className="about-usp-title-2">
-                      Vast Range of Products
-                    </h2>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div class="new-about-card">
+                    <div class="about-icon-wrapper">
+                      <Image className="colorIcon" src={icon2} />
+                      <Image className="colorHIcon" src={icon6} />
+                      <h2 className="about-usp-title-2">Mission headline 2</h2>
+                    </div>
+                    <p className="about-usp-detail-2">
+                      Our company is proud to offer a comprehensive tyre
+                      portfolio that caters to the diverse and unique needs of
+                      our customers. With our extensive range of products,
+                      including Truck Bus Bias (TBB) tyres, agricultural tyres,
+                      and off-the-road tyres, we are equipped to provide
+                      solutions for various applications and industries.
+                    </p>
+                    <Link href="" className="about-button">
+                      Read more
+                    </Link>
+                    <Image className="maskIcon" src={mask2} />
                   </div>
-                  <p className="about-usp-detail-2">
-                    Our company is proud to offer a comprehensive tyre portfolio
-                    that caters to the diverse and unique needs of our
-                    customers. With our extensive range of products, including
-                    Truck Bus Bias (TBB) tyres, agricultural tyres, and
-                    off-the-road tyres, we are equipped to provide solutions for
-                    various applications and industries.
-                  </p>
-                  <Link href="" className="about-button">
-                    Read more
-                  </Link>
-                  <Image className="maskIcon" src={mask2} />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div class="new-about-card">
-                  <div class="about-icon-wrapper">
-                    <Image className="colorIcon" src={icon3} />
-                    <Image className="colorHIcon" src={icon7} />
-                    <h2 className="about-usp-title-2">
-                      Commitment to Excellence
-                    </h2>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div class="new-about-card">
+                    <div class="about-icon-wrapper">
+                      <Image className="colorIcon" src={icon3} />
+                      <Image className="colorHIcon" src={icon7} />
+                      <h2 className="about-usp-title-2">Mission headline 3</h2>
+                    </div>
+                    <p className="about-usp-detail-2">
+                      At Birla Tyres, we continuously invest in research and
+                      development to stay at the forefront of tyre technology.
+                      Our dedicated R&D team works tirelessly to innovate and
+                      introduce advanced features that enhance performance,
+                      safety and durability.
+                    </p>
+                    <Link href="" className="about-button">
+                      Read more
+                    </Link>
+                    <Image className="maskIcon" src={mask3} />
                   </div>
-                  <p className="about-usp-detail-2">
-                    At Birla Tyres, we continuously invest in research and
-                    development to stay at the forefront of tyre technology. Our
-                    dedicated R&D team works tirelessly to innovate and
-                    introduce advanced features that enhance performance, safety
-                    and durability.
-                  </p>
-                  <Link href="" className="about-button">
-                    Read more
-                  </Link>
-                  <Image className="maskIcon" src={mask3} />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div class="new-about-card">
-                  <div class="about-icon-wrapper">
-                    <Image className="colorIcon" src={icon4} />
-                    <Image className="colorHIcon" src={icon8} />
-                    <h2 className="about-usp-title-2">Customer Centricity</h2>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div class="new-about-card">
+                    <div class="about-icon-wrapper">
+                      <Image className="colorIcon" src={icon4} />
+                      <Image className="colorHIcon" src={icon8} />
+                      <h2 className="about-usp-title-2">Mission headline 4</h2>
+                    </div>
+                    <p className="about-usp-detail-2">
+                      Our customer-centric approach is the cornerstone of our
+                      business philosophy. We prioritize understanding and
+                      addressing the unique needs and preferences of our
+                      customers, ensuring that every interaction and product is
+                      tailored to deliver exceptional value.
+                    </p>
+                    <Link href="" className="about-button">
+                      Read more
+                    </Link>
+                    <Image className="maskIcon" src={mask4} />
                   </div>
-                  <p className="about-usp-detail-2">
-                    Our customer-centric approach is the cornerstone of our
-                    business philosophy. We prioritize understanding and
-                    addressing the unique needs and preferences of our
-                    customers, ensuring that every interaction and product is
-                    tailored to deliver exceptional value.
-                  </p>
-                  <Link href="" className="about-button">
-                    Read more
-                  </Link>
-                  <Image className="maskIcon" src={mask4} />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="!hidden md:!flex">
-                <div class="new-about-card">
-                  <div class="about-icon-wrapper">
-                    <Image className="colorIcon" src={icon1} />
-                    <Image className="colorHIcon" src={icon5} />
-                    <h2 className="about-usp-title-2">Legacy of Trust</h2>
+                </SwiperSlide>
+                <SwiperSlide className="!hidden md:!flex">
+                  <div class="new-about-card">
+                    <div class="about-icon-wrapper">
+                      <Image className="colorIcon" src={icon1} />
+                      <Image className="colorHIcon" src={icon5} />
+                      <h2 className="about-usp-title-2">Mission headline 1</h2>
+                    </div>
+                    <p className="about-usp-detail-2">
+                      With a rich heritage spanning over three decades, Birla
+                      Tyres has built a reputation for reliability and
+                      excellence in the tyre industry. Over the past three
+                      decades, we have achieved numerous milestones, which is a
+                      testament to our commitment to quality and customer focus.
+                      We take pride in being a trusted partner for drivers
+                      across the country.
+                    </p>
+                    <Link href="" className="about-button">
+                      Read more
+                    </Link>
+                    <Image className="maskIcon" src={mask1} />
                   </div>
-                  <p className="about-usp-detail-2">
-                    With a rich heritage spanning over three decades, Birla
-                    Tyres has built a reputation for reliability and excellence
-                    in the tyre industry. Over the past three decades, we have
-                    achieved numerous milestones, which is a testament to our
-                    commitment to quality and customer focus. We take pride in
-                    being a trusted partner for drivers across the country.
-                  </p>
-                  <Link href="" className="about-button">
-                    Read more
-                  </Link>
-                  <Image className="maskIcon" src={mask1} />
-                </div>
-              </SwiperSlide>
-            </Swiper>
+                </SwiperSlide>
+              </Swiper>
+            </div>
           </div>
-          <div className="py-[60px] flex flex-col gap-10">
+          <div className="flex flex-col gap-10">
             <div className="flex flex-col gap-3">
               <span className="section-heading">Values</span>
               <div className="section-title-wrapper">
                 <h3 className="section-title">Our Values</h3>
               </div>
             </div>
-            <div className="relative flex items-center">
-              <Image src={ValuesBackground} className="w-full rounded-xl" />
-              <div className="absolute flex flex-col gap-8 ml-20 2xl:ml-28">
-                <div className="bg-white rounded-lg p-[20px] flex flex-col gap-3 w-[400px]">
-                  <div className="flex gap-3 items-center">
-                    <div className="bg-[#E0E1F5] rounded-xl py-[14px] px-4">
-                      <svg
-                        width="18"
-                        height="22"
-                        viewBox="0 0 18 22"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M1 7.66724H17"
-                          stroke="#1A1D21"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                        />
-                        <path
-                          d="M1 1H17V18.7778C17 19.3671 16.7592 19.9324 16.3305 20.3491C15.9019 20.7659 15.3205 21 14.7143 21H3.28571C2.67951 21 2.09812 20.7659 1.66947 20.3491C1.24082 19.9324 1 19.3671 1 18.7778V1Z"
-                          stroke="#1A1D21"
-                          stroke-width="1.5"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M5.57031 12.1113H6.71317M11.2846 12.1113H12.4275M5.57031 16.5558H6.71317M11.2846 16.5558H12.4275"
-                          stroke="#1A1D21"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-[#1A1D21] text-[22px] leading-[33px] font-semibold">
-                      Value point 1
-                    </h3>
-                  </div>
-                  <p className="text-[#3D434C] font-oak-sans text-base line-clamp-4 2xl:line-clamp-none">
+            <div className="mission-card-sec">
+              <div className="mission-card sticky top-0">
+                <figure className="w-full h-[500px]">
+                  <Image
+                    className="w-full h-full object-cover rounded-[16px]"
+                    src={img1}
+                    alt="card-one"
+                  />
+                </figure>
+                <div className="mission-box">
+                  <h2 className="vision-title">Value point 1</h2>
+                  <p className="text-[16px] text-[#3D434C] pt-3">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Donec vitae mi vulputate, suscipit urna in,
@@ -343,41 +337,18 @@ export default function Leadership() {
                     ipsum dolor sit amet, consectetur adipiscing elit.
                   </p>
                 </div>
-                <div className="bg-white rounded-lg p-[20px] flex flex-col gap-3 w-[400px]">
-                  <div className="flex gap-3 items-center">
-                    <div className="bg-[#E0E1F5] rounded-xl py-[14px] px-4">
-                      <svg
-                        width="18"
-                        height="22"
-                        viewBox="0 0 18 22"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M1 7.66724H17"
-                          stroke="#1A1D21"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                        />
-                        <path
-                          d="M1 1H17V18.7778C17 19.3671 16.7592 19.9324 16.3305 20.3491C15.9019 20.7659 15.3205 21 14.7143 21H3.28571C2.67951 21 2.09812 20.7659 1.66947 20.3491C1.24082 19.9324 1 19.3671 1 18.7778V1Z"
-                          stroke="#1A1D21"
-                          stroke-width="1.5"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M5.57031 12.1113H6.71317M11.2846 12.1113H12.4275M5.57031 16.5558H6.71317M11.2846 16.5558H12.4275"
-                          stroke="#1A1D21"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-[#1A1D21] text-[22px] leading-[33px] font-semibold">
-                      Value point 2
-                    </h3>
-                  </div>
-                  <p className="text-[#3D434C] font-oak-sans text-base line-clamp-4 2xl:line-clamp-none">
+              </div>
+              <div className="mission-card">
+                <figure className="w-full h-[500px]">
+                  <Image
+                    className="w-full h-full object-cover rounded-[16px]"
+                    src={img2}
+                    alt="card-one"
+                  />
+                </figure>
+                <div className="mission-box">
+                  <h2 className="vision-title">Value point 1</h2>
+                  <p className="text-[16px] text-[#3D434C] pt-3">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Donec vitae mi vulputate, suscipit urna in,
@@ -385,41 +356,18 @@ export default function Leadership() {
                     ipsum dolor sit amet, consectetur adipiscing elit.
                   </p>
                 </div>
-                <div className="bg-white rounded-lg p-[20px] flex flex-col gap-3 w-[400px]">
-                  <div className="flex gap-3 items-center">
-                    <div className="bg-[#E0E1F5] rounded-xl py-[14px] px-4">
-                      <svg
-                        width="18"
-                        height="22"
-                        viewBox="0 0 18 22"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M1 7.66724H17"
-                          stroke="#1A1D21"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                        />
-                        <path
-                          d="M1 1H17V18.7778C17 19.3671 16.7592 19.9324 16.3305 20.3491C15.9019 20.7659 15.3205 21 14.7143 21H3.28571C2.67951 21 2.09812 20.7659 1.66947 20.3491C1.24082 19.9324 1 19.3671 1 18.7778V1Z"
-                          stroke="#1A1D21"
-                          stroke-width="1.5"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M5.57031 12.1113H6.71317M11.2846 12.1113H12.4275M5.57031 16.5558H6.71317M11.2846 16.5558H12.4275"
-                          stroke="#1A1D21"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-[#1A1D21] text-[22px] leading-[33px] font-semibold">
-                      Value point 3
-                    </h3>
-                  </div>
-                  <p className="text-[#3D434C] font-oak-sans text-base line-clamp-4 2xl:line-clamp-none">
+              </div>
+              <div className="mission-card">
+                <figure className="w-full h-[500px]">
+                  <Image
+                    className="w-full h-full object-cover rounded-[16px]"
+                    src={img3}
+                    alt="card-one"
+                  />
+                </figure>
+                <div className="mission-box">
+                  <h2 className="vision-title">Value point 1</h2>
+                  <p className="text-[16px] text-[#3D434C] pt-3">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Donec vitae mi vulputate, suscipit urna in,
@@ -427,41 +375,18 @@ export default function Leadership() {
                     ipsum dolor sit amet, consectetur adipiscing elit.
                   </p>
                 </div>
-                <div className="bg-white rounded-lg p-[20px] flex flex-col gap-3 w-[400px]">
-                  <div className="flex gap-3 items-center">
-                    <div className="bg-[#E0E1F5] rounded-xl py-[14px] px-4">
-                      <svg
-                        width="18"
-                        height="22"
-                        viewBox="0 0 18 22"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M1 7.66724H17"
-                          stroke="#1A1D21"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                        />
-                        <path
-                          d="M1 1H17V18.7778C17 19.3671 16.7592 19.9324 16.3305 20.3491C15.9019 20.7659 15.3205 21 14.7143 21H3.28571C2.67951 21 2.09812 20.7659 1.66947 20.3491C1.24082 19.9324 1 19.3671 1 18.7778V1Z"
-                          stroke="#1A1D21"
-                          stroke-width="1.5"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M5.57031 12.1113H6.71317M11.2846 12.1113H12.4275M5.57031 16.5558H6.71317M11.2846 16.5558H12.4275"
-                          stroke="#1A1D21"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-[#1A1D21] text-[22px] leading-[33px] font-semibold">
-                      Value point 4
-                    </h3>
-                  </div>
-                  <p className="text-[#3D434C] font-oak-sans text-base line-clamp-4 2xl:line-clamp-none">
+              </div>
+              <div className="mission-card">
+                <figure className="w-full h-[500px]">
+                  <Image
+                    className="w-full h-full object-cover rounded-[16px]"
+                    src={img4}
+                    alt="card-one"
+                  />
+                </figure>
+                <div className="mission-box">
+                  <h2 className="vision-title">Value point 1</h2>
+                  <p className="text-[16px] text-[#3D434C] pt-3">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Donec vitae mi vulputate, suscipit urna in,
