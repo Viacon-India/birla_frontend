@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Autoplay, Controller } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -80,7 +80,7 @@ export default function Leadership() {
           </div>
         </div>
       </section>
-      <section className="overflow-hidden">
+      <section className="relative">
         <div className="container mx-auto">
           <div className="section-layer md:mt-[60px]">
             <figure
@@ -311,7 +311,7 @@ export default function Leadership() {
               </Swiper>
             </div>
           </div>
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-10 relative">
             <div className="flex flex-col gap-3">
               <span className="section-heading">Values</span>
               <div className="section-title-wrapper">
@@ -319,84 +319,93 @@ export default function Leadership() {
               </div>
             </div>
             <div className="mission-card-sec">
-              <div className="mission-card sticky top-0">
-                <figure className="w-full h-[500px]">
-                  <Image
-                    className="w-full h-full object-cover rounded-[16px]"
-                    src={img1}
-                    alt="card-one"
-                  />
-                </figure>
-                <div className="mission-box">
-                  <h2 className="vision-title">Value point 1</h2>
-                  <p className="text-[16px] text-[#3D434C] pt-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Donec vitae mi vulputate, suscipit urna in,
-                    malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                    ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
+              <div className="sticky-container top-[120px]">
+                <div className="mission-card" data-aos="zoom-in-right" data-aos-duration="1000">
+                  <figure className="w-full h-[500px]">
+                    <Image
+                      className="w-full h-full object-cover rounded-[16px]"
+                      src={img1}
+                      alt="card-one"
+                    />
+                  </figure>
+                  <div className="mission-box" >
+                    <h2 className="vision-title">Value point 1</h2>
+                    <p className="text-[16px] text-[#3D434C] pt-3">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
+                      ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="mission-card">
-                <figure className="w-full h-[500px]">
-                  <Image
-                    className="w-full h-full object-cover rounded-[16px]"
-                    src={img2}
-                    alt="card-one"
-                  />
-                </figure>
-                <div className="mission-box">
-                  <h2 className="vision-title">Value point 1</h2>
-                  <p className="text-[16px] text-[#3D434C] pt-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Donec vitae mi vulputate, suscipit urna in,
-                    malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                    ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
+              <div className="sticky-container top-[140px]">
+                <div className="mission-card" data-aos="zoom-in-right" data-aos-duration="1000">
+                  <figure className="w-full h-[500px]">
+                    <Image
+                      className="w-full h-full object-cover rounded-[16px]"
+                      src={img2}
+                      alt="card-one"
+                    />
+                  </figure>
+                  <div className="mission-box">
+                    <h2 className="vision-title">Value point 2</h2>
+                    <p className="text-[16px] text-[#3D434C] pt-3">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
+                      ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="mission-card">
-                <figure className="w-full h-[500px]">
-                  <Image
-                    className="w-full h-full object-cover rounded-[16px]"
-                    src={img3}
-                    alt="card-one"
-                  />
-                </figure>
-                <div className="mission-box">
-                  <h2 className="vision-title">Value point 1</h2>
-                  <p className="text-[16px] text-[#3D434C] pt-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Donec vitae mi vulputate, suscipit urna in,
-                    malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                    ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
+              <div className="sticky-container top-[160px]">
+                <div className="mission-card" data-aos="zoom-in-right" data-aos-duration="1000">
+                  <figure className="w-full h-[500px]">
+                    <Image
+                      className="w-full h-full object-cover rounded-[16px]"
+                      src={img3}
+                      alt="card-one"
+                    />
+                  </figure>
+                  <div className="mission-box">
+                    <h2 className="vision-title">Value point 3</h2>
+                    <p className="text-[16px] text-[#3D434C] pt-3">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
+                      ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
                 </div>
               </div>
-              {/* <div className="mission-card">
-                <figure className="w-full h-[500px]">
-                  <Image
-                    className="w-full h-full object-cover rounded-[16px]"
-                    src={img4}
-                    alt="card-one"
-                  />
-                </figure>
-                <div className="mission-box">
-                  <h2 className="vision-title">Value point 1</h2>
-                  <p className="text-[16px] text-[#3D434C] pt-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Donec vitae mi vulputate, suscipit urna in,
-                    malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                    ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
+              <div className="sticky-container top-[180px]">
+                <div className="mission-card" data-aos="zoom-in-right" data-aos-duration="1000">
+                  <figure className="w-full h-[500px]">
+                    <Image
+                      className="w-full h-full object-cover rounded-[16px]"
+                      src={img4}
+                      alt="card-one"
+                    />
+                  </figure>
+                  <div className="mission-box">
+                    <h2 className="vision-title">Value point 4</h2>
+                    <p className="text-[16px] text-[#3D434C] pt-3">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
+                      ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
+
         </div>
       </section>
       <section className="relative flex mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden">
