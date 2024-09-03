@@ -6,11 +6,6 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --card-height: 40vw;
-  --card-margin: 4vw;
-  --card-top-offset: 1em;
-  --numcards: 4;
-  --outline-width: 0px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1457,7 +1452,8 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply text-[#3D434C] text-[14px] font-medium mb-[6px]
  }
  .contact-input{
-  @apply outline-none p-3 text-[14px] placeholder:text-[14px] placeholder:text-[#9DA4B0]
+  @apply outline-none p-3 text-[14px] placeholder:text-[14px] 
+  placeholder:text-[#9DA4B0]
  }
  .contact-select{
   @apply p-3 text-[#9DA4B0] text-[14px] outline-none
@@ -1465,6 +1461,11 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
  .contact-select option{
   @apply !p-2 text-[#000000] text-[16px]
  }
+ .input-upload{
+  @apply text-[#ffffff] bg-blue-700
+ }
+
+
 
 
  .glare {
