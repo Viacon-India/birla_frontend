@@ -376,7 +376,7 @@ export default function Leadership() {
                   </p>
                 </div>
               </div>
-              <div className="mission-card">
+              {/* <div className="mission-card">
                 <figure className="w-full h-[500px]">
                   <Image
                     className="w-full h-full object-cover rounded-[16px]"
@@ -394,7 +394,7 @@ export default function Leadership() {
                     ipsum dolor sit amet, consectetur adipiscing elit.
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
