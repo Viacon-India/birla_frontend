@@ -16,6 +16,8 @@ import BGTiger2 from "../assets/images/tiger-mask2.png";
 import Hero from "../assets/images/leadership-hero.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Triangle1 from "../assets/images/triangle1.png";
+import Triangle2 from "../assets/images/triangle2.png";
 
 export default function Leadership() {
   useEffect(() => {
@@ -131,14 +133,19 @@ export default function Leadership() {
 
           <div className="flex items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
             <figure
-              className="relative w-[40%] glare"
-              data-aos="flip-left"
-              data-aos-duration="1000"
+              className="w-full md:w-[40%] h-[480px] relative glare"
+              data-aos="flip-right"
+              data-aos-duration="1500"
             >
               <Image
+                className="absolute -z-1 w-full h-full"
+                src={Triangle1}
+                alt="triangle"
+              />
+              <Image
+                className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
                 src={Director1}
                 alt="img"
-                className="w-full rounded-xl relative shadow-2xl"
               />
             </figure>
             <div className="flex flex-col justify-center gap-2 md:gap-6 w-[60%] relative overflow-hidden">
@@ -339,28 +346,38 @@ export default function Leadership() {
               </div>
             </div>
             <figure
-              className="relative w-[40%] glare"
-               data-aos="flip-right"
-              data-aos-duration="1000"
+              className="w-full md:w-[40%] h-[480px] relative glare"
+              data-aos="flip-left"
+              data-aos-duration="1500"
             >
               <Image
+                className="absolute -z-1 w-full h-full"
+                src={Triangle2}
+                alt="triangle"
+              />
+              <Image
+                className="w-[90%] h-[90%] translate-y-8 translate-x-8 rounded-[12px]"
                 src={Director2}
                 alt="img"
-                className="w-full rounded-xl relative shadow-2xl"
               />
             </figure>
           </div>
 
           <div className="flex items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
             <figure
-              className="relative w-[40%] glare"
-              data-aos="flip-left"
-              data-aos-duration="1000"
+              className="w-full md:w-[40%] h-[480px] relative glare"
+              data-aos="flip-right"
+              data-aos-duration="1500"
             >
               <Image
+                className="absolute -z-1 w-full h-full"
+                src={Triangle1}
+                alt="triangle"
+              />
+              <Image
+                className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
                 src={Director3}
                 alt="img"
-                className="w-full rounded-xl relative shadow-2xl"
               />
             </figure>
             <div className="flex flex-col justify-between w-[60%] overflow-hidden">
@@ -457,7 +474,7 @@ export default function Leadership() {
           </div>
         </div>
       </section>
-      
+
       <section className="pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden flex bg-[#F8F8F8]">
         <Image
           src={NextChapter}

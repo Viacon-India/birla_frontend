@@ -6,10 +6,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+
 export function getStrapiURL() {
   return process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://birlatyres.viaconprojects.com:1337";
 }
- 
+
 export function getStrapiMedia(url: string | null) {
   if (url == null) return null;
   if (url.startsWith("data:")) return url;
