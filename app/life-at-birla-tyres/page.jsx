@@ -38,7 +38,7 @@ export default function LifeAtBirla() {
                   <Link href="" className="primary-btn-1">
                     Find a Tyre
                   </Link>
-                  <Link href="" className="primary-btn-2">
+                  <Link href="dealer-locator" className="primary-btn-2">
                     Find a Dealer
                   </Link>
                 </div>
@@ -115,7 +115,7 @@ export default function LifeAtBirla() {
             <Image src={life7} alt="bottom-img" className="rounded-[20px]" />
             <Image src={life8} alt="bottom-img" className="rounded-[20px]" />
           </div>
-          <div className="section-layer !items-center">
+          <div className="section-layer !items-center pt-[60px] md:pt-[120px]">
             <div
               className="box-title-sec w-full md:w-[45%] relative"
               data-aos="fade-right"
@@ -193,13 +193,15 @@ export default function LifeAtBirla() {
                     <label className="contact-label" htmlFor="">
                       Your Specialization
                     </label>
-                    <input
-                      className="contact-input"
-                      type="text"
-                      placeholder="Tell us your role"
-                    />
+                    <select className="contact-select" name="" id="">
+                      <option value="">Tell us your role</option>
+                      <option value="Query Type 1">Role Type 1</option>
+                      <option value="Query Type 2">Role Type 2</option>
+                      <option value="Query Type 3">Role Type 3</option>
+                      <option value="Query Type 4">Role Type 4</option>
+                    </select>
                   </div>
-                  <div className="w-full flex flex-col ">
+                  <div className="w-full flex flex-col">
                     <label className="contact-label" htmlFor="">
                       Upload resume
                     </label>
@@ -209,7 +211,12 @@ export default function LifeAtBirla() {
                         type="none"
                         placeholder="Upload Word/PDF file (size max 5 mb)"
                       />
-                      <input className="input-upload" type="file" id="myFile" name="filename"></input>
+                      <input
+                        className="input-upload"
+                        type="file"
+                        id="myFile"
+                        name="filename"
+                      ></input>
                     </div>
                   </div>
                   <Link
@@ -226,7 +233,7 @@ export default function LifeAtBirla() {
           </div>
         </div>
       </section>
-      <section className="relative flex mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden">
+      <section className="relative flex pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden bg-[#F4F4F4]">
         <Image
           src={life9}
           alt="bottom-img"
