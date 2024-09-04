@@ -37,7 +37,7 @@ export default function Esg() {
                   <Link href="" className="primary-btn-1">
                     Find a Tyre
                   </Link>
-                  <Link href="" className="primary-btn-2">
+                  <Link href="dealer-locator" className="primary-btn-2">
                     Find a Dealer
                   </Link>
                 </div>
