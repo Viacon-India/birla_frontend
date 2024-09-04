@@ -106,14 +106,56 @@ export default function LifeAtBirla() {
               </p>
             </div>
           </div>
-          <div className="flex flex-wrap gap-6">
-            <Image src={life2} alt="bottom-img" className="rounded-[20px]" />
-            <Image src={life3} alt="bottom-img" className="rounded-[20px]" />
-            <Image src={life4} alt="bottom-img" className="rounded-[20px]" />
-            <Image src={life5} alt="bottom-img" className="rounded-[20px]" />
-            <Image src={life6} alt="bottom-img" className="rounded-[20px]" />
-            <Image src={life7} alt="bottom-img" className="rounded-[20px]" />
-            <Image src={life8} alt="bottom-img" className="rounded-[20px]" />
+          <div className="gallery-sec flex flex-wrap justify-between gap-3 2xl:gap-4">
+            <figure className="w-[29%] h-[316px] mb-0" data-aos="flip-left" data-aos-duration="1000">
+              <Image
+                src={life2}
+                alt="bottom-img"
+                className="gallery-sec-image"
+              />
+            </figure>
+            <figure className="w-[49%] h-[316px] mb-0" data-aos="flip-left" data-aos-duration="1000">
+              <Image
+                src={life3}
+                alt="bottom-img"
+                className="gallery-sec-image"
+              />
+            </figure>
+            <figure className="w-[19%] h-[316px] mb-0" data-aos="flip-left" data-aos-duration="1000">
+              <Image
+                src={life4}
+                alt="bottom-img"
+                className="gallery-sec-image"
+              />
+            </figure>
+            <figure className="w-[19%] h-[316px] mb-0" data-aos="flip-left" data-aos-duration="1000">
+              <Image
+                src={life5}
+                alt="bottom-img"
+                className="gallery-sec-image"
+              />
+            </figure>
+            <figure className="w-[19%] h-[316px] mb-0" data-aos="flip-left" data-aos-duration="1000">
+              <Image
+                src={life6}
+                alt="bottom-img"
+                className="gallery-sec-image"
+              />
+            </figure>
+            <figure className="w-[29%] h-[316px] mb-0" data-aos="flip-left" data-aos-duration="1000">
+              <Image
+                src={life7}
+                alt="bottom-img"
+                className="gallery-sec-image"
+              />
+            </figure>
+            <figure className="w-[29%] h-[316px] mb-0" data-aos="flip-left" data-aos-duration="1000">
+              <Image
+                src={life8}
+                alt="bottom-img"
+                className="gallery-sec-image"
+              />
+            </figure>
           </div>
           <div className="section-layer !items-center pt-[60px] md:pt-[120px]">
             <div
@@ -124,7 +166,7 @@ export default function LifeAtBirla() {
               <Image
                 alt="mask"
                 src={tigerMask}
-                className="absolute left-0 top-0"
+                className="absolute left-0 top-[-220px]"
               />
               <span className="section-heading">
                 Be A Part of our talent pool
@@ -141,7 +183,11 @@ export default function LifeAtBirla() {
               </p>
             </div>
             <div className="w-full md:w-1/2">
-              <div className="form-content">
+              <div
+                className="form-content"
+                data-aos="fade-left"
+                data-aos-duration="1000"
+              >
                 <form className="w-full flex flex-col gap-3 md:gap-5">
                   <div>
                     <span className="section-heading">Job Opportunity</span>
@@ -211,12 +257,7 @@ export default function LifeAtBirla() {
                         type="none"
                         placeholder="Upload Word/PDF file (size max 5 mb)"
                       />
-                      <input
-                        className="input-upload"
-                        type="file"
-                        id="myFile"
-                        name="filename"
-                      ></input>
+                      <input type="file" />
                     </div>
                   </div>
                   <Link

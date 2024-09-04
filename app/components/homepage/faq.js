@@ -77,7 +77,7 @@ export default function Faq() {
                   </figure>
                 </div>
                 <div
-                  class="faq-accordion md:w-[50%]"
+                  class="faq-accordion md:w-[50%] md:max-h-[550px] overflow-y-auto"
                   data-aos="fade-right"
                   data-aos-duration="1500"
                 >

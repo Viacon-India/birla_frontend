@@ -17,6 +17,7 @@ import BGTiger from "../assets/images/tiger-mask3.png";
 export default function Page({ params }) {
   const slug = params.slug.pop();
   const [investorRelationData, setInvestorRelationData] = useState([]);
+  
   useEffect(() => {
     fetch(getStrapiMedia("/api/investor-relation/"+slug))
       .then((res) => res.json())

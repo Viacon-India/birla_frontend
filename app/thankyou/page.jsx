@@ -18,9 +18,9 @@ export default function Thankyou() {
         <Float />
         <div className="container mx-auto">
           <div className="thank-main flex flex-col md:flex-row items-center gap-4 md:gap-6 2xl:gap-10 mt-[60px]">
-            <div className="thank-img-sec form-content w-full md:w-[45%]">
-              <figure>
-                <Image src={thank} alt="img" />
+            <div className="thank-img-sec bg-[#FFFFFF] border border-[#DEE1E5] p-6 md:p-5 rounded-[12px] w-full md:w-[45%]">
+              <figure className="w-[full] h-[480px]">
+                <Image className="w-full h-full object-cover rounded-[6px]" src={thank} alt="img" />
               </figure>
             </div>
             <div className="thank-detail flex flex-col gap-[60px] relative overflow-hidden">
