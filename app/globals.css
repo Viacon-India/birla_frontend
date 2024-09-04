@@ -1577,7 +1577,32 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   @apply w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center
 }
 
+input[type=file] {
+  width: 90px;
+  color: #FFFFFF;
+  background: #fff;
+  font-size: 12px; 
+  position: absolute;
+  right: 0px;
+  top: 4px;
+}
 
+input[type=file]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #2E3192;
+  padding: 10px;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+.gallery-sec figure{
+  @apply overflow-hidden rounded-[20px] cursor-pointer
+}
+.gallery-sec-image{
+  @apply rounded-[20px] w-full h-full object-cover hover:scale-125 hover:rotate-[5deg] transition-all duration-700
+}
 
 
 
