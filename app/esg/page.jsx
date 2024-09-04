@@ -13,6 +13,7 @@ import Man1 from "../assets/images/esg-man1.jpg";
 import Man2 from "../assets/images/esg-man2.jpg";
 import Man3 from "../assets/images/esg-man3.jpg";
 import LastBg from "../assets/images/esg-next.png";
+import PageEnd from "../components/pageEnd/pageEnd";
 import BGTiger from "../assets/images/tiger-mask3.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -200,21 +201,33 @@ export default function Esg() {
                   vitae mi vulputate, suscipit urna in, malesuada nisl.
                 </p>
                 <div className="flex justify-between gap-[35px] overflow-hidden">
-                  <figure className="w-1/3" data-aos="fade-down" data-aos-duration="1000">
+                  <figure
+                    className="w-1/3"
+                    data-aos="fade-down"
+                    data-aos-duration="1000"
+                  >
                     <Image
                       src={Man1}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
                   </figure>
-                  <figure className="w-1/3" data-aos="fade-down" data-aos-duration="1500">
+                  <figure
+                    className="w-1/3"
+                    data-aos="fade-down"
+                    data-aos-duration="1500"
+                  >
                     <Image
                       src={Man2}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
                   </figure>
-                  <figure className="w-1/3" data-aos="fade-down" data-aos-duration="2000">
+                  <figure
+                    className="w-1/3"
+                    data-aos="fade-down"
+                    data-aos-duration="2000"
+                  >
                     <Image
                       src={Man3}
                       alt="Hero-Banner"
@@ -241,21 +254,33 @@ export default function Esg() {
                   vitae mi vulputate, suscipit urna in, malesuada nisl.
                 </p>
                 <div className="flex justify-between gap-[35px] overflow-hidden">
-                  <figure className="w-1/3" data-aos="fade-down" data-aos-duration="1000">
+                  <figure
+                    className="w-1/3"
+                    data-aos="fade-down"
+                    data-aos-duration="1000"
+                  >
                     <Image
                       src={Man1}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
                   </figure>
-                  <figure className="w-1/3" data-aos="fade-down" data-aos-duration="1500">
+                  <figure
+                    className="w-1/3"
+                    data-aos="fade-down"
+                    data-aos-duration="1500"
+                  >
                     <Image
                       src={Man2}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
                   </figure>
-                  <figure className="w-1/3" data-aos="fade-down" data-aos-duration="2000">
+                  <figure
+                    className="w-1/3"
+                    data-aos="fade-down"
+                    data-aos-duration="2000"
+                  >
                     <Image
                       src={Man3}
                       alt="Hero-Banner"
@@ -282,21 +307,33 @@ export default function Esg() {
                   vitae mi vulputate, suscipit urna in, malesuada nisl.
                 </p>
                 <div className="flex justify-between gap-[35px] overflow-hidden">
-                  <figure className="w-1/3" data-aos="fade-down" data-aos-duration="1000">
+                  <figure
+                    className="w-1/3"
+                    data-aos="fade-down"
+                    data-aos-duration="1000"
+                  >
                     <Image
                       src={Man1}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
                   </figure>
-                  <figure className="w-1/3" data-aos="fade-down" data-aos-duration="1500">
+                  <figure
+                    className="w-1/3"
+                    data-aos="fade-down"
+                    data-aos-duration="1500"
+                  >
                     <Image
                       src={Man2}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
                   </figure>
-                  <figure className="w-1/3" data-aos="fade-down" data-aos-duration="2000">
+                  <figure
+                    className="w-1/3"
+                    data-aos="fade-down"
+                    data-aos-duration="2000"
+                  >
                     <Image
                       src={Man3}
                       alt="Hero-Banner"
@@ -323,21 +360,33 @@ export default function Esg() {
                   vitae mi vulputate, suscipit urna in, malesuada nisl.
                 </p>
                 <div className="flex justify-between gap-[35px] overflow-hidden">
-                  <figure className="w-1/3" data-aos="fade-down" data-aos-duration="1000">
+                  <figure
+                    className="w-1/3"
+                    data-aos="fade-down"
+                    data-aos-duration="1000"
+                  >
                     <Image
                       src={Man1}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
                   </figure>
-                  <figure className="w-1/3" data-aos="fade-down" data-aos-duration="1500">
+                  <figure
+                    className="w-1/3"
+                    data-aos="fade-down"
+                    data-aos-duration="1500"
+                  >
                     <Image
                       src={Man2}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
                   </figure>
-                  <figure className="w-1/3" data-aos="fade-down" data-aos-duration="2000">
+                  <figure
+                    className="w-1/3"
+                    data-aos="fade-down"
+                    data-aos-duration="2000"
+                  >
                     <Image
                       src={Man3}
                       alt="Hero-Banner"
@@ -350,43 +399,15 @@ export default function Esg() {
           </div>
         </div>
       </section>
-      <section className="relative flex mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden">
-        <Image
-          src={LastBg}
-          alt="bottom-img"
-          className="absolute left-0 h-[200px] w-[60%]"
-        />
-        <div className="container mx-auto relative h-[200px] flex items-end justify-end">
-          <Image
-            src={BGTiger}
-            alt="bottom-img"
-            className="absolute right-[20%]"
-          />
-          <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4">
-            Next Page :
-            <Link
-              className="text-[#F5811E] font-medium flex items-center gap-1"
-              href="/users/product"
-            >
-              Tyre Care & Road Safety
-              <svg
-                width="14"
-                height="13"
-                viewBox="0 0 14 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 12.5L13 0.5M13 0.5H3.25M13 0.5V10.25"
-                  stroke="#F5811E"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </Link>
-          </p>
-        </div>
-      </section>
+      <PageEnd
+        Title="Tyre Care & Road Safety"
+        TitleLink="/users/product"
+        EndImageSrc={LastBg}
+        // Background={true}
+        // EndImageW="840"
+        // EndImageH="200"
+        EndImageAlt="bottom-img"
+      />
       <Footer />
     </>
   );

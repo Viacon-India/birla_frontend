@@ -63,7 +63,7 @@ export default function Page({ params }) {
       </section>
       {investorRelationData.section && 
         <section className="bg-[#F8F8F8] pt-10 md:pt-[60px]">
-          <div className="container mx-auto grid grid-cols-2 gap-10">
+          <div className={investorRelationData.section.length > 1 ?"container mx-auto grid grid-cols-2 gap-10":"container mx-auto"}>
             {investorRelationData.section.map((section) => (
               <div className="bg-white border border-[#DEE1E5] rounded-xl p-[60px] flex flex-col gap-10 h-fit" key={section.id}>
                 {section?.title &&

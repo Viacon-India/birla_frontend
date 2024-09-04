@@ -31,7 +31,7 @@ export default function Thankyou() {
               />
 
               <span className="section-heading 2xl:!text-[28px]">
-                Thankyou for connecting with Birla Tyres
+                Thank you for connecting with Birla Tyres
               </span>
               <h3 className="section-title 2xl:!text-[60px]">We have received your message!</h3>
               <h2 className="text-[32px] font-medium text-[#1A1D21]">
