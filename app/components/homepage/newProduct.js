@@ -36,6 +36,7 @@ const productData = {
   TBB: [
     {
       title: "Ultra Drive Platina",
+      tag:"Premium",
       description: "High Mileage Premium Lug",
       image: tyre1,
       icon: prodSvg,
@@ -46,6 +47,7 @@ const productData = {
     },
     {
       title: "Ultra Miler Platina",
+      tag:"Premium",
       description: "High Mileage Premium Rib",
       image: tyre2,
       icon: prodSvg,
@@ -57,6 +59,7 @@ const productData = {
     {
       title: "Rustom",
       description: "Regional Semi Lug",
+      tag:"Premium",
       image: tyre3,
       icon: iconW2img,
       size: ["9.00-20"],
@@ -68,7 +71,8 @@ const productData = {
   OTR: [
     {
       title: "Kalapatthar",
-      description: "Premium tyre for the toughest mining envs.",
+      tag:"Standard",
+      description: "Standard tyre for the toughest mining environment.",
       image: tyre4,
       icon: prodSvg2,
       size: ["9.00-20(16PR)", "10.00-20(18PR)", "11.00-20 (18PR)", "12.00-20 (18PR)", "12.00-24 (20PR)" ],
@@ -78,7 +82,8 @@ const productData = {
     },
     {
       title: "Kalapatthar Plus",
-      description: "Premium tyre for the toughest mining envs.",
+      tag:"Premium",
+      description: "Premium tyre for the toughest mining environment.",
       image: tyre5,
       icon: ultra,
       size: ["9.00-20(16PR)", "10.00-20(18PR)", "11.00-20 (18PR)", "12.00-20 (18PR)", "12.00-24 (20PR)" ],
@@ -88,6 +93,7 @@ const productData = {
     },
     {
       title: "Grader Max",
+      tag:"Premium",
       description: "Premium Grader Tyre",
       image: tyre6,
       icon: prodSvg2,
@@ -99,18 +105,9 @@ const productData = {
   ],
   AGRI: [
     {
-      title: "Shaan",
-      description: "Durable Front Tractor Tyre",
-      image: tyre7,
-      icon: prodSvg3,
-      size: ["6.00-16", "7.50-16", "7.50-16", "6.50-20"],
-      load: "Lorem",
-      pattern: "Lorem Ipsum",
-      construction: "Lorem"
-    },
-    {
       title: "Shaan+",
-      description: "Durable Rear Tractor Tyre",
+      tag:"Premium",
+      description: "Suitable for haulage & agri applications",
       image: tyre8,
       icon: prodSvg3,
       size: ["12.4-28", "13.6-28", "14.9-28", "16.9-28", "18.4-30"],
@@ -119,7 +116,19 @@ const productData = {
       construction: "Lorem"
     },
     {
+      title: "Shaan",
+      tag:"Premium",
+      description: "Longer Life & More Mileage",
+      image: tyre7,
+      icon: prodSvg3,
+      size: ["6.00-16", "7.50-16", "7.50-16", "6.50-20"],
+      load: "Lorem",
+      pattern: "Lorem Ipsum",
+      construction: "Lorem"
+    },
+    {
       title: "Chakra",
+      tag:"Premium",
       description: "Tractor Trailer Tyre",
       image: tyre9,
       icon: chakra,
@@ -230,7 +239,7 @@ export default function NewProduct() {
               {productData[tab].map((product, index) => (
                 <SwiperSlide key={index}>
                   <div className="new-product-card">
-                    <span className="new-product-card-tag">Premium</span>
+                    <span className="new-product-card-tag">{product.tag}</span>
                     <div class="flex gap-8 px-4 pt-4">
                       <div class="new-product-iconListSec flex flex-col gap-6 2xl:gap-10">
                         <div class="flex gap-[6px] items-center">
