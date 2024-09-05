@@ -1578,24 +1578,11 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 }
 
 input[type=file] {
-  width: 90px;
-  color: #FFFFFF;
-  background: #fff;
-  font-size: 12px; 
-  position: absolute;
-  right: 0px;
-  top: 4px;
+  @apply w-[90px] text-[#FFFFFF] bg-[#ffffff] text-[12px] absolute right-[0px] top-[4px]
 }
 
 input[type=file]::file-selector-button {
-  margin-right: 20px;
-  border: none;
-  background: #2E3192;
-  padding: 10px;
-  border-radius: 8px;
-  color: #fff;
-  cursor: pointer;
-  transition: background .2s ease-in-out;
+  @apply bg-secondary p-[10px] rounded-[8px] border-none mr-5 text-[#ffffff] cursor-pointer
 }
 .gallery-sec figure{
   @apply overflow-hidden rounded-[20px] cursor-pointer
@@ -1604,6 +1591,95 @@ input[type=file]::file-selector-button {
   @apply rounded-[20px] w-full h-full object-cover hover:scale-125 hover:rotate-[5deg] transition-all duration-700
 }
 
+
+/* sustainability-page*/
+
+.sustainability-figure{
+  @apply w-full h-[240px] mb-0 overflow-hidden rounded-[20px] relative cursor-pointer
+}
+.sustainability-image{
+  @apply rounded-[20px] w-full h-full object-cover transition-all duration-700
+}
+.sustainability-overlay{
+  @apply absolute w-full h-full bg-primary opacity-75 text-white text-[18px] flex items-start justify-center
+  top-[87%] transition-all duration-700 py-[2px]
+}
+.sustainability-figure:hover .sustainability-overlay{
+  @apply top-0 items-center
+}
+
+.pillar-list-sec{
+  @apply flex flex-col gap-8
+}
+
+.pillar-list h3{
+  @apply text-[#1A1D21] text-[20px] font-medium
+}
+.pillar-list p{
+  @apply text-[#606977] text-[16px]
+}
+.pillar-box{
+  @apply flex gap-3
+}
+
+.pillar-box::before{
+  content: url('data:image/svg+xml,<svg width="22" height="22" viewBox="0 0 18 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.16713H17" stroke="%232E3192" stroke-width="1.5" stroke-linecap="round"/><path d="M1 1.5H17V19.2778C17 19.8671 16.7592 20.4324 16.3305 20.8491C15.9019 21.2659 15.3205 21.5 14.7143 21.5H3.28571C2.67951 21.5 2.09812 21.2659 1.66947 20.8491C1.24082 20.4324 1 19.8671 1 19.2778V1.5Z" stroke="%232E3192" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.57031 12.6113H6.71317M11.2846 12.6113H12.4275M5.57031 17.0558H6.71317M11.2846 17.0558H12.4275" stroke="%231A1D21" stroke-width="1.5" stroke-linecap="round"/></svg>');
+  @apply w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center
+}
+
+
+
+
+/* parralax */
+.parallax-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  width: 100%;
+  min-height: 500px;
+}
+
+.parallax-card {
+  @apply bg-white rounded-[12px] flex flex-col justify-center items-center w-[240px] h-[240px] shadow-2xl
+}
+
+.parallax-card h3{
+  @apply text-secondary text-[32px] font-medium
+}
+
+.parallax-item:first-child {
+  background: url("https://plus.unsplash.com/premium_photo-1680040211009-169b40ee81bb?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 500px;
+}
+
+.parallax-item:nth-child(2) {
+  background: url("https://images.unsplash.com/photo-1663305411753-4c305e177ff3?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjM5NDA4ODE&ixlib=rb-1.2.1&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 500px;
+
+}
+
+.parallax-item:nth-child(3) {
+  background: url("https://images.unsplash.com/photo-1663183539627-adbe2c8ef43d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjM5Mzk5ODc&ixlib=rb-1.2.1&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 500px;
+}
+
+.parallax-item:nth-child(4) {
+  background: url("https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2026&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 500px;
+}
 
 
 

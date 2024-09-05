@@ -13,7 +13,7 @@ import Man1 from "../assets/images/esg-man1.jpg";
 import Man2 from "../assets/images/esg-man2.jpg";
 import Man3 from "../assets/images/esg-man3.jpg";
 import LastBg from "../assets/images/esg-next.png";
-import PageEnd from "../components/pageEnd/pageEnd";
+import {PageEnd} from "../components/pageCommon/pageCommon";
 import BGTiger from "../assets/images/tiger-mask3.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -46,7 +46,8 @@ export default function Esg() {
                   <GradualSpacing
                     className="top-banner-sec-heading"
                     text="ESG Initiatives"
-                    padding="5"
+                                        paddingLeft="pl-5"
+                    paddingRight="pr-5"
                   />
                 </div>
               </div>

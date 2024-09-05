@@ -3,8 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import Tiger from "../../assets/images/tiger-mask3.png";
+import { cn } from "@/lib/utils";
 
-export default function PageEnd({
+export function PageEnd({
   Title,
   TitleLink,
   EndImageSrc,
@@ -14,13 +15,7 @@ export default function PageEnd({
   Background,
 }) {
   return (
-    <section
-      className={
-        Background
-          ? "relative flex pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden bg-[#F4F4F4]"
-          : "relative flex pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden bg-white"
-      }
-    >
+    <section className={cn("relative flex pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden ", Background ? Background : "bg-white")} >
       {EndImageSrc && (
         <Image
           src={EndImageSrc}

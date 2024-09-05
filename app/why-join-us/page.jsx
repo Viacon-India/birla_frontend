@@ -42,7 +42,8 @@ export default function JoinUs() {
                   <GradualSpacing
                     className="top-banner-sec-heading"
                     text="why join us"
-                    padding="5"
+                                        paddingLeft="pl-5"
+                    paddingRight="pr-5"
                   />
                 </div>
               </div>
