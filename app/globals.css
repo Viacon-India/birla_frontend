@@ -1632,12 +1632,7 @@ input[type=file]::file-selector-button {
 
 /* parralax */
 .parallax-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  width: 100%;
-  min-height: 500px;
+  @apply w-full flex items-center justify-between p-[100px] rounded-[16px] gap-8
 }
 
 .parallax-card {
@@ -1653,32 +1648,7 @@ input[type=file]::file-selector-button {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  min-height: 500px;
-}
-
-.parallax-item:nth-child(2) {
-  background: url("https://images.unsplash.com/photo-1663305411753-4c305e177ff3?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjM5NDA4ODE&ixlib=rb-1.2.1&q=80");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  min-height: 500px;
-
-}
-
-.parallax-item:nth-child(3) {
-  background: url("https://images.unsplash.com/photo-1663183539627-adbe2c8ef43d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjM5Mzk5ODc&ixlib=rb-1.2.1&q=80");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  min-height: 500px;
-}
-
-.parallax-item:nth-child(4) {
-  background: url("https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2026&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  min-height: 500px;
+  min-height: 100vh;
 }
 
 
