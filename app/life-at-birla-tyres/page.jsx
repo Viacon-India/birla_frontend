@@ -46,7 +46,8 @@ export default function LifeAtBirla() {
                   <GradualSpacing
                     className="top-banner-sec-heading"
                     text="Life At BIRLA TYRES"
-                    padding="5"
+                                        paddingLeft="pl-5"
+                    paddingRight="pr-5"
                   />
                 </div>
               </div>

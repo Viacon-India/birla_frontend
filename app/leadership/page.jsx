@@ -45,7 +45,8 @@ export default function Leadership() {
                   <GradualSpacing
                     className="top-banner-sec-heading"
                     text="Leadership"
-                    padding="5"
+                                        paddingLeft="pl-5"
+                    paddingRight="pr-5"
                   />
                 </div>
               </div>

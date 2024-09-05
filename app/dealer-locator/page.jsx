@@ -28,7 +28,8 @@ export default function DealerLocator() {
                   <GradualSpacing
                     className="top-banner-sec-heading"
                     text="Dealer Locator"
-                    padding="5"
+                                        paddingLeft="pl-5"
+                    paddingRight="pr-5"
                   />
                 </div>
               </div>

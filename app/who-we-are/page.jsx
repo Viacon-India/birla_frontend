@@ -50,7 +50,8 @@ export default function WhoWeAre() {
                   <GradualSpacing
                     className="top-banner-sec-heading"
                     text="WHO WE ARE"
-                    padding="5"
+                                        paddingLeft="pl-5"
+                    paddingRight="pr-5"
                   />
                 </div>
               </div>

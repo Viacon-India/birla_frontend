@@ -8,19 +8,25 @@ import Float from "../components/float/float";
 import Link from "next/link";
 import Image from "next/image";
 import Banner from "../assets/images/sus1.jpg";
-import Separator from "../assets/images/esg-separator.jpg";
-import Man1 from "../assets/images/esg-man1.jpg";
-import Man2 from "../assets/images/esg-man2.jpg";
-import Man3 from "../assets/images/esg-man3.jpg";
 import LastBg from "../assets/images/sus10.png";
-import PageEnd from "../components/pageEnd/pageEnd";
-import BGTiger from "../assets/images/tiger-mask3.png";
+import { PageEnd } from "../components/pageCommon/pageCommon";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import life2 from "../assets/images/life2.jpg";
+import life3 from "../assets/images/life3.jpg";
+import life4 from "../assets/images/life4.jpg";
+import life5 from "../assets/images/life5.jpg";
+import life6 from "../assets/images/life6.jpg";
+import life7 from "../assets/images/life7.jpg";
+import life8 from "../assets/images/life8.jpg";
+import sus2 from "../assets/images/sus2.jpg";
+import susIcon1 from "../assets/images/sus-icon1.png"
+import susIcon2 from "../assets/images/sus-icon2.png"
+import susIcon3 from "../assets/images/sus-icon3.png"
+import susIcon4 from "../assets/images/sus-icon4.png"
+import Triangle1 from "../assets/images/triangle1.png";
 
 export default function Sustainability() {
-  const [activeTab, setActiveTab] = useState("tab-1");
-
   useEffect(() => {
     AOS.init();
   });
@@ -46,7 +52,8 @@ export default function Sustainability() {
                   <GradualSpacing
                     className="top-banner-sec-heading"
                     text="ESG Initiatives"
-                    padding="5"
+                    paddingLeft="pl-5"
+                    paddingRight="pr-5"
                   />
                 </div>
               </div>
@@ -102,6 +109,353 @@ export default function Sustainability() {
                 eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
                 mi vulputate, suscipit urna in, malesuada nisl.
               </p>
+            </div>
+          </div>
+          <div className="parallax-main">
+            <div id="parallax" className="parallax-item">
+              <div className="parallax-card">
+                <Image src={susIcon1} alt="icon" />
+                <h3>Planet</h3>
+              </div>
+            </div>
+            <div className="parallax-item">
+            <div className="parallax-card">
+                <Image src={susIcon2} alt="icon" />
+                <h3>People</h3>
+              </div>
+            </div>
+            <div className="parallax-item">
+            <div className="parallax-card">
+                <Image src={susIcon3} alt="icon" />
+                <h3>Communities</h3>
+              </div>
+            </div>
+            <div className="parallax-item">
+            <div className="parallax-card">
+                <Image src={susIcon4} alt="icon" />
+                <h3>Governance</h3>
+              </div>
+            </div>
+          </div>
+          <div className="sustainability-card-sec">
+            <span
+              className="section-heading"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            >
+              key objectives
+            </span>
+            <div
+              className="section-title-wrapper"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            >
+              <h3 className="section-title">
+                Headline for sustainability principles
+              </h3>
+            </div>
+            <p className="text-[20px] font-medium text-[#000000] mt-6">
+              As an organization, we are fully aligned with the universal
+              principles of United Nations Global Compact (UNGC) and the United
+              Nations Sustainable Development Goals (UNSDGs) to build a
+              sustainable future for all stakeholders and future generations to
+              come.
+            </p>
+            <div className="grid grid-cols-5 gap-4 mt-6">
+              <figure
+                className="sustainability-figure"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life2}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">No Poverty</span>
+              </figure>
+              <figure
+                className="sustainability-figure"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life3}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">Zero Hunger</span>
+              </figure>
+              <figure
+                className="sustainability-figure col-span-2"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life4}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">
+                  Good Health & Well-being
+                </span>
+              </figure>
+              <figure
+                className="sustainability-figure"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life5}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">
+                  Quality Education
+                </span>
+              </figure>
+              <figure
+                className="sustainability-figure"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life6}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">Gender Equality</span>
+              </figure>
+              <figure
+                className="sustainability-figure"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life7}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">
+                  Clean Water & Sanitation
+                </span>
+              </figure>
+              <figure
+                className="sustainability-figure"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life8}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">
+                  Affordable Clean Energy
+                </span>
+              </figure>
+              <figure
+                className="sustainability-figure col-span-2"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life2}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">
+                  Decent Work & Economic Growth
+                </span>
+              </figure>
+              <figure
+                className="sustainability-figure"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life2}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">
+                  Reduced Inequalities
+                </span>
+              </figure>
+              <figure
+                className="sustainability-figure col-span-2"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life3}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">
+                  Industry, Innovation, Infrastructure
+                </span>
+              </figure>
+              <figure
+                className="sustainability-figure"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life4}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">
+                  Sustainable Communities
+                </span>
+              </figure>
+              <figure
+                className="sustainability-figure"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life5}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">Climate Action</span>
+              </figure>
+              <figure
+                className="sustainability-figure col-span-2"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life6}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">
+                  Responsible Consumption & Production
+                </span>
+              </figure>
+              <figure
+                className="sustainability-figure"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life7}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">Life On Water</span>
+              </figure>
+              <figure
+                className="sustainability-figure"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life8}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">Life On Land</span>
+              </figure>
+              <figure
+                className="sustainability-figure"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life2}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">
+                  Peace, Justice, Institutions
+                </span>
+              </figure>
+            </div>
+          </div>
+          <div className="pillar-sec">
+            <div className="container mx-auto">
+              <div className="section-layer !pb-[100px]">
+                <figure
+                  className="w-full md:w-[45%] h-[480px] relative glare"
+                  data-aos="flip-right"
+                  data-aos-duration="1500"
+                >
+                  <Image
+                    className="absolute -z-1 w-full h-full"
+                    src={Triangle1}
+                    alt="triangle"
+                  />
+                  <Image
+                    className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+                    src={sus2}
+                    alt="img"
+                  />
+                </figure>
+                <div className="box-content-sec relative md:w-[55%] flex flex-col">
+                  <span
+                    className="section-heading"
+                    data-aos="fade-left"
+                    data-aos-duration="500"
+                  >
+                    KEy pillers
+                  </span>
+                  <div
+                    className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+                    data-aos="fade-left"
+                    data-aos-duration="500"
+                  >
+                    <h3 className="section-title">
+                      KEY PILLARS OF OUR SUSTAINABILITY JOURNEY
+                    </h3>
+                  </div>
+                  <div
+                    className="pillar-list-sec"
+                    data-aos="fade-left"
+                    data-aos-duration="1000"
+                  >
+                    <div className="pillar-box">
+                      <div className="pillar-list">
+                        <h3>Key pillar-1</h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur amet
+                          adipiscing elit.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="pillar-box">
+                      <div className="pillar-list">
+                        <h3>Key pillar-2</h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur amet
+                          adipiscing elit.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="pillar-box">
+                      <div className="pillar-list">
+                        <h3>Key pillar-3</h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur amet
+                          adipiscing elit.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="pillar-box">
+                      <div className="pillar-list">
+                        <h3>Key pillar-4</h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur amet
+                          adipiscing elit.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

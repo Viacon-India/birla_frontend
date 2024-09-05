@@ -48,7 +48,8 @@ export default function Page({ params }) {
                   <GradualSpacing
                     className="top-banner-sec-heading"
                     text={investorRelationData.title}
-                    padding="5"
+                                        paddingLeft="pl-5"
+                    paddingRight="pr-5"
                   />
                 </div>
               </div>
