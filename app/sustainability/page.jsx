@@ -20,10 +20,10 @@ import life6 from "../assets/images/life6.jpg";
 import life7 from "../assets/images/life7.jpg";
 import life8 from "../assets/images/life8.jpg";
 import sus2 from "../assets/images/sus2.jpg";
-import susIcon1 from "../assets/images/sus-icon1.png"
-import susIcon2 from "../assets/images/sus-icon2.png"
-import susIcon3 from "../assets/images/sus-icon3.png"
-import susIcon4 from "../assets/images/sus-icon4.png"
+import susIcon1 from "../assets/images/sus-icon1.png";
+import susIcon2 from "../assets/images/sus-icon2.png";
+import susIcon3 from "../assets/images/sus-icon3.png";
+import susIcon4 from "../assets/images/sus-icon4.png";
 import Triangle1 from "../assets/images/triangle1.png";
 
 export default function Sustainability() {
@@ -51,7 +51,7 @@ export default function Sustainability() {
                 <div className="relative z-10">
                   <GradualSpacing
                     className="top-banner-sec-heading"
-                    text="ESG Initiatives"
+                    text="Sustainability"
                     paddingLeft="pl-5"
                     paddingRight="pr-5"
                   />
@@ -113,25 +113,19 @@ export default function Sustainability() {
           </div>
           <div className="parallax-main">
             <div id="parallax" className="parallax-item">
-              <div className="parallax-card">
+              <div className="parallax-card" data-aos="fade-up" data-aos-duration="500">
                 <Image src={susIcon1} alt="icon" />
                 <h3>Planet</h3>
               </div>
-            </div>
-            <div className="parallax-item">
-            <div className="parallax-card">
+              <div className="parallax-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
                 <Image src={susIcon2} alt="icon" />
                 <h3>People</h3>
               </div>
-            </div>
-            <div className="parallax-item">
-            <div className="parallax-card">
+              <div className="parallax-card" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="600">
                 <Image src={susIcon3} alt="icon" />
                 <h3>Communities</h3>
               </div>
-            </div>
-            <div className="parallax-item">
-            <div className="parallax-card">
+              <div className="parallax-card" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="900">
                 <Image src={susIcon4} alt="icon" />
                 <h3>Governance</h3>
               </div>
