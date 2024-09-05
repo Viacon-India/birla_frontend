@@ -227,7 +227,7 @@ export default function Hero() {
         </SwiperSlide>
       </Swiper>
 
-      <Swiper
+      {/* <Swiper
         loop={true}
         speed={3000}
         effect={"creative"}
@@ -250,7 +250,7 @@ export default function Hero() {
         modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
         className="mySwiper !pt-[58px] md:!pt-0 !h-[264px] md:!h-full"
       >
-        {/* <SwiperSlide>
+        <SwiperSlide>
           <div className="swiper-card-main">
             <span className="slider-overlay"></span>
             <div className="w-full !h-full md:!h-[100vh] flex items-end pb-8 md:pb-[60px]">
@@ -398,9 +398,9 @@ export default function Hero() {
               <source src={"/assets/videos/AGR5.mp4"} type="video/mp4" />
             </video>
           </div>
-        </SwiperSlide> */}
+        </SwiperSlide>
 
-      </Swiper>
+      </Swiper> */}
 
       <div class="relative w-full flex md:hidden gap-2 p-2">
         <Link href="" className="primary-btn-1 !w-[50%] !justify-center">
