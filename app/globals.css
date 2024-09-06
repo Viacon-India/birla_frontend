@@ -76,21 +76,21 @@ body {
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-  .container {
-    @apply px-[2rem]
-  }
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .container {
     @apply px-[3rem] max-w-[720px];
   }
+
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1279px) {
   .container {
     @apply px-[4rem] max-w-[960px];
   }
+
 }
 
 @media only screen and (min-width: 1280px) and (max-width: 1535px) {
@@ -416,7 +416,7 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 /* hero-section */
 
 .multi-btn-sec{
-  @apply hidden md:flex flex-col gap-5 z-10 absolute left-[100px] top-[100px]
+  @apply hidden md:flex flex-col gap-5 z-10 absolute top-[120px]
 }
 .swiper-card-main{
   @apply relative w-full !h-full
