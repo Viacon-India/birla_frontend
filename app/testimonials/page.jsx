@@ -93,7 +93,7 @@ export default function Testimonials() {
             <div class="testimonial-card group">
               <Image className="colorHIcon" src={icon5} />
               <p className="testimonial-card-detail">
-                "Initially we were only using Competitor 1’s tyres. We then
+                &quote Initially we were only using Competitor 1’s tyres. We then
                 fitted Birla Tyre Ultra Miler against Competitor 1 99 and found
                 that the mileage of Ultra Miler was far better than Competitor
                 1’s 99. In respect to CPKM we found Ultra Miler is better. We
@@ -101,7 +101,7 @@ export default function Testimonials() {
                 99. Results are surprising – in respect to CPKM or mileage Birla
                 Ultra Drive is much better. Now we are regularly using Birla
                 Tyre Ultra Drive and Ultra Miler in our vehicles and also
-                recommend them to other owners."
+                recommend them to other owners.&quote
               </p>
               <h2 className="testimonial-card-title">
                 Anil Jolly, Jolly Transport Co.{" "}
