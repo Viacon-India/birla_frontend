@@ -171,19 +171,19 @@ export default function Page({ params }) {
                             heading: ({ children, level }) => {
                               switch (level) {
                                 case 1:
-                                  return <Typography variant="h1">{children}</Typography>
+                                  return <h1>{children}</h1>
                                 case 2:
-                                  return <Typography variant="h2">{children}</Typography>
+                                  return <h2>{children}</h2>
                                 case 3:
-                                  return <Typography variant="h3">{children}</Typography>
+                                  return <h3>{children}</h3>
                                 case 4:
-                                  return <Typography variant="h4">{children}</Typography>
+                                  return <h4>{children}</h4>
                                 case 5:
-                                  return <Typography variant="h5">{children}</Typography>
+                                  return <h5>{children}</h5>
                                 case 6:
-                                  return <Typography variant="h6">{children}</Typography>
+                                  return <h6>{children}</h6>
                                 default:
-                                  return <Typography variant="h1">{children}</Typography>
+                                  return <h1>{children}</h1>
                               }
                             },
                             link: ({ children, url }) => <Link href={url}>{children}</Link>,
