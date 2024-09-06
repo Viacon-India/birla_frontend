@@ -250,17 +250,18 @@ export default function Hero() {
         modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
         className="mySwiper relative !pt-[58px] md:!pt-0 !h-[264px] md:!h-full"
       >
-
-
-        <div class="multi-btn-sec">
-          <Link href="" className="primary-btn-1">
-            Find a Tyre
-          </Link>
-          <Link href="dealer-locator" className="primary-btn-2">
-            Find a Dealer
-          </Link>
+        <div class="w-full">
+          <div class="container mx-auto">
+            <div class="multi-btn-sec">
+              <Link href="" className="primary-btn-1">
+                Find a Tyre
+              </Link>
+              <Link href="dealer-locator" className="primary-btn-2">
+                Find a Dealer
+              </Link>
+            </div>
+          </div>
         </div>
-
         <SwiperSlide>
           <div class="swiper-card-main">
             <span className="slider-overlay"></span>
