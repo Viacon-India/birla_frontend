@@ -167,7 +167,7 @@ export default function Page({ params }) {
                         <BlocksRenderer
                           content={details.content}
                           blocks={{
-                            paragraph: ({ children }) => <p className="text-neutral900 max-w-prose">{children}</p>,
+                            paragraph: ({ children }) => <p className="text-[#4F5662]">{children}</p>,
                             heading: ({ children, level }) => {
                               switch (level) {
                                 case 1:
@@ -186,7 +186,7 @@ export default function Page({ params }) {
                                   return <Typography variant="h1">{children}</Typography>
                               }
                             },
-                            link: ({ children, url }) => <Link to={url}>{children}</Link>,
+                            link: ({ children, url }) => <Link href={url}>{children}</Link>,
                           }}
                           modifiers={{
                             bold: ({ children }) => <strong>{children}</strong>,
