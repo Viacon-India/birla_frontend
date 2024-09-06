@@ -32,6 +32,10 @@ import img1 from "../assets/images/mission-img-1.jpg";
 import img2 from "../assets/images/mission-img-2.jpg";
 import img3 from "../assets/images/mission-img-3.jpg";
 import img4 from "../assets/images/mission-img-4.jpg";
+import img5 from "../assets/images/mission-img-5.jpg";
+import img6 from "../assets/images/mission-img-6.jpg";
+import img7 from "../assets/images/mission-img-7.jpg";
+import img8 from "../assets/images/mission-img-8.jpg";
 import mask1 from "../assets/images/iconmask-1.png";
 import mask2 from "../assets/images/iconmask-2.png";
 import mask3 from "../assets/images/iconmask-3.png";
@@ -67,7 +71,7 @@ export default function Leadership() {
                   <GradualSpacing
                     className="top-banner-sec-heading"
                     text="Vision, Mission & Values"
-                                        paddingLeft="pl-5"
+                    paddingLeft="pl-5"
                     paddingRight="pr-5"
                   />
                 </div>
@@ -321,15 +325,19 @@ export default function Leadership() {
             </div>
             <div className="mission-card-sec">
               <div className="sticky-container top-[120px]">
-                <div className="mission-card" data-aos="zoom-in-right" data-aos-duration="1000">
+                <div
+                  className="mission-card"
+                  data-aos="zoom-in-right"
+                  data-aos-duration="1000"
+                >
                   <figure className="w-full h-[500px]">
                     <Image
                       className="w-full h-full object-cover rounded-[16px]"
-                      src={img1}
+                      src={img5}
                       alt="card-one"
                     />
                   </figure>
-                  <div className="mission-box" >
+                  <div className="mission-box">
                     <h2 className="vision-title">Value point 1</h2>
                     <p className="text-[16px] text-[#3D434C] pt-3">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -342,11 +350,15 @@ export default function Leadership() {
                 </div>
               </div>
               <div className="sticky-container top-[140px]">
-                <div className="mission-card" data-aos="zoom-in-right" data-aos-duration="1000">
+                <div
+                  className="mission-card"
+                  data-aos="zoom-in-right"
+                  data-aos-duration="1000"
+                >
                   <figure className="w-full h-[500px]">
                     <Image
                       className="w-full h-full object-cover rounded-[16px]"
-                      src={img2}
+                      src={img6}
                       alt="card-one"
                     />
                   </figure>
@@ -363,11 +375,15 @@ export default function Leadership() {
                 </div>
               </div>
               <div className="sticky-container top-[160px]">
-                <div className="mission-card" data-aos="zoom-in-right" data-aos-duration="1000">
+                <div
+                  className="mission-card"
+                  data-aos="zoom-in-right"
+                  data-aos-duration="1000"
+                >
                   <figure className="w-full h-[500px]">
                     <Image
                       className="w-full h-full object-cover rounded-[16px]"
-                      src={img3}
+                      src={img7}
                       alt="card-one"
                     />
                   </figure>
@@ -384,11 +400,15 @@ export default function Leadership() {
                 </div>
               </div>
               <div className="sticky-container top-[180px]">
-                <div className="mission-card" data-aos="zoom-in-right" data-aos-duration="1000">
+                <div
+                  className="mission-card"
+                  data-aos="zoom-in-right"
+                  data-aos-duration="1000"
+                >
                   <figure className="w-full h-[500px]">
                     <Image
                       className="w-full h-full object-cover rounded-[16px]"
-                      src={img4}
+                      src={img8}
                       alt="card-one"
                     />
                   </figure>
@@ -406,7 +426,6 @@ export default function Leadership() {
               </div>
             </div>
           </div>
-
         </div>
       </section>
       <section className="relative flex mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden">
