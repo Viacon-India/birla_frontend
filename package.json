@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@strapi/blocks-react-renderer": "^1.0.1",
     "@types/node": "20.14.2",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
@@ -21,6 +22,7 @@
     "framer-motion": "^11.3.19",
     "gsap": "^3.12.5",
     "gsap-trial": "^3.12.5",
+    "husky": "^9.1.5",
     "jquery": "^3.7.1",
     "lenis": "^1.1.8",
     "next": "^14.2.4",
