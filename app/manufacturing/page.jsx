@@ -21,6 +21,9 @@ import man8 from "../assets/images/man8.png";
 import man9 from "../assets/images/man9.png";
 import man10 from "../assets/images/man10.png";
 import man11 from "../assets/images/man11.png";
+import man12 from "../assets/images/man12.jpg";
+import man13 from "../assets/images/man13.jpg";
+import man14 from "../assets/images/man14.jpg";
 import tiger from "../assets/images/tiger.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -44,7 +47,7 @@ export default function Manufacturing() {
 
     return () => clearInterval(interval);
   }, [counter]);
-  
+
   return (
     <>
       <Navbar />
@@ -66,7 +69,7 @@ export default function Manufacturing() {
                   <GradualSpacing
                     className="top-banner-sec-heading"
                     text="Manufacturing"
-                                        paddingLeft="pl-5"
+                    paddingLeft="pl-5"
                     paddingRight="pr-5"
                   />
                 </div>
@@ -82,17 +85,7 @@ export default function Manufacturing() {
       </section>
       <section className="page-content-sec mt-[60px]">
         <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-10">
-            <div
-              className="box-card"
-              data-aos="zoom-in"
-              data-aos-duration="1500"
-            >
-              <div>
-                <h3>{counter}</h3>
-              </div>
-              <p>lorem ipsum dolor ut amet maximus dilam</p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10">
             <div
               className="box-card"
               data-aos="zoom-in"
@@ -131,7 +124,7 @@ export default function Manufacturing() {
                 data-aos="fade-right"
                 data-aos-duration="1000"
               >
-                Manufacturing Facility
+                our Manufacturing excellence
               </span>
               <div
                 className="section-title-wrapper"
@@ -139,7 +132,7 @@ export default function Manufacturing() {
                 data-aos-duration="1000"
               >
                 <h3 className="section-title">
-                  Headline for manufacturing facility goes here
+                  Where quality meets innovation
                 </h3>
               </div>
             </div>
@@ -167,7 +160,8 @@ export default function Manufacturing() {
           <div className="grid grid-cols-2 gap-6 md:gap-10 relative">
             <figure className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
               <Image
-                data-aos="zoom-out" data-aos-duration="2000"
+                data-aos="zoom-out"
+                data-aos-duration="2000"
                 src={tiger}
                 alt="img"
               />
@@ -218,12 +212,38 @@ export default function Manufacturing() {
             </figure>
           </div>
           <div className="manufacture-slider-sec">
-            <span className="section-heading">Safety Philosophy</span>
+            <span className="section-heading">our Safety Philosophy</span>
             <div className="section-title-wrapper">
               <h3 className="section-title">
-                Headline for safety philosophy goes her
+                Commitment to a safe & sustainable workplace
               </h3>
             </div>
+            <p className="text-[#1A1D21] text-[14px] md:text-[16px] 2xl:text-[17px] mt-6 2xl:mt-10">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec
+              vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque
+              laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur
+              maximus mollis diam, vel varius sapien suscipit eget. Cras
+              sollicitudin ligula at volutpat ultrices. Lorem ipsum dolor sit
+              amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Donec vitae mi
+              vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet
+              pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus
+              mollis diam.
+            </p>
+            <p className="text-[#1A1D21] text-[14px] md:text-[16px] 2xl:text-[17px] mt-6 2xl:mt-10">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec
+              vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque
+              laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur
+              maximus mollis diam, vel varius sapien suscipit eget. Cras
+              sollicitudin ligula at volutpat ultrices. Lorem ipsum dolor sit
+              amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Donec vitae mi
+              vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet
+              pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus
+              mollis diam.
+            </p>
             <div class="mt-5 2xl:mt-8">
               <Swiper
                 speed={2400}
@@ -334,6 +354,128 @@ export default function Manufacturing() {
                       <Image
                         className="vast-card-image"
                         src={man6}
+                        alt="card"
+                      />
+                    </figure>
+                    <h2>Safety Philosophy-3</h2>
+                    <p>
+                      Maecenas dignissim justo eget nulla rutrum molestie
+                      Maecenas dignissim justo eget nulla rutrum....
+                    </p>
+                  </div>
+                </SwiperSlide>
+              </Swiper>
+            </div>
+            <div class="mt-5 2xl:mt-8">
+              <Swiper
+                speed={1500}
+                loop={true}
+                autoplay={{
+                  delay: 2500,
+                  disableOnInteraction: false,
+                }}
+                pagination={{
+                  clickable: true,
+                }}
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 3.2,
+                    spaceBetween: 48,
+                  },
+                }}
+                modules={[Autoplay]}
+                className="mySwiperManufacture"
+              >
+                <SwiperSlide>
+                  <div className="vast-card">
+                    <figure>
+                      <Image
+                        className="vast-card-image"
+                        src={man12}
+                        alt="card"
+                      />
+                    </figure>
+                    <h2>Safety Philosophy-1</h2>
+                    <p>
+                      Maecenas dignissim justo eget nulla rutrum molestie
+                      Maecenas dignissim justo eget nulla rutrum....
+                    </p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="vast-card">
+                    <figure>
+                      <Image
+                        className="vast-card-image"
+                        src={man13}
+                        alt="card"
+                      />
+                    </figure>
+                    <h2>Safety Philosophy-2</h2>
+                    <p>
+                      Maecenas dignissim justo eget nulla rutrum molestie
+                      Maecenas dignissim justo eget nulla rutrum....
+                    </p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="vast-card">
+                    <figure>
+                      <Image
+                        className="vast-card-image"
+                        src={man14}
+                        alt="card"
+                      />
+                    </figure>
+                    <h2>Safety Philosophy-3</h2>
+                    <p>
+                      Maecenas dignissim justo eget nulla rutrum molestie
+                      Maecenas dignissim justo eget nulla rutrum....
+                    </p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="vast-card">
+                    <figure>
+                      <Image
+                        className="vast-card-image"
+                        src={man12}
+                        alt="card"
+                      />
+                    </figure>
+                    <h2>Safety Philosophy-1</h2>
+                    <p>
+                      Maecenas dignissim justo eget nulla rutrum molestie
+                      Maecenas dignissim justo eget nulla rutrum....
+                    </p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="vast-card">
+                    <figure>
+                      <Image
+                        className="vast-card-image"
+                        src={man13}
+                        alt="card"
+                      />
+                    </figure>
+                    <h2>Safety Philosophy-2</h2>
+                    <p>
+                      Maecenas dignissim justo eget nulla rutrum molestie
+                      Maecenas dignissim justo eget nulla rutrum....
+                    </p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="vast-card">
+                    <figure>
+                      <Image
+                        className="vast-card-image"
+                        src={man14}
                         alt="card"
                       />
                     </figure>

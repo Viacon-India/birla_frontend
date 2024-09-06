@@ -2,18 +2,21 @@
 
 import React, { useEffect, useState } from "react";
 import { getStrapiMedia } from "@/lib/utils";
-import { cn } from "@/lib/utils";
-import GradualSpacing from "@/components/GradualSpacing";
 import "aos/dist/aos.css";
+import GradualSpacing from "@/components/GradualSpacing";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+
 import Navbar from "../components/navbar/navbar";
-import {PageEnd} from "../components/pageCommon/pageCommon"
 import Footer from "../components/footer/footer";
 import Float from "../components/float/float";
-import Link from "next/link";
-import Image from "next/image";
+import {PageEnd} from "../components/pageCommon/pageCommon"
+
 import Banner from "../assets/images/investor-relation-banner.jpg";
 import LastBg from "../assets/images/investor-relation-next.png";
-import BGTiger from "../assets/images/tiger-mask3.png";
+
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 
 export default function Page({ params }) {
@@ -22,6 +25,8 @@ export default function Page({ params }) {
 
   const [investorRelationData, setInvestorRelationData] = useState([]);
   const [investorRelationTable, setInvestorRelationTable] = useState([]);
+
+  console.log(investorRelationData.section);
   
   useEffect(() => {
     fetch(getStrapiMedia("/api/investor-relation/"+slugs[0]))
@@ -93,13 +98,13 @@ export default function Page({ params }) {
                 <div className="bg-white border border-[#DEE1E5] rounded-xl p-[60px] flex flex-col gap-10 h-fit w-full" key={section.id}>
                   {section?.title &&
                     <div className="section-title-wrapper">
-                      <h2 className="section-title">{section.title}</h2>
+                      <h2 className="section-title !text-[32px] !leading-[38px] !font-semibold">{section.title}</h2>
                     </div>
                   }
                   {section.files && section.files.map((files) => (
                     <div className="flex flex-col gap-6" key={files.id}>
                       {files.collection.length > 0 && files?.description &&
-                        <h3 className="text-[#3D434C] font-semibold text-[32px] leading-[32px]">{files.description}</h3>
+                        <h3 className="text-[#3D434C] font-medium text-[32px] leading-[32px]">{files.description}</h3>
                       }
                       {files.collection.length > 0 &&
                         <div className="grid grid-cols-2 gap-6">
@@ -115,6 +120,79 @@ export default function Page({ params }) {
                               </Link>
                           ))}
                         </div>
+                      }
+                    </div>
+                  ))}
+                  {section.table && section.table.map((tables) => (
+                    <div className="flex flex-col gap-6" key={tables.id}>
+                      {tables.row.length > 0 && tables?.description &&
+                        <h3 className="text-[#3D434C] font-medium text-[32px] leading-[32px]">{tables.description}</h3>
+                      }
+                      {tables.row.length > 0 &&
+                        <div class="relative overflow-x-auto">
+                          <table class="w-full text-sm text-left rtl:text-right">
+                            <thead class="font-semibold text-[16px] leading-[20px] text-secondary bg-[#E0E1F5]">
+                              <tr>
+                                <th scope="col" class="px-2 py-3 border border-[#C9CDD3]">
+                                  Sr. No.
+                                </th>
+                                <th scope="col" class="px-2 py-3 border border-[#C9CDD3]">
+                                  Product name
+                                </th>
+                                <th scope="col" class="px-2 py-3 border border-[#C9CDD3]">
+                                  Color
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {tables.row.map((rows, index) => (
+                                <tr class="font-medium text-[14px] leading-[17px] text-[#3D434C]" key={rows.id}>
+                                  <th scope="row" class="px-2 py-3 border border-[#C9CDD3]">{index+1}</th>
+                                  {rows?.name && <th scope="row" class="px-2 py-3 border border-[#C9CDD3]">{rows.name}</th>}
+                                  {rows?.status && <th scope="row" class="px-2 py-3 border border-[#C9CDD3]">{rows.status}</th>}
+                                </tr>                               
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      }
+                    </div>
+                  ))}
+                  {section.details && section.details.map((details) => (
+                    <div className="flex flex-col gap-3" key={details.id}>
+                      {details.content.length > 0 && details?.description &&
+                        <h3 className="text-[#3D434C] font-medium text-[24px] leading-[32px]">{details.description}</h3>
+                      }
+                      {details.content.length > 0 &&  
+                        <BlocksRenderer
+                          content={details.content}
+                          blocks={{
+                            paragraph: ({ children }) => <p className="text-neutral900 max-w-prose">{children}</p>,
+                            heading: ({ children, level }) => {
+                              switch (level) {
+                                case 1:
+                                  return <Typography variant="h1">{children}</Typography>
+                                case 2:
+                                  return <Typography variant="h2">{children}</Typography>
+                                case 3:
+                                  return <Typography variant="h3">{children}</Typography>
+                                case 4:
+                                  return <Typography variant="h4">{children}</Typography>
+                                case 5:
+                                  return <Typography variant="h5">{children}</Typography>
+                                case 6:
+                                  return <Typography variant="h6">{children}</Typography>
+                                default:
+                                  return <Typography variant="h1">{children}</Typography>
+                              }
+                            },
+                            link: ({ children, url }) => <Link to={url}>{children}</Link>,
+                          }}
+                          modifiers={{
+                            bold: ({ children }) => <strong>{children}</strong>,
+                            italic: ({ children }) => <span className="italic">{children}</span>,
+                          }}
+                        />
                       }
                     </div>
                   ))}

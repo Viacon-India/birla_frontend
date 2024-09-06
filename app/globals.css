@@ -1654,6 +1654,22 @@ input[type=file]::file-selector-button {
 }
 
 
+/* Testimonial-card */
+.testimonial-card{
+  box-shadow: 6px 3px 11px rgba(0, 0, 0, 0.6);
+  @apply bg-white rounded-[12px] p-3 md:p-6 flex flex-col gap-2 md:gap-3 transition-all duration-500 relative hover:bg-primary
+}
+.testimonial-card-title{
+  @apply text-[#1A1D21] text-[18px] md:text-[20px] font-bold mt-3 group-hover:text-white leading-[1]
+}
+.testimonial-card-detail{
+  @apply text-[#606977] text-[14px] 2xl:text-[16px] leading-[1.5] h-[170px] group-hover:text-white
+}
+.testimonial-card-place{
+  @apply text-[16px] md:text-[18px] font-medium text-[#1A1D21] leading-[1] group-hover:text-white
+}
+
+
 
 
 
