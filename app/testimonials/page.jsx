@@ -112,6 +112,7 @@ export default function Testimonials() {
               <Image className="maskIcon" src={mask1} />
             </div> */}
           </div>
+          
         </div>
       </section>
       <PageEnd
