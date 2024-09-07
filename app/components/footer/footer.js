@@ -10,7 +10,7 @@ export default function Footer() {
   const [footerMenu, setFooterMenu] = useState([]);
   const [creditTexts, setCreditTexts] = useState([]);
   const [detail, setDetail] = useState([]);
-
+  console.log(footerMenu);
   // menus
   useEffect(() => {
     fetch("http://birlatyres.viaconprojects.com:1337/api/footer")
@@ -210,15 +210,15 @@ export default function Footer() {
         <ul className="footer-list-sec py-4 md:py-10 grid grid-cols-2 gap-x-2 gap-y-8 md:gap-y-0 md:grid-cols-5">
           {footerMenu.map((newMenu) => (
             <li className="footer-list-box" key={newMenu.id}>
-              <h2>{newMenu.attributes.menu[0].menu_item.name}</h2>
+              <h2>{newMenu.attributes.title}</h2>
               <ul className="footer-list">
-                {newMenu.attributes.menu[0].sub_menu_item.map((submenu) => (
+                {newMenu.attributes.pages.data.map((submenu) => (
                   <li key={submenu.id}>
                     <Link
-                      href={`/${submenu.link}`}
+                      href={`${submenu.attributes.permalink}`}
                       className="footer-list-item"
                     >
-                      {submenu.name}
+                      {submenu.attributes.title}
                     </Link>
                   </li>
                 ))}

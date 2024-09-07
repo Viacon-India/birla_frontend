@@ -1,25 +1,26 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Navbar from "../components/navbar/navbar";
-import Footer from "../components/footer/footer";
-import Float from "../components/float/float";
-import Banner from "../assets/images/life1.jpg";
+import Navbar from "../../../components/navbar/navbar";
+import Footer from "../../../components/footer/footer";
+import {Float} from "../../../components/pageCommon/pageCommon";
+import {MainButton} from "../../../components/pageCommon/pageCommon";
+import Banner from "../../../assets/images/life1.jpg";
 import Link from "next/link";
 import Image from "next/image";
 import GradualSpacing from "@/components/GradualSpacing";
-import BGTiger from "../assets/images/tiger-mask3.png";
-import life9 from "../assets/images/life9.png";
-import tigerMask from "../assets/images/tiger-mask2.png";
+import BGTiger from "../../../assets/images/tiger-mask3.png";
+import life9 from "../../../assets/images/life9.png";
+import tigerMask from "../../../assets/images/tiger-mask2.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import life2 from "../assets/images/life2.jpg";
-import life3 from "../assets/images/life3.jpg";
-import life4 from "../assets/images/life4.jpg";
-import life5 from "../assets/images/life5.jpg";
-import life6 from "../assets/images/life6.jpg";
-import life7 from "../assets/images/life7.jpg";
-import life8 from "../assets/images/life8.jpg";
+import life2 from "../../../assets/images/life2.jpg";
+import life3 from "../../../assets/images/life3.jpg";
+import life4 from "../../../assets/images/life4.jpg";
+import life5 from "../../../assets/images/life5.jpg";
+import life6 from "../../../assets/images/life6.jpg";
+import life7 from "../../../assets/images/life7.jpg";
+import life8 from "../../../assets/images/life8.jpg";
 
 export default function LifeAtBirla() {
   useEffect(() => {
@@ -34,14 +35,7 @@ export default function LifeAtBirla() {
           <div className="relative">
             <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
               <div class="container mx-auto flex flex-col justify-between h-full pt-5 pb-[60px]">
-                <div class="flex flex-col gap-5 relative z-10">
-                  <Link href="" className="primary-btn-1">
-                    Find a Tyre
-                  </Link>
-                  <Link href="dealer-locator" className="primary-btn-2">
-                    Find a Dealer
-                  </Link>
-                </div>
+                <MainButton />
                 <div className="relative z-10">
                   <GradualSpacing
                     className="top-banner-sec-heading"

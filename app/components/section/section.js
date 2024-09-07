@@ -1,11 +1,21 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import { getStrapiMedia } from "@/lib/utils";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
+export default function SectionSelection({section}){
+    return(
+        <>
+            {section?.files && <Files section={section} />}
+            {section?.table && <Table section={section} />}
+            {section?.details && <Address section={section} />}
+        </>
+    )
+
+}
 
 export function Files({section}){
     return (
@@ -18,7 +28,7 @@ export function Files({section}){
             {section.files && section.files.map((files) => (
                 <div className="flex flex-col gap-6" key={files.id}>
                     {files.collection.length > 0 && files?.description &&
-                        <h3 className="text-[#3D434C] font-medium text-[32px] leading-[32px]">{files.description}</h3>
+                        <h3 className="text-[#3D434C] font-medium text-[24px] leading-[32px]">{files.description}</h3>
                     }
                     {files.collection.length > 0 &&
                         <div className="grid grid-cols-2 gap-6">
@@ -54,7 +64,7 @@ export function Table({section}){
             {section.table && section.table.map((tables) => (
                 <div className="flex flex-col gap-6" key={tables.id}>
                     {tables.row.length > 0 && tables?.description &&
-                        <h3 className="text-[#3D434C] font-medium text-[32px] leading-[32px]">{tables.description}</h3>
+                        <h3 className="text-[#3D434C] font-medium text-[24px] leading-[32px]">{tables.description}</h3>
                     }
                     {tables.row.length > 0 &&
                     <div class="relative overflow-x-auto">

@@ -1,18 +1,19 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Navbar from "../components/navbar/navbar";
-import Footer from "../components/footer/footer";
-import Float from "../components/float/float";
-import Banner from "../assets/images/join1.jpg";
+import Navbar from "../../../components/navbar/navbar";
+import Footer from "../../../components/footer/footer";
+import {Float} from "../../../components/pageCommon/pageCommon";
+import {MainButton} from "../../../components/pageCommon/pageCommon";
+import Banner from "../../../assets/images/join1.jpg";
 import Link from "next/link";
 import Image from "next/image";
 import GradualSpacing from "@/components/GradualSpacing";
-import join2 from "../assets/images/join2.png";
-import join3 from "../assets/images/join3.jpg";
-import BGTiger from "../assets/images/tiger-mask3.png";
-import join4 from "../assets/images/join4.jpg";
-import join5 from "../assets/images/join5.jpg";
+import join2 from "../../../assets/images/join2.png";
+import join3 from "../../../assets/images/join3.jpg";
+import BGTiger from "../../../assets/images/tiger-mask3.png";
+import join4 from "../../../assets/images/join4.jpg";
+import join5 from "../../../assets/images/join5.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -30,14 +31,7 @@ export default function JoinUs() {
           <div className="relative">
             <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
               <div class="container mx-auto flex flex-col justify-between h-full pt-5 pb-[60px]">
-                <div class="flex flex-col gap-5 relative z-10">
-                  <Link href="" className="primary-btn-1">
-                    Find a Tyre
-                  </Link>
-                  <Link href="dealer-locator" className="primary-btn-2">
-                    Find a Dealer
-                  </Link>
-                </div>
+                <MainButton />
                 <div className="relative z-10">
                   <GradualSpacing
                     className="top-banner-sec-heading"

@@ -1335,23 +1335,23 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   transition: max-height 0.2s ease-out;
 }
 .ham-accordion.active::after{
-  @apply absolute block h-2 w-2 top-[0.9rem];
+  @apply absolute block h-2 w-2;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   transition-duration: 300ms;
   inset-inline-end: 1.4rem;
-  content: "-";
+  /* content: "-"; */
   pointer-events: none;
 }
 .ham-accordion::after{
-  @apply absolute block h-2 w-2 top-[0.9rem];
+  @apply absolute block h-2 w-2;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   transition-duration: 300ms;
   inset-inline-end: 1.4rem;
-  content: "+";
+  /* content: "+"; */
   pointer-events: none;
 }
 
