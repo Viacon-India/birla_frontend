@@ -19,6 +19,8 @@ export default function Faq() {
     for (var j = 0; j < acc2.length; j++) {
       acc2[j].addEventListener("click", function () {
         this.classList.toggle("active");
+        this.classList.toggle("after:content-['_-']");
+        this.classList.toggle("after:content-['_+']");
         var newPanel = this.nextElementSibling;
         if (newPanel.style.maxHeight) {
           newPanel.style.maxHeight = null;
@@ -82,7 +84,7 @@ export default function Faq() {
                   data-aos-duration="1500"
                 >
                   <div class="accordion-content-wrapper">
-                    <h4 className="accordion-title ham-accordion active">
+                    <h4 className="accordion-title ham-accordion after:top-[0.9rem] after:content-['_-'] active">
                       What is TBB
                     </h4>
                     <p
@@ -95,7 +97,7 @@ export default function Faq() {
                     </p>
                   </div>
                   <div class="accordion-content-wrapper">
-                    <h4 className="accordion-title ham-accordion">
+                    <h4 className="accordion-title ham-accordion after:top-[0.9rem] after:content-['_+']">
                       What is the basic information about tyres?
                     </h4>
                     <p className="accordion-content">
@@ -106,7 +108,7 @@ export default function Faq() {
                     </p>
                   </div>
                   <div class="accordion-content-wrapper">
-                    <h4 className="accordion-title ham-accordion">
+                    <h4 className="accordion-title ham-accordion after:top-[0.9rem] after:content-['_+']">
                       How good are TBB tires?
                     </h4>
                     <p className="accordion-content">
@@ -117,7 +119,7 @@ export default function Faq() {
                     </p>
                   </div>
                   <div class="accordion-content-wrapper">
-                    <h4 className="accordion-title ham-accordion">
+                    <h4 className="accordion-title ham-accordion after:top-[0.9rem] after:content-['_+']">
                       What is the main purpose of a tyre?
                     </h4>
                     <p className="accordion-content">
@@ -128,7 +130,7 @@ export default function Faq() {
                     </p>
                   </div>
                   <div class="accordion-content-wrapper">
-                    <h4 className="accordion-title ham-accordion">
+                    <h4 className="accordion-title ham-accordion after:top-[0.9rem] after:content-['_+']">
                       Where are TBB tires made?
                     </h4>
                     <p className="accordion-content">
@@ -139,7 +141,7 @@ export default function Faq() {
                     </p>
                   </div>
                   <div class="accordion-content-wrapper">
-                    <h4 className="accordion-title ham-accordion">
+                    <h4 className="accordion-title ham-accordion after:top-[0.9rem] after:content-['_+']">
                       What is tyre famous for?
                     </h4>
                     <p className="accordion-content">

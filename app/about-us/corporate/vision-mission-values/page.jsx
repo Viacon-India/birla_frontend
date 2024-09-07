@@ -4,42 +4,43 @@ import React, { useEffect, useState, useRef } from "react";
 import { Autoplay, Controller } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import Navbar from "../components/navbar/navbar";
-import Footer from "../components/footer/footer";
+import Navbar from "../../../components/navbar/navbar";
+import Footer from "../../../components/footer/footer";
 import Link from "next/link";
 import GradualSpacing from "@/components/GradualSpacing";
 import Image from "next/image";
-import Float from "../components/float/float";
-import Hero from "../assets/images/vision-hero.jpg";
-import NextChapter from "../assets/images/vision-next-chapter.png";
-import BGTiger from "../assets/images/tiger-mask3.png";
-import Vision from "../assets/images/vision.jpg";
-import MissionBackground from "../assets/images/mission-background.jpg";
-import ValuesBackground from "../assets/images/values-background.jpg";
-import Triangle1 from "../assets/images/triangle1.png";
+import {Float} from "../../../components/pageCommon/pageCommon";
+import {MainButton} from "../../../components/pageCommon/pageCommon";
+import Hero from "../../../assets/images/vision-hero.jpg";
+import NextChapter from "../../../assets/images/vision-next-chapter.png";
+import BGTiger from "../../../assets/images/tiger-mask3.png";
+import Vision from "../../../assets/images/vision.jpg";
+import MissionBackground from "../../../assets/images/mission-background.jpg";
+import ValuesBackground from "../../../assets/images/values-background.jpg";
+import Triangle1 from "../../../assets/images/triangle1.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import icon1 from "../assets/images/about-icon1.png";
-import icon2 from "../assets/images/about-icon2.png";
-import icon3 from "../assets/images/about-icon3.png";
-import icon4 from "../assets/images/about-icon4.png";
-import icon5 from "../assets/images/about-icon5.png";
-import icon6 from "../assets/images/about-icon6.png";
-import icon7 from "../assets/images/about-icon7.png";
-import icon8 from "../assets/images/about-icon8.png";
-import img1 from "../assets/images/mission-img-1.jpg";
-import img2 from "../assets/images/mission-img-2.jpg";
-import img3 from "../assets/images/mission-img-3.jpg";
-import img4 from "../assets/images/mission-img-4.jpg";
-import img5 from "../assets/images/mission-img-5.jpg";
-import img6 from "../assets/images/mission-img-6.jpg";
-import img7 from "../assets/images/mission-img-7.jpg";
-import img8 from "../assets/images/mission-img-8.jpg";
-import mask1 from "../assets/images/iconmask-1.png";
-import mask2 from "../assets/images/iconmask-2.png";
-import mask3 from "../assets/images/iconmask-3.png";
-import mask4 from "../assets/images/iconmask-4.png";
+import icon1 from "../../../assets/images/about-icon1.png";
+import icon2 from "../../../assets/images/about-icon2.png";
+import icon3 from "../../../assets/images/about-icon3.png";
+import icon4 from "../../../assets/images/about-icon4.png";
+import icon5 from "../../../assets/images/about-icon5.png";
+import icon6 from "../../../assets/images/about-icon6.png";
+import icon7 from "../../../assets/images/about-icon7.png";
+import icon8 from "../../../assets/images/about-icon8.png";
+import img1 from "../../../assets/images/mission-img-1.jpg";
+import img2 from "../../../assets/images/mission-img-2.jpg";
+import img3 from "../../../assets/images/mission-img-3.jpg";
+import img4 from "../../../assets/images/mission-img-4.jpg";
+import img5 from "../../../assets/images/mission-img-5.jpg";
+import img6 from "../../../assets/images/mission-img-6.jpg";
+import img7 from "../../../assets/images/mission-img-7.jpg";
+import img8 from "../../../assets/images/mission-img-8.jpg";
+import mask1 from "../../../assets/images/iconmask-1.png";
+import mask2 from "../../../assets/images/iconmask-2.png";
+import mask3 from "../../../assets/images/iconmask-3.png";
+import mask4 from "../../../assets/images/iconmask-4.png";
 
 import { FreeMode, Thumbs, EffectFade } from "swiper/modules";
 
@@ -59,14 +60,7 @@ export default function Leadership() {
           <div className="relative">
             <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
               <div class="container mx-auto flex flex-col justify-between h-full pt-5 pb-[60px]">
-                <div class="flex flex-col gap-5 relative z-10">
-                  <Link href="" className="primary-btn-1">
-                    Find a Tyre
-                  </Link>
-                  <Link href="dealer-locator" className="primary-btn-2">
-                    Find a Dealer
-                  </Link>
-                </div>
+                <MainButton />
                 <div className="relative z-10">
                   <GradualSpacing
                     className="top-banner-sec-heading"

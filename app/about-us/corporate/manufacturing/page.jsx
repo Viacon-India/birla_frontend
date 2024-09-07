@@ -4,27 +4,28 @@ import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FreeMode, Autoplay } from "swiper/modules";
-import Navbar from "../components/navbar/navbar";
-import Footer from "../components/footer/footer";
-import Float from "../components/float/float";
-import Banner from "../assets/images/man1.jpg";
+import Navbar from "../../../components/navbar/navbar";
+import Footer from "../../../components/footer/footer";
+import {Float} from "../../../components/pageCommon/pageCommon";
+import {MainButton} from "../../../components/pageCommon/pageCommon";
+import Banner from "../../../assets/images/man1.jpg";
 import Link from "next/link";
 import Image from "next/image";
 import GradualSpacing from "@/components/GradualSpacing";
-import man2 from "../assets/images/man2.jpg";
-import man3 from "../assets/images/man3.jpg";
-import BGTiger from "../assets/images/tiger-mask3.png";
-import man4 from "../assets/images/man4.jpg";
-import man5 from "../assets/images/man5.jpg";
-import man6 from "../assets/images/man6.jpg";
-import man8 from "../assets/images/man8.png";
-import man9 from "../assets/images/man9.png";
-import man10 from "../assets/images/man10.png";
-import man11 from "../assets/images/man11.png";
-import man12 from "../assets/images/man12.jpg";
-import man13 from "../assets/images/man13.jpg";
-import man14 from "../assets/images/man14.jpg";
-import tiger from "../assets/images/tiger.png";
+import man2 from "../../../assets/images/man2.jpg";
+import man3 from "../../../assets/images/man3.jpg";
+import BGTiger from "../../../assets/images/tiger-mask3.png";
+import man4 from "../../../assets/images/man4.jpg";
+import man5 from "../../../assets/images/man5.jpg";
+import man6 from "../../../assets/images/man6.jpg";
+import man8 from "../../../assets/images/man8.png";
+import man9 from "../../../assets/images/man9.png";
+import man10 from "../../../assets/images/man10.png";
+import man11 from "../../../assets/images/man11.png";
+import man12 from "../../../assets/images/man12.jpg";
+import man13 from "../../../assets/images/man13.jpg";
+import man14 from "../../../assets/images/man14.jpg";
+import tiger from "../../../assets/images/tiger.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -57,14 +58,7 @@ export default function Manufacturing() {
           <div className="relative">
             <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
               <div class="container mx-auto flex flex-col justify-between h-full pt-5 pb-[60px]">
-                <div class="flex flex-col gap-5 relative z-10">
-                  <Link href="" className="primary-btn-1">
-                    Find a Tyre
-                  </Link>
-                  <Link href="dealer-locator" className="primary-btn-2">
-                    Find a Dealer
-                  </Link>
-                </div>
+                <MainButton />
                 <div className="relative z-10">
                   <GradualSpacing
                     className="top-banner-sec-heading"

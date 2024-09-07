@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
-import Float from "../components/float/float";
+import {Float} from "../components/pageCommon/pageCommon";
 import Banner from "../assets/images/dealer1.jpg";
 import dealer2 from "../assets/images/dealer2.png";
 import BGTiger from "../assets/images/tiger-mask3.png";

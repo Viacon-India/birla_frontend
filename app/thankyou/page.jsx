@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
-import Float from "../components/float/float";
+import {Float} from "../components/pageCommon/pageCommon";
 import GradualSpacing from "@/components/GradualSpacing";
 import Link from "next/link";
 import Image from "next/image";

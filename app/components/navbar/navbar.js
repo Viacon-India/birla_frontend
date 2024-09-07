@@ -14,6 +14,7 @@ export default function Navbar() {
   const [hamMenu, setHamMenu] = useState([]);
   const [expandedSubMenu, setExpandedSubMenu] = useState(null);
 
+  // console.log(hamMenu);
   // mega menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -28,9 +29,8 @@ export default function Navbar() {
     fetch("http://birlatyres.viaconprojects.com:1337/api/header")
       .then((res) => res.json())
       .then((header) => {
-        console.log(header);
         setNavMenu(header.data.attributes.menus.data[0].attributes.menu);
-        setHamMenu(header.data.attributes.menus.data[0].attributes.menu);
+        setHamMenu(header.data.attributes.menus.data[1].attributes.menu);
       });
 
     // Searchbar
@@ -73,14 +73,11 @@ export default function Navbar() {
             <ul className="menu menu-horizontal hidden md:flex relative text-lg lg:gap-4 xl:gap-7 p-0">
               {navMenu.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
-                  <Link
-                    href={`/${menu.menu_item.link}`}
-                    className="nav-links nav-hov flip-animate"
-                  >
-                    <span data-hover={menu.menu_item.name}>
-                      {menu.menu_item.name}
+                  <button className="nav-links nav-hov flip-animate" >
+                    <span data-hover={menu.title}>
+                      {menu.title}
                     </span>
-                    {menu.sub_menu_item.length > 0 && (
+                    {menu.sub_menu.length > 0 && (
                       <svg
                         className="nav-arrow"
                         width="10"
@@ -95,20 +92,44 @@ export default function Navbar() {
                         />
                       </svg>
                     )}
-                  </Link>
-                  {menu.sub_menu_item.length > 0 && (
+                  </button>
+                  {menu.sub_menu.length > 0 && (
                     <ul className="center-dropdown">
-                      {menu.sub_menu_item.map((subMenu) => (
+                      {menu.sub_menu.map((subMenu) => (
                         <li key={subMenu.id}>
-                          <Link href={`/${subMenu.link}`} className="drop-list">
-                            {subMenu.name}
-                          </Link>
+                          <button className="drop-list">
+                            {subMenu.title}
+                          </button>
+                        </li>
+                      ))}
+                      {menu.pages.data.map((menu) => (
+                        <li key={menu.id}>
+                          <Link className="drop-list" href={`${menu.attributes.permalink}`}>{menu.attributes.title}</Link>
+                        </li>
+                      ))}
+                      {menu.other_link.map((menu) => (
+                        <li key={menu.id}>
+                          <Link className="drop-list" href={`${menu.link}`}>{menu.name}</Link>
                         </li>
                       ))}
                     </ul>
                   )}
                 </li>
               ))}
+              {/* {navMenu.pages.data.map((menu) => (
+                <li className="nav-drop group" key={menu.id}>
+                  <Link className="nav-links nav-hov flip-animate" href={`${menu.attributes.permalink}`}><span data-hover={menu.attributes.title}>
+                      {menu.attributes.title}
+                    </span></Link>
+                </li>
+              ))} */}
+              {/* {navMenu.other_link.map((menu) => (
+                <li className="nav-drop group" key={menu.id}>
+                  <Link className="nav-links nav-hov flip-animate" href={`${menu.link}`}><span data-hover={menu.name}>
+                      {menu.name}
+                    </span></Link>
+                </li>
+              ))} */}
             </ul>
             <div class="search-wrapper relative hidden md:flex">
               <input
@@ -132,6 +153,7 @@ export default function Navbar() {
                 />
               </svg>
             </div>
+
           </div>
 
           <div className="navbar-end gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
@@ -144,22 +166,10 @@ export default function Navbar() {
                 />
               </figure>
             </Link>
-            <svg
-              width="2"
-              height="65"
-              viewBox="0 0 2 65"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line
-                x1="1.31543"
-                y1="65"
-                x2="1.31543"
-                stroke="#C9CDD3"
-                stroke-dasharray="5 6"
-              />
+            <svg width="2" height="65" viewBox="0 0 2 65" fill="none" xmlns="
+              http://www.w3.org/2000/svg">
+              <line x1="1.31543" y1="65" x2="1.31543" stroke="#C9CDD3" stroke-dasharray="5 6"/>
             </svg>
-
             <Link href="/">
               <figure className="rounded-none m-0 w-[80px] h-[35px] md:w-[136px] md:h-[60px]">
                 <Image
@@ -221,72 +231,92 @@ export default function Navbar() {
           <ul className="h-full overflow-auto px-[16px] pt-4 md:pt-0 xl:pt-[80px] 2xl:!pt-0 border-t-2 md:border-t-0">
             {hamMenu.map((menu) => (
               <li className="mb-4" key={menu.id}>
-                <button className="ham-links">{menu.menu_item.name}</button>
-                {menu.sub_menu && menu.sub_menu.length > 0 && (
-                  <ul className="transition-all duration-300 pl-4">
-                    {menu.sub_menu.map((subMenu) => (
-                      <li key={subMenu.id}>
-                        <div className="flex justify-between">
-                          <button
-                            className="text-secondary text-[16px] py-[6px]"
-                            onClick={() => toggleSubMenu(subMenu.id)}
-                          >
-                            {subMenu.sub_menu_item.name}
-                          </button>
-                          {subMenu.sub_sub_menu_item &&
-                            subMenu.sub_sub_menu_item.length > 0 && (
-                              <button
-                                onClick={() => toggleSubMenu(subMenu.id)}
-                                className={`transition-transform duration-300 ${
-                                  expandedSubMenu === subMenu.id
-                                    ? "rotate-180"
-                                    : ""
-                                }`}
-                              >
-                                <svg
-                                  width="14"
-                                  height="10"
-                                  viewBox="0 0 10 6"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M9.375 0.75L5 5.125L0.625 0.75"
-                                    stroke="#2E3192"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                  />
-                                </svg>
-                              </button>
-                            )}
-                        </div>
-                        {subMenu.sub_sub_menu_item &&
-                          subMenu.sub_sub_menu_item.length > 0 && (
-                            <ul
-                              className={`transition-all duration-1000 overflow-hidden ${
+                <button className="ham-links">{menu.title}</button>
+                <ul className="transition-all duration-300 pl-4">
+                  {menu.sub_menu.map((subMenu) => (
+                    <li key={subMenu.id}>
+                      <div className="flex justify-between">
+                        <button
+                          className="text-secondary text-[16px] py-[6px]"
+                          onClick={() => toggleSubMenu(subMenu.id)}
+                        >
+                          {subMenu.title}
+                        </button>
+                        {subMenu.pages.data &&
+                          subMenu.pages.data.length > 0 && (
+                            <button
+                              onClick={() => toggleSubMenu(subMenu.id)}
+                              className={`transition-transform duration-300 ${
                                 expandedSubMenu === subMenu.id
-                                  ? "max-h-screen"
-                                  : "max-h-0 overflow-hidden"
+                                  ? "rotate-180"
+                                  : ""
                               }`}
                             >
-                              {subMenu.sub_sub_menu_item.map((subSubMenu) => (
-                                <li
-                                  className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500"
-                                  key={subSubMenu.id}
-                                >
-                                  <Link href={`/${subSubMenu.link}`}>
-                                    {subSubMenu.name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
+                              <svg
+                                width="14"
+                                height="10"
+                                viewBox="0 0 10 6"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M9.375 0.75L5 5.125L0.625 0.75"
+                                  stroke="#2E3192"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                              </svg>
+                            </button>
                           )}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                      </div>
+                        <ul
+                          className={`transition-all duration-1000 overflow-hidden ${
+                            expandedSubMenu === subMenu.id
+                              ? "max-h-screen"
+                              : "max-h-0 overflow-hidden"
+                          }`}
+                        >
+                          {subMenu.pages.data.map((subSubMenu) => (
+                            <li
+                              className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500"
+                              key={subSubMenu.id}
+                            >
+                              <Link href={`${subSubMenu.attributes.permalink}`}>
+                                {subSubMenu.attributes.title}
+                              </Link>
+                            </li>
+                          ))}
+                          {subMenu.other_link.map((subSubMenu) => (
+                            <li className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500" key={subSubMenu.id}>
+                              <Link href={`${subSubMenu.link}`}>{subSubMenu.name}</Link>
+                            </li>
+                          ))}
+                        </ul>
+                    </li>
+                  ))}
+                  {menu.pages.data.map((subMenu) => (
+                    <li key={subMenu.id}>
+                      <div className="flex justify-between"><Link className="text-secondary text-[16px] py-[6px]" href={`${subMenu.attributes.permalink}`}>{subMenu.attributes.title}</Link></div>
+                    </li>
+                  ))}
+                  {menu.other_link.map((subMenu) => (
+                    <li key={subMenu.id}>
+                      <div className="flex justify-between"><Link className="text-secondary text-[16px] py-[6px]" href={`${subMenu.link}`}>{subMenu.name}</Link></div>
+                    </li>
+                  ))}
+                </ul>
               </li>
             ))}
+            {/* {hamMenu.pages.data.map((menu) => (
+              <li className="mb-4" key={menu.id}>
+                <Link className="ham-links" href={`${menu.attributes.permalink}`}>{menu.attributes.title}</Link>
+              </li>
+            ))} */}
+            {/* {hamMenu.other_link.map((menu) => (
+              <li className="mb-4" key={menu.id}>
+                <Link className="ham-links" href={`${menu.link}`}>{menu.name}</Link>
+              </li>
+            ))} */}
           </ul>
         </div>
       </div>

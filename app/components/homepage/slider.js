@@ -1,6 +1,7 @@
 "use client";
 
-import Float from "../float/float";
+import {Float} from "../pageCommon/pageCommon";
+import {MainButton} from "../pageCommon/pageCommon";
 import React, { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -81,14 +82,7 @@ export default function Slider() {
             <span className="slider-overlay"></span>
             <div className="w-full h-[100vh] flex items-end pb-[60px]">
               <div class="container mx-auto flex flex-col justify-between h-[80%]">
-                <div class="flex flex-col gap-5 relative z-10">
-                  <Link href="" className="primary-btn-1">
-                    Find a Tyre
-                  </Link>
-                  <Link href="dealer-locator" className="primary-btn-2">
-                    Find a Dealer
-                  </Link>
-                </div>
+                <MainButton />
                 <div className="swiper-card relative z-10">
                   <GradualSpacing
                     className="hero-sec-heading"
@@ -122,14 +116,7 @@ export default function Slider() {
             <span className="slider-overlay"></span>
             <div className="w-full h-[100vh] flex items-end pb-[60px]">
               <div class="container mx-auto flex flex-col justify-between h-[80%]">
-                <div class="flex flex-col gap-5 relative z-10">
-                  <Link href="" className="primary-btn-1">
-                    Find a Tyre
-                  </Link>
-                  <Link href="dealer-locator" className="primary-btn-2">
-                    Find a Dealer
-                  </Link>
-                </div>
+                <MainButton />
                 <div className="swiper-card relative z-10">
                   <GradualSpacing
                     className="hero-sec-heading"
@@ -163,14 +150,7 @@ export default function Slider() {
             <span className="slider-overlay"></span>
             <div className="w-full h-[100vh] flex items-end pb-[60px]">
               <div class="container mx-auto flex flex-col justify-between h-[80%]">
-                <div class="flex flex-col gap-5 relative z-10">
-                  <Link href="" className="primary-btn-1">
-                    Find a Tyre
-                  </Link>
-                  <Link href="dealer-locator" className="primary-btn-2">
-                    Find a Dealer
-                  </Link>
-                </div>
+                <MainButton />
                 <div className="swiper-card relative z-10">
                   <GradualSpacing
                     className="hero-sec-heading"

@@ -1,6 +1,6 @@
 "use client";
 
-import Float from "../float/float";
+import {Float} from "../pageCommon/pageCommon";
 import React, { useRef, useState, useEffect } from "react";
 import $ from "jquery";
 import { Swiper, SwiperSlide } from "swiper/react";
