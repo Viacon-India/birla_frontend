@@ -16,7 +16,7 @@ export default function Navbar() {
   const [headerLogo, setHeaderLogo] = useState([]);
   const [expandedSubMenu, setExpandedSubMenu] = useState(null);
 
-  console.log(headerLogo);
+  // console.log(headerLogo);
   // mega menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

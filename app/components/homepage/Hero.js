@@ -18,6 +18,7 @@ import GradualSpacing from "@/components/GradualSpacing";
 import LetterPullup from "@/components/LetterPullup";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { MainButton } from "../pageCommon/pageCommon";
 
 export default function Hero() {
   gsap.registerPlugin(ScrollTrigger);
@@ -260,6 +261,7 @@ export default function Hero() {
                 Find a Dealer
               </Link>
             </div>
+            
           </div>
         </div>
         <SwiperSlide>

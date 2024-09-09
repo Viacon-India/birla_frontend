@@ -3,8 +3,8 @@
 import React, { useEffect } from "react";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
-import {Float} from "../../../components/pageCommon/pageCommon";
-import {MainButton} from "../../../components/pageCommon/pageCommon";
+import { Float } from "../../../components/pageCommon/pageCommon";
+import { MainButton } from "../../../components/pageCommon/pageCommon";
 import Banner from "../../../assets/images/who1.jpg";
 import Link from "next/link";
 import Image from "next/image";
@@ -24,6 +24,8 @@ import Triangle1 from "../../../assets/images/triangle1.png";
 import Triangle2 from "../../../assets/images/triangle2.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import {SmallButton} from "../../../components/pageCommon/pageCommon";
+import { PageBanner } from "../../../components/pageCommon/pageCommon";
 
 export default function WhoWeAre() {
   useEffect(() => {
@@ -33,32 +35,8 @@ export default function WhoWeAre() {
   return (
     <>
       <Navbar />
-      <section className="top-banner-sec">
-        <div className="relative">
-          <Float />
-          <div className="relative">
-            <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
-              <div class="container mx-auto flex flex-col justify-between h-full pt-5 pb-[60px]">
-                <MainButton />
-                <div className="relative z-10">
-                  <GradualSpacing
-                    className="top-banner-sec-heading"
-                    text="WHO WE ARE"
-                                        paddingLeft="pl-5"
-                    paddingRight="pr-5"
-                  />
-                </div>
-              </div>
-            </div>
-            <Image
-              src={Banner}
-              alt="Hero-Banner"
-              className="absolute top-0 w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
-      <section className="page-content-sec mt-[60px]">
+      <PageBanner Title="WHO WE ARE" StaticBanner={Banner} />
+      <section className="page-content-sec mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
         <div className="container mx-auto">
           <div className="sub-section-wrapper">
             <div className="section-layer">
@@ -105,7 +83,7 @@ export default function WhoWeAre() {
                 </p>
               </div>
             </div>
-            <div className="section-layer w-full">
+            <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
               <figure className="w-1/2">
                 <Image
                   className="w-full"
@@ -127,7 +105,7 @@ export default function WhoWeAre() {
             </div>
             <div className="section-layer md:mt-[60px]">
               <figure
-                className="w-full md:w-[45%] h-[480px] relative glare"
+                className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
                 data-aos="flip-right"
                 data-aos-duration="1500"
               >
@@ -137,7 +115,7 @@ export default function WhoWeAre() {
                   alt="triangle"
                 />
                 <Image
-                  className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+                  className="translate-x-4 md:translate-x-8 translate-y-4 md:translate-y-8 w-[90%] h-[90%] rounded-[12px]"
                   src={who4}
                   alt="img"
                 />
@@ -235,7 +213,7 @@ export default function WhoWeAre() {
                 </div>
               </div>
               <figure
-                className="w-full md:w-[45%] h-[480px] relative glare"
+                className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
                 data-aos="flip-left"
                 data-aos-duration="1500"
               >
@@ -245,7 +223,7 @@ export default function WhoWeAre() {
                   alt="triangle"
                 />
                 <Image
-                  className="w-[90%] h-[90%] translate-y-8 translate-x-8 rounded-[12px]"
+                  className="w-[90%] h-[90%] translate-y-4 md:translate-y-8 translate-x-4 md:translate-x-8 rounded-[12px]"
                   src={who5}
                   alt="img"
                 />
@@ -271,7 +249,7 @@ export default function WhoWeAre() {
           </div>
         </div>
       </section>
-      <section className="vast-product-sec bg-[#F4F5F6] py-6 md:py-10 2xl:py-[60px]">
+      <section className="vast-product-sec bg-[#F4F5F6] py-6 md:py-10 2xl:py-[60px] overflow-hidden">
         <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
           <div>
             <span className="section-heading">OUR VAST RANGE OF PRODUCTS</span>
@@ -348,7 +326,7 @@ export default function WhoWeAre() {
           </div>
         </div>
       </section>
-      <section className="excellence-sec pt-6 md:pt-10 2xl:pt-[60px]">
+      <section className="excellence-sec pt-6 md:pt-10 2xl:pt-[60px] overflow-hidden">
         <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
           <div>
             <span className="section-heading">What Sets us Apart</span>

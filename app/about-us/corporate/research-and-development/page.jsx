@@ -18,6 +18,7 @@ import Triangle1 from "../../../assets/images/triangle1.png";
 import Triangle2 from "../../../assets/images/triangle2.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { PageBanner } from "../../../components/pageCommon/pageCommon";
 
 export default function Research() {
   useEffect(() => {
@@ -26,36 +27,12 @@ export default function Research() {
   return (
     <>
       <Navbar />
-      <section className="top-banner-sec">
-        <div className="relative">
-          <Float />
-          <div className="relative">
-            <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
-              <div class="container mx-auto flex flex-col justify-between h-full pt-5 pb-[60px]">
-                <MainButton />
-                <div className="relative z-10">
-                  <GradualSpacing
-                    className="top-banner-sec-heading"
-                    text="Research & Development"
-                                        paddingLeft="pl-5"
-                    paddingRight="pr-5"
-                  />
-                </div>
-              </div>
-            </div>
-            <Image
-              src={Banner}
-              alt="Hero-Banner"
-              className="absolute top-0 w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
-      <section className="mt-[60px]">
-        <div className="container mx-auto mt-6 md:mt-10">
-          <div className="section-layer !pb-[100px]">
+      <PageBanner Title="Research & Development" StaticBanner={Banner} />
+      <section className="mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
+        <div className="container mx-auto">
+          <div className="section-layer">
             <figure
-              className="w-full md:w-[45%] h-[480px] relative glare"
+              className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
               data-aos="flip-right"
               data-aos-duration="1500"
             >
@@ -65,7 +42,7 @@ export default function Research() {
                 alt="triangle"
               />
               <Image
-                className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+                className="translate-x-4 md:translate-x-8 translate-y-4 md:translate-y-8 w-[90%] h-[90%] rounded-[12px]"
                 src={res5}
                 alt="img"
               />
@@ -108,7 +85,7 @@ export default function Research() {
           </div>
         </div>
       </section>
-      <section className="bg-[#F8F8F8] py-[60px] mb-[80px] 2xl:mb-[60px]">
+      <section className="bg-[#F8F8F8] py-8 md:py-12 2xl:py-[60px] mb-8 md:mb-12 2xl:mb-[60px] overflow-hidden">
         <div className="container mx-auto">
           <div className="excellence-sec">
             <span className="section-heading">What’s next</span>
@@ -217,7 +194,7 @@ export default function Research() {
           </div>
         </div>
       </section>
-      <section className="mb-[80px] 2xl:mb-[60px]">
+      <section className="mb-8 md:mb-12 2xl:mb-[60px] overflow-hidden">
         <div className="container mx-auto">
           <div className="section-layer">
             <div className="box-content-sec relative md:w-[55%] flex flex-col">
@@ -255,7 +232,7 @@ export default function Research() {
               </div>
             </div>
             <figure
-              className="w-full md:w-[45%] h-[480px] relative glare"
+              className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
               data-aos="flip-left"
               data-aos-duration="1500"
             >
@@ -265,7 +242,7 @@ export default function Research() {
                 alt="triangle"
               />
               <Image
-                className="w-[90%] h-[90%] translate-y-8 translate-x-8 rounded-[12px]"
+                className="w-[90%] h-[90%] translate-y-4 md:translate-y-8 translate-x-4 md:translate-x-8 rounded-[12px]"
                 src={res2}
                 alt="img"
               />
