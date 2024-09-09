@@ -1,6 +1,4 @@
 import React from "react";
-// import Slider from "./slider";
-import AboutSec from "./aboutsec";
 import Innovation from "./innovation";
 import NewProduct from "./newProduct";
 import Sustainability from "./sustainability";
@@ -14,7 +12,7 @@ import Faq from "../../components/homepage/faq"
 export default function NewHomepage() {
   return (
     <>
-      {/* <Slider /> */}
+
       <Hero />
       <NewAboutUs />
       <Innovation />

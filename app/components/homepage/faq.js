@@ -9,10 +9,10 @@ import Link from "next/link";
 import faqImage from "../../assets/images/faq-img.jpg";
 
 export default function Faq() {
-
   const [activeTab, setActiveTab] = useState("faq");
   useEffect(() => {
-    var newPanel = document.getElementsByClassName("ham-accordion active")[0].nextElementSibling;
+    var newPanel = document.getElementsByClassName("ham-accordion active")[0]
+      .nextElementSibling;
     newPanel.style.maxHeight = newPanel.scrollHeight + "px";
 
     var acc2 = document.getElementsByClassName("ham-accordion");
@@ -34,19 +34,23 @@ export default function Faq() {
   return (
     <section className="faq-sec mt-10 md:mt-[60px] 2xl:mt-[100px] mb-[60px] md:mb-[80px] 2xl:mb-[120px] relative">
       <div className="container mx-auto overflow-hidden relative">
-        <div className="flex gap-2 items-center absolute !right-[20px] md:right-[64px] 2xl:right-0 top-[54px] md:top-[32px] z-20">
-          <button
-            className={`cat-btn ${activeTab === "faq" ? "active-cat-btn" : ""}`}
-            onClick={() => setActiveTab("faq")}
-          >
-            FAQs
-          </button>
-          <button
-            className={`cat-btn ${activeTab === "blog" ? "active" : ""}`}
-            onClick={() => setActiveTab("blog")}
-          >
-            Blog
-          </button>
+        <div class="relative">
+          <div className="flex gap-2 items-center absolute right-0 top-[54px] md:top-[32px] z-20">
+            <button
+              className={`cat-btn ${
+                activeTab === "faq" ? "active-cat-btn" : ""
+              }`}
+              onClick={() => setActiveTab("faq")}
+            >
+              FAQs
+            </button>
+            <button
+              className={`cat-btn ${activeTab === "blog" ? "active" : ""}`}
+              onClick={() => setActiveTab("blog")}
+            >
+              Blog
+            </button>
+          </div>
         </div>
 
         {activeTab === "faq" && (
@@ -79,7 +83,7 @@ export default function Faq() {
                   </figure>
                 </div>
                 <div
-                  class="faq-accordion md:w-[50%] md:max-h-[550px] overflow-y-auto"
+                  class="faq-accordion md:w-[50%] max-h-[360px] 2xl:max-h-[550px] overflow-y-auto relative z-4"
                   data-aos="fade-right"
                   data-aos-duration="1500"
                 >
@@ -87,9 +91,7 @@ export default function Faq() {
                     <h4 className="accordion-title ham-accordion after:top-[0.9rem] after:content-['_-'] active">
                       What is TBB
                     </h4>
-                    <p
-                      className="accordion-content"
-                    >
+                    <p className="accordion-content">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua. Donec vitae mi vulputate, suscipit urna in,

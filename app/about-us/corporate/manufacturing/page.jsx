@@ -6,8 +6,8 @@ import "swiper/css";
 import { FreeMode, Autoplay } from "swiper/modules";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
-import {Float} from "../../../components/pageCommon/pageCommon";
-import {MainButton} from "../../../components/pageCommon/pageCommon";
+import { Float } from "../../../components/pageCommon/pageCommon";
+import { MainButton } from "../../../components/pageCommon/pageCommon";
 import Banner from "../../../assets/images/man1.jpg";
 import Link from "next/link";
 import Image from "next/image";
@@ -25,6 +25,7 @@ import man11 from "../../../assets/images/man11.png";
 import man12 from "../../../assets/images/man12.jpg";
 import man13 from "../../../assets/images/man13.jpg";
 import man14 from "../../../assets/images/man14.jpg";
+import man15 from "../../../assets/images/man15.jpg";
 import tiger from "../../../assets/images/tiger.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -485,7 +486,118 @@ export default function Manufacturing() {
           </div>
         </div>
       </section>
-      <section className="relative flex mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden">
+      <section className="bg-[#F8F8F8] py-[60px] mb-[40px] 2xl:mb-[60px]">
+        <div className="container mx-auto">
+          <div className="excellence-sec">
+            <span className="section-heading">our people</span>
+            <div className="section-title-wrapper">
+              <h3 className="section-title">The heart of our manufacturing excellence</h3>
+            </div>
+            <p className="text-[#1A1D21] text-[14px] md:text-[16px] 2xl:text-[17px] mt-4 md:mt-6 2xl:mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
+              <div class="w-full md:w-[45%] h-fit md:sticky top-[90px]">
+                <figure
+                  className="w-full mb-0"
+                  data-aos="zoom-in"
+                  data-aos-duration="1500"
+                >
+                  <Image
+                    className="w-full h-full object-cover rounded-[12px] shadow-xl"
+                    src={man15}
+                    alt="faqImg"
+                  />
+                </figure>
+              </div>
+              <div
+                class="accordion-list-sec md:w-[55%]"
+                data-aos="fade-left"
+                data-aos-duration="1500"
+              >
+                <div className="collapse collapse-plus">
+                  <input type="radio" name="my-accordion-3" defaultChecked />
+                  <div className="collapse-title">Capability point 1</div>
+                  <div className="collapse-content">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
+                      ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
+                </div>
+                <div className="collapse collapse-plus">
+                  <input type="radio" name="my-accordion-3" />
+                  <div className="collapse-title">Capability point 2</div>
+                  <div className="collapse-content">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
+                      ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
+                </div>
+                <div className="collapse collapse-plus">
+                  <input type="radio" name="my-accordion-3" />
+                  <div className="collapse-title">Capability point 3</div>
+                  <div className="collapse-content">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
+                      ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
+                </div>
+                <div className="collapse collapse-plus">
+                  <input type="radio" name="my-accordion-3" />
+                  <div className="collapse-title">Capability point 4</div>
+                  <div className="collapse-content">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
+                      ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
+                </div>
+                <div className="collapse collapse-plus">
+                  <input type="radio" name="my-accordion-3" />
+                  <div className="collapse-title">Capability point 5</div>
+                  <div className="collapse-content">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
+                      ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
+                </div>
+                <div className="collapse collapse-plus">
+                  <input type="radio" name="my-accordion-3" />
+                  <div className="collapse-title">Capability point 6</div>
+                  <div className="collapse-content">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Donec vitae mi vulputate, suscipit urna in,
+                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
+                      ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p className="text-[#1A1D21] text-[14px] md:text-[16px] 2xl:text-[17px] mt-4 md:mt-6 2xl:mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget.</p>
+          </div>
+        </div>
+      </section>
+      <section className="relative flex overflow-hidden">
         <Image
           src={man3}
           alt="bottom-img"

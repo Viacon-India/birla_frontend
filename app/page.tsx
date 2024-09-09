@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Navbar from "./components/navbar/navbar";
 import Homepage from "./components/homepage/homepage";
 import Footer from "./components/footer/footer";
-import Loader from "./components/loader"
-import Cursor from "../app/components/Cursor"
+import NewHomepage from "./components/homepage/NewHomepage";
+// import Cursor from "../app/components/Cursor"
 
 
 
@@ -25,9 +25,9 @@ export default function Home() {
 
   return (
     <>
-      <Cursor />
+      {/* <Cursor /> */}
       <Navbar />
-      <Homepage />
+      <NewHomepage />
       <Footer />
     </>
   );
