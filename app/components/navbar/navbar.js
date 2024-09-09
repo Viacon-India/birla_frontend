@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import logo1 from "../../assets/images/logo1.png";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,9 +13,10 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [navMenu, setNavMenu] = useState([]);
   const [hamMenu, setHamMenu] = useState([]);
+  const [headerLogo, setHeaderLogo] = useState([]);
   const [expandedSubMenu, setExpandedSubMenu] = useState(null);
 
-  // console.log(hamMenu);
+  console.log(headerLogo);
   // mega menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -29,8 +31,9 @@ export default function Navbar() {
     fetch("http://birlatyres.viaconprojects.com:1337/api/header")
       .then((res) => res.json())
       .then((header) => {
-        setNavMenu(header.data.attributes.menus.data[0].attributes.menu);
-        setHamMenu(header.data.attributes.menus.data[1].attributes.menu);
+        setNavMenu(header.data.attributes.menus.data[0]);
+        setHamMenu(header.data.attributes.menus.data[1]);
+        setHeaderLogo(header.data.attributes.logo);
       });
 
     // Searchbar
@@ -71,13 +74,13 @@ export default function Navbar() {
 
           <div className="navbar-center flex items-center gap-6 lg:flex md:pl-7 ml-[-10%] md:ml-0">
             <ul className="menu menu-horizontal hidden md:flex relative text-lg lg:gap-4 xl:gap-7 p-0">
-              {navMenu.map((menu) => (
+              {navMenu.attributes?.menu.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
-                  <button className="nav-links nav-hov flip-animate" >
-                    <span data-hover={menu.title}>
-                      {menu.title}
-                    </span>
-                    {menu.sub_menu.length > 0 && (
+                  {menu?.link ? 
+                    <Link href={menu.link} className="nav-links nav-hov flip-animate" >
+                      <span data-hover={menu.title}>
+                        {menu.title}
+                      </span>
                       <svg
                         className="nav-arrow"
                         width="10"
@@ -91,45 +94,62 @@ export default function Navbar() {
                           fill=""
                         />
                       </svg>
-                    )}
-                  </button>
-                  {menu.sub_menu.length > 0 && (
-                    <ul className="center-dropdown">
-                      {menu.sub_menu.map((subMenu) => (
-                        <li key={subMenu.id}>
-                          <button className="drop-list">
-                            {subMenu.title}
-                          </button>
-                        </li>
-                      ))}
-                      {menu.pages.data.map((menu) => (
-                        <li key={menu.id}>
-                          <Link className="drop-list" href={`${menu.attributes.permalink}`}>{menu.attributes.title}</Link>
-                        </li>
-                      ))}
-                      {menu.other_link.map((menu) => (
-                        <li key={menu.id}>
-                          <Link className="drop-list" href={`${menu.link}`}>{menu.name}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                    </Link>
+                  :
+                    <button className="nav-links nav-hov flip-animate" >
+                      <span data-hover={menu.title}>
+                        {menu.title}
+                      </span>
+                      <svg
+                        className="nav-arrow"
+                        width="10"
+                        height="6"
+                        viewBox="0 0 10 6"
+                        fill="#333333"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5.00045 3.44752L8.30032 0.147705L9.24312 1.09051L5.00045 5.33319L0.757812 1.09051L1.70063 0.147705L5.00045 3.44752Z"
+                          fill=""
+                        />
+                      </svg>
+                    </button>
+                  }
+                  <ul className="center-dropdown">
+                    {menu.sub_menu.map((subMenu) => (
+                      <li key={subMenu.id}>
+                        <button className="drop-list">
+                          {subMenu.title}
+                        </button>
+                      </li>
+                    ))}
+                    {menu.pages.data.map((menu) => (
+                      <li key={menu.id}>
+                        <Link className="drop-list" href={`${menu.attributes.permalink}`}>{menu.attributes.title}</Link>
+                      </li>
+                    ))}
+                    {menu.other_link.map((menu) => (
+                      <li key={menu.id}>
+                        <Link className="drop-list" href={`${menu.link}`}>{menu.name}</Link>
+                      </li>
+                    ))}
+                  </ul>
                 </li>
               ))}
-              {/* {navMenu.pages.data.map((menu) => (
+              {navMenu.attributes?.pages.data.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
                   <Link className="nav-links nav-hov flip-animate" href={`${menu.attributes.permalink}`}><span data-hover={menu.attributes.title}>
                       {menu.attributes.title}
                     </span></Link>
                 </li>
-              ))} */}
-              {/* {navMenu.other_link.map((menu) => (
+              ))}
+              {navMenu.attributes?.other_link.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
                   <Link className="nav-links nav-hov flip-animate" href={`${menu.link}`}><span data-hover={menu.name}>
                       {menu.name}
                     </span></Link>
                 </li>
-              ))} */}
+              ))}
             </ul>
             <div class="search-wrapper relative hidden md:flex">
               <input
@@ -153,33 +173,42 @@ export default function Navbar() {
                 />
               </svg>
             </div>
-
           </div>
 
-          <div className="navbar-end gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
-            <Link href="/">
-              <figure className="rounded-none m-0 w-[50px] h-[50px] md:w-[65px] md:h-[65px]">
-                <Image
-                  src={logo2}
-                  alt="logo"
-                  className="w-full h-fit object-cover pt-2"
-                />
-              </figure>
-            </Link>
-            <svg width="2" height="65" viewBox="0 0 2 65" fill="none" xmlns="
-              http://www.w3.org/2000/svg">
-              <line x1="1.31543" y1="65" x2="1.31543" stroke="#C9CDD3" stroke-dasharray="5 6"/>
-            </svg>
-            <Link href="/">
-              <figure className="rounded-none m-0 w-[80px] h-[35px] md:w-[136px] md:h-[60px]">
-                <Image
-                  src={logo1}
-                  alt="logo"
-                  className="w-full h-full object-cover"
-                />
-              </figure>
-            </Link>
-          </div>
+          {headerLogo.length > 1 &&  
+            <div className="navbar-end gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
+              {headerLogo[0].image?.data && headerLogo[0].icon_link?.link &&
+                <Link href={headerLogo[0].icon_link.link}>
+                  <figure className="rounded-none m-0 w-[50px] h-[50px] md:w-[65px] md:h-[65px]">
+                    <Image
+                      src={getStrapiMedia(headerLogo[0].image.data.attributes.url)}
+                      width={headerLogo[0].image.data.attributes.width}
+                      height={headerLogo[0].image.data.attributes.height}
+                      alt={headerLogo[0].image.data.attributes?.alternativeText}
+                      className="w-full h-fit object-cover pt-2"
+                    />
+                  </figure>
+                </Link>
+              }
+              <svg width="2" height="65" viewBox="0 0 2 65" fill="none" xmlns="
+                http://www.w3.org/2000/svg">
+                <line x1="1.31543" y1="65" x2="1.31543" stroke="#C9CDD3" stroke-dasharray="5 6"/>
+              </svg>
+              {headerLogo[1].image?.data && headerLogo[1].icon_link?.link &&
+                <Link href={headerLogo[1].icon_link.link}>
+                  <figure className="rounded-none m-0 w-[80px] h-[35px] md:w-[136px] md:h-[60px]">
+                    <Image
+                      src={getStrapiMedia(headerLogo[1].image.data.attributes.url)}
+                      width={headerLogo[1].image.data.attributes.width}
+                      height={headerLogo[1].image.data.attributes.height}
+                      alt={headerLogo[1].image.data.attributes?.alternativeText}
+                      className="w-full h-full object-cover"
+                    />
+                  </figure>
+                </Link>
+              }
+            </div>
+          }
         </div>
       </div>
 
@@ -229,9 +258,9 @@ export default function Navbar() {
             </svg>
           </div>
           <ul className="h-full overflow-auto px-[16px] pt-4 md:pt-0 xl:pt-[80px] 2xl:!pt-0 border-t-2 md:border-t-0">
-            {hamMenu.map((menu) => (
+            {hamMenu.attributes?.menu.map((menu) => (
               <li className="mb-4" key={menu.id}>
-                <button className="ham-links">{menu.title}</button>
+                {menu?.link ? <Link href={menu.link} className="ham-links">{menu.title}</Link> : <button className="ham-links">{menu.title}</button>}
                 <ul className="transition-all duration-300 pl-4">
                   {menu.sub_menu.map((subMenu) => (
                     <li key={subMenu.id}>
@@ -307,16 +336,16 @@ export default function Navbar() {
                 </ul>
               </li>
             ))}
-            {/* {hamMenu.pages.data.map((menu) => (
+            {hamMenu.attributes?.pages.data.map((menu) => (
               <li className="mb-4" key={menu.id}>
                 <Link className="ham-links" href={`${menu.attributes.permalink}`}>{menu.attributes.title}</Link>
               </li>
-            ))} */}
-            {/* {hamMenu.other_link.map((menu) => (
+            ))}
+            {hamMenu.attributes?.other_link.map((menu) => (
               <li className="mb-4" key={menu.id}>
                 <Link className="ham-links" href={`${menu.link}`}>{menu.name}</Link>
               </li>
-            ))} */}
+            ))}
           </ul>
         </div>
       </div>
