@@ -9,8 +9,8 @@ import Footer from "../../../components/footer/footer";
 import Link from "next/link";
 import GradualSpacing from "@/components/GradualSpacing";
 import Image from "next/image";
-import {Float} from "../../../components/pageCommon/pageCommon";
-import {MainButton} from "../../../components/pageCommon/pageCommon";
+import { Float } from "../../../components/pageCommon/pageCommon";
+import { MainButton } from "../../../components/pageCommon/pageCommon";
 import Hero from "../../../assets/images/vision-hero.jpg";
 import NextChapter from "../../../assets/images/vision-next-chapter.png";
 import BGTiger from "../../../assets/images/tiger-mask3.png";
@@ -41,6 +41,7 @@ import mask1 from "../../../assets/images/iconmask-1.png";
 import mask2 from "../../../assets/images/iconmask-2.png";
 import mask3 from "../../../assets/images/iconmask-3.png";
 import mask4 from "../../../assets/images/iconmask-4.png";
+import { PageBanner } from "../../../components/pageCommon/pageCommon";
 
 import { FreeMode, Thumbs, EffectFade } from "swiper/modules";
 
@@ -54,36 +55,12 @@ export default function Leadership() {
   return (
     <>
       <Navbar />
-      <section className="top-banner-sec">
-        <div className="relative">
-          <Float />
-          <div className="relative">
-            <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
-              <div class="container mx-auto flex flex-col justify-between h-full pt-5 pb-[60px]">
-                <MainButton />
-                <div className="relative z-10">
-                  <GradualSpacing
-                    className="top-banner-sec-heading"
-                    text="Vision, Mission & Values"
-                    paddingLeft="pl-5"
-                    paddingRight="pr-5"
-                  />
-                </div>
-              </div>
-            </div>
-            <Image
-              src={Hero}
-              alt="Hero-Banner"
-              className="absolute top-0 w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
+      <PageBanner Title="Vision, Mission & Values" StaticBanner={Hero} />
       <section className="relative">
         <div className="container mx-auto">
-          <div className="section-layer md:mt-[60px]">
+          <div className="section-layer mt-8 md:mt-12 2xl::mt-[60px] overflow-hidden">
             <figure
-              className="w-full md:w-[45%] h-[480px] relative glare"
+              className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
               data-aos="flip-right"
               data-aos-duration="1500"
             >
@@ -93,7 +70,7 @@ export default function Leadership() {
                 alt="triangle"
               />
               <Image
-                className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+                className="translate-x-4 md:translate-x-8 translate-y-4 md:translate-y-8 w-[90%] h-[90%] rounded-[12px]"
                 src={Vision}
                 alt="img"
               />
@@ -129,7 +106,7 @@ export default function Leadership() {
               </div>
             </div>
           </div>
-          <div className="mt-[60px] flex flex-col gap-10">
+          <div className="mt-8 md:mt-12 2xl:mt-[60px] flex flex-col gap-10 overflow-hidden">
             <div className="flex flex-col gap-3">
               <span className="section-heading">Mission</span>
               <div className="section-title-wrapper">
@@ -318,13 +295,13 @@ export default function Leadership() {
               </div>
             </div>
             <div className="mission-card-sec">
-              <div className="sticky-container top-[120px]">
+              <div className="sticky-container md:top-[120px]">
                 <div
                   className="mission-card"
                   data-aos="zoom-in-right"
                   data-aos-duration="1000"
                 >
-                  <figure className="w-full h-[500px]">
+                  <figure className="w-full h-[380px] md:h-[500px]">
                     <Image
                       className="w-full h-full object-cover rounded-[16px]"
                       src={img5}
@@ -332,13 +309,11 @@ export default function Leadership() {
                     />
                   </figure>
                   <div className="mission-box">
-                    <h2 className="vision-title">Value point 1</h2>
+                    <h2 className="vision-title title-before-svg1">Integrity</h2>
                     <p className="text-[16px] text-[#3D434C] pt-3">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                      ipsum dolor sit amet, consectetur adipiscing elit.
+                      We shall be thoroughly professional in all our activities
+                      with absolute honesty and will never compromise on our
+                      principles in any way.
                     </p>
                   </div>
                 </div>
@@ -349,7 +324,7 @@ export default function Leadership() {
                   data-aos="zoom-in-right"
                   data-aos-duration="1000"
                 >
-                  <figure className="w-full h-[500px]">
+                  <figure className="w-full h-[380px] md:h-[500px]">
                     <Image
                       className="w-full h-full object-cover rounded-[16px]"
                       src={img6}
@@ -357,13 +332,11 @@ export default function Leadership() {
                     />
                   </figure>
                   <div className="mission-box">
-                    <h2 className="vision-title">Value point 2</h2>
+                    <h2 className="vision-title title-before-svg2">Excellence </h2>
                     <p className="text-[16px] text-[#3D434C] pt-3">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                      ipsum dolor sit amet, consectetur adipiscing elit.
+                      We will always strive to achieve the best level of
+                      performance in whatever we do and continuously improve
+                      ourselves in order to reach that level.
                     </p>
                   </div>
                 </div>
@@ -374,7 +347,7 @@ export default function Leadership() {
                   data-aos="zoom-in-right"
                   data-aos-duration="1000"
                 >
-                  <figure className="w-full h-[500px]">
+                  <figure className="w-full h-[380px] md:h-[500px]">
                     <Image
                       className="w-full h-full object-cover rounded-[16px]"
                       src={img7}
@@ -382,13 +355,12 @@ export default function Leadership() {
                     />
                   </figure>
                   <div className="mission-box">
-                    <h2 className="vision-title">Value point 3</h2>
+                    <h2 className="vision-title title-before-svg3">Safety</h2>
                     <p className="text-[16px] text-[#3D434C] pt-3">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                      ipsum dolor sit amet, consectetur adipiscing elit.
+                      The safety of our stakeholders - employees, suppliers,
+                      buyers and society, is of utmost importance to us and we
+                      will never settle for any practice which puts it in
+                      danger.
                     </p>
                   </div>
                 </div>
@@ -399,7 +371,7 @@ export default function Leadership() {
                   data-aos="zoom-in-right"
                   data-aos-duration="1000"
                 >
-                  <figure className="w-full h-[500px]">
+                  <figure className="w-full h-[380px] md:h-[500px]">
                     <Image
                       className="w-full h-full object-cover rounded-[16px]"
                       src={img8}
@@ -407,13 +379,11 @@ export default function Leadership() {
                     />
                   </figure>
                   <div className="mission-box">
-                    <h2 className="vision-title">Value point 4</h2>
+                    <h2 className="vision-title title-before-svg4">Sustainability</h2>
                     <p className="text-[16px] text-[#3D434C] pt-3">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                      ipsum dolor sit amet, consectetur adipiscing elit.
+                      We will carry out all our business activities to
+                      positively contribute to the creation of a better tomorrow
+                      for our future generations.
                     </p>
                   </div>
                 </div>
