@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from 'next/link';
 import Navbar from "./components/navbar/navbar";
-import Homepage from "./components/homepage/homepage";
 import Footer from "./components/footer/footer";
 import NewHomepage from "./components/homepage/NewHomepage";
 // import Cursor from "../app/components/Cursor"
