@@ -29,6 +29,8 @@ import man15 from "../../../assets/images/man15.jpg";
 import tiger from "../../../assets/images/tiger.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { PageBanner } from "../../../components/pageCommon/pageCommon";
+import { PageEnd } from "../../../components/pageCommon/pageCommon";
 
 export default function Manufacturing() {
   const [counter, setCounter] = useState(0);
@@ -53,32 +55,8 @@ export default function Manufacturing() {
   return (
     <>
       <Navbar />
-      <section className="top-banner-sec">
-        <div className="relative">
-          <Float />
-          <div className="relative">
-            <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
-              <div class="container mx-auto flex flex-col justify-between h-full pt-5 pb-[60px]">
-                <MainButton />
-                <div className="relative z-10">
-                  <GradualSpacing
-                    className="top-banner-sec-heading"
-                    text="Manufacturing"
-                    paddingLeft="pl-5"
-                    paddingRight="pr-5"
-                  />
-                </div>
-              </div>
-            </div>
-            <Image
-              src={Banner}
-              alt="Hero-Banner"
-              className="absolute top-0 w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
-      <section className="page-content-sec mt-[60px]">
+      <PageBanner Title="Manufacturing" StaticBanner={Banner} />
+      <section className="page-content-sec mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
         <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10">
             <div
@@ -153,9 +131,9 @@ export default function Manufacturing() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-6 md:gap-10 relative">
-            <figure className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+            <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
               <Image
-                data-aos="zoom-out"
+                data-aos="zoom-in"
                 data-aos-duration="2000"
                 src={tiger}
                 alt="img"
@@ -486,7 +464,7 @@ export default function Manufacturing() {
           </div>
         </div>
       </section>
-      <section className="bg-[#F8F8F8] py-[60px] mb-[40px] 2xl:mb-[60px]">
+      <section className="bg-[#F8F8F8] py-8 md:py-12 2xl:py-[60px] my-8 md:my-12 2xl:my-[60px] overflow-hidden">
         <div className="container mx-auto">
           <div className="excellence-sec">
             <span className="section-heading">our people</span>
@@ -497,7 +475,7 @@ export default function Manufacturing() {
             <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
               <div class="w-full md:w-[45%] h-fit md:sticky top-[90px]">
                 <figure
-                  className="w-full mb-0"
+                  className="w-full h-[300px] md:h-[450px] 2xl:h-[600px] mb-0"
                   data-aos="zoom-in"
                   data-aos-duration="1500"
                 >
@@ -509,7 +487,7 @@ export default function Manufacturing() {
                 </figure>
               </div>
               <div
-                class="accordion-list-sec md:w-[55%]"
+                class="accordion-list-sec h-[300px] md:h-[450px] 2xl:h-[600px] overflow-y-auto md:w-[55%]"
                 data-aos="fade-left"
                 data-aos-duration="1500"
               >
@@ -597,43 +575,11 @@ export default function Manufacturing() {
           </div>
         </div>
       </section>
-      <section className="relative flex overflow-hidden">
-        <Image
-          src={man3}
-          alt="bottom-img"
-          className="absolute left-0 h-[200px] w-[60%]"
-        />
-        <div className="container mx-auto relative h-[200px] flex items-end justify-end">
-          <Image
-            src={BGTiger}
-            alt="bottom-img"
-            className="absolute right-[20%]"
-          />
-          <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4">
-            Next Page :
-            <Link
-              className="text-[#F5811E] font-medium flex items-center gap-1"
-              href="/users/product"
-            >
-              Board of Directors
-              <svg
-                width="14"
-                height="13"
-                viewBox="0 0 14 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 12.5L13 0.5M13 0.5H3.25M13 0.5V10.25"
-                  stroke="#F5811E"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </Link>
-          </p>
-        </div>
-      </section>
+      <PageEnd
+        Title="Leadership"
+        TitleLink="/users/product"
+        EndStaticImage={man3}
+      />
       <Footer />
     </>
   );

@@ -7,16 +7,11 @@ import "swiper/css";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
 import Link from "next/link";
-import GradualSpacing from "@/components/GradualSpacing";
 import Image from "next/image";
-import { Float } from "../../../components/pageCommon/pageCommon";
-import { MainButton } from "../../../components/pageCommon/pageCommon";
 import Hero from "../../../assets/images/vision-hero.jpg";
 import NextChapter from "../../../assets/images/vision-next-chapter.png";
 import BGTiger from "../../../assets/images/tiger-mask3.png";
 import Vision from "../../../assets/images/vision.jpg";
-import MissionBackground from "../../../assets/images/mission-background.jpg";
-import ValuesBackground from "../../../assets/images/values-background.jpg";
 import Triangle1 from "../../../assets/images/triangle1.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -42,6 +37,7 @@ import mask2 from "../../../assets/images/iconmask-2.png";
 import mask3 from "../../../assets/images/iconmask-3.png";
 import mask4 from "../../../assets/images/iconmask-4.png";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
+import { PageEnd } from "../../../components/pageCommon/pageCommon";
 
 import { FreeMode, Thumbs, EffectFade } from "swiper/modules";
 
@@ -301,15 +297,18 @@ export default function Leadership() {
                   data-aos="zoom-in-right"
                   data-aos-duration="1000"
                 >
-                  <figure className="w-full h-[380px] md:h-[500px]">
+                  <figure className="w-full h-[380px] md:h-[500px] relative">
                     <Image
                       className="w-full h-full object-cover rounded-[16px]"
                       src={img5}
                       alt="card-one"
                     />
+                    <span className="mission-card-overlay"></span>
                   </figure>
                   <div className="mission-box">
-                    <h2 className="vision-title title-before-svg1">Integrity</h2>
+                    <h2 className="vision-title title-before-svg1">
+                      Integrity
+                    </h2>
                     <p className="text-[16px] text-[#3D434C] pt-3">
                       We shall be thoroughly professional in all our activities
                       with absolute honesty and will never compromise on our
@@ -324,15 +323,18 @@ export default function Leadership() {
                   data-aos="zoom-in-right"
                   data-aos-duration="1000"
                 >
-                  <figure className="w-full h-[380px] md:h-[500px]">
+                  <figure className="w-full h-[380px] md:h-[500px] relative">
                     <Image
                       className="w-full h-full object-cover rounded-[16px]"
                       src={img6}
                       alt="card-one"
                     />
+                    <span className="mission-card-overlay"></span>
                   </figure>
                   <div className="mission-box">
-                    <h2 className="vision-title title-before-svg2">Excellence </h2>
+                    <h2 className="vision-title title-before-svg2">
+                      Excellence 
+                    </h2>
                     <p className="text-[16px] text-[#3D434C] pt-3">
                       We will always strive to achieve the best level of
                       performance in whatever we do and continuously improve
@@ -347,12 +349,13 @@ export default function Leadership() {
                   data-aos="zoom-in-right"
                   data-aos-duration="1000"
                 >
-                  <figure className="w-full h-[380px] md:h-[500px]">
+                  <figure className="w-full h-[380px] md:h-[500px] relative">
                     <Image
                       className="w-full h-full object-cover rounded-[16px]"
                       src={img7}
                       alt="card-one"
                     />
+                    <span className="mission-card-overlay"></span>
                   </figure>
                   <div className="mission-box">
                     <h2 className="vision-title title-before-svg3">Safety</h2>
@@ -371,15 +374,18 @@ export default function Leadership() {
                   data-aos="zoom-in-right"
                   data-aos-duration="1000"
                 >
-                  <figure className="w-full h-[380px] md:h-[500px]">
+                  <figure className="w-full h-[380px] md:h-[500px] relative">
                     <Image
                       className="w-full h-full object-cover rounded-[16px]"
                       src={img8}
                       alt="card-one"
                     />
+                    <span className="mission-card-overlay"></span>
                   </figure>
                   <div className="mission-box">
-                    <h2 className="vision-title title-before-svg4">Sustainability</h2>
+                    <h2 className="vision-title title-before-svg4">
+                      Sustainability
+                    </h2>
                     <p className="text-[16px] text-[#3D434C] pt-3">
                       We will carry out all our business activities to
                       positively contribute to the creation of a better tomorrow
@@ -392,43 +398,11 @@ export default function Leadership() {
           </div>
         </div>
       </section>
-      <section className="relative flex mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden">
-        <Image
-          src={NextChapter}
-          alt="bottom-img"
-          className="absolute left-0 h-[200px] w-[60%]"
-        />
-        <div className="container mx-auto relative h-[200px] flex items-end justify-end">
-          <Image
-            src={BGTiger}
-            alt="bottom-img"
-            className="absolute right-[20%]"
-          />
-          <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4">
-            Next Page:
-            <Link
-              className="text-[#F5811E] font-medium flex items-center gap-1"
-              href="/users/product"
-            >
-              Vision, Mission & Values
-              <svg
-                width="14"
-                height="13"
-                viewBox="0 0 14 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 12.5L13 0.5M13 0.5H3.25M13 0.5V10.25"
-                  stroke="#F5811E"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </Link>
-          </p>
-        </div>
-      </section>
+      <PageEnd
+        Title="R&D"
+        TitleLink="/users/product"
+        EndStaticImage={NextChapter}
+      />
       <Footer />
     </>
   );
