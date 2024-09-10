@@ -3,22 +3,19 @@
 import React, { useEffect } from "react";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
-import {Float} from "../../../components/pageCommon/pageCommon";
-import {MainButton} from "../../../components/pageCommon/pageCommon";
 import Banner from "../../../assets/images/res1.jpg";
 import Link from "next/link";
 import Image from "next/image";
-import GradualSpacing from "@/components/GradualSpacing";
 import res2 from "../../../assets/images/res2.jpg";
 import res3 from "../../../assets/images/res3.jpg";
 import res4 from "../../../assets/images/res4.jpg";
 import res5 from "../../../assets/images/res5.jpg";
-import BGTiger from "../../../assets/images/tiger-mask3.png";
 import Triangle1 from "../../../assets/images/triangle1.png";
 import Triangle2 from "../../../assets/images/triangle2.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
+import { PageEnd } from "../../../components/pageCommon/pageCommon";
 
 export default function Research() {
   useEffect(() => {
@@ -85,7 +82,7 @@ export default function Research() {
           </div>
         </div>
       </section>
-      <section className="bg-[#F8F8F8] py-8 md:py-12 2xl:py-[60px] mb-8 md:mb-12 2xl:mb-[60px] overflow-hidden">
+      <section className="bg-[#F8F8F8] py-8 md:py-12 2xl:py-[60px] my-8 md:my-12 2xl:my-[60px] overflow-hidden">
         <div className="container mx-auto">
           <div className="excellence-sec">
             <span className="section-heading">What’s next</span>
@@ -95,7 +92,7 @@ export default function Research() {
             <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
               <div class="w-full md:w-[45%] h-fit md:sticky top-[90px]">
                 <figure
-                  className="w-full mb-0"
+                  className="w-full h-[350px] md:h-[450px] 2xl:h-[600px] mb-0"
                   data-aos="zoom-in"
                   data-aos-duration="1500"
                 >
@@ -107,7 +104,7 @@ export default function Research() {
                 </figure>
               </div>
               <div
-                class="accordion-list-sec md:w-[55%]"
+                class="accordion-list-sec md:w-[55%] h-[350px] md:h-[450px] 2xl:h-[600px] overflow-y-auto"
                 data-aos="fade-left"
                 data-aos-duration="1500"
               >
@@ -250,43 +247,11 @@ export default function Research() {
           </div>
         </div>
       </section>
-      <section className="relative flex mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden">
-        <Image
-          src={res4}
-          alt="bottom-img"
-          className="absolute left-0 h-[200px] w-[60%]"
-        />
-        <div className="container mx-auto relative h-[200px] flex items-end justify-end">
-          <Image
-            src={BGTiger}
-            alt="bottom-img"
-            className="absolute right-[20%]"
-          />
-          <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4">
-            Next Page:
-            <Link
-              className="text-[#F5811E] font-medium flex items-center gap-1"
-              href="/users/product"
-            >
-              Manufacturing
-              <svg
-                width="14"
-                height="13"
-                viewBox="0 0 14 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 12.5L13 0.5M13 0.5H3.25M13 0.5V10.25"
-                  stroke="#F5811E"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </Link>
-          </p>
-        </div>
-      </section>
+      <PageEnd
+        Title="Manufacturing"
+        TitleLink="/users/product"
+        EndStaticImage={res4}
+      />
       <Footer />
     </>
   );

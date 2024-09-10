@@ -1000,7 +1000,7 @@ a.current_dot {
   @apply text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mb-3 last:mb-0
 }
 .vast-card figure{
-  @apply w-full h-[220px] md:h-[252px] mb-2 md:mb-4 2xl:mb-6 relative overflow-hidden 
+  @apply w-full h-[200px] md:h-[252px] mb-2 md:mb-4 2xl:mb-6 relative overflow-hidden 
   transition-all duration-500 rounded-[12px]
 }
 .vast-card-image{
@@ -1040,7 +1040,7 @@ a.current_dot {
   @apply w-full h-[132px] rounded-[12px] bg-[#ECECF9] mb-4 flex justify-center items-center
 }
 .box-card div h3{
-  @apply text-[56px] font-medium text-[#2E3192]
+  @apply text-[48px] md:text-[56px] font-medium text-[#2E3192]
 }
 .box-card p{
   @apply text-[20px] text-[#1A1D21] font-medium text-center capitalize
@@ -1060,7 +1060,7 @@ a.current_dot {
   @apply flex w-full mb-6 2xl:mb-10 border border-secondary rounded-[12px] 
  }
  .form-btn{
-  @apply w-1/2 flex justify-center items-center py-[12px] rounded-[10px] text-[18px] font-semibold text-secondary
+  @apply w-1/2 flex justify-center items-center py-[12px] rounded-[10px] text-[14px] md:text-[18px] font-semibold text-secondary
  }
  .form-active-btn{
   @apply bg-secondary text-white
@@ -1189,6 +1189,10 @@ a.current_dot {
 .mission-box{
   @apply p-5 rounded-[12px] bg-white absolute md:left-20 top-1/2 -translate-y-1/2 w-[90%] md:w-[400px]
 }
+.mission-card-overlay{
+  background: linear-gradient(to right, rgba(0,0,0,0.20), rgba(0,0,0,0));
+  @apply w-full h-full rounded-[12px] absolute top-0 left-0
+}
 /* .mission-card{
   box-shadow: -1px -7px 9px -3px rgba(0,0,0,0.55);
   @apply relative mb-8 rounded-[12px] bg-white
@@ -1310,6 +1314,40 @@ input[type=file]::file-selector-button {
 
 
 
+/* warranty-page */
+.box-content-sec table {
+  @apply w-full border-collapse
+}
+.box-content-sec th, td {
+  @apply border border-[#DEE1E5] p-2 text-left
+}
+.box-content-sec th {
+  @apply bg-[#DEE1E5]
+}
+
+
+/* Tyre Guide page */
+.tyre-guide-box-wrapper{
+  @apply items-center gap-6 md:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10
+}
+.tyre-guide-box-wrapper figure{
+  @apply w-full md:w-[50%] h-[300px] md:h-[358px] 2xl:h-[400px] rounded-[12px]
+}
+.tyre-guide-box h2{
+  @apply text-[#1A1D21] text-[24px] font-bold mb-2
+}
+.tyre-guide-box strong{
+  @apply text-[#4F5662]
+}
+.tyre-guide-box p{
+  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[17px]
+}
+.tyre-guide-box ul{
+  @apply pl-4
+}
+.tyre-guide-box ul li{
+  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[17px] list-disc
+}
 
 
 
