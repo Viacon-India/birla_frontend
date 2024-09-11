@@ -178,8 +178,8 @@ export default function Leadership() {
                 <SwiperSlide>
                   <div class="new-about-card">
                     <div class="about-icon-wrapper">
-                      <Image className="colorIcon" src={icon1} />
-                      <Image className="colorHIcon" src={icon5} />
+                      <Image className="colorIcon" src={icon1} alt="img"/>
+                      <Image className="colorHIcon" src={icon5} alt="img"/>
                       <h2 className="about-usp-title-2">Mission headline 1</h2>
                     </div>
                     <p className="about-usp-detail-2">
@@ -194,14 +194,14 @@ export default function Leadership() {
                     <Link href="" className="about-button">
                       Read more
                     </Link>
-                    <Image className="maskIcon" src={mask1} />
+                    <Image className="maskIcon" src={mask1} alt="img"/>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
                   <div class="new-about-card">
                     <div class="about-icon-wrapper">
-                      <Image className="colorIcon" src={icon2} />
-                      <Image className="colorHIcon" src={icon6} />
+                      <Image className="colorIcon" src={icon2} alt="img"/>
+                      <Image className="colorHIcon" src={icon6} alt="img"/>
                       <h2 className="about-usp-title-2">Mission headline 2</h2>
                     </div>
                     <p className="about-usp-detail-2">
@@ -215,14 +215,14 @@ export default function Leadership() {
                     <Link href="" className="about-button">
                       Read more
                     </Link>
-                    <Image className="maskIcon" src={mask2} />
+                    <Image className="maskIcon" src={mask2} alt="img"/>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
                   <div class="new-about-card">
                     <div class="about-icon-wrapper">
-                      <Image className="colorIcon" src={icon3} />
-                      <Image className="colorHIcon" src={icon7} />
+                      <Image className="colorIcon" src={icon3} alt="img"/>
+                      <Image className="colorHIcon" src={icon7} alt="img"/>
                       <h2 className="about-usp-title-2">Mission headline 3</h2>
                     </div>
                     <p className="about-usp-detail-2">
@@ -235,14 +235,14 @@ export default function Leadership() {
                     <Link href="" className="about-button">
                       Read more
                     </Link>
-                    <Image className="maskIcon" src={mask3} />
+                    <Image className="maskIcon" src={mask3} alt="img"/>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
                   <div class="new-about-card">
                     <div class="about-icon-wrapper">
-                      <Image className="colorIcon" src={icon4} />
-                      <Image className="colorHIcon" src={icon8} />
+                      <Image className="colorIcon" src={icon4} alt="img"/>
+                      <Image className="colorHIcon" src={icon8} alt="img"/>
                       <h2 className="about-usp-title-2">Mission headline 4</h2>
                     </div>
                     <p className="about-usp-detail-2">
@@ -255,14 +255,14 @@ export default function Leadership() {
                     <Link href="" className="about-button">
                       Read more
                     </Link>
-                    <Image className="maskIcon" src={mask4} />
+                    <Image className="maskIcon" src={mask4} alt="img"/>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide className="!hidden md:!flex">
                   <div class="new-about-card">
                     <div class="about-icon-wrapper">
-                      <Image className="colorIcon" src={icon1} />
-                      <Image className="colorHIcon" src={icon5} />
+                      <Image className="colorIcon" src={icon1} alt="img"/>
+                      <Image className="colorHIcon" src={icon5} alt="img"/>
                       <h2 className="about-usp-title-2">Mission headline 1</h2>
                     </div>
                     <p className="about-usp-detail-2">
@@ -277,7 +277,7 @@ export default function Leadership() {
                     <Link href="" className="about-button">
                       Read more
                     </Link>
-                    <Image className="maskIcon" src={mask1} />
+                    <Image className="maskIcon" src={mask1} alt="img"/>
                   </div>
                 </SwiperSlide>
               </Swiper>
