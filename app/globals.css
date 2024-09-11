@@ -425,6 +425,9 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
   background: linear-gradient(to right, rgba(0,0,0,0.40), rgba(0,0,0,0));
   @apply absolute top-0 left-0 w-full h-full z-10
 }
+.tyre-overlay{
+  @apply absolute top-0 left-0 w-full h-full z-1 bg-[#161746BF]
+}
 .hero-sec-heading{
   @apply text-[36px] md:text-[60px] 2xl:text-[72px] text-[#FFFFFF] font-extrabold font-oak-sans
 }

@@ -22,7 +22,7 @@ export default function Contact() {
           <div className="contact-main flex flex-col md:flex-row items-center gap-4 md:gap-6 2xl:gap-10 mt-8 md:mt-12 2xl:mt-[60px]">
             <div className="contact-detail w-full md:w-1/2 flex flex-col gap-4 md:gap-6 xl:gap-10 overflow-hidden relative">
               <Image
-                className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] "
+                className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
                 src={BGTiger2}
                 alt="img"
               />

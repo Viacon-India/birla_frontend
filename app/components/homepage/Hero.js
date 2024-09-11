@@ -95,7 +95,7 @@ export default function Hero() {
         <div class="w-full">
           <div class="container mx-auto">
             <div class="multi-btn-sec">
-              <Link href="" className="primary-btn-1">
+              <Link href="find-tyre" className="primary-btn-1">
                 Find a Tyre
               </Link>
               <Link href="dealer-locator" className="primary-btn-2">
