@@ -3,13 +3,9 @@
 import React, { useEffect } from "react";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
-import GradualSpacing from "@/components/GradualSpacing";
-import {Float} from "../../../components/pageCommon/pageCommon";
-import {MainButton} from "../../../components/pageCommon/pageCommon";
 import Link from "next/link";
 import Image from "next/image";
 import NextChapter from "../../../assets/images/next-chapter.png";
-import BGTiger from "../../../assets/images/tiger-mask3.png";
 import Director1 from "../../../assets/images/director-1.jpg";
 import Director2 from "../../../assets/images/director-2.jpg";
 import Director3 from "../../../assets/images/director-3.jpg";
@@ -21,6 +17,8 @@ import Triangle1 from "../../../assets/images/triangle1.png";
 import Triangle2 from "../../../assets/images/triangle2.png";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
+import coma1 from "../../../assets/images/coma1.png";
+import coma2 from "../../../assets/images/coma2.png";
 
 export default function Leadership() {
   useEffect(() => {
@@ -32,10 +30,10 @@ export default function Leadership() {
       <Navbar />
       <PageBanner Title="Leadership" StaticBanner={Hero} />
 
-      <section className="pt-10 md:pt-[60px] overflow-hidden bg-[#F8F8F8]">
+      <section className="mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden bg-[#F8F8F8]">
         <div className="container mx-auto flex flex-col gap-4 md:gap-10 2xl:gap-[60px]">
           <div className="relative">
-            <svg
+            {/* <svg
               className="absolute top-0 left-0"
               width="47"
               height="38"
@@ -64,8 +62,9 @@ export default function Leadership() {
                 fill="#B3B8C2"
                 mask="url(#path-1-outside-1_5161_3380)"
               />
-            </svg>
-            <p className="text-[#1A1D21] text-[36px] 2xl:text-[48px] leading-[1.2] mb-2 italic text-center px-10">
+            </svg> */}
+            <Image className="absolute left-0 top-0" src={coma1} alt="coma" />
+            <p className="text-[#1A1D21] text-[20px] md:text-[36px] 2xl:text-[48px] leading-[1.2] mb-2 italic text-center px-10">
               The driver for Himadri had always been quality. R&D runs in the
               DNA of the company.
             </p>
@@ -73,7 +72,7 @@ export default function Leadership() {
               -Anurag Choudhary,{" "}
               <span className="text-[#606977] italic">Director</span>
             </p>
-            <svg
+            {/* <svg
               className="absolute right-0 bottom-0"
               width="47"
               height="38"
@@ -102,10 +101,11 @@ export default function Leadership() {
                 fill="#B3B8C2"
                 mask="url(#path-1-outside-1_5161_3382)"
               />
-            </svg>
+            </svg> */}
+            <Image className="absolute right-0 bottom-0" src={coma2} alt="coma" />
           </div>
 
-          <div className="flex items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
+          <div className="flex flex-col md:flex-row items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
             <figure
               className="w-full md:w-[40%] h-[480px] relative glare"
               data-aos="flip-right"
@@ -227,7 +227,7 @@ export default function Leadership() {
             </div>
           </div>
 
-          <div className="flex items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
+          <div className="flex flex-col-reverse md:flex-row items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
             <div className="flex flex-col justify-between w-[60%]">
               <div className="flex flex-col justify-start gap-2 md:gap-6 relative overflow-hidden">
                 <Image
@@ -337,7 +337,7 @@ export default function Leadership() {
             </figure>
           </div>
 
-          <div className="flex items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
+          <div className="flex flex-col md:flex-row items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
             <figure
               className="w-full md:w-[40%] h-[480px] relative glare"
               data-aos="flip-right"
