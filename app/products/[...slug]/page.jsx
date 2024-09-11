@@ -15,15 +15,52 @@ import Footer from "../../components/footer/footer";
 import Product from "../../components/product/card"
 import {PageBanner} from "../../components/pageCommon/pageCommon";
 import {PageEnd} from "../../components/pageCommon/pageCommon";
-
-import tyre1 from "../../assets/images/tyre1.png";
 import chakra from "../../assets/images/chakra-svg.svg";
-
+import prodSvg from "../../assets/images/product-svg.png";
+import prodSvg2 from "../../assets/images/product-svg2.png";
+import prodSvg3 from "../../assets/images/product-svg3.png";
+import ultra from "../../assets/images/ultra-trac.svg";
 import Banner from "../../assets/images/investor-relation-banner.jpg";
 import LastBg from "../../assets/images/investor-relation-next.png";
 import load from "../../assets/images/load.png";
 import pattern from "../../assets/images/pattern.png";
 import construction from "../../assets/images/axle.jpg";
+
+
+import tyre1 from "../../assets/images2/tyre1.png";
+import tyre2 from "../../assets/images2/tyre2.png";
+import tyre3 from "../../assets/images2/tyre3.png";
+import tyre4 from "../../assets/images2/tyre4.png";
+import tyre5 from "../../assets/images2/tyre5.png";
+import tyre6 from "../../assets/images2/tyre6.png";
+import tyre7 from "../../assets/images2/tyre7.png";
+import tyre8 from "../../assets/images2/tyre8.png";
+import tyre9 from "../../assets/images2/tyre9.png";
+import tyre10 from "../../assets/images2/tyre10.png";
+import tyre11 from "../../assets/images2/tyre11.png";
+import tyre12 from "../../assets/images2/tyre12.png";
+import tyre13 from "../../assets/images2/tyre13.png";
+import tyre14 from "../../assets/images2/tyre14.png";
+import tyre15 from "../../assets/images2/tyre15.png";
+import tyre16 from "../../assets/images2/tyre16.png";
+import tyre17 from "../../assets/images2/tyre17.png";
+import tyre18 from "../../assets/images2/tyre18.png";
+import tyre19 from "../../assets/images2/tyre19.png";
+import tyre20 from "../../assets/images2/tyre20.png";
+import tyre21 from "../../assets/images2/tyre21.png";
+import tyre22 from "../../assets/images2/tyre22.png";
+import tyre23 from "../../assets/images2/tyre23.png";
+import tyre24 from "../../assets/images2/tyre24.png";
+import tyre25 from "../../assets/images2/tyre25.png";
+import tyre26 from "../../assets/images2/tyre26.png";
+import tyre27 from "../../assets/images2/tyre27.png";
+import tyre28 from "../../assets/images2/tyre28.png";
+import tyre29 from "../../assets/images2/tyre29.png";
+import tyre30 from "../../assets/images2/tyre30.png";
+import tyre31 from "../../assets/images2/tyre31.png";
+import tyre32 from "../../assets/images2/tyre32.png";
+import tyre33 from "../../assets/images2/tyre33.png";
+
 
 export default function Page({ params }) {
   const slugs = params.slug;
@@ -129,47 +166,47 @@ export default function Page({ params }) {
             <div className="grid grid-cols-3 gap-[50px]">
                 {slugs[0]=='tbb' &&
                     <>
-                        <Product type="Premium" load="Moderate" pattern="Lug" construction="Bias" productImage={tyre1} productName="Ultra Drive Platina" productDescription="Wide and deep shoulder" icon={chakra} sizes={['10.00-20','8.25-20']}/>
-                        <Product type="Premium" load="Moderate" pattern="Rib" construction="Bias" productImage={tyre1} productName="Ultra Miler Platina" productDescription="Reinforced shoulder rib and grooves" icon={chakra} sizes={['10.00-20','8.25-20']}/>
-                        <Product type="Premium" load="Rated" pattern="Lug" construction="Bias" productImage={tyre1} productName="Zeta+DLX" productDescription="Strong casing for more load carrying" icon={chakra} sizes={['10.00-20','8.25-20']}/>
-                        <Product type="Standard" load="Heavy" pattern="Rib" construction="Bias" productImage={tyre1} productName="Road Miler" productDescription="Reinforced bead construction" icon={chakra} sizes={['10.00-20','8.25-20']}/>
-                        <Product type="Standard" load="Heavy" pattern="Lug" construction="Bias" productImage={tyre1} productName="XPL LG" productDescription="Reinforced dual bead construction" icon={chakra} sizes={['10.00-20']}/>
-                        <Product type="Standard" load="Heavy" pattern="Lug" construction="Bias" productImage={tyre1} productName="XPL+" productDescription="Reinforced bead construction" icon={chakra} sizes={['10.00-20']}/>
-                        <Product type="Standard" load="Moderate" pattern="Rib" construction="Bias" productImage={tyre1} productName="339+" productDescription="Equally spaced tiebar and higher non skid depth" icon={chakra} sizes={['10.00-20','9.00-20']}/>
-                        <Product type="Standard" load="Moderate" pattern="Lug" construction="Bias" productImage={tyre1} productName="Samson" productDescription="Higher air volume for carrying extra load" icon={chakra} sizes={['9.00-20']}/>
-                        <Product type="Standard" load="Moderate" pattern="Lug" construction="Bias" productImage={tyre1} productName="Ultra" productDescription="Higher air volume with strong casing" icon={chakra} sizes={['10.00-20']}/>
-                        <Product type="Standard" load="Moderate" pattern="Lug" construction="Bias" productImage={tyre1} productName="Ultra+" productDescription="Strong casing for wider range of applications" icon={chakra} sizes={['10.00-20']}/>
-                        <Product type="Standard" load="Rated" pattern="Lug" construction="Bias" productImage={tyre1} productName="111" productDescription="Cross lug design for good traction" icon={chakra} sizes={['12.00-20']}/>
-                        <Product type="Standard" load="Rated" pattern="Lug" construction="Bias" productImage={tyre1} productName="112" productDescription="Longer tyre life and reliabe performace" icon={chakra} sizes={['11.00-20','10.00-20','9.00-20','8.25-20']}/>
-                        <Product type="Standard" load="Rated" pattern="Lug" construction="Bias" productImage={tyre1} productName="112 Platinum" productDescription="Durable casing to carry extra load capacity" icon={chakra} sizes={['10.00-20']}/>
-                        <Product type="Standard" load="Rated" pattern="Rib" construction="Bias" productImage={tyre1} productName="333" productDescription="Druable casing for longer life" icon={chakra} sizes={['12.00-20']}/>
-                        <Product type="Standard" load="Rated" pattern="Rib" construction="Bias" productImage={tyre1} productName="334" productDescription="Stong casing for more load carrying" icon={chakra} sizes={['11.00-20']}/>
-                        <Product type="Standard" load="Rated" pattern="Rib" construction="Bias" productImage={tyre1} productName="334*" productDescription="Strong casing for more load carrying" icon={chakra} sizes={['9.00-20']}/>
-                        <Product type="Standard" load="Rated" pattern="Rib" construction="Bias" productImage={tyre1} productName="339" productDescription="High mileage tread for longer life" icon={chakra} sizes={['10.00-20']}/>
-                        <Product type="Standard" load="Rated" pattern="Semi Lug" construction="Bias" productImage={tyre1} productName="Rustom" productDescription="Cut and cheap resistant tread compound" icon={chakra} sizes={['9.00-20']}/>
-                        <Product type="Standard" load="Rated" pattern="Lug" construction="Bias" productImage={tyre1} productName="Tison DLX" productDescription="Durable casing for retread" icon={chakra} sizes={['10.00-20','8.25-20']}/>
+                        <Product type="Premium" load="Moderate" pattern="Lug" construction="Bias" productImage={tyre1} productName="Ultra Drive Platina" productDescription="Wide and deep shoulder" icon={prodSvg} sizes={['10.00-20','8.25-20']}/>
+                        <Product type="Premium" load="Moderate" pattern="Rib" construction="Bias" productImage={tyre2} productName="Ultra Miler Platina" productDescription="Reinforced shoulder rib and grooves" icon={prodSvg} sizes={['10.00-20','8.25-20']}/>
+                        <Product type="Premium" load="Rated" pattern="Lug" construction="Bias" productImage={tyre3} productName="Zeta+DLX" productDescription="Strong casing for more load carrying" icon={prodSvg} sizes={['10.00-20','8.25-20']}/>
+                        <Product type="Standard" load="Heavy" pattern="Rib" construction="Bias" productImage={tyre4} productName="Road Miler" productDescription="Reinforced bead construction" icon={prodSvg} sizes={['10.00-20','8.25-20']}/>
+                        <Product type="Standard" load="Heavy" pattern="Lug" construction="Bias" productImage={tyre5} productName="XPL LG" productDescription="Reinforced dual bead construction" icon={prodSvg} sizes={['10.00-20']}/>
+                        <Product type="Standard" load="Heavy" pattern="Lug" construction="Bias" productImage={tyre6} productName="XPL+" productDescription="Reinforced bead construction" icon={prodSvg} sizes={['10.00-20']}/>
+                        <Product type="Standard" load="Moderate" pattern="Rib" construction="Bias" productImage={tyre7} productName="339+" productDescription="Equally spaced tiebar and higher non skid depth" icon={prodSvg} sizes={['10.00-20','9.00-20']}/>
+                        <Product type="Standard" load="Moderate" pattern="Lug" construction="Bias" productImage={tyre8} productName="Samson" productDescription="Higher air volume for carrying extra load" icon={prodSvg} sizes={['9.00-20']}/>
+                        <Product type="Standard" load="Moderate" pattern="Lug" construction="Bias" productImage={tyre9} productName="Ultra" productDescription="Higher air volume with strong casing" icon={prodSvg} sizes={['10.00-20']}/>
+                        <Product type="Standard" load="Moderate" pattern="Lug" construction="Bias" productImage={tyre10} productName="Ultra+" productDescription="Strong casing for wider range of applications" icon={prodSvg} sizes={['10.00-20']}/>
+                        <Product type="Standard" load="Rated" pattern="Lug" construction="Bias" productImage={tyre11} productName="111" productDescription="Cross lug design for good traction" icon={prodSvg} sizes={['12.00-20']}/>
+                        <Product type="Standard" load="Rated" pattern="Lug" construction="Bias" productImage={tyre12} productName="112" productDescription="Longer tyre life and reliabe performace" icon={prodSvg} sizes={['11.00-20','10.00-20','9.00-20','8.25-20']}/>
+                        <Product type="Standard" load="Rated" pattern="Lug" construction="Bias" productImage={tyre13} productName="112 Platinum" productDescription="Durable casing to carry extra load capacity" icon={prodSvg} sizes={['10.00-20']}/>
+                        <Product type="Standard" load="Rated" pattern="Rib" construction="Bias" productImage={tyre14} productName="333" productDescription="Druable casing for longer life" icon={prodSvg} sizes={['12.00-20']}/>
+                        <Product type="Standard" load="Rated" pattern="Rib" construction="Bias" productImage={tyre15} productName="334" productDescription="Stong casing for more load carrying" icon={prodSvg} sizes={['11.00-20']}/>
+                        <Product type="Standard" load="Rated" pattern="Rib" construction="Bias" productImage={tyre16} productName="334*" productDescription="Strong casing for more load carrying" icon={prodSvg} sizes={['9.00-20']}/>
+                        <Product type="Standard" load="Rated" pattern="Rib" construction="Bias" productImage={tyre17} productName="339" productDescription="High mileage tread for longer life" icon={prodSvg} sizes={['10.00-20']}/>
+                        <Product type="Standard" load="Rated" pattern="Semi Lug" construction="Bias" productImage={tyre18} productName="Rustom" productDescription="Cut and cheap resistant tread compound" icon={prodSvg} sizes={['9.00-20']}/>
+                        <Product type="Standard" load="Rated" pattern="Lug" construction="Bias" productImage={tyre19} productName="Tison DLX" productDescription="Durable casing for retread" icon={prodSvg} sizes={['10.00-20','8.25-20']}/>
                     </>
                 }
                 {slugs[0]=='otr' &&
                     <>
-                        <Product type="Premium" productImage={tyre1} productName="Kalapatthar (new)" productDescription="Specially designed tread compound for cut and chip resistance" icon={chakra} sizes={['12.00-24 (20PR)','12.00-20 (18PR)','11.00-20 (18PR)','10.00-20 (18PR)','9.00-20 (16PR)']}/>
-                        <Product type="Premium" productImage={tyre1} productName="Kalapatthar Plus (new)" productDescription="Strongly bonded casing designed for mine application" icon={chakra} sizes={['12.00-24 (20PR)','12.00-20 (18PR)','11.00-20 (18PR)','10.00-20 (18PR)','9.00-20 (16PR)']}/>
-                        <Product type="Premium" productImage={tyre1} productName="Ultra Trac" productDescription="Stronger carcass to resist impact failure" icon={chakra} sizes={['24.00-35 (48PR)','24.00-35 (42PR)','21.00-35 (40PR)','21.00-35 (36PR)','18.00-33 (36PR)','18.00-33 (32PR)','18.00-25 (40PR)','18.00-25 (32PR)','14.00-24 (28PR)','14.00-24 (24PR)','12.00-24 (20PR)']}/>
-                        <Product type="Premium" productImage={tyre1} productName="Grader Max" productDescription="Reliable under extrme service conditions" icon={chakra} sizes={['14.00-24 (16PR)','14.00-24 (12PR)','13.00-24 (16PR)','13.00-24 (12PR)']}/>
-                        <Product type="Premium" productImage={tyre1} productName="Ultra Grip" productDescription="Trouble free under severe service conditions" icon={chakra} sizes={['29.05-25 (32PR)','29.05-25 (28PR)','26.05-25 (32PR)','26.05-25 (28PR)','23.05-25 (24PR)','23.05-25 (20PR)','20.05-25 (20PR)','17.05-25 (20PR)','14.00-25 (24PR)','14.00-25 (20PR)']}/>
-                        <Product type="Premium" productImage={tyre1} productName="Ultra Trac" productDescription="Customized tread compound for excellent performance" icon={chakra} sizes={['26.05-25 (32PR)']}/>
-                        <Product type="Premium" productImage={tyre1} productName="Loader Max" productDescription="Superior casing strength to resist impact damage" icon={chakra} sizes={['16.09-28 (12PR)']}/>
-                        <Product type="Premium" productImage={tyre1} productName="Ultra Trac" productDescription="Stronger carcass to resist impact failure" icon={chakra} sizes={['12.05/80-18 (12PR)']}/>
-                        <Product type="Premium" productImage={tyre1} productName="Ultra Port" productDescription="Rugged shoulder to provide excellent grip" icon={chakra} sizes={['18.00-25 (40PR)']}/>
+                        <Product type="Premium" productImage={tyre20} productName="Kalapatthar (new)" productDescription="Specially designed tread compound for cut and chip resistance" icon={prodSvg2} sizes={['12.00-24 (20PR)','12.00-20 (18PR)','11.00-20 (18PR)','10.00-20 (18PR)','9.00-20 (16PR)']}/>
+                        <Product type="Premium" productImage={tyre21} productName="Kalapatthar Plus (new)" productDescription="Strongly bonded casing designed for mine application" icon={ultra} sizes={['12.00-24 (20PR)','12.00-20 (18PR)','11.00-20 (18PR)','10.00-20 (18PR)','9.00-20 (16PR)']}/>
+                        <Product type="Premium" productImage={tyre22} productName="Ultra Trac" productDescription="Stronger carcass to resist impact failure" icon={prodSvg2} sizes={['24.00-35 (48PR)','24.00-35 (42PR)','21.00-35 (40PR)','21.00-35 (36PR)','18.00-33 (36PR)','18.00-33 (32PR)','18.00-25 (40PR)','18.00-25 (32PR)','14.00-24 (28PR)','14.00-24 (24PR)','12.00-24 (20PR)']}/>
+                        <Product type="Premium" productImage={tyre23} productName="Grader Max" productDescription="Reliable under extrme service conditions" icon={prodSvg2} sizes={['14.00-24 (16PR)','14.00-24 (12PR)','13.00-24 (16PR)','13.00-24 (12PR)']}/>
+                        <Product type="Premium" productImage={tyre24} productName="Ultra Grip" productDescription="Trouble free under severe service conditions" icon={prodSvg2} sizes={['29.05-25 (32PR)','29.05-25 (28PR)','26.05-25 (32PR)','26.05-25 (28PR)','23.05-25 (24PR)','23.05-25 (20PR)','20.05-25 (20PR)','17.05-25 (20PR)','14.00-25 (24PR)','14.00-25 (20PR)']}/>
+                        <Product type="Premium" productImage={tyre25} productName="Ultra Trac" productDescription="Customized tread compound for excellent performance" icon={prodSvg2} sizes={['26.05-25 (32PR)']}/>
+                        <Product type="Premium" productImage={tyre26} productName="Loader Max" productDescription="Superior casing strength to resist impact damage" icon={prodSvg2} sizes={['16.09-28 (12PR)']}/>
+                        <Product type="Premium" productImage={tyre27} productName="Ultra Trac" productDescription="Stronger carcass to resist impact failure" icon={prodSvg2} sizes={['12.05/80-18 (12PR)']}/>
+                        <Product type="Premium" productImage={tyre28} productName="Ultra Port" productDescription="Rugged shoulder to provide excellent grip" icon={prodSvg2} sizes={['18.00-25 (40PR)']}/>
                     </>
                 }
                 {slugs[0]=='agriculture' &&
                     <>
-                        <Product type="Premium" productImage={tyre1} productName="Farm Haul Platina" productDescription="Higher mileage, cut and tear resistant treat compound" icon={chakra} sizes={['13.06-28','12.04-28']}/>
-                        <Product type="Premium" productImage={tyre1} productName="Farm Haul Platina (new)" productDescription="Suitable for both haulage and agriculture" icon={chakra} sizes={['6.00-16']}/>
-                        <Product type="Standard" productImage={tyre1} productName="Shaan" productDescription="Longer life and more mileage" icon={chakra} sizes={['7.50-16','7.50-16','6.50-20','6.00-16']}/>
-                        <Product type="Standard" productImage={tyre1} productName="Shaan+" productDescription="Better tyre floatation compound ensures longer life" icon={chakra} sizes={['18.4-30','16.09-28','14.09-28','13.06-28','12.04-28']}/>
-                        <Product type="Standard" productImage={tyre1} productName="Chakra" productDescription="Superior tread compound provides less cut and chipping" icon={chakra} sizes={['9.00-16']}/>
+                        <Product type="Premium" productImage={tyre29} productName="Farm Haul Platina" productDescription="Higher mileage, cut and tear resistant treat compound" icon={chakra} sizes={['13.06-28','12.04-28']}/>
+                        <Product type="Premium" productImage={tyre30} productName="Farm Haul Platina (new)" productDescription="Suitable for both haulage and agriculture" icon={chakra} sizes={['6.00-16']}/>
+                        <Product type="Standard" productImage={tyre31} productName="Shaan" productDescription="Longer life and more mileage" icon={prodSvg3} sizes={['7.50-16','7.50-16','6.50-20','6.00-16']}/>
+                        <Product type="Standard" productImage={tyre32} productName="Shaan+" productDescription="Better tyre floatation compound ensures longer life" icon={prodSvg3} sizes={['18.4-30','16.09-28','14.09-28','13.06-28','12.04-28']}/>
+                        <Product type="Standard" productImage={tyre33} productName="Chakra" productDescription="Superior tread compound provides less cut and chipping" icon={chakra} sizes={['9.00-16']}/>
                     </>
                 }
             </div>
