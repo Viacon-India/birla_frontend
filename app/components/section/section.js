@@ -110,7 +110,7 @@ export function Address({section}){
                 </div>
             }
             {section?.details && 
-                <div className="grid grid-cols-2 gap-6">
+                <div className="flex flex-col gap-6">
                     {section.details.map((details) => (
                         <div className="flex flex-col gap-3" key={details.id}>
                             {details.content.length > 0 && details?.description &&

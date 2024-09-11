@@ -10,7 +10,7 @@ import Tiger from "../../assets/images/tiger-mask3.png";
 export function MainButton() {
   return (
     <div class="hidden md:flex flex-col gap-5 relative z-10">
-      <Link href="" className="primary-btn-1">
+      <Link href="find-tyre" className="primary-btn-1">
         Find a Tyre
       </Link>
       <Link href="dealer-locator" className="primary-btn-2">
@@ -23,7 +23,7 @@ export function MainButton() {
 export function SmallButton() {
   return (
     <div class="relative w-full flex md:hidden gap-2 p-2">
-      <Link href="" className="primary-btn-1 !w-[50%] !justify-center">
+      <Link href="find-tyre" className="primary-btn-1 !w-[50%] !justify-center">
         Find a Tyre
       </Link>
       <Link href="dealer-locator" className="primary-btn-2 !w-[50%] !justify-center">
