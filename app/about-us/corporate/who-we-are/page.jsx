@@ -109,7 +109,7 @@ export default function WhoWeAre() {
                   alt="triangle"
                 />
                 <Image
-                  className="translate-x-4 md:translate-x-8 translate-y-4 md:translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+                  className="absolute left-4 md:left-8 top-4 md:top-8 w-[90%] h-[90%] rounded-[12px]"
                   src={who4}
                   alt="img"
                 />
@@ -217,7 +217,7 @@ export default function WhoWeAre() {
                   alt="triangle"
                 />
                 <Image
-                  className="w-[90%] h-[90%] translate-y-4 md:translate-y-8 translate-x-4 md:translate-x-8 rounded-[12px]"
+                  className="w-[90%] h-[90%] absolute right-4 md:right-8 top-4 md:top-8 rounded-[12px]"
                   src={who5}
                   alt="img"
                 />
