@@ -287,7 +287,13 @@ button.flip-animate, a.flip-animate {
   color: white !important;
 }
 
+.subSubText{
+  @apply !transition-all !duration-500
+}
 
+.subSubText-wrapper:hover .subSubText{
+  display: block !important;
+}
 
 
 
