@@ -34,7 +34,7 @@ export default function NewAbout() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
-    <section className="new-about-slider mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden h-[100%]">
+    <section className="new-about-slider sec-gap overflow-hidden h-[100%]">
       <div className="container mx-auto">
         {/* <span className="section-heading">company brief</span>
         <div className="section-title-wrapper">
