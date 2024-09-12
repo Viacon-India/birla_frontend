@@ -80,7 +80,7 @@ export default function FindTyre() {
                     </div>
                   </div>
                 </div>
-                <div className="filter-form w-full md:w-1/2">
+                <div className="filter-form w-full md:w-1/2 md:mx-[100px] 2xl:mx-[200px]">
                   <div className="form-content relative z-10">
                     <div className="form-btn-sec">
                       <button
@@ -111,37 +111,71 @@ export default function FindTyre() {
                     {activeTab === "TBB" && (
                       <div id="TBB">
                         <form className="w-full flex flex-col gap-3 md:gap-5">
-                          <div className="form-row">
-                            <label className="contact-label" htmlFor="">
+                          <div className="tyre-form-row">
+                            <label className="tyre-form-label" htmlFor="">
                               Select Machinery
                             </label>
-                            <select className="contact-select" name="" id="">
-                              <option value="">
-                                Tell us the type of query
-                              </option>
+                            <select className="tyre-form-select" name="" id="">
+                              <option value="">Eg. Tipper truck</option>
                               <option value="Query Type 1">Query Type 1</option>
                               <option value="Query Type 2">Query Type 2</option>
                               <option value="Query Type 3">Query Type 3</option>
                               <option value="Query Type 4">Query Type 4</option>
                             </select>
                           </div>
-                          <div className="form-row">
-                            <label className="contact-label" htmlFor="">
-                              Describe your query
+                          <div className="tyre-form-row">
+                            <label className="tyre-form-label" htmlFor="">
+                              Select Rim
                             </label>
-                            <input
-                              className="contact-input"
-                              type="text"
-                              placeholder="Describe your thoughts"
-                            />
+                            <select className="tyre-form-select" name="" id="">
+                              <option value="">Eg. 18.5</option>
+                              <option value="Eg. 18.5">Eg. 18.5</option>
+                              <option value="Query Type 2">Query Type 2</option>
+                              <option value="Query Type 3">Query Type 3</option>
+                              <option value="Query Type 4">Query Type 4</option>
+                            </select>
+                          </div>
+                          <div className="tyre-form-row">
+                            <label className="tyre-form-label" htmlFor="">
+                              Select Size
+                            </label>
+                            <select className="tyre-form-select" name="" id="">
+                              <option value="">Eg. 10.00 - 16SL</option>
+                              <option value="Eg. 18.5">Eg. 18.5</option>
+                              <option value="Query Type 2">Query Type 2</option>
+                              <option value="Query Type 3">Query Type 3</option>
+                              <option value="Query Type 4">Query Type 4</option>
+                            </select>
+                          </div>
+                          <div className="tyre-form-row">
+                            <label className="tyre-form-label" htmlFor="">
+                              Select Pattern
+                            </label>
+                            <select className="tyre-form-select" name="" id="">
+                              <option value="">Eg. SM 48 (GK)</option>
+                              <option value="Eg. 18.5">Eg. 18.5</option>
+                              <option value="Query Type 2">Query Type 2</option>
+                              <option value="Query Type 3">Query Type 3</option>
+                              <option value="Query Type 4">Query Type 4</option>
+                            </select>
                           </div>
                           <Link
                             href="thankyou"
-                            className="primary-btn w-fit flip-animate-2"
+                            className="primary-btn !w-full flip-animate-2 after:!hidden text-center !flex !justify-center !items-center"
                           >
-                            <span data-hover="Send Your Query">
-                              Send Your Query
-                            </span>
+                            <svg
+                              width="18"
+                              height="18"
+                              viewBox="0 0 18 18"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M8.13197 0.599918C6.75419 0.599918 5.49863 0.93325 4.3653 1.59992C3.23197 2.26658 2.32086 3.1777 1.63197 4.33325C0.943077 5.48881 0.598633 6.74436 0.598633 8.09992C0.598633 9.45547 0.943077 10.711 1.63197 11.8666C2.32086 13.0221 3.23197 13.9333 4.3653 14.5999C5.49863 15.2666 6.75419 15.5999 8.13197 15.5999C8.97641 15.5999 9.79863 15.4555 10.5986 15.1666C11.3986 14.8777 12.132 14.4888 12.7986 13.9999L15.932 17.0666C16.0653 17.2444 16.2542 17.3333 16.4986 17.3333C16.7431 17.3333 16.9431 17.2555 17.0986 17.0999C17.2542 16.9444 17.332 16.7444 17.332 16.4999C17.332 16.2555 17.2431 16.0666 17.0653 15.9333L13.9986 12.7999C14.4875 12.1333 14.8764 11.3999 15.1653 10.5999C15.4542 9.79992 15.5986 8.9777 15.5986 8.13325C15.5986 6.75547 15.2653 5.48881 14.5986 4.33325C13.932 3.1777 13.0209 2.26658 11.8653 1.59992C10.7097 0.93325 9.4653 0.599918 8.13197 0.599918ZM8.13197 2.26658C9.19863 2.26658 10.1764 2.53325 11.0653 3.06658C11.9542 3.59992 12.6542 4.31103 13.1653 5.19992C13.6764 6.08881 13.932 7.05547 13.932 8.09992C13.932 9.14436 13.6764 10.1221 13.1653 11.0333C12.6542 11.9444 11.9542 12.6555 11.0653 13.1666C10.1764 13.6777 9.19863 13.9333 8.13197 13.9333C7.0653 13.9333 6.08752 13.6777 5.19863 13.1666C4.30974 12.6555 3.59863 11.9444 3.0653 11.0333C2.53197 10.1221 2.2653 9.14436 2.2653 8.09992C2.2653 7.05547 2.53197 6.08881 3.0653 5.19992C3.59863 4.31103 4.30974 3.59992 5.19863 3.06658C6.08752 2.53325 7.0653 2.26658 8.13197 2.26658Z"
+                                fill="white"
+                              />
+                            </svg>
+                            <span data-hover="Search">Search</span>
                           </Link>
                         </form>
                       </div>
@@ -217,7 +251,17 @@ export default function FindTyre() {
         </div>
       </section>
       <section className="dealer-sec mt-8 md:mt-12 2xl:mt-[60px] relative overflow-hidden">
-        <div className="container mx-auto overflow-hidden"></div>
+        <div className="container mx-auto overflow-hidden">
+          <span className="section-heading">Find A Tyre</span>
+          <div className="section-title-wrapper">
+            <h3 className="section-title">Birla Tyre Products</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10">
+            {activeTab === "TBB" && ( <h2>Tbb</h2>)}
+            {activeTab === "OTR" && <h2>OTR</h2>}
+            {activeTab === "AGRI" && <h2>AGRI</h2>}
+          </div>
+        </div>
       </section>
       <PageEnd
         Title="Find A Dealer"
