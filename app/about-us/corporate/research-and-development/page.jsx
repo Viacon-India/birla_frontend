@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
-import Banner from "../../../assets/images/res1.jpg";
+// import Banner from "../../../assets/images/res1.jpg";
 import Link from "next/link";
 import Image from "next/image";
 import res2 from "../../../assets/images/res2.jpg";
@@ -24,7 +24,7 @@ export default function Research() {
   return (
     <>
       <Navbar />
-      <PageBanner Title="Research & Development" StaticBanner={Banner} />
+      <PageBanner Title="Research & Development" StaticBanner={"/assets/videos/research.mp4"} extension=".mp4" />
       <section className="mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
         <div className="container mx-auto">
           <div className="section-layer">
