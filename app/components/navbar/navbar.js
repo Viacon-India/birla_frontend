@@ -76,11 +76,12 @@ export default function Navbar() {
             <ul className="menu menu-horizontal hidden md:flex relative text-lg lg:gap-4 xl:gap-7 p-0">
               {navMenu.attributes?.menu.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
-                  {menu?.link ? 
-                    <Link href={menu.link} className="nav-links nav-hov flip-animate" >
-                      <span data-hover={menu.title}>
-                        {menu.title}
-                      </span>
+                  {menu?.link ? (
+                    <Link
+                      href={menu.link}
+                      className="nav-links nav-hov flip-animate"
+                    >
+                      <span data-hover={menu.title}>{menu.title}</span>
                       <svg
                         className="nav-arrow"
                         width="10"
@@ -95,11 +96,9 @@ export default function Navbar() {
                         />
                       </svg>
                     </Link>
-                  :
-                    <button className="nav-links nav-hov flip-animate" >
-                      <span data-hover={menu.title}>
-                        {menu.title}
-                      </span>
+                  ) : (
+                    <button className="nav-links nav-hov flip-animate">
+                      <span data-hover={menu.title}>{menu.title}</span>
                       <svg
                         className="nav-arrow"
                         width="10"
@@ -114,28 +113,50 @@ export default function Navbar() {
                         />
                       </svg>
                     </button>
-                  }
+                  )}
                   <ul className="center-dropdown">
                     {menu.sub_menu.map((subMenu) => (
-                      <li key={subMenu.id}>
-                        <button className="drop-list">
-                          {subMenu.title}
-                        </button>
+                      <li className="subSubText-wrapper" key={subMenu.id}>
+                        <button className="drop-list">{subMenu.title}</button>
+                        <ul className="relative !hidden subSubText">
+                          {subMenu.pages.data.map((subSubMenu) => (
+                            <li
+                              className="text-[12px] text-white"
+                              key={subSubMenu.id}
+                            >
+                              <Link href={`${subSubMenu.attributes.permalink}`}>
+                                {subSubMenu.attributes.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
                       </li>
                     ))}
                     {menu.segments?.data.map((menu) => (
                       <li key={menu.id}>
-                        <Link className="drop-list" href={`${menu.attributes.permalink}`}>{menu.attributes.title}</Link>
+                        <Link
+                          className="drop-list"
+                          href={`${menu.attributes.permalink}`}
+                        >
+                          {menu.attributes.title}
+                        </Link>
                       </li>
                     ))}
                     {menu.pages?.data.map((menu) => (
                       <li key={menu.id}>
-                        <Link className="drop-list" href={`${menu.attributes.permalink}`}>{menu.attributes.name}</Link>
+                        <Link
+                          className="drop-list"
+                          href={`${menu.attributes.permalink}`}
+                        >
+                          {menu.attributes.name}
+                        </Link>
                       </li>
                     ))}
                     {menu.other_link.map((menu) => (
                       <li key={menu.id}>
-                        <Link className="drop-list" href={`${menu.link}`}>{menu.name}</Link>
+                        <Link className="drop-list" href={`${menu.link}`}>
+                          {menu.name}
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -143,23 +164,36 @@ export default function Navbar() {
               ))}
               {navMenu.attributes?.segments?.data.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
-                  <Link className="nav-links nav-hov flip-animate" href={`${menu.attributes.permalink}`}><span data-hover={menu.attributes.title}>
+                  <Link
+                    className="nav-links nav-hov flip-animate"
+                    href={`${menu.attributes.permalink}`}
+                  >
+                    <span data-hover={menu.attributes.title}>
                       {menu.attributes.title}
-                    </span></Link>
+                    </span>
+                  </Link>
                 </li>
               ))}
               {navMenu.attributes?.pages?.data.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
-                  <Link className="nav-links nav-hov flip-animate" href={`${menu.attributes.permalink}`}><span data-hover={menu.attributes.name}>
+                  <Link
+                    className="nav-links nav-hov flip-animate"
+                    href={`${menu.attributes.permalink}`}
+                  >
+                    <span data-hover={menu.attributes.name}>
                       {menu.attributes.name}
-                    </span></Link>
+                    </span>
+                  </Link>
                 </li>
               ))}
               {navMenu.attributes?.other_link.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
-                  <Link className="nav-links nav-hov flip-animate" href={`${menu.link}`}><span data-hover={menu.name}>
-                      {menu.name}
-                    </span></Link>
+                  <Link
+                    className="nav-links nav-hov flip-animate"
+                    href={`${menu.link}`}
+                  >
+                    <span data-hover={menu.name}>{menu.name}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -187,13 +221,15 @@ export default function Navbar() {
             </div>
           </div>
 
-          {headerLogo.length > 1 &&  
+          {headerLogo.length > 1 && (
             <div className="navbar-end gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
-              {headerLogo[0].image?.data && headerLogo[0].icon_link?.link &&
+              {headerLogo[0].image?.data && headerLogo[0].icon_link?.link && (
                 <Link href={headerLogo[0].icon_link.link}>
                   <figure className="rounded-none m-0 w-[50px] h-[50px] md:w-[65px] md:h-[65px]">
                     <Image
-                      src={getStrapiMedia(headerLogo[0].image.data.attributes.url)}
+                      src={getStrapiMedia(
+                        headerLogo[0].image.data.attributes.url
+                      )}
                       width={headerLogo[0].image.data.attributes.width}
                       height={headerLogo[0].image.data.attributes.height}
                       alt={headerLogo[0].image.data.attributes?.alternativeText}
@@ -201,16 +237,30 @@ export default function Navbar() {
                     />
                   </figure>
                 </Link>
-              }
-              <svg width="2" height="65" viewBox="0 0 2 65" fill="none" xmlns="
-                http://www.w3.org/2000/svg">
-                <line x1="1.31543" y1="65" x2="1.31543" stroke="#C9CDD3" stroke-dasharray="5 6"/>
+              )}
+              <svg
+                width="2"
+                height="65"
+                viewBox="0 0 2 65"
+                fill="none"
+                xmlns="
+                http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="1.31543"
+                  y1="65"
+                  x2="1.31543"
+                  stroke="#C9CDD3"
+                  stroke-dasharray="5 6"
+                />
               </svg>
-              {headerLogo[1].image?.data && headerLogo[1].icon_link?.link &&
+              {headerLogo[1].image?.data && headerLogo[1].icon_link?.link && (
                 <Link href={headerLogo[1].icon_link.link}>
                   <figure className="rounded-none m-0 w-[80px] h-[35px] md:w-[136px] md:h-[60px]">
                     <Image
-                      src={getStrapiMedia(headerLogo[1].image.data.attributes.url)}
+                      src={getStrapiMedia(
+                        headerLogo[1].image.data.attributes.url
+                      )}
                       width={headerLogo[1].image.data.attributes.width}
                       height={headerLogo[1].image.data.attributes.height}
                       alt={headerLogo[1].image.data.attributes?.alternativeText}
@@ -218,9 +268,9 @@ export default function Navbar() {
                     />
                   </figure>
                 </Link>
-              }
+              )}
             </div>
-          }
+          )}
         </div>
       </div>
 
@@ -272,7 +322,13 @@ export default function Navbar() {
           <ul className="h-full overflow-auto px-[16px] pt-4 md:pt-0 xl:pt-[80px] 2xl:!pt-0 border-t-2 md:border-t-0">
             {hamMenu.attributes?.menu.map((menu) => (
               <li className="mb-4" key={menu.id}>
-                {menu?.link ? <Link href={menu.link} className="ham-links">{menu.title}</Link> : <button className="ham-links">{menu.title}</button>}
+                {menu?.link ? (
+                  <Link href={menu.link} className="ham-links">
+                    {menu.title}
+                  </Link>
+                ) : (
+                  <button className="ham-links">{menu.title}</button>
+                )}
                 <ul className="transition-all duration-300 pl-4">
                   {menu.sub_menu.map((subMenu) => (
                     <li key={subMenu.id}>
@@ -310,54 +366,80 @@ export default function Navbar() {
                             </button>
                           )}
                       </div>
-                        <ul
-                          className={`transition-all duration-1000 overflow-hidden ${
-                            expandedSubMenu === subMenu.id
-                              ? "max-h-screen"
-                              : "max-h-0 overflow-hidden"
-                          }`}
-                        >
-                          {subMenu.segments?.data.map((subSubMenu) => (
-                            <li
-                              className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500"
-                              key={subSubMenu.id}
-                            >
-                              <Link href={`${subSubMenu.attributes.permalink}`}>
-                                {subSubMenu.attributes.title}
-                              </Link>
-                            </li>
-                          ))}
-                          {subMenu.pages?.data.map((subSubMenu) => (
-                            <li
-                              className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500"
-                              key={subSubMenu.id}
-                            >
-                              <Link href={`${subSubMenu.attributes.permalink}`}>
-                                {subSubMenu.attributes.name}
-                              </Link>
-                            </li>
-                          ))}
-                          {subMenu.other_link.map((subSubMenu) => (
-                            <li className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500" key={subSubMenu.id}>
-                              <Link href={`${subSubMenu.link}`}>{subSubMenu.name}</Link>
-                            </li>
-                          ))}
-                        </ul>
+                      <ul
+                        className={`transition-all duration-1000 overflow-hidden ${
+                          expandedSubMenu === subMenu.id
+                            ? "max-h-screen"
+                            : "max-h-0 overflow-hidden"
+                        }`}
+                      >
+                        {subMenu.segments?.data.map((subSubMenu) => (
+                          <li
+                            className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500"
+                            key={subSubMenu.id}
+                          >
+                            <Link href={`${subSubMenu.attributes.permalink}`}>
+                              {subSubMenu.attributes.title}
+                            </Link>
+                          </li>
+                        ))}
+                        {subMenu.pages?.data.map((subSubMenu) => (
+                          <li
+                            className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500"
+                            key={subSubMenu.id}
+                          >
+                            <Link href={`${subSubMenu.attributes.permalink}`}>
+                              {subSubMenu.attributes.name}
+                            </Link>
+                          </li>
+                        ))}
+                        {subMenu.other_link.map((subSubMenu) => (
+                          <li
+                            className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500"
+                            key={subSubMenu.id}
+                          >
+                            <Link href={`${subSubMenu.link}`}>
+                              {subSubMenu.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
                     </li>
                   ))}
                   {menu.segments?.data.map((subMenu) => (
                     <li key={subMenu.id}>
-                      <div className="flex justify-between"><Link className="text-secondary text-[16px] py-[6px]" href={`${subMenu.attributes.permalink}`}>{subMenu.attributes.title}</Link></div>
+                      <div className="flex justify-between">
+                        <Link
+                          className="text-secondary text-[16px] py-[6px]"
+                          href={`${subMenu.attributes.permalink}`}
+                        >
+                          {subMenu.attributes.title}
+                        </Link>
+                      </div>
                     </li>
                   ))}
                   {menu.pages?.data.map((subMenu) => (
                     <li key={subMenu.id}>
-                      <div className="flex justify-between"><Link className="text-secondary text-[16px] py-[6px]" href={`${subMenu.attributes.permalink}`}>{subMenu.attributes.name}</Link></div>
+                      <div className="flex justify-between">
+                        <Link
+                          className="text-secondary text-[16px] py-[6px]"
+                          href={`${subMenu.attributes.permalink}`}
+                        >
+                          {subMenu.attributes.name}
+                        </Link>
+                      </div>
                     </li>
                   ))}
                   {menu.other_link.map((subMenu) => (
                     <li key={subMenu.id}>
-                      <div className="flex justify-between"><Link className="text-secondary text-[16px] py-[6px]" href={`${subMenu.link}`}>{subMenu.name}</Link></div>
+                      <div className="flex justify-between">
+                        <Link
+                          className="text-secondary text-[16px] py-[6px]"
+                          href={`${subMenu.link}`}
+                        >
+                          {subMenu.name}
+                        </Link>
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -365,17 +447,29 @@ export default function Navbar() {
             ))}
             {hamMenu.attributes?.segments?.data.map((menu) => (
               <li className="mb-4" key={menu.id}>
-                <Link className="ham-links" href={`${menu.attributes.permalink}`}>{menu.attributes.title}</Link>
+                <Link
+                  className="ham-links"
+                  href={`${menu.attributes.permalink}`}
+                >
+                  {menu.attributes.title}
+                </Link>
               </li>
             ))}
             {hamMenu.attributes?.pages?.data.map((menu) => (
               <li className="mb-4" key={menu.id}>
-                <Link className="ham-links" href={`${menu.attributes.permalink}`}>{menu.attributes.name}</Link>
+                <Link
+                  className="ham-links"
+                  href={`${menu.attributes.permalink}`}
+                >
+                  {menu.attributes.name}
+                </Link>
               </li>
             ))}
             {hamMenu.attributes?.other_link.map((menu) => (
               <li className="mb-4" key={menu.id}>
-                <Link className="ham-links" href={`${menu.link}`}>{menu.name}</Link>
+                <Link className="ham-links" href={`${menu.link}`}>
+                  {menu.name}
+                </Link>
               </li>
             ))}
           </ul>
