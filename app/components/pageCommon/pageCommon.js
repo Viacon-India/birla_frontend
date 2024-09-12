@@ -33,7 +33,7 @@ export function SmallButton() {
   );
 }
 
-export function PageBanner({ Title, Banner, StaticBanner }) {
+export function PageBanner({ Title, Banner, StaticBanner, extension }) {
   return (
     <section className="top-banner-sec bg-[#F8F8F8]">
       <div className="relative">
@@ -79,11 +79,26 @@ export function PageBanner({ Title, Banner, StaticBanner }) {
               />
             )
           ) : (
-            <Image
+            extension == ".mp4" ? (
+              <video
+                className="absolute top-0 w-full h-full object-cover"
+                loop
+                autoPlay
+                muted
+              >
+                <source
+                  src={StaticBanner}
+                  type="video/mp4"
+                />
+              </video>
+            ) : (
+              <Image
               src={StaticBanner}
               alt="Hero-Banner"
               className="absolute top-0 w-full h-full object-cover"
             />
+            )
+            
           )}
         </div>
       </div>
