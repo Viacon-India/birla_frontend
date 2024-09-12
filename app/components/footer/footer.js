@@ -218,7 +218,7 @@ export default function Footer() {
                       href={`${submenu.attributes.permalink}`}
                       className="footer-list-item"
                     >
-                      {submenu.attributes.title}
+                      {submenu.attributes.name}
                     </Link>
                   </li>
                 ))}

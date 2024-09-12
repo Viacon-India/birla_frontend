@@ -125,7 +125,7 @@ export default function Navbar() {
                     ))}
                     {menu.pages?.data.map((menu) => (
                       <li key={menu.id}>
-                        <Link className="drop-list" href={`${menu.attributes.permalink}`}>{menu.attributes.title}</Link>
+                        <Link className="drop-list" href={`${menu.attributes.permalink}`}>{menu.attributes.name}</Link>
                       </li>
                     ))}
                     {menu.other_link.map((menu) => (
@@ -138,8 +138,8 @@ export default function Navbar() {
               ))}
               {navMenu.attributes?.pages?.data.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
-                  <Link className="nav-links nav-hov flip-animate" href={`${menu.attributes.permalink}`}><span data-hover={menu.attributes.title}>
-                      {menu.attributes.title}
+                  <Link className="nav-links nav-hov flip-animate" href={`${menu.attributes.permalink}`}><span data-hover={menu.attributes.name}>
+                      {menu.attributes.name}
                     </span></Link>
                 </li>
               ))}
@@ -311,7 +311,7 @@ export default function Navbar() {
                               key={subSubMenu.id}
                             >
                               <Link href={`${subSubMenu.attributes.permalink}`}>
-                                {subSubMenu.attributes.title}
+                                {subSubMenu.attributes.name}
                               </Link>
                             </li>
                           ))}
@@ -325,7 +325,7 @@ export default function Navbar() {
                   ))}
                   {menu.pages?.data.map((subMenu) => (
                     <li key={subMenu.id}>
-                      <div className="flex justify-between"><Link className="text-secondary text-[16px] py-[6px]" href={`${subMenu.attributes.permalink}`}>{subMenu.attributes.title}</Link></div>
+                      <div className="flex justify-between"><Link className="text-secondary text-[16px] py-[6px]" href={`${subMenu.attributes.permalink}`}>{subMenu.attributes.name}</Link></div>
                     </li>
                   ))}
                   {menu.other_link.map((subMenu) => (
@@ -338,7 +338,7 @@ export default function Navbar() {
             ))}
             {hamMenu.attributes?.pages?.data.map((menu) => (
               <li className="mb-4" key={menu.id}>
-                <Link className="ham-links" href={`${menu.attributes.permalink}`}>{menu.attributes.title}</Link>
+                <Link className="ham-links" href={`${menu.attributes.permalink}`}>{menu.attributes.name}</Link>
               </li>
             ))}
             {hamMenu.attributes?.other_link.map((menu) => (

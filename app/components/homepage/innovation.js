@@ -59,7 +59,7 @@ export default function Innovation() {
             <div className="section-title-wrapper">
               <GradualSpacing
                 className="section-title"
-                text="Our Innovations. Your Solution"
+                text="Trusted Tyres For Every Terrain"
               />
             </div>
           </div>

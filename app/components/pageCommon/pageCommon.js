@@ -42,7 +42,7 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
           <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
             <div class="container mx-auto flex flex-col justify-end md:justify-between h-full pt-5 pb-3 md:pb-[60px]">
               <MainButton />
-              <div className="relative bg-white z-10 rounded-[12px] w-fit opacity-75">
+              <div className="relative bg-[rgba(255,255,255,75%)] z-10 rounded-[12px] w-fit">
                 <GradualSpacing
                   className="top-banner-sec-heading"
                   text={Title}
@@ -242,7 +242,7 @@ export function PageEnd({
         <Image src={Tiger} alt="bottom-img" className="absolute right-[20%]" />
         {TitleLink && Title && (
           <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4">
-            Next Page :
+            Next Page:
             <Link
               className="text-[#F5811E] font-medium flex items-center gap-1"
               href={TitleLink}

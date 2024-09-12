@@ -46,11 +46,9 @@ export default function WhoWeAre() {
                   src={tigerMask}
                   className="absolute left-0 top-0"
                 />
-                <span className="section-heading">Who we are</span>
+                <span className="section-heading">lorem ipsum</span>
                 <div className="section-title-wrapper">
-                  <h3 className="section-title">
-                    Headline for who we are goes here
-                  </h3>
+                  <h3 className="section-title">Headline Lorem Ipsum</h3>
                 </div>
               </div>
               <div className="box-content-sec w-full md:w-[60%] relative">
@@ -117,14 +115,14 @@ export default function WhoWeAre() {
                 />
               </figure>
               <div className="box-content-sec relative md:w-[55%]">
-                <span className="section-heading">Values & People</span>
+                <span className="section-heading">joint ownership</span>
                 <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
                   <h3
                     className="section-title"
                     data-aos="fade-left"
                     data-aos-duration="1000"
                   >
-                    Headline for Himadri
+                    Himadri Speciality Chemical Ltd.
                   </h3>
                 </div>
                 <p data-aos="fade-left" data-aos-duration="500">
@@ -152,7 +150,7 @@ export default function WhoWeAre() {
                   eget.
                 </p>
 
-                <Link href="#" className="more-btn">
+                <Link href="https://www.himadri.com/" target="_blank" className="more-btn">
                   Know More
                 </Link>
                 <div class="line-loader absolute right-0 bottom-0">
@@ -164,14 +162,14 @@ export default function WhoWeAre() {
             </div>
             <div className="section-layer">
               <div className="box-content-sec relative md:w-[55%]">
-                <span className="section-heading">Product development</span>
+                <span className="section-heading">joint ownership</span>
                 <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
                   <h3
                     className="section-title"
                     data-aos="fade-left"
                     data-aos-duration="1000"
                   >
-                    Headline for DBRL
+                    Dalmia Bharat Refractories Ltd.
                   </h3>
                 </div>
                 <p data-aos="fade-left" data-aos-duration="500">
@@ -199,7 +197,7 @@ export default function WhoWeAre() {
                   eget.
                 </p>
 
-                <Link href="#" className="more-btn">
+                <Link href="https://dalmiaocl.com/" target="_blank" className="more-btn">
                   Know More
                 </Link>
                 <div class="line-loader absolute right-0 bottom-0">
@@ -347,7 +345,7 @@ export default function WhoWeAre() {
           <div class="flex flex-col md:flex-row gap-4 md:gap-10">
             <div class="w-full md:w-[50%] h-fit md:sticky top-[90px]">
               <figure
-                className="w-full mb-0"
+                className="w-full h-[350px] md:h-[450px] 2xl:h-[600px] mb-0"
                 data-aos="zoom-in"
                 data-aos-duration="1000"
               >
@@ -359,7 +357,7 @@ export default function WhoWeAre() {
               </figure>
             </div>
             <div
-              class="accordion-list-sec md:w-[50%]"
+              class="accordion-list-sec w-full md:w-[50%] h-[350px] md:h-[450px] 2xl:h-[600px] overflow-y-auto"
               data-aos="fade-left"
               data-aos-duration="1000"
             >
@@ -454,8 +452,8 @@ export default function WhoWeAre() {
         </div>
       </section>
       <PageEnd
-        Title="vision, Mission & Values"
-        TitleLink="/users/product"
+        Title="Vision, Mission & Values"
+        TitleLink="/about-us/corporate/vision-mission-values"
         EndStaticImage={who10}
       />
       <Footer />

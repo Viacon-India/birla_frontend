@@ -28,8 +28,8 @@ export default function Page({ params }) {
   // console.log(investorRelationData.section);
   
   useEffect(() => {
-    fetch(getStrapiMedia("/api/investor-relation/"+slugs[0])).then((res) => res.json()).then((investor_relation) => {
-      setInvestorRelationData(investor_relation.data.attributes);
+    fetch(getStrapiMedia("/api/pages/"+slugs[0])).then((res) => res.json()).then((investor_relation) => {
+      setInvestorRelationData(investor_relation);
     });
 
     parent_slug == 'investor-relation' && fetch(getStrapiMedia("/api/investor-relations?populate[fields][0]=title&populate[fields][1]=slug")).then((tab) => tab.json()).then((investor_relation_table) => {
