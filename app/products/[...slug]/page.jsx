@@ -67,12 +67,13 @@ export default function Page({ params }) {
   const [pageData, setPageData] = useState([]);
 
   //   sub_selection ? console.log(sub_selection):console.log('Not Present');
+  console.log(pageData)
 
   useEffect(() => {
     fetch(getStrapiMedia("/api/pages/" + slugs[0]))
       .then((res) => res.json())
       .then((page) => {
-        setPageData(page.data.attributes);
+        setPageData(page);
       });
   }, []);
 
