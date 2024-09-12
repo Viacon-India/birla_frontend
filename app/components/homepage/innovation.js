@@ -50,7 +50,7 @@ export default function Innovation() {
     );
   }, []);
   return (
-    <section className="innovation-sec mt-10 md:mt-[60px] 2xl:mt-[100px]">
+    <section className="innovation-sec sec-gap">
       <div className="container mx-auto">
         <div className="upper-title-sec flex justify-between items-end">
           <div className="new">
@@ -63,9 +63,9 @@ export default function Innovation() {
               />
             </div>
           </div>
-          <Link className="tertiary-button !hidden md:!flex" href="/users/product">
+          {/* <Link className="tertiary-button !hidden md:!flex" href="/users/product">
             Discover Our Categories
-          </Link>
+          </Link> */}
         </div>
         <div class="innovative-slider mt-5 2xl:mt-8">
           <Swiper

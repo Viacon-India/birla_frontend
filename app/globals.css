@@ -414,6 +414,9 @@ text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-50
 
 
 /* hero-section */
+.sec-gap{
+  @apply mt-10 md:mt-[100px] 2xl:mt-[150px]
+}
 
 .multi-btn-sec{
   @apply hidden md:flex flex-col gap-5 z-10 absolute top-[120px]

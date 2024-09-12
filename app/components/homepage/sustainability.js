@@ -31,7 +31,7 @@ export default function Sustainability() {
   }, []);
 
   return (
-    <section className="sustainability-sec mt-10 md:mt-[60px] 2xl:mt-[100px] relative">
+    <section className="sustainability-sec sec-gap relative">
       <div className="container mx-auto overflow-hidden">
         <div className="upper-title-sec">
           <span className="section-heading">go green</span>
