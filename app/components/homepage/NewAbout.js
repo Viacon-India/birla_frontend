@@ -25,6 +25,8 @@ import mask1 from "../../assets/images/iconmask-1.png";
 import mask2 from "../../assets/images/iconmask-2.png";
 import mask3 from "../../assets/images/iconmask-3.png";
 import mask4 from "../../assets/images/iconmask-4.png";
+import Triangle1 from "../../assets/images/triangle1.png";
+import img5 from "../../assets/images/about-img-5.jpg";
 
 import { FreeMode, Thumbs, EffectFade } from "swiper/modules";
 
@@ -34,7 +36,7 @@ export default function NewAbout() {
   return (
     <section className="new-about-slider mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden h-[100%]">
       <div className="container mx-auto">
-        <span className="section-heading">company brief</span>
+        {/* <span className="section-heading">company brief</span>
         <div className="section-title-wrapper">
           <GradualSpacing className="section-title" text="About Us" />
         </div>
@@ -188,7 +190,56 @@ export default function NewAbout() {
               <Image className="maskIcon" src={mask1} alt="img"/>
             </div>
           </SwiperSlide>
-        </Swiper>
+        </Swiper> */}
+        <div className="section-layer">
+          <figure
+            className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
+            data-aos="flip-right"
+            data-aos-duration="1500"
+          >
+            <Image
+              className="absolute -z-1 w-full h-full"
+              src={Triangle1}
+              alt="triangle"
+            />
+            <Image
+              className="translate-x-4 md:translate-x-8 translate-y-4 md:translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+              src={img5}
+              alt="img"
+            />
+          </figure>
+          <div className="box-content-sec relative md:w-[55%] flex flex-col">
+            <span className="section-heading">company brief</span>
+            <div className="section-title-wrapper mb-6 md:mb-8 2xl:mb-10">
+              <GradualSpacing className="section-title" text="About Us" />
+            </div>
+            <p data-aos="fade-left" data-aos-duration="1000">
+              Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
+              Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed.
+              Curabitur maximus mollis diam, vel varius sapien suscipit eget.
+              Cras sollicitudin ligula at volutpat ultrices. Donec vitae mi
+              vulputate, suscipit urna in, malesuada nisl.
+            </p>
+            <p data-aos="fade-left" data-aos-duration="1500">
+              Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
+              Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed.
+              Curabitur maximus mollis diam, vel varius sapien suscipit eget.
+              Cras sollicitudin ligula at volutpat ultrices. Donec vitae mi
+              vulputate, suscipit urna in, malesuada nisl. Donec vitae mi
+              vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet
+              pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus
+              mollis diam, vel varius sapien suscipit eget.
+            </p>
+            <Link href="#" className="more-btn">
+              Know More
+            </Link>
+            <div class="line-loader self-end">
+              <div class="bar bar1"></div>
+              <div class="bar bar2"></div>
+              <div class="bar bar3"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -7,6 +7,7 @@ import gallary2 from "../../assets/images/blog2.jpg";
 import GradualSpacing from "@/components/GradualSpacing";
 import Link from "next/link";
 import faqImage from "../../assets/images/faq-img.jpg";
+import Triangle1 from "../../assets/images/triangle1.png"
 
 export default function Faq() {
   const [activeTab, setActiveTab] = useState("faq");
@@ -70,20 +71,29 @@ export default function Faq() {
               </p>
               <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
                 <div
-                  class="w-full md:w-[50%]"
+                  class="w-full md:w-[45%]"
                   data-aos="fade-right"
                   data-aos-duration="1000"
                 >
-                  <figure className="w-full h-[360px] 2xl:h-[550px] mb-0">
+                  <figure
+                    className="w-full h-[350px] md:h-[480px] relative glare"
+                    data-aos="flip-right"
+                    data-aos-duration="1500"
+                  >
                     <Image
-                      className="w-full h-full object-cover rounded-[12px]"
+                      className="absolute -z-1 w-full h-full"
+                      src={Triangle1}
+                      alt="triangle"
+                    />
+                    <Image
+                      className="translate-x-4 md:translate-x-8 translate-y-4 md:translate-y-8 w-[90%] h-[90%] rounded-[12px]"
                       src={faqImage}
-                      alt="faqImg"
+                      alt="img"
                     />
                   </figure>
                 </div>
                 <div
-                  class="faq-accordion md:w-[50%] max-h-[360px] 2xl:max-h-[550px] overflow-y-auto relative z-4"
+                  class="faq-accordion md:w-[55%] max-h-[360px] 2xl:max-h-[550px] overflow-y-auto relative z-4"
                   data-aos="fade-right"
                   data-aos-duration="1500"
                 >

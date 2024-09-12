@@ -299,7 +299,7 @@ export default function Leadership() {
                 >
                   <figure className="w-full h-[380px] md:h-[500px] relative">
                     <Image
-                      className="w-full h-full object-cover rounded-[16px]"
+                      className="w-full h-full object-cover rounded-[10px]"
                       src={img5}
                       alt="card-one"
                     />
@@ -325,7 +325,7 @@ export default function Leadership() {
                 >
                   <figure className="w-full h-[380px] md:h-[500px] relative">
                     <Image
-                      className="w-full h-full object-cover rounded-[16px]"
+                      className="w-full h-full object-cover rounded-[10px]"
                       src={img6}
                       alt="card-one"
                     />
@@ -351,7 +351,7 @@ export default function Leadership() {
                 >
                   <figure className="w-full h-[380px] md:h-[500px] relative">
                     <Image
-                      className="w-full h-full object-cover rounded-[16px]"
+                      className="w-full h-full object-cover rounded-[10px]"
                       src={img7}
                       alt="card-one"
                     />
@@ -376,7 +376,7 @@ export default function Leadership() {
                 >
                   <figure className="w-full h-[380px] md:h-[500px] relative">
                     <Image
-                      className="w-full h-full object-cover rounded-[16px]"
+                      className="w-full h-full object-cover rounded-[10px]"
                       src={img8}
                       alt="card-one"
                     />

@@ -990,8 +990,7 @@ a.current_dot {
   @apply pt-[58px] md:pt-[84px] relative
 }
 .top-banner-sec-heading{
-  @apply font-bold text-[32px] md:text-[48px] 2xl:text-[56px] text-[#1A1D21]
-  bg-white !uppercase
+  @apply font-bold text-[32px] md:text-[48px] 2xl:text-[56px] text-secondary !uppercase 
 }
 .sub-section-wrapper{
   @apply flex flex-col gap-8 md:gap-10
@@ -1196,18 +1195,8 @@ a.current_dot {
   background: linear-gradient(to right, rgba(0,0,0,0.20), rgba(0,0,0,0));
   @apply w-full h-full rounded-[12px] absolute top-0 left-0
 }
-/* .mission-card{
-  box-shadow: -1px -7px 9px -3px rgba(0,0,0,0.55);
-  @apply relative mb-8 rounded-[12px] bg-white
-}
-.sticky-container {
-  @apply sticky z-10 mb-20
-}
-.mission-box{
-  @apply p-5 rounded-[12px] bg-white absolute left-20 top-1/2 -translate-y-1/2 w-[400px]
-} */
 .vision-title{
-  @apply text-[#1A1D21] text-[22px] !p-0 flex gap-2 items-center font-semibold
+  @apply text-secondary text-[22px] md:text-[32px] !p-0 flex gap-2 items-center font-bold
 }
 .vision-title::before{
   @apply w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center
@@ -1353,6 +1342,23 @@ input[type=file]::file-selector-button {
 }
 
 
+/* Find a tyre page */
+.tyre-form-row{
+  @apply w-full flex flex-col
+ }
+ .tyre-form-label{
+  @apply text-[#1A1D21] text-[14px] md:text-[16px] font-semibold mb-[6px]
+ }
+ .tyre-form-input{
+  @apply outline-none p-3 text-[14px] placeholder:text-[14px] 
+  placeholder:text-[#9DA4B0] border border-[#B3B8C2] rounded-[4px]
+ }
+ .tyre-form-select{
+  @apply p-3 text-[#9DA4B0] text-[14px] outline-none border border-[#B3B8C2] rounded-[4px]
+ }
+ .tyre-form-select option{
+  @apply !p-2 text-[#000000] text-[16px]
+ }
 
 
 

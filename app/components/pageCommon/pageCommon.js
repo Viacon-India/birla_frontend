@@ -42,7 +42,7 @@ export function PageBanner({ Title, Banner, StaticBanner }) {
           <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
             <div class="container mx-auto flex flex-col justify-end md:justify-between h-full pt-5 pb-3 md:pb-[60px]">
               <MainButton />
-              <div className="relative z-10">
+              <div className="relative bg-white z-10 rounded-[12px] w-fit opacity-75">
                 <GradualSpacing
                   className="top-banner-sec-heading"
                   text={Title}
@@ -191,8 +191,8 @@ export function PageEnd({
   return (
     <section
       className={cn(
-        "relative flex pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden ",
-        Background ? Background : "bg-white"
+        "relative flex pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden",
+        Background ? "bg-[#F8F8F8]" : "bg-white"
       )}
     >
       {EndImage?.data ? (

@@ -1,15 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import GradualSpacing from "@/components/GradualSpacing";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
-import {Float} from "../components/pageCommon/pageCommon";
-import {MainButton} from "../components/pageCommon/pageCommon";
-import Link from "next/link";
 import Image from "next/image";
 import Banner from "../assets/images/sus1.jpg";
 import LastBg from "../assets/images/sus10.png";
+import { PageBanner } from "../components/pageCommon/pageCommon";
 import { PageEnd } from "../components/pageCommon/pageCommon";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -35,31 +32,7 @@ export default function Sustainability() {
   return (
     <>
       <Navbar />
-      <section className="top-banner-sec">
-        <div className="relative">
-          <Float />
-          <div className="relative">
-            <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
-              <div class="container mx-auto flex flex-col justify-between h-full pt-5 pb-[60px]">
-                <MainButton />
-                <div className="relative z-10">
-                  <GradualSpacing
-                    className="top-banner-sec-heading"
-                    text="Sustainability"
-                    paddingLeft="pl-5"
-                    paddingRight="pr-5"
-                  />
-                </div>
-              </div>
-            </div>
-            <Image
-              src={Banner}
-              alt="Hero-Banner"
-              className="absolute top-0 w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
+      <PageBanner Title="Sustainability" StaticBanner={Banner} />
       <section className="page-content-sec mt-[60px]">
         <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
           <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8">

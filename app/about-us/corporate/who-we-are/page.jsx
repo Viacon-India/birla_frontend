@@ -6,7 +6,7 @@ import Footer from "../../../components/footer/footer";
 import Banner from "../../../assets/images/who1.jpg";
 import Link from "next/link";
 import Image from "next/image";
-import tigerMask from "../../../assets/images/tiger-mask3.png";
+import tigerMask from "../../../assets/images/tiger-mask2.png";
 import who2 from "../../../assets/images/who2.jpg";
 import who3 from "../../../assets/images/who3.jpg";
 import who4 from "../../../assets/images/who4.jpg";
@@ -16,7 +16,6 @@ import who7 from "../../../assets/images/who7.jpg";
 import who8 from "../../../assets/images/who8.jpg";
 import who9 from "../../../assets/images/who9.jpg";
 import who10 from "../../../assets/images/who10.jpg";
-import BGTiger from "../../../assets/images/tiger-mask3.png";
 import Triangle1 from "../../../assets/images/triangle1.png";
 import Triangle2 from "../../../assets/images/triangle2.png";
 import AOS from "aos";
@@ -83,7 +82,7 @@ export default function WhoWeAre() {
             <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
               <figure className="w-1/2">
                 <Image
-                  className="w-full"
+                  className="w-full rounded-[12px]"
                   src={who2}
                   alt=""
                   data-aos="flip-up"
@@ -92,7 +91,7 @@ export default function WhoWeAre() {
               </figure>
               <figure className="w-1/2">
                 <Image
-                  className="w-full"
+                  className="w-full rounded-[12px]"
                   src={who3}
                   alt=""
                   data-aos="flip-up"

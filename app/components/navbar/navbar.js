@@ -123,7 +123,7 @@ export default function Navbar() {
                         </button>
                       </li>
                     ))}
-                    {menu.pages.data.map((menu) => (
+                    {menu.pages?.data.map((menu) => (
                       <li key={menu.id}>
                         <Link className="drop-list" href={`${menu.attributes.permalink}`}>{menu.attributes.title}</Link>
                       </li>
@@ -136,7 +136,7 @@ export default function Navbar() {
                   </ul>
                 </li>
               ))}
-              {navMenu.attributes?.pages.data.map((menu) => (
+              {navMenu.attributes?.pages?.data.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
                   <Link className="nav-links nav-hov flip-animate" href={`${menu.attributes.permalink}`}><span data-hover={menu.attributes.title}>
                       {menu.attributes.title}
@@ -271,7 +271,7 @@ export default function Navbar() {
                         >
                           {subMenu.title}
                         </button>
-                        {subMenu.pages.data &&
+                        {subMenu.pages?.data &&
                           subMenu.pages.data.length > 0 && (
                             <button
                               onClick={() => toggleSubMenu(subMenu.id)}
@@ -305,7 +305,7 @@ export default function Navbar() {
                               : "max-h-0 overflow-hidden"
                           }`}
                         >
-                          {subMenu.pages.data.map((subSubMenu) => (
+                          {subMenu.pages?.data.map((subSubMenu) => (
                             <li
                               className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500"
                               key={subSubMenu.id}
@@ -323,7 +323,7 @@ export default function Navbar() {
                         </ul>
                     </li>
                   ))}
-                  {menu.pages.data.map((subMenu) => (
+                  {menu.pages?.data.map((subMenu) => (
                     <li key={subMenu.id}>
                       <div className="flex justify-between"><Link className="text-secondary text-[16px] py-[6px]" href={`${subMenu.attributes.permalink}`}>{subMenu.attributes.title}</Link></div>
                     </li>
@@ -336,7 +336,7 @@ export default function Navbar() {
                 </ul>
               </li>
             ))}
-            {hamMenu.attributes?.pages.data.map((menu) => (
+            {hamMenu.attributes?.pages?.data.map((menu) => (
               <li className="mb-4" key={menu.id}>
                 <Link className="ham-links" href={`${menu.attributes.permalink}`}>{menu.attributes.title}</Link>
               </li>

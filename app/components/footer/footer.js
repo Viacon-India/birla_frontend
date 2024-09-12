@@ -212,7 +212,7 @@ export default function Footer() {
             <li className="footer-list-box" key={newMenu.id}>
               <h2>{newMenu.attributes.title}</h2>
               <ul className="footer-list">
-                {newMenu.attributes.pages.data.map((submenu) => (
+                {newMenu.attributes.pages?.data.map((submenu) => (
                   <li key={submenu.id}>
                     <Link
                       href={`${submenu.attributes.permalink}`}
