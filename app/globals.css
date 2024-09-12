@@ -181,7 +181,7 @@ body {
   transition-all duration-500
 }
 .search-wrapper svg{
-  @apply absolute bottom-[10px] left-3
+  @apply absolute bottom-[10px] left-[13px]
 }
 .search-input:focus {
   @apply w-[80%];
@@ -335,7 +335,7 @@ button.flip-animate, a.flip-animate {
 
 .primary-btn-1 {
   @apply px-3 py-2 bg-secondary text-[#FFFFFF] text-[14px] font-medium rounded-[4px] flex items-center gap-2
-   border border-[#FFFFFF] w-[140px] transition-all duration-500;
+   border border-[#FFFFFF] w-[150px] transition-all duration-500;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -351,7 +351,7 @@ button.flip-animate, a.flip-animate {
 }
 .primary-btn-2 {
   @apply px-3 py-2 bg-primary text-[#FFFFFF] text-[14px] font-medium rounded-[4px] flex items-center gap-2
-   border border-[#FFFFFF] w-[140px] transition-all duration-500;
+   border border-[#FFFFFF] w-[150px] transition-all duration-500;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 

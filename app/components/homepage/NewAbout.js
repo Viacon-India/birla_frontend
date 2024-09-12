@@ -209,28 +209,20 @@ export default function NewAbout() {
             />
           </figure>
           <div className="box-content-sec relative md:w-[55%] flex flex-col">
-            <span className="section-heading">company brief</span>
+            <span className="section-heading">CORPORATE</span>
             <div className="section-title-wrapper mb-6 md:mb-8 2xl:mb-10">
               <GradualSpacing className="section-title" text="About Us" />
             </div>
             <p data-aos="fade-left" data-aos-duration="1000">
-              Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-              Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed.
-              Curabitur maximus mollis diam, vel varius sapien suscipit eget.
-              Cras sollicitudin ligula at volutpat ultrices. Donec vitae mi
-              vulputate, suscipit urna in, malesuada nisl.
+            Birla Tyres was established in 1991 and has a rich heritage of excellence. Over the past 3 decades, Birla Tyres had built a reputation for quality and was recognized as one of the best tyre manufacturers in India.
             </p>
             <p data-aos="fade-left" data-aos-duration="1500">
-              Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-              Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed.
-              Curabitur maximus mollis diam, vel varius sapien suscipit eget.
-              Cras sollicitudin ligula at volutpat ultrices. Donec vitae mi
-              vulputate, suscipit urna in, malesuada nisl. Donec vitae mi
-              vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet
-              pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus
-              mollis diam, vel varius sapien suscipit eget.
+            <strong>Dalmia Bharat Refractories Limited (DBRL)</strong> along with their strategic partner, <strong>Himadri Speciality Chemical Limited (HSCL)</strong> have acquired Birla Tyres Limited's tyre business through a resolution plan approved by the National Company Law Tribunal in October 2023. This strategic partnership marks the beginning of an exciting new chapter, where our combined expertise, resources, and innovative spirit will drive us to achieve greater heights.
             </p>
-            <Link href="#" className="more-btn">
+            <p data-aos="fade-left" data-aos-duration="1500">
+            Under the visionary leadership of <strong>Mr. Anurag Choudhary</strong> and a robust management team, we are set to transform the tyre industry, delivering unparalleled value to our customers and stakeholders. With a shared vision and commitment to excellence, we look forward to a future filled with remarkable achievements and ground-breaking advancements.
+            </p>
+            <Link href="about-us/corporate/who-we-are" className="more-btn">
               Know More
             </Link>
             <div class="line-loader self-end">

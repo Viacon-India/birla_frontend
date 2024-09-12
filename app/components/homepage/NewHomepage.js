@@ -14,11 +14,11 @@ export default function NewHomepage() {
     <>
 
       <Hero />
-      <NewAboutUs />
       <Innovation />
       <NewProduct />
       <Dealer />
       <Sustainability />
+      <NewAboutUs />
       <Media />
       <Faq />
     </>
