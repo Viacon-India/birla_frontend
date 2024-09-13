@@ -16,6 +16,7 @@ import guide5 from "../../assets/images/guide5.jpg";
 import guide6 from "../../assets/images/guide6.jpg";
 import guide8 from "../../assets/images/guide8.jpg";
 import LastBg from "../../assets/images/guide7.png";
+import Link from "next/link";
 
 export default function TyreGuide() {
   useEffect(() => {
@@ -168,7 +169,8 @@ export default function TyreGuide() {
                 />
               </figure>
               <div className="tyre-guide-box w-full md:w-[50%]" data-aos="fade-left" data-aos-duration="1500">
-                <h2>Rib pattern</h2>
+                <h2>Rib</h2>
+                <h3>Rib patterns have ribs running around the circumference of tyre, with grooves in straight lines or parallel S-shaped voids along the axis.</h3>
                 <div className="flex flex-col gap-2 md:gap-6">
                   <div>
                     <strong>Uses:</strong>
@@ -203,14 +205,13 @@ export default function TyreGuide() {
             </div>
             <div className="tyre-guide-box-wrapper flex flex-col-reverse md:flex-row">
               <div className="tyre-guide-box w-full md:w-[50%]" data-aos="fade-right" data-aos-duration="1500">
-                <h2>Lug pattern</h2>
+                <h2>Lug</h2>
+                <h3>This pattern refers to a series of grooves which are perpendicular to the tyre’s circumference.</h3>
                 <div className="flex flex-col gap-2 md:gap-6">
                   <div>
                     <strong>Uses:</strong>
                     <p>
-                      Lug tyres have high traction so are used for drive axles
-                      of commercial vehicles and for 4x4 vehicles designed for
-                      dirt roads.
+                    Lug tyres have high traction so are used for drive axles of commercial vehicles and for 4x4 vehicles designed for dirt roads.
                     </p>
                   </div>
                   <div>
@@ -249,7 +250,8 @@ export default function TyreGuide() {
                 />
               </figure>
               <div className="tyre-guide-box w-full md:w-[50%]" data-aos="fade-left" data-aos-duration="1500">
-                <h2>Mixed, rib-lug pattern</h2>
+                <h2>Semi lug</h2>
+                <h3>A mixed shape pattern combines lug and rib features, so may have combinations of S-shaped voids along the axis, as well as perpendicular grooves.</h3>
                 <div className="flex flex-col gap-2 md:gap-6">
                   <div>
                     <strong>Uses:</strong>
@@ -286,37 +288,34 @@ export default function TyreGuide() {
             </div>
             <div className="tyre-guide-box-wrapper flex flex-col-reverse md:flex-row">
               <div className="tyre-guide-box w-full md:w-[50%]" data-aos="fade-right" data-aos-duration="1500">
-                <h2>Block pattern</h2>
+                <h2>Traction</h2>
+                <h3>The traction pattern, often referred to as the Herringbone pattern, is a type of tread design commonly used in agricultural tyres. This pattern features deep, V-shaped lugs arranged in a herringbone formation, which provides exceptional grip in soft soils, mud, and loose surfaces typically encountered in farming environments.</h3>
                 <div className="flex flex-col gap-2 md:gap-6">
                   <div>
                     <strong>Uses:</strong>
                     <p>
-                      The main benefit to these tyres is there ability to
-                      perform well on mud and snow. This makes them highly
-                      useful as off-road, or winter tyres, as well as all-season
-                      tyres for passenger cars.
+                    Traction patterns are specifically designed for agricultural applications, such as tractors and other farming machinery. These tyres are optimized for off-road use where maximum traction and minimal soil disturbance are required.
                     </p>
                   </div>
                   <div>
                     <strong>Advantages:</strong>
                     <ul>
                       <li>
-                        Good steering and stability on wet, muddy and
-                        snow-covered roads
+                      Superior Traction: The deep, angled lugs ensure that the tyre can dig into soft ground, providing excellent grip and reducing slippage.
                       </li>
                       <li>
-                        Good water dispersal properties thanks to the numerous
-                        grooves
+                      Efficient Self-Cleaning: The design allows mud and soil to be ejected from the tyre, preventing build-up and maintaining effective traction.
                       </li>
+                      <li>Enhanced Durability: Built for tough, off-road conditions, these tyres are made to withstand the rigors of farming tasks without compromising on performance.</li>
                     </ul>
                   </div>
                   <div>
                     <strong>Considerations:</strong>
                     <ul>
                       <li>
-                        Less grip than lug pattern when accelerating or braking
-                        on wet roads, so less good as drive tyres.
+                      These tyres are not designed for use on paved roads, as their aggressive tread can cause excessive noise, vibration, and wear.
                       </li>
+                      <li>The deep lugs and strong traction can lead to higher rolling resistance, which may slightly reduce fuel efficiency in certain conditions.</li>
                     </ul>
                   </div>
                 </div>
@@ -329,6 +328,7 @@ export default function TyreGuide() {
                 />
               </figure>
             </div>
+            <h3 className="text-[24px] md:text-[28px] 2xl:text-[32px] leading-[1.2] font-bold mt-8 md:mt-12 2xl:mt-[60px] text-secondary ">If you are not sure which is the best for your vehicle, consult the experts - go to a <Link className="text-primary underline underline-offset-1" href="/dealer-locator">Birla Tyre dealer</Link>.</h3>
           </div>
         </div>
       </section>

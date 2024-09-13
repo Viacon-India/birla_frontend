@@ -8,40 +8,14 @@ import {Float} from "../components/pageCommon/pageCommon";
 import Banner from "../assets/images/dealer1.jpg";
 import dealer2 from "../assets/images/dealer2.png";
 import BGTiger from "../assets/images/tiger-mask3.png";
+import { PageBanner } from "../components/pageCommon/pageCommon";
+import { PageEnd } from "../components/pageCommon/pageCommon";
 
 export default function DealerLocator() {
   return (
     <>
       <Navbar />
-      <section className="top-banner-sec">
-        <div className="relative">
-          <Float />
-          <div className="relative">
-            <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
-              <div class="container mx-auto flex flex-col justify-between h-full pt-5 pb-[60px]">
-                <div class="flex flex-col gap-5 relative z-10">
-                  <Link href="" className="primary-btn-1">
-                    Find a Tyre
-                  </Link>
-                </div>
-                <div className="relative z-10">
-                  <GradualSpacing
-                    className="top-banner-sec-heading"
-                    text="Dealer Locator"
-                                        paddingLeft="pl-5"
-                    paddingRight="pr-5"
-                  />
-                </div>
-              </div>
-            </div>
-            <Image
-              src={Banner}
-              alt="Hero-Banner"
-              className="absolute top-0 w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
+      <PageBanner Title="Dealer Locator" StaticBanner={Banner} />
       <section className="dealer-sec mt-10 md:mt-[60px] relative overflow-hidden">
         <div className="container mx-auto overflow-hidden">
           <div class="w-full flex gap-2 md:gap-6 flex-col md:flex-row">
@@ -435,43 +409,7 @@ export default function DealerLocator() {
           </div>
         </div>
       </section>
-      <section className="relative flex mt-10 md:mt-[60px] 2xl:mt-[100px] overflow-hidden">
-        <Image
-          src={dealer2}
-          alt="bottom-img"
-          className="absolute left-0 h-[200px] w-[60%]"
-        />
-        <div className="container mx-auto relative h-[200px] flex items-end justify-end">
-          <Image
-            src={BGTiger}
-            alt="bottom-img"
-            className="absolute right-[20%]"
-          />
-          <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4">
-            Next Page :
-            <Link
-              className="text-[#F5811E] font-medium flex items-center gap-1"
-              href="/users/product"
-            >
-              Contact Us
-              <svg
-                width="14"
-                height="13"
-                viewBox="0 0 14 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 12.5L13 0.5M13 0.5H3.25M13 0.5V10.25"
-                  stroke="#F5811E"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </Link>
-          </p>
-        </div>
-      </section>
+      <PageEnd EndStaticImage={dealer2} Title="Contact Us" TitleLink="/contact-us" />
       <Footer />
     </>
   );

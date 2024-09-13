@@ -83,8 +83,8 @@ export default function Leadership() {
                   </p>
                   <Link href="#">
                     <svg
-                      width="40"
-                      height="41"
+                      width="32"
+                      height="32"
                       viewBox="0 0 40 41"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -113,38 +113,21 @@ export default function Leadership() {
                   data-aos="fade-left"
                   data-aos-duration="800"
                 >
-                  Anurag Choudhary is a visionary leader who has spearheaded the
-                  transformation of Himadri&apos;s from a coal tar pitch
-                  manufacturer to a global leader in the carbon segment. Under
-                  his leadership, the company has achieved market dominance in
-                  its core products and expanded into new areas - carbon black,
-                  lithium-ion battery materials, and construction chemicals.
+                  Anurag Choudhary is a visionary leader who has spearheaded the transformation of Himadri from a coal tar pitch manufacturer to a global leader in the carbon segment. 
                 </p>
                 <p
                   className="text-[17px] leading-[27px] font-oak-sans text-[#606977]"
                   data-aos="fade-left"
                   data-aos-duration="1000"
                 >
-                  His leadership has been a driving force behind Himadris
-                  transformative growth – Himadri has achieved a significant
-                  milestone of becoming debt-free by following disciplined
-                  capital deployment and efficient working capital utilization.
+                  Under his leadership, the company has achieved market dominance in its core products and expanded into new areas -  carbon black, lithium-ion battery materials, and construction chemicals. He was instrumental in bringing in institutional investors as Himadri's equity partners. Recognizing the transformative potential of electric vehicles and energy storage, he is pioneering the development of lithium-ion battery materials in India.
                 </p>
                 <p
                   className="text-[17px] leading-[27px] font-oak-sans text-[#606977]"
                   data-aos="fade-left"
                   data-aos-duration="1200"
                 >
-                  He was instrumental in bringing in institutional investors as
-                  Himadri&apos;s equity partners. Recognizing the transformative
-                  potential of electric vehicles and energy storage, he is
-                  pioneering the development of lithium-ion battery materials in
-                  India. Birla Tyres is a strategic fit for Himadri and aligns
-                  with the company&apos;s play in the electric vehicle (EV)
-                  space. Under his guidance, Birla Tyres has been completely
-                  revitalized after years of inactivity. His passion and
-                  exceptional leadership will continue to propel Birla Tyres to
-                  aggressive growth path & newer heights.
+                  His leadership has been a driving force behind Himadri’s transformative growth – Himadri has achieved a significant milestone of becoming debt-free by following disciplined capital deployment and efficient working capital utilization. Birla Tyres is a strategic fit for Himadri and aligns with the company's play in the electric vehicle (EV) space. Under his guidance, Birla Tyres has been completely revitalized after years of inactivity. His passion and exceptional leadership will continue to propel Birla Tyres to aggressive growth path & newer heights.
                 </p>
                 <div class="line-loader self-end">
                   <div class="bar bar1"></div>
@@ -190,8 +173,8 @@ export default function Leadership() {
                     </p>
                     <Link href="#">
                       <svg
-                        width="40"
-                        height="41"
+                        width="32"
+                        height="32"
                         viewBox="0 0 40 41"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -316,8 +299,8 @@ export default function Leadership() {
                     </p>
                     <Link href="#">
                       <svg
-                        width="40"
-                        height="41"
+                        width="32"
+                        height="32"
                         viewBox="0 0 40 41"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"

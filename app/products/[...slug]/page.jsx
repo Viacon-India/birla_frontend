@@ -452,11 +452,11 @@ export default function Page({ params }) {
                   productDescription="Specially designed tread compound for cut and chip resistance"
                   icon={prodSvg2}
                   sizes={[
-                    "12.00-24 (20PR)",
-                    "12.00-20 (18PR)",
-                    "11.00-20 (18PR)",
-                    "10.00-20 (18PR)",
-                    "9.00-20 (16PR)",
+                    "12.00-24",
+                    "12.00-20",
+                    "11.00-20",
+                    "10.00-20",
+                    "9.00-20",
                   ]}
                 />
                 <Product
@@ -466,11 +466,11 @@ export default function Page({ params }) {
                   productDescription="Strongly bonded casing designed for mine application"
                   icon={ultra}
                   sizes={[
-                    "12.00-24 (20PR)",
-                    "12.00-20 (18PR)",
-                    "11.00-20 (18PR)",
-                    "10.00-20 (18PR)",
-                    "9.00-20 (16PR)",
+                    "12.00-24",
+                    "12.00-20",
+                    "11.00-20",
+                    "10.00-20",
+                    "9.00-20",
                   ]}
                 />
                 <Product
@@ -480,17 +480,12 @@ export default function Page({ params }) {
                   productDescription="Stronger carcass to resist impact failure"
                   icon={prodSvg2}
                   sizes={[
-                    "24.00-35 (48PR)",
-                    "24.00-35 (42PR)",
-                    "21.00-35 (40PR)",
-                    "21.00-35 (36PR)",
-                    "18.00-33 (36PR)",
-                    "18.00-33 (32PR)",
-                    "18.00-25 (40PR)",
-                    "18.00-25 (32PR)",
-                    "14.00-24 (28PR)",
-                    "14.00-24 (24PR)",
-                    "12.00-24 (20PR)",
+                    "24.00-35",
+                    "21.00-35",
+                    "18.00-33",
+                    "18.00-25",
+                    "14.00-24",
+                    "12.00-24",
                   ]}
                 />
                 <Product
@@ -500,10 +495,8 @@ export default function Page({ params }) {
                   productDescription="Reliable under extrme service conditions"
                   icon={prodSvg2}
                   sizes={[
-                    "14.00-24 (16PR)",
-                    "14.00-24 (12PR)",
-                    "13.00-24 (16PR)",
-                    "13.00-24 (12PR)",
+                    "14.00-24",
+                    "13.00-24",
                   ]}
                 />
                 <Product
@@ -513,16 +506,12 @@ export default function Page({ params }) {
                   productDescription="Trouble free under severe service conditions"
                   icon={prodSvg2}
                   sizes={[
-                    "29.05-25 (32PR)",
-                    "29.05-25 (28PR)",
-                    "26.05-25 (32PR)",
-                    "26.05-25 (28PR)",
-                    "23.05-25 (24PR)",
-                    "23.05-25 (20PR)",
-                    "20.05-25 (20PR)",
-                    "17.05-25 (20PR)",
-                    "14.00-25 (24PR)",
-                    "14.00-25 (20PR)",
+                    "29.05-25",
+                    "26.05-25",
+                    "23.05-25",
+                    "20.05-25",
+                    "17.05-25",
+                    "14.00-25",
                   ]}
                 />
                 <Product
@@ -531,7 +520,7 @@ export default function Page({ params }) {
                   productName="Ultra Trac"
                   productDescription="Customized tread compound for excellent performance"
                   icon={prodSvg2}
-                  sizes={["26.05-25 (32PR)"]}
+                  sizes={["26.05-25"]}
                 />
                 <Product
                   type="Premium"
@@ -539,7 +528,7 @@ export default function Page({ params }) {
                   productName="Loader Max"
                   productDescription="Superior casing strength to resist impact damage"
                   icon={prodSvg2}
-                  sizes={["16.09-28 (12PR)"]}
+                  sizes={["16.09-28"]}
                 />
                 <Product
                   type="Premium"
@@ -547,7 +536,7 @@ export default function Page({ params }) {
                   productName="Ultra Trac"
                   productDescription="Stronger carcass to resist impact failure"
                   icon={prodSvg2}
-                  sizes={["12.05/80-18 (12PR)"]}
+                  sizes={["12.05/80-18"]}
                 />
                 <Product
                   type="Premium"
@@ -555,11 +544,11 @@ export default function Page({ params }) {
                   productName="Ultra Port"
                   productDescription="Rugged shoulder to provide excellent grip"
                   icon={prodSvg2}
-                  sizes={["18.00-25 (40PR)"]}
+                  sizes={["18.00-25"]}
                 />
               </>
             )}
-            {slugs[0] == "agriculture" && (
+            {slugs[0] == "agri" && (
               <>
                 <Product
                   type="Premium"
@@ -583,7 +572,7 @@ export default function Page({ params }) {
                   productName="Shaan"
                   productDescription="Longer life and more mileage"
                   icon={prodSvg3}
-                  sizes={["7.50-16", "7.50-16", "6.50-20", "6.00-16"]}
+                  sizes={["7.50-16", "6.50-20", "6.00-16"]}
                 />
                 <Product
                   type="Standard"

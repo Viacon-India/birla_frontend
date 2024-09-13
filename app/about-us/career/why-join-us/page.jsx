@@ -41,10 +41,20 @@ export default function JoinUs() {
               />
             </figure>
             <div className="box-content-sec relative md:w-[50%]">
-              <span className="section-heading" data-aos="fade-left" data-aos-duration="1200">Talent Philosophy</span>
-              <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10" data-aos="fade-left" data-aos-duration="1400">
+              <span
+                className="section-heading"
+                data-aos="fade-left"
+                data-aos-duration="1200"
+              >
+                Our Talent Philosophy
+              </span>
+              <div
+                className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+                data-aos="fade-left"
+                data-aos-duration="1400"
+              >
                 <h3 className="section-title">
-                  Headline for talent philosophy goes here
+                  Empowering People, Elevating Success
                 </h3>
               </div>
               <p data-aos="fade-left" data-aos-duration="1600">
@@ -64,7 +74,8 @@ export default function JoinUs() {
               <Link
                 href="#"
                 className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2 mt-7"
-                data-aos="fade-left" data-aos-duration="2000"
+                data-aos="fade-left"
+                data-aos-duration="2000"
               >
                 <span data-hover="Explore Career Opportunities">
                   Explore Career Opportunities
@@ -82,7 +93,11 @@ export default function JoinUs() {
               </h3>
             </div>
             <div className="grid grid-cols1 md:grid-cols-4 gap-6 md:gap-10 mt-6 md:mt-10 overflow-hidden">
-              <div className="vast-card" data-aos="fade-down" data-aos-duration="500">
+              <div
+                className="vast-card"
+                data-aos="fade-down"
+                data-aos-duration="500"
+              >
                 <figure>
                   <Image className="vast-card-image" src={join3} alt="card" />
                 </figure>
@@ -92,7 +107,11 @@ export default function JoinUs() {
                   do eiusmod tempor incididunt ut labore et.
                 </p>
               </div>
-              <div className="vast-card" data-aos="fade-down" data-aos-duration="1000">
+              <div
+                className="vast-card"
+                data-aos="fade-down"
+                data-aos-duration="1000"
+              >
                 <figure>
                   <Image className="vast-card-image" src={join4} alt="card" />
                 </figure>
@@ -102,7 +121,11 @@ export default function JoinUs() {
                   do eiusmod tempor incididunt ut labore et
                 </p>
               </div>
-              <div className="vast-card" data-aos="fade-down" data-aos-duration="1500">
+              <div
+                className="vast-card"
+                data-aos="fade-down"
+                data-aos-duration="1500"
+              >
                 <figure>
                   <Image className="vast-card-image" src={join6} alt="card" />
                 </figure>
@@ -112,7 +135,11 @@ export default function JoinUs() {
                   do eiusmod tempor incididunt ut labore et
                 </p>
               </div>
-              <div className="vast-card" data-aos="fade-down" data-aos-duration="2000">
+              <div
+                className="vast-card"
+                data-aos="fade-down"
+                data-aos-duration="2000"
+              >
                 <figure>
                   <Image className="vast-card-image" src={join7} alt="card" />
                 </figure>
