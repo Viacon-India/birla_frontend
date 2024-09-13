@@ -69,7 +69,7 @@ export default function Sustainability() {
                 stewardship and social progress. Enhancing operational
                 efficiency and reducing resource consumption are crucial for
                 minimizing our environmental footprint while maintaining our
-                competitive edge. .
+                competitive edge.
               </p>
               <p data-aos="fade-left" data-aos-duration="1000">
                 Innovation drives our sustainability strategy. Through
@@ -153,12 +153,12 @@ export default function Sustainability() {
               <h3 className="section-title">17 - Universal Principles</h3>
             </div>
             <p className="text-[20px] font-medium text-[#000000] mt-6">
-              "We tirelessly innovate, while ensuring every step reflects
+              &quot;We tirelessly innovate, while ensuring every step reflects
               sustainability & resilience, and create a manufacturing process
               that harmonizes with nature. Aligned with the United Nations
               Global Compact (UNGC) and Sustainable Development Goals (UNSDGs),
               we are revving up towards a sustainable future for all
-              stakeholders and future generations."
+              stakeholders and future generations.&quot;
             </p>
             <div className="box-content-sec mt-6 md:mt-8 2xl:mt-10">
               <p>
