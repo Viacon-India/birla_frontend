@@ -106,7 +106,7 @@ export default function Innovation() {
                   />
                 </figure>
                 <h2>Truck Bus Bias</h2>
-                <p>Fortifying Commercial Vehicles</p>
+                <p>Progess in Every Mile</p>
                 <Link
                   href="#"
                   className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
@@ -130,7 +130,7 @@ export default function Innovation() {
                   />
                 </figure>
                 <h2>Off The Road</h2>
-                <p>Designed for Durability & Strength</p>
+                <p>Ready for Every Challenge</p>
                 <Link
                   href="#"
                   className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
@@ -154,7 +154,7 @@ export default function Innovation() {
                   />
                 </figure>
                 <h2>Agriculture</h2>
-                <p>The Power to Strengthen Fields</p>
+                <p>Strength in Every Turn</p>
                 <Link
                   href="#"
                   className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
@@ -177,7 +177,7 @@ export default function Innovation() {
                   />
                 </figure>
                 <h2>Truck Bus Bias</h2>
-                <p>Fortifying Commercial Vehicles</p>
+                <p>Progess in Every Mile</p>
                 <Link
                   href="#"
                   className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
@@ -201,7 +201,7 @@ export default function Innovation() {
                   />
                 </figure>
                 <h2>Off The Road</h2>
-                <p>Designed for Durability & Strength</p>
+                <p>Ready for Every Challenge</p>
                 <Link
                   href="#"
                   className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
@@ -225,7 +225,7 @@ export default function Innovation() {
                   />
                 </figure>
                 <h2>Agriculture</h2>
-                <p>The Power to Strengthen Fields</p>
+                <p>Strength in Every Turn</p>
                 <Link
                   href="#"
                   className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"

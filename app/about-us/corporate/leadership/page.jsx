@@ -363,7 +363,7 @@ export default function Leadership() {
 
       <PageEnd
         Title="Why Join Us"
-        TitleLink="/users/product"
+        TitleLink="/about-us/career/why-join-us"
         EndStaticImage={NextChapter}
       />
       <Footer />

@@ -43,7 +43,8 @@ const productData = {
       size: ["10.00-20", "8.25-20"],
       load: "Moderate",
       pattern: "Lug",
-      construction: "Bias"
+      construction: "Bias",
+      toolTip: "Truck Bus"
     },
     {
       title: "Ultra Miler Platina",
@@ -54,7 +55,8 @@ const productData = {
       size: ["10.00-20", "8.25-20"],
       load: "Moderate",
       pattern: "Rib",
-      construction: "Bias"
+      construction: "Bias",
+      toolTip: "Truck Bus"
     },
     {
       title: "Rustom",
@@ -65,7 +67,8 @@ const productData = {
       size: ["9.00-20"],
       load: "Rated",
       pattern: "Semi Lug",
-      construction: "Bias"
+      construction: "Bias",
+      toolTip: "Truck Bus"
     },
   ],
   OTR: [
@@ -78,7 +81,8 @@ const productData = {
       size: ["9.00-20(16PR)", "10.00-20(18PR)", "11.00-20 (18PR)", "12.00-20 (18PR)", "12.00-24 (20PR)" ],
       load: "Lorem",
       pattern: "Lorem Ipsum",
-      construction: "Lorem"
+      construction: "Lorem",
+      toolTip: "Tipper Truck"
     },
     {
       title: "Kalapatthar Plus",
@@ -89,7 +93,8 @@ const productData = {
       size: ["9.00-20(16PR)", "10.00-20(18PR)", "11.00-20 (18PR)", "12.00-20 (18PR)", "12.00-24 (20PR)" ],
       load: "Lorem",
       pattern: "Lorem Ipsum",
-      construction: "Lorem"
+      construction: "Lorem",
+      toolTip: "Tipper Truck"
     },
     {
       title: "Grader Max",
@@ -100,7 +105,8 @@ const productData = {
       size: ["13.00-24(12PR)", "13.00-24(16PR)", "14.00-24(12PR)", "14.00-24(16PR)"],
       load: "Lorem",
       pattern: "Lorem Ipsum",
-      construction: "Lorem"
+      construction: "Lorem",
+      toolTip: "Grader"
     },
   ],
   AGRI: [
@@ -113,7 +119,8 @@ const productData = {
       size: ["12.4-28", "13.6-28", "14.9-28", "16.9-28", "18.4-30"],
       load: "Lorem",
       pattern: "Lorem Ipsum",
-      construction: "Lorem"
+      construction: "Lorem",
+      toolTip: "Tractor"
     },
     {
       title: "Shaan",
@@ -124,7 +131,8 @@ const productData = {
       size: ["6.00-16", "7.50-16", "7.50-16", "6.50-20"],
       load: "Lorem",
       pattern: "Lorem Ipsum",
-      construction: "Lorem"
+      construction: "Lorem",
+      toolTip: "Tractor"
     },
     {
       title: "Chakra",
@@ -135,7 +143,8 @@ const productData = {
       size: ["9.00-16"],
       load: "Lorem",
       pattern: "Lorem Ipsum",
-      construction: "Lorem"
+      construction: "Lorem",
+      toolTip: "Tractor Trailer"
     },
   ],
 };
@@ -307,7 +316,7 @@ export default function NewProduct() {
                           ))}
                         </Swiper>
                       </div>
-                      <div className="new-product-svg-wrapper tooltip" data-tip="Lorem">
+                      <div className="new-product-svg-wrapper tooltip" data-tip={product.toolTip}>
                         <Image
                           className="h-8 object-contain"
                           src={product.icon}

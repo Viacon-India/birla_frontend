@@ -57,7 +57,7 @@ export default function Research() {
                 data-aos="fade-left"
                 data-aos-duration="500"
               >
-                <h3 className="section-title">Legacy of Innovation across Varied Segments</h3>
+                <h3 className="section-title">Legacy of Innovation</h3>
               </div>
               <p data-aos="fade-left" data-aos-duration="1000">
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.

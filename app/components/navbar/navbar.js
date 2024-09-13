@@ -118,10 +118,10 @@ export default function Navbar() {
                     {menu.sub_menu.map((subMenu) => (
                       <li className="subSubText-wrapper" key={subMenu.id}>
                         <button className="drop-list">{subMenu.title}</button>
-                        <ul className="relative !hidden subSubText">
+                        <ul className="relative !hidden subSubText !bg-gray-400 !w-full ">
                           {subMenu.pages.data.map((subSubMenu) => (
                             <li
-                              className="text-[12px] text-white"
+                              className="text-[14px] text-secondary !w-full !-mr-8"
                               key={subSubMenu.id}
                             >
                               <Link href={`${subSubMenu.attributes.permalink}`}>
