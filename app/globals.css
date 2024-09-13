@@ -1333,16 +1333,22 @@ input[type=file]::file-selector-button {
   @apply items-center gap-6 md:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10
 }
 .tyre-guide-box-wrapper figure{
-  @apply w-full md:w-[50%] h-[300px] md:h-[358px] 2xl:h-[400px] rounded-[12px]
+  @apply w-full md:w-[50%] h-[300px] md:h-[358px] 2xl:h-[500px] rounded-[12px] last:2xl:h-[650px]
 }
+/* .tyre-guide-box-wrapper figure:last-child{
+  @apply w-full md:w-[50%] h-[300px] md:h-[360px] 2xl:h-[650px] rounded-[12px]
+} */
 .tyre-guide-box h2{
-  @apply text-[#1A1D21] text-[24px] font-bold mb-2
+  @apply text-secondary text-[24px] md:text-[32px] font-bold mb-2
 }
 .tyre-guide-box strong{
   @apply text-[#4F5662]
 }
 .tyre-guide-box p{
   @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[17px]
+}
+.tyre-guide-box h3{
+  @apply text-[#000000] text-[14px] md:text-[16px] 2xl:text-[17px] mb-4
 }
 .tyre-guide-box ul{
   @apply pl-4
