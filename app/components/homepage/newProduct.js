@@ -249,6 +249,7 @@ export default function NewProduct() {
                 <SwiperSlide key={index}>
                   <div className="new-product-card">
                     <span className="new-product-card-tag">{product.tag}</span>
+                    {/* <Link href="" className="prem-btn">Button</Link> */}
                     <div class="flex gap-8 px-4 pt-4">
                       <div class="new-product-iconListSec flex flex-col gap-6 2xl:gap-10">
                         <div class="flex gap-[6px] items-center">
@@ -328,6 +329,7 @@ export default function NewProduct() {
                 </SwiperSlide>
               ))}
             </Swiper>
+            
           </div>
         ))}
       </div>
