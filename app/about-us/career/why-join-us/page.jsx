@@ -155,7 +155,7 @@ export default function JoinUs() {
       </section>
       <PageEnd
         Title="Life at BIRLA TYRES"
-        TitleLink="/users/product"
+        TitleLink="/about-us/career/life-at-birla-tyres"
         EndStaticImage={join5}
       />
       <Footer />

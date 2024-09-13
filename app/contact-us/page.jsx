@@ -139,7 +139,7 @@ export default function Contact() {
                       </div>
                       <div className="flex items-start gap-2">
                         <input type="checkbox" className="mt-1" />
-                        <span className="text-[14px] text-[#000000]">Yes-I confirm that i am over 18 years old. By submitting this form you agree to the Terms and condition and have read the <span className="underline underline-offset-1 cursor-pointer">privacy notice.</span></span>
+                        <span className="text-[14px] text-[#000000]">Yes - I confirm that I am over 18 years old. By submitting this form, you agree to the Terms and conditions and have read the <span className="underline underline-offset-1 cursor-pointer">privacy notice.</span></span>
                       </div>
                       <Link
                         href="thankyou"

@@ -52,8 +52,8 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
               </div>
             </div>
           </div>
-          {Banner?.data ? (
-            Banner.data.attributes.ext == ".mp4" ? (
+          {Banner?.url ? (
+            Banner.ext == ".mp4" ? (
               <video
                 className="absolute top-0 w-full h-full object-cover"
                 loop
@@ -61,18 +61,18 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
                 muted
               >
                 <source
-                  src={getStrapiMedia(Banner.data.attributes.url)}
+                  src={getStrapiMedia(Banner.url)}
                   type="video/mp4"
                 />
               </video>
             ) : (
               <Image
-                src={getStrapiMedia(Banner.data.attributes.url)}
-                width={Banner.data.attributes.width}
-                height={Banner.data.attributes.height}
+                src={getStrapiMedia(Banner.url)}
+                width={Banner.width}
+                height={Banner.height}
                 alt={
-                  Banner.data.attributes?.alternativeText
-                    ? Banner.data.attributes.alternativeText
+                  Banner?.alternativeText
+                    ? Banner.alternativeText
                     : "Hero-Banner"
                 }
                 className="absolute top-0 w-full h-full object-cover"

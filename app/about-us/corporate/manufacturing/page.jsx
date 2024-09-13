@@ -577,7 +577,7 @@ export default function Manufacturing() {
       </section>
       <PageEnd
         Title="Leadership"
-        TitleLink="/users/product"
+        TitleLink="/about-us/corporate/leadership/"
         EndStaticImage={man3}
       />
       <Footer />
