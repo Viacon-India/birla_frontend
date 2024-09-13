@@ -307,7 +307,7 @@ export default function NewProduct() {
                           ))}
                         </Swiper>
                       </div>
-                      <div className="new-product-svg-wrapper">
+                      <div className="new-product-svg-wrapper tooltip" data-tip="Lorem">
                         <Image
                           className="h-8 object-contain"
                           src={product.icon}

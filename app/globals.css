@@ -705,7 +705,7 @@ a.current_dot {
   @apply text-secondary text-[20px] leading-[1.2] capitalize 
 }
 .footer-list-box h2{
-  @apply text-secondary text-[20px] leading-[1.2] capitalize opacity-100 font-normal
+  @apply text-secondary text-[20px] leading-[1.2] capitalize opacity-100 font-normal font-semibold
 }
 
 .bottom-top-btn{
@@ -714,6 +714,7 @@ a.current_dot {
 .icon-box{
   @apply bg-secondary w-8 h-8 md:w-10 md:h-10 flex justify-center items-center rounded-[4px]
 }
+
 
 /* loader animation */
 
@@ -1262,7 +1263,7 @@ input[type=file]::file-selector-button {
   @apply text-[#1A1D21] text-[20px] font-medium
 }
 .pillar-list p{
-  @apply text-[#606977] text-[16px]
+  @apply text-[#1A1D21] text-[16px] md:text-[18px] 2xl:text-[20px]
 }
 .pillar-box{
   @apply flex gap-3

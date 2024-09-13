@@ -23,6 +23,7 @@ import susIcon2 from "../assets/images/sus-icon2.png";
 import susIcon3 from "../assets/images/sus-icon3.png";
 import susIcon4 from "../assets/images/sus-icon4.png";
 import Triangle1 from "../assets/images/triangle1.png";
+import tigerMask from "../assets/images/tiger-mask2.png";
 
 export default function Sustainability() {
   useEffect(() => {
@@ -36,13 +37,18 @@ export default function Sustainability() {
       <section className="page-content-sec mt-[60px]">
         <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
           <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8">
-            <div className="w-full md:w-1/2">
+            <div className="w-full md:w-1/2 relative">
+              <Image
+                alt="mask"
+                src={tigerMask}
+                className="absolute left-0 top-0"
+              />
               <span
                 className="section-heading"
                 data-aos="fade-right"
                 data-aos-duration="1000"
               >
-                our green initiative
+                Driving Change
               </span>
               <div
                 className="section-title-wrapper"
@@ -50,51 +56,84 @@ export default function Sustainability() {
                 data-aos-duration="1000"
               >
                 <h3 className="section-title">
-                  Sub-headline for sustainability goes here
+                  Committing to Sustainable Innovation in Every Mile
                 </h3>
               </div>
             </div>
             <div className="w-full md:w-[45%] box-content-sec">
               <p data-aos="fade-left" data-aos-duration="500">
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
-                mi vulputate, suscipit urna in, malesuada nisl.
+                Welcome to Birla Tyres, where sustainability guides us towards
+                responsible growth and positive impact. From production to
+                distribution, sustainability is embedded in every facet of our
+                operations, reflecting our commitment to environmental
+                stewardship and social progress. Enhancing operational
+                efficiency and reducing resource consumption are crucial for
+                minimizing our environmental footprint while maintaining our
+                competitive edge. .
               </p>
               <p data-aos="fade-left" data-aos-duration="1000">
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
-                mi vulputate, suscipit urna in, malesuada nisl.
+                Innovation drives our sustainability strategy. Through
+                continuous research and development, we create cutting-edge
+                technologies and products that meet evolving environmental
+                standards and exceed client expectations, positioning us as
+                industry leaders in sustainable performance. We conserve natural
+                resources by minimizing waste, optimizing water and energy use,
+                and promoting recycling across our supply chain. Our commitment
+                to the United Nations Sustainable Development Goals inspires our
+                efforts to foster economic growth, social inclusivity, and
+                environmental protection globally.
               </p>
               <p data-aos="fade-left" data-aos-duration="1500">
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
-                mi vulputate, suscipit urna in, malesuada nisl.
+                At Birla Tyres, sustainability is key to long-term value
+                creation. By integrating sustainability into our core values and
+                promoting a culture of innovation and responsibility, we will
+                create “Eco-tyres for a Cleaner Ride.”
               </p>
             </div>
           </div>
-          <div className="parallax-main">
-            <div id="parallax" className="parallax-item">
-              <div className="parallax-card" data-aos="fade-up" data-aos-duration="500">
-                <Image src={susIcon1} alt="icon" />
-                <h3>Planet</h3>
-              </div>
-              <div className="parallax-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
-                <Image src={susIcon2} alt="icon" />
-                <h3>People</h3>
-              </div>
-              <div className="parallax-card" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="600">
-                <Image src={susIcon3} alt="icon" />
-                <h3>Communities</h3>
-              </div>
-              <div className="parallax-card" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="900">
-                <Image src={susIcon4} alt="icon" />
-                <h3>Governance</h3>
+          <div className="parallax-main-wrapper">
+            <h2 className="text-secondary text-[20px] md:text-[28px] 2xl:text-[32px] leading-[1.2] font-bold mb-6 md:mb-8 2xl:mb-10">
+              Our commitment to sustainability binds us together and serves as a
+              constant driving force to achieve excellence for our stakeholders
+              and the planet as a whole.
+            </h2>
+            <div className="parallax-main">
+              <div id="parallax" className="parallax-item">
+                <div
+                  className="parallax-card"
+                  data-aos="fade-up"
+                  data-aos-duration="500"
+                >
+                  <Image src={susIcon1} alt="icon" />
+                  <h3>Planet</h3>
+                </div>
+                <div
+                  className="parallax-card"
+                  data-aos="fade-up"
+                  data-aos-duration="1500"
+                  data-aos-delay="300"
+                >
+                  <Image src={susIcon2} alt="icon" />
+                  <h3>People</h3>
+                </div>
+                <div
+                  className="parallax-card"
+                  data-aos="fade-up"
+                  data-aos-duration="2000"
+                  data-aos-delay="600"
+                >
+                  <Image src={susIcon3} alt="icon" />
+                  <h3>Communities</h3>
+                </div>
+                <div
+                  className="parallax-card"
+                  data-aos="fade-up"
+                  data-aos-duration="3000"
+                  data-aos-delay="900"
+                >
+                  <Image src={susIcon4} alt="icon" />
+                  <h3>Governance</h3>
+                </div>
               </div>
             </div>
           </div>
@@ -104,24 +143,50 @@ export default function Sustainability() {
               data-aos="fade-right"
               data-aos-duration="1000"
             >
-              key objectives
+              Universal Principles
             </span>
             <div
               className="section-title-wrapper"
               data-aos="fade-right"
               data-aos-duration="1000"
             >
-              <h3 className="section-title">
-                Headline for sustainability principles
-              </h3>
+              <h3 className="section-title">17 - Universal Principles</h3>
             </div>
             <p className="text-[20px] font-medium text-[#000000] mt-6">
-              As an organization, we are fully aligned with the universal
-              principles of United Nations Global Compact (UNGC) and the United
-              Nations Sustainable Development Goals (UNSDGs) to build a
-              sustainable future for all stakeholders and future generations to
-              come.
+              "We tirelessly innovate, while ensuring every step reflects
+              sustainability & resilience, and create a manufacturing process
+              that harmonizes with nature. Aligned with the United Nations
+              Global Compact (UNGC) and Sustainable Development Goals (UNSDGs),
+              we are revving up towards a sustainable future for all
+              stakeholders and future generations."
             </p>
+            <div className="box-content-sec mt-6 md:mt-8 2xl:mt-10">
+              <p>
+                At Birla Tyres, sustainability is not just a goal but a guiding
+                principle that shapes our journey towards a better future. We
+                innovate tirelessly, integrating sustainability into every
+                aspect of our operations and ensuring that each step we take
+                embodies resilience & environmental responsibility. Our
+                manufacturing processes are designed to harmonize with nature,
+                thus minimizing our ecological footprint and maximizing
+                efficiency.
+              </p>
+              <p>
+                Aligned with the United Nations Global Compact (UNGC) and the
+                Sustainable Development Goals (SDGs), we are committed to create
+                a sustainable future for all stakeholders and future
+                generations. These global frameworks inspire and drive our
+                efforts to innovate sustainably, aiming to exceed environmental
+                standards and societal expectations.
+              </p>
+              <p>
+                Join us at Birla Tyres as we navigate towards a sustainable
+                future. Together, we are shaping a world where responsible
+                business practices and environmental stewardship go hand in
+                hand, ensuring lasting prosperity and well-being for communities
+                and the planet alike.
+              </p>
+            </div>
             <div className="grid grid-cols-5 gap-4 mt-6">
               <figure
                 className="sustainability-figure"
@@ -380,37 +445,24 @@ export default function Sustainability() {
                   >
                     <div className="pillar-box">
                       <div className="pillar-list">
-                        <h3>Key pillar-1</h3>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur amet
-                          adipiscing elit.
-                        </p>
+                        <p>Promoting sustainable practices for the Planet</p>
                       </div>
                     </div>
                     <div className="pillar-box">
                       <div className="pillar-list">
-                        <h3>Key pillar-2</h3>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur amet
-                          adipiscing elit.
-                        </p>
+                        <p>Nurturing our People & Communities</p>
                       </div>
                     </div>
                     <div className="pillar-box">
                       <div className="pillar-list">
-                        <h3>Key pillar-3</h3>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur amet
-                          adipiscing elit.
-                        </p>
+                        <p>Engaging with Key Stakeholders</p>
                       </div>
                     </div>
                     <div className="pillar-box">
                       <div className="pillar-list">
-                        <h3>Key pillar-4</h3>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur amet
-                          adipiscing elit.
+                          Ensuring Health, Safety, and Environmental
+                          Responsibility
                         </p>
                       </div>
                     </div>
@@ -423,7 +475,7 @@ export default function Sustainability() {
       </section>
       <PageEnd
         Title="ESG"
-        TitleLink="/users/product"
+        TitleLink="/sustainability/esg"
         EndStaticImage={LastBg}
       />
       <Footer />
