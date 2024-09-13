@@ -217,7 +217,7 @@ export default function NewAbout() {
             Birla Tyres was established in 1991 and has a rich heritage of excellence. Over the past 3 decades, Birla Tyres had built a reputation for quality and was recognized as one of the best tyre manufacturers in India.
             </p>
             <p data-aos="fade-left" data-aos-duration="1500">
-            <strong>Dalmia Bharat Refractories Limited (DBRL)</strong> along with their strategic partner, <strong>Himadri Speciality Chemical Limited (HSCL)</strong> have acquired Birla Tyres Limited's tyre business through a resolution plan approved by the National Company Law Tribunal in October 2023. This strategic partnership marks the beginning of an exciting new chapter, where our combined expertise, resources, and innovative spirit will drive us to achieve greater heights.
+            <strong>Dalmia Bharat Refractories Limited (DBRL)</strong> along with their strategic partner, <strong>Himadri Speciality Chemical Limited (HSCL)</strong> have acquired Birla Tyres Limited&apos;s tyre business through a resolution plan approved by the National Company Law Tribunal in October 2023. This strategic partnership marks the beginning of an exciting new chapter, where our combined expertise, resources, and innovative spirit will drive us to achieve greater heights.
             </p>
             <p data-aos="fade-left" data-aos-duration="1500">
             Under the visionary leadership of <strong>Mr. Anurag Choudhary</strong> and a robust management team, we are set to transform the tyre industry, delivering unparalleled value to our customers and stakeholders. With a shared vision and commitment to excellence, we look forward to a future filled with remarkable achievements and ground-breaking advancements.

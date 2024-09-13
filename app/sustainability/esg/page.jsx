@@ -68,7 +68,7 @@ export default function Esg() {
                 Every tyre we produce embodies our steadfast dedication to
                 excellence and sustainability, and ensures road safety while
                 nurturing the health of our planet. Join us on this inspiring
-                journey where quality meets conscience, and together, let's
+                journey where quality meets conscience, and together, let&apos;s
                 create a world where every journey contributes to a more vibrant
                 tomorrow!
               </p>
@@ -258,7 +258,7 @@ export default function Esg() {
                   At Birla Tyres, we center our commitment to prioritize people.
                   Ensuring the well-being and growth of our employees and
                   stakeholders is foundational. We nurture an inclusive, safe,
-                  and dynamic environment that supports everyone's success.
+                  and dynamic environment that supports everyone&apos;s success.
                   Through investments in skills, diversity promotion, and fair
                   labor practices, we enable our workforce to actively advance
                   our sustainable ambitions. Leveraging our commitment to
