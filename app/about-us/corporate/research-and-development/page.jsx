@@ -50,14 +50,14 @@ export default function Research() {
                 data-aos="fade-left"
                 data-aos-duration="500"
               >
-                starting off
+                Research and Development
               </span>
               <div
                 className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
                 data-aos="fade-left"
                 data-aos-duration="500"
               >
-                <h3 className="section-title">Introduction To R&D</h3>
+                <h3 className="section-title">Legacy of Innovation across Varied Segments</h3>
               </div>
               <p data-aos="fade-left" data-aos-duration="1000">
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
@@ -85,7 +85,7 @@ export default function Research() {
       <section className="bg-[#F8F8F8] py-8 md:py-12 2xl:py-[60px] my-8 md:my-12 2xl:my-[60px] overflow-hidden">
         <div className="container mx-auto">
           <div className="excellence-sec">
-            <span className="section-heading">What’s next</span>
+            <span className="section-heading">Driven by Innovation and Excellence</span>
             <div className="section-title-wrapper">
               <h3 className="section-title">Our Capabilities</h3>
             </div>
@@ -200,7 +200,7 @@ export default function Research() {
                 data-aos-duration="1000"
                 className="section-heading"
               >
-                What’s next
+                lorem ipsum
               </span>
               <div
                 data-aos="fade-left"
@@ -249,7 +249,7 @@ export default function Research() {
       </section>
       <PageEnd
         Title="Manufacturing"
-        TitleLink="/users/product"
+        TitleLink="/about-us/corporate/manufacturing"
         EndStaticImage={res4}
       />
       <Footer />

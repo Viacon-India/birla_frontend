@@ -9,9 +9,9 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 export default function SectionSelection({section}){
     return(
         <>
-            {section?.files && <Files section={section} />}
-            {section?.table && <Table section={section} />}
-            {section?.details && <Address section={section} />}
+            {section.__component=='section.files' && <Files section={section} />}
+            {section.__component=='section.investor-table' && <Table section={section} />}
+            {section.__component=='section.address' && <Address section={section} />}
         </>
     )
 
@@ -75,10 +75,10 @@ export function Table({section}){
                                         Sr. No.
                                     </th>
                                     <th scope="col" class="px-2 py-3 border border-[#C9CDD3]">
-                                        Product name
+                                        {tables.first_row.name}
                                     </th>
                                     <th scope="col" class="px-2 py-3 border border-[#C9CDD3]">
-                                        Color
+                                        {tables.first_row.status}
                                     </th>
                                 </tr>
                             </thead>
@@ -109,9 +109,9 @@ export function Address({section}){
                 <h2 className="section-title !text-[32px] !leading-[38px] !font-semibold">{section.title}</h2>
                 </div>
             }
-            {section?.details && 
+            {section?.data && 
                 <div className="flex flex-col gap-6">
-                    {section.details.map((details) => (
+                    {section.data.map((details) => (
                         <div className="flex flex-col gap-3" key={details.id}>
                             {details.content.length > 0 && details?.description &&
                                 <h3 className="text-[#3D434C] font-medium text-[24px] leading-[32px]">{details.description}</h3>

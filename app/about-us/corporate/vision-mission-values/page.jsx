@@ -400,7 +400,7 @@ export default function Leadership() {
       </section>
       <PageEnd
         Title="R&D"
-        TitleLink="/users/product"
+        TitleLink="/about-us/corporate/research-and-development"
         EndStaticImage={NextChapter}
       />
       <Footer />
