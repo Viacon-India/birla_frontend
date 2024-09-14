@@ -88,7 +88,7 @@ export default function Esg() {
       <section className="mt-[60px]">
         <div class="w-[100%] mt-4 2xl:mt-8 ">
           <video className="!w-full" loop autoPlay muted>
-            <source src={"/assets/videos/vid5.mp4"} type="video/mp4" />
+            <source src={"/assets/videos/vid11.mp4"} type="video/mp4" />
           </video>
         </div>
       </section>
@@ -109,7 +109,7 @@ export default function Esg() {
                 onClick={() => setActiveTab("tab-1")}
               >
                 <Image src={esg1} alt="img" />
-                <h2 className="text-[28px] 2xl:text-[32px] font-semibold leading-[38.4px]">
+                <h2 className="text-[28px] 2xl:text-[32px] font-medium leading-[38.4px]">
                   Planet
                 </h2>
               </button>
@@ -120,7 +120,7 @@ export default function Esg() {
                 onClick={() => setActiveTab("tab-2")}
               >
                 <Image src={esg2} alt="img" />
-                <h2 className="text-[28px] 2xl:text-[32px] font-semibold">Communities</h2>
+                <h2 className="text-[28px] 2xl:text-[32px] font-medium">Communities</h2>
               </button>
               <button
                 className={`w-1/4 flex items-center gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-5 ${
@@ -129,7 +129,7 @@ export default function Esg() {
                 onClick={() => setActiveTab("tab-3")}
               >
                 <Image src={esg3} alt="img" />
-                <h2 className="text-[28px] 2xl:text-[32px] font-semibold">People</h2>
+                <h2 className="text-[28px] 2xl:text-[32px] font-medium">People</h2>
               </button>
               <button
                 className={`w-1/4 flex items-center gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-5 ${
@@ -138,7 +138,7 @@ export default function Esg() {
                 onClick={() => setActiveTab("tab-4")}
               >
                 <Image src={esg4} alt="img" />
-                <h2 className="text-[28px] 2xl:text-[32px] font-semibold leading-[38.4px]">
+                <h2 className="text-[28px] 2xl:text-[32px] font-medium leading-[38.4px]">
                   Governance
                 </h2>
               </button>

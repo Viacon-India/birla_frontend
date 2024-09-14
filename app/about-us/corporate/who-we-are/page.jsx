@@ -99,7 +99,7 @@ export default function WhoWeAre() {
             </div>
             <div className="section-layer md:mt-[60px]">
               <figure
-                className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
+                className="w-full md:w-[40%] h-[350px] md:h-[480px] relative glare"
                 data-aos="flip-right"
                 data-aos-duration="1500"
               >
@@ -114,7 +114,7 @@ export default function WhoWeAre() {
                   alt="img"
                 />
               </figure>
-              <div className="box-content-sec relative md:w-[55%]">
+              <div className="box-content-sec relative md:w-[60%]">
                 <span className="section-heading">joint ownership</span>
                 <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
                   <h3
@@ -161,7 +161,7 @@ export default function WhoWeAre() {
               </div>
             </div>
             <div className="section-layer">
-              <div className="box-content-sec relative md:w-[55%]">
+              <div className="box-content-sec relative md:w-[60%]">
                 <span className="section-heading">joint ownership</span>
                 <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
                   <h3
@@ -207,7 +207,7 @@ export default function WhoWeAre() {
                 </div>
               </div>
               <figure
-                className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
+                className="w-full md:w-[40%] h-[350px] md:h-[480px] relative glare"
                 data-aos="flip-left"
                 data-aos-duration="1500"
               >

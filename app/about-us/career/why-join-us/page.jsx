@@ -93,11 +93,11 @@ export default function JoinUs() {
                 data-aos="fade-down"
                 data-aos-duration="1000"
               >
-                <figure className="w-40% h-[370px]">
+                <figure className="w-40% h-[320px]">
                   <Image className="vast-card-image" src={join3} alt="card" />
                 </figure>
                 <div className="testimonial-card-detail-wrapper">
-                  <h2 className="testimonial-card-title">Mr. Ashish Srivastava: Head, Engineering</h2>
+                  <h2 className="testimonial-card-title">Mr. Ashish Srivastava:<br></br> Head, Engineering</h2>
                   <p className="testimonial-card-detail">
                     &quot;Joining Birla Tyres has been an exhilarating journey for
                     me. From a warm welcome to an inspiring vision shared by
@@ -113,11 +113,11 @@ export default function JoinUs() {
                 data-aos="fade-down"
                 data-aos-duration="1000"
               >
-                <figure className="w-40% h-[370px]">
+                <figure className="w-40% h-[320px]">
                   <Image className="vast-card-image" src={join4} alt="card" />
                 </figure>
                 <div className="testimonial-card-detail-wrapper">
-                  <h2 className="testimonial-card-title">Mr. Amarendra Palai:
+                  <h2 className="testimonial-card-title">Mr. Amarendra Palai:<br></br>
                   Sr. Manager, Costing</h2>
                   <p className="testimonial-card-detail">
                   &quot;Since I set foot into the organization, I have had numerous chances to be part of something exciting, to be able to learn new things as well as demonstrate my strong commitment and contribution. First week into my job, I realized that I am surrounded by experienced and hardworking people.
