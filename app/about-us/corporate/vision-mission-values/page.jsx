@@ -38,7 +38,10 @@ import mask3 from "../../../assets/images/iconmask-3.png";
 import mask4 from "../../../assets/images/iconmask-4.png";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
-import man8 from "../../../assets/images/man8.png";
+import vision1 from "../../../assets/images/vision1.jpg";
+import vision2 from "../../../assets/images/vision2.jpg";
+import vision3 from "../../../assets/images/vision3.jpg";
+import vision4 from "../../../assets/images/vision4.jpg";
 import man9 from "../../../assets/images/man9.png";
 import man10 from "../../../assets/images/man10.png";
 import man11 from "../../../assets/images/man11.png";
@@ -207,7 +210,7 @@ export default function Leadership() {
                 >
                   <Image
                     className="w-full h-full object-cover"
-                    src={man8}
+                    src={vision1}
                     alt="img"
                   />
                   <div className="value-overlay bg-secondary opacity-75">
@@ -230,7 +233,7 @@ export default function Leadership() {
                 >
                   <Image
                     className="w-full h-full object-cover"
-                    src={man9}
+                    src={vision2}
                     alt="img"
                   />
                   <div className="value-overlay bg-primary opacity-75">
@@ -251,7 +254,7 @@ export default function Leadership() {
                 >
                   <Image
                     className="w-full h-full object-cover"
-                    src={man10}
+                    src={vision3}
                     alt="img"
                   />
                   <div className="value-overlay bg-primary opacity-75">
@@ -272,7 +275,7 @@ export default function Leadership() {
                 >
                   <Image
                     className="w-full h-full object-cover"
-                    src={man11}
+                    src={vision4}
                     alt="img"
                   />
                   <div className="value-overlay bg-secondary opacity-75">
