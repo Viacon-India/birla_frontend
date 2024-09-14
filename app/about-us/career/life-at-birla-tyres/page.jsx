@@ -10,12 +10,12 @@ import life9 from "../../../assets/images/life9.png";
 import tigerMask from "../../../assets/images/tiger-mask2.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import life2 from "../../../assets/images/life2.jpg";
-import life3 from "../../../assets/images/life3.jpg";
-import life4 from "../../../assets/images/life4.jpg";
-import life5 from "../../../assets/images/life5.jpg";
-import life6 from "../../../assets/images/life6.jpg";
-import life7 from "../../../assets/images/life7.jpg";
+import life2 from "../../../assets/images/lifea.jpg";
+import life3 from "../../../assets/images/lifeb.jpg";
+import life4 from "../../../assets/images/lifec.jpg";
+import life5 from "../../../assets/images/lifed.jpg";
+import life6 from "../../../assets/images/lifee.jpg";
+import life7 from "../../../assets/images/lifef.jpg";
 import life8 from "../../../assets/images/life8.jpg";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
@@ -28,7 +28,7 @@ export default function LifeAtBirla() {
     <>
       <Navbar />
       <PageBanner Title="Life At BIRLA TYRES" StaticBanner={Banner} />
-      <section className="page-content-sec bg-[#F4F4F4]">
+      <section className="page-content-sec bg-[#F8F8F8]">
         <div className="container mx-auto flex flex-col">
           <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8 py-[60px]">
             <div className="w-full md:w-[50%] relative">
@@ -50,68 +50,94 @@ export default function LifeAtBirla() {
                 data-aos-duration="1000"
               >
                 <h3 className="section-title">
-                  Headline for employee engagement goes here
+                  Journey from Fantastic Candidate Experience to Excellent
+                  Employee Experience 
                 </h3>
               </div>
             </div>
             <div className="w-full md:w-[50%] box-content-sec">
               <p data-aos="fade-left" data-aos-duration="500">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
-                mi vulputate, suscipit urna in.
+                Our commitment to create an atmosphere where every employee
+                feels respected, empowered and inspired to contribute to the
+                company’s success is embodied in the vision of the organization.
+                We aim to create an inclusive, respectful, and equitable work
+                environment that values diversity and encourages creativity.
               </p>
               <p data-aos="fade-left" data-aos-duration="1000">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
-                mi vulputate, suscipit urna in.
+                Recognizing human capital as a key driver of our business, we
+                strive to offer diverse and challenging opportunities that lead
+                to fulfilling careers. We uphold the core values of Commitment
+                to Excellence, Agility, Reliability and Empathy.
+              </p>
+              <p data-aos="fade-left" data-aos-duration="1500">
+                Our rewards and recognition policy and talent engagement
+                activities are designed to acknowledge and appreciate employees&apos;
+                exceptional performance, dedication, contributions, creativity
+                and collaboration.
               </p>
             </div>
           </div>
           <div className="gallery-sec grid grid-cols-4 gap-3 2xl:gap-4">
-            <figure className="w-full h-[316px] mb-0" data-aos="flip-left" data-aos-duration="1000">
+            <figure
+              className="w-full h-[316px] mb-0"
+              data-aos="flip-left"
+              data-aos-duration="1000"
+            >
               <Image
                 src={life2}
                 alt="bottom-img"
                 className="gallery-sec-image"
               />
             </figure>
-            <figure className="w-full h-[316px] mb-0 col-span-2" data-aos="flip-left" data-aos-duration="1000">
+            <figure
+              className="w-full h-[316px] mb-0 col-span-2"
+              data-aos="flip-left"
+              data-aos-duration="1000"
+            >
               <Image
                 src={life3}
                 alt="bottom-img"
                 className="gallery-sec-image"
               />
             </figure>
-            <figure className="w-full h-[316px] mb-0" data-aos="flip-left" data-aos-duration="1000">
+            <figure
+              className="w-full h-[316px] mb-0"
+              data-aos="flip-left"
+              data-aos-duration="1000"
+            >
               <Image
                 src={life4}
                 alt="bottom-img"
                 className="gallery-sec-image"
               />
             </figure>
-            <figure className="w-full h-[316px] mb-0 col-span-2" data-aos="flip-left" data-aos-duration="1000">
+            <figure
+              className="w-full h-[316px] mb-0 col-span-2"
+              data-aos="flip-left"
+              data-aos-duration="1000"
+            >
               <Image
                 src={life5}
                 alt="bottom-img"
                 className="gallery-sec-image"
               />
             </figure>
-            <figure className="w-full h-[316px] mb-0" data-aos="flip-left" data-aos-duration="1000">
+            <figure
+              className="w-full h-[316px] mb-0"
+              data-aos="flip-left"
+              data-aos-duration="1000"
+            >
               <Image
                 src={life6}
                 alt="bottom-img"
                 className="gallery-sec-image"
               />
             </figure>
-            <figure className="w-full h-[316px] mb-0" data-aos="flip-left" data-aos-duration="1000">
+            <figure
+              className="w-full h-[316px] mb-0"
+              data-aos="flip-left"
+              data-aos-duration="1000"
+            >
               <Image
                 src={life7}
                 alt="bottom-img"
@@ -125,24 +151,19 @@ export default function LifeAtBirla() {
               data-aos="fade-right"
               data-aos-duration="1000"
             >
-              <Image
-                alt="mask"
-                src={tigerMask}
-                className="absolute left-0 top-[-220px]"
-              />
-              <span className="section-heading">
-                Be A Part of our talent pool
-              </span>
+              <span className="section-heading">Job Application Form</span>
               <div className="section-title-wrapper">
-                <h3 className="section-title">What’s Your Talent?</h3>
+                <h3 className="section-title">
+                  Want to leverage your Talent? Let us know!
+                </h3>
               </div>
               <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mt-6">
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
-                mi vulputate, suscipit urna in, malesuada nisl.
+                Are you a domain expert or a beginner? What are the skills that
+                make you stand out? Let us know what you are good at. Even if
+                you do not have any specific skills but you have potential and
+                want to have a fulfilling career, <strong>join us!</strong>
               </p>
+              <Image alt="mask" src={tigerMask} className="" />
             </div>
             <div className="w-full md:w-1/2">
               <div
@@ -222,6 +243,17 @@ export default function LifeAtBirla() {
                       <input type="file" />
                     </div>
                   </div>
+                  <div className="flex items-start gap-2">
+                    <input type="checkbox" className="mt-1" />
+                    <span className="text-[14px] text-[#000000]">
+                      Yes - I confirm that I am over 18 years old. By submitting
+                      this form, you agree to the Terms and conditions and have
+                      read the{" "}
+                      <span className="underline underline-offset-1 cursor-pointer">
+                        privacy notice.
+                      </span>
+                    </span>
+                  </div>
                   <Link
                     href="thankyou"
                     className="primary-btn w-fit flip-animate-2"
@@ -238,7 +270,7 @@ export default function LifeAtBirla() {
       </section>
       <PageEnd
         Title="Categories - TBB"
-        TitleLink="/users/product"
+        TitleLink="/products/tbb"
         EndStaticImage={life9}
         Background={true}
       />

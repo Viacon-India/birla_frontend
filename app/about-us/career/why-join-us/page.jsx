@@ -46,29 +46,28 @@ export default function JoinUs() {
                 data-aos="fade-left"
                 data-aos-duration="1200"
               >
-                Our Talent Philosophy
+                Empowering People, Elevating Success
               </span>
               <div
                 className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
                 data-aos="fade-left"
                 data-aos-duration="1400"
               >
-                <h3 className="section-title">
-                  Empowering People, Elevating Success
-                </h3>
+                <h3 className="section-title">Our Talent Philosophy</h3>
               </div>
               <p data-aos="fade-left" data-aos-duration="1600">
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
-                mi vulputate, suscipit urna in, malesuada nisl.
+                At Birla Tyres, we believe in creating a collaborative and
+                supportive environment where our people can grow, learn and
+                thrive. By empowering our people, we acknowledge their strengths
+                and abilities, enabling them to excel and achieve exceptional
+                results. We provide the necessary tools, training and
+                opportunities for growth and sustainability.
               </p>
               <p data-aos="fade-left" data-aos-duration="1800">
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                eget.
+                We embrace diversity and inclusion by appreciating unique
+                perspectives and experiences. Our extensive footprint across
+                geographies allows our talents to explore various cultures and
+                dynamics.
               </p>
 
               <Link
@@ -84,70 +83,47 @@ export default function JoinUs() {
             </div>
           </div>
           <div className="testimonial-sec">
-            <span className="section-heading">
-              Headline for Our Talents goes here
-            </span>
+            <span className="section-heading">Our People’s Voices</span>
             <div className="section-title-wrapper">
-              <h3 className="section-title">
-                Headline for Our Talents goes here
-              </h3>
+              <h3 className="section-title">Our Talents</h3>
             </div>
-            <div className="grid grid-cols1 md:grid-cols-4 gap-6 md:gap-10 mt-6 md:mt-10 overflow-hidden">
+            <div className="grid grid-cols1 md:grid-cols-2 gap-6 md:gap-10 mt-6 md:mt-10 overflow-hidden">
               <div
-                className="vast-card"
-                data-aos="fade-down"
-                data-aos-duration="500"
-              >
-                <figure>
-                  <Image className="vast-card-image" src={join3} alt="card" />
-                </figure>
-                <h2>Testimonial-1</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et.
-                </p>
-              </div>
-              <div
-                className="vast-card"
+                className="testimonial-card"
                 data-aos="fade-down"
                 data-aos-duration="1000"
               >
-                <figure>
+                <figure className="w-40% h-[370px]">
+                  <Image className="vast-card-image" src={join3} alt="card" />
+                </figure>
+                <div className="testimonial-card-detail-wrapper">
+                  <h2 className="testimonial-card-title">Mr. Ashish Srivastava: Head, Engineering</h2>
+                  <p className="testimonial-card-detail">
+                    &quot;Joining Birla Tyres has been an exhilarating journey for
+                    me. From a warm welcome to an inspiring vision shared by
+                    leadership, I have felt truly at home here. The team&apos;s
+                    collaborative sprit and dedication to innovation deeply
+                    resonates within me. I am grateful to be part of such
+                    forward-thinking organization&quot;
+                  </p>
+                </div>
+              </div>
+              <div
+                className="testimonial-card"
+                data-aos="fade-down"
+                data-aos-duration="1000"
+              >
+                <figure className="w-40% h-[370px]">
                   <Image className="vast-card-image" src={join4} alt="card" />
                 </figure>
-                <h2>Testimonial-2</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et
-                </p>
-              </div>
-              <div
-                className="vast-card"
-                data-aos="fade-down"
-                data-aos-duration="1500"
-              >
-                <figure>
-                  <Image className="vast-card-image" src={join6} alt="card" />
-                </figure>
-                <h2>Testimonial-3</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et
-                </p>
-              </div>
-              <div
-                className="vast-card"
-                data-aos="fade-down"
-                data-aos-duration="2000"
-              >
-                <figure>
-                  <Image className="vast-card-image" src={join7} alt="card" />
-                </figure>
-                <h2>Testimonial-4</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et
-                </p>
+                <div className="testimonial-card-detail-wrapper">
+                  <h2 className="testimonial-card-title">Mr. Amarendra Palai:
+                  Sr. Manager, Costing</h2>
+                  <p className="testimonial-card-detail">
+                  &quot;Since I set foot into the organization, I have had numerous chances to be part of something exciting, to be able to learn new things as well as demonstrate my strong commitment and contribution. First week into my job, I realized that I am surrounded by experienced and hardworking people.
+                  The culture is transparent and every employee irrespective of their position is given a chance to be heard. The organization has a young generation with contemporary, innovative and entrepreneurial approach that distinguishes it from its’ peers. It provides a very conducive environment to learn, grow and prosper.&quot;
+                  </p>
+                </div>
               </div>
             </div>
           </div>

@@ -15,7 +15,7 @@ import Footer from "../../components/footer/footer";
 import Product from "../../components/product/card";
 import { PageBanner } from "../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../components/pageCommon/pageCommon";
-import chakra from "../../assets/images/chakra-svg.svg";
+import chakra from "../../assets/images/chakra-icon.png";
 import prodSvg from "../../assets/images/product-svg.png";
 import prodSvg2 from "../../assets/images/product-svg2.png";
 import prodSvg3 from "../../assets/images/product-svg3.png";

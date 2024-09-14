@@ -19,11 +19,14 @@ import tyre10 from "../../assets/images/tyre-totate.gif";
 import "swiper/css/navigation";
 import GradualSpacing from "@/components/GradualSpacing";
 import prodSvg from "../../assets/images/product-svg.png";
+import tbbIcon from "../../assets/images/tbb-icon.png"
 import prodSvg2 from "../../assets/images/product-svg2.png";
 import prodSvg3 from "../../assets/images/product-svg3.png";
-import ultra from "../../assets/images/ultra-trac.svg";
+import grader from "../../assets/images/grader-icon.png"
+// import ultra from "../../assets/images/ultra-trac.svg";
 import iconW2img from "../../assets/images/iconW2img.png";
-import chakra from "../../assets/images/chakra-svg.svg";
+import chakra from "../../assets/images/chakra-icon.png";
+// import chakra from "../../assets/images/chakra-icon2.svg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import load from "../../assets/images/load.png";
@@ -39,8 +42,8 @@ const productData = {
       tag:"Premium",
       description: "High Mileage Premium Lug",
       image: tyre1,
-      icon: prodSvg,
-      size: ["10.00-20", "8.25-20"],
+      icon: tbbIcon,
+      size: ["8.25-20","10.00-20"],
       load: "Moderate",
       pattern: "Lug",
       construction: "Bias",
@@ -51,8 +54,8 @@ const productData = {
       tag:"Premium",
       description: "High Mileage Premium Rib",
       image: tyre2,
-      icon: prodSvg,
-      size: ["10.00-20", "8.25-20"],
+      icon: tbbIcon,
+      size: ["8.25-20", "10.00-20"],
       load: "Moderate",
       pattern: "Rib",
       construction: "Bias",
@@ -63,7 +66,7 @@ const productData = {
       description: "Regional Semi Lug",
       tag:"Premium",
       image: tyre3,
-      icon: iconW2img,
+      icon: tbbIcon,
       size: ["9.00-20"],
       load: "Rated",
       pattern: "Semi Lug",
@@ -77,8 +80,8 @@ const productData = {
       tag:"Standard",
       description: "Standard tyre for the toughest mining environment.",
       image: tyre4,
-      icon: prodSvg2,
-      size: ["9.00-20(16PR)", "10.00-20(18PR)", "11.00-20 (18PR)", "12.00-20 (18PR)", "12.00-24 (20PR)" ],
+      icon: prodSvg,
+      size: ["9.00-20", "10.00-20", "11.00-20", "12.00-20", "12.00-24" ],
       load: "Lorem",
       pattern: "Lorem Ipsum",
       construction: "Lorem",
@@ -89,8 +92,8 @@ const productData = {
       tag:"Premium",
       description: "Premium tyre for the toughest mining environment.",
       image: tyre5,
-      icon: ultra,
-      size: ["9.00-20(16PR)", "10.00-20(18PR)", "11.00-20 (18PR)", "12.00-20 (18PR)", "12.00-24 (20PR)" ],
+      icon: prodSvg,
+      size: ["9.00-20", "10.00-20", "11.00-20", "12.00-20", "12.00-24" ],
       load: "Lorem",
       pattern: "Lorem Ipsum",
       construction: "Lorem",
@@ -101,8 +104,8 @@ const productData = {
       tag:"Premium",
       description: "Premium Grader Tyre",
       image: tyre6,
-      icon: prodSvg2,
-      size: ["13.00-24(12PR)", "13.00-24(16PR)", "14.00-24(12PR)", "14.00-24(16PR)"],
+      icon: grader,
+      size: ["13.00-24", "14.00-24"],
       load: "Lorem",
       pattern: "Lorem Ipsum",
       construction: "Lorem",
@@ -128,7 +131,7 @@ const productData = {
       description: "Longer Life & More Mileage",
       image: tyre7,
       icon: prodSvg3,
-      size: ["6.00-16", "7.50-16", "7.50-16", "6.50-20"],
+      size: ["6.00-16", "6.50-20", "7.50-16"],
       load: "Lorem",
       pattern: "Lorem Ipsum",
       construction: "Lorem",
