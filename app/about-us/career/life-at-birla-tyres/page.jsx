@@ -71,9 +71,9 @@ export default function LifeAtBirla() {
               </p>
               <p data-aos="fade-left" data-aos-duration="1500">
                 Our rewards and recognition policy and talent engagement
-                activities are designed to acknowledge and appreciate employees&apos;
-                exceptional performance, dedication, contributions, creativity
-                and collaboration.
+                activities are designed to acknowledge and appreciate
+                employees&apos; exceptional performance, dedication,
+                contributions, creativity and collaboration.
               </p>
             </div>
           </div>
@@ -173,10 +173,9 @@ export default function LifeAtBirla() {
               >
                 <form className="w-full flex flex-col gap-3 md:gap-5">
                   <div>
-                    <span className="section-heading">Job Opportunity</span>
-                    <div className="section-title-wrapper">
-                      <h3 className="section-title">Job Application Form</h3>
-                    </div>
+                    <span className="text-primary text-[32px] md:text-[36px] 2xl:text-[48px] font-bold">
+                      Job Application Form
+                    </span>
                   </div>
                   <div className="form-row">
                     <label className="contact-label" htmlFor="">
@@ -196,6 +195,16 @@ export default function LifeAtBirla() {
                       className="contact-input"
                       type="text"
                       placeholder="Your family name"
+                    />
+                  </div>
+                  <div className="form-row">
+                    <label className="contact-label" htmlFor="">
+                      E-mail address
+                    </label>
+                    <input
+                      className="contact-input"
+                      type="text"
+                      placeholder="example@email.com"
                     />
                   </div>
                   <div className="form-row">
@@ -224,10 +233,21 @@ export default function LifeAtBirla() {
                     </label>
                     <select className="contact-select" name="" id="">
                       <option value="">Tell us your role</option>
-                      <option value="Query Type 1">Role Type 1</option>
-                      <option value="Query Type 2">Role Type 2</option>
-                      <option value="Query Type 3">Role Type 3</option>
-                      <option value="Query Type 4">Role Type 4</option>
+                      <option value="Query Type 1">Production</option>
+                      <option value="Query Type 2">Engineering</option>
+                      <option value="Query Type 3">Quality</option>
+                      <option value="Query Type 4">HSE</option>
+                      <option value="Query Type 1">Logistics & PPC</option>
+                      <option value="Query Type 2">Procurement & Stores</option>
+                      <option value="Query Type 3">Sales & Marketing</option>
+                      <option value="Query Type 4">R&D and Technology</option>
+                      <option value="Query Type 1">Finance & Accounts</option>
+                      <option value="Query Type 2">HR, ER & Administration</option>
+                      <option value="Query Type 3">Legal & Compliance</option>
+                      <option value="Query Type 4">Industrial Engineering & Manufacturing Excellence</option>
+                      <option value="Query Type 1">Corporate Strategy</option>
+                      <option value="Query Type 2">IT</option>
+
                     </select>
                   </div>
                   <div className="w-full flex flex-col">

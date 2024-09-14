@@ -67,7 +67,7 @@ export default function Footer() {
                     fill="#2E3192"
                   />
                 </svg>
-                <Link href="" className="text-secondary">ESS Portal</Link>
+                <Link href="https://genpayhr.geniusconsultant.com/Himadri/ESS/" target="_blank" className="text-secondary">ESS Portal</Link>
               </div>
             </div>
             <div class="follow-sec flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mt-3 md:mt-6">

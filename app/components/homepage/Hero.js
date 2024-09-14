@@ -189,7 +189,7 @@ export default function Hero() {
                 autoPlay
                 muted
               >
-                <source src={"/assets/videos//AGR5.mp4"} type="video/mp4" />
+                <source src={"/assets/videos/AGRI-10.mp4"} type="video/mp4" />
               </video>
               <div className="container mx-auto">
                 <div className="swiper-card relative z-10">
