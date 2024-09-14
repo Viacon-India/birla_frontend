@@ -99,12 +99,12 @@ export default function JoinUs() {
                 <div className="testimonial-card-detail-wrapper">
                   <h2 className="testimonial-card-title">Mr. Ashish Srivastava: Head, Engineering</h2>
                   <p className="testimonial-card-detail">
-                    "Joining Birla Tyres has been an exhilarating journey for
+                    &quot;Joining Birla Tyres has been an exhilarating journey for
                     me. From a warm welcome to an inspiring vision shared by
-                    leadership, I have felt truly at home here. The team's
+                    leadership, I have felt truly at home here. The team&apos;s
                     collaborative sprit and dedication to innovation deeply
                     resonates within me. I am grateful to be part of such
-                    forward-thinking organization"
+                    forward-thinking organization&quot;
                   </p>
                 </div>
               </div>
@@ -120,8 +120,8 @@ export default function JoinUs() {
                   <h2 className="testimonial-card-title">Mr. Amarendra Palai:
                   Sr. Manager, Costing</h2>
                   <p className="testimonial-card-detail">
-                  "Since I set foot into the organization, I have had numerous chances to be part of something exciting, to be able to learn new things as well as demonstrate my strong commitment and contribution. First week into my job, I realized that I am surrounded by experienced and hardworking people.
-                  The culture is transparent and every employee irrespective of their position is given a chance to be heard. The organization has a young generation with contemporary, innovative and entrepreneurial approach that distinguishes it from its’ peers. It provides a very conducive environment to learn, grow and prosper."
+                  &quot;Since I set foot into the organization, I have had numerous chances to be part of something exciting, to be able to learn new things as well as demonstrate my strong commitment and contribution. First week into my job, I realized that I am surrounded by experienced and hardworking people.
+                  The culture is transparent and every employee irrespective of their position is given a chance to be heard. The organization has a young generation with contemporary, innovative and entrepreneurial approach that distinguishes it from its’ peers. It provides a very conducive environment to learn, grow and prosper.&quot;
                   </p>
                 </div>
               </div>

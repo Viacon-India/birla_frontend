@@ -71,7 +71,7 @@ export default function LifeAtBirla() {
               </p>
               <p data-aos="fade-left" data-aos-duration="1500">
                 Our rewards and recognition policy and talent engagement
-                activities are designed to acknowledge and appreciate employees'
+                activities are designed to acknowledge and appreciate employees&apos;
                 exceptional performance, dedication, contributions, creativity
                 and collaboration.
               </p>
