@@ -890,11 +890,11 @@ a.current_dot {
 .new-product-svg-wrapper{
   @apply w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] flex justify-center items-center p-2 absolute right-4 top-4
 }
-#TBB .swiper-wrapper .swiper-slide .new-product-svg-wrapper img{
+/* #TBB .swiper-wrapper .swiper-slide .new-product-svg-wrapper img{
   @apply !object-cover
-}
+} */
 .myProductSwiper .swiper-wrapper .swiper-slide .new-product-svg-wrapper img{
-  @apply text-transparent object-contain animate-[moveLtoR_6s_infinite]
+  @apply text-transparent object-cover animate-[moveLtoR_6s_infinite]
 }
 .new-product-card h2{
   @apply text-[#050B20] text-[24px] font-bold
@@ -1302,17 +1302,16 @@ input[type=file]::file-selector-button {
 
 /* Testimonial-card */
 .testimonial-card{
-  box-shadow: 6px 3px 11px rgba(0, 0, 0, 0.6);
-  @apply bg-white rounded-[12px] p-3 md:p-6 flex flex-col gap-2 md:gap-3 transition-all duration-500 relative hover:bg-primary
+  @apply bg-[#F4F5F6] rounded-[12px] p-3 md:p-5 flex gap-2 md:gap-3
 }
 .testimonial-card-title{
-  @apply text-[#1A1D21] text-[18px] md:text-[20px] font-bold mt-3 group-hover:text-white leading-[1]
+  @apply text-secondary text-[18px] md:text-[24px] font-semibold
+}
+.testimonial-card-detail-wrapper{
+  @apply flex flex-col gap-3 w-[60%]
 }
 .testimonial-card-detail{
-  @apply text-[#606977] text-[14px] 2xl:text-[16px] leading-[1.5] h-[170px] group-hover:text-white
-}
-.testimonial-card-place{
-  @apply text-[16px] md:text-[18px] font-medium text-[#1A1D21] leading-[1] group-hover:text-white
+  @apply text-[#1A1D21] text-[14px] 2xl:text-[16px] leading-[1.5] h-[285px] overflow-y-auto
 }
 
 

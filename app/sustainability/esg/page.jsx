@@ -12,6 +12,15 @@ import Separator from "../../assets/images/esg-separator.jpg";
 import Man1 from "../../assets/images/esg-man1.jpg";
 import Man2 from "../../assets/images/esg-man2.jpg";
 import Man3 from "../../assets/images/esg-man3.jpg";
+import Man4 from "../../assets/images/esg-man4.jpg";
+import Man5 from "../../assets/images/esg-man5.jpg";
+import Man6 from "../../assets/images/esg-man6.jpg";
+import Man7 from "../../assets/images/esg-man7.jpg";
+import Man8 from "../../assets/images/esg-man8.jpg";
+import esg1 from "../../assets/images/esg1.png";
+import esg2 from "../../assets/images/esg2.png";
+import esg3 from "../../assets/images/esg3.png";
+import esg4 from "../../assets/images/esg4.png";
 import LastBg from "../../assets/images/esg-next.png";
 import { PageEnd } from "../../components/pageCommon/pageCommon";
 import AOS from "aos";
@@ -86,74 +95,57 @@ export default function Esg() {
       <section className="page-content-sec mt-[60px]">
         <div className="container mx-auto flex flex-col gap-10">
           <div className="flex flex-col gap-3">
-            <span className="section-heading">key objectives</span>
+            <span className="section-heading">Lorem Ipsum</span>
             <div className="section-title-wrapper">
               <h3 className="section-title">Headline for ESG principles</h3>
             </div>
           </div>
           <div>
-            <div className="flex justify-between text-[#4F5662] ">
+            <div className="flex gap-6 justify-between text-[#4F5662] ">
               <button
-                className={`w-1/4 flex flex-col items-start gap-5 pb-5 ${
-                  activeTab === "tab-1"
-                    ? "border-b-[6px] border-[#2E3192] !text-[#1A202C]"
-                    : ""
+                className={`w-1/4 flex items-center gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-5 ${
+                  activeTab === "tab-1" ? "bg-primary !text-[#FFFFFF]" : ""
                 }`}
                 onClick={() => setActiveTab("tab-1")}
               >
-                <h2 className="text-[32px] font-semibold leading-[38.4px]">
+                <Image src={esg1} alt="img" />
+                <h2 className="text-[28px] 2xl:text-[32px] font-semibold leading-[38.4px]">
                   Planet
                 </h2>
               </button>
               <button
-                className={`w-1/4 flex flex-col items-start gap-5 pb-5 ${
-                  activeTab === "tab-2"
-                    ? "border-b-[6px] border-[#2E3192] !text-[#1A202C]"
-                    : ""
+                className={`w-1/4 flex items-center gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-5 ${
+                  activeTab === "tab-2" ? "bg-primary !text-[#FFFFFF]" : ""
                 }`}
                 onClick={() => setActiveTab("tab-2")}
               >
-                <h2 className="text-[32px] font-semibold leading-[38.4px]">
-                  Communities
-                </h2>
-                <p className="text-left w-4/5">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
+                <Image src={esg2} alt="img" />
+                <h2 className="text-[28px] 2xl:text-[32px] font-semibold">Communities</h2>
               </button>
               <button
-                className={`w-1/4 flex flex-col items-start gap-5 pb-5 ${
-                  activeTab === "tab-3"
-                    ? "border-b-[6px] border-[#2E3192] !text-[#1A202C]"
-                    : ""
+                className={`w-1/4 flex items-center gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-5 ${
+                  activeTab === "tab-3" ? "bg-primary !text-[#FFFFFF]" : ""
                 }`}
                 onClick={() => setActiveTab("tab-3")}
               >
-                <h2 className="text-[32px] font-semibold leading-[38.4px]">
-                  People
-                </h2>
-                <p className="text-left w-4/5">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
+                <Image src={esg3} alt="img" />
+                <h2 className="text-[28px] 2xl:text-[32px] font-semibold">People</h2>
               </button>
               <button
-                className={`w-1/4 flex flex-col items-start gap-5 pb-5 ${
-                  activeTab === "tab-4"
-                    ? "border-b-[6px] border-[#2E3192] !text-[#1A202C]"
-                    : ""
+                className={`w-1/4 flex items-center gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-5 ${
+                  activeTab === "tab-4" ? "bg-primary !text-[#FFFFFF]" : ""
                 }`}
                 onClick={() => setActiveTab("tab-4")}
               >
-                <h2 className="text-[32px] font-semibold leading-[38.4px]">
+                <Image src={esg4} alt="img" />
+                <h2 className="text-[28px] 2xl:text-[32px] font-semibold leading-[38.4px]">
                   Governance
                 </h2>
-                <p className="text-left w-4/5">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
               </button>
             </div>
             {activeTab === "tab-1" && (
-              <div className="bg-[#F4F5F6] flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl">
-                <p>
+              <div className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl overflow-hidden">
+                <p data-aos="fade-down" data-aos-duration="1000">
                   At Birla Tyres, we embed environmental stewardship deeply into
                   our operations. Through innovative practices, we minimize our
                   environmental footprint and conserve natural resources. From
@@ -166,7 +158,7 @@ export default function Esg() {
                 </p>
                 <div className="flex justify-between gap-[35px] overflow-hidden">
                   <figure
-                    className="w-1/3"
+                    className="w-1/2"
                     data-aos="fade-down"
                     data-aos-duration="1000"
                   >
@@ -177,7 +169,7 @@ export default function Esg() {
                     />
                   </figure>
                   <figure
-                    className="w-1/3"
+                    className="w-1/2"
                     data-aos="fade-down"
                     data-aos-duration="1500"
                   >
@@ -187,23 +179,12 @@ export default function Esg() {
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
                   </figure>
-                  <figure
-                    className="w-1/3"
-                    data-aos="fade-down"
-                    data-aos-duration="2000"
-                  >
-                    <Image
-                      src={Man3}
-                      alt="Hero-Banner"
-                      className="rounded-xl w-full h-[250px] object-cover"
-                    />
-                  </figure>
                 </div>
               </div>
             )}
             {activeTab === "tab-2" && (
-              <div className="bg-[#F4F5F6] flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl">
-                <p>
+              <div className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl overflow-hidden">
+                <p data-aos="fade-down" data-aos-duration="1000">
                   Recognizing the significant influence of our operations on
                   communities, our organization upholds a strong commitment to
                   ESG principles. By practicing responsible sourcing, engaging
@@ -217,34 +198,23 @@ export default function Esg() {
 
                 <div className="flex justify-between gap-[35px] overflow-hidden">
                   <figure
-                    className="w-1/3"
+                    className="w-1/2"
                     data-aos="fade-down"
                     data-aos-duration="1000"
                   >
                     <Image
-                      src={Man1}
+                      src={Man3}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
                   </figure>
                   <figure
-                    className="w-1/3"
+                    className="w-1/2"
                     data-aos="fade-down"
                     data-aos-duration="1500"
                   >
                     <Image
-                      src={Man2}
-                      alt="Hero-Banner"
-                      className="rounded-xl w-full h-[250px] object-cover"
-                    />
-                  </figure>
-                  <figure
-                    className="w-1/3"
-                    data-aos="fade-down"
-                    data-aos-duration="2000"
-                  >
-                    <Image
-                      src={Man3}
+                      src={Man4}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
@@ -253,8 +223,8 @@ export default function Esg() {
               </div>
             )}
             {activeTab === "tab-3" && (
-              <div className="bg-[#F4F5F6] flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl">
-                <p>
+              <div className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl overflow-hidden">
+                <p data-aos="fade-down" data-aos-duration="1000">
                   At Birla Tyres, we center our commitment to prioritize people.
                   Ensuring the well-being and growth of our employees and
                   stakeholders is foundational. We nurture an inclusive, safe,
@@ -268,34 +238,23 @@ export default function Esg() {
                 </p>
                 <div className="flex justify-between gap-[35px] overflow-hidden">
                   <figure
-                    className="w-1/3"
+                    className="w-1/2"
                     data-aos="fade-down"
                     data-aos-duration="1000"
                   >
                     <Image
-                      src={Man1}
+                      src={Man5}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
                   </figure>
                   <figure
-                    className="w-1/3"
+                    className="w-1/2"
                     data-aos="fade-down"
                     data-aos-duration="1500"
                   >
                     <Image
-                      src={Man2}
-                      alt="Hero-Banner"
-                      className="rounded-xl w-full h-[250px] object-cover"
-                    />
-                  </figure>
-                  <figure
-                    className="w-1/3"
-                    data-aos="fade-down"
-                    data-aos-duration="2000"
-                  >
-                    <Image
-                      src={Man3}
+                      src={Man6}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
@@ -304,8 +263,8 @@ export default function Esg() {
               </div>
             )}
             {activeTab === "tab-4" && (
-              <div className="bg-[#F4F5F6] flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl">
-                <p>
+              <div className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl overflow-hidden">
+                <p data-aos="fade-down" data-aos-duration="1000">
                   We integrate ESG principles with a focus on robust governance.
                   We prioritize transparency, accountability, and ethical
                   conduct throughout our operations. Our governance framework
@@ -319,34 +278,23 @@ export default function Esg() {
 
                 <div className="flex justify-between gap-[35px] overflow-hidden">
                   <figure
-                    className="w-1/3"
+                    className="w-1/2"
                     data-aos="fade-down"
                     data-aos-duration="1000"
                   >
                     <Image
-                      src={Man1}
+                      src={Man7}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />
                   </figure>
                   <figure
-                    className="w-1/3"
+                    className="w-1/2"
                     data-aos="fade-down"
                     data-aos-duration="1500"
                   >
                     <Image
-                      src={Man2}
-                      alt="Hero-Banner"
-                      className="rounded-xl w-full h-[250px] object-cover"
-                    />
-                  </figure>
-                  <figure
-                    className="w-1/3"
-                    data-aos="fade-down"
-                    data-aos-duration="2000"
-                  >
-                    <Image
-                      src={Man3}
+                      src={Man8}
                       alt="Hero-Banner"
                       className="rounded-xl w-full h-[250px] object-cover"
                     />

@@ -17,6 +17,17 @@ import life5 from "../assets/images/life5.jpg";
 import life6 from "../assets/images/life6.jpg";
 import life7 from "../assets/images/life7.jpg";
 import life8 from "../assets/images/life8.jpg";
+import life10 from "../assets/images/life10.jpg";
+import life11 from "../assets/images/life11.jpg";
+import life12 from "../assets/images/life12.jpg";
+import life13 from "../assets/images/life13.jpg";
+import life14 from "../assets/images/life14.jpg";
+import life15 from "../assets/images/life15.jpg";
+import life16 from "../assets/images/life16.jpg";
+import life17 from "../assets/images/life17.jpg";
+import life18 from "../assets/images/life18.jpg";
+import life19 from "../assets/images/life19.jpg";
+
 import sus2 from "../assets/images/sus2.jpg";
 import susIcon1 from "../assets/images/sus-icon1.png";
 import susIcon2 from "../assets/images/sus-icon2.png";
@@ -76,14 +87,17 @@ export default function Sustainability() {
                 continuous research and development, we create cutting-edge
                 technologies and products that meet evolving environmental
                 standards and exceed client expectations, positioning us as
-                industry leaders in sustainable performance. We conserve natural
-                resources by minimizing waste, optimizing water and energy use,
-                and promoting recycling across our supply chain. Our commitment
-                to the United Nations Sustainable Development Goals inspires our
-                efforts to foster economic growth, social inclusivity, and
-                environmental protection globally.
+                industry leaders in sustainable performance.
               </p>
               <p data-aos="fade-left" data-aos-duration="1500">
+                We conserve natural resources by minimizing waste, optimizing
+                water and energy use, and promoting recycling across our supply
+                chain. Our commitment to the United Nations Sustainable
+                Development Goals inspires our efforts to foster economic
+                growth, social inclusivity, and environmental protection
+                globally.
+              </p>
+              <p data-aos="fade-left" data-aos-duration="2000">
                 At Birla Tyres, sustainability is key to long-term value
                 creation. By integrating sustainability into our core values and
                 promoting a culture of innovation and responsibility, we will
@@ -150,7 +164,7 @@ export default function Sustainability() {
               data-aos="fade-right"
               data-aos-duration="1000"
             >
-              <h3 className="section-title">17 - Universal Principles</h3>
+              <h3 className="section-title">Alignment to UNGC and UNSDGs</h3>
             </div>
             <p className="text-[20px] font-medium text-[#000000] mt-6">
               &quot;We tirelessly innovate, while ensuring every step reflects
@@ -213,7 +227,7 @@ export default function Sustainability() {
                 <span className="sustainability-overlay">Zero Hunger</span>
               </figure>
               <figure
-                className="sustainability-figure col-span-2"
+                className="sustainability-figure"
                 data-aos="flip-left"
                 data-aos-duration="1000"
               >
@@ -224,6 +238,20 @@ export default function Sustainability() {
                 />
                 <span className="sustainability-overlay">
                   Good Health & Well-being
+                </span>
+              </figure>
+              <figure
+                className="sustainability-figure"
+                data-aos="flip-left"
+                data-aos-duration="1000"
+              >
+                <Image
+                  src={life19}
+                  alt="bottom-img"
+                  className="sustainability-image"
+                />
+                <span className="sustainability-overlay">
+                  Partners For The Goal
                 </span>
               </figure>
               <figure
@@ -286,7 +314,7 @@ export default function Sustainability() {
                 data-aos-duration="1000"
               >
                 <Image
-                  src={life2}
+                  src={life10}
                   alt="bottom-img"
                   className="sustainability-image"
                 />
@@ -300,7 +328,7 @@ export default function Sustainability() {
                 data-aos-duration="1000"
               >
                 <Image
-                  src={life2}
+                  src={life11}
                   alt="bottom-img"
                   className="sustainability-image"
                 />
@@ -314,7 +342,7 @@ export default function Sustainability() {
                 data-aos-duration="1000"
               >
                 <Image
-                  src={life3}
+                  src={life12}
                   alt="bottom-img"
                   className="sustainability-image"
                 />
@@ -328,7 +356,7 @@ export default function Sustainability() {
                 data-aos-duration="1000"
               >
                 <Image
-                  src={life4}
+                  src={life13}
                   alt="bottom-img"
                   className="sustainability-image"
                 />
@@ -342,7 +370,7 @@ export default function Sustainability() {
                 data-aos-duration="1000"
               >
                 <Image
-                  src={life5}
+                  src={life14}
                   alt="bottom-img"
                   className="sustainability-image"
                 />
@@ -354,7 +382,7 @@ export default function Sustainability() {
                 data-aos-duration="1000"
               >
                 <Image
-                  src={life6}
+                  src={life15}
                   alt="bottom-img"
                   className="sustainability-image"
                 />
@@ -368,7 +396,7 @@ export default function Sustainability() {
                 data-aos-duration="1000"
               >
                 <Image
-                  src={life7}
+                  src={life16}
                   alt="bottom-img"
                   className="sustainability-image"
                 />
@@ -380,7 +408,7 @@ export default function Sustainability() {
                 data-aos-duration="1000"
               >
                 <Image
-                  src={life8}
+                  src={life17}
                   alt="bottom-img"
                   className="sustainability-image"
                 />
@@ -392,7 +420,7 @@ export default function Sustainability() {
                 data-aos-duration="1000"
               >
                 <Image
-                  src={life2}
+                  src={life18}
                   alt="bottom-img"
                   className="sustainability-image"
                 />
