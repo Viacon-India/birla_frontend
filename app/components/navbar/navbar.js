@@ -118,13 +118,31 @@ export default function Navbar() {
                     {menu.sub_menu.map((subMenu) => (
                       <li className="subSubText-wrapper" key={subMenu.id}>
                         <button className="drop-list">{subMenu.title}</button>
-                        <ul className="relative !hidden subSubText bg-slate-50 !w-full">
+                        <ul className="relative !hidden subSubText bg-slate-50 !w-full border-t border-[#DEE1E5]">
                           {subMenu.pages.data.map((subSubMenu) => (
                             <li
                               className="text-[14px] text-secondary !w-full !-mr-8 font-medium"
                               key={subSubMenu.id}
                             >
-                              <Link href={`${subSubMenu.attributes.permalink}`}>
+                              <Link
+                                className="!pl-2 flex gap-1 hover:translate-x-2 hover:bg-transparent"
+                                href={`${subSubMenu.attributes.permalink}`}
+                              >
+                                <svg
+                                  width="8"
+                                  height="8"
+                                  viewBox="0 0 10 9"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="mr-2"
+                                >
+                                  <path
+                                    d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7"
+                                    stroke="#2E3192"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
                                 {subSubMenu.attributes.name}
                               </Link>
                             </li>

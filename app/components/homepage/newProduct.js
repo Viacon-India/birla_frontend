@@ -77,7 +77,7 @@ const productData = {
   OTR: [
     {
       title: "Kalapatthar",
-      tag:"Standard",
+      tag:"Premium",
       description: "Standard tyre for the toughest mining environment.",
       image: tyre4,
       icon: prodSvg,
@@ -115,7 +115,7 @@ const productData = {
   AGRI: [
     {
       title: "Shaan+",
-      tag:"Premium",
+      tag:"Standard",
       description: "Suitable for haulage & agri applications",
       image: tyre8,
       icon: prodSvg3,
@@ -127,7 +127,7 @@ const productData = {
     },
     {
       title: "Shaan",
-      tag:"Premium",
+      tag:"Standard",
       description: "Longer Life & More Mileage",
       image: tyre7,
       icon: prodSvg3,
@@ -139,7 +139,7 @@ const productData = {
     },
     {
       title: "Chakra",
-      tag:"Premium",
+      tag:"Standard",
       description: "Tractor Trailer Tyre",
       image: tyre9,
       icon: chakra,
@@ -251,8 +251,8 @@ export default function NewProduct() {
               {productData[tab].map((product, index) => (
                 <SwiperSlide key={index}>
                   <div className="new-product-card">
-                    <span className="new-product-card-tag">{product.tag}</span>
-                    {/* <Link href="" className="prem-btn">Button</Link> */}
+                    <span className={product.tag === 'Premium' ? 'prem-product-card-tag' : 'new-product-card-tag'}>{product.tag}</span>
+                    
                     <div class="flex gap-8 px-4 pt-4">
                       <div class="new-product-iconListSec flex flex-col gap-6 2xl:gap-10">
                         <div class="flex gap-[6px] items-center">

@@ -73,13 +73,15 @@ export default function Leadership() {
                 Our Vision
               </h3>
             </div>
-            <figure className="relative w-full h-[350px] md:h-[450px] 2xl:h-[600px] rounded-[12px] group">
-              <Image src={Vision} className="w-full h-full" alt="img" />
-              <span className="vision-overlay">
-                Empowering journeys with innovative & customer-friendly
-                solutions for a greener world
-              </span>
-            </figure>
+            <div className="relative rounded-[12px] overflow-hidden">
+              <figure className="relative w-full h-[350px] md:h-[450px] 2xl:h-[600px] rounded-[12px] group">
+                <Image src={Vision} className="w-full h-full" alt="img" />
+                <span className="vision-overlay">
+                  Empowering journeys with innovative & customer-friendly
+                  solutions for a greener world
+                </span>
+              </figure>
+            </div>
           </div>
           <div className="mt-8 md:mt-12 2xl:mt-[60px] flex flex-col gap-10 relative">
             <div className="flex flex-col gap-3">
@@ -200,7 +202,9 @@ export default function Leadership() {
                   src={tiger}
                   alt="img"
                 />
-                <span className="text-primary font-bold text-[22px] md:text-[36px] 2xl:text-[48px] uppercase absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">CARE</span>
+                <span className="text-primary font-bold text-[22px] md:text-[36px] 2xl:text-[48px] uppercase absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+                  CARE
+                </span>
               </figure>
               <div className="relative overflow-hidden rounded-[12px] group">
                 <figure

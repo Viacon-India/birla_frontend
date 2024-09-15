@@ -22,7 +22,7 @@ export default function FindTyre() {
           <div className="relative">
             <div className="w-full h-[40vh] md:h-[80vh] flex items-start">
               <div class="container mx-auto pt-5 pb-[60px] flex">
-                <div className="flex flex-col justify-between h-full w-full md:w-1/2 gap-[200px]">
+                <div className="flex flex-col justify-between h-full w-full md:w-1/2 gap-[100px] 2xl:gap-[200px]">
                   <div class="flex flex-col gap-5 relative z-10">
                     <Link href="dealer-locator" className="primary-btn-2">
                       Find a Dealer

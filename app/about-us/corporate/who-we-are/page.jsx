@@ -343,7 +343,7 @@ export default function WhoWeAre() {
             ultrices.
           </p>
           <div class="flex flex-col md:flex-row gap-4 md:gap-10">
-            <div class="w-full md:w-[50%] h-fit md:sticky top-[90px]">
+            <div class="w-full md:w-[40%] h-fit md:sticky top-[90px]">
               <figure
                 className="w-full h-[350px] md:h-[450px] 2xl:h-[600px] mb-0"
                 data-aos="zoom-in"
@@ -357,7 +357,7 @@ export default function WhoWeAre() {
               </figure>
             </div>
             <div
-              class="accordion-list-sec w-full md:w-[50%] h-[350px] md:h-[450px] 2xl:h-[600px] overflow-y-auto"
+              class="accordion-list-sec w-full md:w-[60%] h-[350px] md:h-[450px] 2xl:h-[600px] overflow-y-auto"
               data-aos="fade-left"
               data-aos-duration="1000"
             >

@@ -22,7 +22,7 @@ export default function SectionSelection({
 }) {
   return (
     <div class="new-product-card">
-      <span class="new-product-card-tag">{type}</span>
+      <span className={type === 'Premium' ? 'prem-product-card-tag' : 'new-product-card-tag'}>{type}</span>
       <div class="flex gap-8 px-4 pt-4">
         <div class="new-product-iconListSec flex flex-col gap-6 2xl:gap-10">
           <div class="flex gap-[6px] items-center">

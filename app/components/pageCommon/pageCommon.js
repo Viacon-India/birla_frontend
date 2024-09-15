@@ -110,7 +110,7 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
 export function Float() {
   return (
     <div className="sideNav-wrapper">
-      <Link className="sideNav" href="">
+      <Link className="sideNav" href="/find-tyre">
         <svg
           width="24"
           height="24"
@@ -136,7 +136,7 @@ export function Float() {
         </svg>
         Find a Tyre
       </Link>
-      <Link className="sideNav" href="">
+      <Link className="sideNav" href="/dealer-locator">
         <svg
           width="24"
           height="24"
@@ -153,7 +153,7 @@ export function Float() {
         </svg>
         Find a Dealer
       </Link>
-      <Link className="sideNav" href="">
+      <Link className="sideNav" href="mailto:ho@birlatyre.com">
         <svg
           width="24"
           height="24"
@@ -171,7 +171,7 @@ export function Float() {
         </svg>
         ho@birlatyre.com
       </Link>
-      <Link className="sideNav" href="">
+      <Link className="sideNav" href="tel:033-22624354">
         <svg
           width="24"
           height="24"
@@ -241,7 +241,7 @@ export function PageEnd({
       <div className="container mx-auto relative h-[200px] flex items-end justify-end">
         <Image src={Tiger} alt="bottom-img" className="absolute right-[20%]" />
         {TitleLink && Title && (
-          <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4">
+          <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4 relative z-5">
             Next Page:
             <Link
               className="text-[#F5811E] font-medium flex items-center gap-1"
