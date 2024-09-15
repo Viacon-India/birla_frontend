@@ -75,8 +75,8 @@ export default function Manufacturing() {
               <div>
                 <h3>300 tpd</h3>
               </div>
-              <h2>(all 3 segments)</h2>
-              <p>lorem ipsum dolor ut amet maximus dilam</p>
+              <h2>Production Capacity</h2>
+              <p>(all 3 segments)</p>
             </div>
             <div
               className="box-card"
@@ -116,7 +116,7 @@ export default function Manufacturing() {
                 data-aos-duration="1000"
               >
                 <h3 className="section-title">
-                  Where quality meets innovation
+                Where Quality Meets Innovation
                 </h3>
                 <Image
                   alt="mask"
@@ -471,7 +471,7 @@ export default function Manufacturing() {
             <span className="section-heading">our people</span>
             <div className="section-title-wrapper">
               <h3 className="section-title">
-                The heart of our manufacturing excellence
+              The Heart of Our Manufacturing Excellence
               </h3>
             </div>
             <p className="text-[#1A1D21] text-[14px] md:text-[16px] 2xl:text-[17px] mt-4 md:mt-6 2xl:mt-10">
@@ -495,7 +495,7 @@ export default function Manufacturing() {
                 </figure>
               </div>
               <div
-                class="accordion-list-sec h-[300px] md:h-[450px] 2xl:h-[600px] overflow-y-auto md:w-[55%]"
+                class="accordion-list-sec people-accordion h-[300px] md:h-[450px] 2xl:h-[600px] overflow-y-auto md:w-[55%]"
                 data-aos="fade-left"
                 data-aos-duration="1500"
               >

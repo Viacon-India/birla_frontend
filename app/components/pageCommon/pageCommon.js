@@ -241,7 +241,7 @@ export function PageEnd({
       <div className="container mx-auto relative h-[200px] flex items-end justify-end">
         <Image src={Tiger} alt="bottom-img" className="absolute right-[20%]" />
         {TitleLink && Title && (
-          <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4">
+          <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4 relative z-5">
             Next Page:
             <Link
               className="text-[#F5811E] font-medium flex items-center gap-1"
