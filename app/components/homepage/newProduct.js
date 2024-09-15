@@ -115,7 +115,7 @@ const productData = {
   AGRI: [
     {
       title: "Shaan+",
-      tag:"Premium",
+      tag:"Standard",
       description: "Suitable for haulage & agri applications",
       image: tyre8,
       icon: prodSvg3,
@@ -127,7 +127,7 @@ const productData = {
     },
     {
       title: "Shaan",
-      tag:"Premium",
+      tag:"Standard",
       description: "Longer Life & More Mileage",
       image: tyre7,
       icon: prodSvg3,
@@ -139,7 +139,7 @@ const productData = {
     },
     {
       title: "Chakra",
-      tag:"Premium",
+      tag:"Standard",
       description: "Tractor Trailer Tyre",
       image: tyre9,
       icon: chakra,

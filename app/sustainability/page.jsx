@@ -48,11 +48,11 @@ export default function Sustainability() {
       <section className="page-content-sec mt-[60px]">
         <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
           <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8">
-            <div className="w-full md:w-1/2 relative">
+            <div className="w-full md:w-[40%] relative">
               <Image
                 alt="mask"
                 src={tigerMask}
-                className="absolute left-10 top-10"
+                className="absolute left-10 top-[120px]"
               />
               <span
                 className="section-heading"
@@ -71,7 +71,7 @@ export default function Sustainability() {
                 </h3>
               </div>
             </div>
-            <div className="w-full md:w-[45%] box-content-sec">
+            <div className="w-full md:w-[60%] box-content-sec">
               <p data-aos="fade-left" data-aos-duration="500">
                 Welcome to Birla Tyres, where sustainability guides us towards
                 responsible growth and positive impact. From production to
