@@ -67,7 +67,7 @@ export default function Page({ params }) {
   const [pageData, setPageData] = useState([]);
 
   //   sub_selection ? console.log(sub_selection):console.log('Not Present');
-  console.log(pageData)
+  console.log(pageData);
 
   useEffect(() => {
     fetch(getStrapiMedia("/api/pages/" + slugs[0]))
@@ -89,20 +89,65 @@ export default function Page({ params }) {
         <div className="container mx-auto overflow-hidden flex flex-col gap-10">
           <div className="upper-title-sec flex gap-3 md:gap-0 flex-col md:flex-row justify-between items-end">
             <div className="self-start">
-              <span className="section-heading">Truck Bus Bias segment</span>
-              <div className="section-title-wrapper">
-                <GradualSpacing
-                  className="section-title"
-                  text="Find the perfect TBB tyre for you"
-                />
-              </div>
+              {slugs[0] == "truck-bus-bias" && (
+                <>
+                  <span className="section-heading">
+                    Truck Bus Bias segment
+                  </span>
+                  <div className="section-title-wrapper">
+                    <GradualSpacing
+                      className="section-title"
+                      text="Find the perfect Truck Bus Bias tyre"
+                    />
+                  </div>
+                </>
+              )}
+              {slugs[0] == "off-the-road" && (
+                <>
+                  <span className="section-heading">OFF THE ROAD SEGMENT</span>
+                  <div className="section-title-wrapper">
+                    <GradualSpacing
+                      className="section-title"
+                      text="Find the perfect Off The Road tyre"
+                    />
+                  </div>
+                </>
+              )}
+              {slugs[0] == "agriculture" && (
+                <>
+                  <span className="section-heading">agriculture segment</span>
+                  <div className="section-title-wrapper">
+                    <GradualSpacing
+                      className="section-title"
+                      text="Find the Perfect Agriculture Tyre"
+                    />
+                  </div>
+                </>
+              )}
             </div>
             <div className="cat-btn-sec flex items-center gap-3 relative z-10">
-              <Link href="#">Download Product Catalogue</Link>
+              <Link href="#" className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.875 9.875V14.25C14.875 14.4158 14.8092 14.5747 14.6919 14.6919C14.5747 14.8092 14.4158 14.875 14.25 14.875H1.75C1.58424 14.875 1.42527 14.8092 1.30806 14.6919C1.19085 14.5747 1.125 14.4158 1.125 14.25V9.875M4.71875 6.59461L8 9.875L11.2812 6.59461M8 1.125V9.8727"
+                    stroke="#F5811E"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Download Product Catalogue
+              </Link>
             </div>
           </div>
           <div className="bg-[#F4F5F6] rounded-xl flex gap-4 p-6 items-end">
-            {slugs[0] == "otr" && (
+            {slugs[0] == "off-the-road" && (
               <div className="flex flex-col gap-1 w-full">
                 <label
                   className="font-semibold text-[#1A1D21] capitalize"
@@ -230,7 +275,7 @@ export default function Page({ params }) {
             </button>
           </div>
           <div className="grid grid-cols-3 gap-[50px]">
-            {slugs[0] == "tbb" && (
+            {slugs[0] == "truck-bus-bias" && (
               <>
                 <Product
                   type="Premium"
@@ -443,7 +488,7 @@ export default function Page({ params }) {
                 />
               </>
             )}
-            {slugs[0] == "otr" && (
+            {slugs[0] == "off-the-road" && (
               <>
                 <Product
                   type="Premium"
@@ -494,10 +539,7 @@ export default function Page({ params }) {
                   productName="Grader Max"
                   productDescription="Reliable under extrme service conditions"
                   icon={prodSvg2}
-                  sizes={[
-                    "14.00-24",
-                    "13.00-24",
-                  ]}
+                  sizes={["14.00-24", "13.00-24"]}
                 />
                 <Product
                   type="Premium"
@@ -548,7 +590,7 @@ export default function Page({ params }) {
                 />
               </>
             )}
-            {slugs[0] == "agri" && (
+            {slugs[0] == "agriculture" && (
               <>
                 <Product
                   type="Premium"
@@ -562,7 +604,7 @@ export default function Page({ params }) {
                   type="Premium"
                   productImage={tyre30}
                   productName="Farm Haul Platina (new)"
-                  productDescription="Suitable for both haulage and agriculture"
+                  productDescription="Suitable for both haulage and agricultureculture"
                   icon={chakra}
                   sizes={["6.00-16"]}
                 />
