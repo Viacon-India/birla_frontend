@@ -73,7 +73,7 @@ export default function Navbar() {
           </div>
 
           <div className="navbar-center flex items-center gap-6 lg:flex md:pl-7 ml-[-10%] md:ml-0">
-            <ul className="menu menu-horizontal hidden md:flex relative text-lg lg:gap-4 xl:gap-7 p-0">
+            <ul className="menu menu-horizontal hidden md:flex relative text-lg lg:gap-4 2xl:gap-7 p-0">
               {navMenu.attributes?.menu.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
                   {menu?.link ? (

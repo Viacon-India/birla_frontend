@@ -131,7 +131,7 @@ body {
 
 .nav-links{
   @apply text-[#1A1D21] text-[15px] hover:bg-transparent rounded-none font-medium flex items-center relative group-hover:text-primary
-  uppercase font-oak-sans
+  uppercase font-oak-sans active:!bg-transparent
 }
 .line{
   @apply w-[2px] h-[30px] md:h-[50px] bg-[#C9CDD3] mt-4
