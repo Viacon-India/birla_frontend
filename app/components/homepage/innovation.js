@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import {  FreeMode, Autoplay } from "swiper/modules";
+import {  FreeMode, Autoplay, Navigation } from "swiper/modules";
+import "swiper/css/navigation";
 import Image from "next/image";
 import img1 from "../../assets/images/truck1.jpg";
 import img2 from "../../assets/images/truck2.jpg";
@@ -69,6 +70,7 @@ export default function Innovation() {
         </div>
         <div class="innovative-slider mt-5 2xl:mt-8">
           <Swiper
+          navigation={true}
             freeMode={true}
             speed= {2400}
             loop={true}
@@ -89,8 +91,8 @@ export default function Innovation() {
                 spaceBetween: 48
               },
             }}
-            modules={[FreeMode, Autoplay]}
-            className="mySwiper"
+            modules={[FreeMode, Autoplay, Navigation]}
+            className="mySwiper !pb-[60px]"
           >
             <SwiperSlide>
               <div
