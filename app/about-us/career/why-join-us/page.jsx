@@ -40,7 +40,7 @@ export default function JoinUs() {
                 alt="img"
               />
             </figure>
-            <div className="box-content-sec relative md:w-[50%]">
+            <div className="box-content-sec relative md:w-[50%] flex flex-col">
               <span
                 className="section-heading"
                 data-aos="fade-left"
@@ -80,6 +80,11 @@ export default function JoinUs() {
                   Explore Career Opportunities
                 </span>
               </Link>
+              <div class="line-loader self-end">
+                <div class="bar bar1"></div>
+                <div class="bar bar2"></div>
+                <div class="bar bar3"></div>
+              </div>
             </div>
           </div>
           <div className="testimonial-sec">
@@ -97,10 +102,12 @@ export default function JoinUs() {
                   <Image className="vast-card-image" src={join3} alt="card" />
                 </figure>
                 <div className="testimonial-card-detail-wrapper">
-                  <h2 className="testimonial-card-title">Mr. Ashish Srivastava:<br></br> Head, Engineering</h2>
+                  <h2 className="testimonial-card-title">
+                    Mr. Ashish Srivastava:<br></br> Head, Engineering
+                  </h2>
                   <p className="testimonial-card-detail">
-                    &quot;Joining Birla Tyres has been an exhilarating journey for
-                    me. From a warm welcome to an inspiring vision shared by
+                    &quot;Joining Birla Tyres has been an exhilarating journey
+                    for me. From a warm welcome to an inspiring vision shared by
                     leadership, I have felt truly at home here. The team&apos;s
                     collaborative sprit and dedication to innovation deeply
                     resonates within me. I am grateful to be part of such
@@ -117,11 +124,22 @@ export default function JoinUs() {
                   <Image className="vast-card-image" src={join4} alt="card" />
                 </figure>
                 <div className="testimonial-card-detail-wrapper">
-                  <h2 className="testimonial-card-title">Mr. Amarendra Palai:<br></br>
-                  Sr. Manager, Costing</h2>
+                  <h2 className="testimonial-card-title">
+                    Mr. Amarendra Palai:<br></br>
+                    Sr. Manager, Costing
+                  </h2>
                   <p className="testimonial-card-detail">
-                  &quot;Since I set foot into the organization, I have had numerous chances to be part of something exciting, to be able to learn new things as well as demonstrate my strong commitment and contribution. First week into my job, I realized that I am surrounded by experienced and hardworking people.
-                  The culture is transparent and every employee irrespective of their position is given a chance to be heard. The organization has a young generation with contemporary, innovative and entrepreneurial approach that distinguishes it from its’ peers. It provides a very conducive environment to learn, grow and prosper.&quot;
+                    &quot;Since I set foot into the organization, I have had
+                    numerous chances to be part of something exciting, to be
+                    able to learn new things as well as demonstrate my strong
+                    commitment and contribution. First week into my job, I
+                    realized that I am surrounded by experienced and hardworking
+                    people. The culture is transparent and every employee
+                    irrespective of their position is given a chance to be
+                    heard. The organization has a young generation with
+                    contemporary, innovative and entrepreneurial approach that
+                    distinguishes it from its’ peers. It provides a very
+                    conducive environment to learn, grow and prosper.&quot;
                   </p>
                 </div>
               </div>

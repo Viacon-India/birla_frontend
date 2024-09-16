@@ -110,7 +110,7 @@ export default function Innovation() {
                 <h2>Truck Bus Bias</h2>
                 <p>Progess in Every Mile</p>
                 <Link
-                  href="/products/tbb"
+                  href="/products/truck-bus-bias"
                   className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
                 >
                   <span data-hover="Explore Products">Explore Products</span>
@@ -134,7 +134,7 @@ export default function Innovation() {
                 <h2>Off The Road</h2>
                 <p>Ready for Every Challenge</p>
                 <Link
-                  href="/products/otr"
+                  href="/products/off-the-road"
                   className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
                 >
                   <span data-hover="Explore Products">Explore Products</span>
@@ -158,7 +158,7 @@ export default function Innovation() {
                 <h2>Agriculture</h2>
                 <p>Strength in Every Turn</p>
                 <Link
-                  href="/products/agri"
+                  href="/products/agriculture"
                   className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
                 >
                   <span data-hover="Explore Products">Explore Products</span>
@@ -181,7 +181,7 @@ export default function Innovation() {
                 <h2>Truck Bus Bias</h2>
                 <p>Progess in Every Mile</p>
                 <Link
-                  href="/products/tbb"
+                  href="/products/truck-bus-bias"
                   className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
                 >
                   <span data-hover="Explore Products">Explore Products</span>
@@ -205,7 +205,7 @@ export default function Innovation() {
                 <h2>Off The Road</h2>
                 <p>Ready for Every Challenge</p>
                 <Link
-                  href="/products/otr"
+                  href="/products/off-the-road"
                   className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
                 >
                   <span data-hover="Explore Products">Explore Products</span>
@@ -229,7 +229,7 @@ export default function Innovation() {
                 <h2>Agriculture</h2>
                 <p>Strength in Every Turn</p>
                 <Link
-                  href="/products/agri"
+                  href="/products/agriculture"
                   className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
                 >
                   <span data-hover="Explore Products">Explore Products</span>

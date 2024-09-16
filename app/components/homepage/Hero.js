@@ -132,7 +132,7 @@ export default function Hero() {
                     words={"Progess in Every Mile"}
                     delay={0.05}
                   />
-                  <Link href="/products/tbb" class="explore-btn">
+                  <Link href="/products/truck-bus-bias" class="explore-btn">
                     <span>Explore Now</span>
                     <div class="wave"></div>
                   </Link>
@@ -169,7 +169,7 @@ export default function Hero() {
                     words={"Ready for Every Challenge"}
                     delay={0.05}
                   />
-                  <Link href="products/otr" class="explore-btn">
+                  <Link href="/products/off-the-road" class="explore-btn">
                     <span>Explore Now</span>
                     <div class="wave"></div>
                   </Link>
@@ -206,7 +206,7 @@ export default function Hero() {
                     words={"Strength in Every Turn"}
                     delay={0.05}
                   />
-                  <Link href="/products/agri" class="explore-btn">
+                  <Link href="/products/agriculture" class="explore-btn">
                     <span>Explore Now</span>
                     <div class="wave"></div>
                   </Link>
