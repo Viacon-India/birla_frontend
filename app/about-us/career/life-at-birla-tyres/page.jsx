@@ -219,16 +219,6 @@ export default function LifeAtBirla() {
                   </div>
                   <div className="form-row">
                     <label className="contact-label" htmlFor="">
-                      E-mail address
-                    </label>
-                    <input
-                      className="contact-input"
-                      type="text"
-                      placeholder="example@email.com"
-                    />
-                  </div>
-                  <div className="form-row">
-                    <label className="contact-label" htmlFor="">
                       Your Specialization
                     </label>
                     <select className="contact-select" name="" id="">

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
-import {Float} from "../components/pageCommon/pageCommon";
+import { Float } from "../components/pageCommon/pageCommon";
 import GradualSpacing from "@/components/GradualSpacing";
 import Link from "next/link";
 import Image from "next/image";
@@ -139,7 +139,14 @@ export default function Contact() {
                       </div>
                       <div className="flex items-start gap-2">
                         <input type="checkbox" className="mt-1" />
-                        <span className="text-[14px] text-[#000000]">Yes - I confirm that I am over 18 years old. By submitting this form, you agree to the Terms and conditions and have read the <span className="underline underline-offset-1 cursor-pointer">privacy notice.</span></span>
+                        <span className="text-[14px] text-[#000000]">
+                          Yes - I confirm that I am over 18 years old. By
+                          submitting this form, you agree to the Terms and
+                          conditions and have read the{" "}
+                          <span className="underline underline-offset-1 cursor-pointer">
+                            privacy notice.
+                          </span>
+                        </span>
                       </div>
                       <Link
                         href="thankyou"
@@ -214,6 +221,17 @@ export default function Contact() {
                           type="text"
                           placeholder="example@email.com"
                         />
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <input type="checkbox" className="mt-1" />
+                        <span className="text-[14px] text-[#000000]">
+                          Yes - I confirm that I am over 18 years old. By
+                          submitting this form, you agree to the Terms and
+                          conditions and have read the{" "}
+                          <span className="underline underline-offset-1 cursor-pointer">
+                            privacy notice.
+                          </span>
+                        </span>
                       </div>
                       <Link
                         href="thankyou"

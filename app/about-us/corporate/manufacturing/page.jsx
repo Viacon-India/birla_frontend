@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { FreeMode, Autoplay } from "swiper/modules";
+import { FreeMode, Autoplay, Navigation } from "swiper/modules";
+import "swiper/css/navigation";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
 import { Float } from "../../../components/pageCommon/pageCommon";
@@ -116,7 +117,7 @@ export default function Manufacturing() {
                 data-aos-duration="1000"
               >
                 <h3 className="section-title">
-                Where Quality Meets Innovation
+                  Where Quality Meets Innovation
                 </h3>
                 <Image
                   alt="mask"
@@ -265,7 +266,8 @@ export default function Manufacturing() {
                 For Employees:
               </h3>
               <Swiper
-                speed={2400}
+                navigation={true}
+                speed={1500}
                 loop={true}
                 autoplay={{
                   delay: 2500,
@@ -288,8 +290,8 @@ export default function Manufacturing() {
                     spaceBetween: 48,
                   },
                 }}
-                modules={[Autoplay]}
-                className="mySwiperManufacture mt-6 md:mt-8 2xl:mt-10"
+                modules={[Autoplay, Navigation]}
+                className="mySwiper !pb-6 md:!pb-8 2xl:!pb-16 mt-6 md:mt-8 2xl:mt-10"
               >
                 <SwiperSlide>
                   <div className="vast-card">
@@ -391,8 +393,8 @@ export default function Manufacturing() {
                 </SwiperSlide>
               </Swiper>
             </div>
-            <div class="mt-5 2xl:mt-8">
-              <h3 className="text-[24px] md:text-[30px] 2xl:text-[32px] font-bold text-secondary mt-6 md:mt-8 2xl:mt-10">
+            <div>
+              <h3 className="text-[24px] md:text-[30px] 2xl:text-[32px] font-bold text-secondary">
                 For Executives:
               </h3>
               <Swiper
@@ -471,7 +473,7 @@ export default function Manufacturing() {
             <span className="section-heading">our people</span>
             <div className="section-title-wrapper">
               <h3 className="section-title">
-              The Heart of Our Manufacturing Excellence
+                The Heart of Our Manufacturing Excellence
               </h3>
             </div>
             <p className="text-[#1A1D21] text-[14px] md:text-[16px] 2xl:text-[17px] mt-4 md:mt-6 2xl:mt-10">
@@ -514,19 +516,29 @@ export default function Manufacturing() {
                 </div>
                 <div className="collapse collapse-plus">
                   <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">Innovation and Engineering</div>
+                  <div className="collapse-title">
+                    Innovation and Engineering
+                  </div>
                   <div className="collapse-content">
                     <p>
-                    Our manufacturing and quality control engineers are constantly pushing the boundaries of what’s possible. They design and refine our production processes, ensuring efficiency and excellence at every stage.
+                      Our manufacturing and quality control engineers are
+                      constantly pushing the boundaries of what’s possible. They
+                      design and refine our production processes, ensuring
+                      efficiency and excellence at every stage.
                     </p>
                   </div>
                 </div>
                 <div className="collapse collapse-plus">
                   <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">Leadership and Management</div>
+                  <div className="collapse-title">
+                    Leadership and Management
+                  </div>
                   <div className="collapse-content">
                     <p>
-                    Our production managers and supervisors play a pivotal role in coordinating activities and meeting production targets. Our Plant leadership ensures that our operations run smoothly and efficiently.
+                      Our production managers and supervisors play a pivotal
+                      role in coordinating activities and meeting production
+                      targets. Our Plant leadership ensures that our operations
+                      run smoothly and efficiently.
                     </p>
                   </div>
                 </div>
@@ -535,16 +547,24 @@ export default function Manufacturing() {
                   <div className="collapse-title">Support and Development</div>
                   <div className="collapse-content">
                     <p>
-                    Our human resources team is dedicated to fostering a supportive and inclusive workplace. They handle recruitment, training, and employee well-being, ensuring that our team members feel valued and empowered.
+                      Our human resources team is dedicated to fostering a
+                      supportive and inclusive workplace. They handle
+                      recruitment, training, and employee well-being, ensuring
+                      that our team members feel valued and empowered.
                     </p>
                   </div>
                 </div>
                 <div className="collapse collapse-plus">
                   <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">Commitment to Diversity and Inclusion</div>
+                  <div className="collapse-title">
+                    Commitment to Diversity and Inclusion
+                  </div>
                   <div className="collapse-content">
                     <p>
-                    We are proud to champion gender diversity and promote self-management within our workforce. We believe that a diverse and inclusive environment leads to more innovative solutions and a more engaged team.
+                      We are proud to champion gender diversity and promote
+                      self-management within our workforce. We believe that a
+                      diverse and inclusive environment leads to more innovative
+                      solutions and a more engaged team.
                     </p>
                   </div>
                 </div>
@@ -553,7 +573,10 @@ export default function Manufacturing() {
                   <div className="collapse-title">Quality and Precision</div>
                   <div className="collapse-content">
                     <p>
-                    From assemblers to inspectors, every team member is committed to delivering products that meet the highest quality standards. Their meticulous work ensures that our customers receive only the best.
+                      From assemblers to inspectors, every team member is
+                      committed to delivering products that meet the highest
+                      quality standards. Their meticulous work ensures that our
+                      customers receive only the best.
                     </p>
                   </div>
                 </div>
@@ -562,7 +585,11 @@ export default function Manufacturing() {
                   <div className="collapse-title">Continuous Improvement</div>
                   <div className="collapse-content">
                     <p>
-                    We invest in the professional development of our employees, providing opportunities for growth and learning. This commitment not only enhances our operational efficiency but also solidifies our reputation as an industry leader.
+                      We invest in the professional development of our
+                      employees, providing opportunities for growth and
+                      learning. This commitment not only enhances our
+                      operational efficiency but also solidifies our reputation
+                      as an industry leader.
                     </p>
                   </div>
                 </div>

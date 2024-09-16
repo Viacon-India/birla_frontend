@@ -71,7 +71,7 @@ export default function JoinUs() {
               </p>
 
               <Link
-                href="#"
+                href="/about-us/career/life-at-birla-tyres"
                 className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2 mt-7"
                 data-aos="fade-left"
                 data-aos-duration="2000"
