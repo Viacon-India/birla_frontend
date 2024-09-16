@@ -242,7 +242,7 @@ export default function LifeAtBirla() {
                   </div>
                   <div className="w-full flex flex-col">
                     <label className="contact-label" htmlFor="">
-                      Upload resume
+                      Upload Resume
                     </label>
                     <div className="relative border border-[#727C8D] rounded-[8px]">
                       <input
@@ -280,7 +280,7 @@ export default function LifeAtBirla() {
       </section>
       <PageEnd
         Title="Categories - TBB"
-        TitleLink="/products/tbb"
+        TitleLink="/products/truck-bus-bias"
         EndStaticImage={life9}
         Background={true}
       />

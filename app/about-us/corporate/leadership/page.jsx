@@ -74,7 +74,7 @@ export default function Leadership() {
                   </h3>
                 </div>
                 <div
-                  class="flex gap-2"
+                  class="relative flex gap-2"
                   data-aos="fade-left"
                   data-aos-duration="600"
                 >
@@ -164,7 +164,7 @@ export default function Leadership() {
                     </h3>
                   </div>
                   <div
-                    class="flex gap-2"
+                    class="relative flex gap-2"
                     data-aos="fade-right"
                     data-aos-duration="800"
                   >
@@ -290,7 +290,7 @@ export default function Leadership() {
                     </h3>
                   </div>
                   <div
-                    class="flex gap-2"
+                    class="relative flex gap-2"
                     data-aos="fade-left"
                     data-aos-duration="800"
                   >

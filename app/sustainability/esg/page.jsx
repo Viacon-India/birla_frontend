@@ -158,25 +158,25 @@ export default function Esg() {
                 </p>
                 <div className="flex justify-between gap-[35px] overflow-hidden">
                   <figure
-                    className="w-1/2"
+                    className="w-1/2 h-[260px] 2xl:h-[320px]"
                     data-aos="fade-down"
                     data-aos-duration="1000"
                   >
                     <Image
                       src={Man1}
                       alt="Hero-Banner"
-                      className="rounded-xl w-full h-[250px] object-cover"
+                      className="rounded-xl w-full h-full object-cover"
                     />
                   </figure>
                   <figure
-                    className="w-1/2"
+                    className="w-1/2 h-[260px] 2xl:h-[320px]"
                     data-aos="fade-down"
                     data-aos-duration="1500"
                   >
                     <Image
                       src={Man2}
                       alt="Hero-Banner"
-                      className="rounded-xl w-full h-[250px] object-cover"
+                      className="rounded-xl w-full h-full object-cover"
                     />
                   </figure>
                 </div>
@@ -198,25 +198,25 @@ export default function Esg() {
 
                 <div className="flex justify-between gap-[35px] overflow-hidden">
                   <figure
-                    className="w-1/2"
+                    className="w-1/2 h-[260px] 2xl:h-[320px]"
                     data-aos="fade-down"
                     data-aos-duration="1000"
                   >
                     <Image
                       src={Man3}
                       alt="Hero-Banner"
-                      className="rounded-xl w-full h-[250px] object-cover"
+                      className="rounded-xl w-full h-full object-cover"
                     />
                   </figure>
                   <figure
-                    className="w-1/2"
+                    className="w-1/2 h-[260px] 2xl:h-[320px]"
                     data-aos="fade-down"
                     data-aos-duration="1500"
                   >
                     <Image
                       src={Man4}
                       alt="Hero-Banner"
-                      className="rounded-xl w-full h-[250px] object-cover"
+                      className="rounded-xl w-full h-full object-cover"
                     />
                   </figure>
                 </div>
@@ -238,25 +238,25 @@ export default function Esg() {
                 </p>
                 <div className="flex justify-between gap-[35px] overflow-hidden">
                   <figure
-                    className="w-1/2"
+                    className="w-1/2 h-[260px] 2xl:h-[320px]"
                     data-aos="fade-down"
                     data-aos-duration="1000"
                   >
                     <Image
                       src={Man5}
                       alt="Hero-Banner"
-                      className="rounded-xl w-full h-[250px] object-cover"
+                      className="rounded-xl w-full h-full object-cover"
                     />
                   </figure>
                   <figure
-                    className="w-1/2"
+                    className="w-1/2 h-[260px] 2xl:h-[320px]"
                     data-aos="fade-down"
                     data-aos-duration="1500"
                   >
                     <Image
                       src={Man6}
                       alt="Hero-Banner"
-                      className="rounded-xl w-full h-[250px] object-cover"
+                      className="rounded-xl w-full h-full object-cover"
                     />
                   </figure>
                 </div>
@@ -278,25 +278,25 @@ export default function Esg() {
 
                 <div className="flex justify-between gap-[35px] overflow-hidden">
                   <figure
-                    className="w-1/2"
+                    className="w-1/2 h-[260px] 2xl:h-[320px]"
                     data-aos="fade-down"
                     data-aos-duration="1000"
                   >
                     <Image
                       src={Man7}
                       alt="Hero-Banner"
-                      className="rounded-xl w-full h-[250px] object-cover"
+                      className="rounded-xl w-full h-full object-cover"
                     />
                   </figure>
                   <figure
-                    className="w-1/2"
+                    className="w-1/2 h-[260px] 2xl:h-[320px]"
                     data-aos="fade-down"
                     data-aos-duration="1500"
                   >
                     <Image
                       src={Man8}
                       alt="Hero-Banner"
-                      className="rounded-xl w-full h-[250px] object-cover"
+                      className="rounded-xl w-full h-full object-cover"
                     />
                   </figure>
                 </div>
