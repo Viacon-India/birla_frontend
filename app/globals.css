@@ -384,13 +384,14 @@ button.flip-animate, a.flip-animate {
   content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="white" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 .sideNav-wrapper{
-  @apply fixed right-0 top-1/2 -translate-y-1/2 overflow-hidden hidden md:block z-2
+  @apply fixed right-0 top-1/2 -translate-y-1/2 overflow-visible hidden md:block z-2 w-[58px]
 }
 
 .sideNav{
-  @apply flex gap-4 mb-2 justify-start items-center rounded-tl-[4px] rounded-bl-[4px] h-12 bg-primary w-[206px] px-[10px]
-text-white -translate-x-[-160px] hover:-translate-x-0 transition-all duration-500 relative
+  @apply flex gap-4 mb-2 justify-start items-center rounded-tl-[4px] rounded-bl-[4px] h-12 bg-primary w-[280px] px-[10px] left-[11px]
+text-white transition-all duration-500 relative hover:left-[-190px]
 }
+
 
 
 /* hamburger menu */

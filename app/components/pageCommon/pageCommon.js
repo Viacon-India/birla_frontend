@@ -169,7 +169,7 @@ export function Float() {
             stroke-linejoin="round"
           />
         </svg>
-        ho@birlatyre.com
+        corporate@birlatyre.com
       </Link>
       <Link className="sideNav" href="tel:033-22624354">
         <svg
