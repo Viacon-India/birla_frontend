@@ -52,7 +52,12 @@ export default function Footer() {
                     stroke-linejoin="round"
                   />
                 </svg>
-                <Link href="mailto:corporate@birlatyre.com" className="text-secondary">corporate@birlatyre.com</Link>
+                <Link
+                  href="mailto:corporate@birlatyre.com"
+                  className="text-secondary"
+                >
+                  corporate@birlatyre.com
+                </Link>
               </div>
               <div className="footer-detail-box">
                 <svg
@@ -67,7 +72,13 @@ export default function Footer() {
                     fill="#2E3192"
                   />
                 </svg>
-                <Link href="https://genpayhr.geniusconsultant.com/Himadri/ESS/" target="_blank" className="text-secondary">ESS Portal</Link>
+                <Link
+                  href="https://genpayhr.geniusconsultant.com/Himadri/ESS/"
+                  target="_blank"
+                  className="text-secondary"
+                >
+                  ESS Portal
+                </Link>
               </div>
             </div>
             <div class="follow-sec flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mt-3 md:mt-6">
@@ -173,13 +184,15 @@ export default function Footer() {
             </div>
           </div>
           <div class="flex items-center gap-3 md:gap-4">
-            <figure className="rounded-none m-0 w-[60px] h-[54px] md:w-fit md:h-[80px] fig-line">
-              <Image
-                src={logo2}
-                alt="logo"
-                className="w-full h-full object-cover"
-              />
-            </figure>
+            <Link href="https://www.himadri.com/" target="_blank">
+              <figure className="rounded-none m-0 w-[60px] h-[54px] md:w-fit md:h-[80px] fig-line">
+                <Image
+                  src={logo2}
+                  alt="logo"
+                  className="w-full h-full object-cover"
+                />
+              </figure>
+            </Link>
             <svg
               width="2"
               height="81"
@@ -196,14 +209,15 @@ export default function Footer() {
                 stroke-dasharray="5 6"
               />
             </svg>
-
-            <figure className="rounded-none m-0 w-[94px] h-[42px] md:w-[180px] md:h-[80px]">
-              <Image
-                src={logo1}
-                alt="logo"
-                className="w-full h-full object-cover"
-              />
-            </figure>
+            <Link href="/">
+              <figure className="rounded-none m-0 w-[94px] h-[42px] md:w-[180px] md:h-[80px]">
+                <Image
+                  src={logo1}
+                  alt="logo"
+                  className="w-full h-full object-cover"
+                />
+              </figure>
+            </Link>
           </div>
         </div>
 

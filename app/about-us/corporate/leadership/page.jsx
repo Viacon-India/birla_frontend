@@ -81,7 +81,7 @@ export default function Leadership() {
                   <p className="text-[#1A1D21] text-[24px] font-medium">
                     Follow:
                   </p>
-                  <Link href="#">
+                  <Link href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHVhCWmiXFRtwAAAZH5bOUIzd_WFQEF12q5v3nOXJslocEVL_WF5eJLxn-BaIXFb_80lhzV6du3HNM9722BcWvowrpjX7jOLgFoPuguq3UtgWhPlCv3L7j5Yj94IRvzQElwjcI=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fanurag-choudhary-768227136%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dandroid_app" target="_blank">
                     <svg
                       width="32"
                       height="32"
@@ -171,7 +171,7 @@ export default function Leadership() {
                     <p className="text-[#1A1D21] text-[24px] font-medium">
                       Follow:
                     </p>
-                    <Link href="#">
+                    <Link href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQGlgEhRYLZaDwAAAZH5brXgGPvohXD1ur9HRjpERq0RvKbs-_lvONSKbOHidzYmMmzC_FGynp2tCksHgCua6SIiHUFNzooSqkEYu-O-Yl-lSnFs-Q9Uhw2MimHZ6W4KhedhQmQ=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Famit-choudhary-807a61163%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dandroid_app" target="_blank">
                       <svg
                         width="32"
                         height="32"
@@ -297,7 +297,7 @@ export default function Leadership() {
                     <p className="text-[#1A1D21] text-[24px] font-medium">
                       Follow:
                     </p>
-                    <Link href="#">
+                    <Link href="https://www.linkedin.com/in/shyam-sundar-choudhary-417474150?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
                       <svg
                         width="32"
                         height="32"

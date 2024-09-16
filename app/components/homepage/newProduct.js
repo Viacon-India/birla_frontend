@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation } from "swiper/modules";
+import "swiper/css/navigation";
 import Image from "next/image";
 import tyre1 from "../../assets/images/tyre1.png";
 import tyre2 from "../../assets/images/tyre2.png";
@@ -16,13 +17,12 @@ import tyre7 from "../../assets/images/tyre7.png";
 import tyre8 from "../../assets/images/tyre8.png";
 import tyre9 from "../../assets/images/tyre9.png";
 import tyre10 from "../../assets/images/tyre-totate.gif";
-import "swiper/css/navigation";
 import GradualSpacing from "@/components/GradualSpacing";
 import prodSvg from "../../assets/images/product-svg.png";
-import tbbIcon from "../../assets/images/tbb-icon.png"
+import tbbIcon from "../../assets/images/tbb-icon.png";
 import prodSvg2 from "../../assets/images/product-svg2.png";
 import prodSvg3 from "../../assets/images/product-svg3.png";
-import grader from "../../assets/images/grader-icon.png"
+import grader from "../../assets/images/grader-icon.png";
 // import ultra from "../../assets/images/ultra-trac.svg";
 import iconW2img from "../../assets/images/iconW2img.png";
 import chakra from "../../assets/images/chakra-icon.png";
@@ -39,19 +39,19 @@ const productData = {
   TBB: [
     {
       title: "Ultra Drive Platina",
-      tag:"Premium",
+      tag: "Premium",
       description: "High Mileage Premium Lug",
       image: tyre1,
       icon: tbbIcon,
-      size: ["8.25-20","10.00-20"],
+      size: ["8.25-20", "10.00-20"],
       load: "Moderate",
       pattern: "Lug",
       construction: "Bias",
-      toolTip: "Truck Bus"
+      toolTip: "Truck Bus",
     },
     {
       title: "Ultra Miler Platina",
-      tag:"Premium",
+      tag: "Premium",
       description: "High Mileage Premium Rib",
       image: tyre2,
       icon: tbbIcon,
@@ -59,49 +59,49 @@ const productData = {
       load: "Moderate",
       pattern: "Rib",
       construction: "Bias",
-      toolTip: "Truck Bus"
+      toolTip: "Truck Bus",
     },
     {
       title: "Rustom",
       description: "Regional Semi Lug",
-      tag:"Premium",
+      tag: "Premium",
       image: tyre3,
       icon: tbbIcon,
       size: ["9.00-20"],
       load: "Rated",
       pattern: "Semi Lug",
       construction: "Bias",
-      toolTip: "Truck Bus"
+      toolTip: "Truck Bus",
     },
   ],
   OTR: [
     {
       title: "Kalapatthar",
-      tag:"Premium",
+      tag: "Premium",
       description: "Standard tyre for the toughest mining environment.",
       image: tyre4,
       icon: prodSvg,
-      size: ["9.00-20", "10.00-20", "11.00-20", "12.00-20", "12.00-24" ],
+      size: ["9.00-20", "10.00-20", "11.00-20", "12.00-20", "12.00-24"],
       load: "Lorem",
       pattern: "Lorem Ipsum",
       construction: "Lorem",
-      toolTip: "Tipper Truck"
+      toolTip: "Tipper Truck",
     },
     {
       title: "Kalapatthar Plus",
-      tag:"Premium",
+      tag: "Premium",
       description: "Premium tyre for the toughest mining environment.",
       image: tyre5,
       icon: prodSvg,
-      size: ["9.00-20", "10.00-20", "11.00-20", "12.00-20", "12.00-24" ],
+      size: ["9.00-20", "10.00-20", "11.00-20", "12.00-20", "12.00-24"],
       load: "Lorem",
       pattern: "Lorem Ipsum",
       construction: "Lorem",
-      toolTip: "Tipper Truck"
+      toolTip: "Tipper Truck",
     },
     {
       title: "Grader Max",
-      tag:"Premium",
+      tag: "Premium",
       description: "Premium Grader Tyre",
       image: tyre6,
       icon: grader,
@@ -109,13 +109,13 @@ const productData = {
       load: "Lorem",
       pattern: "Lorem Ipsum",
       construction: "Lorem",
-      toolTip: "Grader"
+      toolTip: "Grader",
     },
   ],
   AGRI: [
     {
       title: "Shaan+",
-      tag:"Standard",
+      tag: "Standard",
       description: "Suitable for haulage & agri applications",
       image: tyre8,
       icon: prodSvg3,
@@ -123,11 +123,11 @@ const productData = {
       load: "Lorem",
       pattern: "Lorem Ipsum",
       construction: "Lorem",
-      toolTip: "Tractor"
+      toolTip: "Tractor",
     },
     {
       title: "Shaan",
-      tag:"Standard",
+      tag: "Standard",
       description: "Longer Life & More Mileage",
       image: tyre7,
       icon: prodSvg3,
@@ -135,11 +135,11 @@ const productData = {
       load: "Lorem",
       pattern: "Lorem Ipsum",
       construction: "Lorem",
-      toolTip: "Tractor"
+      toolTip: "Tractor",
     },
     {
       title: "Chakra",
-      tag:"Standard",
+      tag: "Standard",
       description: "Tractor Trailer Tyre",
       image: tyre9,
       icon: chakra,
@@ -147,7 +147,7 @@ const productData = {
       load: "Lorem",
       pattern: "Lorem Ipsum",
       construction: "Lorem",
-      toolTip: "Tractor Trailer"
+      toolTip: "Tractor Trailer",
     },
   ],
 };
@@ -251,8 +251,16 @@ export default function NewProduct() {
               {productData[tab].map((product, index) => (
                 <SwiperSlide key={index}>
                   <div className="new-product-card">
-                    <span className={product.tag === 'Premium' ? 'prem-product-card-tag' : 'new-product-card-tag'}>{product.tag}</span>
-                    
+                    <span
+                      className={
+                        product.tag === "Premium"
+                          ? "prem-product-card-tag"
+                          : "new-product-card-tag"
+                      }
+                    >
+                      {product.tag}
+                    </span>
+
                     <div class="flex gap-8 px-4 pt-4">
                       <div class="new-product-iconListSec flex flex-col gap-6 2xl:gap-10">
                         <div class="flex gap-[6px] items-center">
@@ -273,7 +281,7 @@ export default function NewProduct() {
                               Pattern
                             </p>
                             <p className="text-[15px] !text-[#727C8D] !mb-0">
-                            {product.pattern}
+                              {product.pattern}
                             </p>
                           </span>
                         </div>
@@ -284,7 +292,7 @@ export default function NewProduct() {
                               Construction
                             </p>
                             <p className="text-[15px] !text-[#727C8D] !mb-0">
-                            {product.construction}
+                              {product.construction}
                             </p>
                           </span>
                         </div>
@@ -313,14 +321,15 @@ export default function NewProduct() {
                         >
                           {product.size.map((size, ind) => (
                             <SwiperSlide className="!w-fit" key={ind}>
-                              <button className="size-chip" >
-                                {size}
-                              </button>
+                              <button className="size-chip">{size}</button>
                             </SwiperSlide>
                           ))}
                         </Swiper>
                       </div>
-                      <div className="new-product-svg-wrapper tooltip" data-tip={product.toolTip}>
+                      <div
+                        className="new-product-svg-wrapper tooltip"
+                        data-tip={product.toolTip}
+                      >
                         <Image
                           className="h-8 object-contain"
                           src={product.icon}
@@ -332,7 +341,6 @@ export default function NewProduct() {
                 </SwiperSlide>
               ))}
             </Swiper>
-            
           </div>
         ))}
       </div>
