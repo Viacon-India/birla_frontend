@@ -207,7 +207,7 @@ export default function Research() {
                 data-aos-duration="1000"
                 className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
               >
-                <h3 className="section-title">What's Next?</h3>
+                <h3 className="section-title">What&apos;s Next?</h3>
               </div>
               <p data-aos="fade-left" data-aos-duration="1000">
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
