@@ -39,7 +39,7 @@ export default function TyreGuide() {
                 data-aos-duration="1500"
               >
                 <Image
-                  className="absolute -z-1 w-full h-full"
+                  className="absolute -z-1 w-[90%] h-[90%]"
                   src={Triangle1}
                   alt="triangle"
                 />
@@ -287,7 +287,7 @@ export default function TyreGuide() {
                 data-aos-duration="1500"
               >
                 <Image
-                  className="absolute -z-1 w-full h-full"
+                  className="absolute -z-1 w-[90%] h-[90%]"
                   src={Triangle1}
                   alt="triangle"
                 />
@@ -385,7 +385,7 @@ export default function TyreGuide() {
                 data-aos-duration="1500"
               >
                 <Image
-                  className="absolute -z-1 w-full h-full"
+                  className="absolute -z-1 w-[90%] h-[90%] right-0"
                   src={Triangle2}
                   alt="triangle"
                 />
@@ -403,7 +403,7 @@ export default function TyreGuide() {
                 data-aos-duration="1500"
               >
                 <Image
-                  className="absolute -z-1 w-full h-full"
+                  className="absolute -z-1 w-[90%] h-[90%]"
                   src={Triangle1}
                   alt="triangle"
                 />
@@ -527,7 +527,7 @@ export default function TyreGuide() {
                 data-aos-duration="1500"
               >
                 <Image
-                  className="absolute -z-1 w-full h-full"
+                  className="absolute -z-1 w-[90%] h-[90%] right-0"
                   src={Triangle2}
                   alt="triangle"
                 />
@@ -552,7 +552,11 @@ export default function TyreGuide() {
           </div>
         </div>
       </section>
-      <PageEnd Title="Tyre Care" EndStaticImage={LastBg} />
+      <PageEnd
+        Title="Tyre Care"
+        TitleLink="/tyre-tips/tyre-care"
+        EndStaticImage={LastBg}
+      />
       <Footer />
     </>
   );

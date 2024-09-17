@@ -34,7 +34,7 @@ export default function Research() {
               data-aos-duration="1500"
             >
               <Image
-                className="absolute -z-1 w-full h-full"
+                className="absolute -z-1 w-[90%] h-[90%]"
                 src={Triangle1}
                 alt="triangle"
               />
@@ -50,14 +50,14 @@ export default function Research() {
                 data-aos="fade-left"
                 data-aos-duration="500"
               >
-                Research and Development
+                Introduction to R&D
               </span>
               <div
                 className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
                 data-aos="fade-left"
                 data-aos-duration="500"
               >
-                <h3 className="section-title">Legacy of Innovation Across Varied Segments</h3>
+                <h3 className="section-title">Legacy of Innovation</h3>
               </div>
               <p data-aos="fade-left" data-aos-duration="1000">
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
@@ -85,9 +85,9 @@ export default function Research() {
       <section className="bg-[#F8F8F8] py-8 md:py-12 2xl:py-[60px] my-8 md:my-12 2xl:my-[60px] overflow-hidden">
         <div className="container mx-auto">
           <div className="excellence-sec">
-            <span className="section-heading">Driven by Innovation and Excellence</span>
+            <span className="section-heading">R&D capabilities</span>
             <div className="section-title-wrapper">
-              <h3 className="section-title">Our Capabilities</h3>
+              <h3 className="section-title">Driven by Innovation & Excellence</h3>
             </div>
             <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
               <div class="w-full md:w-[45%] h-fit md:sticky top-[90px]">
@@ -200,14 +200,14 @@ export default function Research() {
                 data-aos-duration="1000"
                 className="section-heading"
               >
-                lorem ipsum
+                Key Focus Areas
               </span>
               <div
                 data-aos="fade-left"
                 data-aos-duration="1000"
                 className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
               >
-                <h3 className="section-title">Current Focus of R&D</h3>
+                <h3 className="section-title">What's Next?</h3>
               </div>
               <p data-aos="fade-left" data-aos-duration="1000">
                 Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
@@ -234,7 +234,7 @@ export default function Research() {
               data-aos-duration="1500"
             >
               <Image
-                className="absolute -z-1 w-full h-full"
+                className="absolute -z-1 w-[90%] h-[90%] right-0"
                 src={Triangle2}
                 alt="triangle"
               />

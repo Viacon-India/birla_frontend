@@ -194,7 +194,11 @@ export default function WarrantyPolicy() {
           </div>
         </div>
       </section>
-      <PageEnd EndStaticImage={LastBg} />
+      <PageEnd
+        Title="Tyre Guide"
+        TitleLink="/tyre-tips/tyre-guide"
+        EndStaticImage={LastBg}
+      />
       <Footer />
     </>
   );
