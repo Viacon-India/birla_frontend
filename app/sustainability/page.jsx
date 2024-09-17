@@ -439,7 +439,7 @@ export default function Sustainability() {
                   data-aos-duration="1500"
                 >
                   <Image
-                    className="absolute -z-1 w-full h-full"
+                    className="absolute -z-1 w-[90%] h-[90%]"
                     src={Triangle1}
                     alt="triangle"
                   />
@@ -455,7 +455,7 @@ export default function Sustainability() {
                     data-aos="fade-left"
                     data-aos-duration="500"
                   >
-                    KEy pillers
+                    KEy pillars
                   </span>
                   <div
                     className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"

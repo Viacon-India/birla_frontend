@@ -242,7 +242,7 @@ export default function Navbar() {
           {headerLogo.length > 1 && (
             <div className="navbar-end gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
               {headerLogo[0].image?.data && headerLogo[0].icon_link?.link && (
-                <Link href={headerLogo[0].icon_link.link}>
+                <Link href={headerLogo[0].icon_link.link} target="_blank">
                   <figure className="rounded-none m-0 w-[50px] h-[50px] md:w-[65px] md:h-[65px]">
                     <Image
                       src={getStrapiMedia(

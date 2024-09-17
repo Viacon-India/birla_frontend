@@ -17,10 +17,10 @@ import man2 from "../../../assets/images/man2.jpg";
 import man3 from "../../../assets/images/man3.jpg";
 import BGTiger from "../../../assets/images/tiger-mask3.png";
 import man4 from "../../../assets/images/man4.jpg";
-import man5 from "../../../assets/images/man5.jpg";
-import man6 from "../../../assets/images/man6.jpg";
+import man5 from "../../../assets/images/man5.png";
+import man6 from "../../../assets/images/man6.png";
 import man8 from "../../../assets/images/man8.png";
-import man7 from "../../../assets/images/man7.jpg";
+import man7 from "../../../assets/images/man7.png";
 import man9 from "../../../assets/images/man9.png";
 import man10 from "../../../assets/images/man10.png";
 import man11 from "../../../assets/images/man11.png";
@@ -28,12 +28,12 @@ import man12 from "../../../assets/images/man12.jpg";
 import man13 from "../../../assets/images/man13.jpg";
 import man14 from "../../../assets/images/man14.jpg";
 import man15 from "../../../assets/images/man15.jpg";
-import man16 from "../../../assets/images/man16.jpg";
-import man17 from "../../../assets/images/man17.jpg";
-import man18 from "../../../assets/images/man18.jpg";
-import man19 from "../../../assets/images/man19.jpg";
-import man20 from "../../../assets/images/man20.jpg";
-import man21 from "../../../assets/images/man21.jpg";
+import man16 from "../../../assets/images/man16.png";
+import man17 from "../../../assets/images/man17.png";
+import man18 from "../../../assets/images/man18.png";
+import man19 from "../../../assets/images/man19.png";
+import man20 from "../../../assets/images/man20.png";
+import man21 from "../../../assets/images/man21.png";
 import tiger from "../../../assets/images/tiger.png";
 import tigerMask from "../../../assets/images/tiger-mask2.png";
 import AOS from "aos";
@@ -291,104 +291,90 @@ export default function Manufacturing() {
                   },
                 }}
                 modules={[Autoplay, Navigation]}
-                className="mySwiper !pb-6 md:!pb-8 2xl:!pb-16 mt-6 md:mt-8 2xl:mt-10"
+                className="mySwiper !pb-6 md:!pb-16 mt-6 md:mt-[64px] 2xl:mt-10"
               >
                 <SwiperSlide>
-                  <div className="vast-card">
+                  <div className="phil-card">
                     <figure>
                       <Image
-                        className="vast-card-image"
+                        className="phil-card-image"
                         src={man4}
                         alt="card"
                       />
                     </figure>
-                    <h2 className="!text-[20px] !font-semibold">
-                      Wear mandated Personal Protective Equipment
-                    </h2>
+                    <h2>Wear mandated Personal Protective Equipment</h2>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className="vast-card">
+                  <div className="phil-card">
                     <figure>
                       <Image
-                        className="vast-card-image"
+                        className="phil-card-image"
                         src={man5}
                         alt="card"
                       />
                     </figure>
-                    <h2 className="!text-[20px] !font-semibold">
-                      Trained/authorised operates equipment/vehicle
-                    </h2>
+                    <h2>Trained/authorised operates equipment/vehicle</h2>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className="vast-card">
+                  <div className="phil-card">
                     <figure>
                       <Image
-                        className="vast-card-image"
+                        className="phil-card-image"
                         src={man6}
                         alt="card"
                       />
                     </figure>
-                    <h2 className="!text-[20px] !font-semibold">
-                      Ensure Machine Guarding
-                    </h2>
+                    <h2>Ensure Machine Guarding</h2>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className="vast-card">
+                  <div className="phil-card">
                     <figure>
                       <Image
-                        className="vast-card-image"
+                        className="phil-card-image"
                         src={man7}
                         alt="card"
                       />
                     </figure>
-                    <h2 className="!text-[20px] !font-semibold">
-                      Exercise Lock, Tag & Try
-                    </h2>
+                    <h2>Exercise Lock, Tag & Try</h2>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className="vast-card">
+                  <div className="phil-card">
                     <figure>
                       <Image
-                        className="vast-card-image"
+                        className="phil-card-image"
                         src={man16}
                         alt="card"
                       />
                     </figure>
-                    <h2 className="!text-[20px] !font-semibold">
-                      Fall protection is Must
-                    </h2>
+                    <h2>Fall protection is Must</h2>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className="vast-card">
+                  <div className="phil-card">
                     <figure>
                       <Image
-                        className="vast-card-image"
+                        className="phil-card-image"
                         src={man17}
                         alt="card"
                       />
                     </figure>
-                    <h2 className="!text-[20px] !font-semibold">
-                      Electrical Work by Certified & Authorised
-                    </h2>
+                    <h2>Electrical Work by Certified & Authorised</h2>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className="vast-card">
+                  <div className="phil-card">
                     <figure>
                       <Image
-                        className="vast-card-image"
+                        className="phil-card-image"
                         src={man18}
                         alt="card"
                       />
                     </figure>
-                    <h2 className="!text-[20px] !font-semibold">
-                      Check Confined Space
-                    </h2>
+                    <h2>Check Confined Space</h2>
                   </div>
                 </SwiperSlide>
               </Swiper>
@@ -421,45 +407,39 @@ export default function Manufacturing() {
                 className="mySwiperManufacture mt-6 md:mt-8 2xl:mt-10"
               >
                 <SwiperSlide>
-                  <div className="vast-card">
+                  <div className="phil-card">
                     <figure>
                       <Image
-                        className="vast-card-image"
+                        className="phil-card-image"
                         src={man19}
                         alt="card"
                       />
                     </figure>
-                    <h2 className="!text-[20px] !font-semibold">
-                      Permit to work for all Non-Standard activities
-                    </h2>
+                    <h2>Permit to work for all Non-Standard activities</h2>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className="vast-card">
+                  <div className="phil-card">
                     <figure>
                       <Image
-                        className="vast-card-image"
+                        className="phil-card-image"
                         src={man20}
                         alt="card"
                       />
                     </figure>
-                    <h2 className="!text-[20px] !font-semibold">
-                      Risk assessment for all activities
-                    </h2>
+                    <h2>Risk assessment for all activities</h2>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className="vast-card">
+                  <div className="phil-card">
                     <figure>
                       <Image
-                        className="vast-card-image"
+                        className="phil-card-image"
                         src={man21}
                         alt="card"
                       />
                     </figure>
-                    <h2 className="!text-[20px] !font-semibold">
-                      SWI/SOP for all Standard activities
-                    </h2>
+                    <h2>SWI/SOP for all Standard activities</h2>
                   </div>
                 </SwiperSlide>
               </Swiper>
