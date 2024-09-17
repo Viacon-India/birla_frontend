@@ -1044,8 +1044,15 @@ a.current_dot {
 .top-banner-sec{
   @apply pt-[58px] md:pt-[84px] relative
 }
-.top-banner-sec-heading{
+/* .top-banner-sec-heading{
   @apply font-bold text-[32px] md:text-[48px] 2xl:text-[56px] text-secondary !uppercase 
+} */
+.top-banner-sec-heading{
+  @apply font-extrabold text-[32px] md:text-[48px] 2xl:text-[56px] text-[#FFFFFF] !uppercase 
+}
+.banner-overlay{
+  background: linear-gradient(to top, rgba(0,0,0,0.70), rgba(0,0,0,0));
+  @apply absolute bottom-0 left-0 w-full h-[60%] z-10
 }
 .sub-section-wrapper{
   @apply flex flex-col gap-8 md:gap-10
@@ -1076,6 +1083,12 @@ a.current_dot {
 
 .vast-card figure:hover img {
   transform: scale(1.2);
+}
+.vast-card ul{
+  @apply flex flex-col pl-6 list-disc
+}
+.vast-card ul li{
+  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[17px] mb-1
 }
 .accordion-list-sec{
   @apply relative z-5

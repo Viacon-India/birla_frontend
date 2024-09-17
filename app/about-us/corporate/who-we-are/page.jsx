@@ -46,34 +46,29 @@ export default function WhoWeAre() {
                   src={tigerMask}
                   className="absolute left-0 top-0"
                 />
-                <span className="section-heading">lorem ipsum</span>
+                <span className="section-heading">About Us</span>
                 <div className="section-title-wrapper">
-                  <h3 className="section-title">Headline Lorem Ipsum</h3>
+                  <h3 className="section-title">Our Journey</h3>
                 </div>
               </div>
               <div className="box-content-sec w-full md:w-[60%] relative">
                 <p data-aos="fade-left" data-aos-duration="1000">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                  Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                  sed.
+                  Birla Tyres was established in 1991 and has a rich heritage of
+                  excellence. Over the past 3 decades, Birla Tyres had built a
+                  reputation for quality and was recognized as one of the best
+                  tyre manufacturers in India. The registered office of Birla
+                  Tyres is located in Kolkata while the state-of-the-art
+                  manufacturing plant is located at Balasore, Odisha. The plant
+                  spans over an area of 195 acres and produces high-quality
+                  tyres catering to a wide variety of applications (commercial,
+                  agricultural, off-the-road, etc.)
                 </p>
                 <p data-aos="fade-left" data-aos-duration="1000">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                  Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                  sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                  eget.
-                </p>
-                <p data-aos="fade-left" data-aos-duration="1000">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                  Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                  sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                  eget. Cras sollicitudin ligula at volutpat ultrices.
+                  Dalmia Bharat Refractories Limited (DBRL) along with their
+                  strategic partner, Himadri Speciality Chemical Limited (HSCL)
+                  have acquired Birla Tyres Limited's tyre business through a
+                  resolution plan approved by the National Company Law Tribunal
+                  in October 2023.
                 </p>
               </div>
             </div>
@@ -122,35 +117,51 @@ export default function WhoWeAre() {
                     data-aos="fade-left"
                     data-aos-duration="1000"
                   >
-                    Himadri Speciality Chemical Ltd.
+                    Himadri Speciality Chemical Limited (HSCL)
                   </h3>
                 </div>
+                <p data-aos="fade-left" data-aos-duration="200">
+                  Himadri Speciality Chemical Ltd is a global speciality
+                  chemical conglomerate with a strong focus on research and
+                  development (R&D), innovation and sustainability.
+                </p>
                 <p data-aos="fade-left" data-aos-duration="500">
-                  Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                  Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                  sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                  eget. Cras sollicitudin ligula at volutpat ultrices. Donec
-                  vitae mi vulputate, suscipit urna in, malesuada nisl. Donec
-                  vitae mi vulputate, suscipit urna in, malesuada nisl.
-                  Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                  sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                  eget.
+                  As pioneer in the production of lithium-ion battery materials
+                  in India, it continuously develops and innovates raw materials
+                  of lithium-ion battery value chain. It’s diverse product
+                  portfolio includes speciality carbon black, coal tar pitch,
+                  refined naphthalene, advance materials, SNF, speciality oils,
+                  power, etc. catering to various industries such as lithium-ion
+                  batteries, paints, plastics, tyres, aluminium, graphite
+                  electrodes, agrochemicals, defence and construction chemicals.
+                  Himadri operates in both domestic and international markets,
+                  exporting to 54 countries across the globe.
                 </p>
                 <p data-aos="fade-left" data-aos-duration="1000">
-                  Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                  Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                  sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                  eget. Cras sollicitudin ligula at volutpat ultrices. Donec
-                  vitae mi vulputate, suscipit urna in, malesuada nisl.
+                  With a strong commitment to safety and sustainability, it has
+                  8 zero-liquid discharge manufacturing facilities and utilize
+                  in-house clean and green power for more than 90% of its energy
+                  needs. Through its dedication to R&D, new business
+                  opportunities and sustainability, Himadri is making a positive
+                  impact on the industry, both in India and globally.
                 </p>
                 <p data-aos="fade-left" data-aos-duration="1500">
-                  Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                  Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                  sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                  eget.
+                  Himadri, as a manufacturer of carbon black, has a deep
+                  understanding of the tyre industry. Having successfully
+                  forward integrated from Oil to Carbon Black, then to
+                  Speciality Carbon Black, Himadri thus stands at the threshold
+                  of an exciting transformation moving forward towards end
+                  customer, venturing into the world of Tyres. Birla Tyres has
+                  strong synergies with Himadri operations and aligns
+                  strategically with the company&apos;s overall objective of
+                  being a lead player in EV space.
                 </p>
 
-                <Link href="https://www.himadri.com/" target="_blank" className="more-btn">
+                <Link
+                  href="https://www.himadri.com/"
+                  target="_blank"
+                  className="more-btn"
+                >
                   Know More
                 </Link>
                 <div class="line-loader absolute right-0 bottom-0">
@@ -169,35 +180,38 @@ export default function WhoWeAre() {
                     data-aos="fade-left"
                     data-aos-duration="1000"
                   >
-                    Dalmia Bharat Refractories Ltd.
+                    Dalmia Bharat Refractories Limited (DBRL)
                   </h3>
                 </div>
                 <p data-aos="fade-left" data-aos-duration="500">
-                  Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                  Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                  sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                  eget. Cras sollicitudin ligula at volutpat ultrices. Donec
-                  vitae mi vulputate, suscipit urna in, malesuada nisl. Donec
-                  vitae mi vulputate, suscipit urna in, malesuada nisl.
-                  Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                  sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                  eget.
+                  Dalmia Bharat Refractories Limited (DBRL) is a prominent
+                  Indian company with a rich legacy dating back to 1939. In a
+                  strategic move to streamline operations and explore new
+                  avenues of growth, DBRL has divested its entire refractory
+                  business, except for the magnesia carbon business and its
+                  manufacturing located in China. DBRL's unwavering commitment
+                  to growth and innovation is exemplified by its recent
+                  acquisition of Birla Tyres Limited's tyre business - this bold
+                  venture into a domain entirely new to DBRL's established
+                  expertise signifies the company's unwavering spirit of
+                  exploration and adaptability.
                 </p>
                 <p data-aos="fade-left" data-aos-duration="1000">
-                  Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                  Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                  sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                  eget. Cras sollicitudin ligula at volutpat ultrices. Donec
-                  vitae mi vulputate, suscipit urna in, malesuada nisl.
-                </p>
-                <p data-aos="fade-left" data-aos-duration="1500">
-                  Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                  Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                  sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                  eget.
+                  This strategic partnership marks the beginning of an exciting
+                  new chapter, where our combined expertise, resources, and
+                  innovative spirit will drive us to achieve greater heights.
+                  Together, we are poised to revolutionize the tyre industry,
+                  delivering unparalleled value to our customers and
+                  stakeholders. With a shared vision and commitment to
+                  excellence, we look forward to a future filled with remarkable
+                  achievements and ground-breaking advancements.
                 </p>
 
-                <Link href="https://dalmiaocl.com/" target="_blank" className="more-btn">
+                <Link
+                  href="https://dalmiaocl.com/"
+                  target="_blank"
+                  className="more-btn"
+                >
                   Know More
                 </Link>
                 <div class="line-loader absolute right-0 bottom-0">
@@ -252,18 +266,16 @@ export default function WhoWeAre() {
             </div>
           </div>
           <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec
-            vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque
-            laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur
-            maximus mollis diam, vel varius sapien suscipit eget. Cras
-            sollicitudin ligula at volutpat ultrices. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit
-            urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et
-            pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel
-            varius sapien suscipit eget. Cras sollicitudin ligula at volutpat
-            ultrices.
+            At Birla Tyres, we offer a comprehensive range of high-quality tyres
+            designed to cater to various vehicles and terrains. We understand
+            that different vehicles, driving conditions and needs require
+            specific tyre characteristics. Our wide range ensures that we have
+            the perfect tyre for every vehicle and driving need - whether it’s
+            ensuring the durability and performance of commercial vehicles,
+            supporting the efficiency of agricultural machinery, or enhancing
+            the capabilities of off-road equipment, our tyres are designed to
+            meet the highest standards of quality and reliability. Our product
+            portfolio includes:
           </p>
           <div className="grid grid-cols1 md:grid-cols-3 gap-6 md:gap-10">
             <div
@@ -276,12 +288,10 @@ export default function WhoWeAre() {
                 <Image className="vast-card-image" src={who6} alt="card" />
               </figure>
               <h2>Truck Bus Bias</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl.
-              </p>
+              <ul>
+                <li>Robust and reliable tyres for trucks, buses, ultra-light truck, etc.</li>
+                <li>Enhanced load-carrying capacity and 360-degree impact resistance for optimal performance</li>
+              </ul>
             </div>
             <div
               className="vast-card"
@@ -293,12 +303,10 @@ export default function WhoWeAre() {
                 <Image className="vast-card-image" src={who7} alt="card" />
               </figure>
               <h2>Off The Road</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl.
-              </p>
+              <ul>
+                <li>Heavy-duty and resilient tyres designed for Construction, industrial and mining equipment</li>
+                <li>Superior traction and extended mileage,complemented by value-added services, for stress-free use in challenging terrains</li>
+              </ul>
             </div>
             <div
               className="vast-card"
@@ -310,12 +318,10 @@ export default function WhoWeAre() {
                 <Image className="vast-card-image" src={who8} alt="card" />
               </figure>
               <h2>Agriculture</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl.
-              </p>
+              <ul>
+                <li>Durable and dependable tyres designed for tractors, harvesters, and other agricultural machinery</li>
+                <li>Multi-purpose tread optimized for traction and impact resistance on both farm and road(haulage)</li>
+              </ul>
             </div>
           </div>
         </div>

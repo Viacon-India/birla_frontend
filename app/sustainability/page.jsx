@@ -44,7 +44,7 @@ export default function Sustainability() {
   return (
     <>
       <Navbar />
-      <PageBanner Title="Sustainability Overview" StaticBanner={Banner} />
+      <PageBanner Title="Sustainability" StaticBanner={Banner} />
       <section className="page-content-sec mt-[60px]">
         <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
           <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8">

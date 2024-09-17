@@ -34,6 +34,9 @@ import man18 from "../../../assets/images/man18.png";
 import man19 from "../../../assets/images/man19.png";
 import man20 from "../../../assets/images/man20.png";
 import man21 from "../../../assets/images/man21.png";
+import man22 from "../../../assets/images/man22.jpg";
+import man23 from "../../../assets/images/man23.jpg";
+import man24 from "../../../assets/images/man24.jpg";
 import tiger from "../../../assets/images/tiger.png";
 import tigerMask from "../../../assets/images/tiger-mask2.png";
 import AOS from "aos";
@@ -67,41 +70,6 @@ export default function Manufacturing() {
       <PageBanner Title="Manufacturing" StaticBanner={Banner} />
       <section className="page-content-sec mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
         <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10">
-            <div
-              className="box-card"
-              data-aos="zoom-in"
-              data-aos-duration="1500"
-            >
-              <div>
-                <h3>300 tpd</h3>
-              </div>
-              <h2>Production Capacity</h2>
-              <p>(all 3 segments)</p>
-            </div>
-            <div
-              className="box-card"
-              data-aos="zoom-in"
-              data-aos-duration="1500"
-            >
-              <div>
-                <h3>8 inch - 34 inch</h3>
-              </div>
-              <h2>Range of Tyres Manufactured</h2>
-              <p>(Rim Sizes)</p>
-            </div>
-            <div
-              className="box-card"
-              data-aos="zoom-in"
-              data-aos-duration="1500"
-            >
-              <div>
-                <h3>37.8%</h3>
-              </div>
-              <h2>Greenery Coverage in Plant</h2>
-              <p>(Well-planned layout taking environment into consideration)</p>
-            </div>
-          </div>
           <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8">
             <div className="w-full md:w-[40%]">
               <span
@@ -258,11 +226,11 @@ export default function Manufacturing() {
               </li>
             </ul>
             <div class="mt-5 md:mt-10 2xl:mt-12">
-              <span className="section-heading">our Safety rules</span>
+              {/* <span className="section-heading">our Safety rules</span>
               <div className="section-title-wrapper">
                 <h3 className="section-title">Core Safety Rules</h3>
-              </div>
-              <h3 className="text-[24px] md:text-[30px] 2xl:text-[32px] font-bold text-secondary mt-6 md:mt-8 2xl:mt-10">
+              </div> */}
+              <h3 className="text-[24px] 2xl:text-[32px] text-secondary mt-6 md:mt-8 2xl:mt-10">
                 For Employees:
               </h3>
               <Swiper
@@ -291,7 +259,7 @@ export default function Manufacturing() {
                   },
                 }}
                 modules={[Autoplay, Navigation]}
-                className="mySwiper !pb-6 md:!pb-16 mt-6 md:mt-[64px] 2xl:mt-10"
+                className="mySwiper !pb-6 md:!pb-12 2xl:!pb-16 mt-5"
               >
                 <SwiperSlide>
                   <div className="phil-card">
@@ -380,7 +348,7 @@ export default function Manufacturing() {
               </Swiper>
             </div>
             <div>
-              <h3 className="text-[24px] md:text-[30px] 2xl:text-[32px] font-bold text-secondary">
+              <h3 className="text-[24px] 2xl:text-[32px] text-secondary">
                 For Executives:
               </h3>
               <Swiper
@@ -404,7 +372,7 @@ export default function Manufacturing() {
                   },
                 }}
                 modules={[Autoplay]}
-                className="mySwiperManufacture mt-6 md:mt-8 2xl:mt-10"
+                className="mySwiperManufacture mt-6"
               >
                 <SwiperSlide>
                   <div className="phil-card">
@@ -463,18 +431,10 @@ export default function Manufacturing() {
               every product we create. Here’s what makes our team exceptional:
             </p>
             <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
-              <div class="w-full md:w-[45%] h-fit md:sticky top-[90px]">
-                <figure
-                  className="w-full h-[300px] md:h-[450px] 2xl:h-[600px] mb-0"
-                  data-aos="zoom-in"
-                  data-aos-duration="1500"
-                >
-                  <Image
-                    className="w-full h-full object-cover rounded-[12px] shadow-xl"
-                    src={man15}
-                    alt="faqImg"
-                  />
-                </figure>
+              <div class="w-full md:w-[45%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
+                <Image className="w-full h-[320px] rounded-[12px] col-span-2" src={man22} alt="img" />
+                <Image className="w-full h-[290px] rounded-[12px]" src={man23} alt="img" />
+                <Image className="w-full h-[290px] rounded-[12px]" src={man24} alt="img" />
               </div>
               <div
                 class="accordion-list-sec people-accordion h-[300px] md:h-[450px] 2xl:h-[600px] overflow-y-auto md:w-[55%]"
