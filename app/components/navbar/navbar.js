@@ -118,7 +118,7 @@ export default function Navbar() {
                     {menu.sub_menu.map((subMenu) => (
                       <li className="subSubText-wrapper" key={subMenu.id}>
                         <button className="drop-list">{subMenu.title}</button>
-                        <ul className="relative !hidden subSubText bg-slate-50 !w-full border-t border-[#DEE1E5]">
+                        <ul className="absolute top-0 !hidden subSubText bg-slate-50 !w-[260px] border-t border-[#DEE1E5] left-[100%]">
                           {subMenu.pages.data.map((subSubMenu) => (
                             <li
                               className="text-[14px] text-secondary !w-full !-mr-8 font-medium"

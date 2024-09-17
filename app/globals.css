@@ -151,8 +151,8 @@ body {
 
 
 .center-dropdown {
-  @apply absolute w-[200px] h-0 overflow-hidden invisible transition-[height] duration-[0.2s] ease-[ease-in-out] border border-t-secondary
-   flex flex-col mt-0 top-[84px] left-[-16px] bg-secondary p-0 overflow-y-auto
+  @apply absolute w-[180px] h-0 invisible transition-[height] duration-[0.2s] ease-[ease-in-out] border border-t-secondary
+   flex flex-col mt-0 top-[84px] left-[-16px] bg-secondary p-0
 }
 .nav-drop {
   @apply relative py-4 md:py-7
@@ -384,7 +384,7 @@ button.flip-animate, a.flip-animate {
   content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="white" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 .sideNav-wrapper{
-  @apply fixed right-0 top-1/2 -translate-y-1/2 overflow-visible hidden md:block z-2 w-[58px]
+  @apply fixed right-0 top-1/2 -translate-y-1/2 overflow-visible hidden md:block z-50 w-[58px]
 }
 
 .sideNav{
@@ -695,24 +695,33 @@ a.current_dot {
 
 .footer-list-item {
   @apply text-[#0E0E11] text-[13px] 2xl:text-[16px] leading-[1.2] capitalize relative flex gap-2 hover:text-primary 
-  w-fit transition-all duration-500 
+  w-fit transition-all duration-500 items-center
   
 }
-
-.footer-list-item::after {
-  content: url('data:image/svg+xml,<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7" stroke="%23F5811E" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-  display: none;
-  @apply transition-all duration-500
+.footer-list-item svg{
+  @apply opacity-0
+}
+.footer-list-item:hover svg{
+  @apply opacity-100
 }
 
-.footer-list-item:hover::after {
-  display: inline-block; 
-}
 .footer-list-box{
-  @apply text-secondary text-[20px] leading-[1.2] capitalize 
+  @apply text-secondary text-[20px] leading-[1.2] capitalize
+}
+.footer-list-box:first-child{
+  @apply md:row-span-2
+}
+.footer-list-box:nth-child(2){
+  @apply md:row-span-2
+}
+.footer-list-box:nth-child(3){
+  @apply md:row-span-2
+}
+.footer-list-box:nth-child(4){
+  @apply md:row-span-2
 }
 .footer-list-box h2{
-  @apply text-secondary text-[20px] leading-[1.2] capitalize opacity-100 font-normal font-semibold
+  @apply text-secondary text-[20px] leading-[1.2] capitalize opacity-100 font-semibold
 }
 
 .bottom-top-btn{

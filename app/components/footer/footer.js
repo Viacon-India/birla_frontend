@@ -221,7 +221,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <ul className="footer-list-sec py-4 md:py-10 grid grid-rows-1 grid-flow-col">
+        <ul className="footer-list-sec py-4 md:py-10 grid grid-rows-3 md:grid-rows-2 grid-flow-col gap-2">
           {footerMenu.map((newMenu) => (
             <li className="footer-list-box" key={newMenu.id}>
               <h2>{newMenu.attributes.title}</h2>
@@ -233,6 +233,20 @@ export default function Footer() {
                       className="footer-list-item"
                     >
                       {submenu.attributes.title}
+                      <svg
+                        width="10"
+                        height="9"
+                        viewBox="0 0 10 9"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7"
+                          stroke="#F5811E"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
                     </Link>
                   </li>
                 ))}
@@ -240,9 +254,23 @@ export default function Footer() {
                   <li key={submenu.id}>
                     <Link
                       href={`${submenu.attributes.permalink}`}
-                      className="footer-list-item"
+                      className="footer-list-item group"
                     >
                       {submenu.attributes.name}
+                      <svg
+                        width="10"
+                        height="9"
+                        viewBox="0 0 10 9"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7"
+                          stroke="#F5811E"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
                     </Link>
                   </li>
                 ))}
