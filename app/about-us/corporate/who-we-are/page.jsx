@@ -66,7 +66,7 @@ export default function WhoWeAre() {
                 <p data-aos="fade-left" data-aos-duration="1000">
                   Dalmia Bharat Refractories Limited (DBRL) along with their
                   strategic partner, Himadri Speciality Chemical Limited (HSCL)
-                  have acquired Birla Tyres Limited's tyre business through a
+                  have acquired Birla Tyres Limited&apos;s tyre business through a
                   resolution plan approved by the National Company Law Tribunal
                   in October 2023.
                 </p>
@@ -189,11 +189,11 @@ export default function WhoWeAre() {
                   strategic move to streamline operations and explore new
                   avenues of growth, DBRL has divested its entire refractory
                   business, except for the magnesia carbon business and its
-                  manufacturing located in China. DBRL's unwavering commitment
+                  manufacturing located in China. DBRL&apos;s unwavering commitment
                   to growth and innovation is exemplified by its recent
-                  acquisition of Birla Tyres Limited's tyre business - this bold
-                  venture into a domain entirely new to DBRL's established
-                  expertise signifies the company's unwavering spirit of
+                  acquisition of Birla Tyres Limited&apos;s tyre business - this bold
+                  venture into a domain entirely new to DBRL&apos;s established
+                  expertise signifies the company&apos;s unwavering spirit of
                   exploration and adaptability.
                 </p>
                 <p data-aos="fade-left" data-aos-duration="1000">
