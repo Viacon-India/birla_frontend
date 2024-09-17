@@ -32,7 +32,7 @@ export default function Footer() {
   return (
     <div className="footer-main py-5 md:py-10 2xl:py-[60px] bg-[#F4F5F6]">
       <div className="container mx-auto">
-        <div className="footer-detail-sec pb-4 md:pb-10 border-b border-[#727C8D]">
+        <div className="footer-detail-sec pb-4 md:pb-10 border-b border-[#DEE1E5]">
           <div className="footer-description-sec md:w-[65%]">
             <p className="footer-description-text">{detail.description}</p>
             <div className="flex flex-col md:flex-row gap-4 md:items-center mt-4">

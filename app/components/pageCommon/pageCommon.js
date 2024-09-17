@@ -26,7 +26,10 @@ export function SmallButton() {
       <Link href="find-tyre" className="primary-btn-1 !w-[50%] !justify-center">
         Find a Tyre
       </Link>
-      <Link href="dealer-locator" className="primary-btn-2 !w-[50%] !justify-center">
+      <Link
+        href="dealer-locator"
+        className="primary-btn-2 !w-[50%] !justify-center"
+      >
         Find a Dealer
       </Link>
     </div>
@@ -37,12 +40,13 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
   return (
     <section className="top-banner-sec bg-[#F8F8F8]">
       <div className="relative">
+        <span className="banner-overlay"></span>
         <Float />
         <div className="relative">
           <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
             <div class="container mx-auto flex flex-col justify-end md:justify-between h-full pt-5 pb-3 md:pb-[60px]">
               <MainButton />
-              <div className="relative bg-[rgba(255,255,255,75%)] z-10 rounded-[12px] w-fit">
+              <div className="relative z-10">
                 <GradualSpacing
                   className="top-banner-sec-heading"
                   text={Title}
@@ -60,10 +64,7 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
                 autoPlay
                 muted
               >
-                <source
-                  src={getStrapiMedia(Banner.url)}
-                  type="video/mp4"
-                />
+                <source src={getStrapiMedia(Banner.url)} type="video/mp4" />
               </video>
             ) : (
               <Image
@@ -78,27 +79,21 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
                 className="absolute top-0 w-full h-full object-cover"
               />
             )
+          ) : extension == ".mp4" ? (
+            <video
+              className="absolute top-0 w-full h-full object-cover"
+              loop
+              autoPlay
+              muted
+            >
+              <source src={StaticBanner} type="video/mp4" />
+            </video>
           ) : (
-            extension == ".mp4" ? (
-              <video
-                className="absolute top-0 w-full h-full object-cover"
-                loop
-                autoPlay
-                muted
-              >
-                <source
-                  src={StaticBanner}
-                  type="video/mp4"
-                />
-              </video>
-            ) : (
-              <Image
+            <Image
               src={StaticBanner}
               alt="Hero-Banner"
               className="absolute top-0 w-full h-full object-cover"
             />
-            )
-            
           )}
         </div>
       </div>

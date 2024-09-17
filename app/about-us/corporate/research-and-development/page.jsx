@@ -10,6 +10,9 @@ import res2 from "../../../assets/images/res2.jpg";
 import res3 from "../../../assets/images/res3.jpg";
 import res4 from "../../../assets/images/res4.jpg";
 import res5 from "../../../assets/images/res5.jpg";
+import res6 from "../../../assets/images/res6.jpg";
+import res7 from "../../../assets/images/res7.jpg";
+import res8 from "../../../assets/images/res8.jpg";
 import Triangle1 from "../../../assets/images/triangle1.png";
 import Triangle2 from "../../../assets/images/triangle2.png";
 import AOS from "aos";
@@ -24,7 +27,11 @@ export default function Research() {
   return (
     <>
       <Navbar />
-      <PageBanner Title="Research & Development" StaticBanner={"/assets/videos/research.mp4"} extension=".mp4" />
+      <PageBanner
+        Title="Research & Development"
+        StaticBanner={"/assets/videos/research.mp4"}
+        extension=".mp4"
+      />
       <section className="mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
         <div className="container mx-auto">
           <div className="section-layer">
@@ -87,22 +94,29 @@ export default function Research() {
           <div className="excellence-sec">
             <span className="section-heading">R&D capabilities</span>
             <div className="section-title-wrapper">
-              <h3 className="section-title">Driven by Innovation & Excellence</h3>
+              <h3 className="section-title">
+                Driven by Innovation & Excellence
+              </h3>
             </div>
             <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
-              <div class="w-full md:w-[45%] h-fit md:sticky top-[90px]">
-                <figure
-                  className="w-full h-[350px] md:h-[450px] 2xl:h-[600px] mb-0"
-                  data-aos="zoom-in"
-                  data-aos-duration="1500"
-                >
-                  <Image
-                    className="w-full h-full object-cover rounded-[12px] shadow-xl"
-                    src={res3}
-                    alt="faqImg"
-                  />
-                </figure>
+              <div class="w-full md:w-[45%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
+                <Image
+                  className="w-full h-[320px] rounded-[12px] col-span-2"
+                  src={res6}
+                  alt="img"
+                />
+                <Image
+                  className="w-full h-[290px] rounded-[12px]"
+                  src={res7}
+                  alt="img"
+                />
+                <Image
+                  className="w-full h-[290px] rounded-[12px]"
+                  src={res8}
+                  alt="img"
+                />
               </div>
+
               <div
                 class="accordion-list-sec md:w-[55%] h-[350px] md:h-[450px] 2xl:h-[600px] overflow-y-auto"
                 data-aos="fade-left"
