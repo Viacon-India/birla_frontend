@@ -64,10 +64,8 @@ export default function Page({ params }) {
         </div>
       </section>
       <PageEnd
-        Title={investorRelationData?.name ? investorRelationData.name : '' }
-        TitleLink={investorRelationData?.link ? investorRelationData.link : '' }
+        EndPageData={investorRelationData?.end}
         Background='bg-[#F8F8F8]'
-        EndImage={investorRelationData.next}
         EndStaticImage={LastBg}
       />
       <Footer />

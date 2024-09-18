@@ -226,11 +226,10 @@ export default function Manufacturing() {
               </li>
             </ul>
             <div class="mt-5 md:mt-10 2xl:mt-12">
-              {/* <span className="section-heading">our Safety rules</span>
               <div className="section-title-wrapper">
                 <h3 className="section-title">Core Safety Rules</h3>
-              </div> */}
-              <h3 className="text-[24px] 2xl:text-[32px] text-secondary mt-6 md:mt-8 2xl:mt-10">
+              </div>
+              <h3 className="text-[24px] 2xl:text-[32px] text-secondary mt-6 2xl:mt-8">
                 For Employees:
               </h3>
               <Swiper
