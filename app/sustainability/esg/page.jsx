@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import GradualSpacing from "@/components/GradualSpacing";
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
@@ -27,11 +28,19 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import tigerMask from "../../assets/images/tiger-mask2.png";
 
-export default function Esg() {
+export default function Esg({params}) {
+  const slugs = params.slug;
+
+  const [pageData, setPageData] = useState([]);
   const [activeTab, setActiveTab] = useState("tab-1");
 
   useEffect(() => {
     AOS.init();
+    fetch(getStrapiMedia("/api/pages/esg"))
+    .then((res) => res.json())
+    .then((pages) => {
+      setPageData(pages);
+    });
   });
 
   return (
@@ -305,11 +314,7 @@ export default function Esg() {
           </div>
         </div>
       </section>
-      <PageEnd
-        Title="Tyre Guide"
-        TitleLink="/tyre-tips/tyre-guide"
-        EndStaticImage={LastBg}
-      />
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={LastBg} />
       <Footer />
     </>
   );

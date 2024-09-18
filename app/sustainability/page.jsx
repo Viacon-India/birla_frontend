@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import Image from "next/image";
@@ -36,9 +37,18 @@ import susIcon4 from "../assets/images/sus-icon4.png";
 import Triangle1 from "../assets/images/triangle1.png";
 import tigerMask from "../assets/images/tiger-mask2.png";
 
-export default function Sustainability() {
+export default function Sustainability({params}) {
+  const slugs = params.slug;
+
+  const [pageData, setPageData] = useState([]);
   useEffect(() => {
     AOS.init();
+
+    fetch(getStrapiMedia("/api/pages/sustainability"))
+    .then((res) => res.json())
+    .then((pages) => {
+      setPageData(pages);
+    });
   });
 
   return (
@@ -501,11 +511,7 @@ export default function Sustainability() {
           </div>
         </div>
       </section>
-      <PageEnd
-        Title="ESG"
-        TitleLink="/sustainability/esg"
-        EndStaticImage={LastBg}
-      />
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={LastBg} />
       <Footer />
     </>
   );

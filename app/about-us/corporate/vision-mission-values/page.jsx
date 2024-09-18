@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import { Autoplay, Controller } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -49,11 +50,19 @@ import tiger from "../../../assets/images/tiger8.png";
 
 import { FreeMode, Thumbs, EffectFade } from "swiper/modules";
 
-export default function Leadership() {
+export default function Leadership({ params }) {
+  const slugs = params.slug;
+
+  const [pageData, setPageData] = useState([]);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   useEffect(() => {
     AOS.init();
+    fetch(getStrapiMedia("/api/pages/vision-mission-values"))
+      .then((res) => res.json())
+      .then((pages) => {
+        setPageData(pages);
+      });
   });
 
   return (
@@ -296,11 +305,12 @@ export default function Leadership() {
           </div>
         </div>
       </section>
-      <PageEnd
+      {/* <PageEnd
         Title="R&D"
         TitleLink="/about-us/corporate/research-and-development"
         EndStaticImage={NextChapter}
-      />
+      /> */}
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={NextChapter} />
       <Footer />
     </>
   );

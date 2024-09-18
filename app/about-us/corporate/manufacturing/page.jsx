@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FreeMode, Autoplay, Navigation } from "swiper/modules";
@@ -44,25 +45,21 @@ import "aos/dist/aos.css";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
 
-export default function Manufacturing() {
+export default function Manufacturing({params}) {
+  const slugs = params.slug;
+
+  const [pageData, setPageData] = useState([]);
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     AOS.init();
-    if (counter > 300) return;
+    fetch(getStrapiMedia("/api/pages/manufacturing"))
+    .then((res) => res.json())
+    .then((pages) => {
+      setPageData(pages);
 
-    const interval = setInterval(() => {
-      setCounter((prevCounter) => {
-        if (prevCounter >= 300) {
-          clearInterval(interval);
-          return prevCounter;
-        }
-        return prevCounter + 1;
-      });
-    }, 10);
-
-    return () => clearInterval(interval);
-  }, [counter]);
+    });
+  },);
 
   return (
     <>
@@ -542,11 +539,7 @@ export default function Manufacturing() {
           </div>
         </div>
       </section>
-      <PageEnd
-        Title="Leadership"
-        TitleLink="/about-us/corporate/leadership/"
-        EndStaticImage={man3}
-      />
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={man3} />
       <Footer />
     </>
   );
