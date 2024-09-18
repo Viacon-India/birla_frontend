@@ -394,7 +394,7 @@ export default function Leadership({ params }) {
           </div>
         </div>
       </section>
-      <PageEnd EndPageData={pageData?.end} EndStaticImage={NextChapter} />
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={NextChapter} Background={true} />
       <Footer />
     </>
   );

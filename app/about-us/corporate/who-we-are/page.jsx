@@ -23,6 +23,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
+import SectionSelection from "../../../components/section/section";
+import { title } from "process";
+import { Accordion } from "@/app/components/section/section";
 
 export default function WhoWeAre({ params }) {
   const slugs = params.slug;
@@ -38,10 +41,53 @@ export default function WhoWeAre({ params }) {
       });
   }, []);
 
+  const section = {
+    __component: 'section.accordion',
+    heading: 'What Sets us Apart',
+    title: 'Our Path to Excellence',
+    preAccordion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices.',
+    images: [
+      {
+        url: who9,
+        alt: 'faqImg'
+      },
+    ],
+    accordion: [
+      {
+        title: 'Capability point 1',
+        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      {
+        title: 'Capability point 2',
+        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      {
+        title: 'Capability point 3',
+        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      {
+        title: 'Capability point 4',
+        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      {
+        title: 'Capability point 5',
+        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      {
+        title: 'Capability point 6',
+        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      }
+
+    ],
+    postAccordion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
+  }
+
+  console.log(section);
+
   return (
     <>
       <Navbar />
-      <PageBanner Title="WHO WE ARE" StaticBanner={Banner} />
+      <PageBanner Title={pageData?.title} Banner={pageData?.hero} StaticBanner={Banner} />
       <section className="page-content-sec mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
         <div className="container mx-auto">
           <div className="sub-section-wrapper">
@@ -347,137 +393,7 @@ export default function WhoWeAre({ params }) {
           </div>
         </div>
       </section>
-      <section className="excellence-sec pt-6 md:pt-10 2xl:pt-[60px] overflow-hidden">
-        <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
-          <div>
-            <span className="section-heading">What Sets us Apart</span>
-            <div className="section-title-wrapper">
-              <h3 className="section-title">Our Path to Excellence</h3>
-            </div>
-          </div>
-          <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec
-            vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque
-            laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur
-            maximus mollis diam, vel varius sapien suscipit eget. Cras
-            sollicitudin ligula at volutpat ultrices. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit
-            urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et
-            pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel
-            varius sapien suscipit eget. Cras sollicitudin ligula at volutpat
-            ultrices.
-          </p>
-          <div class="flex flex-col md:flex-row gap-4 md:gap-10">
-            <div class="w-full md:w-[40%] h-fit md:sticky top-[90px]">
-              <figure
-                className="w-full h-[350px] md:h-[450px] 2xl:h-[600px] mb-0"
-                data-aos="zoom-in"
-                data-aos-duration="1000"
-              >
-                <Image
-                  className="w-full h-full object-cover rounded-[12px]"
-                  src={who9}
-                  alt="faqImg"
-                />
-              </figure>
-            </div>
-            <div
-              class="accordion-list-sec w-full md:w-[60%] h-[350px] md:h-[450px] 2xl:h-[600px] overflow-y-auto"
-              data-aos="fade-left"
-              data-aos-duration="1000"
-            >
-              <div className="collapse collapse-plus">
-                <input type="radio" name="my-accordion-3" defaultChecked />
-                <div className="collapse-title">Capability point 1</div>
-                <div className="collapse-content">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Donec vitae mi vulputate, suscipit urna in,
-                    malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                    ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </div>
-              </div>
-              <div className="collapse collapse-plus">
-                <input type="radio" name="my-accordion-3" />
-                <div className="collapse-title">Capability point 2</div>
-                <div className="collapse-content">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Donec vitae mi vulputate, suscipit urna in,
-                    malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                    ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </div>
-              </div>
-              <div className="collapse collapse-plus">
-                <input type="radio" name="my-accordion-3" />
-                <div className="collapse-title">Capability point 3</div>
-                <div className="collapse-content">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Donec vitae mi vulputate, suscipit urna in,
-                    malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                    ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </div>
-              </div>
-              <div className="collapse collapse-plus">
-                <input type="radio" name="my-accordion-3" />
-                <div className="collapse-title">Capability point 4</div>
-                <div className="collapse-content">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Donec vitae mi vulputate, suscipit urna in,
-                    malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                    ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </div>
-              </div>
-              <div className="collapse collapse-plus">
-                <input type="radio" name="my-accordion-3" />
-                <div className="collapse-title">Capability point 5</div>
-                <div className="collapse-content">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Donec vitae mi vulputate, suscipit urna in,
-                    malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                    ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </div>
-              </div>
-              <div className="collapse collapse-plus">
-                <input type="radio" name="my-accordion-3" />
-                <div className="collapse-title">Capability point 6</div>
-                <div className="collapse-content">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Donec vitae mi vulputate, suscipit urna in,
-                    malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                    ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec
-            vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque
-            laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur
-            maximus mollis diam, vel varius sapien suscipit eget. Cras
-            sollicitudin ligula at volutpat ultrices.
-          </p>
-        </div>
-      </section>
+      <SectionSelection section={section} />
       <PageEnd EndPageData={pageData?.end} EndStaticImage={who10} />
       <Footer />
     </>

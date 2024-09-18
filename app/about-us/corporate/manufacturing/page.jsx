@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FreeMode, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css/navigation";
+import SectionSelection from "../../../components/section/section";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
 import { Float } from "../../../components/pageCommon/pageCommon";
@@ -60,6 +61,67 @@ export default function Manufacturing({params}) {
 
     });
   },);
+
+
+  const section = {
+    background: '#F8F8F8',
+    __component: 'section.accordion',
+    heading: 'our people',
+    title: 'The Heart of Our Manufacturing Excellence',
+    images: [
+      {
+        url: man22,
+        alt: 'img'
+      },
+      {
+        url: man23,
+        alt: 'img'
+      },
+      {
+        url: man24,
+        alt: 'img'
+      }
+    ],
+    preAccordion: 'At the core of our manufacturing success is our dedicated team of engineers, technicians, and workers. Their expertise and commitment drive our innovation and ensure the highest quality in every product we create. Here’s what makes our team exceptional:',
+    accordion: [
+      {
+        svg:'',
+        title: 'Expertise and Skill',
+        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      {
+        svg:'',
+        title: 'Innovation and Engineering',
+        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      {
+        svg:'',
+        title: 'Leadership and Management',
+        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      {
+        svg:'',
+        title: 'Support and Development',
+        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      {
+        svg:'',
+        title: 'Commitment to Diversity and Inclusion',
+        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      {
+        svg:'',
+        title: 'Quality and Precision',
+        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      {
+        svg:'',
+        title: 'Continuous Improvement',
+        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      }
+    ],
+    postAccordion: 'Our people are the driving force behind our success, and we are dedicated to creating an environment where they can thrive. Together, we are building a future of excellence and innovation.'
+  }
 
   return (
     <>
@@ -411,6 +473,7 @@ export default function Manufacturing({params}) {
           </div>
         </div>
       </section>
+      <SectionSelection section={section} />
       <section className="bg-[#F8F8F8] py-8 md:py-12 2xl:py-[60px] my-8 md:my-12 2xl:my-[60px] overflow-hidden">
         <div className="container mx-auto">
           <div className="excellence-sec">
@@ -427,13 +490,13 @@ export default function Manufacturing({params}) {
               every product we create. Here’s what makes our team exceptional:
             </p>
             <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
-              <div class="w-full md:w-[45%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
-                <Image className="w-full h-[320px] rounded-[12px] col-span-2" src={man22} alt="img" />
-                <Image className="w-full h-[290px] rounded-[12px]" src={man23} alt="img" />
-                <Image className="w-full h-[290px] rounded-[12px]" src={man24} alt="img" />
+              <div class="w-full md:w-[45%] md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
+                <Image className="w-full h-[240px] 2xl:h-[265px] rounded-[12px] col-span-2" src={man22} alt="img" />
+                <Image className="w-full h-[240px] 2xl:h-[265px] rounded-[12px]" src={man23} alt="img" />
+                <Image className="w-full h-[240px] 2xl:h-[265px] rounded-[12px]" src={man24} alt="img" />
               </div>
               <div
-                class="accordion-list-sec people-accordion h-[300px] md:h-[450px] 2xl:h-[600px] overflow-y-auto md:w-[55%]"
+                class="accordion-list-sec people-accordion h-[350px] md:h-[500px] 2xl:h-[600px] overflow-y-auto md:w-[55%]"
                 data-aos="fade-left"
                 data-aos-duration="1500"
               >
