@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
 import Banner from "../../../assets/images/join1.jpg";
@@ -17,9 +18,17 @@ import "aos/dist/aos.css";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
 
-export default function JoinUs() {
+export default function JoinUs({params}) {
+  const slugs = params.slug;
+
+  const [pageData, setPageData] = useState([]);
   useEffect(() => {
     AOS.init();
+    fetch(getStrapiMedia("/api/pages/why-join-us"))
+    .then((res) => res.json())
+    .then((pages) => {
+      setPageData(pages);
+    });
   }, []);
 
   return (
@@ -147,11 +156,7 @@ export default function JoinUs() {
           </div>
         </div>
       </section>
-      <PageEnd
-        Title="Life at BIRLA TYRES"
-        TitleLink="/about-us/career/life-at-birla-tyres"
-        EndStaticImage={join5}
-      />
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={join5} />
       <Footer />
     </>
   );

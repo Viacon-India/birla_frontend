@@ -76,7 +76,7 @@ export default function Faq() {
                   data-aos-duration="1000"
                 >
                   <figure
-                    className="w-full h-[350px] md:h-[480px] relative glare"
+                    className="w-full h-[350px] md:h-[420px] 2xl:h-[520px] relative glare"
                     data-aos="flip-right"
                     data-aos-duration="1500"
                   >
@@ -93,7 +93,7 @@ export default function Faq() {
                   </figure>
                 </div>
                 <div
-                  class="faq-accordion md:w-[55%] max-h-[360px] 2xl:max-h-[550px] overflow-y-auto relative z-4"
+                  class="faq-accordion md:w-[55%] max-h-[360px] md:max-h-[420px] 2xl:max-h-[520px] overflow-y-auto relative z-4"
                   data-aos="fade-right"
                   data-aos-duration="1500"
                 >

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
 import Link from "next/link";
@@ -20,9 +21,17 @@ import { PageEnd } from "../../../components/pageCommon/pageCommon";
 import coma1 from "../../../assets/images/coma1.png";
 import coma2 from "../../../assets/images/coma2.png";
 
-export default function Leadership() {
+export default function Leadership({ params }) {
+  const slugs = params.slug;
+
+  const [pageData, setPageData] = useState([]);
   useEffect(() => {
     AOS.init();
+    fetch(getStrapiMedia("/api/pages/leadership"))
+      .then((res) => res.json())
+      .then((pages) => {
+        setPageData(pages);
+      });
   }, []);
 
   return (
@@ -32,7 +41,6 @@ export default function Leadership() {
 
       <section className="mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden bg-[#F8F8F8]">
         <div className="container mx-auto flex flex-col gap-4 md:gap-10 2xl:gap-[60px]">
-
           <div className="flex flex-col md:flex-row items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
             <figure
               className="w-full md:w-[50%] h-[480px] relative glare"
@@ -81,7 +89,10 @@ export default function Leadership() {
                   <p className="text-[#1A1D21] text-[24px] font-medium">
                     Follow:
                   </p>
-                  <Link href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHVhCWmiXFRtwAAAZH5bOUIzd_WFQEF12q5v3nOXJslocEVL_WF5eJLxn-BaIXFb_80lhzV6du3HNM9722BcWvowrpjX7jOLgFoPuguq3UtgWhPlCv3L7j5Yj94IRvzQElwjcI=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fanurag-choudhary-768227136%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dandroid_app" target="_blank">
+                  <Link
+                    href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHVhCWmiXFRtwAAAZH5bOUIzd_WFQEF12q5v3nOXJslocEVL_WF5eJLxn-BaIXFb_80lhzV6du3HNM9722BcWvowrpjX7jOLgFoPuguq3UtgWhPlCv3L7j5Yj94IRvzQElwjcI=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fanurag-choudhary-768227136%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dandroid_app"
+                    target="_blank"
+                  >
                     <svg
                       width="32"
                       height="32"
@@ -113,21 +124,39 @@ export default function Leadership() {
                   data-aos="fade-left"
                   data-aos-duration="800"
                 >
-                  Anurag Choudhary is a visionary leader who has spearheaded the transformation of Himadri from a coal tar pitch manufacturer to a global leader in the carbon segment. 
+                  Anurag Choudhary is a visionary leader who has spearheaded the
+                  transformation of Himadri from a coal tar pitch manufacturer
+                  to a global leader in the carbon segment.
                 </p>
                 <p
                   className="text-[17px] leading-[27px] font-oak-sans text-[#606977]"
                   data-aos="fade-left"
                   data-aos-duration="1000"
                 >
-                  Under his leadership, the company has achieved market dominance in its core products and expanded into new areas -  carbon black, lithium-ion battery materials, and construction chemicals. He was instrumental in bringing in institutional investors as Himadri&apos;s equity partners. Recognizing the transformative potential of electric vehicles and energy storage, he is pioneering the development of lithium-ion battery materials in India.
+                  Under his leadership, the company has achieved market
+                  dominance in its core products and expanded into new areas -
+                   carbon black, lithium-ion battery materials, and construction
+                  chemicals. He was instrumental in bringing in institutional
+                  investors as Himadri&apos;s equity partners. Recognizing the
+                  transformative potential of electric vehicles and energy
+                  storage, he is pioneering the development of lithium-ion
+                  battery materials in India.
                 </p>
                 <p
                   className="text-[17px] leading-[27px] font-oak-sans text-[#606977]"
                   data-aos="fade-left"
                   data-aos-duration="1200"
                 >
-                  His leadership has been a driving force behind Himadri&apos;s transformative growth – Himadri has achieved a significant milestone of becoming debt-free by following disciplined capital deployment and efficient working capital utilization. Birla Tyres is a strategic fit for Himadri and aligns with the company&apos;s play in the electric vehicle (EV) space. Under his guidance, Birla Tyres has been completely revitalized after years of inactivity. His passion and exceptional leadership will continue to propel Birla Tyres to aggressive growth path & newer heights.
+                  His leadership has been a driving force behind Himadri&apos;s
+                  transformative growth – Himadri has achieved a significant
+                  milestone of becoming debt-free by following disciplined
+                  capital deployment and efficient working capital utilization.
+                  Birla Tyres is a strategic fit for Himadri and aligns with the
+                  company&apos;s play in the electric vehicle (EV) space. Under
+                  his guidance, Birla Tyres has been completely revitalized
+                  after years of inactivity. His passion and exceptional
+                  leadership will continue to propel Birla Tyres to aggressive
+                  growth path & newer heights.
                 </p>
                 <div class="line-loader self-end">
                   <div class="bar bar1"></div>
@@ -171,7 +200,10 @@ export default function Leadership() {
                     <p className="text-[#1A1D21] text-[24px] font-medium">
                       Follow:
                     </p>
-                    <Link href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQGlgEhRYLZaDwAAAZH5brXgGPvohXD1ur9HRjpERq0RvKbs-_lvONSKbOHidzYmMmzC_FGynp2tCksHgCua6SIiHUFNzooSqkEYu-O-Yl-lSnFs-Q9Uhw2MimHZ6W4KhedhQmQ=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Famit-choudhary-807a61163%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dandroid_app" target="_blank">
+                    <Link
+                      href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQGlgEhRYLZaDwAAAZH5brXgGPvohXD1ur9HRjpERq0RvKbs-_lvONSKbOHidzYmMmzC_FGynp2tCksHgCua6SIiHUFNzooSqkEYu-O-Yl-lSnFs-Q9Uhw2MimHZ6W4KhedhQmQ=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Famit-choudhary-807a61163%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dandroid_app"
+                      target="_blank"
+                    >
                       <svg
                         width="32"
                         height="32"
@@ -297,7 +329,10 @@ export default function Leadership() {
                     <p className="text-[#1A1D21] text-[24px] font-medium">
                       Follow:
                     </p>
-                    <Link href="https://www.linkedin.com/in/shyam-sundar-choudhary-417474150?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                    <Link
+                      href="https://www.linkedin.com/in/shyam-sundar-choudhary-417474150?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                      target="_blank"
+                    >
                       <svg
                         width="32"
                         height="32"
@@ -357,15 +392,9 @@ export default function Leadership() {
               </div>
             </div>
           </div>
-          
         </div>
       </section>
-
-      <PageEnd
-        Title="Why Join Us"
-        TitleLink="/about-us/career/why-join-us"
-        EndStaticImage={NextChapter}
-      />
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={NextChapter} />
       <Footer />
     </>
   );

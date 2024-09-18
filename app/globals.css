@@ -622,7 +622,7 @@ a.current_dot {
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }
 .mySwiper .swiper-button-prev{
-  @apply !w-10 !h-10 !bg-[#DEE1E5] absolute rounded-[4px] !top-[95%] !left-[90%] 2xl:!left-[91%] active:!bg-gray-400 !z-0
+  @apply !w-10 !h-10 !bg-[#DEE1E5] absolute rounded-[4px] !top-[95%] !left-[70%] md:!left-[90%] 2xl:!left-[92%] active:!bg-gray-400 !z-0
 }
 .mySwiper .swiper-button-prev::after{
   content: url('data:image/svg+xml,<svg width="22" height="28" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2674 19.8801C11.6834 20.2961 11.6834 20.6801 11.2674 21.0321C10.8514 21.4481 10.4674 21.4481 10.1154 21.0321L0.707434 11.5761C0.323434 11.1921 0.323434 10.7921 0.707434 10.3761L10.1154 0.920149C10.4674 0.504148 10.8514 0.504148 11.2674 0.920149C11.6834 1.27215 11.6834 1.65615 11.2674 2.07215L2.67543 11.0001L11.2674 19.8801Z" fill="%234F5662"/></svg>') !important; 
@@ -736,21 +736,11 @@ a.current_dot {
 
 .loader-sec {
   @apply w-full h-[100vh] bg-transparent flex flex-col gap-3 justify-center items-center fixed z-100;
-  animation: reveal-c 2s linear;
-  animation-delay: 6s;
-  animation-fill-mode: forwards; 
   background-color: white;
   /* animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.2); */
 }
 
-@keyframes reveal-c {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-150%);
-  }
-}
+
 
 
 

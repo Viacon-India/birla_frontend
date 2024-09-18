@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import { PageBanner } from "../components/pageCommon/pageCommon";
@@ -10,9 +11,18 @@ import LastBg from "../assets/images/warranty2.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-export default function WarrantyPolicy() {
+export default function WarrantyPolicy({params}) {
+  const slugs = params.slug;
+
+  const [pageData, setPageData] = useState([]);
   useEffect(() => {
     AOS.init();
+
+    fetch(getStrapiMedia("/api/pages/warranty"))
+    .then((res) => res.json())
+    .then((pages) => {
+      setPageData(pages);
+    });
   }, []);
   return (
     <>
@@ -194,11 +204,7 @@ export default function WarrantyPolicy() {
           </div>
         </div>
       </section>
-      <PageEnd
-        Title="Tyre Guide"
-        TitleLink="/tyre-tips/tyre-guide"
-        EndStaticImage={LastBg}
-      />
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={LastBg} />
       <Footer />
     </>
   );

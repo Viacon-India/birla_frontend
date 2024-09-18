@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
 // import Banner from "../../../assets/images/res1.jpg";
@@ -20,9 +21,20 @@ import "aos/dist/aos.css";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
 
-export default function Research() {
+export default function Research({params}) {
+  const slugs = params.slug;
+
+  const [pageData, setPageData] = useState([]);
+
+  console.log(pageData);
+
   useEffect(() => {
     AOS.init();
+    fetch(getStrapiMedia("/api/pages/research-and-development"))
+    .then((res) => res.json())
+    .then((pages) => {
+      setPageData(pages);
+    });
   }, []);
   return (
     <>
@@ -261,11 +273,7 @@ export default function Research() {
           </div>
         </div>
       </section>
-      <PageEnd
-        Title="Manufacturing"
-        TitleLink="/about-us/corporate/manufacturing"
-        EndStaticImage={res4}
-      />
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={res4} />
       <Footer />
     </>
   );

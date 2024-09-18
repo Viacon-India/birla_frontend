@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
 import Banner from "../../../assets/images/life1.jpg";
@@ -20,9 +21,17 @@ import life8 from "../../../assets/images/life8.jpg";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
 
-export default function LifeAtBirla() {
+export default function LifeAtBirla({params}) {
+  const slugs = params.slug;
+
+  const [pageData, setPageData] = useState([]);
   useEffect(() => {
     AOS.init();
+    fetch(getStrapiMedia("/api/pages/life-at-birla-tyres"))
+    .then((res) => res.json())
+    .then((pages) => {
+      setPageData(pages);
+    });
   }, []);
   return (
     <>
@@ -278,12 +287,7 @@ export default function LifeAtBirla() {
           </div>
         </div>
       </section>
-      <PageEnd
-        Title="Categories - TBB"
-        TitleLink="/products/truck-bus-bias"
-        EndStaticImage={life9}
-        Background={true}
-      />
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={life9} />
       <Footer />
     </>
   );

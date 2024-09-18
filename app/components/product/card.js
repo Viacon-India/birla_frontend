@@ -76,7 +76,7 @@ export default function SectionSelection({
             ))}
           </Swiper>
         </div>
-        <div class="new-product-svg-wrapper">
+        <div class="new-product-svg-wrapper tooltip" data-tip={"lorem"}>
           <Image alt="icon" class="h-8 object-contain" src={icon} />
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import {Float} from "../pageCommon/pageCommon";
+import { Float } from "../pageCommon/pageCommon";
 import React, { useRef, useState, useEffect } from "react";
 import $ from "jquery";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -22,6 +22,10 @@ import { MainButton } from "../pageCommon/pageCommon";
 
 export default function Hero() {
   gsap.registerPlugin(ScrollTrigger);
+  $("#preloader").css("transition", "transform 2s linear"); // Set transition
+  const handleVideoEnd = () => {
+    $("#preloader").css("transform", "translateY(-150%)");
+  };
 
   useEffect(() => {
     gsap.fromTo(
@@ -59,10 +63,16 @@ export default function Hero() {
 
   return (
     <div className="relative">
-      <div className="loader-sec">
+      <div id="preloader" className="loader-sec">
         <div class="video-wrapper">
-          <video className="w-full h-fit object-contain" loop autoPlay muted>
-            <source src={"/assets/videos/tyre-loader-4.mp4"} type="video/mp4" />
+          <video
+            className="w-full h-fit object-contain"
+            autoPlay
+            muted
+            onEnded={handleVideoEnd}
+          >
+            <source src={"/assets/videos/tyre-loader-6.mp4"} type="video/mp4" />
+            Your browser does not support the video tag.
           </video>
         </div>
       </div>
@@ -102,7 +112,6 @@ export default function Hero() {
                 Find a Dealer
               </Link>
             </div>
-            
           </div>
         </div>
         <SwiperSlide>

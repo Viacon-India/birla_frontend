@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import { PageBanner } from "../../components/pageCommon/pageCommon";
@@ -20,9 +21,17 @@ import Link from "next/link";
 import Triangle1 from "../../assets/images/triangle1.png";
 import Triangle2 from "../../assets/images/triangle2.png";
 
-export default function TyreGuide() {
+export default function TyreGuide({params}) {
+  const slugs = params.slug;
+
+  const [pageData, setPageData] = useState([]);
   useEffect(() => {
     AOS.init();
+    fetch(getStrapiMedia("/api/pages/tyre-guide"))
+    .then((res) => res.json())
+    .then((pages) => {
+      setPageData(pages);
+    });
   }, []);
 
   return (
@@ -75,7 +84,7 @@ export default function TyreGuide() {
             </div>
             <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
               <div
-                class="accordion-list-sec md:w-[50%] h-[350px] md:h-[450px] 2xl:h-[650px] overflow-y-auto"
+                class="accordion-list-sec md:w-[60%] h-[350px] md:h-[450px] 2xl:h-[500px] overflow-y-auto"
                 data-aos="fade-left"
                 data-aos-duration="1500"
               >
@@ -244,7 +253,7 @@ export default function TyreGuide() {
                   </div>
                 </div>
               </div>
-              <div class="w-full md:w-[50%] h-fit md:sticky top-[90px]">
+              <div class="w-full md:w-[40%] h-fit md:sticky top-[90px]">
                 <figure
                   className="w-full h-full mb-0"
                   data-aos="zoom-in"
@@ -552,11 +561,7 @@ export default function TyreGuide() {
           </div>
         </div>
       </section>
-      <PageEnd
-        Title="Tyre Care"
-        TitleLink="/tyre-tips/tyre-care"
-        EndStaticImage={LastBg}
-      />
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={LastBg} />
       <Footer />
     </>
   );
