@@ -22,39 +22,39 @@ export default function Page({ params }) {
   const slugs = params.slug.reverse();
   const parent_slug = slugs[1]; // investor-relation
 
-  const [investorRelationData, setInvestorRelationData] = useState([]);
-  const [investorRelationTable, setInvestorRelationTable] = useState([]);
+  const [pageData, setPageData] = useState([]);
+  const [sidebar, setSidebar] = useState([]);
 
-  // console.log(investorRelationData.section);
+  console.log(sidebar);
   
   useEffect(() => {
-    fetch(getStrapiMedia("/api/pages/"+slugs[0])).then((res) => res.json()).then((investor_relation) => {
-      setInvestorRelationData(investor_relation);
+    fetch(getStrapiMedia("/api/pages/"+slugs[0])).then((res) => res.json()).then((page) => {
+      setPageData(page);
     });
 
-    parent_slug == 'investor-relation' && fetch(getStrapiMedia("/api/investor-relations?populate[fields][0]=title&populate[fields][1]=slug")).then((tab) => tab.json()).then((investor_relation_table) => {
-      setInvestorRelationTable(investor_relation_table.data);
+    parent_slug == 'investor-relations' && fetch(getStrapiMedia("/api/investor-relations-sidebar?populate=*")).then((tab) => tab.json()).then((pageSidebar) => {
+      setSidebar(pageSidebar.data.attributes.pages.data);
     });
   }, []);
 
   return (
     <>
       <Navbar />
-      <PageBanner Title={investorRelationData.title} Banner={investorRelationData.hero} StaticBanner={Banner} />
+      <PageBanner Title={pageData?.title} Banner={pageData?.hero} StaticBanner={Banner} />
       <section className="bg-[#F8F8F8] pt-10 md:pt-[60px]">
         <div className="container mx-auto grid grid-cols-12 gap-10">
-          {investorRelationTable.length > 0 &&
+          {sidebar.length > 0 &&
             <div className="col-span-3 bg-primary border border-primary rounded-xl h-fit text-white font-[17px] leading-[17px] flex flex-col overflow-hidden sticky top-[125px] md:[145px] max-h-[80vh] overflow-y-auto">
-              {investorRelationTable.map((tab) => (
+              {sidebar.map((tab) => (
                 tab.attributes.slug == slugs[0] ?
                 <span className="px-5 py-[10px] bg-[#FEEFE2] text-primary" key={tab.id}>{tab.attributes.title}</span> :
                 <Link href={tab.attributes.permalink} className="px-5 py-[10px]" key={tab.id}>{tab.attributes.title}</Link>
               ))}
             </div>
           }
-          {investorRelationData.section && 
-            <div className={'flex flex-col gap-10 '+ (investorRelationTable.length > 0?'col-span-9':'col-span-12')}>
-              {investorRelationData.section.map((section) => (
+          {pageData.section && 
+            <div className={'flex flex-col gap-10 '+ (sidebar.length > 0?'col-span-9':'col-span-12')}>
+              {pageData.section.map((section) => (
                 <div className="bg-white border border-[#DEE1E5] rounded-xl p-[60px] flex flex-col gap-10 h-fit w-full" key={section.id}>
                   <SectionSelection section={section} />
                 </div>
@@ -64,7 +64,7 @@ export default function Page({ params }) {
         </div>
       </section>
       <PageEnd
-        EndPageData={investorRelationData?.end}
+        EndPageData={pageData?.end}
         Background='bg-[#F8F8F8]'
         EndStaticImage={LastBg}
       />

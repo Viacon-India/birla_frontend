@@ -1,6 +1,7 @@
 "use client";
 
 import { getStrapiMedia } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -12,6 +13,7 @@ export default function SectionSelection({section}){
             {section.__component=='section.files' && <Files section={section} />}
             {section.__component=='section.investor-table' && <Table section={section} />}
             {section.__component=='section.address' && <Address section={section} />}
+            {section.__component=='section.accordion' && <Accordion section={section} />}
         </>
     )
 
@@ -151,5 +153,79 @@ export function Address({section}){
                 </div>
             }
         </>
+    );
+}
+
+
+export function Accordion({section}){
+    return(
+        // bg-[#F8F8F8] py-8 md:py-12 2xl:py-[60px] my-8 md:my-12 2xl:my-[60px] overflow-hidden
+        <section className="pt-6 md:pt-10 2xl:pt-[60px] overflow-hidden">
+        <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
+          <div>
+            <span className="section-heading">{section.heading}</span>
+            <div className="section-title-wrapper">
+              <h3 className="section-title">{section.title}</h3>
+            </div>
+          </div>
+          {section?.preAccordion &&
+            <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">{section.preAccordion}</p>
+          }
+          <div class="flex flex-col md:flex-row gap-4 md:gap-10">
+            {section?.images && 
+                <>
+                    {section.images.length > 1 ? 
+                        <div class="w-full md:w-[40%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
+                            {section.images.map((image, index) => (
+                                <Image id={image.id} className={cn(
+                                    "w-full h-[240px] 2xl:h-[265px] rounded-[12px]",
+                                    index == 0 && "col-span-2"
+                                  )} src={image.url} alt={image.alt} />
+                                
+                            ))}
+                        </div> :
+                        <div class="w-full md:w-[40%] h-fit md:sticky top-[90px]">
+                            <figure
+                                className="w-full h-[350px] md:h-[450px] 2xl:h-[600px] mb-0"
+                                data-aos="zoom-in"
+                                data-aos-duration="1000"
+                            >
+                                <Image
+                                className="w-full h-full object-cover rounded-[12px]"
+                                src={section.images[0].url}
+                                alt={section.images[0].alt}
+                                />
+                            </figure>
+                        </div>
+                    }
+                </>
+            }
+            {section?.accordion &&
+                <div
+                class="accordion-list-sec w-full md:w-[60%] h-[350px] md:h-[450px] 2xl:h-[600px] overflow-y-auto"
+                data-aos="fade-left"
+                data-aos-duration="1000"
+                >
+                    {section.accordion.map((accordion, index) => ( accordion?.title && accordion?.description &&
+                        <div id={accordion.id} className="collapse collapse-plus">
+                            {index == 0 ?
+                                <input type="radio" name="my-accordion-3" defaultChecked /> :
+                                <input type="radio" name="my-accordion-3"/>
+                            }
+                            <div className="collapse-title">{accordion.title}</div>
+                            <div className="collapse-content">
+                            <p>{accordion.description}</p>
+                            </div>
+                        </div>
+                    ))}
+                
+                </div>
+            }
+          </div>
+          {section?.postAccordion &&
+            <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">{section.postAccordion}</p>
+          }
+        </div>
+      </section>
     );
 }
