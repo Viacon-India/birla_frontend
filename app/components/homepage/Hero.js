@@ -22,12 +22,14 @@ import { MainButton } from "../pageCommon/pageCommon";
 
 export default function Hero() {
   gsap.registerPlugin(ScrollTrigger);
-  $("#preloader").css("transition", "transform 2s linear"); // Set transition
+  
   const handleVideoEnd = () => {
     $("#preloader").css("transform", "translateY(-150%)");
   };
-
+  
   useEffect(() => {
+    $("#preloader").css("transition", "transform 2s linear"); // Set transition
+    
     gsap.fromTo(
       ".sideNav-wrapper",
       { right: "-48px" },
