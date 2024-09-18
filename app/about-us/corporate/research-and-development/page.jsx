@@ -101,17 +101,17 @@ export default function Research() {
             <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
               <div class="w-full md:w-[45%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
                 <Image
-                  className="w-full h-[320px] rounded-[12px] col-span-2"
+                  className="w-full h-[240px] 2xl:h-[265px] rounded-[12px] col-span-2"
                   src={res6}
                   alt="img"
                 />
                 <Image
-                  className="w-full h-[290px] rounded-[12px]"
+                  className="w-full h-[180px] 2xl:h-[265px] rounded-[12px]"
                   src={res7}
                   alt="img"
                 />
                 <Image
-                  className="w-full h-[290px] rounded-[12px]"
+                  className="w-full h-[180px] 2xl:h-[265px] rounded-[12px]"
                   src={res8}
                   alt="img"
                 />

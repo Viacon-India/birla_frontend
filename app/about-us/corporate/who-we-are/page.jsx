@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
 import Banner from "../../../assets/images/who1.jpg";
@@ -23,9 +24,18 @@ import "aos/dist/aos.css";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
 
-export default function WhoWeAre() {
+export default function WhoWeAre({ params }) {
+  const slugs = params.slug;
+
+  const [pageData, setPageData] = useState([]);
+
   useEffect(() => {
     AOS.init();
+    fetch(getStrapiMedia("/api/pages/who-we-are"))
+      .then((res) => res.json())
+      .then((pages) => {
+        setPageData(pages);
+      });
   }, []);
 
   return (
@@ -66,9 +76,9 @@ export default function WhoWeAre() {
                 <p data-aos="fade-left" data-aos-duration="1000">
                   Dalmia Bharat Refractories Limited (DBRL) along with their
                   strategic partner, Himadri Speciality Chemical Limited (HSCL)
-                  have acquired Birla Tyres Limited&apos;s tyre business through a
-                  resolution plan approved by the National Company Law Tribunal
-                  in October 2023.
+                  have acquired Birla Tyres Limited&apos;s tyre business through
+                  a resolution plan approved by the National Company Law
+                  Tribunal in October 2023.
                 </p>
               </div>
             </div>
@@ -93,22 +103,29 @@ export default function WhoWeAre() {
               </figure>
             </div>
             <div className="section-layer md:mt-[60px]">
-              <figure
-                className="w-full md:w-[40%] h-[350px] md:h-[480px] relative glare"
-                data-aos="flip-right"
-                data-aos-duration="1500"
-              >
+              <div className="w-full md:w-[40%] relative">
+                <figure
+                  className="w-full h-[350px] md:h-[480px] relative z-1 glare"
+                  data-aos="flip-right"
+                  data-aos-duration="1500"
+                >
+                  <Image
+                    className="absolute -z-1 w-[90%] h-[90%]"
+                    src={Triangle1}
+                    alt="triangle"
+                  />
+                  <Image
+                    className="absolute left-4 md:left-8 top-4 md:top-8 w-[90%] h-[90%] rounded-[12px]"
+                    src={who4}
+                    alt="img"
+                  />
+                </figure>
                 <Image
-                  className="absolute -z-1 w-[90%] h-[90%]"
-                  src={Triangle1}
-                  alt="triangle"
+                  alt="mask"
+                  src={tigerMask}
+                  className="absolute left-10 bottom-[-340px]"
                 />
-                <Image
-                  className="absolute left-4 md:left-8 top-4 md:top-8 w-[90%] h-[90%] rounded-[12px]"
-                  src={who4}
-                  alt="img"
-                />
-              </figure>
+              </div>
               <div className="box-content-sec relative md:w-[60%]">
                 <span className="section-heading">joint ownership</span>
                 <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
@@ -189,24 +206,13 @@ export default function WhoWeAre() {
                   strategic move to streamline operations and explore new
                   avenues of growth, DBRL has divested its entire refractory
                   business, except for the magnesia carbon business and its
-                  manufacturing located in China. DBRL&apos;s unwavering commitment
-                  to growth and innovation is exemplified by its recent
-                  acquisition of Birla Tyres Limited&apos;s tyre business - this bold
-                  venture into a domain entirely new to DBRL&apos;s established
-                  expertise signifies the company&apos;s unwavering spirit of
-                  exploration and adaptability.
+                  manufacturing located in China. DBRL&apos;s unwavering
+                  commitment to growth and innovation is exemplified by its
+                  recent acquisition of Birla Tyres Limited&apos;s tyre business
+                  - this bold venture into a domain entirely new to DBRL&apos;s
+                  established expertise signifies the company&apos;s unwavering
+                  spirit of exploration and adaptability.
                 </p>
-                <p data-aos="fade-left" data-aos-duration="1000">
-                  This strategic partnership marks the beginning of an exciting
-                  new chapter, where our combined expertise, resources, and
-                  innovative spirit will drive us to achieve greater heights.
-                  Together, we are poised to revolutionize the tyre industry,
-                  delivering unparalleled value to our customers and
-                  stakeholders. With a shared vision and commitment to
-                  excellence, we look forward to a future filled with remarkable
-                  achievements and ground-breaking advancements.
-                </p>
-
                 <Link
                   href="https://dalmiaocl.com/"
                   target="_blank"
@@ -242,17 +248,13 @@ export default function WhoWeAre() {
               data-aos="fade-left"
               data-aos-duration="2000"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec
-              vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque
-              laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur
-              maximus mollis diam, vel varius sapien suscipit eget. Cras
-              sollicitudin ligula at volutpat ultrices. Lorem ipsum dolor sit
-              amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Donec vitae mi
-              vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet
-              pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus
-              mollis diam.
+              This strategic partnership marks the beginning of an exciting new
+              chapter, where our combined expertise, resources, and innovative
+              spirit will drive us to achieve greater heights. Together, we are
+              poised to revolutionize the tyre industry, delivering unparalleled
+              value to our customers and stakeholders. With a shared vision and
+              commitment to excellence, we look forward to a future filled with
+              remarkable achievements and ground-breaking advancements.
             </p>
           </div>
         </div>
@@ -289,8 +291,14 @@ export default function WhoWeAre() {
               </figure>
               <h2>Truck Bus Bias</h2>
               <ul>
-                <li>Robust and reliable tyres for trucks, buses, ultra-light truck, etc.</li>
-                <li>Enhanced load-carrying capacity and 360-degree impact resistance for optimal performance</li>
+                <li>
+                  Robust and reliable tyres for trucks, buses, ultra-light
+                  truck, etc.
+                </li>
+                <li>
+                  Enhanced load-carrying capacity and 360-degree impact
+                  resistance for optimal performance
+                </li>
               </ul>
             </div>
             <div
@@ -304,8 +312,15 @@ export default function WhoWeAre() {
               </figure>
               <h2>Off The Road</h2>
               <ul>
-                <li>Heavy-duty and resilient tyres designed for Construction, industrial and mining equipment</li>
-                <li>Superior traction and extended mileage,complemented by value-added services, for stress-free use in challenging terrains</li>
+                <li>
+                  Heavy-duty and resilient tyres designed for Construction,
+                  industrial and mining equipment
+                </li>
+                <li>
+                  Superior traction and extended mileage,complemented by
+                  value-added services, for stress-free use in challenging
+                  terrains
+                </li>
               </ul>
             </div>
             <div
@@ -319,8 +334,14 @@ export default function WhoWeAre() {
               </figure>
               <h2>Agriculture</h2>
               <ul>
-                <li>Durable and dependable tyres designed for tractors, harvesters, and other agricultural machinery</li>
-                <li>Multi-purpose tread optimized for traction and impact resistance on both farm and road(haulage)</li>
+                <li>
+                  Durable and dependable tyres designed for tractors,
+                  harvesters, and other agricultural machinery
+                </li>
+                <li>
+                  Multi-purpose tread optimized for traction and impact
+                  resistance on both farm and road(haulage)
+                </li>
               </ul>
             </div>
           </div>
@@ -457,11 +478,7 @@ export default function WhoWeAre() {
           </p>
         </div>
       </section>
-      <PageEnd
-        Title="Vision, Mission & Values"
-        TitleLink="/about-us/corporate/vision-mission-values"
-        EndStaticImage={who10}
-      />
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={who10} />
       <Footer />
     </>
   );

@@ -62,7 +62,7 @@ export default function Hero() {
       <div className="loader-sec">
         <div class="video-wrapper">
           <video className="w-full h-fit object-contain" loop autoPlay muted>
-            <source src={"/assets/videos/tyre-loader-3.mp4"} type="video/mp4" />
+            <source src={"/assets/videos/tyre-loader-4.mp4"} type="video/mp4" />
           </video>
         </div>
       </div>

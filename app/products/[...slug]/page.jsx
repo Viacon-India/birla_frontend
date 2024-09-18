@@ -70,7 +70,7 @@ export default function Page({ params }) {
   console.log(pageData);
 
   useEffect(() => {
-    fetch(getStrapiMedia("/api/pages/" + slugs[0]))
+    fetch(getStrapiMedia("/api/segments/" + slugs[0]))
       .then((res) => res.json())
       .then((page) => {
         setPageData(page);
@@ -644,9 +644,7 @@ export default function Page({ params }) {
         </div>
       </section>
       <PageEnd
-        Title={pageData?.name ? pageData.name : ""}
-        TitleLink={pageData?.link ? pageData.link : ""}
-        EndImage={pageData.next}
+        EndPageData={pageData?.end}
         EndStaticImage={LastBg}
       />
       <Footer />

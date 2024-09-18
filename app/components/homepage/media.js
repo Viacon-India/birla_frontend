@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect } from "react";
 import Image from "next/image";
-import gallary1 from "../../assets/images/gallary1-original.webp";
-import gallary2 from "../../assets/images/gallary2-original.jpg";
-import gallary3 from "../../assets/images/gallary3.jpg";
+import gallary1 from "../../assets/images/media1.jpg";
+import gallary2 from "../../assets/images/media2.jpg";
+import gallary3 from "../../assets/images/gallary2-original.jpg";
 import Link from "next/link";
 import GradualSpacing from "@/components/GradualSpacing";
 import AOS from "aos";
