@@ -382,7 +382,7 @@ export function CommonSec({ section, Background }) {
               alt={section.images[1].alt}
             />
           </figure>
-          
+
           <div className="box-content-sec relative md:w-[55%] flex flex-col">
             <span
               className="section-heading"
@@ -399,9 +399,20 @@ export function CommonSec({ section, Background }) {
               <h3 className="section-title">{section.title}</h3>
             </div>
             {section.commonSecDetail.map((detail, index) => (
-              <p data-aos="fade-left" data-aos-duration="1000" key={index}>{detail.description}</p>
+              <p data-aos="fade-left" data-aos-duration="1000" key={index}>
+                {detail.description}
+              </p>
             ))}
 
+            {section?.button && (
+              <Link
+                href="https://www.himadri.com/"
+                target="_blank"
+                className="more-btn"
+              >
+                {section.button}
+              </Link>
+            )}
             <div class="line-loader self-end">
               <div class="bar bar1"></div>
               <div class="bar bar2"></div>
