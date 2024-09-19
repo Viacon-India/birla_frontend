@@ -20,8 +20,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
+import SectionSelection from "@/app/components/section/section";
 
-export default function Research({params}) {
+export default function Research({ params }) {
   const slugs = params.slug;
 
   const [pageData, setPageData] = useState([]);
@@ -31,15 +32,95 @@ export default function Research({params}) {
   useEffect(() => {
     AOS.init();
     fetch(getStrapiMedia("/api/pages/research-and-development"))
-    .then((res) => res.json())
-    .then((pages) => {
-      setPageData(pages);
-    });
+      .then((res) => res.json())
+      .then((pages) => {
+        setPageData(pages);
+      });
   }, []);
 
-  
+  // Accordion-sec-data
+  const accordion = {
+    __component: "section.accordion",
+    heading: "R&D capabilities",
+    title: "Driven by Innovation & Excellence",
+    preAccordion:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices.",
+    images: [
+      {
+        url: res6,
+        alt: "Img",
+      },
+      {
+        url: res7,
+        alt: "Img",
+      },
+      {
+        url: res8,
+        alt: "Img",
+      },
+    ],
+    accordion: [
+      {
+        title: "Capability point 1",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        title: "Capability point 2",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        title: "Capability point 3",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        title: "Capability point 4",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        title: "Capability point 5",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        title: "Capability point 6",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+    ],
+    postAccordion:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
+  };
 
-
+  // CommonSec
+  const commonsec = {
+    __component: "section.commonsec",
+    heading: "Introduction to R&D",
+    title: "Legacy of Innovation",
+    commonSecDetail: [
+      {
+        description:
+          "Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices.  Donec vitae mi vulputate, suscipit urna in, malesuada nisl.",
+      },
+      {
+        description:
+          "Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices.  Donec vitae mi vulputate, suscipit urna in, malesuada nisl.",
+      },
+    ],
+    images: [
+      {
+        url: Triangle1,
+        alt: "img",
+      },
+      {
+        url: res5,
+        alt: "img",
+      },
+    ],
+  };
 
   return (
     <>
@@ -49,180 +130,9 @@ export default function Research({params}) {
         StaticBanner={"/assets/videos/research.mp4"}
         extension=".mp4"
       />
-      <section className="mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
-        <div className="container mx-auto">
-          <div className="section-layer">
-            <figure
-              className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
-              data-aos="flip-right"
-              data-aos-duration="1500"
-            >
-              <Image
-                className="absolute -z-1 w-[90%] h-[90%]"
-                src={Triangle1}
-                alt="triangle"
-              />
-              <Image
-                className="absolute left-4 md:left-8 top-4 md:top-8 w-[90%] h-[90%] rounded-[12px]"
-                src={res5}
-                alt="img"
-              />
-            </figure>
-            <div className="box-content-sec relative md:w-[55%] flex flex-col">
-              <span
-                className="section-heading"
-                data-aos="fade-left"
-                data-aos-duration="500"
-              >
-                Introduction to R&D
-              </span>
-              <div
-                className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
-                data-aos="fade-left"
-                data-aos-duration="500"
-              >
-                <h3 className="section-title">Legacy of Innovation</h3>
-              </div>
-              <p data-aos="fade-left" data-aos-duration="1000">
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
-                mi vulputate, suscipit urna in, malesuada nisl.
-              </p>
-              <p data-aos="fade-left" data-aos-duration="1500">
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-                Pellentesque laoreet pretium nisl, et pulvinar massa eleifend
-                sed. Curabitur maximus mollis diam, vel varius sapien suscipit
-                eget. Cras sollicitudin ligula at volutpat ultrices. Donec vitae
-                mi vulputate, suscipit urna in, malesuada nisl.
-              </p>
-              <div class="line-loader self-end">
-                <div class="bar bar1"></div>
-                <div class="bar bar2"></div>
-                <div class="bar bar3"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="bg-[#F8F8F8] py-8 md:py-12 2xl:py-[60px] my-8 md:my-12 2xl:my-[60px] overflow-hidden">
-        <div className="container mx-auto">
-          <div className="excellence-sec">
-            <span className="section-heading">R&D capabilities</span>
-            <div className="section-title-wrapper">
-              <h3 className="section-title">
-                Driven by Innovation & Excellence
-              </h3>
-            </div>
-            <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
-              <div class="w-full md:w-[45%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
-                <Image
-                  className="w-full h-[240px] 2xl:h-[265px] rounded-[12px] col-span-2"
-                  src={res6}
-                  alt="img"
-                />
-                <Image
-                  className="w-full h-[180px] 2xl:h-[265px] rounded-[12px]"
-                  src={res7}
-                  alt="img"
-                />
-                <Image
-                  className="w-full h-[180px] 2xl:h-[265px] rounded-[12px]"
-                  src={res8}
-                  alt="img"
-                />
-              </div>
-
-              <div
-                class="accordion-list-sec md:w-[55%] h-[350px] md:h-[450px] 2xl:h-[600px] overflow-y-auto"
-                data-aos="fade-left"
-                data-aos-duration="1500"
-              >
-                <div className="collapse collapse-plus">
-                  <input type="radio" name="my-accordion-3" defaultChecked />
-                  <div className="collapse-title">Capability point 1</div>
-                  <div className="collapse-content">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                      ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </div>
-                </div>
-                <div className="collapse collapse-plus">
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">Capability point 2</div>
-                  <div className="collapse-content">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                      ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </div>
-                </div>
-                <div className="collapse collapse-plus">
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">Capability point 3</div>
-                  <div className="collapse-content">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                      ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </div>
-                </div>
-                <div className="collapse collapse-plus">
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">Capability point 4</div>
-                  <div className="collapse-content">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                      ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </div>
-                </div>
-                <div className="collapse collapse-plus">
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">Capability point 5</div>
-                  <div className="collapse-content">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                      ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </div>
-                </div>
-                <div className="collapse collapse-plus">
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">Capability point 6</div>
-                  <div className="collapse-content">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl. Pellentesque laoreet pretium nisl. Lorem
-                      ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="mb-8 md:mb-12 2xl:mb-[60px] overflow-hidden">
+      <SectionSelection section={commonsec} />
+      <SectionSelection section={accordion} Background={true} />
+      <section className="overflow-hidden mt-8 md:mt-12 2xl:mt-[60px]">
         <div className="container mx-auto">
           <div className="section-layer">
             <div className="box-content-sec relative md:w-[55%] flex flex-col">

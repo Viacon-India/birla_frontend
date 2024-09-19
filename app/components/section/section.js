@@ -23,6 +23,9 @@ export default function SectionSelection({ section, Background }) {
       {section.__component == "section.tigerMark" && (
         <TigerMark section={section} Background={Background} />
       )}
+      {section.__component == "section.commonsec" && (
+        <CommonSec section={section} Background={Background} />
+      )}
     </>
   );
 }
@@ -245,7 +248,7 @@ export function Accordion({ section, Background }) {
           </p>
         )}
         <div class="flex flex-col md:flex-row gap-4 md:gap-10">
-          {section?.images && section.images.length > 0 &&(
+          {section?.images && section.images.length > 0 && (
             <>
               {section.images.length > 1 ? (
                 <div class="w-full md:w-[40%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
@@ -320,10 +323,12 @@ export function Accordion({ section, Background }) {
 
 export function TigerMark({ section, Background }) {
   return (
-    <section className={cn(
+    <section
+      className={cn(
         "pt-8 md:pt-12 2xl:pt-[60px] overflow-hidden",
         Background ? "bg-[#F8F8F8]" : "bg-white"
-      )}>
+      )}
+    >
       <div className="container mx-auto">
         <div className="section-layer">
           <div
@@ -344,11 +349,65 @@ export function TigerMark({ section, Background }) {
           {section?.tigerMarkDetail && section.tigerMarkDetail.length > 0 && (
             <div className="box-content-sec w-full md:w-[60%] relative">
               {section.tigerMarkDetail.map((detail, index) => (
-                <p data-aos="fade-left" data-aos-duration="1000" key={index}>{detail.description}</p>
+                <p data-aos="fade-left" data-aos-duration="1000" key={index}>
+                  {detail.description}
+                </p>
               ))}
             </div>
           )}
+        </div>
+      </div>
+    </section>
+  );
+}
 
+export function CommonSec({ section, Background }) {
+  return (
+    <section className="mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden mb-8 md:mb-12 2xl:mb-[60px]">
+      <div className="container mx-auto">
+        <div className="section-layer">
+          <figure
+            className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
+            data-aos="flip-right"
+            data-aos-duration="1500"
+          >
+            <Image
+              className="absolute -z-1 w-[90%] h-[90%]"
+              src={section.images[0].url}
+              alt={section.images[0].alt}
+            />
+            <Image
+              className="absolute left-4 md:left-8 top-4 md:top-8 w-[90%] h-[90%] rounded-[12px]"
+              src={section.images[1].url}
+              alt={section.images[1].alt}
+            />
+          </figure>
+          
+          <div className="box-content-sec relative md:w-[55%] flex flex-col">
+            <span
+              className="section-heading"
+              data-aos="fade-left"
+              data-aos-duration="500"
+            >
+              {section.heading}
+            </span>
+            <div
+              className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+              data-aos="fade-left"
+              data-aos-duration="500"
+            >
+              <h3 className="section-title">{section.title}</h3>
+            </div>
+            {section.commonSecDetail.map((detail, index) => (
+              <p data-aos="fade-left" data-aos-duration="1000" key={index}>{detail.description}</p>
+            ))}
+
+            <div class="line-loader self-end">
+              <div class="bar bar1"></div>
+              <div class="bar bar2"></div>
+              <div class="bar bar3"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

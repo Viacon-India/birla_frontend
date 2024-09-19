@@ -91,6 +91,7 @@ export default function WhoWeAre({ params }) {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
   };
 
+  // 
   const tigerMarkSection = {
     __component: "section.tigerMark",
     heading: "About Us",
