@@ -36,6 +36,8 @@ import susIcon3 from "../assets/images/sus-icon3.png";
 import susIcon4 from "../assets/images/sus-icon4.png";
 import Triangle1 from "../assets/images/triangle1.png";
 import tigerMask from "../assets/images/tiger-mask2.png";
+import SectionSelection from "@/app/components/section/section";
+
 
 export default function Sustainability({params}) {
   const slugs = params.slug;
@@ -51,70 +53,46 @@ export default function Sustainability({params}) {
     });
   });
 
+  const tigerMarkSection = {
+    __component: "section.tigerMark",
+    heading: "Driving Change",
+    title: "Committing to Sustainable Innovation in Every Mile",
+    images: [
+      {
+        url: tigerMask,
+        alt: "tigermark",
+      },
+    ],
+    tigerMarkDetail: [
+      {
+        description:
+          "Welcome to Birla Tyres, where sustainability guides us towards responsible growth and positive impact. From production to distribution, sustainability is embedded in every facet of our operations, reflecting our commitment to environmental stewardship and social progress. Enhancing operational efficiency and reducing resource consumption are crucial for minimizing our environmental footprint while maintaining our competitive edge.",
+      },
+      {
+        description:
+          "Innovation drives our sustainability strategy. Through continuous research and development, we create cutting-edge technologies and products that meet evolving environmental standards and exceed client expectations, positioning us as industry leaders in sustainable performance.",
+      },
+      {
+        description:
+          "We conserve natural resources by minimizing waste, optimizing water and energy use, and promoting recycling across our supply chain. Our commitment to the United Nations Sustainable Development Goals inspires our efforts to foster economic growth, social inclusivity, and environmental protection globally.",
+      },
+      {
+        description:
+          "At Birla Tyres, sustainability is key to long-term value creation. By integrating sustainability into our core values and promoting a culture of innovation and responsibility, we will create “Eco-tyres for a Cleaner Ride.”",
+      },
+
+    ],
+  };
+
+
+
   return (
     <>
       <Navbar />
       <PageBanner Title="Sustainability" StaticBanner={Banner} />
+      <SectionSelection section={tigerMarkSection} />
       <section className="page-content-sec mt-[60px]">
         <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
-          <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8">
-            <div className="w-full md:w-[40%] relative">
-              <Image
-                alt="mask"
-                src={tigerMask}
-                className="absolute left-10 top-[120px]"
-              />
-              <span
-                className="section-heading"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-              >
-                Driving Change
-              </span>
-              <div
-                className="section-title-wrapper"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-              >
-                <h3 className="section-title">
-                  Committing to Sustainable Innovation in Every Mile
-                </h3>
-              </div>
-            </div>
-            <div className="w-full md:w-[60%] box-content-sec">
-              <p data-aos="fade-left" data-aos-duration="500">
-                Welcome to Birla Tyres, where sustainability guides us towards
-                responsible growth and positive impact. From production to
-                distribution, sustainability is embedded in every facet of our
-                operations, reflecting our commitment to environmental
-                stewardship and social progress. Enhancing operational
-                efficiency and reducing resource consumption are crucial for
-                minimizing our environmental footprint while maintaining our
-                competitive edge.
-              </p>
-              <p data-aos="fade-left" data-aos-duration="1000">
-                Innovation drives our sustainability strategy. Through
-                continuous research and development, we create cutting-edge
-                technologies and products that meet evolving environmental
-                standards and exceed client expectations, positioning us as
-                industry leaders in sustainable performance.
-              </p>
-              <p data-aos="fade-left" data-aos-duration="1500">
-                We conserve natural resources by minimizing waste, optimizing
-                water and energy use, and promoting recycling across our supply
-                chain. Our commitment to the United Nations Sustainable
-                Development Goals inspires our efforts to foster economic
-                growth, social inclusivity, and environmental protection
-                globally.
-              </p>
-              <p data-aos="fade-left" data-aos-duration="2000">
-                At Birla Tyres, sustainability is key to long-term value
-                creation. By integrating sustainability into our core values and
-                promoting a culture of innovation and responsibility, we will
-                create “Eco-tyres for a Cleaner Ride.”
-              </p>
-            </div>
-          </div>
           <div className="parallax-main-wrapper">
             <h2 className="text-secondary text-[20px] md:text-[28px] 2xl:text-[32px] leading-[1.2] font-bold mb-6 md:mb-8 2xl:mb-10">
               Our commitment to sustainability binds us together and serves as a

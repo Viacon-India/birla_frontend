@@ -41,93 +41,90 @@ export default function WhoWeAre({ params }) {
       });
   }, []);
 
-  const section = {
-    __component: 'section.accordion',
-    heading: 'What Sets us Apart',
-    title: 'Our Path to Excellence',
-    preAccordion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices.',
+
+  // Accordion-sec-data
+  const accordion = {
+    __component: "section.accordion",
+    heading: "What Sets us Apart",
+    title: "Our Path to Excellence",
+    preAccordion:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices.",
     images: [
       {
         url: who9,
-        alt: 'faqImg'
+        alt: "faqImg",
       },
     ],
     accordion: [
       {
-        title: 'Capability point 1',
-        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        title: "Capability point 1",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
-        title: 'Capability point 2',
-        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        title: "Capability point 2",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
-        title: 'Capability point 3',
-        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        title: "Capability point 3",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
-        title: 'Capability point 4',
-        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        title: "Capability point 4",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
-        title: 'Capability point 5',
-        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        title: "Capability point 5",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
-        title: 'Capability point 6',
-        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-      }
-
+        title: "Capability point 6",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
     ],
-    postAccordion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
-  }
+    postAccordion:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
+  };
 
-  console.log(section);
+  const tigerMarkSection = {
+    __component: "section.tigerMark",
+    heading: "About Us",
+    title: "Our Journey",
+    images: [
+      {
+        url: tigerMask,
+        alt: "tigermark",
+      },
+    ],
+    tigerMarkDetail: [
+      {
+        description:
+          "Birla Tyres was established in 1991 and has a rich heritage of excellence. Over the past 3 decades, Birla Tyres had built a reputation for quality and was recognized as one of the best tyre manufacturers in India. The registered office of Birla Tyres is located in Kolkata while the state-of-the-art manufacturing plant is located at Balasore, Odisha. The plant spans over an area of 195 acres and produces high-quality tyres catering to a wide variety of applications (commercial, agricultural, off-the-road, etc.)",
+      },
+      {
+        description:
+          "Dalmia Bharat Refractories Limited (DBRL) along with their strategic partner, Himadri Speciality Chemical Limited (HSCL) have acquired Birla Tyres Limited's tyre business through a resolution plan approved by the National Company Law Tribunal in October 2023.",
+      },
+    ],
+  };
 
   return (
     <>
       <Navbar />
-      <PageBanner Title={pageData?.title} Banner={pageData?.hero} StaticBanner={Banner} />
+      <PageBanner
+        Title={pageData?.title}
+        Banner={pageData?.hero}
+        StaticBanner={Banner}
+      />
+      <SectionSelection section={tigerMarkSection} />
       <section className="page-content-sec mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
         <div className="container mx-auto">
           <div className="sub-section-wrapper">
-            <div className="section-layer">
-              <div
-                className="box-title-sec w-full md:w-[45%] relative"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-              >
-                <Image
-                  alt="mask"
-                  src={tigerMask}
-                  className="absolute left-0 top-0"
-                />
-                <span className="section-heading">About Us</span>
-                <div className="section-title-wrapper">
-                  <h3 className="section-title">Our Journey</h3>
-                </div>
-              </div>
-              <div className="box-content-sec w-full md:w-[60%] relative">
-                <p data-aos="fade-left" data-aos-duration="1000">
-                  Birla Tyres was established in 1991 and has a rich heritage of
-                  excellence. Over the past 3 decades, Birla Tyres had built a
-                  reputation for quality and was recognized as one of the best
-                  tyre manufacturers in India. The registered office of Birla
-                  Tyres is located in Kolkata while the state-of-the-art
-                  manufacturing plant is located at Balasore, Odisha. The plant
-                  spans over an area of 195 acres and produces high-quality
-                  tyres catering to a wide variety of applications (commercial,
-                  agricultural, off-the-road, etc.)
-                </p>
-                <p data-aos="fade-left" data-aos-duration="1000">
-                  Dalmia Bharat Refractories Limited (DBRL) along with their
-                  strategic partner, Himadri Speciality Chemical Limited (HSCL)
-                  have acquired Birla Tyres Limited&apos;s tyre business through
-                  a resolution plan approved by the National Company Law
-                  Tribunal in October 2023.
-                </p>
-              </div>
-            </div>
             <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
               <figure className="w-1/2">
                 <Image
@@ -393,7 +390,7 @@ export default function WhoWeAre({ params }) {
           </div>
         </div>
       </section>
-      <SectionSelection section={section} />
+      <SectionSelection section={accordion} />
       <PageEnd EndPageData={pageData?.end} EndStaticImage={who10} />
       <Footer />
     </>

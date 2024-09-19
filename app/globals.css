@@ -494,7 +494,7 @@ text-white transition-all duration-500 relative hover:left-[-190px]
 }
 .section-title-wrapper{
   @apply relative pl-2 md:pl-3 flex items-center
-  before:content-[""] before:w-[3px] before:h-[80%] before:bg-primary before:absolute before:left-0 before:rounded-[100px]
+  before:content-[""] before:w-[3px] before:h-[95%] before:bg-primary before:absolute before:left-0 before:rounded-[100px]
 }
 .section-title{
   @apply text-secondary text-[22px] md:text-[42px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px]
@@ -951,10 +951,10 @@ a.current_dot {
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }
 .chipSwiper .swiper-button-prev{
-  @apply !w-2 !h-2 !bg-transparent absolute rounded-[4px] !top-[99%] !left-[86%] 2xl:!left-[91%]
+  @apply !w-0 !h-0 !bg-transparent absolute rounded-[4px] !top-[92%] !left-[90%] 2xl:!left-[91%]
 }
 .chipSwiper .swiper-button-prev::after{
-  content: url('data:image/svg+xml,<svg width="9" height="30" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2674 19.8801C11.6834 20.2961 11.6834 20.6801 11.2674 21.0321C10.8514 21.4481 10.4674 21.4481 10.1154 21.0321L0.707434 11.5761C0.323434 11.1921 0.323434 10.7921 0.707434 10.3761L10.1154 0.920149C10.4674 0.504148 10.8514 0.504148 11.2674 0.920149C11.6834 1.27215 11.6834 1.65615 11.2674 2.07215L2.67543 11.0001L11.2674 19.8801Z" fill="%234F5662"/></svg>') !important; 
+  content: url('data:image/svg+xml,<svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 1.25L1.25 7.5L7.5 13.75" stroke="%231A1D21" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') !important; 
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }
 
