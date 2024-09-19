@@ -27,6 +27,7 @@ import { PageEnd } from "../../components/pageCommon/pageCommon";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import tigerMask from "../../assets/images/tiger-mask2.png";
+import SectionSelection from "@/app/components/section/section";
 
 export default function Esg({params}) {
   const slugs = params.slug;
@@ -43,57 +44,30 @@ export default function Esg({params}) {
     });
   });
 
+  const tigerMarkSection = {
+    __component: "section.tigerMark",
+    heading: "ESG",
+    title: "Driving Innovation Toward a Cleaner Planet!",
+    images: [
+      {
+        url: tigerMask,
+        alt: "tigermark",
+      },
+    ],
+    tigerMarkDetail: [
+      {
+        description:
+          "At Birla Tyres, we are committed to leading the way in sustainability within our industry. By prioritizing ESG (Environmental, Social, and Governance), we address vital challenges such as environmental stewardship and social responsibility, paving the way towards a brighter, eco-friendly future. Our innovative manufacturing processes emphasizing the use of recycled materials and renewable resources dramatically reduce our environmental footprint and uplift local communities. Every tyre we produce embodies our steadfast dedication to excellence and sustainability, and ensures road safety while nurturing the health of our planet. Join us on this inspiring journey where quality meets conscience, and together, let&apos;s create a world where every journey contributes to a more vibrant tomorrow!",
+      },
+
+    ],
+  };
+
   return (
     <>
       <Navbar />
       <PageBanner Title="ESG" StaticBanner={Banner} />
-      <section className="page-content-sec mt-[60px]">
-        <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
-          <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8">
-            <div className="w-full md:w-1/2 relative">
-              <Image
-                alt="mask"
-                src={tigerMask}
-                className="absolute left-0 top-0"
-              />
-              <span
-                className="section-heading"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-              >
-                ESG
-              </span>
-              <div
-                className="section-title-wrapper"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-              >
-                <h3 className="section-title">
-                  Driving Innovation Toward a Cleaner Planet!
-                </h3>
-              </div>
-            </div>
-            <div className="w-full md:w-[45%] box-content-sec">
-              <p data-aos="fade-left" data-aos-duration="500">
-                At Birla Tyres, we are committed to leading the way in
-                sustainability within our industry. By prioritizing ESG
-                (Environmental, Social, and Governance), we address vital
-                challenges such as environmental stewardship and social
-                responsibility, paving the way towards a brighter, eco-friendly
-                future. Our innovative manufacturing processes emphasizing the
-                use of recycled materials and renewable resources dramatically
-                reduce our environmental footprint and uplift local communities.
-                Every tyre we produce embodies our steadfast dedication to
-                excellence and sustainability, and ensures road safety while
-                nurturing the health of our planet. Join us on this inspiring
-                journey where quality meets conscience, and together, let&apos;s
-                create a world where every journey contributes to a more vibrant
-                tomorrow!
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SectionSelection section={tigerMarkSection} />
       <section className="mt-[60px]">
         <div class="w-[100%] mt-4 2xl:mt-8 ">
           <video className="!w-full" loop autoPlay muted>

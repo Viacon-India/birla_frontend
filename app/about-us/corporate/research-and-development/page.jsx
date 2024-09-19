@@ -36,6 +36,11 @@ export default function Research({params}) {
       setPageData(pages);
     });
   }, []);
+
+  
+
+
+
   return (
     <>
       <Navbar />

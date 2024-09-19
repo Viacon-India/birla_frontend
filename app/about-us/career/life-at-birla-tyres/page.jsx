@@ -20,6 +20,7 @@ import life7 from "../../../assets/images/lifef.jpg";
 import life8 from "../../../assets/images/life8.jpg";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
+import SectionSelection from "@/app/components/section/section";
 
 export default function LifeAtBirla({params}) {
   const slugs = params.slug;
@@ -33,60 +34,45 @@ export default function LifeAtBirla({params}) {
       setPageData(pages);
     });
   }, []);
+
+  const tigerMarkSection = {
+    __component: "section.tigerMark",
+    heading: "Employee Engagement",
+    title: "Journey from Fantastic Candidate Experience to Excellent Employee Experience ",
+    images: [
+      {
+        url: tigerMask,
+        alt: "tigermark",
+      },
+    ],
+    tigerMarkDetail: [
+      {
+        description:
+          "Our commitment to create an atmosphere where every employee feels respected, empowered and inspired to contribute to the company’s success is embodied in the vision of the organization. We aim to create an inclusive, respectful, and equitable work environment that values diversity and encourages creativity.",
+      },
+      {
+        description:
+          "Recognizing human capital as a key driver of our business, we strive to offer diverse and challenging opportunities that lead to fulfilling careers. We uphold the core values of Commitment to Excellence, Agility, Reliability and Empathy. ",
+      },
+      {
+        description:
+          "Our rewards and recognition policy and talent engagement activities are designed to acknowledge and appreciate employees' exceptional performance, dedication, contributions, creativity and collaboration.",
+      },
+
+    ],
+  };
+
+
+
+
   return (
     <>
       <Navbar />
       <PageBanner Title="Life At BIRLA TYRES" StaticBanner={Banner} />
+      <SectionSelection section={tigerMarkSection} Background={true} />
       <section className="page-content-sec bg-[#F8F8F8]">
         <div className="container mx-auto flex flex-col">
-          <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8 py-[60px]">
-            <div className="w-full md:w-[50%] relative">
-              <Image
-                alt="mask"
-                src={tigerMask}
-                className="absolute left-0 top-0"
-              />
-              <span
-                className="section-heading"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-              >
-                Employee Engagement
-              </span>
-              <div
-                className="section-title-wrapper"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-              >
-                <h3 className="section-title">
-                  Journey from Fantastic Candidate Experience to Excellent
-                  Employee Experience 
-                </h3>
-              </div>
-            </div>
-            <div className="w-full md:w-[50%] box-content-sec">
-              <p data-aos="fade-left" data-aos-duration="500">
-                Our commitment to create an atmosphere where every employee
-                feels respected, empowered and inspired to contribute to the
-                company’s success is embodied in the vision of the organization.
-                We aim to create an inclusive, respectful, and equitable work
-                environment that values diversity and encourages creativity.
-              </p>
-              <p data-aos="fade-left" data-aos-duration="1000">
-                Recognizing human capital as a key driver of our business, we
-                strive to offer diverse and challenging opportunities that lead
-                to fulfilling careers. We uphold the core values of Commitment
-                to Excellence, Agility, Reliability and Empathy.
-              </p>
-              <p data-aos="fade-left" data-aos-duration="1500">
-                Our rewards and recognition policy and talent engagement
-                activities are designed to acknowledge and appreciate
-                employees&apos; exceptional performance, dedication,
-                contributions, creativity and collaboration.
-              </p>
-            </div>
-          </div>
-          <div className="gallery-sec grid grid-cols-4 gap-3 2xl:gap-4">
+          <div className="gallery-sec grid grid-cols-4 gap-3 2xl:gap-4 pt-6 md:pt-10 2xl:pt-[60px]">
             <figure
               className="w-full h-[316px] mb-0"
               data-aos="flip-left"

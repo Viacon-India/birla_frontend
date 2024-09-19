@@ -62,8 +62,8 @@ export default function Manufacturing({params}) {
     });
   },);
 
-
-  const section = {
+// Accordion section
+  const accordion = {
     background: '#F8F8F8',
     __component: 'section.accordion',
     heading: 'our people',
@@ -87,107 +87,79 @@ export default function Manufacturing({params}) {
       {
         svg:'',
         title: 'Expertise and Skill',
-        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        description : 'Our team comprises highly skilled professionals, including machinists, welders, electricians, and maintenance technicians. Their technical proficiency and attention to detail are crucial in maintaining our high standards of production.'
       },
       {
         svg:'',
         title: 'Innovation and Engineering',
-        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        description : 'Our manufacturing and quality control engineers are constantly pushing the boundaries of what’s possible. They design and refine our production processes, ensuring efficiency and excellence at every stage.'
       },
       {
         svg:'',
         title: 'Leadership and Management',
-        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        description : 'Our production managers and supervisors play a pivotal role in coordinating activities and meeting production targets. Our Plant leadership ensures that our operations run smoothly and efficiently.'
       },
       {
         svg:'',
         title: 'Support and Development',
-        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        description : 'Our human resources team is dedicated to fostering a supportive and inclusive workplace. They handle recruitment, training, and employee well-being, ensuring that our team members feel valued and empowered.'
       },
       {
         svg:'',
         title: 'Commitment to Diversity and Inclusion',
-        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        description : 'We are proud to champion gender diversity and promote self-management within our workforce. We believe that a diverse and inclusive environment leads to more innovative solutions and a more engaged team.'
       },
       {
         svg:'',
         title: 'Quality and Precision',
-        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        description : 'From assemblers to inspectors, every team member is committed to delivering products that meet the highest quality standards. Their meticulous work ensures that our customers receive only the best.'
       },
       {
         svg:'',
         title: 'Continuous Improvement',
-        description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        description : 'We invest in the professional development of our employees, providing opportunities for growth and learning. This commitment not only enhances our operational efficiency but also solidifies our reputation as an industry leader.'
       }
     ],
     postAccordion: 'Our people are the driving force behind our success, and we are dedicated to creating an environment where they can thrive. Together, we are building a future of excellence and innovation.'
   }
 
+  // TigerMask section
+  const tigerMarkSection = {
+    __component: "section.tigerMark",
+    heading: "our Manufacturing excellence",
+    title: "Where quality meets innovation",
+    images: [
+      {
+        url: tigerMask,
+        alt: "tigermark",
+      },
+    ],
+    tigerMarkDetail: [
+      {
+        description:
+          "We take pride in our state-of-the-art manufacturing facility located in Balasore, Odisha. Our plant is a testament to our commitment to quality, innovation, and sustainability in tyre production. Equipped with the latest technology and machinery, our facility operates with eco-friendly practices. Our team of highly skilled engineers, technicians, and workers are our asset and they constitute the backbone of our manufacturing excellence.",
+      },
+      {
+        description:
+          "At our plant, we emphasize rigorous quality control measures including multiple stages of testing and inspection, traceability, visual management, stringent safety protocols and the continuous review and evaluation of our workers’ skill sets. We also focus on our employee’s training and career growth opportunities. Additionally, we collaborate closely with our suppliers, supporting their training and development to ensure a steady supply of high-quality raw materials, which is crucial for our manufacturing process.",
+      },
+      {
+        description:
+          "By maintaining a single plant, we ensure close control over the manufacturing process, delivering tyres that meet the specific needs of our diverse clientele. Our plant is equipped to handle custom orders by quick setup changes, allowing us to produce tyres that meet specific requirements for various applications, from commercial to off-the road vehicles. We are committed to continuous improvement - through regular QMS/supplier audits and feedback mechanisms, we constantly seek ways to enhance our manufacturing processes and product quality.",
+      },
+
+    ],
+  };
+
+
+
   return (
     <>
       <Navbar />
       <PageBanner Title="Manufacturing" StaticBanner={Banner} />
+      <SectionSelection section={tigerMarkSection} />
       <section className="page-content-sec mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
         <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
-          <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8">
-            <div className="w-full md:w-[40%]">
-              <span
-                className="section-heading"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-              >
-                our Manufacturing excellence
-              </span>
-              <div
-                className="section-title-wrapper"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-              >
-                <h3 className="section-title">
-                  Where Quality Meets Innovation
-                </h3>
-                <Image
-                  alt="mask"
-                  src={tigerMask}
-                  className="absolute left-10 top-[120px]"
-                />
-              </div>
-            </div>
-            <div className="w-full md:w-[60%] box-content-sec">
-              <p data-aos="fade-left" data-aos-duration="500">
-                We take pride in our state-of-the-art manufacturing facility
-                located in Balasore, Odisha. Our plant is a testament to our
-                commitment to quality, innovation, and sustainability in tyre
-                production. Equipped with the latest technology and machinery,
-                our facility operates with eco-friendly practices. Our team of
-                highly skilled engineers, technicians, and workers are our asset
-                and they constitute the backbone of our manufacturing
-                excellence.
-              </p>
-              <p data-aos="fade-left" data-aos-duration="1000">
-                At our plant, we emphasize rigorous quality control measures
-                including multiple stages of testing and inspection,
-                traceability, visual management, stringent safety protocols and
-                the continuous review and evaluation of our workers’ skill sets.
-                We also focus on our employee’s training and career growth
-                opportunities. Additionally, we collaborate closely with our
-                suppliers, supporting their training and development to ensure a
-                steady supply of high-quality raw materials, which is crucial
-                for our manufacturing process.
-              </p>
-              <p data-aos="fade-left" data-aos-duration="1500">
-                By maintaining a single plant, we ensure close control over the
-                manufacturing process, delivering tyres that meet the specific
-                needs of our diverse clientele. Our plant is equipped to handle
-                custom orders by quick setup changes, allowing us to produce
-                tyres that meet specific requirements for various applications,
-                from commercial to off-the road vehicles. We are committed to
-                continuous improvement - through regular QMS/supplier audits and
-                feedback mechanisms, we constantly seek ways to enhance our
-                manufacturing processes and product quality.
-              </p>
-            </div>
-          </div>
           <div className="grid grid-cols-2 gap-6 md:gap-10 relative">
             <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
               <Image
@@ -405,7 +377,7 @@ export default function Manufacturing({params}) {
                 </SwiperSlide>
               </Swiper>
             </div>
-            <div>
+            <div className="mb-6 md:mb-10 2xl:mb-[60px]">
               <h3 className="text-[24px] 2xl:text-[32px] text-secondary">
                 For Executives:
               </h3>
@@ -473,135 +445,7 @@ export default function Manufacturing({params}) {
           </div>
         </div>
       </section>
-      <SectionSelection section={section} />
-      <section className="bg-[#F8F8F8] py-8 md:py-12 2xl:py-[60px] my-8 md:my-12 2xl:my-[60px] overflow-hidden">
-        <div className="container mx-auto">
-          <div className="excellence-sec">
-            <span className="section-heading">our people</span>
-            <div className="section-title-wrapper">
-              <h3 className="section-title">
-                The Heart of Our Manufacturing Excellence
-              </h3>
-            </div>
-            <p className="text-[#1A1D21] text-[14px] md:text-[16px] 2xl:text-[17px] mt-4 md:mt-6 2xl:mt-10">
-              At the core of our manufacturing success is our dedicated team of
-              engineers, technicians, and workers. Their expertise and
-              commitment drive our innovation and ensure the highest quality in
-              every product we create. Here’s what makes our team exceptional:
-            </p>
-            <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
-              <div class="w-full md:w-[45%] md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
-                <Image className="w-full h-[240px] 2xl:h-[265px] rounded-[12px] col-span-2" src={man22} alt="img" />
-                <Image className="w-full h-[240px] 2xl:h-[265px] rounded-[12px]" src={man23} alt="img" />
-                <Image className="w-full h-[240px] 2xl:h-[265px] rounded-[12px]" src={man24} alt="img" />
-              </div>
-              <div
-                class="accordion-list-sec people-accordion h-[350px] md:h-[500px] 2xl:h-[600px] overflow-y-auto md:w-[55%]"
-                data-aos="fade-left"
-                data-aos-duration="1500"
-              >
-                <div className="collapse collapse-plus">
-                  <input type="radio" name="my-accordion-3" defaultChecked />
-                  <div className="collapse-title">Expertise and Skill</div>
-                  <div className="collapse-content">
-                    <p>
-                      Our team comprises highly skilled professionals, including
-                      machinists, welders, electricians, and maintenance
-                      technicians. Their technical proficiency and attention to
-                      detail are crucial in maintaining our high standards of
-                      production.
-                    </p>
-                  </div>
-                </div>
-                <div className="collapse collapse-plus">
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">
-                    Innovation and Engineering
-                  </div>
-                  <div className="collapse-content">
-                    <p>
-                      Our manufacturing and quality control engineers are
-                      constantly pushing the boundaries of what’s possible. They
-                      design and refine our production processes, ensuring
-                      efficiency and excellence at every stage.
-                    </p>
-                  </div>
-                </div>
-                <div className="collapse collapse-plus">
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">
-                    Leadership and Management
-                  </div>
-                  <div className="collapse-content">
-                    <p>
-                      Our production managers and supervisors play a pivotal
-                      role in coordinating activities and meeting production
-                      targets. Our Plant leadership ensures that our operations
-                      run smoothly and efficiently.
-                    </p>
-                  </div>
-                </div>
-                <div className="collapse collapse-plus">
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">Support and Development</div>
-                  <div className="collapse-content">
-                    <p>
-                      Our human resources team is dedicated to fostering a
-                      supportive and inclusive workplace. They handle
-                      recruitment, training, and employee well-being, ensuring
-                      that our team members feel valued and empowered.
-                    </p>
-                  </div>
-                </div>
-                <div className="collapse collapse-plus">
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">
-                    Commitment to Diversity and Inclusion
-                  </div>
-                  <div className="collapse-content">
-                    <p>
-                      We are proud to champion gender diversity and promote
-                      self-management within our workforce. We believe that a
-                      diverse and inclusive environment leads to more innovative
-                      solutions and a more engaged team.
-                    </p>
-                  </div>
-                </div>
-                <div className="collapse collapse-plus">
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">Quality and Precision</div>
-                  <div className="collapse-content">
-                    <p>
-                      From assemblers to inspectors, every team member is
-                      committed to delivering products that meet the highest
-                      quality standards. Their meticulous work ensures that our
-                      customers receive only the best.
-                    </p>
-                  </div>
-                </div>
-                <div className="collapse collapse-plus">
-                  <input type="radio" name="my-accordion-3" />
-                  <div className="collapse-title">Continuous Improvement</div>
-                  <div className="collapse-content">
-                    <p>
-                      We invest in the professional development of our
-                      employees, providing opportunities for growth and
-                      learning. This commitment not only enhances our
-                      operational efficiency but also solidifies our reputation
-                      as an industry leader.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p className="text-[#1A1D21] text-[14px] md:text-[16px] 2xl:text-[17px] mt-4 md:mt-6 2xl:mt-10">
-              Our people are the driving force behind our success, and we are
-              dedicated to creating an environment where they can thrive.
-              Together, we are building a future of excellence and innovation.
-            </p>
-          </div>
-        </div>
-      </section>
+      <SectionSelection section={accordion} Background={true} />
       <PageEnd EndPageData={pageData?.end} EndStaticImage={man3} />
       <Footer />
     </>

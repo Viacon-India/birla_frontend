@@ -317,7 +317,7 @@ export default function NewProduct() {
                           spaceBetween={10}
                           slidesPerView={2.5}
                           freeMode={true}
-                          className="chipSwiper !w-[90%] !ml-0 !static"
+                          className="chipSwiper !w-[85%] !ml-0 !static"
                         >
                           {product.size.map((size, ind) => (
                             <SwiperSlide className="!w-fit" key={ind}>
