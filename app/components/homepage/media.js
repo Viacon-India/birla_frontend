@@ -26,6 +26,50 @@ export default function Media() {
             <div
               class="media-card"
               data-aos="fade-right"
+              data-aos-duration="1500"
+              // data-aos-offset="650"
+            >
+              <figure>
+                <Link
+                  target="_blank"
+                  href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
+                >
+                  <Image
+                    className="media-card-image"
+                    src={gallary2}
+                    alt="card"
+                  />
+                </Link>
+                <span></span>
+              </figure>
+              <div className="media-card-detail">
+                <div className="flex justify-between items-center mb-3">
+                  <span className="card-cat">Media</span>
+                  <span className="card-date">24 september 2024</span>
+                </div>
+                <h2 className="media-title">
+                  <Link
+                    target="_blank"
+                    href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
+                  >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, dolore.
+                  </Link>
+                </h2>
+                <p className="media-detail">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ducimus vitae ullam?
+                </p>
+                <Link
+                  target="_blank"
+                  href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
+                  className="primary-btn w-fit !px-6 flip-animate-2"
+                >
+                  <span data-hover="Read More">Read More</span>
+                </Link>
+              </div>
+            </div>
+            <div
+              class="media-card"
+              data-aos="fade-right"
               data-aos-duration="1000"
               // data-aos-offset="650"
             >
@@ -44,7 +88,7 @@ export default function Media() {
               <div className="media-card-detail">
                 <div className="flex justify-between items-center mb-3">
                   <span className="card-cat">Media</span>
-                  <span className="card-date">24 June 2024</span>
+                  <span className="card-date">17 July 2024</span>
                 </div>
                 <h2 className="media-title">
                   <Link
@@ -81,53 +125,6 @@ export default function Media() {
                 >
                   <Image
                     className="media-card-image"
-                    src={gallary2}
-                    alt="card"
-                  />
-                </Link>
-                <span></span>
-              </figure>
-              <div className="media-card-detail">
-                <div className="flex justify-between items-center mb-3">
-                  <span className="card-cat">Media</span>
-                  <span className="card-date">24 June 2024</span>
-                </div>
-                <h2 className="media-title">
-                  <Link
-                    target="_blank"
-                    href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
-                  >
-                    Birla Tyres set to roll again, acquisition finalised by
-                    consortium of Himadri and Dalmia
-                  </Link>
-                </h2>
-                <p className="media-detail">
-                  Birla Tyres will resurface on Indian roads a year from now,
-                  courtesy the new owners of the company and the brand....
-                </p>
-                <Link
-                  target="_blank"
-                  href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
-                  className="primary-btn w-fit !px-6 flip-animate-2"
-                >
-                  <span data-hover="Read More">Read More</span>
-                </Link>
-              </div>
-            </div>
-
-            <div
-              class="media-card"
-              data-aos="fade-right"
-              data-aos-duration="1500"
-              // data-aos-offset="650"
-            >
-              <figure>
-                <Link
-                  target="_blank"
-                  href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
-                >
-                  <Image
-                    className="media-card-image"
                     src={gallary3}
                     alt="card"
                   />
@@ -137,7 +134,7 @@ export default function Media() {
               <div className="media-card-detail">
                 <div className="flex justify-between items-center mb-3">
                   <span className="card-cat">Media</span>
-                  <span className="card-date">24 June 2024</span>
+                  <span className="card-date">02 November 2023</span>
                 </div>
                 <h2 className="media-title">
                   <Link
@@ -161,7 +158,6 @@ export default function Media() {
                 </Link>
               </div>
             </div>
-
           </div>
         </div>
       </div>

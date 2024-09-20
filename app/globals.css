@@ -430,7 +430,7 @@ text-white transition-all duration-500 relative hover:left-[-190px]
   @apply absolute top-0 left-0 w-full h-full z-1 bg-[#161746BF]
 }
 .hero-sec-heading{
-  @apply text-[36px] md:text-[60px] 2xl:text-[72px] text-[#FFFFFF] font-extrabold font-oak-sans
+  @apply text-[36px] md:text-[54px] 2xl:text-[72px] text-[#FFFFFF] font-extrabold font-oak-sans
 }
 .section-subheading{
   @apply text-[14px] md:text-[24px] 2xl:text-[32px] text-[#FFFFFF] mb-8 leading-[1.2] hidden md:flex
@@ -679,7 +679,7 @@ a.current_dot {
 }
 
 .footer-list-item {
-  @apply text-[#0E0E11] text-[13px] 2xl:text-[16px] leading-[1.2] capitalize relative flex gap-2 hover:text-primary 
+  @apply text-[#0E0E11] text-[12px] 2xl:text-[15px] leading-[1.2] capitalize relative flex gap-2 hover:text-primary 
   w-fit transition-all duration-500 items-center
   
 }
@@ -988,7 +988,7 @@ a.current_dot {
   @apply text-[#1A1D21] text-[18px] font-semibold py-4 relative z-1
 }
 .accordion-content{
-  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[17px] overflow-hidden max-h-0;
+  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[16px] overflow-hidden max-h-0;
   transition: max-height 0.2s ease-out;
 }
 .ham-accordion.active::after{
@@ -1035,17 +1035,17 @@ a.current_dot {
   @apply font-extrabold text-[32px] md:text-[48px] 2xl:text-[56px] text-[#FFFFFF] !uppercase 
 }
 .banner-overlay{
-  background: linear-gradient(to top, rgba(0,0,0,0.70), rgba(0,0,0,0));
+  background: linear-gradient(to top, rgba(0,0,0,0.99), rgba(0,0,0,0));
   @apply absolute bottom-0 left-0 w-full h-[60%] z-10
 }
 .sub-section-wrapper{
   @apply flex flex-col gap-8 md:gap-10
 }
 .section-layer{
-  @apply flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px]
+  @apply flex items-start flex-col gap-4 md:gap-8 2xl:gap-[60px]
 }
 .box-content-sec p{
-  @apply text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mb-3 last:mb-0
+  @apply text-[#1A1D21] text-[14px] md:text-[16px] leading-[1.6] mb-3 last:mb-0
 }
 .vast-card figure{
   @apply w-full h-[200px] md:h-[252px] mb-2 md:mb-4 2xl:mb-6 relative overflow-hidden 
@@ -1072,7 +1072,7 @@ a.current_dot {
   @apply flex flex-col pl-6 list-disc
 }
 .vast-card ul li{
-  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[17px] mb-1
+  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[16px] mb-1
 }
 .accordion-list-sec{
   @apply relative z-5
@@ -1088,7 +1088,7 @@ a.current_dot {
   @apply !pl-0
 }
 .accordion-list-sec .collapse-content p{
-  @apply text-[14px] md:text-[16px] 2xl:text-[17px]
+  @apply text-[14px] md:text-[16px] 2xl:text-[16px]
 }
 
 
@@ -1130,7 +1130,7 @@ a.current_dot {
   @apply text-[28px] 2xl:text-[32px] text-[#454545] font-bold mb-2
  }
  .contact-detail-box p{
-  @apply text-[14px] md:text-[16px] 2xl:text-[17px] text-[#454545]
+  @apply text-[14px] md:text-[16px] 2xl:text-[16px] text-[#454545]
  }
  .form-content{
   @apply bg-[#FFFFFF] border border-[#DEE1E5] p-6 md:p-[40px] 2xl:p-[60px] rounded-[12px] relative
@@ -1320,7 +1320,7 @@ input[type=file]::file-selector-button {
   @apply text-[#FFFFFF] text-[24px] md:text-[28px] 2xl:text-[32px] font-semibold first-letter:bg-white
 }
 .value-overlay p{
-  @apply text-[#FFFFFF] text-[14px] md:text-[16px] 2xl:text-[17px]
+  @apply text-[#FFFFFF] text-[14px] md:text-[16px] 2xl:text-[16px]
 }
 
 
@@ -1426,16 +1426,16 @@ input[type=file]::file-selector-button {
   @apply text-[#4F5662]
 }
 .tyre-guide-box p{
-  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[17px]
+  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[16px]
 }
 .tyre-guide-box h3{
-  @apply text-[#000000] text-[14px] md:text-[16px] 2xl:text-[17px] mb-4
+  @apply text-[#000000] text-[14px] md:text-[16px] 2xl:text-[16px] mb-4
 }
 .tyre-guide-box ul{
   @apply pl-4
 }
 .tyre-guide-box ul li{
-  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[17px] list-disc
+  @apply text-[#4F5662] text-[14px] md:text-[16px] 2xl:text-[16px] list-disc
 }
 
 

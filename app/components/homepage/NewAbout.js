@@ -191,7 +191,7 @@ export default function NewAbout() {
             </div>
           </SwiperSlide>
         </Swiper> */}
-        <div className="section-layer">
+        <div className="flex items-start flex-col-reverse md:flex-row gap-4 md:gap-8 2xl:gap-[60px]">
           <figure
             className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
             data-aos="flip-right"

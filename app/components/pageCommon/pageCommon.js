@@ -181,17 +181,36 @@ export function Float() {
             stroke-linejoin="round"
           />
         </svg>
-        033-22624354
+        91-XXXXXXXXXX
+      </Link>
+      <Link className="sideNav" href="tel:033-22624354">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1.54912 11.8281C0.617299 10.2572 0.290965 8.40025 0.631402 6.60583C0.971838 4.81142 1.95563 3.20301 3.39803 2.08261C4.84044 0.962221 6.64224 0.406923 8.46509 0.520992C10.2879 0.635061 12.0065 1.41065 13.2979 2.70212C14.5894 3.99359 15.365 5.7121 15.4791 7.53496C15.5932 9.35781 15.0379 11.1596 13.9175 12.602C12.7971 14.0444 11.1887 15.0282 9.39429 15.3687C7.59988 15.7091 5.74291 15.3828 4.17207 14.451L1.58174 15.191C1.47456 15.2216 1.36115 15.223 1.25326 15.1951C1.14536 15.1671 1.0469 15.1108 0.968089 15.032C0.889274 14.9532 0.83297 14.8547 0.805012 14.7468C0.777054 14.6389 0.778458 14.5255 0.809079 14.4184L1.54912 11.8281Z"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M9.88386 12.3751C9.06161 12.3762 8.2472 12.2151 7.48731 11.901C6.72742 11.5869 6.03699 11.1259 5.45557 10.5445C4.87414 9.96307 4.41316 9.27263 4.09904 8.51274C3.78491 7.75285 3.62382 6.93845 3.62499 6.11619C3.62685 5.53742 3.8582 4.98302 4.26828 4.57459C4.67837 4.16617 5.23371 3.93708 5.81248 3.93757C5.90741 3.93757 6.00066 3.96267 6.08276 4.01032C6.16487 4.05797 6.23292 4.12647 6.28002 4.2089L7.19339 5.80728C7.24847 5.90367 7.27688 6.013 7.2757 6.12402C7.27452 6.23503 7.24379 6.34373 7.18667 6.43893L6.45315 7.66146C6.83053 8.49894 7.50111 9.16953 8.33859 9.54691L9.56113 8.81339C9.65633 8.75627 9.76502 8.72554 9.87604 8.72436C9.98705 8.72318 10.0964 8.75159 10.1928 8.80668L11.7912 9.72003C11.8736 9.76713 11.9421 9.83518 11.9897 9.91729C12.0374 9.9994 12.0625 10.0926 12.0625 10.1876C12.0608 10.7657 11.831 11.3198 11.4231 11.7294C11.0151 12.139 10.462 12.3711 9.88386 12.3751Z"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        91-XXXXXXXXXX
       </Link>
     </div>
   );
 }
 
-export function PageEnd({
-  EndPageData,
-  EndStaticImage,
-  Background,
-}) {
+export function PageEnd({ EndPageData, EndStaticImage, Background }) {
   return (
     <section
       className={cn(
@@ -244,30 +263,32 @@ export function PageEnd({
               </svg>
             </Link>
           </p>
-        ) : (EndPageData?.segment &&
-          <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4 relative z-5">
-            Next Page:
-            <Link
-              className="text-[#F5811E] font-medium flex items-center gap-1"
-              href={EndPageData.segment.permalink}
-            >
-              Products - {EndPageData.segment.title}
-              <svg
-                width="14"
-                height="13"
-                viewBox="0 0 14 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+        ) : (
+          EndPageData?.segment && (
+            <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4 relative z-5">
+              Next Page:
+              <Link
+                className="text-[#F5811E] font-medium flex items-center gap-1"
+                href={EndPageData.segment.permalink}
               >
-                <path
-                  d="M1 12.5L13 0.5M13 0.5H3.25M13 0.5V10.25"
-                  stroke="#F5811E"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </Link>
-          </p>
+                Products - {EndPageData.segment.title}
+                <svg
+                  width="14"
+                  height="13"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 12.5L13 0.5M13 0.5H3.25M13 0.5V10.25"
+                    stroke="#F5811E"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </Link>
+            </p>
+          )
         )}
       </div>
     </section>

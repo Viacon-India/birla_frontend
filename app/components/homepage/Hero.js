@@ -131,7 +131,7 @@ export default function Hero() {
               <div className="container mx-auto">
                 <div className="swiper-card relative z-10">
                   <GradualSpacing
-                    className="hero-sec-heading hidden md:block"
+                    className="hero-sec-heading hidden md:block !uppercase"
                     text="Truck Bus Bias"
                   />
                   <GradualSpacing
@@ -168,7 +168,7 @@ export default function Hero() {
               <div className="container mx-auto">
                 <div className="swiper-card relative z-10">
                   <GradualSpacing
-                    className="hero-sec-heading hidden md:block"
+                    className="hero-sec-heading hidden md:block !uppercase"
                     text="Off The Road"
                   />
                   <GradualSpacing
@@ -205,7 +205,7 @@ export default function Hero() {
               <div className="container mx-auto">
                 <div className="swiper-card relative z-10">
                   <GradualSpacing
-                    className="hero-sec-heading hidden md:block"
+                    className="hero-sec-heading hidden md:block !uppercase"
                     text="Agriculture"
                   />
                   <GradualSpacing
