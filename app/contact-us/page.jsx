@@ -34,22 +34,26 @@ export default function Contact() {
               </div>
               <div className="contact-detail-box">
                 <h3>Sales Inquiry</h3>
-                <p>(347) 438-7215</p>
-                <p>(920) 948-1722</p>
-                <p>kurt_bates@outlook.com</p>
-                <p>judith403@gmail.com</p>
+                <p>E-mail: Lorem@123.com</p>
               </div>
               <div className="contact-detail-box">
                 <h3>Investor Inquiry</h3>
-                <p>paula611@gmail.com</p>
-                <p>r.g.rhodes@aol.com</p>
+                <p>E-mail: cs@birlatyre.com</p>
               </div>
               <div className="contact-detail-box">
                 <h3>Registered Office</h3>
-                <p>(917) 339-6416</p>
-                <p>k.r.mastrangelo@outlook.com</p>
-                <p>605 Dog Hill Lane, Topeka</p>
-                <p>KS 66603</p>
+                <p>BIRLA TYRES LIMITED</p>
+                <p>23A, Netaji Subhas Road,</p>
+                <p>8th Floor, Suite No 15,</p>
+                <p>Kolkata – 700001</p>
+                <p>E-mail: cs@birlatyre.com</p>
+              </div>
+              <div className="contact-detail-box">
+                <h3>Corporate Office</h3>
+                <p>BIRLA TYRES LIMITED</p>
+                <p>16A, Brabourne Road,</p>
+                <p>4th Floor,</p>
+                <p>Kolkata – 700001</p>
               </div>
             </div>
             <div className="w-full md:w-1/2">

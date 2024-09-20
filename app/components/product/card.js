@@ -76,7 +76,7 @@ export default function SectionSelection({ data }) {
         </div>
       </Link>
       <div class="new-product-card-detail">
-        <div className="flex gap">
+        <div className="flex">
           <div className="flex flex-col w-full">
             <Link href={data?.permalink}>
               <h2 className="line-clamp-1">{data?.title}</h2>
@@ -92,7 +92,7 @@ export default function SectionSelection({ data }) {
                 {vehicle?.icon && (
                   <Image
                     src={getStrapiMedia(vehicle.icon?.url)}
-                    class="h-8 object-contain"
+                    class="h-8 object-cover animate-[moveLtoR_6s_infinite]"
                     width={vehicle.icon?.width}
                     height={vehicle.icon?.height}
                     alt={

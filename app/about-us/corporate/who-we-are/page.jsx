@@ -23,7 +23,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
-import SectionSelection from "../../../components/section/section";
+import SectionSelection, {
+  CommonSec,
+} from "../../../components/section/section";
 import { title } from "process";
 import { Accordion } from "@/app/components/section/section";
 
@@ -40,7 +42,6 @@ export default function WhoWeAre({ params }) {
         setPageData(pages);
       });
   }, []);
-
 
   // Accordion-sec-data
   const accordion = {
@@ -91,7 +92,7 @@ export default function WhoWeAre({ params }) {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
   };
 
-  // 
+  // Tiger  Mask section
   const tigerMarkSection = {
     __component: "section.tigerMark",
     heading: "About Us",
@@ -114,6 +115,61 @@ export default function WhoWeAre({ params }) {
     ],
   };
 
+  // common sec
+  const CommonSec = {
+    __component: "section.commonsec",
+    heading: "joint ownership",
+    title: "Himadri Speciality Chemical Limited (HSCL)",
+    commonSecDetail: [
+      {
+        description:
+          "Himadri Speciality Chemical Ltd is a global speciality chemical conglomerate with a strong focus on research and development (R&D), innovation and sustainability.",
+      },
+      {
+        description:
+          "As pioneer in the production of lithium-ion battery materials in India, it continuously develops and innovates raw materials of lithium-ion battery value chain. It’s diverse product portfolio includes speciality carbon black, coal tar pitch, refined naphthalene, advance materials, SNF, speciality oils, power, etc. catering to various industries such as lithium-ion batteries, paints, plastics, tyres, aluminium, graphite electrodes, agrochemicals, defence and construction chemicals. Himadri operates in both domestic and international markets, exporting to 54 countries across the globe.",
+      },
+      {
+        description:
+          "With a strong commitment to safety and sustainability, it has 8 zero-liquid discharge manufacturing facilities and utilize in-house clean and green power for more than 90% of its energy needs. Through its dedication to R&D, new business opportunities and sustainability, Himadri is making a positive impact on the industry, both in India and globally.",
+      },
+      {
+        description:
+          "Himadri, as a manufacturer of carbon black, has a deep understanding of the tyre industry. Having successfully forward integrated from Oil to Carbon Black, then to Speciality Carbon Black, Himadri thus stands at the threshold of an exciting transformation moving forward towards end customer, venturing into the world of Tyres. Birla Tyres has strong synergies with Himadri operations and aligns strategically with the company’s overall objective of being a lead player in EV space.",
+      },
+    ],
+    button: "Know More",
+    buttonLink : "https://www.himadri.com/",
+    image: {
+      url: who4,
+      alt: "img",
+    },
+  };
+
+  // common-sec -2
+  const CommonSec2 = {
+    __component: "section.commonsec",
+    heading: "joint ownership",
+    title: "Dalmia Bharat Refractories Limited (DBRL)",
+    commonSecDetail: [
+      {
+        description:
+          "Dalmia Bharat Refractories Limited (DBRL) is a prominent Indian company with a rich legacy dating back to 1939. In a strategic move to streamline operations and explore new avenues of growth, DBRL has divested its entire refractory business, except for the magnesia carbon business and its manufacturing located in China. DBRL's unwavering commitment to growth and innovation is exemplified by its recent acquisition of Birla Tyres Limited's tyre business - this bold venture into a domain entirely new to DBRL's established expertise signifies the company's unwavering spirit of exploration and adaptability.",
+      },
+      {
+        description:
+          "This strategic partnership marks the beginning of an exciting new chapter, where our combined expertise, resources, and innovative spirit will drive us to achieve greater heights. Together, we are poised to revolutionize the tyre industry, delivering unparalleled value to our customers and stakeholders. With a shared vision and commitment to excellence, we look forward to a future filled with remarkable achievements and ground-breaking advancements.",
+      },
+    ],
+    postCommonSec : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam, vel varius sapien suscipit eget. Cras sollicitudin ligula at volutpat ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec vitae mi vulputate, suscipit urna in, malesuada nisl. Pellentesque laoreet pretium nisl, et pulvinar massa eleifend sed. Curabitur maximus mollis diam.",
+    button: "Know More",
+    buttonLink : "https://dalmiaocl.com/",
+    image: {
+      url: who5,
+      alt: "img",
+    },
+  };
+
   return (
     <>
       <Navbar />
@@ -123,186 +179,32 @@ export default function WhoWeAre({ params }) {
         StaticBanner={Banner}
       />
       <SectionSelection section={tigerMarkSection} />
-      <section className="page-content-sec mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
+      <section className="mt-6 md:mt-8 2xl:mt-10">
         <div className="container mx-auto">
-          <div className="sub-section-wrapper">
-            <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
-              <figure className="w-1/2">
-                <Image
-                  className="w-full rounded-[12px]"
-                  src={who2}
-                  alt=""
-                  data-aos="flip-up"
-                  data-aos-duration="1500"
-                />
-              </figure>
-              <figure className="w-1/2">
-                <Image
-                  className="w-full rounded-[12px]"
-                  src={who3}
-                  alt=""
-                  data-aos="flip-up"
-                  data-aos-duration="1500"
-                />
-              </figure>
-            </div>
-            <div className="section-layer md:mt-[60px]">
-              <div className="w-full md:w-[40%] relative">
-                <figure
-                  className="w-full h-[350px] md:h-[480px] relative z-1 glare"
-                  data-aos="flip-right"
-                  data-aos-duration="1500"
-                >
-                  <Image
-                    className="absolute -z-1 w-[90%] h-[90%]"
-                    src={Triangle1}
-                    alt="triangle"
-                  />
-                  <Image
-                    className="absolute left-4 md:left-8 top-4 md:top-8 w-[90%] h-[90%] rounded-[12px]"
-                    src={who4}
-                    alt="img"
-                  />
-                </figure>
-                <Image
-                  alt="mask"
-                  src={tigerMask}
-                  className="absolute left-10 bottom-[-340px]"
-                />
-              </div>
-              <div className="box-content-sec relative md:w-[60%]">
-                <span className="section-heading">joint ownership</span>
-                <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
-                  <h3
-                    className="section-title"
-                    data-aos="fade-left"
-                    data-aos-duration="1000"
-                  >
-                    Himadri Speciality Chemical Limited (HSCL)
-                  </h3>
-                </div>
-                <p data-aos="fade-left" data-aos-duration="200">
-                  Himadri Speciality Chemical Ltd is a global speciality
-                  chemical conglomerate with a strong focus on research and
-                  development (R&D), innovation and sustainability.
-                </p>
-                <p data-aos="fade-left" data-aos-duration="500">
-                  As pioneer in the production of lithium-ion battery materials
-                  in India, it continuously develops and innovates raw materials
-                  of lithium-ion battery value chain. It’s diverse product
-                  portfolio includes speciality carbon black, coal tar pitch,
-                  refined naphthalene, advance materials, SNF, speciality oils,
-                  power, etc. catering to various industries such as lithium-ion
-                  batteries, paints, plastics, tyres, aluminium, graphite
-                  electrodes, agrochemicals, defence and construction chemicals.
-                  Himadri operates in both domestic and international markets,
-                  exporting to 54 countries across the globe.
-                </p>
-                <p data-aos="fade-left" data-aos-duration="1000">
-                  With a strong commitment to safety and sustainability, it has
-                  8 zero-liquid discharge manufacturing facilities and utilize
-                  in-house clean and green power for more than 90% of its energy
-                  needs. Through its dedication to R&D, new business
-                  opportunities and sustainability, Himadri is making a positive
-                  impact on the industry, both in India and globally.
-                </p>
-                <p data-aos="fade-left" data-aos-duration="1500">
-                  Himadri, as a manufacturer of carbon black, has a deep
-                  understanding of the tyre industry. Having successfully
-                  forward integrated from Oil to Carbon Black, then to
-                  Speciality Carbon Black, Himadri thus stands at the threshold
-                  of an exciting transformation moving forward towards end
-                  customer, venturing into the world of Tyres. Birla Tyres has
-                  strong synergies with Himadri operations and aligns
-                  strategically with the company&apos;s overall objective of
-                  being a lead player in EV space.
-                </p>
-
-                <Link
-                  href="https://www.himadri.com/"
-                  target="_blank"
-                  className="more-btn"
-                >
-                  Know More
-                </Link>
-                <div class="line-loader absolute right-0 bottom-0">
-                  <div class="bar bar1"></div>
-                  <div class="bar bar2"></div>
-                  <div class="bar bar3"></div>
-                </div>
-              </div>
-            </div>
-            <div className="section-layer">
-              <div className="box-content-sec relative md:w-[60%]">
-                <span className="section-heading">joint ownership</span>
-                <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
-                  <h3
-                    className="section-title"
-                    data-aos="fade-left"
-                    data-aos-duration="1000"
-                  >
-                    Dalmia Bharat Refractories Limited (DBRL)
-                  </h3>
-                </div>
-                <p data-aos="fade-left" data-aos-duration="500">
-                  Dalmia Bharat Refractories Limited (DBRL) is a prominent
-                  Indian company with a rich legacy dating back to 1939. In a
-                  strategic move to streamline operations and explore new
-                  avenues of growth, DBRL has divested its entire refractory
-                  business, except for the magnesia carbon business and its
-                  manufacturing located in China. DBRL&apos;s unwavering
-                  commitment to growth and innovation is exemplified by its
-                  recent acquisition of Birla Tyres Limited&apos;s tyre business
-                  - this bold venture into a domain entirely new to DBRL&apos;s
-                  established expertise signifies the company&apos;s unwavering
-                  spirit of exploration and adaptability.
-                </p>
-                <Link
-                  href="https://dalmiaocl.com/"
-                  target="_blank"
-                  className="more-btn"
-                >
-                  Know More
-                </Link>
-                <div class="line-loader absolute right-0 bottom-0">
-                  <div class="bar bar1"></div>
-                  <div class="bar bar2"></div>
-                  <div class="bar bar3"></div>
-                </div>
-              </div>
-              <figure
-                className="w-full md:w-[40%] h-[350px] md:h-[480px] relative glare"
-                data-aos="flip-left"
+          <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
+            <figure className="w-1/2">
+              <Image
+                className="w-full rounded-[12px]"
+                src={who2}
+                alt=""
+                data-aos="flip-up"
                 data-aos-duration="1500"
-              >
-                <Image
-                  className="absolute -z-1 w-[90%] h-[90%] right-0"
-                  src={Triangle2}
-                  alt="triangle"
-                />
-                <Image
-                  className="w-[90%] h-[90%] absolute right-4 md:right-8 top-4 md:top-8 rounded-[12px]"
-                  src={who5}
-                  alt="img"
-                />
-              </figure>
-            </div>
-            <p
-              className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mb-3 md:mb-10 2xl:mb-[60px]"
-              data-aos="fade-left"
-              data-aos-duration="2000"
-            >
-              This strategic partnership marks the beginning of an exciting new
-              chapter, where our combined expertise, resources, and innovative
-              spirit will drive us to achieve greater heights. Together, we are
-              poised to revolutionize the tyre industry, delivering unparalleled
-              value to our customers and stakeholders. With a shared vision and
-              commitment to excellence, we look forward to a future filled with
-              remarkable achievements and ground-breaking advancements.
-            </p>
+              />
+            </figure>
+            <figure className="w-1/2">
+              <Image
+                className="w-full rounded-[12px]"
+                src={who3}
+                alt=""
+                data-aos="flip-up"
+                data-aos-duration="1500"
+              />
+            </figure>
           </div>
         </div>
       </section>
+      <SectionSelection section={CommonSec} />
+      <SectionSelection section={CommonSec2} right={true}/>
       <section className="vast-product-sec bg-[#F4F5F6] py-6 md:py-10 2xl:py-[60px] overflow-hidden">
         <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
           <div>

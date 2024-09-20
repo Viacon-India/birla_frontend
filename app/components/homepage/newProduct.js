@@ -306,10 +306,24 @@ export default function NewProduct() {
                       </figure>
                     </div>
                     <div className="new-product-card-detail">
-                      <h2>{product.title}</h2>
-                      <p className="!h-[44px] !w-[75%] !line-clamp-2">
-                        {product.description}
-                      </p>
+                      <div className="flex">
+                        <div className="flex flex-col w-full">
+                          <h2>{product.title}</h2>
+                          <p className="!h-[44px] !w-[75%] !line-clamp-2">
+                            {product.description}
+                          </p>
+                        </div>
+                        <div
+                          className="new-product-svg-wrapper tooltip"
+                          data-tip={product.toolTip}
+                        >
+                          <Image
+                            className="h-8 object-contain"
+                            src={product.icon}
+                            alt="icon"
+                          />
+                        </div>
+                      </div>
                       <div class="flex gap-3 mt-2 relative">
                         <Swiper
                           navigation={true}
@@ -326,16 +340,7 @@ export default function NewProduct() {
                           ))}
                         </Swiper>
                       </div>
-                      <div
-                        className="new-product-svg-wrapper tooltip"
-                        data-tip={product.toolTip}
-                      >
-                        <Image
-                          className="h-8 object-contain"
-                          src={product.icon}
-                          alt="icon"
-                        />
-                      </div>
+                      
                     </div>
                   </div>
                 </SwiperSlide>

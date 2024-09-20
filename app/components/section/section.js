@@ -4,10 +4,12 @@ import { getStrapiMedia } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import Triangle1 from "../../assets/images/triangle1.png";
+import Triangle2 from "../../assets/images/triangle2.png";
 
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
-export default function SectionSelection({ section, Background }) {
+export default function SectionSelection({ section, Background, right }) {
   return (
     <>
       {section.__component == "section.files" && <Files section={section} />}
@@ -24,7 +26,7 @@ export default function SectionSelection({ section, Background }) {
         <TigerMark section={section} Background={Background} />
       )}
       {section.__component == "section.commonsec" && (
-        <CommonSec section={section} Background={Background} />
+        <CommonSec section={section} Background={Background} right={right} />
       )}
     </>
   );
@@ -330,7 +332,7 @@ export function TigerMark({ section, Background }) {
       )}
     >
       <div className="container mx-auto">
-        <div className="section-layer">
+        <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px]">
           <div
             className="box-title-sec w-full md:w-[45%] relative"
             data-aos="fade-right"
@@ -361,25 +363,37 @@ export function TigerMark({ section, Background }) {
   );
 }
 
-export function CommonSec({ section, Background }) {
+export function CommonSec({ section, Background, right }) {
   return (
     <section className="mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden mb-8 md:mb-12 2xl:mb-[60px]">
       <div className="container mx-auto">
-        <div className="section-layer">
+        <div
+          className={cn(
+            "section-layer",
+            right ? "md:flex-row-reverse" : "md:flex-row "
+          )}
+        >
           <figure
             className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
             data-aos="flip-right"
             data-aos-duration="1500"
           >
             <Image
-              className="absolute -z-1 w-[90%] h-[90%]"
-              src={section.images[0].url}
-              alt={section.images[0].alt}
+              className={cn(
+                "absolute -z-1 w-[90%] h-[90%]",
+                right ? "right-0" : "left-0"
+              )}
+              src={right ? Triangle2 : Triangle1}
+              alt="img"
             />
+
             <Image
-              className="absolute left-4 md:left-8 top-4 md:top-8 w-[90%] h-[90%] rounded-[12px]"
-              src={section.images[1].url}
-              alt={section.images[1].alt}
+              className={cn(
+                "absolute top-4 md:top-8 w-[90%] h-[90%] rounded-[12px]",
+                right ? "right-4 md:right-8" : "left-4 md:left-8"
+              )}
+              src={section.image.url}
+              alt={section.image.alt}
             />
           </figure>
 
@@ -406,7 +420,7 @@ export function CommonSec({ section, Background }) {
 
             {section?.button && (
               <Link
-                href="https://www.himadri.com/"
+                href={section.buttonLink}
                 target="_blank"
                 className="more-btn"
               >
@@ -420,6 +434,15 @@ export function CommonSec({ section, Background }) {
             </div>
           </div>
         </div>
+        {section?.postCommonSec && (
+          <p
+            className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mb-3 md:mb-10 2xl:mb-[60px]"
+            data-aos="fade-right"
+            data-aos-duration="2000"
+          >
+            {section.postCommonSec}
+          </p>
+        )}
       </div>
     </section>
   );
