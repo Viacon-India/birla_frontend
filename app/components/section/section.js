@@ -256,7 +256,7 @@ export function Accordion({ section, Background }) {
                 <div class="w-full md:w-[40%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
                   {section.images.map((image, index) => (
                     <Image
-                      id={index.id}
+                      key={index.id}
                       className={cn(
                         "w-full h-[240px] 2xl:h-[265px] rounded-[12px]",
                         index == 0 && "col-span-2"
@@ -293,7 +293,7 @@ export function Accordion({ section, Background }) {
                 (accordion, index) =>
                   accordion?.title &&
                   accordion?.description && (
-                    <div id={index.id} className="collapse collapse-plus">
+                    <div key={index.id} className="collapse collapse-plus">
                       {index == 0 ? (
                         <input
                           type="radio"
