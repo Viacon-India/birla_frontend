@@ -88,6 +88,7 @@ export default function SectionSelection({ data }) {
               <div
                 class="new-product-svg-wrapper tooltip"
                 data-tip={vehicle.name}
+                key={vehicle.id}
               >
                 {vehicle?.icon && (
                   <Image
