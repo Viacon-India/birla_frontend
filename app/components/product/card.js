@@ -11,7 +11,7 @@ import "swiper/css";
 import { Navigation } from "swiper/modules";
 import Link from "next/link";
 
-export default function SectionSelection({ data }) {
+export default function Product({ data }) {
   return (
     <div class="new-product-card">
       <Link href={data.permalink}>

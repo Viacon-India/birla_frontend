@@ -2,31 +2,32 @@
 
 import React, { useEffect, useState } from "react";
 import { getStrapiMedia } from "@/lib/utils";
+import SectionSelection from "@/app/components/section/section";
 import "aos/dist/aos.css";
 import "swiper/css/navigation";
 import GradualSpacing from "@/components/GradualSpacing";
 import Link from "next/link";
 
-import Navbar from "../../components/navbar/navbar";
-import Footer from "../../components/footer/footer";
-import Product from "../../components/product/card";
-import { PageBanner } from "../../components/pageCommon/pageCommon";
-import { PageEnd } from "../../components/pageCommon/pageCommon";
-import Banner from "../../assets/images/investor-relation-banner.jpg";
-import LastBg from "../../assets/images/investor-relation-next.png";
+import Navbar from "@/app/components/navbar/navbar";
+import Footer from "@/app/components/footer/footer";
+import Product from "@/app/components/product/card";
+import { PageBanner } from "@/app/components/pageCommon/pageCommon";
+import { PageEnd } from "@/app/components/pageCommon/pageCommon";
+import Banner from "@/app/assets/images/investor-relation-banner.jpg";
+import LastBg from "@/app/assets/images/investor-relation-next.png";
 
 
 export default function Page({ params }) {
-  const slugs = params.slug;
-  const sub_selection = slugs[1];
+  const slugs = params.slug.reverse();
+  const collection = slugs[0].includes('-bt-') ? 'products' : 'segments';
+  
+  console.log(collection);
 
   const [pageData, setPageData] = useState([]);
 
-  //   sub_selection ? console.log(sub_selection):console.log('Not Present');
-  console.log(pageData);
 
   useEffect(() => {
-    fetch(getStrapiMedia("/api/segments/" + slugs[0]))
+    fetch(getStrapiMedia("/api/"+collection+"/" + slugs[0]))
       .then((res) => res.json())
       .then((page) => {
         setPageData(page);
@@ -36,6 +37,7 @@ export default function Page({ params }) {
   return (
     <>
       <Navbar />
+
       <PageBanner
         Title={pageData.title}
         Banner={pageData.hero}
