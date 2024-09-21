@@ -1,26 +1,33 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { getStrapiMedia } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import Triangle1 from "../../assets/images/triangle1.png";
-import Triangle2 from "../../assets/images/triangle2.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Triangle1 from "@/app/assets/images/triangle1.png";
+import Triangle2 from "@/app/assets/images/triangle2.png";
+import tigerMask from "@/app/assets/images/tiger-mask2.png";
 
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
 export default function SectionSelection({ section, Background, right }) {
   return (
     <>
       {section.__component == "section.files" && <Files section={section} />}
-      {section.__component == "section.investor-table" && (
-        <Table section={section} />
-      )}
-      {section.__component == "section.address" && (
-        <Address section={section} />
-      )}
-      {section.__component == "section.accordion" && (
-        <Accordion section={section} Background={Background} />
+      {section.__component == "section.investor-table" && <Table section={section} />}
+      {section.__component == "section.address" && <Address section={section} />}
+      {section.__component == "section.image-title-content" && <ImageTitleContent section={section}/>}
+      {section.__component == "section.accordion" && <Accordion section={section}/>}
+      {section.__component == "section.title-content-half" && <TitleContentHalf section={section}/>}
+      {section.__component == "section.gallery" && <Gallery section={section}/>}
+      {section.__component == "section.image-point" && <ImagePoint section={section}/>}
+
+
+      {section.__component == "section.accordion2" && (
+        <Accordion2 section={section} Background={Background} />
       )}
       {section.__component == "section.tigerMark" && (
         <TigerMark section={section} Background={Background} />
@@ -33,6 +40,9 @@ export default function SectionSelection({ section, Background, right }) {
 }
 
 export function Files({ section }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
       {section?.title && (
@@ -91,6 +101,9 @@ export function Files({ section }) {
 }
 
 export function Table({ section }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
       {section?.title && (
@@ -165,6 +178,9 @@ export function Table({ section }) {
 }
 
 export function Address({ section }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
       {section?.title && (
@@ -228,9 +244,561 @@ export function Address({ section }) {
   );
 }
 
-export function Accordion({ section, Background }) {
+export function ImageTitleContent({ section }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    // bg-[#F8F8F8] py-8 md:py-12 2xl:py-[60px] overflow-hidden
+    <section className="mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden mb-8 md:mb-12 2xl:mb-[60px]">
+      <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
+        <div
+          className={cn(
+            "section-layer",
+            section?.settings?.right ? "md:flex-row-reverse" : "md:flex-row "
+          )}
+        >
+          <figure
+            className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
+            data-aos="flip-right"
+            data-aos-duration="1500"
+          >
+            <Image
+              className={cn(
+                "absolute -z-1 w-[90%] h-[90%]",
+                section?.settings?.right ? "right-0" : "left-0"
+              )}
+              src={section?.settings?.right ? Triangle2 : Triangle1}
+              alt="img"
+            />
+
+            <Image
+              className={cn(
+                "absolute top-4 md:top-8 w-[90%] h-[90%] rounded-[12px]",
+                section?.settings?.right ? "right-4 md:right-8" : "left-4 md:left-8"
+              )}
+              width={section?.image.width}
+              height={section?.image.height}
+              src={getStrapiMedia(section?.image.url)}
+              alt={section?.image.alternativeText}
+            />
+          </figure>
+
+          <div className="box-content-sec relative md:w-[55%] flex flex-col">
+            <span
+              className="section-heading"
+              data-aos="fade-left"
+              data-aos-duration="500"
+            >
+              {section?.heading}
+            </span>
+            <div
+              className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+              data-aos="fade-left"
+              data-aos-duration="500"
+            >
+              <h3 className="section-title">{section?.title}</h3>
+            </div>
+            {section?.content && section.content.length > 0 && (
+              <BlocksRenderer
+                content={section.content}
+                blocks={{
+                  paragraph: ({ children }) => (
+                    <p data-aos="fade-left" data-aos-duration="1000">{children}</p>
+                  ),
+                  heading: ({ children, level }) => {
+                    switch (level) {
+                      case 1:
+                        return <h1>{children}</h1>;
+                      case 2:
+                        return <h2>{children}</h2>;
+                      case 3:
+                        return <h3>{children}</h3>;
+                      case 4:
+                        return <h4>{children}</h4>;
+                      case 5:
+                        return <h5>{children}</h5>;
+                      case 6:
+                        return <h6>{children}</h6>;
+                      default:
+                        return <h1>{children}</h1>;
+                    }
+                  },
+                  link: ({ children, url }) => (
+                    <Link href={url}>{children}</Link>
+                  ),
+                }}
+                modifiers={{
+                  bold: ({ children }) => <strong>{children}</strong>,
+                  italic: ({ children }) => (
+                    <span className="italic">{children}</span>
+                  ),
+                }}
+              />
+            )}
+            {section?.link && (
+              <Link
+                href={section.link}
+                target="_blank"
+                className="more-btn"
+              >
+                Know More
+              </Link>
+            )}
+            <div class="line-loader self-end absolute bottom-0">
+              <div class="bar bar1"></div>
+              <div class="bar bar2"></div>
+              <div class="bar bar3"></div>
+            </div>
+          </div>
+        </div>
+        {section?.post_content && section.post_content.length > 0 && (
+          <BlocksRenderer
+            content={section.post_content}
+            blocks={{
+              paragraph: ({ children }) => (
+                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mb-3 md:mb-10 2xl:mb-[60px]" data-aos="fade-right" data-aos-duration="2000">{children}</p>
+              ),
+              heading: ({ children, level }) => {
+                switch (level) {
+                  case 1:
+                    return <h1>{children}</h1>;
+                  case 2:
+                    return <h2>{children}</h2>;
+                  case 3:
+                    return <h3>{children}</h3>;
+                  case 4:
+                    return <h4>{children}</h4>;
+                  case 5:
+                    return <h5>{children}</h5>;
+                  case 6:
+                    return <h6>{children}</h6>;
+                  default:
+                    return <h1>{children}</h1>;
+                }
+              },
+              link: ({ children, url }) => (
+                <Link href={url}>{children}</Link>
+              ),
+            }}
+            modifiers={{
+              bold: ({ children }) => <strong>{children}</strong>,
+              italic: ({ children }) => (
+                <span className="italic">{children}</span>
+              ),
+            }}
+          />
+        )}
+      </div>
+    </section>
+  );
+}
+
+export function Accordion({ section }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+  return (
+    <section
+      className={cn(
+        "py-6 md:py-10 2xl:py-[60px] overflow-hidden",
+        section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
+      )}
+    >
+      <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
+        <div>
+          <span className="section-heading">{section?.heading}</span>
+          <div className="section-title-wrapper">
+            <h3 className="section-title">{section?.title}</h3>
+          </div>
+        </div>
+        {section?.pre_content && section.pre_content.length > 0 && (
+          <BlocksRenderer
+            content={section.pre_content}
+            blocks={{
+              paragraph: ({ children }) => (
+                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">{children}</p>
+              ),
+              heading: ({ children, level }) => {
+                switch (level) {
+                  case 1:
+                    return <h1>{children}</h1>;
+                  case 2:
+                    return <h2>{children}</h2>;
+                  case 3:
+                    return <h3>{children}</h3>;
+                  case 4:
+                    return <h4>{children}</h4>;
+                  case 5:
+                    return <h5>{children}</h5>;
+                  case 6:
+                    return <h6>{children}</h6>;
+                  default:
+                    return <h1>{children}</h1>;
+                }
+              },
+              link: ({ children, url }) => (
+                <Link href={url}>{children}</Link>
+              ),
+            }}
+            modifiers={{
+              bold: ({ children }) => <strong>{children}</strong>,
+              italic: ({ children }) => (
+                <span className="italic">{children}</span>
+              ),
+            }}
+          />
+        )}
+        <div class="flex flex-col md:flex-row gap-4 md:gap-10">
+          {section?.images && section.images.length > 0 && (
+            <>
+              {section.images.length > 1 ? (
+                <div class="w-full md:w-[40%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
+                  {section.images.map((image, index) => (
+                    <Image
+                      key={image.id}
+                      className={cn(
+                        "w-full h-[240px] 2xl:h-[265px] rounded-[12px]",
+                        index == '0' && "col-span-2"
+                      )}
+                      width={image?.width}
+                      height={image?.height}
+                      src={getStrapiMedia(image?.url)}
+                      alt={image?.alternativeText}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div class="w-full md:w-[40%] h-fit md:sticky top-[90px]">
+                  <figure
+                    className="w-full h-[350px] md:h-[450px] 2xl:h-[600px] mb-0"
+                    data-aos="zoom-in"
+                    data-aos-duration="1000"
+                  >
+                    <Image
+                      className="w-full h-full object-cover rounded-[12px]"
+                      width={section.images[0]?.width}
+                      height={section.images[0]?.height}
+                      src={getStrapiMedia(section.images[0]?.url)}
+                      alt={section.images[0]?.alternativeText}
+                    />
+                  </figure>
+                </div>
+              )}
+            </>
+          )}
+          {section?.items && (
+            <div
+              class="accordion-list-sec w-full md:w-[60%] h-[350px] md:h-[450px] 2xl:h-[600px] overflow-y-auto"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+            >
+              {section?.items.map(
+                (accordion, index) =>
+                  accordion?.title &&
+                  accordion?.description && (
+                    <div key={accordion.id} className="collapse collapse-plus">
+                      {index == 0 ? (
+                        <input
+                          type="radio"
+                          name="my-accordion-3"
+                          defaultChecked
+                        />
+                      ) : (
+                        <input type="radio" name="my-accordion-3" />
+                      )}
+                      <div className="collapse-title">
+                        {accordion?.icon &&
+                          <Image
+                            key={accordion.icon.id}
+                            className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center px-4 py-[14px]"
+                            width={accordion.icon?.width}
+                            height={accordion.icon?.height}
+                            src={getStrapiMedia(accordion.icon?.url)}
+                            alt={accordion.icon?.alternativeText}
+                          />
+                        }
+                        {accordion.title}
+                      </div>
+                      <div className="collapse-content">
+                        <p>{accordion.description}</p>
+                      </div>
+                    </div>
+                  )
+              )}
+            </div>
+          )}
+        </div>
+        {section?.post_content && section.post_content.length > 0 && (
+          <BlocksRenderer
+            content={section.post_content}
+            blocks={{
+              paragraph: ({ children }) => (
+                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">{children}</p>
+              ),
+              heading: ({ children, level }) => {
+                switch (level) {
+                  case 1:
+                    return <h1>{children}</h1>;
+                  case 2:
+                    return <h2>{children}</h2>;
+                  case 3:
+                    return <h3>{children}</h3>;
+                  case 4:
+                    return <h4>{children}</h4>;
+                  case 5:
+                    return <h5>{children}</h5>;
+                  case 6:
+                    return <h6>{children}</h6>;
+                  default:
+                    return <h1>{children}</h1>;
+                }
+              },
+              link: ({ children, url }) => (
+                <Link href={url}>{children}</Link>
+              ),
+            }}
+            modifiers={{
+              bold: ({ children }) => <strong>{children}</strong>,
+              italic: ({ children }) => (
+                <span className="italic">{children}</span>
+              ),
+            }}
+          />
+        )}
+      </div>
+    </section>
+  );
+}
+
+export function TitleContentHalf({ section }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+  return (
+    <section
+      className={cn(
+        "pt-8 md:pt-12 2xl:pt-[60px] overflow-hidden",
+        section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
+      )}
+    >
+      <div className="container mx-auto">
+        <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px]">
+          <div
+            className="box-title-sec w-full md:w-[45%] relative"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
+            <Image
+              src={tigerMask}
+              alt='tigermark'
+              className="absolute left-0 top-0"
+            />
+            <span className="section-heading">{section?.heading}</span>
+            <div className="section-title-wrapper">
+              <h3 className="section-title">{section?.title}</h3>
+            </div>
+          </div>
+          {section?.content && section.content.length > 0 && (
+            <div className="box-content-sec w-full md:w-[60%] relative">
+              <BlocksRenderer
+                content={section.content}
+                blocks={{
+                  paragraph: ({ children }) => (
+                    <p data-aos="fade-left" data-aos-duration="1000">{children}</p>
+                  ),
+                  heading: ({ children, level }) => {
+                    switch (level) {
+                      case 1:
+                        return <h1>{children}</h1>;
+                      case 2:
+                        return <h2>{children}</h2>;
+                      case 3:
+                        return <h3>{children}</h3>;
+                      case 4:
+                        return <h4>{children}</h4>;
+                      case 5:
+                        return <h5>{children}</h5>;
+                      case 6:
+                        return <h6>{children}</h6>;
+                      default:
+                        return <h1>{children}</h1>;
+                    }
+                  },
+                  link: ({ children, url }) => (
+                    <Link href={url}>{children}</Link>
+                  ),
+                }}
+                modifiers={{
+                  bold: ({ children }) => <strong>{children}</strong>,
+                  italic: ({ children }) => (
+                    <span className="italic">{children}</span>
+                  ),
+                }}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Gallery({ section }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+  return (
+    <>
+      {section?.collection && section.collection.length > 0 &&
+        <section className="mt-6 md:mt-8 2xl:mt-10 overflow-hidden mb-8 md:mb-12 2xl:mb-[60px]">
+          {section.collection.length > 1 ?
+            <div className="container mx-auto">
+              <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
+                {section.collection.map((collection) => ( collection?.image &&
+                  <figure className="w-1/2" key={collection.image.id}>
+                    <Image
+                      className="w-full rounded-[12px]"
+                      width={collection.image?.width}
+                      height={collection.image?.height}
+                      src={getStrapiMedia(collection.image?.url)}
+                      alt={collection.image?.alternativeText}
+                      data-aos="flip-up"
+                      data-aos-duration="1500"
+                    />
+                  </figure>
+                ))}
+              </div>
+            </div>
+             :
+             section.collection[0].image.ext == '.mp4' &&
+              <div class="w-[100%] mt-4 2xl:mt-8 ">
+                <video className="!w-full" loop autoPlay muted>
+                  <source src={getStrapiMedia(section.collection[0].image?.url)} type="video/mp4" />
+                </video>
+              </div>
+          }
+        </section>
+      }
+    </>
+  );
+}
+
+export function ImagePoint({ section }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+  return (
+    <section className={cn("vast-product-sec py-6 md:py-10 2xl:py-[60px] overflow-hidden", section?.settings?.background ? "bg-[#F4F5F6]" : "bg-white" )}>
+      <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
+        <div>
+          <span className="section-heading">{section?.heading}</span>
+          <div className="section-title-wrapper">
+            <h3 className="section-title">{section?.title}</h3>
+          </div>
+        </div>
+        {section?.content && section.content.length > 0 && (
+          <BlocksRenderer
+            content={section.content}
+            blocks={{
+              paragraph: ({ children }) => (
+                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">{children}</p>
+              ),
+              heading: ({ children, level }) => {
+                switch (level) {
+                  case 1:
+                    return <h1>{children}</h1>;
+                  case 2:
+                    return <h2>{children}</h2>;
+                  case 3:
+                    return <h3>{children}</h3>;
+                  case 4:
+                    return <h4>{children}</h4>;
+                  case 5:
+                    return <h5>{children}</h5>;
+                  case 6:
+                    return <h6>{children}</h6>;
+                  default:
+                    return <h1>{children}</h1>;
+                }
+              },
+              link: ({ children, url }) => (
+                <Link href={url}>{children}</Link>
+              ),
+            }}
+            modifiers={{
+              bold: ({ children }) => <strong>{children}</strong>,
+              italic: ({ children }) => (
+                <span className="italic">{children}</span>
+              ),
+            }}
+          />
+        )}
+        {section?.collection && section.collection.length > 0 && 
+          <div className="grid grid-cols1 md:grid-cols-3 gap-6 md:gap-10">
+            {section.collection.map((collection) => (
+              <div key={collection.id}
+                className="vast-card"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-offset="100"
+              >
+                {collection?.image &&
+                  <figure>
+                    <Image className="vast-card-image" src={getStrapiMedia(collection.image.url)} alt={collection.image.alternativeText} width={collection.image.width} height={collection.image.height} />
+                  </figure>
+                }
+                <h2>{collection.title}</h2>
+                {collection?.content && collection.content.length > 0 && (
+                  <BlocksRenderer
+                    content={collection.content}
+                    blocks={{
+                      paragraph: ({ children }) => (
+                        <p>{children}</p>
+                      ),
+                      heading: ({ children, level }) => {
+                        switch (level) {
+                          case 1:
+                            return <h1>{children}</h1>;
+                          case 2:
+                            return <h2>{children}</h2>;
+                          case 3:
+                            return <h3>{children}</h3>;
+                          case 4:
+                            return <h4>{children}</h4>;
+                          case 5:
+                            return <h5>{children}</h5>;
+                          case 6:
+                            return <h6>{children}</h6>;
+                          default:
+                            return <h1>{children}</h1>;
+                        }
+                      },
+                      link: ({ children, url }) => (
+                        <Link href={url}>{children}</Link>
+                      ),
+                    }}
+                    modifiers={{
+                      bold: ({ children }) => <strong>{children}</strong>,
+                      italic: ({ children }) => (
+                        <span className="italic">{children}</span>
+                      ),
+                    }}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        }
+      </div>
+    </section>
+  );
+}
+
+export function Accordion2({ section, Background }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+  return (
     <section
       className={cn(
         "py-6 md:py-10 2xl:py-[60px] overflow-hidden",
@@ -324,6 +892,9 @@ export function Accordion({ section, Background }) {
 }
 
 export function TigerMark({ section, Background }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <section
       className={cn(
@@ -364,9 +935,12 @@ export function TigerMark({ section, Background }) {
 }
 
 export function CommonSec({ section, Background, right }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <section className="mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden mb-8 md:mb-12 2xl:mb-[60px]">
-      <div className="container mx-auto">
+      <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
         <div
           className={cn(
             "section-layer",
@@ -427,7 +1001,7 @@ export function CommonSec({ section, Background, right }) {
                 {section.button}
               </Link>
             )}
-            <div class="line-loader self-end">
+            <div class="line-loader self-end absolute bottom-0">
               <div class="bar bar1"></div>
               <div class="bar bar2"></div>
               <div class="bar bar3"></div>
@@ -447,3 +1021,6 @@ export function CommonSec({ section, Background, right }) {
     </section>
   );
 }
+
+
+

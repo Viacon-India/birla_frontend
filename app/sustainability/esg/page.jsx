@@ -2,14 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import { getStrapiMedia } from "@/lib/utils";
-import GradualSpacing from "@/components/GradualSpacing";
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import { PageBanner } from "../../components/pageCommon/pageCommon";
-import Link from "next/link";
 import Image from "next/image";
 import Banner from "../../assets/images/esg-banner.jpg";
-import Separator from "../../assets/images/esg-separator.jpg";
 import Man1 from "../../assets/images/esg-man1.jpg";
 import Man2 from "../../assets/images/esg-man2.jpg";
 import Man3 from "../../assets/images/esg-man3.jpg";
@@ -26,7 +23,6 @@ import LastBg from "../../assets/images/esg-next.png";
 import { PageEnd } from "../../components/pageCommon/pageCommon";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import tigerMask from "../../assets/images/tiger-mask2.png";
 import SectionSelection from "@/app/components/section/section";
 
 export default function Esg({params}) {
@@ -35,6 +31,8 @@ export default function Esg({params}) {
   const [pageData, setPageData] = useState([]);
   const [activeTab, setActiveTab] = useState("tab-1");
 
+  console.log(pageData);
+
   useEffect(() => {
     AOS.init();
     fetch(getStrapiMedia("/api/pages/esg"))
@@ -42,39 +40,16 @@ export default function Esg({params}) {
     .then((pages) => {
       setPageData(pages);
     });
-  });
+  }, []);
 
-  const tigerMarkSection = {
-    __component: "section.tigerMark",
-    heading: "ESG",
-    title: "Driving Innovation Toward a Cleaner Planet!",
-    images: [
-      {
-        url: tigerMask,
-        alt: "tigermark",
-      },
-    ],
-    tigerMarkDetail: [
-      {
-        description:
-          "At Birla Tyres, we are committed to leading the way in sustainability within our industry. By prioritizing ESG (Environmental, Social, and Governance), we address vital challenges such as environmental stewardship and social responsibility, paving the way towards a brighter, eco-friendly future. Our innovative manufacturing processes emphasizing the use of recycled materials and renewable resources dramatically reduce our environmental footprint and uplift local communities. Every tyre we produce embodies our steadfast dedication to excellence and sustainability, and ensures road safety while nurturing the health of our planet. Join us on this inspiring journey where quality meets conscience, and together, let&apos;s create a world where every journey contributes to a more vibrant tomorrow!",
-      },
-
-    ],
-  };
 
   return (
     <>
       <Navbar />
       <PageBanner Title="ESG" StaticBanner={Banner} />
-      <SectionSelection section={tigerMarkSection} />
-      <section className="mt-[60px]">
-        <div class="w-[100%] mt-4 2xl:mt-8 ">
-          <video className="!w-full" loop autoPlay muted>
-            <source src={"/assets/videos/vid11.mp4"} type="video/mp4" />
-          </video>
-        </div>
-      </section>
+      {pageData?.section && pageData.section.length > 0 && pageData.section.map((section) => (
+        <SectionSelection key={section.id} section={section} />
+      ))}
       <section className="page-content-sec mt-[60px]">
         <div className="container mx-auto flex flex-col gap-10">
           <div className="flex flex-col gap-3">

@@ -10,7 +10,6 @@ export default function Footer() {
   const [footerMenu, setFooterMenu] = useState([]);
   const [creditTexts, setCreditTexts] = useState([]);
   const [detail, setDetail] = useState([]);
-  console.log(footerMenu);
   // menus
   useEffect(() => {
     fetch("http://birlatyres.viaconprojects.com:1337/api/footer")

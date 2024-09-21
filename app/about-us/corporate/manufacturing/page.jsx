@@ -58,14 +58,13 @@ export default function Manufacturing({params}) {
     .then((res) => res.json())
     .then((pages) => {
       setPageData(pages);
-
     });
   },);
 
 // Accordion section
   const accordion = {
     background: '#F8F8F8',
-    __component: 'section.accordion',
+    __component: 'section.accordion2',
     heading: 'our people',
     title: 'The Heart of Our Manufacturing Excellence',
     images: [
