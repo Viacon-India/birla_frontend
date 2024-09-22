@@ -1111,17 +1111,17 @@ a.current_dot {
 }
 
 .phil-card{
-  @apply bg-[#F4F5F6] p-5 rounded-[12px] flex flex-col items-center justify-center
+  @apply bg-[#F4F5F6] p-3 2xl:p-5 rounded-[12px] flex flex-col items-center justify-center
 }
 .phil-card figure{
-  @apply w-[100px] h-[100px] mb-2 md:mb-4 2xl:mb-6 relative overflow-hidden 
+  @apply w-[80px] h-[80px] mb-2 md:mb-4 2xl:mb-6 relative overflow-hidden 
   transition-all duration-500 rounded-[12px]
 }
 .phil-card-image{
   @apply w-full h-full object-cover rounded-[12px]
 }
 .phil-card h2{
-  @apply text-[#1A1D21] text-[18px] leading-[1.2] font-medium text-center h-[50px]
+  @apply text-[#1A1D21] text-[15px] 2xl:text-[18px] leading-[1.2] font-medium text-center h-[36px] 2xl:h-[50px]
 }
 
 
@@ -1333,7 +1333,7 @@ input[type=file]::file-selector-button {
   @apply rounded-[20px] w-full h-full object-cover transition-all duration-700
 }
 .sustainability-overlay{
-  @apply absolute w-full h-full bg-primary opacity-75 text-white text-[18px] flex items-start justify-center
+  @apply absolute w-full h-full bg-primary opacity-85 text-white text-[18px] flex items-start justify-center
   top-[87%] transition-all duration-700 py-[2px] text-center
 }
 .sustainability-figure:hover .sustainability-overlay{

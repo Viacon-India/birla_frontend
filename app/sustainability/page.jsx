@@ -38,8 +38,7 @@ import Triangle1 from "../assets/images/triangle1.png";
 import tigerMask from "../assets/images/tiger-mask2.png";
 import SectionSelection from "@/app/components/section/section";
 
-
-export default function Sustainability({params}) {
+export default function Sustainability({ params }) {
   const slugs = params.slug;
 
   const [pageData, setPageData] = useState([]);
@@ -47,10 +46,10 @@ export default function Sustainability({params}) {
     AOS.init();
 
     fetch(getStrapiMedia("/api/pages/sustainability"))
-    .then((res) => res.json())
-    .then((pages) => {
-      setPageData(pages);
-    });
+      .then((res) => res.json())
+      .then((pages) => {
+        setPageData(pages);
+      });
   });
 
   const tigerMarkSection = {
@@ -80,11 +79,8 @@ export default function Sustainability({params}) {
         description:
           "At Birla Tyres, sustainability is key to long-term value creation. By integrating sustainability into our core values and promoting a culture of innovation and responsibility, we will create “Eco-tyres for a Cleaner Ride.”",
       },
-
     ],
   };
-
-
 
   return (
     <>
@@ -419,68 +415,66 @@ export default function Sustainability({params}) {
             </div>
           </div>
           <div className="pillar-sec">
-            <div className="container mx-auto">
-              <div className="section-layer !pb-[100px]">
-                <figure
-                  className="w-full md:w-[45%] h-[480px] relative glare"
-                  data-aos="flip-right"
-                  data-aos-duration="1500"
+            <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px] !pb-[100px]">
+              <figure
+                className="w-full md:w-[45%] h-[480px] relative glare"
+                data-aos="flip-right"
+                data-aos-duration="1500"
+              >
+                <Image
+                  className="absolute -z-1 w-[90%] h-[90%]"
+                  src={Triangle1}
+                  alt="triangle"
+                />
+                <Image
+                  className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+                  src={sus2}
+                  alt="img"
+                />
+              </figure>
+              <div className="box-content-sec relative md:w-[55%] flex flex-col">
+                <span
+                  className="section-heading"
+                  data-aos="fade-left"
+                  data-aos-duration="500"
                 >
-                  <Image
-                    className="absolute -z-1 w-[90%] h-[90%]"
-                    src={Triangle1}
-                    alt="triangle"
-                  />
-                  <Image
-                    className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
-                    src={sus2}
-                    alt="img"
-                  />
-                </figure>
-                <div className="box-content-sec relative md:w-[55%] flex flex-col">
-                  <span
-                    className="section-heading"
-                    data-aos="fade-left"
-                    data-aos-duration="500"
-                  >
-                    KEy pillars
-                  </span>
-                  <div
-                    className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
-                    data-aos="fade-left"
-                    data-aos-duration="500"
-                  >
-                    <h3 className="section-title">
-                      KEY PILLARS OF OUR SUSTAINABILITY JOURNEY
-                    </h3>
+                  KEy pillars
+                </span>
+                <div
+                  className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+                  data-aos="fade-left"
+                  data-aos-duration="500"
+                >
+                  <h3 className="section-title">
+                    KEY PILLARS OF OUR SUSTAINABILITY JOURNEY
+                  </h3>
+                </div>
+                <div
+                  className="pillar-list-sec"
+                  data-aos="fade-left"
+                  data-aos-duration="1000"
+                >
+                  <div className="pillar-box">
+                    <div className="pillar-list">
+                      <p>Promoting sustainable practices for the Planet</p>
+                    </div>
                   </div>
-                  <div
-                    className="pillar-list-sec"
-                    data-aos="fade-left"
-                    data-aos-duration="1000"
-                  >
-                    <div className="pillar-box">
-                      <div className="pillar-list">
-                        <p>Promoting sustainable practices for the Planet</p>
-                      </div>
+                  <div className="pillar-box">
+                    <div className="pillar-list">
+                      <p>Nurturing our People & Communities</p>
                     </div>
-                    <div className="pillar-box">
-                      <div className="pillar-list">
-                        <p>Nurturing our People & Communities</p>
-                      </div>
+                  </div>
+                  <div className="pillar-box">
+                    <div className="pillar-list">
+                      <p>Engaging with Key Stakeholders</p>
                     </div>
-                    <div className="pillar-box">
-                      <div className="pillar-list">
-                        <p>Engaging with Key Stakeholders</p>
-                      </div>
-                    </div>
-                    <div className="pillar-box">
-                      <div className="pillar-list">
-                        <p>
-                          Ensuring Health, Safety, and Environmental
-                          Responsibility
-                        </p>
-                      </div>
+                  </div>
+                  <div className="pillar-box">
+                    <div className="pillar-list">
+                      <p>
+                        Ensuring Health, Safety, and Environmental
+                        Responsibility
+                      </p>
                     </div>
                   </div>
                 </div>
