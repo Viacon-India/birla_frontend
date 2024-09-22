@@ -288,7 +288,7 @@ export default function Manufacturing({params}) {
                   },
                 }}
                 modules={[Autoplay, Navigation]}
-                className="mySwiper !pb-6 md:!pb-12 2xl:!pb-16 mt-5"
+                className="mySwiper !pb-6 md:!pb-12 2xl:!pb-16 mt-3 2xl:mt-5"
               >
                 <SwiperSlide>
                   <div className="phil-card">
@@ -401,7 +401,7 @@ export default function Manufacturing({params}) {
                   },
                 }}
                 modules={[Autoplay]}
-                className="mySwiperManufacture mt-6"
+                className="mySwiperManufacture mt-3 2xl:mt-5"
               >
                 <SwiperSlide>
                   <div className="phil-card">

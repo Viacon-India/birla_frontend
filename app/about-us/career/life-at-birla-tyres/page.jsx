@@ -140,7 +140,7 @@ export default function LifeAtBirla({params}) {
               />
             </figure>
           </div>
-          <div className="section-layer !items-center pt-[60px] md:pt-[120px]">
+          <div className="flex items-center flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px] pt-[60px] md:pt-[120px]">
             <div
               className="box-title-sec w-full md:w-[45%] relative"
               data-aos="fade-right"
