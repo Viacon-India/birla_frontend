@@ -46,7 +46,7 @@ import "aos/dist/aos.css";
 import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
 
-export default function Manufacturing({params}) {
+export default function Manufacturing({ params }) {
   const slugs = params.slug;
 
   const [pageData, setPageData] = useState([]);
@@ -55,72 +55,81 @@ export default function Manufacturing({params}) {
   useEffect(() => {
     AOS.init();
     fetch(getStrapiMedia("/api/pages/manufacturing"))
-    .then((res) => res.json())
-    .then((pages) => {
-      setPageData(pages);
-    });
-  },);
+      .then((res) => res.json())
+      .then((pages) => {
+        setPageData(pages);
+      });
+  });
 
-// Accordion section
+  // Accordion section
   const accordion = {
-    background: '#F8F8F8',
-    __component: 'section.accordion2',
-    heading: 'our people',
-    title: 'The Heart of Our Manufacturing Excellence',
+    background: "#F8F8F8",
+    __component: "section.accordion2",
+    heading: "our people",
+    title: "The Heart of Our Manufacturing Excellence",
     images: [
       {
         url: man22,
-        alt: 'img'
+        alt: "img",
       },
       {
         url: man23,
-        alt: 'img'
+        alt: "img",
       },
       {
         url: man24,
-        alt: 'img'
-      }
+        alt: "img",
+      },
     ],
-    preAccordion: 'At the core of our manufacturing success is our dedicated team of engineers, technicians, and workers. Their expertise and commitment drive our innovation and ensure the highest quality in every product we create. Here’s what makes our team exceptional:',
+    preAccordion:
+      "At the core of our manufacturing success is our dedicated team of engineers, technicians, and workers. Their expertise and commitment drive our innovation and ensure the highest quality in every product we create. Here’s what makes our team exceptional:",
     accordion: [
       {
-        svg:'',
-        title: 'Expertise and Skill',
-        description : 'Our team comprises highly skilled professionals, including machinists, welders, electricians, and maintenance technicians. Their technical proficiency and attention to detail are crucial in maintaining our high standards of production.'
+        svg: "",
+        title: "Expertise and Skill",
+        description:
+          "Our team comprises highly skilled professionals, including machinists, welders, electricians, and maintenance technicians. Their technical proficiency and attention to detail are crucial in maintaining our high standards of production.",
       },
       {
-        svg:'',
-        title: 'Innovation and Engineering',
-        description : 'Our manufacturing and quality control engineers are constantly pushing the boundaries of what’s possible. They design and refine our production processes, ensuring efficiency and excellence at every stage.'
+        svg: "",
+        title: "Innovation and Engineering",
+        description:
+          "Our manufacturing and quality control engineers are constantly pushing the boundaries of what’s possible. They design and refine our production processes, ensuring efficiency and excellence at every stage.",
       },
       {
-        svg:'',
-        title: 'Leadership and Management',
-        description : 'Our production managers and supervisors play a pivotal role in coordinating activities and meeting production targets. Our Plant leadership ensures that our operations run smoothly and efficiently.'
+        svg: "",
+        title: "Leadership and Management",
+        description:
+          "Our production managers and supervisors play a pivotal role in coordinating activities and meeting production targets. Our Plant leadership ensures that our operations run smoothly and efficiently.",
       },
       {
-        svg:'',
-        title: 'Support and Development',
-        description : 'Our human resources team is dedicated to fostering a supportive and inclusive workplace. They handle recruitment, training, and employee well-being, ensuring that our team members feel valued and empowered.'
+        svg: "",
+        title: "Support and Development",
+        description:
+          "Our human resources team is dedicated to fostering a supportive and inclusive workplace. They handle recruitment, training, and employee well-being, ensuring that our team members feel valued and empowered.",
       },
       {
-        svg:'',
-        title: 'Commitment to Diversity and Inclusion',
-        description : 'We are proud to champion gender diversity and promote self-management within our workforce. We believe that a diverse and inclusive environment leads to more innovative solutions and a more engaged team.'
+        svg: "",
+        title: "Commitment to Diversity and Inclusion",
+        description:
+          "We are proud to champion gender diversity and promote self-management within our workforce. We believe that a diverse and inclusive environment leads to more innovative solutions and a more engaged team.",
       },
       {
-        svg:'',
-        title: 'Quality and Precision',
-        description : 'From assemblers to inspectors, every team member is committed to delivering products that meet the highest quality standards. Their meticulous work ensures that our customers receive only the best.'
+        svg: "",
+        title: "Quality and Precision",
+        description:
+          "From assemblers to inspectors, every team member is committed to delivering products that meet the highest quality standards. Their meticulous work ensures that our customers receive only the best.",
       },
       {
-        svg:'',
-        title: 'Continuous Improvement',
-        description : 'We invest in the professional development of our employees, providing opportunities for growth and learning. This commitment not only enhances our operational efficiency but also solidifies our reputation as an industry leader.'
-      }
+        svg: "",
+        title: "Continuous Improvement",
+        description:
+          "We invest in the professional development of our employees, providing opportunities for growth and learning. This commitment not only enhances our operational efficiency but also solidifies our reputation as an industry leader.",
+      },
     ],
-    postAccordion: 'Our people are the driving force behind our success, and we are dedicated to creating an environment where they can thrive. Together, we are building a future of excellence and innovation.'
-  }
+    postAccordion:
+      "Our people are the driving force behind our success, and we are dedicated to creating an environment where they can thrive. Together, we are building a future of excellence and innovation.",
+  };
 
   // TigerMask section
   const tigerMarkSection = {
@@ -146,73 +155,41 @@ export default function Manufacturing({params}) {
         description:
           "By maintaining a single plant, we ensure close control over the manufacturing process, delivering tyres that meet the specific needs of our diverse clientele. Our plant is equipped to handle custom orders by quick setup changes, allowing us to produce tyres that meet specific requirements for various applications, from commercial to off-the road vehicles. We are committed to continuous improvement - through regular QMS/supplier audits and feedback mechanisms, we constantly seek ways to enhance our manufacturing processes and product quality.",
       },
-
     ],
   };
 
+    // Gallary section
+    const gallery = {
+      __component: "section.gallery",
+      collection: [
+        {
+          url: man8,
+          alt: "image",
+        },
+        {
+          url: man9,
+          alt: "image",
+        },
+        {
+          url: man10,
+          alt: "image",
+        },
+        {
+          url: man11,
+          alt: "image",
+        },
+      ],
 
+    };
 
   return (
     <>
       <Navbar />
       <PageBanner Title="Manufacturing" StaticBanner={Banner} />
       <SectionSelection section={tigerMarkSection} />
+      <SectionSelection section={gallery} />
       <section className="page-content-sec mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
         <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
-          <div className="grid grid-cols-2 gap-6 md:gap-10 relative">
-            <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
-              <Image
-                data-aos="zoom-in"
-                data-aos-duration="2000"
-                src={tiger}
-                alt="img"
-              />
-            </figure>
-            <figure
-              className="w-full h-full"
-              data-aos="fade-down-right"
-              data-aos-duration="1000"
-            >
-              <Image
-                className="w-full h-full object-cover"
-                src={man8}
-                alt="img"
-              />
-            </figure>
-            <figure
-              className="w-full h-full"
-              data-aos="fade-down-left"
-              data-aos-duration="1000"
-            >
-              <Image
-                className="w-full h-full object-cover"
-                src={man9}
-                alt="img"
-              />
-            </figure>
-            <figure
-              className="w-full h-full"
-              data-aos="fade-up-right"
-              data-aos-duration="1000"
-            >
-              <Image
-                className="w-full h-full object-cover"
-                src={man10}
-                alt="img"
-              />
-            </figure>
-            <figure
-              className="w-full h-full"
-              data-aos="fade-up-left"
-              data-aos-duration="1000"
-            >
-              <Image
-                className="w-full h-full object-cover"
-                src={man11}
-                alt="img"
-              />
-            </figure>
-          </div>
           <div className="manufacture-slider-sec">
             <span className="section-heading">our Safety Philosophy</span>
             <div className="section-title-wrapper">

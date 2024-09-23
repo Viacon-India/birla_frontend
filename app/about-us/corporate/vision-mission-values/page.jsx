@@ -47,6 +47,7 @@ import man9 from "../../../assets/images/man9.png";
 import man10 from "../../../assets/images/man10.png";
 import man11 from "../../../assets/images/man11.png";
 import tiger from "../../../assets/images/tiger8.png";
+import SectionSelection from "@/app/components/section/section";
 
 import { FreeMode, Thumbs, EffectFade } from "swiper/modules";
 
@@ -65,38 +66,18 @@ export default function Leadership({ params }) {
       });
   });
 
+
+
   return (
     <>
       <Navbar />
       <PageBanner Title="Vision, Mission & Values" StaticBanner={Hero} />
+      {pageData?.section && pageData.section.length > 0 && pageData.section.map((section) => (
+        <SectionSelection key={section.id} section={section} />
+      ))}
       <section className="relative mt-8 md:mt-12 2xl:mt-[60px]">
         <div className="container mx-auto">
-          <div className="overflow-hidden">
-            <span className="section-heading">Vision</span>
-            <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
-              <h3
-                className="section-title"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-              >
-                Our Vision
-              </h3>
-            </div>
-            <div className="relative rounded-[12px] overflow-hidden">
-              <figure className="relative w-full h-[350px] md:h-[450px] 2xl:h-[600px] rounded-[12px] group">
-                <Image src={Vision} className="w-full h-full" alt="img" />
-                <span className="vision-overlay">
-                  Empowering journeys with innovative & customer-friendly
-                  solutions for a greener world
-                </span>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="relative">
-        <div className="container mx-auto">
-          <div className="mt-8 md:mt-12 2xl:mt-[60px] flex flex-col gap-10 relative">
+          <div className="flex flex-col gap-10 relative">
             <div className="flex flex-col gap-3">
               <span className="section-heading">Mission</span>
               <div className="section-title-wrapper">
@@ -200,14 +181,18 @@ export default function Leadership({ params }) {
               </div>
             </div>
           </div>
-          <div className="mt-8 md:mt-12 2xl:mt-[60px] flex flex-col gap-10 relative">
+        </div>
+      </section>
+      <section className="relative mt-8 md:mt-12 2xl:mt-[60px]">
+        <div className="container mx-auto">
+          <div className="flex flex-col gap-10 relative">
             <div className="flex flex-col gap-3">
               <span className="section-heading">values</span>
               <div className="section-title-wrapper">
                 <h3 className="section-title">Our Values</h3>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-6 md:gap-10 relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 relative">
               <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
                 <Image
                   data-aos="zoom-in"

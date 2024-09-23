@@ -233,8 +233,8 @@ export default function Footer() {
                     >
                       {submenu.attributes.title}
                       <svg
-                        width="10"
-                        height="9"
+                        width="8"
+                        height="8"
                         viewBox="0 0 10 9"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -257,8 +257,8 @@ export default function Footer() {
                     >
                       {submenu.attributes.name}
                       <svg
-                        width="10"
-                        height="9"
+                        width="8"
+                        height="8"
                         viewBox="0 0 10 9"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
