@@ -183,7 +183,7 @@ export default function Leadership({ params }) {
           </div>
         </div>
       </section>
-      <section className="relative mt-8 md:mt-12 2xl:mt-[60px]">
+      {/* <section className="relative mt-8 md:mt-12 2xl:mt-[60px]">
         <div className="container mx-auto">
           <div className="flex flex-col gap-10 relative">
             <div className="flex flex-col gap-3">
@@ -293,7 +293,7 @@ export default function Leadership({ params }) {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <PageEnd EndPageData={pageData?.end} EndStaticImage={NextChapter} />
       <Footer />
     </>

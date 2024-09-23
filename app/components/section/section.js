@@ -677,10 +677,16 @@ export function Gallery({ section }) {
     "fade-up-left",
   ];
   const BGColor = [
-    "fade-down-right",
-    "fade-down-left",
-    "fade-up-right",
-    "fade-up-left",
+    "#2E3192",
+    "#F5811E",
+    "#F5811E",
+    "#2E3192",
+  ];
+  const FirstLetter = [
+    "#F5811E",
+    "#2E3192",
+    "#F5811E",
+    "#2E3192",
   ];
 
   return (
@@ -693,9 +699,13 @@ export function Gallery({ section }) {
           )}
         >
           {section.collection.length > 1 ? (
-            section.collection.length === 4 ? ( 
+            section.collection.length === 4 ? (
               // section?.collection_name
               <div className="container mx-auto">
+                <span className="section-heading">{section?.heading}</span>
+                <div className="section-title-wrapper">
+                  <h3 className="section-title">{section?.title}</h3>
+                </div>
                 <div className="grid grid-cols-2 gap-6 md:gap-10 relative">
                   <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
                     <Image
@@ -705,14 +715,17 @@ export function Gallery({ section }) {
                       src={tiger}
                       alt="img"
                     />
-                    {section?.collection_name &&
+                    {section?.collection_name && (
                       <span className="text-primary font-bold text-[22px] md:text-[36px] 2xl:text-[48px] uppercase absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
                         {section.collection_name}
                       </span>
-                    }
+                    )}
                   </figure>
                   {section.collection.map((image, index) => (
-                    <div className="relative overflow-hidden rounded-[12px] group">
+                    <div
+                      className="relative overflow-hidden rounded-[12px] group"
+                      key={image.id}
+                    >
                       <figure
                         className="w-full h-full"
                         data-aos={AOCClass[index]}
@@ -726,12 +739,14 @@ export function Gallery({ section }) {
                           src={getStrapiMedia(image.image?.url)}
                           alt={image.image?.alternativeText}
                         />
-                        {section?.collection_name &&
-                          <div className="value-overlay bg-secondary opacity-75">
-                            <h3 className="first-letter:text-secondary">{image?.title}</h3>
+                        {section?.collection_name && (
+                          <div className="value-overlay opacity-75" style={{ backgroundColor: BGColor[index] }}>
+                            <h3 className="">
+                              {image?.title}
+                            </h3>
                             <p>{image?.description}</p>
                           </div>
-                        }
+                        )}
                       </figure>
                     </div>
                   ))}
@@ -1149,18 +1164,26 @@ export function JobApplication({ section }) {
                     required
                   />
                 </div>
-                {section?.specialization &&
+                {section?.specialization && (
                   <div className="form-row">
-                    {section?.specializationLabel &&
-                      <label className="contact-label" htmlFor="specialization">{section.specializationLabel}</label>
-                    }
-                    <select className="contact-select" name="specialization" onChange={handleChange} >
-                      {section.specialization.map((option)=>(
-                        <option key={option.id} value={option?.value}>{option?.name}</option>
+                    {section?.specializationLabel && (
+                      <label className="contact-label" htmlFor="specialization">
+                        {section.specializationLabel}
+                      </label>
+                    )}
+                    <select
+                      className="contact-select"
+                      name="specialization"
+                      onChange={handleChange}
+                    >
+                      {section.specialization.map((option) => (
+                        <option key={option.id} value={option?.value}>
+                          {option?.name}
+                        </option>
                       ))}
                     </select>
                   </div>
-                }
+                )}
                 <div className="w-full flex flex-col">
                   {section?.resume?.label && (
                     <label className="contact-label" htmlFor="resume">
@@ -1241,9 +1264,7 @@ export function JobApplication({ section }) {
                   type="submit"
                   className="primary-btn w-fit flip-animate-2"
                 >
-                  <span data-hover={section?.submit}>
-                    {section?.submit}
-                  </span>
+                  <span data-hover={section?.submit}>{section?.submit}</span>
                 </button>
               </form>
             </div>
