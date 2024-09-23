@@ -69,9 +69,9 @@ export default function Leadership({ params }) {
     <>
       <Navbar />
       <PageBanner Title="Vision, Mission & Values" StaticBanner={Hero} />
-      <section className="relative">
+      <section className="relative mt-8 md:mt-12 2xl:mt-[60px]">
         <div className="container mx-auto">
-          <div className="mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
+          <div className="overflow-hidden">
             <span className="section-heading">Vision</span>
             <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
               <h3
@@ -92,6 +92,10 @@ export default function Leadership({ params }) {
               </figure>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="relative">
+        <div className="container mx-auto">
           <div className="mt-8 md:mt-12 2xl:mt-[60px] flex flex-col gap-10 relative">
             <div className="flex flex-col gap-3">
               <span className="section-heading">Mission</span>
@@ -305,11 +309,6 @@ export default function Leadership({ params }) {
           </div>
         </div>
       </section>
-      {/* <PageEnd
-        Title="R&D"
-        TitleLink="/about-us/corporate/research-and-development"
-        EndStaticImage={NextChapter}
-      /> */}
       <PageEnd EndPageData={pageData?.end} EndStaticImage={NextChapter} />
       <Footer />
     </>

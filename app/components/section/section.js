@@ -12,19 +12,31 @@ import Triangle1 from "@/app/assets/images/triangle1.png";
 import Triangle2 from "@/app/assets/images/triangle2.png";
 import tigerMask from "@/app/assets/images/tiger-mask2.png";
 
-
 export default function SectionSelection({ section, Background, right }) {
   return (
     <>
       {section.__component == "section.files" && <Files section={section} />}
-      {section.__component == "section.investor-table" && <Table section={section} />}
-      {section.__component == "section.address" && <Address section={section} />}
-      {section.__component == "section.image-title-content" && <ImageTitleContent section={section}/>}
-      {section.__component == "section.accordion" && <Accordion section={section}/>}
-      {section.__component == "section.title-content-half" && <TitleContentHalf section={section}/>}
-      {section.__component == "section.gallery" && <Gallery section={section}/>}
-      {section.__component == "section.image-point" && <ImagePoint section={section}/>}
-
+      {section.__component == "section.investor-table" && (
+        <Table section={section} />
+      )}
+      {section.__component == "section.address" && (
+        <Address section={section} />
+      )}
+      {section.__component == "section.image-title-content" && (
+        <ImageTitleContent section={section} />
+      )}
+      {section.__component == "section.accordion" && (
+        <Accordion section={section} />
+      )}
+      {section.__component == "section.title-content-half" && (
+        <TitleContentHalf section={section} />
+      )}
+      {section.__component == "section.gallery" && (
+        <Gallery section={section} />
+      )}
+      {section.__component == "section.image-point" && (
+        <ImagePoint section={section} />
+      )}
 
       {section.__component == "section.accordion2" && (
         <Accordion2 section={section} Background={Background} />
@@ -274,7 +286,9 @@ export function ImageTitleContent({ section }) {
             <Image
               className={cn(
                 "absolute top-4 md:top-8 w-[90%] h-[90%] rounded-[12px]",
-                section?.settings?.right ? "right-4 md:right-8" : "left-4 md:left-8"
+                section?.settings?.right
+                  ? "right-4 md:right-8"
+                  : "left-4 md:left-8"
               )}
               width={section?.image.width}
               height={section?.image.height}
@@ -303,7 +317,9 @@ export function ImageTitleContent({ section }) {
                 content={section.content}
                 blocks={{
                   paragraph: ({ children }) => (
-                    <p data-aos="fade-left" data-aos-duration="1000">{children}</p>
+                    <p data-aos="fade-left" data-aos-duration="1000">
+                      {children}
+                    </p>
                   ),
                   heading: ({ children, level }) => {
                     switch (level) {
@@ -336,11 +352,7 @@ export function ImageTitleContent({ section }) {
               />
             )}
             {section?.link && (
-              <Link
-                href={section.link}
-                target="_blank"
-                className="more-btn"
-              >
+              <Link href={section.link} target="_blank" className="more-btn">
                 Know More
               </Link>
             )}
@@ -356,7 +368,13 @@ export function ImageTitleContent({ section }) {
             content={section.post_content}
             blocks={{
               paragraph: ({ children }) => (
-                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mb-3 md:mb-10 2xl:mb-[60px]" data-aos="fade-right" data-aos-duration="2000">{children}</p>
+                <p
+                  className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mb-3 md:mb-10 2xl:mb-[60px]"
+                  data-aos="fade-right"
+                  data-aos-duration="2000"
+                >
+                  {children}
+                </p>
               ),
               heading: ({ children, level }) => {
                 switch (level) {
@@ -376,9 +394,7 @@ export function ImageTitleContent({ section }) {
                     return <h1>{children}</h1>;
                 }
               },
-              link: ({ children, url }) => (
-                <Link href={url}>{children}</Link>
-              ),
+              link: ({ children, url }) => <Link href={url}>{children}</Link>,
             }}
             modifiers={{
               bold: ({ children }) => <strong>{children}</strong>,
@@ -416,7 +432,9 @@ export function Accordion({ section }) {
             content={section.pre_content}
             blocks={{
               paragraph: ({ children }) => (
-                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">{children}</p>
+                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
+                  {children}
+                </p>
               ),
               heading: ({ children, level }) => {
                 switch (level) {
@@ -436,9 +454,7 @@ export function Accordion({ section }) {
                     return <h1>{children}</h1>;
                 }
               },
-              link: ({ children, url }) => (
-                <Link href={url}>{children}</Link>
-              ),
+              link: ({ children, url }) => <Link href={url}>{children}</Link>,
             }}
             modifiers={{
               bold: ({ children }) => <strong>{children}</strong>,
@@ -458,7 +474,7 @@ export function Accordion({ section }) {
                       key={image.id}
                       className={cn(
                         "w-full h-[240px] 2xl:h-[265px] rounded-[12px]",
-                        index == '0' && "col-span-2"
+                        index == "0" && "col-span-2"
                       )}
                       width={image?.width}
                       height={image?.height}
@@ -507,7 +523,7 @@ export function Accordion({ section }) {
                         <input type="radio" name="my-accordion-3" />
                       )}
                       <div className="collapse-title">
-                        {accordion?.icon &&
+                        {accordion?.icon && (
                           <Image
                             key={accordion.icon.id}
                             className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center px-4 py-[14px]"
@@ -516,7 +532,7 @@ export function Accordion({ section }) {
                             src={getStrapiMedia(accordion.icon?.url)}
                             alt={accordion.icon?.alternativeText}
                           />
-                        }
+                        )}
                         {accordion.title}
                       </div>
                       <div className="collapse-content">
@@ -533,7 +549,9 @@ export function Accordion({ section }) {
             content={section.post_content}
             blocks={{
               paragraph: ({ children }) => (
-                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">{children}</p>
+                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
+                  {children}
+                </p>
               ),
               heading: ({ children, level }) => {
                 switch (level) {
@@ -553,9 +571,7 @@ export function Accordion({ section }) {
                     return <h1>{children}</h1>;
                 }
               },
-              link: ({ children, url }) => (
-                <Link href={url}>{children}</Link>
-              ),
+              link: ({ children, url }) => <Link href={url}>{children}</Link>,
             }}
             modifiers={{
               bold: ({ children }) => <strong>{children}</strong>,
@@ -590,7 +606,7 @@ export function TitleContentHalf({ section }) {
           >
             <Image
               src={tigerMask}
-              alt='tigermark'
+              alt="tigermark"
               className="absolute left-0 top-0"
             />
             <span className="section-heading">{section?.heading}</span>
@@ -604,7 +620,9 @@ export function TitleContentHalf({ section }) {
                 content={section.content}
                 blocks={{
                   paragraph: ({ children }) => (
-                    <p data-aos="fade-left" data-aos-duration="1000">{children}</p>
+                    <p data-aos="fade-left" data-aos-duration="1000">
+                      {children}
+                    </p>
                   ),
                   heading: ({ children, level }) => {
                     switch (level) {
@@ -649,36 +667,67 @@ export function Gallery({ section }) {
   }, []);
   return (
     <>
-      {section?.collection && section.collection.length > 0 &&
+      {section?.collection && section.collection.length > 0 && (
         <section className="mt-6 md:mt-8 2xl:mt-10 overflow-hidden mb-8 md:mb-12 2xl:mb-[60px]">
-          {section.collection.length > 1 ?
+          {section.collection.length > 1 ? (
             <div className="container mx-auto">
               <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
-                {section.collection.map((collection) => ( collection?.image &&
-                  <figure className="w-1/2" key={collection.image.id}>
-                    <Image
-                      className="w-full rounded-[12px]"
-                      width={collection.image?.width}
-                      height={collection.image?.height}
-                      src={getStrapiMedia(collection.image?.url)}
-                      alt={collection.image?.alternativeText}
-                      data-aos="flip-up"
-                      data-aos-duration="1500"
-                    />
-                  </figure>
-                ))}
+                {section.collection.map(
+                  (collection) =>
+                    collection?.image && (
+                      <figure className="w-1/2" key={collection.image.id}>
+                        <Image
+                          className="w-full rounded-[12px]"
+                          width={collection.image?.width}
+                          height={collection.image?.height}
+                          src={getStrapiMedia(collection.image?.url)}
+                          alt={collection.image?.alternativeText}
+                          data-aos="flip-up"
+                          data-aos-duration="1500"
+                        />
+                      </figure>
+                    )
+                )}
               </div>
             </div>
-             :
-             section.collection[0].image.ext == '.mp4' &&
-              <div class="w-[100%] mt-4 2xl:mt-8 ">
-                <video className="!w-full" loop autoPlay muted>
-                  <source src={getStrapiMedia(section.collection[0].image?.url)} type="video/mp4" />
-                </video>
+          ) : section.collection[0].image.ext == ".mp4" ? (
+            <div class="w-[100%] mt-4 2xl:mt-8 ">
+              <video className="!w-full" loop autoPlay muted>
+                <source
+                  src={getStrapiMedia(section.collection[0].image?.url)}
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          ) : (
+            <section className="relative mt-8 md:mt-12 2xl:mt-[60px]">
+              <div className="container mx-auto">
+                <div className="overflow-hidden">
+                  <span className="section-heading">Vision</span>
+                  <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
+                    <h3
+                      className="section-title"
+                      data-aos="fade-left"
+                      data-aos-duration="1000"
+                    >
+                      Our Vision
+                    </h3>
+                  </div>
+                  <div className="relative rounded-[12px] overflow-hidden">
+                    <figure className="relative w-full h-[350px] md:h-[450px] 2xl:h-[600px] rounded-[12px] group">
+                      <Image src={Vision} className="w-full h-full" alt="img" />
+                      <span className="vision-overlay">
+                        Empowering journeys with innovative & customer-friendly
+                        solutions for a greener world
+                      </span>
+                    </figure>
+                  </div>
+                </div>
               </div>
-          }
+            </section>
+          )}
         </section>
-      }
+      )}
     </>
   );
 }
@@ -688,7 +737,12 @@ export function ImagePoint({ section }) {
     AOS.init();
   }, []);
   return (
-    <section className={cn("vast-product-sec py-6 md:py-10 2xl:py-[60px] overflow-hidden", section?.settings?.background ? "bg-[#F4F5F6]" : "bg-white" )}>
+    <section
+      className={cn(
+        "vast-product-sec py-6 md:py-10 2xl:py-[60px] overflow-hidden",
+        section?.settings?.background ? "bg-[#F4F5F6]" : "bg-white"
+      )}
+    >
       <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
         <div>
           <span className="section-heading">{section?.heading}</span>
@@ -701,7 +755,9 @@ export function ImagePoint({ section }) {
             content={section.content}
             blocks={{
               paragraph: ({ children }) => (
-                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">{children}</p>
+                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
+                  {children}
+                </p>
               ),
               heading: ({ children, level }) => {
                 switch (level) {
@@ -721,9 +777,7 @@ export function ImagePoint({ section }) {
                     return <h1>{children}</h1>;
                 }
               },
-              link: ({ children, url }) => (
-                <Link href={url}>{children}</Link>
-              ),
+              link: ({ children, url }) => <Link href={url}>{children}</Link>,
             }}
             modifiers={{
               bold: ({ children }) => <strong>{children}</strong>,
@@ -733,28 +787,33 @@ export function ImagePoint({ section }) {
             }}
           />
         )}
-        {section?.collection && section.collection.length > 0 && 
+        {section?.collection && section.collection.length > 0 && (
           <div className="grid grid-cols1 md:grid-cols-3 gap-6 md:gap-10">
             {section.collection.map((collection) => (
-              <div key={collection.id}
+              <div
+                key={collection.id}
                 className="vast-card"
                 data-aos="fade-up"
                 data-aos-duration="1000"
                 data-aos-offset="100"
               >
-                {collection?.image &&
+                {collection?.image && (
                   <figure>
-                    <Image className="vast-card-image" src={getStrapiMedia(collection.image.url)} alt={collection.image.alternativeText} width={collection.image.width} height={collection.image.height} />
+                    <Image
+                      className="vast-card-image"
+                      src={getStrapiMedia(collection.image.url)}
+                      alt={collection.image.alternativeText}
+                      width={collection.image.width}
+                      height={collection.image.height}
+                    />
                   </figure>
-                }
+                )}
                 <h2>{collection.title}</h2>
                 {collection?.content && collection.content.length > 0 && (
                   <BlocksRenderer
                     content={collection.content}
                     blocks={{
-                      paragraph: ({ children }) => (
-                        <p>{children}</p>
-                      ),
+                      paragraph: ({ children }) => <p>{children}</p>,
                       heading: ({ children, level }) => {
                         switch (level) {
                           case 1:
@@ -788,7 +847,7 @@ export function ImagePoint({ section }) {
               </div>
             ))}
           </div>
-        }
+        )}
       </div>
     </section>
   );
@@ -1021,6 +1080,3 @@ export function CommonSec({ section, Background, right }) {
     </section>
   );
 }
-
-
-
