@@ -273,7 +273,7 @@ export default function LifeAtBirla({params}) {
           </div>
         </div>
       </section>
-      <PageEnd EndPageData={pageData?.end} EndStaticImage={life9} />
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={life9} Background={true}/>
       <Footer />
     </>
   );
