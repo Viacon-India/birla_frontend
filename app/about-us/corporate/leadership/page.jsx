@@ -43,7 +43,7 @@ export default function Leadership({ params }) {
         <div className="container mx-auto flex flex-col gap-4 md:gap-10 2xl:gap-[60px]">
           <div className="flex flex-col md:flex-row items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
             <figure
-              className="w-full md:w-[50%] h-[480px] relative glare"
+              className="w-full md:w-[40%] h-[480px] relative glare"
               data-aos="flip-right"
               data-aos-duration="1500"
             >
@@ -58,7 +58,7 @@ export default function Leadership({ params }) {
                 alt="img"
               />
             </figure>
-            <div className="flex flex-col justify-center gap-2 md:gap-6 w-[50%] relative overflow-hidden">
+            <div className="flex flex-col justify-center gap-2 md:gap-6 w-full md:w-[60%] relative overflow-hidden">
               <div className="flex flex-col gap-6">
                 <Image
                   className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
@@ -168,7 +168,7 @@ export default function Leadership({ params }) {
           </div>
 
           <div className="flex flex-col-reverse md:flex-row items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
-            <div className="flex flex-col justify-between w-[50%]">
+            <div className="flex flex-col justify-between w-full md:w-[60%]">
               <div className="flex flex-col justify-start gap-2 md:gap-6 relative overflow-hidden">
                 <Image
                   className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
@@ -263,7 +263,7 @@ export default function Leadership({ params }) {
               </div>
             </div>
             <figure
-              className="w-full md:w-[50%] h-[480px] relative glare"
+              className="w-full md:w-[40%] h-[480px] relative glare"
               data-aos="flip-left"
               data-aos-duration="1500"
             >
@@ -282,7 +282,7 @@ export default function Leadership({ params }) {
 
           <div className="flex flex-col md:flex-row items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px]">
             <figure
-              className="w-full md:w-[50%] h-[480px] relative glare"
+              className="w-full md:w-[40%] h-[480px] relative glare"
               data-aos="flip-right"
               data-aos-duration="1500"
             >
@@ -297,7 +297,7 @@ export default function Leadership({ params }) {
                 alt="img"
               />
             </figure>
-            <div className="flex flex-col justify-between w-[50%] overflow-hidden">
+            <div className="flex flex-col justify-between w-full md:w-[60%] overflow-hidden">
               <div className="flex flex-col justify-start gap-2 md:gap-6 relative ">
                 <Image
                   className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"

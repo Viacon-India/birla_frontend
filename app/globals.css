@@ -679,7 +679,7 @@ a.current_dot {
 }
 
 .footer-list-item {
-  @apply text-[#0E0E11] text-[12px] 2xl:text-[15px] leading-[1.2] capitalize relative flex gap-2 hover:text-primary 
+  @apply text-[#0E0E11] text-[12px] 2xl:text-[15px] leading-[1.2] capitalize relative flex gap-1 hover:text-primary 
   w-fit transition-all duration-500 items-center
   
 }
@@ -871,11 +871,11 @@ a.current_dot {
 }
 
 .new-product-card-tag{
-  @apply text-[12px] 2xl:text-[16px] text-[#FFFFFF] bg-primary px-6 py-2 rounded-tl-[16px] flex justify-center items-center w-fit
+  @apply text-[12px] 2xl:text-[16px] text-[#FFFFFF] bg-primary px-6 py-2 rounded-tl-[14px] flex justify-center items-center w-fit
 }
 
 .prem-product-card-tag {
-  @apply text-[12px] 2xl:text-[16px] text-[#FFFFFF] bg-primary px-6 py-2 rounded-tl-[16px] flex justify-center items-center w-fit relative overflow-hidden
+  @apply text-[12px] 2xl:text-[16px] text-[#FFFFFF] bg-primary px-6 py-2 rounded-tl-[14px] flex justify-center items-center w-fit relative overflow-hidden
 }
 
 .prem-product-card-tag::before {
@@ -1080,10 +1080,10 @@ a.current_dot {
 .accordion-list-sec .collapse-title{
   @apply text-[#1A1D21] !p-0 flex gap-2 items-center font-bold min-h-[3.75rem] md:!min-h-[4.75rem]
 }
-.accordion-list-sec .collapse-title::before{
+/* .accordion-list-sec .collapse-title::before{
   content: url('data:image/svg+xml,<svg width="22" height="22" viewBox="0 0 18 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.16713H17" stroke="%231A1D21" stroke-width="1.5" stroke-linecap="round"/><path d="M1 1.5H17V19.2778C17 19.8671 16.7592 20.4324 16.3305 20.8491C15.9019 21.2659 15.3205 21.5 14.7143 21.5H3.28571C2.67951 21.5 2.09812 21.2659 1.66947 20.8491C1.24082 20.4324 1 19.8671 1 19.2778V1.5Z" stroke="%231A1D21" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.57031 12.6113H6.71317M11.2846 12.6113H12.4275M5.57031 17.0558H6.71317M11.2846 17.0558H12.4275" stroke="%231A1D21" stroke-width="1.5" stroke-linecap="round"/></svg>');
   @apply w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center
-}
+} */
 .accordion-list-sec .collapse-content{
   @apply !pl-0
 }
@@ -1280,7 +1280,8 @@ a.current_dot {
 }
 .vision-overlay{
   @apply absolute top-[75%] w-full h-full bg-secondary opacity-75 rounded-bl-[12px] rounded-br-[12px] text-[#F4F5F6] text-center
-  text-[24px] md:text-[32px] 2xl:text-[40px] font-light transition-all duration-500 group-hover:top-0 flex justify-start group-hover:items-center
+  text-[18px] md:text-[32px] font-semibold transition-all duration-500 group-hover:top-0 flex justify-start group-hover:items-center
+  px-6 md:px-20 2xl:px-[120px]
 }
 
 

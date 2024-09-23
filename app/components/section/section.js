@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { getStrapiMedia } from "@/lib/utils";
 import { cn } from "@/lib/utils";
@@ -11,6 +11,7 @@ import "aos/dist/aos.css";
 import Triangle1 from "@/app/assets/images/triangle1.png";
 import Triangle2 from "@/app/assets/images/triangle2.png";
 import tigerMask from "@/app/assets/images/tiger-mask2.png";
+import tiger from "@/app/assets/images/tiger.png";
 
 export default function SectionSelection({ section, Background, right }) {
   return (
@@ -36,6 +37,9 @@ export default function SectionSelection({ section, Background, right }) {
       )}
       {section.__component == "section.image-point" && (
         <ImagePoint section={section} />
+      )}
+      {section.__component == "section.job-application" && (
+        <JobApplication section={section} />
       )}
 
       {section.__component == "section.accordion2" && (
@@ -356,7 +360,7 @@ export function ImageTitleContent({ section }) {
                 Know More
               </Link>
             )}
-            <div class="line-loader self-end absolute bottom-0">
+            <div class="line-loader self-end">
               <div class="bar bar1"></div>
               <div class="bar bar2"></div>
               <div class="bar bar3"></div>
@@ -665,33 +669,98 @@ export function Gallery({ section }) {
   useEffect(() => {
     AOS.init();
   }, []);
+
+  const AOCClass = [
+    "fade-down-right",
+    "fade-down-left",
+    "fade-up-right",
+    "fade-up-left",
+  ];
+  const BGColor = [
+    "fade-down-right",
+    "fade-down-left",
+    "fade-up-right",
+    "fade-up-left",
+  ];
+
   return (
     <>
       {section?.collection && section.collection.length > 0 && (
-        <section className="mt-6 md:mt-8 2xl:mt-10 overflow-hidden mb-8 md:mb-12 2xl:mb-[60px]">
+        <section
+          className={cn(
+            "relative mt-6 md:mt-8 2xl:mt-10 overflow-hidden mb-8 md:mb-12 2xl:mb-[60px]",
+            section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
+          )}
+        >
           {section.collection.length > 1 ? (
-            <div className="container mx-auto">
-              <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
-                {section.collection.map(
-                  (collection) =>
-                    collection?.image && (
-                      <figure className="w-1/2" key={collection.image.id}>
+            section.collection.length === 4 ? ( 
+              // section?.collection_name
+              <div className="container mx-auto">
+                <div className="grid grid-cols-2 gap-6 md:gap-10 relative">
+                  <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
+                    <Image
+                      className={section?.collection_name ? "!opacity-15" : ""}
+                      data-aos="zoom-in"
+                      data-aos-duration="2000"
+                      src={tiger}
+                      alt="img"
+                    />
+                    {section?.collection_name &&
+                      <span className="text-primary font-bold text-[22px] md:text-[36px] 2xl:text-[48px] uppercase absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+                        {section.collection_name}
+                      </span>
+                    }
+                  </figure>
+                  {section.collection.map((image, index) => (
+                    <div className="relative overflow-hidden rounded-[12px] group">
+                      <figure
+                        className="w-full h-full"
+                        data-aos={AOCClass[index]}
+                        data-aos-duration="1000"
+                        key={image.id}
+                      >
                         <Image
-                          className="w-full rounded-[12px]"
-                          width={collection.image?.width}
-                          height={collection.image?.height}
-                          src={getStrapiMedia(collection.image?.url)}
-                          alt={collection.image?.alternativeText}
-                          data-aos="flip-up"
-                          data-aos-duration="1500"
+                          className="w-full h-full object-cover"
+                          width={image.image?.width}
+                          height={image.image?.height}
+                          src={getStrapiMedia(image.image?.url)}
+                          alt={image.image?.alternativeText}
                         />
+                        {section?.collection_name &&
+                          <div className="value-overlay bg-secondary opacity-75">
+                            <h3 className="first-letter:text-secondary">{image?.title}</h3>
+                            <p>{image?.description}</p>
+                          </div>
+                        }
                       </figure>
-                    )
-                )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="container mx-auto">
+                <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
+                  {section.collection.map(
+                    (collection) =>
+                      collection?.image && (
+                        <figure className="w-1/2" key={collection.image.id}>
+                          <Image
+                            className="w-full rounded-[12px]"
+                            width={collection.image?.width}
+                            height={collection.image?.height}
+                            src={getStrapiMedia(collection.image?.url)}
+                            alt={collection.image?.alternativeText}
+                            data-aos="flip-up"
+                            data-aos-duration="1500"
+                          />
+                        </figure>
+                      )
+                  )}
+                </div>
+              </div>
+            )
           ) : section.collection[0].image.ext == ".mp4" ? (
-            <div class="w-[100%] mt-4 2xl:mt-8 ">
+            <div class="w-[100%] mt-4 2xl:mt-8 relative z-51">
               <video className="!w-full" loop autoPlay muted>
                 <source
                   src={getStrapiMedia(section.collection[0].image?.url)}
@@ -700,31 +769,32 @@ export function Gallery({ section }) {
               </video>
             </div>
           ) : (
-            <section className="relative mt-8 md:mt-12 2xl:mt-[60px]">
-              <div className="container mx-auto">
-                <div className="overflow-hidden">
-                  <span className="section-heading">Vision</span>
-                  <div className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10">
-                    <h3
-                      className="section-title"
-                      data-aos="fade-left"
-                      data-aos-duration="1000"
-                    >
-                      Our Vision
-                    </h3>
-                  </div>
-                  <div className="relative rounded-[12px] overflow-hidden">
-                    <figure className="relative w-full h-[350px] md:h-[450px] 2xl:h-[600px] rounded-[12px] group">
-                      <Image src={Vision} className="w-full h-full" alt="img" />
-                      <span className="vision-overlay">
-                        Empowering journeys with innovative & customer-friendly
-                        solutions for a greener world
-                      </span>
-                    </figure>
-                  </div>
+            <div className="container mx-auto">
+              <div className="overflow-hidden">
+                <span className="section-heading">{section?.heading}</span>
+                <div
+                  className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+                  data-aos="fade-left"
+                  data-aos-duration="1000"
+                >
+                  <h3 className="section-title">{section?.title}</h3>
+                </div>
+                <div className="relative rounded-[12px] overflow-hidden">
+                  <figure className="relative w-full h-[350px] md:h-[450px] 2xl:h-[600px] rounded-[12px] group">
+                    <Image
+                      width={section.collection[0].image?.width}
+                      height={section.collection[0].image?.height}
+                      src={getStrapiMedia(section.collection[0].image?.url)}
+                      alt={section.collection[0].image?.alternativeText}
+                      className="w-full h-full"
+                    />
+                    <span className="vision-overlay">
+                      {section?.collection[0].description}
+                    </span>
+                  </figure>
                 </div>
               </div>
-            </section>
+            </div>
           )}
         </section>
       )}
@@ -848,6 +918,337 @@ export function ImagePoint({ section }) {
             ))}
           </div>
         )}
+      </div>
+    </section>
+  );
+}
+
+export function JobApplication({ section }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    contactNumber: "",
+    specialization: "",
+    resume: null,
+  });
+  const [fileName, setFileName] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
+    if (type === "file") {
+      setFormData({
+        ...formData,
+        [name]: files[0],
+      });
+      setFileName(files[0].name); // Set the file name
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
+  const uploadFile = async (file) => {
+    const formData = new FormData();
+    formData.append("files", file);
+    try {
+      const response = await fetch(
+        "http://birlatyres.viaconprojects.com:1337/api/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to upload file");
+      }
+      const data = await response.json();
+      return data[0].id; // Assuming Strapi returns the uploaded file info including its ID
+    } catch (error) {
+      console.error("File upload error:", error);
+      throw error;
+    }
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const resumeId = await uploadFile(formData.resume);
+    const dataToSend = {
+      data: {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        contactNumber: formData.contactNumber,
+        specialization: formData.specialization,
+        resume: resumeId,
+      },
+    };
+    try {
+      const response = await fetch(
+        "http://birlatyres.viaconprojects.com:1337/api/job-applications",
+        {
+          method: "POST",
+          body: JSON.stringify(dataToSend),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Error: ${response.status} - ${errorText}`);
+      }
+      const data = await response.json();
+      setSuccess(true);
+      // console.log('Success:', data);
+    } catch (error) {
+      // console.error('Error:', error);
+      setError("There was an error submitting the form.");
+    }
+  };
+
+  return (
+    <section
+      className={cn(
+        "page-content-sec",
+        section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
+      )}
+    >
+      <div className="container mx-auto flex flex-col">
+        <div className="flex items-center flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px] pt-[60px] md:pt-[120px]">
+          <div
+            className="box-title-sec w-full md:w-[45%] relative"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
+            <span className="section-heading">{section?.heading}</span>
+            <div className="section-title-wrapper">
+              <h3 className="section-title">{section?.title}</h3>
+            </div>
+            {section?.content && section.content.length > 0 && (
+              <BlocksRenderer
+                content={section.content}
+                blocks={{
+                  paragraph: ({ children }) => (
+                    <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mt-6">
+                      {children}
+                    </p>
+                  ),
+                  heading: ({ children, level }) => {
+                    switch (level) {
+                      case 1:
+                        return <h1>{children}</h1>;
+                      case 2:
+                        return <h2>{children}</h2>;
+                      case 3:
+                        return <h3>{children}</h3>;
+                      case 4:
+                        return <h4>{children}</h4>;
+                      case 5:
+                        return <h5>{children}</h5>;
+                      case 6:
+                        return <h6>{children}</h6>;
+                      default:
+                        return <h1>{children}</h1>;
+                    }
+                  },
+                  link: ({ children, url }) => (
+                    <Link href={url}>{children}</Link>
+                  ),
+                }}
+                modifiers={{
+                  bold: ({ children }) => <strong>{children}</strong>,
+                  italic: ({ children }) => (
+                    <span className="italic">{children}</span>
+                  ),
+                }}
+              />
+            )}
+            <Image alt="mask" src={tigerMask} className="" />
+          </div>
+          <div className="w-full md:w-1/2">
+            <div
+              className="form-content"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+            >
+              <form
+                className="w-full flex flex-col gap-3 md:gap-5"
+                onSubmit={handleSubmit}
+              >
+                {section?.formName && (
+                  <div>
+                    <span className="text-primary text-[32px] md:text-[36px] 2xl:text-[48px] font-bold">
+                      {section.formName}
+                    </span>
+                  </div>
+                )}
+                <div className="form-row">
+                  {section?.firstName?.label && (
+                    <label className="contact-label" htmlFor="firstName">
+                      {section.firstName.label}
+                    </label>
+                  )}
+                  <input
+                    className="contact-input"
+                    type="text"
+                    name="firstName"
+                    placeholder={section?.firstName?.placeholder}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="form-row">
+                  {section?.lastName?.label && (
+                    <label className="contact-label" htmlFor="lastName">
+                      {section.lastName.label}
+                    </label>
+                  )}
+                  <input
+                    className="contact-input"
+                    type="text"
+                    name="lastName"
+                    placeholder={section?.lastName?.placeholder}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="form-row">
+                  {section?.email?.label && (
+                    <label className="contact-label" htmlFor="email">
+                      {section.email.label}
+                    </label>
+                  )}
+                  <input
+                    className="contact-input"
+                    type="email"
+                    name="email"
+                    placeholder={section?.email?.placeholder}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="form-row">
+                  {section?.contactNumber?.label && (
+                    <label className="contact-label" htmlFor="contactNumber">
+                      {section.contactNumber.label}
+                    </label>
+                  )}
+                  <input
+                    className="contact-input"
+                    type="text"
+                    name="contactNumber"
+                    placeholder={section?.contactNumber?.placeholder}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                {section?.specialization &&
+                  <div className="form-row">
+                    {section?.specializationLabel &&
+                      <label className="contact-label" htmlFor="specialization">{section.specializationLabel}</label>
+                    }
+                    <select className="contact-select" name="specialization" onChange={handleChange} >
+                      {section.specialization.map((option)=>(
+                        <option key={option.id} value={option?.value}>{option?.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                }
+                <div className="w-full flex flex-col">
+                  {section?.resume?.label && (
+                    <label className="contact-label" htmlFor="resume">
+                      {section.resume.label}
+                    </label>
+                  )}
+                  <div className="relative border border-[#727C8D] rounded-[8px]">
+                    <input
+                      className="contact-input w-full rounded-[8px]"
+                      type="none"
+                      name="resumeName"
+                      value={fileName}
+                      placeholder={section?.resume?.placeholder}
+                      disabled
+                    />
+                    <input
+                      type="file"
+                      name="resume"
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <input type="checkbox" className="mt-1" required />
+                  {section?.concent && section.concent.length > 0 && (
+                    <BlocksRenderer
+                      content={section.concent}
+                      blocks={{
+                        paragraph: ({ children }) => (
+                          <p className="text-[14px] text-[#000000]">
+                            {children}
+                          </p>
+                        ),
+                        heading: ({ children, level }) => {
+                          switch (level) {
+                            case 1:
+                              return <h1>{children}</h1>;
+                            case 2:
+                              return <h2>{children}</h2>;
+                            case 3:
+                              return <h3>{children}</h3>;
+                            case 4:
+                              return <h4>{children}</h4>;
+                            case 5:
+                              return <h5>{children}</h5>;
+                            case 6:
+                              return <h6>{children}</h6>;
+                            default:
+                              return <h1>{children}</h1>;
+                          }
+                        },
+                        link: ({ children, url }) => (
+                          <Link
+                            href={url}
+                            className="underline underline-offset-1 cursor-pointer"
+                          >
+                            {children}
+                          </Link>
+                        ),
+                      }}
+                      modifiers={{
+                        bold: ({ children }) => <strong>{children}</strong>,
+                        italic: ({ children }) => (
+                          <span className="italic">{children}</span>
+                        ),
+                      }}
+                    />
+                  )}
+                </div>
+                {error && <p className="text-red-500">{error}</p>}
+                {success && (
+                  <p className="text-green-500">
+                    Application submitted successfully!
+                  </p>
+                )}
+                <button
+                  type="submit"
+                  className="primary-btn w-fit flip-animate-2"
+                >
+                  <span data-hover={section?.submit}>
+                    {section?.submit}
+                  </span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -1060,7 +1461,7 @@ export function CommonSec({ section, Background, right }) {
                 {section.button}
               </Link>
             )}
-            <div class="line-loader self-end absolute bottom-0">
+            <div class="line-loader self-end">
               <div class="bar bar1"></div>
               <div class="bar bar2"></div>
               <div class="bar bar3"></div>

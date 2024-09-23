@@ -97,9 +97,9 @@ export default function JoinUs({params}) {
             </div>
           </div>
           <div className="testimonial-sec">
-            <span className="section-heading">Our People’s Voices</span>
+            <span className="section-heading">Employee Testimonials</span>
             <div className="section-title-wrapper">
-              <h3 className="section-title">Our Talents</h3>
+              <h3 className="section-title">Our People’s Voices</h3>
             </div>
             <div className="grid grid-cols1 md:grid-cols-2 gap-6 md:gap-10 mt-6 md:mt-10 overflow-hidden">
               <div
