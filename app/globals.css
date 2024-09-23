@@ -1319,6 +1319,7 @@ input[type=file]::file-selector-button {
 
 .value-overlay h3{
   @apply text-[#FFFFFF] text-[24px] md:text-[28px] 2xl:text-[32px] font-semibold first-letter:bg-white
+  first:first-letter:text-red-500
 }
 .value-overlay p{
   @apply text-[#FFFFFF] text-[14px] md:text-[16px] 2xl:text-[16px]
