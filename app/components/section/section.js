@@ -376,7 +376,7 @@ export function ImageTitleContent({ section }) {
             blocks={{
               paragraph: ({ children }) => (
                 <p
-                  className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mb-3 md:mb-10 2xl:mb-[60px]"
+                  className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6] mb-3 md:mb-10 2xl:mb-[60px]"
                   data-aos="fade-right"
                   data-aos-duration="2000"
                 >
@@ -439,7 +439,7 @@ export function Accordion({ section }) {
             content={section.pre_content}
             blocks={{
               paragraph: ({ children }) => (
-                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
+                <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
                   {children}
                 </p>
               ),
@@ -493,7 +493,7 @@ export function Accordion({ section }) {
               ) : (
                 <div class="w-full md:w-[40%] h-fit md:sticky top-[90px]">
                   <figure
-                    className="w-full h-[350px] md:h-[450px] 2xl:h-[600px] mb-0"
+                    className="w-full h-[350px] md:h-[500px] 2xl:h-[600px] mb-0"
                     data-aos="zoom-in"
                     data-aos-duration="1000"
                   >
@@ -511,7 +511,7 @@ export function Accordion({ section }) {
           )}
           {section?.items && (
             <div
-              class="accordion-list-sec w-full md:w-[60%] h-[350px] md:h-[450px] 2xl:h-[600px] overflow-y-auto"
+              class="accordion-list-sec w-full md:w-[60%] h-[350px] md:h-[500px] 2xl:h-[600px] overflow-y-auto"
               data-aos="fade-left"
               data-aos-duration="1000"
             >
@@ -556,7 +556,7 @@ export function Accordion({ section }) {
             content={section.post_content}
             blocks={{
               paragraph: ({ children }) => (
-                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
+                <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
                   {children}
                 </p>
               ),
@@ -688,7 +688,7 @@ export function TitleContentFull({ section }) {
           content={section.content}
           blocks={{
             paragraph: ({ children }) => (
-              <p className="text-[#1A1D21] text-[14px] md:text-[16px] 2xl:text-[17px] mt-6 2xl:mt-10">
+              <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] mt-6 2xl:mt-10">
                 {children}
               </p>
             ),
@@ -725,7 +725,7 @@ export function TitleContentFull({ section }) {
               );
             },
             "list-item": (props) => (
-              <li className="text-[14px] md:text-[16px] 2xl:text-[17px] mt-4">
+              <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-4">
                 {props.children}
               </li>
             ),
@@ -949,7 +949,7 @@ export function ImagePoint({ section }) {
             content={section.content}
             blocks={{
               paragraph: ({ children }) => (
-                <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
+                <p className="text-[#1A1D21] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
                   {children}
                 </p>
               ),
@@ -1160,7 +1160,7 @@ export function JobApplication({ section }) {
                 content={section.content}
                 blocks={{
                   paragraph: ({ children }) => (
-                    <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mt-6">
+                    <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6] mt-6">
                       {children}
                     </p>
                   ),
@@ -1406,7 +1406,7 @@ export function Accordion2({ section, Background }) {
           </div>
         </div>
         {section?.preAccordion && (
-          <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
+          <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
             {section.preAccordion}
           </p>
         )}
@@ -1475,7 +1475,7 @@ export function Accordion2({ section, Background }) {
           )}
         </div>
         {section?.postAccordion && (
-          <p className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6]">
+          <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
             {section.postAccordion}
           </p>
         )}
@@ -1603,7 +1603,7 @@ export function CommonSec({ section, Background, right }) {
         </div>
         {section?.postCommonSec && (
           <p
-            className="text-[#1A1D21] text-[14px] md:text-[17px] leading-[1.6] mb-3 md:mb-10 2xl:mb-[60px]"
+            className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6] mb-3 md:mb-10 2xl:mb-[60px]"
             data-aos="fade-right"
             data-aos-duration="2000"
           >
