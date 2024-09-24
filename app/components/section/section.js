@@ -799,7 +799,8 @@ export function Gallery({ section }) {
             >
               <h3 className="section-title">{section?.title}</h3>
             </div>
-            <div className="grid grid-cols-2 gap-6 md:gap-10 relative mt-6">
+
+            <div className="relative mt-6">
               <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
                 <Image
                   className={section?.collection_name ? "!opacity-15" : ""}
@@ -814,35 +815,37 @@ export function Gallery({ section }) {
                   </span>
                 )}
               </figure>
-              {section.collection.map((image, index) => (
-                <div
-                  className="value-overlay-card relative overflow-hidden rounded-[12px] group"
-                  key={image.id}
-                >
-                  <figure
-                    className="w-full h-full"
-                    data-aos={AOCClass[index]}
-                    data-aos-duration="1000"
+              <div className="new-main grid grid-cols-2 gap-6 md:gap-10">
+                {section.collection.map((image, index) => (
+                  <div
+                    className="value-overlay-card relative overflow-hidden rounded-[12px] group"
+                    key={image.id}
                   >
-                    <Image
-                      className="w-full h-full object-cover"
-                      width={image.image?.width}
-                      height={image.image?.height}
-                      src={getStrapiMedia(image.image?.url)}
-                      alt={image.image?.alternativeText}
-                    />
-                    {section?.collection_name && (
-                      <div
-                        className="value-overlay opacity-75"
-                        style={{ backgroundColor: BGColor[index] }}
-                      >
-                        <h3>{image?.title}</h3>
-                        <p>{image?.description}</p>
-                      </div>
-                    )}
-                  </figure>
-                </div>
-              ))}
+                    <figure
+                      className="w-full h-full"
+                      data-aos={AOCClass[index]}
+                      data-aos-duration="1000"
+                    >
+                      <Image
+                        className="w-full h-full object-cover"
+                        width={image.image?.width}
+                        height={image.image?.height}
+                        src={getStrapiMedia(image.image?.url)}
+                        alt={image.image?.alternativeText}
+                      />
+                      {section?.collection_name && (
+                        <div
+                          className="value-overlay opacity-75"
+                          style={{ backgroundColor: BGColor[index] }}
+                        >
+                          <h3>{image?.title}</h3>
+                          <p>{image?.description}</p>
+                        </div>
+                      )}
+                    </figure>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         );
