@@ -92,7 +92,7 @@ export default function Innovation() {
               },
             }}
             modules={[FreeMode, Autoplay, Navigation]}
-            className="mySwiper !pb-[60px]"
+            className="mySwiper !px-6"
           >
             <SwiperSlide>
               <div

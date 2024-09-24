@@ -93,20 +93,20 @@ export default function Manufacturing({ params }) {
                 }}
                 breakpoints={{
                   0: {
-                    slidesPerView: 1.2,
+                    slidesPerView: 1,
                     spaceBetween: 20,
                   },
                   768: {
-                    slidesPerView: 3.2,
+                    slidesPerView: 3,
                     spaceBetween: 48,
                   },
                   1024: {
-                    slidesPerView: 4.2,
+                    slidesPerView: 4,
                     spaceBetween: 48,
                   },
                 }}
                 modules={[Autoplay, Navigation]}
-                className="mySwiper !pb-6 md:!pb-12 2xl:!pb-16 mt-3 2xl:mt-5"
+                className="myValueSwiper !px-6 mt-3 2xl:mt-5"
               >
                 <SwiperSlide>
                   <div className="phil-card">
@@ -195,7 +195,7 @@ export default function Manufacturing({ params }) {
               </Swiper>
             </div>
             <div className="mb-6 md:mb-10 2xl:mb-[60px]">
-              <h3 className="text-[24px] 2xl:text-[32px] text-secondary">
+              <h3 className="text-[24px] 2xl:text-[32px] text-secondary mt-6 2xl:mt-8">
                 For Executives:
               </h3>
               <Swiper
