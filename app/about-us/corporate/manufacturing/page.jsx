@@ -186,8 +186,11 @@ export default function Manufacturing({ params }) {
     <>
       <Navbar />
       <PageBanner Title="Manufacturing" StaticBanner={Banner} />
-      <SectionSelection section={tigerMarkSection} />
-      <SectionSelection section={gallery} />
+      {pageData?.section &&
+        pageData.section.length > 0 &&
+        pageData.section.map((section) => (
+          <SectionSelection key={section.id} section={section} />
+        ))}
       <section className="page-content-sec mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
         <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
           <div className="manufacture-slider-sec">
@@ -212,8 +215,8 @@ export default function Manufacturing({ params }) {
               top concern. Our employees undergo comprehensive safety training
               programs that cover all aspects of their work.
             </p>
-            <ul className="mt-4 md:mt-6 2xl:mt-10 pl-4">
-              <li className="list-disc text-[14px] md:text-[16px] 2xl:text-[17px] mt-4">
+            <ul className="list-disc mt-4 md:mt-6 2xl:mt-10 pl-4">
+              <li className="text-[14px] md:text-[16px] 2xl:text-[17px] mt-4">
                 A Risk-Based approach and mapping have been initiated for all
                 routine and non-routine activities. The newly implemented
                 Permit-to-Work system includes Risk Assessment before the
@@ -222,12 +225,12 @@ export default function Manufacturing({ params }) {
                 activity execution, with every individual connected to the
                 activity.
               </li>
-              <li className="list-disc text-[14px] md:text-[16px] 2xl:text-[17px] mt-4">
+              <li className="text-[14px] md:text-[16px] 2xl:text-[17px] mt-4">
                 A protocol has been established and implemented for Safety
                 Audits, proactively involving shop floor employees to identify
                 and correct unsafe conditions and procedures.
               </li>
-              <li className="list-disc text-[14px] md:text-[16px] 2xl:text-[17px] mt-4">
+              <li className="text-[14px] md:text-[16px] 2xl:text-[17px] mt-4">
                 Regular training sessions and safety drills are conducted to
                 ensure emergency preparedness
               </li>
@@ -421,7 +424,6 @@ export default function Manufacturing({ params }) {
           </div>
         </div>
       </section>
-      <SectionSelection section={accordion} Background={true} />
       <PageEnd EndPageData={pageData?.end} EndStaticImage={man3} />
       <Footer />
     </>

@@ -66,15 +66,15 @@ export default function Leadership({ params }) {
       });
   });
 
-
-
   return (
     <>
       <Navbar />
       <PageBanner Title="Vision, Mission & Values" StaticBanner={Hero} />
-      {pageData?.section && pageData.section.length > 0 && pageData.section.map((section) => (
-        <SectionSelection key={section.id} section={section} />
-      ))}
+      {pageData?.section &&
+        pageData.section.length > 0 &&
+        pageData.section.map((section) => (
+          <SectionSelection key={section.id} section={section} />
+        ))}
       <section className="relative mt-8 md:mt-12 2xl:mt-[60px]">
         <div className="container mx-auto">
           <div className="flex flex-col gap-10 relative">
