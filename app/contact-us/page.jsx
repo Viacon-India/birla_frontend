@@ -128,7 +128,7 @@ export default function Contact({params}) {
       <Navbar />
       {pageData?.section && pageData.section.length > 0 && pageData.section.map((section) => (
         section.__component == "section.contact-form" && 
-        <section className="top-banner-sec bg-[#F8F8F8] relative">
+        <section className="top-banner-sec bg-[#F8F8F8] relative" key={section.id}>
           <Float />
           <div className="container mx-auto">
             <div className="contact-main flex flex-col md:flex-row items-start gap-4 md:gap-6 2xl:gap-10 mt-8 md:mt-12 2xl:mt-[60px]">
@@ -220,7 +220,7 @@ export default function Contact({params}) {
                           }
                           <select className="contact-select" name="form1QueryType" onChange={handleChange} required>
                             {section.form1QueryType.map((option)=>(
-                              <option value={option?.value}>{option?.name}</option>
+                              <option value={option?.value} key={option.id}>{option?.name}</option>
                             ))}
                           </select>
                         </div>
@@ -350,7 +350,7 @@ export default function Contact({params}) {
                           }
                           <select className="contact-select" name="form2QueryType" onChange={handleChange} required>
                             {section.form2QueryType.map((option)=>(
-                              <option value={option?.value}>{option?.name}</option>
+                              <option value={option?.value} key={option.id}>{option?.name}</option>
                             ))}
                           </select>
                         </div>
