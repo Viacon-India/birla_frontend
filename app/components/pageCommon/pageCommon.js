@@ -183,7 +183,7 @@ export function Float() {
         </svg>
         91-XXXXXXXXXX
       </Link>
-      <Link className="sideNav" href="tel:033-22624354">
+      {/* <Link className="sideNav" href="tel:033-22624354">
         <svg
           width="24"
           height="24"
@@ -205,7 +205,7 @@ export function Float() {
           />
         </svg>
         91-XXXXXXXXXX
-      </Link>
+      </Link> */}
     </div>
   );
 }

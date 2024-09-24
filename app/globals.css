@@ -423,7 +423,7 @@ text-white transition-all duration-500 relative hover:left-[-190px]
   @apply absolute top-0 left-0 w-full h-full z-1 bg-[#161746BF]
 }
 .hero-sec-heading{
-  @apply text-[36px] md:text-[54px] 2xl:text-[72px] text-[#FFFFFF] font-extrabold font-oak-sans
+  @apply text-[36px] md:text-[50px] 2xl:text-[72px] text-[#FFFFFF] font-extrabold font-oak-sans
 }
 .section-subheading{
   @apply text-[14px] md:text-[24px] 2xl:text-[32px] text-[#FFFFFF] mb-8 leading-[1.2] hidden md:flex
@@ -475,7 +475,7 @@ text-white transition-all duration-500 relative hover:left-[-190px]
   before:content-[""] before:w-[3px] before:h-[95%] before:bg-primary before:absolute before:left-0 before:rounded-[100px]
 }
 .section-title{
-  @apply text-secondary text-[22px] md:text-[42px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px]
+  @apply text-secondary text-[22px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px]
 }
 .about-title{
   @apply text-secondary text-[36px] md:text-[40px] 2xl:text-[48px] font-bold leading-[1.2] flex gap-3 items-center !capitalize pl-3 mt-3
@@ -593,14 +593,15 @@ a.current_dot {
 }
 
 .mySwiper .swiper-button-next{
-  @apply !w-10 !h-10 !bg-[#DEE1E5] absolute rounded-[4px] !top-[95%] active:!bg-gray-400 !z-0
+  @apply !w-10 !h-10 !bg-[#DEE1E5] absolute rounded-full !top-[95%] active:!bg-gray-400 !z-10
 }
 .swiper-button-next::after{
   content: url('data:image/svg+xml,<svg width="22" height="28" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.731556 19.8801L9.32356 11.0001L0.731556 2.07215C0.315556 1.65615 0.315556 1.27215 0.731556 0.920149C1.14756 0.504148 1.53156 0.504148 1.88356 0.920149L11.2916 10.3761C11.6756 10.7921 11.6756 11.1921 11.2916 11.5761L1.88356 21.0321C1.53156 21.4481 1.14756 21.4481 0.731556 21.0321C0.315556 20.6801 0.315556 20.2961 0.731556 19.8801Z" fill="%234F5662"/></svg>') !important; 
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }
 .mySwiper .swiper-button-prev{
-  @apply !w-10 !h-10 !bg-[#DEE1E5] absolute rounded-[4px] !top-[95%] !left-[70%] md:!left-[90%] 2xl:!left-[92%] active:!bg-gray-400 !z-0
+  @apply !w-10 !h-10 !bg-[#DEE1E5] absolute rounded-full !top-[95%] !left-[70%] md:!left-[90%]
+   2xl:!left-[92%] active:!bg-gray-400 !z-10 
 }
 .mySwiper .swiper-button-prev::after{
   content: url('data:image/svg+xml,<svg width="22" height="28" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2674 19.8801C11.6834 20.2961 11.6834 20.6801 11.2674 21.0321C10.8514 21.4481 10.4674 21.4481 10.1154 21.0321L0.707434 11.5761C0.323434 11.1921 0.323434 10.7921 0.707434 10.3761L10.1154 0.920149C10.4674 0.504148 10.8514 0.504148 11.2674 0.920149C11.6834 1.27215 11.6834 1.65615 11.2674 2.07215L2.67543 11.0001L11.2674 19.8801Z" fill="%234F5662"/></svg>') !important; 
@@ -1025,7 +1026,7 @@ a.current_dot {
   @apply font-bold text-[32px] md:text-[48px] 2xl:text-[56px] text-secondary !uppercase 
 } */
 .top-banner-sec-heading{
-  @apply font-extrabold text-[32px] md:text-[48px] 2xl:text-[56px] text-[#FFFFFF] !uppercase 
+  @apply font-extrabold text-[32px] md:text-[50px] 2xl:text-[56px] text-[#FFFFFF] !uppercase 
 }
 .banner-overlay{
   background: linear-gradient(to top, rgba(0,0,0,0.99), rgba(0,0,0,0));
@@ -1252,18 +1253,7 @@ a.current_dot {
 
 /* vision-page */
 .mission-card{
-  box-shadow: -1px -7px 9px -3px rgba(0,0,0,0.55);
-  @apply relative mb-8 rounded-[12px] bg-white flex justify-center
-}
-.sticky-container {
-  @apply md:sticky z-10 mb-5 md:mb-10 2xl:mb-20
-}
-.mission-box{
-  @apply p-5 md:p-8 2xl:p-10 rounded-[12px] bg-white absolute md:left-20 top-1/2 -translate-y-1/2 w-[90%] md:w-[400px] flex flex-col
-}
-.mission-card-overlay{
-  background: linear-gradient(to right, rgba(0,0,0,0.20), rgba(0,0,0,0));
-  @apply w-full h-full rounded-[12px] absolute top-0 left-0
+  @apply relative mb-8 rounded-[12px] bg-white flex gap-6 md:gap-8 2xl:gap-10 justify-center border border-[#C9CDD3] p-4 md:p-6
 }
 .vision-title{
   @apply text-secondary text-[22px] md:text-[32px] !p-0 flex gap-2 items-center font-bold w-fit self-center
@@ -1274,7 +1264,7 @@ a.current_dot {
 .vision-overlay{
   @apply absolute top-[75%] w-full h-full bg-secondary opacity-75 rounded-bl-[12px] rounded-br-[12px] text-[#F4F5F6] text-center
   text-[18px] md:text-[32px] font-semibold transition-all duration-500 group-hover:top-0 flex justify-start group-hover:items-center
-  px-6 md:px-20 2xl:px-[120px]
+  px-6 md:px-20 2xl:px-[140px]
 }
 
 

@@ -85,27 +85,21 @@ export default function Leadership({ params }) {
               </div>
             </div>
             <div className="mission-card-sec">
-              <div className="sticky-container md:top-[120px]">
-                <div
-                  className="mission-card"
-                  data-aos="zoom-in-right"
-                  data-aos-duration="1000"
-                >
-                  <figure className="w-full h-[380px] md:h-[500px] relative">
-                    <Image
-                      className="w-full h-full object-cover rounded-[10px]"
-                      src={img5}
-                      alt="card-one"
-                    />
-                    <span className="mission-card-overlay"></span>
-                  </figure>
-                  <div className="mission-box">
-                    <h2 className="vision-title title-before-svg1"></h2>
-                    <p className="text-[16px] md:text-[24px] text-[#3D434C] pt-3">
-                      Lead the tyre industry with innovative solutions,
-                      exceptional quality and commitment to safety
-                    </p>
-                  </div>
+              <div className="mission-card">
+                <figure className="w-full md:w-[60%] h-[380px] md:h-[500px] relative">
+                  <Image
+                    className="w-full h-full object-cover rounded-[10px]"
+                    src={img5}
+                    alt="card-one"
+                  />
+                  <span className="mission-card-overlay"></span>
+                </figure>
+                <div className="mission-box flex flex-col w-full md:w-[40%]">
+                  <h2 className="vision-title title-before-svg1"></h2>
+                  <p className="text-[16px] md:text-[24px] text-[#3D434C] pt-3">
+                    Lead the tyre industry with innovative solutions,
+                    exceptional quality and commitment to safety
+                  </p>
                 </div>
               </div>
               <div className="sticky-container top-[140px]">
@@ -183,117 +177,7 @@ export default function Leadership({ params }) {
           </div>
         </div>
       </section>
-      {/* <section className="relative mt-8 md:mt-12 2xl:mt-[60px]">
-        <div className="container mx-auto">
-          <div className="flex flex-col gap-10 relative">
-            <div className="flex flex-col gap-3">
-              <span className="section-heading">values</span>
-              <div className="section-title-wrapper">
-                <h3 className="section-title">Our Values</h3>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 relative">
-              <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
-                <Image
-                  data-aos="zoom-in"
-                  data-aos-duration="2000"
-                  src={tiger}
-                  alt="img"
-                />
-                <span className="text-primary font-bold text-[22px] md:text-[36px] 2xl:text-[48px] uppercase absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
-                  CARE
-                </span>
-              </figure>
-              <div className="relative overflow-hidden rounded-[12px] group">
-                <figure
-                  className="w-full h-full"
-                  data-aos="fade-down-right"
-                  data-aos-duration="1000"
-                >
-                  <Image
-                    className="w-full h-full object-cover"
-                    src={vision1}
-                    alt="img"
-                  />
-                  <div className="value-overlay bg-secondary opacity-75">
-                    <h3 className="first-letter:text-secondary">
-                      Commitment to Excellence
-                    </h3>
-                    <p>
-                      We will relentlessly explore the limits of what’s
-                      achievable, pursue excellence across all dimensions, and
-                      champion continuous improvement for superior outcomes
-                    </p>
-                  </div>
-                </figure>
-              </div>
-              <div className="relative overflow-hidden rounded-[12px] group">
-                <figure
-                  className="w-full h-full"
-                  data-aos="fade-down-left"
-                  data-aos-duration="1000"
-                >
-                  <Image
-                    className="w-full h-full object-cover"
-                    src={vision2}
-                    alt="img"
-                  />
-                  <div className="value-overlay bg-primary opacity-75">
-                    <h3 className="first-letter:text-primary">Agility</h3>
-                    <p>
-                      We will demonstrate Agile behavior in all actions and
-                      innovate continuously to respond to evolving customer
-                      needs
-                    </p>
-                  </div>
-                </figure>
-              </div>
-              <div className="relative overflow-hidden rounded-[12px] group">
-                <figure
-                  className="w-full h-full"
-                  data-aos="fade-up-right"
-                  data-aos-duration="1000"
-                >
-                  <Image
-                    className="w-full h-full object-cover"
-                    src={vision3}
-                    alt="img"
-                  />
-                  <div className="value-overlay bg-primary opacity-75">
-                    <h3 className="first-letter:text-primary">Reliability</h3>
-                    <p>
-                      We will consistently deliver on our promises to customers
-                      and stakeholders and exceed their expectations –
-                      reliability is embedded in our DNA
-                    </p>
-                  </div>
-                </figure>
-              </div>
-              <div className="relative overflow-hidden rounded-[12px] group">
-                <figure
-                  className="w-full h-full"
-                  data-aos="fade-up-left"
-                  data-aos-duration="1000"
-                >
-                  <Image
-                    className="w-full h-full object-cover"
-                    src={vision4}
-                    alt="img"
-                  />
-                  <div className="value-overlay bg-secondary opacity-75">
-                    <h3 className="first-letter:text-secondary">Empathy</h3>
-                    <p>
-                      We will foster a culture of empathy, where understanding
-                      and compassion drive our interactions, ensuring every
-                      individual feels heard & valued
-                    </p>
-                  </div>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
+
       <PageEnd EndPageData={pageData?.end} EndStaticImage={NextChapter} />
       <Footer />
     </>
