@@ -711,15 +711,25 @@ export function TitleContentFull({ section }) {
               }
             },
             list: (props) => {
-              if (props.format === 'ordered') {
-                return <ol className="list-decimal mt-4 md:mt-6 2xl:mt-10 pl-4">{props.children}</ol>;
+              if (props.format === "ordered") {
+                return (
+                  <ol className="list-decimal mt-4 md:mt-6 2xl:mt-10 pl-4">
+                    {props.children}
+                  </ol>
+                );
               }
-              return <ul className="list-disc mt-4 md:mt-6 2xl:mt-10 pl-4">{props.children}</ul>;
+              return (
+                <ul className="list-disc mt-4 md:mt-6 2xl:mt-10 pl-4">
+                  {props.children}
+                </ul>
+              );
             },
-            'list-item': (props) => <li className="text-[14px] md:text-[16px] 2xl:text-[17px] mt-4">{props.children}</li>,
-            link: ({ children, url }) => (
-              <Link href={url}>{children}</Link>
+            "list-item": (props) => (
+              <li className="text-[14px] md:text-[16px] 2xl:text-[17px] mt-4">
+                {props.children}
+              </li>
             ),
+            link: ({ children, url }) => <Link href={url}>{children}</Link>,
           }}
           modifiers={{
             bold: ({ children }) => <strong>{children}</strong>,
@@ -746,100 +756,123 @@ export function Gallery({ section }) {
   ];
   const BGColor = ["#2E3192", "#F5811E", "#F5811E", "#2E3192"];
 
-  return (
-    <>
-      {section?.collection && section.collection.length > 0 && (
-        <section
-          className={cn(
-            "relative pt-6 md:pt-8 2xl:pt-10 overflow-hidden pb-8 md:pb-12 2xl:pb-[60px]",
-            section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
-          )}
-        >
-          {section.collection.length > 1 ? (
-            section.collection.length === 4 ? (
-              <div className="container mx-auto">
-                <span className="section-heading">{section?.heading}</span>
-                <div
-                  className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
-                  data-aos="fade-left"
+  if (!section?.collection || section.collection.length === 0) {
+    return null;
+  }
+
+  const renderGalleryContent = () => {
+    switch (section.collection.length) {
+      case 6:
+        return (
+          <div className="container mx-auto">
+            <div className="gallery-sec grid grid-cols-4 gap-3 2xl:gap-4 pt-6 md:pt-10 2xl:pt-[60px]">
+              {section.collection.map((image) => (
+                <figure
+                  className={cn(
+                    "w-full h-[316px] mb-0",
+                    image?.big ? "col-span-2" : ""
+                  )}
+                  data-aos="flip-left"
                   data-aos-duration="1000"
+                  key={image.id}
                 >
-                  <h3 className="section-title">{section?.title}</h3>
-                </div>
-                <div className="grid grid-cols-2 gap-6 md:gap-10 relative mt-6">
-                  <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
+                  <Image
+                    width={image.image?.width}
+                    height={image.image?.height}
+                    src={getStrapiMedia(image.image?.url)}
+                    alt={image.image?.alternativeText}
+                    className="gallery-sec-image"
+                  />
+                </figure>
+              ))}
+            </div>
+          </div>
+        );
+      case 4:
+        return (
+          <div className="container mx-auto">
+            <span className="section-heading">{section?.heading}</span>
+            <div
+              className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+            >
+              <h3 className="section-title">{section?.title}</h3>
+            </div>
+            <div className="grid grid-cols-2 gap-6 md:gap-10 relative mt-6">
+              <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
+                <Image
+                  className={section?.collection_name ? "!opacity-15" : ""}
+                  data-aos="zoom-in"
+                  data-aos-duration="2000"
+                  src={tiger}
+                  alt="img"
+                />
+                {section?.collection_name && (
+                  <span className="text-primary font-bold text-[22px] md:text-[36px] 2xl:text-[48px] uppercase absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+                    {section.collection_name}
+                  </span>
+                )}
+              </figure>
+              {section.collection.map((image, index) => (
+                <div
+                  className="value-overlay-card relative overflow-hidden rounded-[12px] group"
+                  key={image.id}
+                >
+                  <figure
+                    className="w-full h-full"
+                    data-aos={AOCClass[index]}
+                    data-aos-duration="1000"
+                  >
                     <Image
-                      className={section?.collection_name ? "!opacity-15" : ""}
-                      data-aos="zoom-in"
-                      data-aos-duration="2000"
-                      src={tiger}
-                      alt="img"
+                      className="w-full h-full object-cover"
+                      width={image.image?.width}
+                      height={image.image?.height}
+                      src={getStrapiMedia(image.image?.url)}
+                      alt={image.image?.alternativeText}
                     />
                     {section?.collection_name && (
-                      <span className="text-primary font-bold text-[22px] md:text-[36px] 2xl:text-[48px] uppercase absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
-                        {section.collection_name}
-                      </span>
+                      <div
+                        className="value-overlay opacity-75"
+                        style={{ backgroundColor: BGColor[index] }}
+                      >
+                        <h3>{image?.title}</h3>
+                        <p>{image?.description}</p>
+                      </div>
                     )}
                   </figure>
-                  {section.collection.map((image, index) => (
-                    <div
-                      className="value-overlay-card relative overflow-hidden rounded-[12px] group"
-                      key={image.id}
-                    >
-                      <figure
-                        className="w-full h-full"
-                        data-aos={AOCClass[index]}
-                        data-aos-duration="1000"
-                        key={image.id}
-                      >
-                        <Image
-                          className="w-full h-full object-cover"
-                          width={image.image?.width}
-                          height={image.image?.height}
-                          src={getStrapiMedia(image.image?.url)}
-                          alt={image.image?.alternativeText}
-                        />
-                        {section?.collection_name && (
-                          <div
-                            className="value-overlay opacity-75"
-                            style={{ backgroundColor: BGColor[index] }}
-                          >
-                            <h3>{image?.title}</h3>
-                            <p>{image?.description}</p>
-                          </div>
-                        )}
-                      </figure>
-                    </div>
-                  ))}
                 </div>
-              </div>
-            ) : section.collection.length === 2 ? (
-              <div className="container mx-auto">
-                <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
-                  {section.collection.map(
-                    (collection) =>
-                      collection?.image && (
-                        <figure className="w-1/2" key={collection.image.id}>
-                          <Image
-                            className="w-full rounded-[12px]"
-                            width={collection.image?.width}
-                            height={collection.image?.height}
-                            src={getStrapiMedia(collection.image?.url)}
-                            alt={collection.image?.alternativeText}
-                            data-aos="flip-up"
-                            data-aos-duration="1500"
-                          />
-                        </figure>
-                      )
-                  )}
-                </div>
-              </div>
-            ) : (
-              <>
-              </>
-            )
-          ) : section.collection[0].image.ext == ".mp4" ? (
-            <div class="w-[100%] mt-4 2xl:mt-8 relative z-51">
+              ))}
+            </div>
+          </div>
+        );
+      case 2:
+        return (
+          <div className="container mx-auto">
+            <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
+              {section.collection.map(
+                (collection) =>
+                  collection?.image && (
+                    <figure className="w-1/2" key={collection.image.id}>
+                      <Image
+                        className="w-full rounded-[12px]"
+                        width={collection.image?.width}
+                        height={collection.image?.height}
+                        src={getStrapiMedia(collection.image?.url)}
+                        alt={collection.image?.alternativeText}
+                        data-aos="flip-up"
+                        data-aos-duration="1500"
+                      />
+                    </figure>
+                  )
+              )}
+            </div>
+          </div>
+        );
+      default:
+        if (section.collection[0].image.ext === ".mp4") {
+          return (
+            <div className="w-[100%] mt-4 2xl:mt-8 relative z-51">
               <video className="!w-full" loop autoPlay muted>
                 <source
                   src={getStrapiMedia(section.collection[0].image?.url)}
@@ -847,7 +880,9 @@ export function Gallery({ section }) {
                 />
               </video>
             </div>
-          ) : (
+          );
+        } else {
+          return (
             <div className="container mx-auto">
               <div className="overflow-hidden">
                 <span className="section-heading">{section?.heading}</span>
@@ -874,169 +909,22 @@ export function Gallery({ section }) {
                 </div>
               </div>
             </div>
-          )}
-        </section>
+          );
+        }
+    }
+  };
+
+  return (
+    <section
+      className={cn(
+        "relative pt-6 md:pt-8 2xl:pt-10 overflow-hidden pb-8 md:pb-12 2xl:pb-[60px]",
+        section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
       )}
-    </>
+    >
+      {renderGalleryContent()}
+    </section>
   );
 }
-
-// export function Gallery({ section }) {
-//   useEffect(() => {
-//     AOS.init();
-//   }, []);
-
-//   const AOCClass = [
-//     "fade-down-right",
-//     "fade-down-left",
-//     "fade-up-right",
-//     "fade-up-left",
-//   ];
-//   const BGColor = ["#2E3192", "#F5811E", "#F5811E", "#2E3192"];
-
-//   if (!section?.collection || section.collection.length === 0) {
-//     return null; 
-//   }
-
-//   const renderGalleryContent = () => {
-//     switch (section.collection.length) {
-//       case 4:
-//         return (
-//           <div className="container mx-auto">
-//             <span className="section-heading">{section?.heading}</span>
-//             <div
-//               className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
-//               data-aos="fade-left"
-//               data-aos-duration="1000"
-//             >
-//               <h3 className="section-title">{section?.title}</h3>
-//             </div>
-//             <div className="grid grid-cols-2 gap-6 md:gap-10 relative mt-6">
-//               <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
-//                 <Image
-//                   className={section?.collection_name ? "!opacity-15" : ""}
-//                   data-aos="zoom-in"
-//                   data-aos-duration="2000"
-//                   src={tiger}
-//                   alt="img"
-//                 />
-//                 {section?.collection_name && (
-//                   <span className="text-primary font-bold text-[22px] md:text-[36px] 2xl:text-[48px] uppercase absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
-//                     {section.collection_name}
-//                   </span>
-//                 )}
-//               </figure>
-//               {section.collection.map((image, index) => (
-//                 <div
-//                   className="value-overlay-card relative overflow-hidden rounded-[12px] group"
-//                   key={image.id}
-//                 >
-//                   <figure
-//                     className="w-full h-full"
-//                     data-aos={AOCClass[index]}
-//                     data-aos-duration="1000"
-//                   >
-//                     <Image
-//                       className="w-full h-full object-cover"
-//                       width={image.image?.width}
-//                       height={image.image?.height}
-//                       src={getStrapiMedia(image.image?.url)}
-//                       alt={image.image?.alternativeText}
-//                     />
-//                     {section?.collection_name && (
-//                       <div
-//                         className="value-overlay opacity-75"
-//                         style={{ backgroundColor: BGColor[index] }}
-//                       >
-//                         <h3>{image?.title}</h3>
-//                         <p>{image?.description}</p>
-//                       </div>
-//                     )}
-//                   </figure>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-//         );
-//       case 2:
-//         return (
-//           <div className="container mx-auto">
-//             <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
-//               {section.collection.map(
-//                 (collection) =>
-//                   collection?.image && (
-//                     <figure className="w-1/2" key={collection.image.id}>
-//                       <Image
-//                         className="w-full rounded-[12px]"
-//                         width={collection.image?.width}
-//                         height={collection.image?.height}
-//                         src={getStrapiMedia(collection.image?.url)}
-//                         alt={collection.image?.alternativeText}
-//                         data-aos="flip-up"
-//                         data-aos-duration="1500"
-//                       />
-//                     </figure>
-//                   )
-//               )}
-//             </div>
-//           </div>
-//         );
-//       default:
-//         if (section.collection[0].image.ext === ".mp4") {
-//           return (
-//             <div className="w-[100%] mt-4 2xl:mt-8 relative z-51">
-//               <video className="!w-full" loop autoPlay muted>
-//                 <source
-//                   src={getStrapiMedia(section.collection[0].image?.url)}
-//                   type="video/mp4"
-//                 />
-//               </video>
-//             </div>
-//           );
-//         } else {
-//           return (
-//             <div className="container mx-auto">
-//               <div className="overflow-hidden">
-//                 <span className="section-heading">{section?.heading}</span>
-//                 <div
-//                   className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
-//                   data-aos="fade-left"
-//                   data-aos-duration="1000"
-//                 >
-//                   <h3 className="section-title">{section?.title}</h3>
-//                 </div>
-//                 <div className="relative rounded-[12px] overflow-hidden">
-//                   <figure className="relative w-full h-[350px] md:h-[450px] 2xl:h-[600px] rounded-[12px] group">
-//                     <Image
-//                       width={section.collection[0].image?.width}
-//                       height={section.collection[0].image?.height}
-//                       src={getStrapiMedia(section.collection[0].image?.url)}
-//                       alt={section.collection[0].image?.alternativeText}
-//                       className="w-full h-full"
-//                     />
-//                     <span className="vision-overlay">
-//                       {section?.collection[0].description}
-//                     </span>
-//                   </figure>
-//                 </div>
-//               </div>
-//             </div>
-//           );
-//         }
-//     }
-//   };
-
-//   return (
-//     <section
-//       className={cn(
-//         "relative pt-6 md:pt-8 2xl:pt-10 overflow-hidden pb-8 md:pb-12 2xl:pb-[60px]",
-//         section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
-//       )}
-//     >
-//       {renderGalleryContent()}
-//     </section>
-//   );
-// }
 
 export function ImagePoint({ section }) {
   useEffect(() => {

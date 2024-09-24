@@ -194,47 +194,6 @@ export default function Manufacturing({ params }) {
       <section className="page-content-sec mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
         <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
           <div className="manufacture-slider-sec">
-            <span className="section-heading">our Safety Philosophy</span>
-            <div className="section-title-wrapper">
-              <h3 className="section-title">
-                Commitment to a Safe & Sustainable Workplace
-              </h3>
-            </div>
-            <p className="text-[#1A1D21] text-[14px] md:text-[16px] 2xl:text-[17px] mt-6 2xl:mt-10">
-              Safety is our top priority; it’s a core value that guides every
-              action we take. Our goal is to become a zero accident company,
-              positioning ourselves as a best-in-class organization for safety
-              performance and leadership. This commitment extends to safeguard
-              the health and safety of not only our employees but also
-              contractors, visitors, customers and any other individuals who
-              might get impacted by our activities. While working to achieve and
-              maintain our zero-accident goal, we remain firmly dedicated to
-              integrating safety in every aspect of our operations. Our
-              commitment to safety ensures that every team member can work
-              confidently and efficiently, knowing that their well-being is our
-              top concern. Our employees undergo comprehensive safety training
-              programs that cover all aspects of their work.
-            </p>
-            <ul className="list-disc mt-4 md:mt-6 2xl:mt-10 pl-4">
-              <li className="text-[14px] md:text-[16px] 2xl:text-[17px] mt-4">
-                A Risk-Based approach and mapping have been initiated for all
-                routine and non-routine activities. The newly implemented
-                Permit-to-Work system includes Risk Assessment before the
-                commencement of work involving all relevant departments. This
-                approach significantly reduces the chances of incidents during
-                activity execution, with every individual connected to the
-                activity.
-              </li>
-              <li className="text-[14px] md:text-[16px] 2xl:text-[17px] mt-4">
-                A protocol has been established and implemented for Safety
-                Audits, proactively involving shop floor employees to identify
-                and correct unsafe conditions and procedures.
-              </li>
-              <li className="text-[14px] md:text-[16px] 2xl:text-[17px] mt-4">
-                Regular training sessions and safety drills are conducted to
-                ensure emergency preparedness
-              </li>
-            </ul>
             <div class="mt-5 md:mt-10 2xl:mt-12">
               <div className="section-title-wrapper">
                 <h3 className="section-title">Core Safety Rules</h3>
