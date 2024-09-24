@@ -59,7 +59,7 @@ export default function Manufacturing({ params }) {
       .then((pages) => {
         setPageData(pages);
       });
-  });
+  }, []);
 
   // Accordion section
   const accordion = {

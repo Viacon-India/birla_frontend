@@ -680,64 +680,54 @@ export function TitleContentFull({ section }) {
       )}
     >
       <div className="container mx-auto">
-        <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px]">
-          <div
-            className="box-title-sec w-full md:w-[45%] relative"
-            data-aos="fade-right"
-            data-aos-duration="1000"
-          >
-            <Image
-              src={tigerMask}
-              alt="tigermark"
-              className="absolute left-0 top-0"
-            />
-            <span className="section-heading">{section?.heading}</span>
-            <div className="section-title-wrapper">
-              <h3 className="section-title">{section?.title}</h3>
-            </div>
-          </div>
-          {section?.content && section.content.length > 0 && (
-            <div className="box-content-sec w-full md:w-[60%] relative">
-              <BlocksRenderer
-                content={section.content}
-                blocks={{
-                  paragraph: ({ children }) => (
-                    <p data-aos="fade-left" data-aos-duration="1000">
-                      {children}
-                    </p>
-                  ),
-                  heading: ({ children, level }) => {
-                    switch (level) {
-                      case 1:
-                        return <h1>{children}</h1>;
-                      case 2:
-                        return <h2>{children}</h2>;
-                      case 3:
-                        return <h3>{children}</h3>;
-                      case 4:
-                        return <h4>{children}</h4>;
-                      case 5:
-                        return <h5>{children}</h5>;
-                      case 6:
-                        return <h6>{children}</h6>;
-                      default:
-                        return <h1>{children}</h1>;
-                    }
-                  },
-                  link: ({ children, url }) => (
-                    <Link href={url}>{children}</Link>
-                  ),
-                }}
-                modifiers={{
-                  bold: ({ children }) => <strong>{children}</strong>,
-                  italic: ({ children }) => (
-                    <span className="italic">{children}</span>
-                  ),
-                }}
-              />
-            </div>
-          )}
+        <span className="section-heading">{section?.heading}</span>
+        <div className="section-title-wrapper">
+          <h3 className="section-title">{section?.title}</h3>
         </div>
+        <BlocksRenderer
+          content={section.content}
+          blocks={{
+            paragraph: ({ children }) => (
+              <p className="text-[#1A1D21] text-[14px] md:text-[16px] 2xl:text-[17px] mt-6 2xl:mt-10">
+                {children}
+              </p>
+            ),
+            heading: ({ children, level }) => {
+              switch (level) {
+                case 1:
+                  return <h1>{children}</h1>;
+                case 2:
+                  return <h2>{children}</h2>;
+                case 3:
+                  return <h3>{children}</h3>;
+                case 4:
+                  return <h4>{children}</h4>;
+                case 5:
+                  return <h5>{children}</h5>;
+                case 6:
+                  return <h6>{children}</h6>;
+                default:
+                  return <h1>{children}</h1>;
+              }
+            },
+            list: (props) => {
+              if (props.format === 'ordered') {
+                return <ol className="list-decimal mt-4 md:mt-6 2xl:mt-10 pl-4">{props.children}</ol>;
+              }
+              return <ul className="list-disc mt-4 md:mt-6 2xl:mt-10 pl-4">{props.children}</ul>;
+            },
+            'list-item': (props) => <li className="text-[14px] md:text-[16px] 2xl:text-[17px] mt-4">{props.children}</li>,
+            link: ({ children, url }) => (
+              <Link href={url}>{children}</Link>
+            ),
+          }}
+          modifiers={{
+            bold: ({ children }) => <strong>{children}</strong>,
+            italic: ({ children }) => (
+              <span className="italic">{children}</span>
+            ),
+          }}
+        />
       </div>
     </section>
   );
@@ -890,6 +880,163 @@ export function Gallery({ section }) {
     </>
   );
 }
+
+// export function Gallery({ section }) {
+//   useEffect(() => {
+//     AOS.init();
+//   }, []);
+
+//   const AOCClass = [
+//     "fade-down-right",
+//     "fade-down-left",
+//     "fade-up-right",
+//     "fade-up-left",
+//   ];
+//   const BGColor = ["#2E3192", "#F5811E", "#F5811E", "#2E3192"];
+
+//   if (!section?.collection || section.collection.length === 0) {
+//     return null; 
+//   }
+
+//   const renderGalleryContent = () => {
+//     switch (section.collection.length) {
+//       case 4:
+//         return (
+//           <div className="container mx-auto">
+//             <span className="section-heading">{section?.heading}</span>
+//             <div
+//               className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+//               data-aos="fade-left"
+//               data-aos-duration="1000"
+//             >
+//               <h3 className="section-title">{section?.title}</h3>
+//             </div>
+//             <div className="grid grid-cols-2 gap-6 md:gap-10 relative mt-6">
+//               <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
+//                 <Image
+//                   className={section?.collection_name ? "!opacity-15" : ""}
+//                   data-aos="zoom-in"
+//                   data-aos-duration="2000"
+//                   src={tiger}
+//                   alt="img"
+//                 />
+//                 {section?.collection_name && (
+//                   <span className="text-primary font-bold text-[22px] md:text-[36px] 2xl:text-[48px] uppercase absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+//                     {section.collection_name}
+//                   </span>
+//                 )}
+//               </figure>
+//               {section.collection.map((image, index) => (
+//                 <div
+//                   className="value-overlay-card relative overflow-hidden rounded-[12px] group"
+//                   key={image.id}
+//                 >
+//                   <figure
+//                     className="w-full h-full"
+//                     data-aos={AOCClass[index]}
+//                     data-aos-duration="1000"
+//                   >
+//                     <Image
+//                       className="w-full h-full object-cover"
+//                       width={image.image?.width}
+//                       height={image.image?.height}
+//                       src={getStrapiMedia(image.image?.url)}
+//                       alt={image.image?.alternativeText}
+//                     />
+//                     {section?.collection_name && (
+//                       <div
+//                         className="value-overlay opacity-75"
+//                         style={{ backgroundColor: BGColor[index] }}
+//                       >
+//                         <h3>{image?.title}</h3>
+//                         <p>{image?.description}</p>
+//                       </div>
+//                     )}
+//                   </figure>
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         );
+//       case 2:
+//         return (
+//           <div className="container mx-auto">
+//             <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
+//               {section.collection.map(
+//                 (collection) =>
+//                   collection?.image && (
+//                     <figure className="w-1/2" key={collection.image.id}>
+//                       <Image
+//                         className="w-full rounded-[12px]"
+//                         width={collection.image?.width}
+//                         height={collection.image?.height}
+//                         src={getStrapiMedia(collection.image?.url)}
+//                         alt={collection.image?.alternativeText}
+//                         data-aos="flip-up"
+//                         data-aos-duration="1500"
+//                       />
+//                     </figure>
+//                   )
+//               )}
+//             </div>
+//           </div>
+//         );
+//       default:
+//         if (section.collection[0].image.ext === ".mp4") {
+//           return (
+//             <div className="w-[100%] mt-4 2xl:mt-8 relative z-51">
+//               <video className="!w-full" loop autoPlay muted>
+//                 <source
+//                   src={getStrapiMedia(section.collection[0].image?.url)}
+//                   type="video/mp4"
+//                 />
+//               </video>
+//             </div>
+//           );
+//         } else {
+//           return (
+//             <div className="container mx-auto">
+//               <div className="overflow-hidden">
+//                 <span className="section-heading">{section?.heading}</span>
+//                 <div
+//                   className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+//                   data-aos="fade-left"
+//                   data-aos-duration="1000"
+//                 >
+//                   <h3 className="section-title">{section?.title}</h3>
+//                 </div>
+//                 <div className="relative rounded-[12px] overflow-hidden">
+//                   <figure className="relative w-full h-[350px] md:h-[450px] 2xl:h-[600px] rounded-[12px] group">
+//                     <Image
+//                       width={section.collection[0].image?.width}
+//                       height={section.collection[0].image?.height}
+//                       src={getStrapiMedia(section.collection[0].image?.url)}
+//                       alt={section.collection[0].image?.alternativeText}
+//                       className="w-full h-full"
+//                     />
+//                     <span className="vision-overlay">
+//                       {section?.collection[0].description}
+//                     </span>
+//                   </figure>
+//                 </div>
+//               </div>
+//             </div>
+//           );
+//         }
+//     }
+//   };
+
+//   return (
+//     <section
+//       className={cn(
+//         "relative pt-6 md:pt-8 2xl:pt-10 overflow-hidden pb-8 md:pb-12 2xl:pb-[60px]",
+//         section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
+//       )}
+//     >
+//       {renderGalleryContent()}
+//     </section>
+//   );
+// }
 
 export function ImagePoint({ section }) {
   useEffect(() => {
@@ -1282,7 +1429,7 @@ export function JobApplication({ section }) {
                     />
                   </div>
                 </div>
-                {section?.concent &&
+                {section?.concent && (
                   <div className="flex items-start gap-2">
                     <input type="checkbox" className="mt-1" required />
                     {section.concent.length > 0 && (
@@ -1330,7 +1477,7 @@ export function JobApplication({ section }) {
                       />
                     )}
                   </div>
-                }
+                )}
                 {error && <p className="text-red-500">{error}</p>}
                 {success && (
                   <p className="text-green-500">
