@@ -32,6 +32,9 @@ export default function SectionSelection({ section, Background, right }) {
       {section.__component == "section.title-content-half" && (
         <TitleContentHalf section={section} />
       )}
+      {section.__component == "section.title-content-full" && (
+        <TitleContentFull section={section} />
+      )}
       {section.__component == "section.gallery" && (
         <Gallery section={section} />
       )}
@@ -665,6 +668,81 @@ export function TitleContentHalf({ section }) {
   );
 }
 
+export function TitleContentFull({ section }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+  return (
+    <section
+      className={cn(
+        "pt-8 md:pt-12 2xl:pt-[60px] overflow-hidden",
+        section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
+      )}
+    >
+      <div className="container mx-auto">
+        <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px]">
+          <div
+            className="box-title-sec w-full md:w-[45%] relative"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
+            <Image
+              src={tigerMask}
+              alt="tigermark"
+              className="absolute left-0 top-0"
+            />
+            <span className="section-heading">{section?.heading}</span>
+            <div className="section-title-wrapper">
+              <h3 className="section-title">{section?.title}</h3>
+            </div>
+          </div>
+          {section?.content && section.content.length > 0 && (
+            <div className="box-content-sec w-full md:w-[60%] relative">
+              <BlocksRenderer
+                content={section.content}
+                blocks={{
+                  paragraph: ({ children }) => (
+                    <p data-aos="fade-left" data-aos-duration="1000">
+                      {children}
+                    </p>
+                  ),
+                  heading: ({ children, level }) => {
+                    switch (level) {
+                      case 1:
+                        return <h1>{children}</h1>;
+                      case 2:
+                        return <h2>{children}</h2>;
+                      case 3:
+                        return <h3>{children}</h3>;
+                      case 4:
+                        return <h4>{children}</h4>;
+                      case 5:
+                        return <h5>{children}</h5>;
+                      case 6:
+                        return <h6>{children}</h6>;
+                      default:
+                        return <h1>{children}</h1>;
+                    }
+                  },
+                  link: ({ children, url }) => (
+                    <Link href={url}>{children}</Link>
+                  ),
+                }}
+                modifiers={{
+                  bold: ({ children }) => <strong>{children}</strong>,
+                  italic: ({ children }) => (
+                    <span className="italic">{children}</span>
+                  ),
+                }}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function Gallery({ section }) {
   useEffect(() => {
     AOS.init();
@@ -676,37 +754,29 @@ export function Gallery({ section }) {
     "fade-up-right",
     "fade-up-left",
   ];
-  const BGColor = [
-    "#2E3192",
-    "#F5811E",
-    "#F5811E",
-    "#2E3192",
-  ];
-  const FirstLetter = [
-    "#F5811E",
-    "#2E3192",
-    "#F5811E",
-    "#2E3192",
-  ];
+  const BGColor = ["#2E3192", "#F5811E", "#F5811E", "#2E3192"];
 
   return (
     <>
       {section?.collection && section.collection.length > 0 && (
         <section
           className={cn(
-            "relative mt-6 md:mt-8 2xl:mt-10 overflow-hidden mb-8 md:mb-12 2xl:mb-[60px]",
+            "relative pt-6 md:pt-8 2xl:pt-10 overflow-hidden pb-8 md:pb-12 2xl:pb-[60px]",
             section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
           )}
         >
           {section.collection.length > 1 ? (
             section.collection.length === 4 ? (
-              // section?.collection_name
               <div className="container mx-auto">
                 <span className="section-heading">{section?.heading}</span>
-                <div className="section-title-wrapper">
+                <div
+                  className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+                  data-aos="fade-left"
+                  data-aos-duration="1000"
+                >
                   <h3 className="section-title">{section?.title}</h3>
                 </div>
-                <div className="grid grid-cols-2 gap-6 md:gap-10 relative">
+                <div className="grid grid-cols-2 gap-6 md:gap-10 relative mt-6">
                   <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
                     <Image
                       className={section?.collection_name ? "!opacity-15" : ""}
@@ -723,7 +793,7 @@ export function Gallery({ section }) {
                   </figure>
                   {section.collection.map((image, index) => (
                     <div
-                      className="relative overflow-hidden rounded-[12px] group"
+                      className="value-overlay-card relative overflow-hidden rounded-[12px] group"
                       key={image.id}
                     >
                       <figure
@@ -740,10 +810,11 @@ export function Gallery({ section }) {
                           alt={image.image?.alternativeText}
                         />
                         {section?.collection_name && (
-                          <div className="value-overlay opacity-75" style={{ backgroundColor: BGColor[index] }}>
-                            <h3 className="">
-                              {image?.title}
-                            </h3>
+                          <div
+                            className="value-overlay opacity-75"
+                            style={{ backgroundColor: BGColor[index] }}
+                          >
+                            <h3>{image?.title}</h3>
                             <p>{image?.description}</p>
                           </div>
                         )}
@@ -752,7 +823,7 @@ export function Gallery({ section }) {
                   ))}
                 </div>
               </div>
-            ) : (
+            ) : section.collection.length === 2 ? (
               <div className="container mx-auto">
                 <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
                   {section.collection.map(
@@ -773,6 +844,9 @@ export function Gallery({ section }) {
                   )}
                 </div>
               </div>
+            ) : (
+              <>
+              </>
             )
           ) : section.collection[0].image.ext == ".mp4" ? (
             <div class="w-[100%] mt-4 2xl:mt-8 relative z-51">
@@ -1175,6 +1249,7 @@ export function JobApplication({ section }) {
                       className="contact-select"
                       name="specialization"
                       onChange={handleChange}
+                      required
                     >
                       {section.specialization.map((option) => (
                         <option key={option.id} value={option?.value}>
@@ -1207,53 +1282,55 @@ export function JobApplication({ section }) {
                     />
                   </div>
                 </div>
-                <div className="flex items-start gap-2">
-                  <input type="checkbox" className="mt-1" required />
-                  {section?.concent && section.concent.length > 0 && (
-                    <BlocksRenderer
-                      content={section.concent}
-                      blocks={{
-                        paragraph: ({ children }) => (
-                          <p className="text-[14px] text-[#000000]">
-                            {children}
-                          </p>
-                        ),
-                        heading: ({ children, level }) => {
-                          switch (level) {
-                            case 1:
-                              return <h1>{children}</h1>;
-                            case 2:
-                              return <h2>{children}</h2>;
-                            case 3:
-                              return <h3>{children}</h3>;
-                            case 4:
-                              return <h4>{children}</h4>;
-                            case 5:
-                              return <h5>{children}</h5>;
-                            case 6:
-                              return <h6>{children}</h6>;
-                            default:
-                              return <h1>{children}</h1>;
-                          }
-                        },
-                        link: ({ children, url }) => (
-                          <Link
-                            href={url}
-                            className="underline underline-offset-1 cursor-pointer"
-                          >
-                            {children}
-                          </Link>
-                        ),
-                      }}
-                      modifiers={{
-                        bold: ({ children }) => <strong>{children}</strong>,
-                        italic: ({ children }) => (
-                          <span className="italic">{children}</span>
-                        ),
-                      }}
-                    />
-                  )}
-                </div>
+                {section?.concent &&
+                  <div className="flex items-start gap-2">
+                    <input type="checkbox" className="mt-1" required />
+                    {section.concent.length > 0 && (
+                      <BlocksRenderer
+                        content={section.concent}
+                        blocks={{
+                          paragraph: ({ children }) => (
+                            <p className="text-[14px] text-[#000000]">
+                              {children}
+                            </p>
+                          ),
+                          heading: ({ children, level }) => {
+                            switch (level) {
+                              case 1:
+                                return <h1>{children}</h1>;
+                              case 2:
+                                return <h2>{children}</h2>;
+                              case 3:
+                                return <h3>{children}</h3>;
+                              case 4:
+                                return <h4>{children}</h4>;
+                              case 5:
+                                return <h5>{children}</h5>;
+                              case 6:
+                                return <h6>{children}</h6>;
+                              default:
+                                return <h1>{children}</h1>;
+                            }
+                          },
+                          link: ({ children, url }) => (
+                            <Link
+                              href={url}
+                              className="underline underline-offset-1 cursor-pointer"
+                            >
+                              {children}
+                            </Link>
+                          ),
+                        }}
+                        modifiers={{
+                          bold: ({ children }) => <strong>{children}</strong>,
+                          italic: ({ children }) => (
+                            <span className="italic">{children}</span>
+                          ),
+                        }}
+                      />
+                    )}
+                  </div>
+                }
                 {error && <p className="text-red-500">{error}</p>}
                 {success && (
                   <p className="text-green-500">
