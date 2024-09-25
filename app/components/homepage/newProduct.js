@@ -197,7 +197,7 @@ export default function NewProduct() {
   }, []);
 
   return (
-    <section className="product-sec mt-10 md:mt-[40px] 2xl:mt-[90px]">
+    <section className="product-sec sec-gap">
       <div className="container mx-auto overflow-hidden">
         <div className="upper-title-sec flex gap-3 md:gap-0 flex-col md:flex-row justify-between items-end">
           <div className="self-start">

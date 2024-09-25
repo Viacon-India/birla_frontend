@@ -91,23 +91,18 @@ export function Files({ section }) {
                         target="_blank"
                       >
                         <div className="p-2 bg-[#E0E1F5] rounded-xl">
-                          <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M20.25 15.75H17.625V20.25M19.875 18.375H17.625M4.5 18.75H6C6.39782 18.75 6.77936 18.592 7.06066 18.3107C7.34196 18.0294 7.5 17.6478 7.5 17.25C7.5 16.8522 7.34196 16.4706 7.06066 16.1893C6.77936 15.908 6.39782 15.75 6 15.75H4.5V20.25M4.5 12V3.75C4.5 3.55109 4.57902 3.36032 4.71967 3.21967C4.86032 3.07902 5.05109 3 5.25 3H14.25M14.25 3L19.5 8.25M14.25 3V8.25H19.5M19.5 8.25V12M12 20.25C12.5967 20.25 13.169 20.0129 13.591 19.591C14.0129 19.169 14.25 18.5967 14.25 18C14.25 17.4033 14.0129 16.831 13.591 16.409C13.169 15.9871 12.5967 15.75 12 15.75H10.6875V20.25H12Z"
-                              stroke="#2E3192"
-                              stroke-width="1.5"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            />
-                          </svg>
+                        {collection.file.ext == '.mv4' &&
+                            <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.25 6.5L22.5 3.5V12.5L17.25 9.5M2.25 1.625H14.25C15.0456 1.625 15.8087 1.94107 16.3713 2.50368C16.9339 3.06629 17.25 3.82935 17.25 4.625V13.625C17.25 13.8239 17.171 14.0147 17.0303 14.1553C16.8897 14.296 16.6989 14.375 16.5 14.375H4.5C3.70435 14.375 2.94129 14.0589 2.37868 13.4963C1.81607 12.9337 1.5 12.1706 1.5 11.375V2.375C1.5 2.17609 1.57902 1.98532 1.71967 1.84467C1.86032 1.70402 2.05109 1.625 2.25 1.625Z" stroke="#2E3192" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          }
+                          {collection.file.ext == '.pdf' &&
+                            <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.25 13.75H14.625V18.25M16.875 16.375H14.625M1.5 16.75H3C3.39782 16.75 3.77936 16.592 4.06066 16.3107C4.34196 16.0294 4.5 15.6478 4.5 15.25C4.5 14.8522 4.34196 14.4706 4.06066 14.1893C3.77936 13.908 3.39782 13.75 3 13.75H1.5V18.25M1.5 10V1.75C1.5 1.55109 1.57902 1.36032 1.71967 1.21967C1.86032 1.07902 2.05109 1 2.25 1H11.25M11.25 1L16.5 6.25M11.25 1V6.25H16.5M16.5 6.25V10M9 18.25C9.59674 18.25 10.169 18.0129 10.591 17.591C11.0129 17.169 11.25 16.5967 11.25 16C11.25 15.4033 11.0129 14.831 10.591 14.409C10.169 13.9871 9.59674 13.75 9 13.75H7.6875V18.25H9Z" stroke="#2E3192" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          }
                         </div>
-                        {collection?.name && <p>{collection.name}</p>}
+                        {collection?.name && <p className="text-[#606977]">{collection.name}</p>}
                       </Link>
                     )
                 )}
@@ -1054,7 +1049,7 @@ export function JobApplication({ section }) {
   useEffect(() => {
     AOS.init();
   }, []);
-
+ 
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -1066,7 +1061,9 @@ export function JobApplication({ section }) {
   const [fileName, setFileName] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-
+ 
+  const { push } = useRouter();
+ 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
     if (type === "file") {
@@ -1095,6 +1092,8 @@ export function JobApplication({ section }) {
       );
       if (!response.ok) {
         throw new Error("Failed to upload file");
+      }else{
+        push('/thankyou');
       }
       const data = await response.json();
       return data[0].id; // Assuming Strapi returns the uploaded file info including its ID
@@ -1139,7 +1138,7 @@ export function JobApplication({ section }) {
       setError("There was an error submitting the form.");
     }
   };
-
+ 
   return (
     <section
       className={cn(
@@ -1255,6 +1254,8 @@ export function JobApplication({ section }) {
                   <input
                     className="contact-input"
                     type="email"
+                    pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                    title='"example@email.com"'
                     name="email"
                     placeholder={section?.email?.placeholder}
                     onChange={handleChange}
@@ -1290,7 +1291,7 @@ export function JobApplication({ section }) {
                       required
                     >
                       {section.specialization.map((option) => (
-                        <option key={option.id} value={option?.value}>
+                        <option key={option.id} value={option?.value?option.value:''}>
                           {option?.name}
                         </option>
                       ))}

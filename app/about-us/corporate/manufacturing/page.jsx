@@ -106,7 +106,7 @@ export default function Manufacturing({ params }) {
                   },
                 }}
                 modules={[Autoplay, Navigation]}
-                className="myValueSwiper !px-6 mt-3 2xl:mt-5"
+                className="myValueSwiper !px-5 mt-3 2xl:mt-5"
               >
                 <SwiperSlide>
                   <div className="phil-card">
@@ -215,7 +215,7 @@ export default function Manufacturing({ params }) {
                   },
                   768: {
                     slidesPerView: 3,
-                    spaceBetween: 48,
+                    spaceBetween: 52,
                   },
                 }}
                 modules={[Autoplay]}
