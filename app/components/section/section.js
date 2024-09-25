@@ -1695,8 +1695,8 @@ export function SliderSec({ section }) {
           className="myMissionSwiper"
         >
           {section.collection.map((sliderCard) => (
-            <SwiperSlide>
-              <div className="mission-card" key={sliderCard.id}>
+            <SwiperSlide key={sliderCard.id}>
+              <div className="mission-card">
                 <figure>
                   <Image
                     width={sliderCard.image?.width}
