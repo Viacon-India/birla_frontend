@@ -9,8 +9,6 @@ import Link from "next/link";
 
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
-import {Float} from "../components/pageCommon/pageCommon";
-import {MainButton} from "../components/pageCommon/pageCommon";
 import {PageBanner} from "../components/pageCommon/pageCommon";
 import {PageEnd} from "../components/pageCommon/pageCommon";
 import SectionSelection from "../components/section/section";
@@ -19,13 +17,11 @@ import Banner from "../assets/images/investor-relation-banner.jpg";
 import LastBg from "../assets/images/investor-relation-next.png";
 
 export default function Page({ params }) {
-  const slugs = params.slug.reverse();
-  const parent_slug = slugs[1]; // investor-relation
+  const [slugs, setSlugs] = useState(params.slug.reverse());
+  const [parent_slug, setParentSlug] = useState(slugs[1]);
 
   const [pageData, setPageData] = useState([]);
   const [sidebar, setSidebar] = useState([]);
-
-  console.log(sidebar);
   
   useEffect(() => {
     fetch(getStrapiMedia("/api/pages/"+slugs[0])).then((res) => res.json()).then((page) => {

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useRouter } from 'next/navigation'
 import { getStrapiMedia } from "@/lib/utils";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Navbar from "../components/navbar/navbar";
@@ -25,6 +26,8 @@ export default function Contact({params}) {
       });
   }, []);
 
+  const { push } = useRouter();
+
   const [formData, setFormData] = useState({
     form1QueryType: '',
     form1Description: '',
@@ -45,18 +48,10 @@ export default function Contact({params}) {
   const [form2Success, setForm2Success] = useState(false);
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
-    if (type === 'file') {
-      setFormData({
-        ...formData,
-        [name]: files[0],
-      });
-      setFileName(files[0].name); // Set the file name
-    } else {
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-    }
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
   const form1HandleSubmit = async (e) => {
     e.preventDefault();
@@ -82,6 +77,8 @@ export default function Contact({params}) {
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Error: ${response.status} - ${errorText}`);
+      }else{
+        push('/thankyou');
       }
       const data = await response.json();
       setForm1Success(true);
@@ -114,6 +111,8 @@ export default function Contact({params}) {
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Error: ${response.status} - ${errorText}`);
+      }else{
+        push('/thankyou');
       }
       const data = await response.json();
       setForm2Success(true);
@@ -218,9 +217,9 @@ export default function Contact({params}) {
                           {section?.form1QueryLabel &&
                             <label className="contact-label" htmlFor="form1QueryType">{section.form1QueryLabel}</label>
                           }
-                          <select className="contact-select" name="form1QueryType" onChange={handleChange} required>
+                          <select className="contact-select" name="form1QueryType" onChange={handleChange} required="required">
                             {section.form1QueryType.map((option)=>(
-                              <option value={option?.value} key={option.id}>{option?.name}</option>
+                              <option value={option?.value?option.value:''} key={option.id}>{option?.name}</option>
                             ))}
                           </select>
                         </div>
@@ -282,8 +281,10 @@ export default function Contact({params}) {
                           }
                           <input
                             className="contact-input"
-                            type="text"
+                            type="email"
+                            pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                             name="form1Email"
+                            title='"example@email.com"'
                             placeholder={section?.form1Email?.placeholder}
                             onChange={handleChange}
                             required
@@ -331,7 +332,7 @@ export default function Contact({params}) {
                             )}
                           </div>
                         }
-                        {form1Error && <p className="text-red-500">{error}</p>}
+                        {form1Error && <p className="text-red-500">{form1Error}</p>}
                         {form1Success && <p className="text-green-500">Application submitted successfully!</p>}
                         <button type="submit" className="primary-btn w-fit flip-animate-2">
                           <span data-hover={section.form1Submit}>
@@ -348,9 +349,9 @@ export default function Contact({params}) {
                           {section?.form2QueryLabel &&
                             <label className="contact-label" htmlFor="form2QueryType">{section.form2QueryLabel}</label>
                           }
-                          <select className="contact-select" name="form2QueryType" onChange={handleChange} required>
+                          <select className="contact-select" name="form2QueryType" onChange={handleChange} required="required">
                             {section.form2QueryType.map((option)=>(
-                              <option value={option?.value} key={option.id}>{option?.name}</option>
+                              <option value={option?.value?option.value:''} key={option.id}>{option?.name}</option>
                             ))}
                           </select>
                         </div>
@@ -412,7 +413,9 @@ export default function Contact({params}) {
                           }
                           <input
                             className="contact-input"
-                            type="text"
+                            type="email"
+                            pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                            title='"example@email.com"'
                             name="form2Email"
                             placeholder={section?.form2Email?.placeholder}
                             onChange={handleChange}
@@ -461,7 +464,7 @@ export default function Contact({params}) {
                             )}
                           </div>
                         }
-                        {form2Error && <p className="text-red-500">{error}</p>}
+                        {form2Error && <p className="text-red-500">{form2Error}</p>}
                         {form2Success && <p className="text-green-500">Application submitted successfully!</p>}
                         <button type="submit" className="primary-btn w-fit flip-animate-2">
                           <span data-hover={section.form2Submit}>
