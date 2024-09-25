@@ -23,8 +23,6 @@ export default function Page({ params }) {
   const [sidebar, setSidebar] = useState([]);
  
   useEffect(() => {
-    alert(slugs.at(-1));
- 
     fetch(getStrapiMedia("/api/pages/"+slugs.at(-1))).then((res) => res.json()).then((page) => {
       setPageData(page);
     });
