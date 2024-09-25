@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import { getStrapiMedia } from "@/lib/utils";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Navbar from "../components/navbar/navbar";

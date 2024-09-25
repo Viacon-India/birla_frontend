@@ -18,13 +18,13 @@ import LastBg from "@/app/assets/images/investor-relation-next.png";
 
 
 export default function Page({ params }) {
-  const [slugs, setSlugs] = useState(params.slug.reverse());
-  const [collection, setCollection] = useState(slugs[0].includes('-bt-') ? 'products' : 'segments');
+  const [slugs, setSlugs] = useState(params.slug);
+  const [collection, setCollection] = useState(slugs.at(-1).includes('-bt-') ? 'products' : 'segments');
   
   const [pageData, setPageData] = useState([]);
 
   useEffect(() => {
-    fetch(getStrapiMedia("/api/"+collection+"/" + slugs[0]))
+    fetch(getStrapiMedia("/api/"+collection+"/" + slugs.at(-1)))
       .then((res) => res.json())
       .then((page) => {
         setPageData(page);
@@ -126,6 +126,10 @@ export default function Page({ params }) {
               }
             </div>
           </section>
+        </>
+      }
+      {collection=='products' &&
+        <>
         </>
       }
       <PageEnd
