@@ -594,7 +594,7 @@ a.current_dot {
 
 .swiper-button-next{
   @apply !w-10 !h-10 !bg-[#DEE1E5] absolute rounded-full !top-[35%] active:!bg-gray-400 !z-10 !right-[0%] !border border-[#727C8D]
-  hover:!bg-primary hover:border-primary transition-all duration-500
+  hover:!bg-primary hover:border-primary transition-all duration-500 !shadow-2xl
 }
 .swiper-button-next::after{
   content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000000" width="30" height="30" viewBox="-128 0 512 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg>') !important; 
@@ -605,7 +605,7 @@ a.current_dot {
 }
 .swiper-button-prev{
   @apply !w-10 !h-10 !bg-[#DEE1E5] absolute rounded-full !top-[35%] !left-[0%] md:!left-[0%] !border border-[#727C8D]
-   2xl:!left-[0%] active:!bg-gray-400 !z-10 hover:!bg-primary hover:border-primary transition-all duration-500
+   2xl:!left-[0%] active:!bg-gray-400 !z-10 hover:!bg-primary hover:border-primary transition-all duration-500 !shadow-2xl
 }
 .swiper-button-prev::after{
   content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000000" width="30" height="30" viewBox="-128 0 512 512"><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>') !important; 

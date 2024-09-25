@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useCallback } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { getStrapiMedia } from "@/lib/utils";
 import { cn } from "@/lib/utils";
@@ -13,6 +13,10 @@ import Triangle1 from "@/app/assets/images/triangle1.png";
 import Triangle2 from "@/app/assets/images/triangle2.png";
 import tigerMask from "@/app/assets/images/tiger-mask2.png";
 import tiger from "@/app/assets/images/tiger.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { FreeMode, Autoplay, Navigation } from "swiper/modules";
+import "swiper/css/navigation";
 
 export default function SectionSelection({ section, Background, right }) {
   return (
@@ -55,6 +59,9 @@ export default function SectionSelection({ section, Background, right }) {
       {section.__component == "section.commonsec" && (
         <CommonSec section={section} Background={Background} right={right} />
       )}
+      {section.__component == "section.slider" && (
+        <SliderSec section={section} />
+      )}
     </>
   );
 }
@@ -92,18 +99,44 @@ export function Files({ section }) {
                         target="_blank"
                       >
                         <div className="p-2 bg-[#E0E1F5] rounded-xl">
-                        {collection.file.ext == '.mv4' &&
-                            <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M17.25 6.5L22.5 3.5V12.5L17.25 9.5M2.25 1.625H14.25C15.0456 1.625 15.8087 1.94107 16.3713 2.50368C16.9339 3.06629 17.25 3.82935 17.25 4.625V13.625C17.25 13.8239 17.171 14.0147 17.0303 14.1553C16.8897 14.296 16.6989 14.375 16.5 14.375H4.5C3.70435 14.375 2.94129 14.0589 2.37868 13.4963C1.81607 12.9337 1.5 12.1706 1.5 11.375V2.375C1.5 2.17609 1.57902 1.98532 1.71967 1.84467C1.86032 1.70402 2.05109 1.625 2.25 1.625Z" stroke="#2E3192" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          {collection.file.ext == ".mv4" && (
+                            <svg
+                              width="24"
+                              height="16"
+                              viewBox="0 0 24 16"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M17.25 6.5L22.5 3.5V12.5L17.25 9.5M2.25 1.625H14.25C15.0456 1.625 15.8087 1.94107 16.3713 2.50368C16.9339 3.06629 17.25 3.82935 17.25 4.625V13.625C17.25 13.8239 17.171 14.0147 17.0303 14.1553C16.8897 14.296 16.6989 14.375 16.5 14.375H4.5C3.70435 14.375 2.94129 14.0589 2.37868 13.4963C1.81607 12.9337 1.5 12.1706 1.5 11.375V2.375C1.5 2.17609 1.57902 1.98532 1.71967 1.84467C1.86032 1.70402 2.05109 1.625 2.25 1.625Z"
+                                stroke="#2E3192"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
                             </svg>
-                          }
-                          {collection.file.ext == '.pdf' &&
-                            <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M17.25 13.75H14.625V18.25M16.875 16.375H14.625M1.5 16.75H3C3.39782 16.75 3.77936 16.592 4.06066 16.3107C4.34196 16.0294 4.5 15.6478 4.5 15.25C4.5 14.8522 4.34196 14.4706 4.06066 14.1893C3.77936 13.908 3.39782 13.75 3 13.75H1.5V18.25M1.5 10V1.75C1.5 1.55109 1.57902 1.36032 1.71967 1.21967C1.86032 1.07902 2.05109 1 2.25 1H11.25M11.25 1L16.5 6.25M11.25 1V6.25H16.5M16.5 6.25V10M9 18.25C9.59674 18.25 10.169 18.0129 10.591 17.591C11.0129 17.169 11.25 16.5967 11.25 16C11.25 15.4033 11.0129 14.831 10.591 14.409C10.169 13.9871 9.59674 13.75 9 13.75H7.6875V18.25H9Z" stroke="#2E3192" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          )}
+                          {collection.file.ext == ".pdf" && (
+                            <svg
+                              width="18"
+                              height="19"
+                              viewBox="0 0 18 19"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M17.25 13.75H14.625V18.25M16.875 16.375H14.625M1.5 16.75H3C3.39782 16.75 3.77936 16.592 4.06066 16.3107C4.34196 16.0294 4.5 15.6478 4.5 15.25C4.5 14.8522 4.34196 14.4706 4.06066 14.1893C3.77936 13.908 3.39782 13.75 3 13.75H1.5V18.25M1.5 10V1.75C1.5 1.55109 1.57902 1.36032 1.71967 1.21967C1.86032 1.07902 2.05109 1 2.25 1H11.25M11.25 1L16.5 6.25M11.25 1V6.25H16.5M16.5 6.25V10M9 18.25C9.59674 18.25 10.169 18.0129 10.591 17.591C11.0129 17.169 11.25 16.5967 11.25 16C11.25 15.4033 11.0129 14.831 10.591 14.409C10.169 13.9871 9.59674 13.75 9 13.75H7.6875V18.25H9Z"
+                                stroke="#2E3192"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
                             </svg>
-                          }
+                          )}
                         </div>
-                        {collection?.name && <p className="text-[#606977]">{collection.name}</p>}
+                        {collection?.name && (
+                          <p className="text-[#606977]">{collection.name}</p>
+                        )}
                       </Link>
                     )
                 )}
@@ -1050,7 +1083,7 @@ export function JobApplication({ section }) {
   useEffect(() => {
     AOS.init();
   }, []);
- 
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -1062,9 +1095,9 @@ export function JobApplication({ section }) {
   const [fileName, setFileName] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
- 
+
   const { push } = useRouter();
- 
+
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
     if (type === "file") {
@@ -1093,8 +1126,8 @@ export function JobApplication({ section }) {
       );
       if (!response.ok) {
         throw new Error("Failed to upload file");
-      }else{
-        push('/thankyou');
+      } else {
+        push("/thankyou");
       }
       const data = await response.json();
       return data[0].id; // Assuming Strapi returns the uploaded file info including its ID
@@ -1139,7 +1172,7 @@ export function JobApplication({ section }) {
       setError("There was an error submitting the form.");
     }
   };
- 
+
   return (
     <section
       className={cn(
@@ -1292,7 +1325,10 @@ export function JobApplication({ section }) {
                       required
                     >
                       {section.specialization.map((option) => (
-                        <option key={option.id} value={option?.value?option.value:''}>
+                        <option
+                          key={option.id}
+                          value={option?.value ? option.value : ""}
+                        >
                           {option?.name}
                         </option>
                       ))}
@@ -1617,5 +1653,77 @@ export function CommonSec({ section, Background, right }) {
         )}
       </div>
     </section>
+  );
+}
+
+export function SliderSec({ section }) {
+  return (
+    <div className="container mx-auto">
+      <div className="flex flex-col gap-3">
+        <span className="section-heading">{section?.heading}</span>
+        <div className="section-title-wrapper">
+          <h3 className="section-title">{section?.title}</h3>
+        </div>
+      </div>
+      <div className="mission-card-sec relative mt-6 2xl:mt-10">
+        <Swiper
+          navigation={true}
+          speed={1500}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 1.6,
+              spaceBetween: 48,
+            },
+            1024: {
+              slidesPerView: 2.5,
+              spaceBetween: 48,
+            },
+          }}
+          modules={[Autoplay, Navigation]}
+          className="myMissionSwiper"
+        >
+          {section.collection.map((sliderCard) => (
+            <SwiperSlide key={sliderCard.id}>
+              <div className="mission-card">
+                <figure>
+                  <Image
+                    width={sliderCard.image?.width}
+                    height={sliderCard.image?.height}
+                    src={getStrapiMedia(sliderCard.image?.url)}
+                    alt={sliderCard.image?.alternativeText}
+                  />
+                </figure>
+                <div className="mission-card-detail">
+                  <div className="flex items-center gap-2 mt-3">
+                    <div className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center p-2">
+                      <Image
+                        width={sliderCard.icon?.width}
+                        height={sliderCard.icon?.height}
+                        src={getStrapiMedia(sliderCard.icon?.url)}
+                        alt={sliderCard.icon?.alternativeText}
+                      />
+                    </div>
+                    <h2>{sliderCard?.title}</h2>
+                  </div>
+                  <p>{sliderCard?.description}</p>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </div>
   );
 }
