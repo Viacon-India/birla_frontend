@@ -17,18 +17,19 @@ import Banner from "../assets/images/investor-relation-banner.jpg";
 import LastBg from "../assets/images/investor-relation-next.png";
 
 export default function Page({ params }) {
-  const [slugs, setSlugs] = useState(params.slug.reverse());
-  const [parent_slug, setParentSlug] = useState(slugs[1]);
-
+  const [slugs, setSlugs] = useState(params.slug);
+ 
   const [pageData, setPageData] = useState([]);
   const [sidebar, setSidebar] = useState([]);
-  
+ 
   useEffect(() => {
-    fetch(getStrapiMedia("/api/pages/"+slugs[0])).then((res) => res.json()).then((page) => {
+    alert(slugs.at(-1));
+ 
+    fetch(getStrapiMedia("/api/pages/"+slugs.at(-1))).then((res) => res.json()).then((page) => {
       setPageData(page);
     });
-
-    parent_slug == 'investor-relations' && fetch(getStrapiMedia("/api/investor-relations-sidebar?populate=*")).then((tab) => tab.json()).then((pageSidebar) => {
+ 
+    slugs.at(-2) == 'investor-relations' && fetch(getStrapiMedia("/api/investor-relations-sidebar?populate=*")).then((tab) => tab.json()).then((pageSidebar) => {
       setSidebar(pageSidebar.data.attributes.pages.data);
     });
   }, []);
@@ -42,7 +43,7 @@ export default function Page({ params }) {
           {sidebar.length > 0 &&
             <div className="col-span-3 bg-primary border border-primary rounded-xl h-fit text-white font-[17px] leading-[17px] flex flex-col overflow-hidden sticky top-[125px] md:[145px] max-h-[80vh] overflow-y-auto">
               {sidebar.map((tab) => (
-                tab.attributes.slug == slugs[0] ?
+                tab.attributes.slug == slugs.at(-1) ?
                 <span className="px-5 py-[10px] bg-[#FEEFE2] text-primary" key={tab.id}>{tab.attributes.title}</span> :
                 <Link href={tab.attributes.permalink} className="px-5 py-[10px]" key={tab.id}>{tab.attributes.title}</Link>
               ))}
