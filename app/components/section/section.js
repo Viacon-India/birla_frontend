@@ -12,7 +12,7 @@ import "aos/dist/aos.css";
 import Triangle1 from "@/app/assets/images/triangle1.png";
 import Triangle2 from "@/app/assets/images/triangle2.png";
 import BGTiger2 from "../../assets/images/tiger-mask2.png";
-import tigerMask from "@/app/assets/images/tiger-mask2.png";
+import tigerMask from "@/app/assets/images/tiger-mask3.png";
 import tiger from "@/app/assets/images/tiger.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -774,20 +774,20 @@ export function TitleContentFull({ section }) {
     >
       <div className="container mx-auto">
         <span className="section-heading">{section?.heading}</span>
-        <div className="section-title-wrapper">
+        <div className="section-title-wrapper mb-6 md:mb-10">
           <h3 className="section-title">{section?.title}</h3>
         </div>
         {section?.collection &&
           section.collection.length > 0 &&
           section.collection.map((collection) => (
             <>
-              {collection?.description && <h3>{collection.description}</h3>}
+              {collection?.description && <h3 className="text-secondary text-[20px] md:text-[24px] font-semibold">{collection.description}</h3>}
               {collection?.content && collection.content.length > 0 && (
                 <BlocksRenderer
                   content={collection.content}
                   blocks={{
                     paragraph: ({ children }) => (
-                      <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] mt-6 2xl:mt-10">
+                      <p className="text-[#4F5662] text-[14px] md:text-[15px] 2xl:text-[16px] mt-4">
                         {children}
                       </p>
                     ),
@@ -1793,12 +1793,13 @@ export function ImageDetailContent({ section }) {
 }
 
 export function SidebarContent({ section }) {
+  const [activeTab, setActiveTab] = useState(section.collection[0].id);
   return (
     <section className="relative mt-6 md:mt-8 2xl:mt-[60px]">
       <div class="container mx-auto">
         <span className="section-heading">{section?.heading}</span>
         <div className="section-title-wrapper mb-4 md:mb-8 2xl:mb-10">
-          <h3 className="section-title">{section.title}</h3>
+          <h3 className="section-title">{section?.title}</h3>
         </div>
         <BlocksRenderer
           content={section.content}
@@ -1835,14 +1836,76 @@ export function SidebarContent({ section }) {
             ),
           }}
         />
-        <div class="w-full flex items-start gap-10">
+        <div class="w-full flex items-start gap-10 mt-4 md:mt-10">
           <div class="w-full md:w-[30%] bg-primary border border-primary rounded-xl text-white leading-[17px] flex flex-col items-start">
             {section.collection.map((collection) => (
-              <button className="p-3" key={collection.id}>{collection.description}</button>
+              <button className="p-3" key={collection.id}>
+                {collection.description}
+              </button>
             ))}
           </div>
-
+          <div className="relative w-full md:w-[70%]">
+            <Image src={tigerMask} alt="img" className="absolute top-10 left-1/2 translate-x-[-50%]" />
+            {section.collection.map((collection) => (
+              <div key={collection.id}>
+                <h3 className="section-title">{collection.description}</h3>
+                <BlocksRenderer
+                  content={section.content}
+                  blocks={{
+                    paragraph: ({ children }) => (
+                      <p data-aos="fade-left" data-aos-duration="1000">
+                        {children}
+                      </p>
+                    ),
+                    heading: ({ children, level }) => {
+                      switch (level) {
+                        case 1:
+                          return <h1>{children}</h1>;
+                        case 2:
+                          return <h2>{children}</h2>;
+                        case 3:
+                          return <h3>{children}</h3>;
+                        case 4:
+                          return <h4>{children}</h4>;
+                        case 5:
+                          return <h5>{children}</h5>;
+                        case 6:
+                          return <h6>{children}</h6>;
+                        default:
+                          return <h1>{children}</h1>;
+                      }
+                    },
+                    list: (props) => {
+                      if (props.format === "ordered") {
+                        return (
+                          <ol data-aos="fade-left" data-aos-duration="1000">
+                            {props.children}
+                          </ol>
+                        );
+                      }
+                      return (
+                        <ul data-aos="fade-left" data-aos-duration="1000">
+                          {props.children}
+                        </ul>
+                      );
+                    },
+                    "list-item": (props) => <li>{props.children}</li>,
+                    link: ({ children, url }) => (
+                      <Link href={url}>{children}</Link>
+                    ),
+                  }}
+                  modifiers={{
+                    bold: ({ children }) => <strong>{children}</strong>,
+                    italic: ({ children }) => (
+                      <span className="italic">{children}</span>
+                    ),
+                  }}
+                />
+              </div>
+            ))}
+          </div>
         </div>
+
       </div>
     </section>
   );
