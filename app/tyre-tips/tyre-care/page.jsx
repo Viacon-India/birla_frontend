@@ -9,6 +9,7 @@ import Banner from "@/app/assets/images/tyre-care1.jpg";
 import man3 from "@/app/assets/images/man3.jpg";
 import { PageBanner } from "@/app/components/pageCommon/pageCommon";
 import { PageEnd } from "@/app/components/pageCommon/pageCommon";
+import LastBg from "../../assets/images/guide7.png";
 
 export default function Manufacturing({ params }) {
   const slugs = params.slug;
@@ -37,7 +38,7 @@ export default function Manufacturing({ params }) {
         pageData.section.map((section) => (
           <SectionSelection key={section.id} section={section} />
         ))}
-      <PageEnd EndPageData={pageData?.end} EndStaticImage={man3} />
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={LastBg} />
       <Footer />
     </>
   );

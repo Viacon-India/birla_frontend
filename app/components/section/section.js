@@ -59,6 +59,9 @@ export default function SectionSelection({ section, Background, right }) {
       {section.__component == "section.leader" && (
         <ImageDetailContent section={section} />
       )}
+      {section.__component == "section.sidebar-content" && (
+        <SidebarContent section={section} />
+      )}
     </>
   );
 }
@@ -1718,19 +1721,26 @@ export function ImageDetailContent({ section }) {
                 <p className="text-[#1A1D21] text-[24px] font-medium">
                   {section.social_title}
                 </p>
-                {section?.social && section.social.length > 0 && section.social.map((social) => (
-                  social?.link && social?.icon && 
-                  <Link
-                    href={social.link}
-                    target="_blank"
-                    key={social.id}
-                  >
-                    <Image width={social.icon.width}
-                      height={social.icon.height}
-                      src={getStrapiMedia(social.icon.url)}
-                      alt={social.icon.alternativeText} />
-                  </Link>
-                ))}
+                {section?.social &&
+                  section.social.length > 0 &&
+                  section.social.map(
+                    (social) =>
+                      social?.link &&
+                      social?.icon && (
+                        <Link
+                          href={social.link}
+                          target="_blank"
+                          key={social.id}
+                        >
+                          <Image
+                            width={social.icon.width}
+                            height={social.icon.height}
+                            src={getStrapiMedia(social.icon.url)}
+                            alt={social.icon.alternativeText}
+                          />
+                        </Link>
+                      )
+                  )}
               </div>
               <BlocksRenderer
                 content={section.content}
@@ -1776,6 +1786,62 @@ export function ImageDetailContent({ section }) {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function SidebarContent({ section }) {
+  return (
+    <section className="relative mt-6 md:mt-8 2xl:mt-[60px]">
+      <div class="container mx-auto">
+        <span className="section-heading">{section?.heading}</span>
+        <div className="section-title-wrapper mb-4 md:mb-8 2xl:mb-10">
+          <h3 className="section-title">{section.title}</h3>
+        </div>
+        <BlocksRenderer
+          content={section.content}
+          blocks={{
+            paragraph: ({ children }) => (
+              <p data-aos="fade-left" data-aos-duration="1000">
+                {children}
+              </p>
+            ),
+            heading: ({ children, level }) => {
+              switch (level) {
+                case 1:
+                  return <h1>{children}</h1>;
+                case 2:
+                  return <h2>{children}</h2>;
+                case 3:
+                  return <h3>{children}</h3>;
+                case 4:
+                  return <h4>{children}</h4>;
+                case 5:
+                  return <h5>{children}</h5>;
+                case 6:
+                  return <h6>{children}</h6>;
+                default:
+                  return <h1>{children}</h1>;
+              }
+            },
+            link: ({ children, url }) => <Link href={url}>{children}</Link>,
+          }}
+          modifiers={{
+            bold: ({ children }) => <strong>{children}</strong>,
+            italic: ({ children }) => (
+              <span className="italic">{children}</span>
+            ),
+          }}
+        />
+        <div class="w-full flex items-start gap-10">
+          <div class="w-full md:w-[30%] bg-primary border border-primary rounded-xl text-white leading-[17px] flex flex-col items-start">
+            {section.collection.map((collection) => (
+              <button className="p-3" key={collection.id}>{collection.description}</button>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
