@@ -1723,6 +1723,7 @@ export function ImageDetailContent({ section }) {
                   <Link
                     href={social.link}
                     target="_blank"
+                    key={social.id}
                   >
                     <Image width={social.icon.width}
                       height={social.icon.height}
