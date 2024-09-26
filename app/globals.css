@@ -23,6 +23,9 @@ body {
   overflow-x: hidden;
 
 }
+ol, ul{
+  @apply pl-4
+}
 @font-face {
   font-family: Oak Sans, sans-serif;
   src: url(../app/assets/variable/OakSansVF.ttf);
@@ -1054,6 +1057,15 @@ a.current_dot {
 }
 .box-content-sec p{
   @apply text-[#1A1D21] text-[14px] md:text-[15px] leading-[1.6] mb-3 last:mb-0
+}
+.box-content-sec ol{
+  @apply list-decimal mb-3 last:mb-0
+}
+.box-content-sec ul{
+  @apply list-disc mb-3 last:mb-0
+}
+.box-content-sec li{
+  @apply text-[#1A1D21] text-[14px] md:text-[15px] leading-[1.6] mb-1 last:mb-0
 }
 .vast-card figure{
   @apply w-full h-[200px] md:h-[252px] mb-2 md:mb-4 2xl:mb-6 relative overflow-hidden 

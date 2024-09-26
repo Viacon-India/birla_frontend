@@ -11,6 +11,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Triangle1 from "@/app/assets/images/triangle1.png";
 import Triangle2 from "@/app/assets/images/triangle2.png";
+import BGTiger2 from "../../assets/images/tiger-mask2.png";
 import tigerMask from "@/app/assets/images/tiger-mask2.png";
 import tiger from "@/app/assets/images/tiger.png";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -49,18 +50,14 @@ export default function SectionSelection({ section, Background, right }) {
       {section.__component == "section.job-application" && (
         <JobApplication section={section} />
       )}
-
-      {section.__component == "section.accordion2" && (
-        <Accordion2 section={section} Background={Background} />
-      )}
-      {section.__component == "section.tigerMark" && (
-        <TigerMark section={section} Background={Background} />
-      )}
-      {section.__component == "section.commonsec" && (
-        <CommonSec section={section} Background={Background} right={right} />
-      )}
       {section.__component == "section.slider" && (
         <SliderSec section={section} />
+      )}
+      {section.__component == "section.double-slider" && (
+        <DoubleSlider section={section} />
+      )}
+      {section.__component == "section.leader" && (
+        <ImageDetailContent section={section} />
       )}
     </>
   );
@@ -375,6 +372,21 @@ export function ImageTitleContent({ section }) {
                         return <h1>{children}</h1>;
                     }
                   },
+                  list: (props) => {
+                    if (props.format === "ordered") {
+                      return (
+                        <ol data-aos="fade-left" data-aos-duration="1000">
+                          {props.children}
+                        </ol>
+                      );
+                    }
+                    return (
+                      <ul data-aos="fade-left" data-aos-duration="1000">
+                        {props.children}
+                      </ul>
+                    );
+                  },
+                  "list-item": (props) => <li>{props.children}</li>,
                   link: ({ children, url }) => (
                     <Link href={url}>{children}</Link>
                   ),
@@ -463,43 +475,45 @@ export function Accordion({ section }) {
             <h3 className="section-title">{section?.title}</h3>
           </div>
         </div>
-        {section?.pre_content && section.pre_content.length > 0 && (
-          <BlocksRenderer
-            content={section.pre_content}
-            blocks={{
-              paragraph: ({ children }) => (
-                <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
-                  {children}
-                </p>
-              ),
-              heading: ({ children, level }) => {
-                switch (level) {
-                  case 1:
-                    return <h1>{children}</h1>;
-                  case 2:
-                    return <h2>{children}</h2>;
-                  case 3:
-                    return <h3>{children}</h3>;
-                  case 4:
-                    return <h4>{children}</h4>;
-                  case 5:
-                    return <h5>{children}</h5>;
-                  case 6:
-                    return <h6>{children}</h6>;
-                  default:
-                    return <h1>{children}</h1>;
-                }
-              },
-              link: ({ children, url }) => <Link href={url}>{children}</Link>,
-            }}
-            modifiers={{
-              bold: ({ children }) => <strong>{children}</strong>,
-              italic: ({ children }) => (
-                <span className="italic">{children}</span>
-              ),
-            }}
-          />
-        )}
+        <div className="flex flex-col gap-6">
+          {section?.pre_content && section.pre_content.length > 0 && (
+            <BlocksRenderer
+              content={section.pre_content}
+              blocks={{
+                paragraph: ({ children }) => (
+                  <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
+                    {children}
+                  </p>
+                ),
+                heading: ({ children, level }) => {
+                  switch (level) {
+                    case 1:
+                      return <h1>{children}</h1>;
+                    case 2:
+                      return <h2>{children}</h2>;
+                    case 3:
+                      return <h3>{children}</h3>;
+                    case 4:
+                      return <h4>{children}</h4>;
+                    case 5:
+                      return <h5>{children}</h5>;
+                    case 6:
+                      return <h6>{children}</h6>;
+                    default:
+                      return <h1>{children}</h1>;
+                  }
+                },
+                link: ({ children, url }) => <Link href={url}>{children}</Link>,
+              }}
+              modifiers={{
+                bold: ({ children }) => <strong>{children}</strong>,
+                italic: ({ children }) => (
+                  <span className="italic">{children}</span>
+                ),
+              }}
+            />
+          )}
+        </div>
         <div class="flex flex-col md:flex-row gap-4 md:gap-10">
           {section?.images && section.images.length > 0 && (
             <>
@@ -547,7 +561,7 @@ export function Accordion({ section }) {
               {section?.items.map(
                 (accordion, index) =>
                   accordion?.title &&
-                  accordion?.description && (
+                  accordion?.content && (
                     <div key={accordion.id} className="collapse collapse-plus">
                       {index == 0 ? (
                         <input
@@ -571,8 +585,53 @@ export function Accordion({ section }) {
                         )}
                         {accordion.title}
                       </div>
-                      <div className="collapse-content">
-                        <p>{accordion.description}</p>
+                      <div className="collapse-content box-content-sec">
+                        {accordion?.content && accordion.content.length > 0 && (
+                          <BlocksRenderer
+                            content={accordion.content}
+                            blocks={{
+                              paragraph: ({ children }) => (
+                                <p className="text-[#3D434C]">{children}</p>
+                              ),
+                              heading: ({ children, level }) => {
+                                switch (level) {
+                                  case 1:
+                                    return <h1>{children}</h1>;
+                                  case 2:
+                                    return <h2>{children}</h2>;
+                                  case 3:
+                                    return <h3>{children}</h3>;
+                                  case 4:
+                                    return <h4>{children}</h4>;
+                                  case 5:
+                                    return <h5>{children}</h5>;
+                                  case 6:
+                                    return <h6>{children}</h6>;
+                                  default:
+                                    return <h1>{children}</h1>;
+                                }
+                              },
+                              list: (props) => {
+                                if (props.format === "ordered") {
+                                  return <ol>{props.children}</ol>;
+                                }
+                                return <ul>{props.children}</ul>;
+                              },
+                              "list-item": (props) => <li>{props.children}</li>,
+                              link: ({ children, url }) => (
+                                <Link href={url}>{children}</Link>
+                              ),
+                            }}
+                            modifiers={{
+                              bold: ({ children }) => (
+                                <strong>{children}</strong>
+                              ),
+                              italic: ({ children }) => (
+                                <span className="italic">{children}</span>
+                              ),
+                            }}
+                          />
+                        )}
                       </div>
                     </div>
                   )
@@ -580,43 +639,45 @@ export function Accordion({ section }) {
             </div>
           )}
         </div>
-        {section?.post_content && section.post_content.length > 0 && (
-          <BlocksRenderer
-            content={section.post_content}
-            blocks={{
-              paragraph: ({ children }) => (
-                <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
-                  {children}
-                </p>
-              ),
-              heading: ({ children, level }) => {
-                switch (level) {
-                  case 1:
-                    return <h1>{children}</h1>;
-                  case 2:
-                    return <h2>{children}</h2>;
-                  case 3:
-                    return <h3>{children}</h3>;
-                  case 4:
-                    return <h4>{children}</h4>;
-                  case 5:
-                    return <h5>{children}</h5>;
-                  case 6:
-                    return <h6>{children}</h6>;
-                  default:
-                    return <h1>{children}</h1>;
-                }
-              },
-              link: ({ children, url }) => <Link href={url}>{children}</Link>,
-            }}
-            modifiers={{
-              bold: ({ children }) => <strong>{children}</strong>,
-              italic: ({ children }) => (
-                <span className="italic">{children}</span>
-              ),
-            }}
-          />
-        )}
+        <div className="flex flex-col gap-6">
+          {section?.post_content && section.post_content.length > 0 && (
+            <BlocksRenderer
+              content={section.post_content}
+              blocks={{
+                paragraph: ({ children }) => (
+                  <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
+                    {children}
+                  </p>
+                ),
+                heading: ({ children, level }) => {
+                  switch (level) {
+                    case 1:
+                      return <h1>{children}</h1>;
+                    case 2:
+                      return <h2>{children}</h2>;
+                    case 3:
+                      return <h3>{children}</h3>;
+                    case 4:
+                      return <h4>{children}</h4>;
+                    case 5:
+                      return <h5>{children}</h5>;
+                    case 6:
+                      return <h6>{children}</h6>;
+                    default:
+                      return <h1>{children}</h1>;
+                  }
+                },
+                link: ({ children, url }) => <Link href={url}>{children}</Link>,
+              }}
+              modifiers={{
+                bold: ({ children }) => <strong>{children}</strong>,
+                italic: ({ children }) => (
+                  <span className="italic">{children}</span>
+                ),
+              }}
+            />
+          )}
+        </div>
       </div>
     </section>
   );
@@ -713,60 +774,71 @@ export function TitleContentFull({ section }) {
         <div className="section-title-wrapper">
           <h3 className="section-title">{section?.title}</h3>
         </div>
-        <BlocksRenderer
-          content={section.content}
-          blocks={{
-            paragraph: ({ children }) => (
-              <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] mt-6 2xl:mt-10">
-                {children}
-              </p>
-            ),
-            heading: ({ children, level }) => {
-              switch (level) {
-                case 1:
-                  return <h1>{children}</h1>;
-                case 2:
-                  return <h2>{children}</h2>;
-                case 3:
-                  return <h3>{children}</h3>;
-                case 4:
-                  return <h4>{children}</h4>;
-                case 5:
-                  return <h5>{children}</h5>;
-                case 6:
-                  return <h6>{children}</h6>;
-                default:
-                  return <h1>{children}</h1>;
-              }
-            },
-            list: (props) => {
-              if (props.format === "ordered") {
-                return (
-                  <ol className="list-decimal mt-4 md:mt-6 2xl:mt-10 pl-4">
-                    {props.children}
-                  </ol>
-                );
-              }
-              return (
-                <ul className="list-disc mt-4 md:mt-6 2xl:mt-10 pl-4">
-                  {props.children}
-                </ul>
-              );
-            },
-            "list-item": (props) => (
-              <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-4">
-                {props.children}
-              </li>
-            ),
-            link: ({ children, url }) => <Link href={url}>{children}</Link>,
-          }}
-          modifiers={{
-            bold: ({ children }) => <strong>{children}</strong>,
-            italic: ({ children }) => (
-              <span className="italic">{children}</span>
-            ),
-          }}
-        />
+        {section?.collection &&
+          section.collection.length > 0 &&
+          section.collection.map((collection) => (
+            <>
+              {collection?.description && <h3>{collection.description}</h3>}
+              {collection?.content && collection.content.length > 0 && (
+                <BlocksRenderer
+                  content={collection.content}
+                  blocks={{
+                    paragraph: ({ children }) => (
+                      <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] mt-6 2xl:mt-10">
+                        {children}
+                      </p>
+                    ),
+                    heading: ({ children, level }) => {
+                      switch (level) {
+                        case 1:
+                          return <h1>{children}</h1>;
+                        case 2:
+                          return <h2>{children}</h2>;
+                        case 3:
+                          return <h3>{children}</h3>;
+                        case 4:
+                          return <h4>{children}</h4>;
+                        case 5:
+                          return <h5>{children}</h5>;
+                        case 6:
+                          return <h6>{children}</h6>;
+                        default:
+                          return <h1>{children}</h1>;
+                      }
+                    },
+                    list: (props) => {
+                      if (props.format === "ordered") {
+                        return (
+                          <ol className="list-decimal mt-4 md:mt-6 2xl:mt-10 pl-4">
+                            {props.children}
+                          </ol>
+                        );
+                      }
+                      return (
+                        <ul className="list-disc mt-4 md:mt-6 2xl:mt-10 pl-4">
+                          {props.children}
+                        </ul>
+                      );
+                    },
+                    "list-item": (props) => (
+                      <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-4">
+                        {props.children}
+                      </li>
+                    ),
+                    link: ({ children, url }) => (
+                      <Link href={url}>{children}</Link>
+                    ),
+                  }}
+                  modifiers={{
+                    bold: ({ children }) => <strong>{children}</strong>,
+                    italic: ({ children }) => (
+                      <span className="italic">{children}</span>
+                    ),
+                  }}
+                />
+              )}
+            </>
+          ))}
       </div>
     </section>
   );
@@ -949,7 +1021,7 @@ export function Gallery({ section }) {
   return (
     <section
       className={cn(
-        "relative pt-6 md:pt-8 2xl:pt-10 overflow-hidden pb-8 md:pb-12 2xl:pb-[60px]",
+        "relative pt-6 md:pt-8 2xl:pt-[60px] overflow-hidden pb-6 md:pb-8 2xl:pb-[60px]",
         section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
       )}
     >
@@ -1428,302 +1500,283 @@ export function JobApplication({ section }) {
   );
 }
 
-export function Accordion2({ section, Background }) {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+export function SliderSec({ section }) {
   return (
-    <section
-      className={cn(
-        "py-6 md:py-10 2xl:py-[60px] overflow-hidden",
-        Background ? "bg-[#F8F8F8]" : "bg-white"
-      )}
-    >
-      <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
-        <div>
-          <span className="section-heading">{section.heading}</span>
+    <section className="pt-6 md:pt-8 2xl:pt-[60px] pb-6 md:pb-8 2xl:pb-[60px]">
+      <div className="container mx-auto">
+        <div className="flex flex-col gap-3">
+          <span className="section-heading">{section?.heading}</span>
           <div className="section-title-wrapper">
-            <h3 className="section-title">{section.title}</h3>
+            <h3 className="section-title">{section?.title}</h3>
           </div>
         </div>
-        {section?.preAccordion && (
-          <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
-            {section.preAccordion}
-          </p>
-        )}
-        <div class="flex flex-col md:flex-row gap-4 md:gap-10">
-          {section?.images && section.images.length > 0 && (
-            <>
-              {section.images.length > 1 ? (
-                <div class="w-full md:w-[40%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
-                  {section.images.map((image, index) => (
+        <div className="mission-card-sec relative mt-6 2xl:mt-10">
+          <Swiper
+            navigation={true}
+            speed={1500}
+            loop={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 1.6,
+                spaceBetween: 48,
+              },
+              1024: {
+                slidesPerView: 2.5,
+                spaceBetween: 48,
+              },
+            }}
+            modules={[Autoplay, Navigation]}
+            className="myMissionSwiper"
+          >
+            {section.collection.map((sliderCard) => (
+              <SwiperSlide key={sliderCard.id}>
+                <div className="mission-card">
+                  <figure>
                     <Image
-                      key={index.id}
-                      className={cn(
-                        "w-full h-[240px] 2xl:h-[265px] rounded-[12px]",
-                        index == 0 && "col-span-2"
-                      )}
-                      src={image.url}
-                      alt={image.alt}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <div class="w-full md:w-[40%] h-fit md:sticky top-[90px]">
-                  <figure
-                    className="w-full h-[350px] md:h-[450px] 2xl:h-[600px] mb-0"
-                    data-aos="zoom-in"
-                    data-aos-duration="1000"
-                  >
-                    <Image
-                      className="w-full h-full object-cover rounded-[12px]"
-                      src={section.images[0].url}
-                      alt={section.images[0].alt}
+                      width={sliderCard.image?.width}
+                      height={sliderCard.image?.height}
+                      src={getStrapiMedia(sliderCard.image?.url)}
+                      alt={sliderCard.image?.alternativeText}
                     />
                   </figure>
-                </div>
-              )}
-            </>
-          )}
-          {section?.accordion && (
-            <div
-              class="accordion-list-sec w-full md:w-[60%] h-[350px] md:h-[450px] 2xl:h-[600px] overflow-y-auto"
-              data-aos="fade-left"
-              data-aos-duration="1000"
-            >
-              {section.accordion.map(
-                (accordion, index) =>
-                  accordion?.title &&
-                  accordion?.description && (
-                    <div key={index.id} className="collapse collapse-plus">
-                      {index == 0 ? (
-                        <input
-                          type="radio"
-                          name="my-accordion-3"
-                          defaultChecked
+                  <div className="mission-card-detail">
+                    <div className="flex items-center gap-2 mt-3">
+                      <div className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center p-2">
+                        <Image
+                          width={sliderCard.icon?.width}
+                          height={sliderCard.icon?.height}
+                          src={getStrapiMedia(sliderCard.icon?.url)}
+                          alt={sliderCard.icon?.alternativeText}
                         />
-                      ) : (
-                        <input type="radio" name="my-accordion-3" />
-                      )}
-                      <div className="collapse-title">{accordion.title}</div>
-                      <div className="collapse-content">
-                        <p>{accordion.description}</p>
                       </div>
+                      <h2>{sliderCard?.title}</h2>
                     </div>
-                  )
-              )}
-            </div>
-          )}
+                    <p>{sliderCard?.description}</p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
-        {section?.postAccordion && (
-          <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
-            {section.postAccordion}
-          </p>
-        )}
       </div>
     </section>
   );
 }
 
-export function TigerMark({ section, Background }) {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+export function DoubleSlider({ section }) {
   return (
-    <section
-      className={cn(
-        "pt-8 md:pt-12 2xl:pt-[60px] overflow-hidden",
-        Background ? "bg-[#F8F8F8]" : "bg-white"
-      )}
-    >
-      <div className="container mx-auto">
-        <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px]">
-          <div
-            className="box-title-sec w-full md:w-[45%] relative"
-            data-aos="fade-right"
-            data-aos-duration="1000"
-          >
-            <Image
-              src={section.images[0].url}
-              alt={section.images[0].alt}
-              className="absolute left-0 top-0"
-            />
-            <span className="section-heading">{section.heading}</span>
+    <section className="page-content-sec mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
+      <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
+        <div className="manufacture-slider-sec">
+          <div class="mt-5 md:mt-10 2xl:mt-12">
+            <span className="section-heading">{section?.heading}</span>
             <div className="section-title-wrapper">
               <h3 className="section-title">{section.title}</h3>
             </div>
+            {section?.collection.map((collection, index) => (
+              <div key={collection.id}>
+                <h3 className="text-[24px] 2xl:text-[32px] text-secondary mt-6 2xl:mt-8">
+                  {collection?.description}
+                </h3>
+                <Swiper
+                  navigation={true}
+                  speed={1500}
+                  loop={true}
+                  autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  }}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  breakpoints={{
+                    0: {
+                      slidesPerView: 1,
+                      spaceBetween: 20,
+                    },
+                    768: {
+                      slidesPerView:
+                        section.collection[index].slider.length > 3
+                          ? 3
+                          : section.collection[index].slider.length,
+                      spaceBetween: 48,
+                    },
+                    1024: {
+                      slidesPerView:
+                        section.collection[index].slider.length > 4
+                          ? 4
+                          : section.collection[index].slider.length,
+                      spaceBetween: 48,
+                    },
+                  }}
+                  modules={[Autoplay, Navigation]}
+                  className="myValueSwiper !px-5 mt-3 2xl:mt-5"
+                >
+                  {collection?.slider &&
+                    collection.slider.length > 0 &&
+                    collection.slider.map((item) => (
+                      <SwiperSlide key={item.id}>
+                        <div className="phil-card">
+                          <figure>
+                            <Image
+                              className="phil-card-image"
+                              width={item.icon?.width}
+                              height={item.icon?.height}
+                              src={getStrapiMedia(item.icon?.url)}
+                              alt={item.icon?.alternativeText}
+                            />
+                          </figure>
+                          <h2>{item?.title}</h2>
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                </Swiper>
+              </div>
+            ))}
           </div>
-          {section?.tigerMarkDetail && section.tigerMarkDetail.length > 0 && (
-            <div className="box-content-sec w-full md:w-[60%] relative">
-              {section.tigerMarkDetail.map((detail, index) => (
-                <p data-aos="fade-left" data-aos-duration="1000" key={index}>
-                  {detail.description}
-                </p>
-              ))}
-            </div>
-          )}
         </div>
       </div>
     </section>
   );
 }
 
-export function CommonSec({ section, Background, right }) {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+export function ImageDetailContent({ section }) {
   return (
-    <section className="mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden mb-8 md:mb-12 2xl:mb-[60px]">
-      <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
+    <section className="overflow-hidden bg-[#F8F8F8]">
+      <div class="container mx-auto">
         <div
           className={cn(
-            "section-layer",
-            right ? "md:flex-row-reverse" : "md:flex-row "
+            "flex flex-col items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px] pt-6 mt-6 md:mt-8 2xl:mt-[60px]",
+            section?.settings?.right ? "md:flex-row-reverse" : "md:flex-row "
           )}
         >
           <figure
-            className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
+            className="w-full md:w-[40%] h-[480px] relative glare"
             data-aos="flip-right"
             data-aos-duration="1500"
           >
             <Image
               className={cn(
                 "absolute -z-1 w-[90%] h-[90%]",
-                right ? "right-0" : "left-0"
+                section?.settings?.right ? "right-0" : "left-0"
               )}
-              src={right ? Triangle2 : Triangle1}
-              alt="img"
+              src={section?.settings?.right ? Triangle2 : Triangle1}
+              alt="triangle"
             />
-
             <Image
               className={cn(
                 "absolute top-4 md:top-8 w-[90%] h-[90%] rounded-[12px]",
-                right ? "right-4 md:right-8" : "left-4 md:left-8"
+                section?.settings?.right
+                  ? "right-4 md:right-8"
+                  : "left-4 md:left-8"
               )}
-              src={section.image.url}
-              alt={section.image.alt}
+              width={section?.image.width}
+              height={section?.image.height}
+              src={getStrapiMedia(section?.image.url)}
+              alt={section?.image.alternativeText}
             />
           </figure>
-
-          <div className="box-content-sec relative md:w-[55%] flex flex-col">
-            <span
-              className="section-heading"
-              data-aos="fade-left"
-              data-aos-duration="500"
-            >
-              {section.heading}
-            </span>
-            <div
-              className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
-              data-aos="fade-left"
-              data-aos-duration="500"
-            >
-              <h3 className="section-title">{section.title}</h3>
-            </div>
-            {section.commonSecDetail.map((detail, index) => (
-              <p data-aos="fade-left" data-aos-duration="1000" key={index}>
-                {detail.description}
-              </p>
-            ))}
-
-            {section?.button && (
-              <Link
-                href={section.buttonLink}
-                target="_blank"
-                className="more-btn"
+          <div className="flex flex-col justify-center gap-2 md:gap-6 w-full md:w-[60%] relative overflow-hidden">
+            <div className="flex flex-col gap-6">
+              <Image
+                className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
+                src={BGTiger2}
+                alt=""
+              />
+              <div className="flex gap-2 flex-col">
+                <h2
+                  className="text-[48px] leading-[48px] font-bold text-secondary"
+                  data-aos="fade-left"
+                  data-aos-duration="200"
+                >
+                  {section?.name}
+                </h2>
+                <h3
+                  className="uppercase text-primary font-medium text-2xl"
+                  data-aos="fade-left"
+                  data-aos-duration="400"
+                >
+                  {section?.designation}
+                </h3>
+              </div>
+              <div
+                class="relative flex gap-2"
+                data-aos="fade-left"
+                data-aos-duration="600"
               >
-                {section.button}
-              </Link>
-            )}
-            <div class="line-loader self-end">
-              <div class="bar bar1"></div>
-              <div class="bar bar2"></div>
-              <div class="bar bar3"></div>
+                <p className="text-[#1A1D21] text-[24px] font-medium">
+                  {section.social_title}
+                </p>
+                {section?.social && section.social.length > 0 && section.social.map((social) => (
+                  social?.link && social?.icon && 
+                  <Link
+                    href={social.link}
+                    target="_blank"
+                  >
+                    <Image width={social.icon.width}
+                      height={social.icon.height}
+                      src={getStrapiMedia(social.icon.url)}
+                      alt={social.icon.alternativeText} />
+                  </Link>
+                ))}
+              </div>
+              <BlocksRenderer
+                content={section.content}
+                blocks={{
+                  paragraph: ({ children }) => (
+                    <p data-aos="fade-left" data-aos-duration="1000">
+                      {children}
+                    </p>
+                  ),
+                  heading: ({ children, level }) => {
+                    switch (level) {
+                      case 1:
+                        return <h1>{children}</h1>;
+                      case 2:
+                        return <h2>{children}</h2>;
+                      case 3:
+                        return <h3>{children}</h3>;
+                      case 4:
+                        return <h4>{children}</h4>;
+                      case 5:
+                        return <h5>{children}</h5>;
+                      case 6:
+                        return <h6>{children}</h6>;
+                      default:
+                        return <h1>{children}</h1>;
+                    }
+                  },
+                  link: ({ children, url }) => (
+                    <Link href={url}>{children}</Link>
+                  ),
+                }}
+                modifiers={{
+                  bold: ({ children }) => <strong>{children}</strong>,
+                  italic: ({ children }) => (
+                    <span className="italic">{children}</span>
+                  ),
+                }}
+              />
+              <div class="line-loader self-end">
+                <div class="bar bar1"></div>
+                <div class="bar bar2"></div>
+                <div class="bar bar3"></div>
+              </div>
             </div>
           </div>
         </div>
-        {section?.postCommonSec && (
-          <p
-            className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6] mb-3 md:mb-10 2xl:mb-[60px]"
-            data-aos="fade-right"
-            data-aos-duration="2000"
-          >
-            {section.postCommonSec}
-          </p>
-        )}
       </div>
     </section>
-  );
-}
-
-export function SliderSec({ section }) {
-  return (
-    <div className="container mx-auto">
-      <div className="flex flex-col gap-3">
-        <span className="section-heading">{section?.heading}</span>
-        <div className="section-title-wrapper">
-          <h3 className="section-title">{section?.title}</h3>
-        </div>
-      </div>
-      <div className="mission-card-sec relative mt-6 2xl:mt-10">
-        <Swiper
-          navigation={true}
-          speed={1500}
-          loop={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 1.6,
-              spaceBetween: 48,
-            },
-            1024: {
-              slidesPerView: 2.5,
-              spaceBetween: 48,
-            },
-          }}
-          modules={[Autoplay, Navigation]}
-          className="myMissionSwiper"
-        >
-          {section.collection.map((sliderCard) => (
-            <SwiperSlide key={sliderCard.id}>
-              <div className="mission-card">
-                <figure>
-                  <Image
-                    width={sliderCard.image?.width}
-                    height={sliderCard.image?.height}
-                    src={getStrapiMedia(sliderCard.image?.url)}
-                    alt={sliderCard.image?.alternativeText}
-                  />
-                </figure>
-                <div className="mission-card-detail">
-                  <div className="flex items-center gap-2 mt-3">
-                    <div className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center p-2">
-                      <Image
-                        width={sliderCard.icon?.width}
-                        height={sliderCard.icon?.height}
-                        src={getStrapiMedia(sliderCard.icon?.url)}
-                        alt={sliderCard.icon?.alternativeText}
-                      />
-                    </div>
-                    <h2>{sliderCard?.title}</h2>
-                  </div>
-                  <p>{sliderCard?.description}</p>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-    </div>
   );
 }
