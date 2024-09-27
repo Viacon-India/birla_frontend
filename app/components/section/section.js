@@ -844,6 +844,29 @@ export function TitleContentFull({ section }) {
                   }}
                 />
               )}
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10">
+                {collection?.images &&
+                  collection.images.length > 0 &&
+                  collection.images.map((image) => (
+                    <div class="tyre-care-card" key={image.id}>
+                      <figure className="w-full h-[240px] rounded-[12px]">
+                        <Image
+                          className="w-full h-full object-cover rounded-[12px]"
+                          width={image?.image.width}
+                          height={image?.image.height}
+                          src={getStrapiMedia(image?.image.url)}
+                          alt={image?.image.alternativeText}
+                        />
+                      </figure>
+                      <h3 className="text-[#1A1D21] mt-6 text-[24px] font-bold">
+                        {image.title}
+                      </h3>
+                      <p className="text-[#4F5662] text-[16px] mt-4">
+                        {image.description}
+                      </p>
+                    </div>
+                  ))}
+              </div>
             </>
           ))}
       </div>
@@ -1808,11 +1831,7 @@ export function SidebarContent({ section }) {
         <BlocksRenderer
           content={section.content}
           blocks={{
-            paragraph: ({ children }) => (
-              <p data-aos="fade-left" data-aos-duration="1000">
-                {children}
-              </p>
-            ),
+            paragraph: ({ children }) => <p>{children}</p>,
             heading: ({ children, level }) => {
               switch (level) {
                 case 1:
@@ -1872,7 +1891,11 @@ export function SidebarContent({ section }) {
                     content={collection.content}
                     blocks={{
                       paragraph: ({ children }) => (
-                        <p className="pt-3 md:pt-5" data-aos="fade-left" data-aos-duration="1000">
+                        <p
+                          className="pt-3 md:pt-5"
+                          data-aos="fade-left"
+                          data-aos-duration="1000"
+                        >
                           {children}
                         </p>
                       ),
@@ -1897,7 +1920,11 @@ export function SidebarContent({ section }) {
                       list: (props) => {
                         if (props.format === "ordered") {
                           return (
-                            <ol className="!pl-0" data-aos="fade-left" data-aos-duration="1000">
+                            <ol
+                              className="!pl-0"
+                              data-aos="fade-left"
+                              data-aos-duration="1000"
+                            >
                               {props.children}
                             </ol>
                           );
@@ -1908,7 +1935,9 @@ export function SidebarContent({ section }) {
                           </ul>
                         );
                       },
-                      "list-item": (props) => <li className="pt-3 md:pt-5">{props.children}</li>,
+                      "list-item": (props) => (
+                        <li className="pt-3 md:pt-5">{props.children}</li>
+                      ),
                       link: ({ children, url }) => (
                         <Link href={url}>{children}</Link>
                       ),
