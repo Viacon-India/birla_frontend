@@ -36,7 +36,7 @@ import susIcon3 from "../assets/images/sus-icon3.png";
 import susIcon4 from "../assets/images/sus-icon4.png";
 import Triangle1 from "../assets/images/triangle1.png";
 import tigerMask from "../assets/images/tiger-mask2.png";
-import SectionSelection from "@/app/components/section/section";
+import SectionSelection from "@/app/components/selection/sectionLayout";
 
 export default function Sustainability({ params }) {
   const slugs = params.slug;

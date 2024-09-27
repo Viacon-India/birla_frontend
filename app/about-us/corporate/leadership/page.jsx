@@ -20,7 +20,7 @@ import { PageBanner } from "../../../components/pageCommon/pageCommon";
 import { PageEnd } from "../../../components/pageCommon/pageCommon";
 import coma1 from "../../../assets/images/coma1.png";
 import coma2 from "../../../assets/images/coma2.png";
-import SectionSelection from "@/app/components/section/section";
+import SectionSelection from "@/app/components/selection/sectionLayout";
 
 export default function Leadership({ params }) {
   const slugs = params.slug;

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { getStrapiMedia } from "@/lib/utils";
 import "swiper/css/navigation";
-import SectionSelection from "../../../components/section/section";
+import SectionSelection from "../../../components/selection/sectionLayout";
 import Navbar from "../../../components/navbar/navbar";
 import Footer from "../../../components/footer/footer";
 import Banner from "../../../assets/images/man1.jpg";

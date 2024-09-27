@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { getStrapiMedia } from "@/lib/utils";
-import SectionSelection from "@/app/components/section/section";
+import SectionSelection from "@/app/components/selection/sectionLayout";
 import "aos/dist/aos.css";
 import "swiper/css/navigation";
 import GradualSpacing from "@/components/GradualSpacing";

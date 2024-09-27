@@ -23,7 +23,7 @@ import LastBg from "../../assets/images/esg-next.png";
 import { PageEnd } from "../../components/pageCommon/pageCommon";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import SectionSelection from "@/app/components/section/section";
+import SectionSelection from "@/app/components/selection/sectionLayout";
 
 export default function Esg({params}) {
   const slugs = params.slug;
