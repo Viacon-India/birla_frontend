@@ -16,15 +16,16 @@ import { PageEnd } from "@/app/components/pageCommon/pageCommon";
 import Banner from "@/app/assets/images/investor-relation-banner.jpg";
 import LastBg from "@/app/assets/images/investor-relation-next.png";
 
-
 export default function Page({ params }) {
   const [slugs, setSlugs] = useState(params.slug);
-  const [collection, setCollection] = useState(slugs.at(-1).includes('-bt-') ? 'products' : 'segments');
-  
+  const [collection, setCollection] = useState(
+    slugs.at(-1).includes("-bt-") ? "products" : "segments"
+  );
+
   const [pageData, setPageData] = useState([]);
 
   useEffect(() => {
-    fetch(getStrapiMedia("/api/"+collection+"/" + slugs.at(-1)))
+    fetch(getStrapiMedia("/api/" + collection + "/" + slugs.at(-1)))
       .then((res) => res.json())
       .then((page) => {
         setPageData(page);
@@ -34,7 +35,7 @@ export default function Page({ params }) {
   return (
     <>
       <Navbar />
-      {collection=='segments' &&
+      {collection == "segments" && (
         <>
           <PageBanner
             Title={pageData.title}
@@ -55,9 +56,13 @@ export default function Page({ params }) {
                     />
                   </div>
                 </div>
-                {pageData?.catalogue &&
+                {pageData?.catalogue && (
                   <div className="cat-btn-sec flex items-center gap-3 relative z-10">
-                    <Link href={getStrapiMedia(pageData.catalogue.url)} className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]" target="_blank">
+                    <Link
+                      href={getStrapiMedia(pageData.catalogue.url)}
+                      className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]"
+                      target="_blank"
+                    >
                       <svg
                         width="16"
                         height="16"
@@ -76,9 +81,9 @@ export default function Page({ params }) {
                       Download Product Catalogue
                     </Link>
                   </div>
-                }
+                )}
               </div>
-              {pageData?.filters && pageData.filters.length > 0 &&
+              {pageData?.filters && pageData.filters.length > 0 && (
                 <div className="bg-[#F4F5F6] rounded-xl flex gap-4 p-6 items-end">
                   {pageData.filters.map((filter) => (
                     <div key={filter.id} className="flex flex-col gap-1 w-full">
@@ -88,16 +93,18 @@ export default function Page({ params }) {
                       >
                         {filter.title}
                       </label>
-                      {filter?.items && filter.items.length > 0 &&
+                      {filter?.items && filter.items.length > 0 && (
                         <select
                           name="machinery"
                           className="select-box !w-full max-h-[46px] !text-[14px] !leading-[21px]"
                         >
                           {filter.items.map((item) => (
-                            <option key={item.id} value={item?.value}>{item?.name}</option>
+                            <option key={item.id} value={item?.value}>
+                              {item?.name}
+                            </option>
                           ))}
                         </select>
-                      }
+                      )}
                     </div>
                   ))}
                   <button className="tablinks cat-btn active-cat-btn items-center gap-1 !w-full max-h-[46px] !h-full !text-[18px] leading-[27.75px]">
@@ -116,26 +123,24 @@ export default function Page({ params }) {
                     Search
                   </button>
                 </div>
-              }
-              {pageData?.products && pageData.products.length > 0 &&
+              )}
+              {pageData?.products && pageData.products.length > 0 && (
                 <div className="grid grid-cols-3 gap-[50px]">
                   {pageData.products.map((product) => (
                     <Product key={product.id} data={product} />
                   ))}
                 </div>
-              }
+              )}
             </div>
           </section>
         </>
-      }
-      {collection=='products' &&
+      )}
+      {collection == "products" && (
         <>
+          <p>Product detail</p>
         </>
-      }
-      <PageEnd
-        EndPageData={pageData?.end}
-        EndStaticImage={LastBg}
-      />
+      )}
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={LastBg} />
       <Footer />
     </>
   );
