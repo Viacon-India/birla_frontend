@@ -12,7 +12,7 @@ import "aos/dist/aos.css";
 import Triangle1 from "@/app/assets/images/triangle1.png";
 import Triangle2 from "@/app/assets/images/triangle2.png";
 import BGTiger2 from "../../assets/images/tiger-mask2.png";
-import tigerMask from "@/app/assets/images/tiger-mask3.png";
+import tigerMask from "@/app/assets/images/tiger-mask2.png";
 import tiger from "@/app/assets/images/tiger.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -781,13 +781,17 @@ export function TitleContentFull({ section }) {
           section.collection.length > 0 &&
           section.collection.map((collection) => (
             <>
-              {collection?.description && <h3 className="text-secondary text-[20px] md:text-[24px] font-semibold">{collection.description}</h3>}
+              {collection?.description && (
+                <h3 className="text-secondary text-[20px] md:text-[24px] font-semibold">
+                  {collection.description}
+                </h3>
+              )}
               {collection?.content && collection.content.length > 0 && (
                 <BlocksRenderer
                   content={collection.content}
                   blocks={{
                     paragraph: ({ children }) => (
-                      <p className="text-[#4F5662] text-[14px] md:text-[15px] 2xl:text-[16px] mt-4">
+                      <p className="text-[#4F5662] text-[14px] md:text-[15px] 2xl:text-[16px] mb-4 mt-">
                         {children}
                       </p>
                     ),
@@ -1836,76 +1840,91 @@ export function SidebarContent({ section }) {
             ),
           }}
         />
-        <div class="w-full flex items-start gap-10 mt-4 md:mt-10">
-          <div class="w-full md:w-[30%] bg-primary border border-primary rounded-xl text-white leading-[17px] flex flex-col items-start">
+        <div className="w-full flex items-start gap-10 mt-4 md:mt-10">
+          <div className="w-full md:w-[30%] bg-primary border border-primary rounded-xl text-white leading-[17px] flex flex-col items-start overflow-hidden">
             {section.collection.map((collection) => (
-              <button className="p-3" key={collection.id}>
+              <button
+                className={`p-3 w-full text-left transition duration-300 ${
+                  activeTab === collection.id
+                    ? "bg-[#FEEFE2] text-primary"
+                    : "bg-transparent"
+                }`}
+                key={collection.id}
+                onClick={() => setActiveTab(collection.id)}
+              >
                 {collection.description}
               </button>
             ))}
           </div>
           <div className="relative w-full md:w-[70%]">
-            <Image src={tigerMask} alt="img" className="absolute top-10 left-1/2 translate-x-[-50%]" />
-            {section.collection.map((collection) => (
-              <div key={collection.id}>
-                <h3 className="section-title">{collection.description}</h3>
-                <BlocksRenderer
-                  content={section.content}
-                  blocks={{
-                    paragraph: ({ children }) => (
-                      <p data-aos="fade-left" data-aos-duration="1000">
-                        {children}
-                      </p>
-                    ),
-                    heading: ({ children, level }) => {
-                      switch (level) {
-                        case 1:
-                          return <h1>{children}</h1>;
-                        case 2:
-                          return <h2>{children}</h2>;
-                        case 3:
-                          return <h3>{children}</h3>;
-                        case 4:
-                          return <h4>{children}</h4>;
-                        case 5:
-                          return <h5>{children}</h5>;
-                        case 6:
-                          return <h6>{children}</h6>;
-                        default:
-                          return <h1>{children}</h1>;
-                      }
-                    },
-                    list: (props) => {
-                      if (props.format === "ordered") {
+            <Image
+              src={tigerMask}
+              alt="img"
+              className="absolute top-10 left-1/2 translate-x-[-50%]"
+            />
+            {section.collection.map((collection) => {
+              if (collection.id !== activeTab) return null;
+
+              return (
+                <div key={collection.id}>
+                  <h3 className="section-title">{collection.description}</h3>
+                  <BlocksRenderer
+                    content={collection.content}
+                    blocks={{
+                      paragraph: ({ children }) => (
+                        <p className="pt-3 md:pt-5" data-aos="fade-left" data-aos-duration="1000">
+                          {children}
+                        </p>
+                      ),
+                      heading: ({ children, level }) => {
+                        switch (level) {
+                          case 1:
+                            return <h1>{children}</h1>;
+                          case 2:
+                            return <h2>{children}</h2>;
+                          case 3:
+                            return <h3>{children}</h3>;
+                          case 4:
+                            return <h4>{children}</h4>;
+                          case 5:
+                            return <h5>{children}</h5>;
+                          case 6:
+                            return <h6>{children}</h6>;
+                          default:
+                            return <h1>{children}</h1>;
+                        }
+                      },
+                      list: (props) => {
+                        if (props.format === "ordered") {
+                          return (
+                            <ol className="!pl-0" data-aos="fade-left" data-aos-duration="1000">
+                              {props.children}
+                            </ol>
+                          );
+                        }
                         return (
-                          <ol data-aos="fade-left" data-aos-duration="1000">
+                          <ul data-aos="fade-left" data-aos-duration="1000">
                             {props.children}
-                          </ol>
+                          </ul>
                         );
-                      }
-                      return (
-                        <ul data-aos="fade-left" data-aos-duration="1000">
-                          {props.children}
-                        </ul>
-                      );
-                    },
-                    "list-item": (props) => <li>{props.children}</li>,
-                    link: ({ children, url }) => (
-                      <Link href={url}>{children}</Link>
-                    ),
-                  }}
-                  modifiers={{
-                    bold: ({ children }) => <strong>{children}</strong>,
-                    italic: ({ children }) => (
-                      <span className="italic">{children}</span>
-                    ),
-                  }}
-                />
-              </div>
-            ))}
+                      },
+                      "list-item": (props) => <li className="pt-3 md:pt-5">{props.children}</li>,
+                      link: ({ children, url }) => (
+                        <Link href={url}>{children}</Link>
+                      ),
+                    }}
+                    modifiers={{
+                      bold: ({ children }) => <strong>{children}</strong>,
+                      italic: ({ children }) => (
+                        <span className="italic">{children}</span>
+                      ),
+                    }}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
-
       </div>
     </section>
   );
