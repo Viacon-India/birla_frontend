@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import SectionSelection from "@/app/components/section/section";
+import SectionSelection from "@/app/components/selection/sectionLayout";
 import { getStrapiMedia } from "@/lib/utils";
 import Navbar from "@/app/components/navbar/navbar";
 import Footer from "@/app/components/footer/footer";

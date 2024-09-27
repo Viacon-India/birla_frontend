@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { PageBanner, PageEnd, Float } from "../pageCommon/pageCommon";
-import SectionSelection from "../section/section";
+import SectionSelection from "../selection/sectionLayout";
 import Link from "next/link";
 import Image from "next/image";
 import BGTiger2 from "../../assets/images/tiger-mask2.png";

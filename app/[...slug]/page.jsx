@@ -5,7 +5,7 @@ import { getStrapiMedia } from "@/lib/utils";
 
 import Navbar from "@/app/components/navbar/navbar";
 import Footer from "@/app/components/footer/footer";
-import PageSelection from "@/app/components/section/page";
+import PageSelection from "@/app/components/selection/pageLayout";
 
 export default function Page({ params }) {
   const [slugs, setSlugs] = useState(params.slug);

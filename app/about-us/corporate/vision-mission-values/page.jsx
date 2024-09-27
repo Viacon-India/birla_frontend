@@ -48,7 +48,7 @@ import man9 from "../../../assets/images/man9.png";
 import man10 from "../../../assets/images/man10.png";
 import man11 from "../../../assets/images/man11.png";
 import tiger from "../../../assets/images/tiger8.png";
-import SectionSelection from "@/app/components/section/section";
+import SectionSelection from "@/app/components/selection/sectionLayout";
 
 export default function Leadership({ params }) {
   const slugs = params.slug;

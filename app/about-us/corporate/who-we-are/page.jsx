@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { getStrapiMedia } from "@/lib/utils";
-import SectionSelection from "@/app/components/section/section";
+import SectionSelection from "@/app/components/selection/sectionLayout";
 import Navbar from "@/app/components/navbar/navbar";
 import Footer from "@/app/components/footer/footer";
 import { PageBanner } from "@/app/components/pageCommon/pageCommon";
