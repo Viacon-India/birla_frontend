@@ -222,7 +222,7 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
     <section
       className={cn(
         "relative flex pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden",
-        Background ? "bg-[#F8F8F8]" : "bg-white"
+        EndPageData?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
       )}
     >
       {EndPageData && EndPageData?.image ? (

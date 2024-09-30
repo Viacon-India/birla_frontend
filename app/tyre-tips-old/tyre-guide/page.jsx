@@ -20,24 +20,30 @@ import LastBg from "../../assets/images/guide7.png";
 import Link from "next/link";
 import Triangle1 from "../../assets/images/triangle1.png";
 import Triangle2 from "../../assets/images/triangle2.png";
+import SectionSelection from "@/app/components/selection/sectionLayout";
 
-export default function TyreGuide({params}) {
+export default function TyreGuide({ params }) {
   const slugs = params.slug;
 
   const [pageData, setPageData] = useState([]);
   useEffect(() => {
     AOS.init();
     fetch(getStrapiMedia("/api/pages/tyre-guide"))
-    .then((res) => res.json())
-    .then((pages) => {
-      setPageData(pages);
-    });
+      .then((res) => res.json())
+      .then((pages) => {
+        setPageData(pages);
+      });
   }, []);
 
   return (
     <>
       <Navbar />
       <PageBanner Title="Tyre Guide" StaticBanner={Banner} />
+      {pageData?.section &&
+        pageData.section.length > 0 &&
+        pageData.section.map((section) => (
+          <SectionSelection key={section.id} section={section} />
+        ))}
       <section className="page-content mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden">
         <div className="container mx-auto flex flex-col gap-8 md:gap-20 2xl:gap-[120px]">
           <div className="box-content-sec">
