@@ -145,7 +145,7 @@ export default function Page({ params }) {
       )}
       {collection == "products" && (
         <>
-          <section className="pt-[140px] bg-[#F8F8F8]">
+          <section className="pt-[100px] 2xl:pt-[140px] bg-[#F8F8F8]">
             <div className="container mx-auto">
               <div className="flex items-center gap-1">
                 <Link
@@ -187,8 +187,8 @@ export default function Page({ params }) {
                   {pageData?.name}
                 </p>
               </div>
-              <div className="flex gap-[60px] mt-6 pb-[60px]">
-                <div className="productImageWrapper w-full md:w-[60%]">
+              <div className="flex gap-[60px] mt-6 pb-[60px] border-b border-[#C9CDD3]">
+                <div className="productImageWrapper w-full md:w-[55%]">
                   <div className="product-image-sec flex gap-5">
                     <div className="small-img-sec flex flex-col gap-3 2xl:gap-5 w-[80px] 2xl:w-[100px]">
                       {pageData?.gallery?.map((gallery) => (
@@ -281,7 +281,7 @@ export default function Page({ params }) {
                     </div>
                   </div>
                 </div>
-                <div className="product-detail-sec w-ful md:w-[40%]">
+                <div className="product-detail-sec w-ful md:w-[45%]">
                   <h2 className="section-title">{pageData?.name}</h2>
                   <p className="text-[#1A202C] text-[16px] pt-2">
                     {pageData?.description}
@@ -334,7 +334,7 @@ export default function Page({ params }) {
                             );
                           },
                           "list-item": (props) => (
-                            <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-4 text-[#3D434C]">
+                            <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-1 text-[#3D434C]">
                               {props.children}
                             </li>
                           ),
