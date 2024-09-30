@@ -815,7 +815,7 @@ export function TitleContentFull({ section }) {
           section.collection.map((collection) => (
             <>
               {collection?.description && (
-                <h3 className="text-secondary text-[20px] md:text-[24px] font-semibold">
+                <h3 className="section-sub-title">
                   {collection.description}
                 </h3>
               )}
@@ -1919,13 +1919,13 @@ export function SidebarContent({ section }) {
 
               return (
                 <div key={collection.id}>
-                  <h3 className="section-title">{collection.description}</h3>
+                  <h3 className="section-sub-title">{collection.description}</h3>
                   <BlocksRenderer
                     content={collection.content}
                     blocks={{
                       paragraph: ({ children }) => (
                         <p
-                          className="pt-3 md:pt-5"
+                          className="pt-2 md:pt-4"
                           data-aos="fade-left"
                           data-aos-duration="1000"
                         >

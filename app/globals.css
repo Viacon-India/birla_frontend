@@ -480,6 +480,9 @@ text-white transition-all duration-500 relative hover:left-[-190px]
 .section-title{
   @apply text-secondary text-[22px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px]
 }
+.section-sub-title{
+  @apply text-secondary text-[22px] md:text-[28px] 2xl:text-[32px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] mb-2
+}
 .about-title{
   @apply text-secondary text-[36px] md:text-[40px] 2xl:text-[48px] font-bold leading-[1.2] flex gap-3 items-center !capitalize pl-3 mt-3
   before:content-[""] before:w-[3px] before:h-[80%] before:bg-primary before:absolute before:left-0 before:rounded-[100px]
