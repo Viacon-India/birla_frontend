@@ -62,6 +62,9 @@ export default function SectionSelection({ section, Background, right }) {
       {section.__component == "section.sidebar-content" && (
         <SidebarContent section={section} />
       )}
+      {section.__component == "section.credit" && (
+        <CreditContent section={section} />
+      )}
     </>
   );
 }
@@ -334,20 +337,24 @@ export function ImageTitleContent({ section }) {
           </figure>
 
           <div className="box-content-sec relative md:w-[55%] flex flex-col">
-            <span
-              className="section-heading"
-              data-aos="fade-left"
-              data-aos-duration="500"
-            >
-              {section?.heading}
-            </span>
-            <div
-              className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
-              data-aos="fade-left"
-              data-aos-duration="500"
-            >
-              <h3 className="section-title">{section?.title}</h3>
-            </div>
+            {section?.heading && (
+              <span
+                className="section-heading"
+                data-aos="fade-left"
+                data-aos-duration="500"
+              >
+                {section.heading}
+              </span>
+            )}
+            {section?.title && (
+              <div
+                className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+                data-aos="fade-left"
+                data-aos-duration="500"
+              >
+                <h3 className="section-title">{section.title}</h3>
+              </div>
+            )}
             {section?.content && section.content.length > 0 && (
               <BlocksRenderer
                 content={section.content}
@@ -364,7 +371,11 @@ export function ImageTitleContent({ section }) {
                       case 2:
                         return <h2>{children}</h2>;
                       case 3:
-                        return <h3>{children}</h3>;
+                        return (
+                          <h3 data-aos="fade-left" data-aos-duration="1000">
+                            {children}
+                          </h3>
+                        );
                       case 4:
                         return <h4>{children}</h4>;
                       case 5:
@@ -472,14 +483,30 @@ export function Accordion({ section }) {
       )}
     >
       <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
-        <div>
-          <span className="section-heading">{section?.heading}</span>
-          <div className="section-title-wrapper">
-            <h3 className="section-title">{section?.title}</h3>
+        {section?.heading && section?.title && (
+          <div>
+            {section?.heading && (
+              <span
+                className="section-heading"
+                data-aos="fade-left"
+                data-aos-duration="500"
+              >
+                {section.heading}
+              </span>
+            )}
+            {section?.title && (
+              <div
+                className="section-title-wrapper"
+                data-aos="fade-left"
+                data-aos-duration="500"
+              >
+                <h3 className="section-title">{section.title}</h3>
+              </div>
+            )}
           </div>
-        </div>
-        <div className="flex flex-col gap-6">
-          {section?.pre_content && section.pre_content.length > 0 && (
+        )}
+        {section?.pre_content && section.pre_content.length > 0 && (
+          <div className="flex flex-col gap-6">
             <BlocksRenderer
               content={section.pre_content}
               blocks={{
@@ -515,9 +542,14 @@ export function Accordion({ section }) {
                 ),
               }}
             />
+          </div>
+        )}
+        <div
+          className={cn(
+            "flex flex-col gap-4 md:gap-10",
+            section?.settings?.right ? "md:flex-row-reverse" : "md:flex-row"
           )}
-        </div>
-        <div class="flex flex-col md:flex-row gap-4 md:gap-10">
+        >
           {section?.images && section.images.length > 0 && (
             <>
               {section.images.length > 1 ? (
@@ -642,8 +674,9 @@ export function Accordion({ section }) {
             </div>
           )}
         </div>
-        <div className="flex flex-col gap-6">
-          {section?.post_content && section.post_content.length > 0 && (
+
+        {section?.post_content && section.post_content.length > 0 && (
+          <div className="flex flex-col gap-6">
             <BlocksRenderer
               content={section.post_content}
               blocks={{
@@ -679,8 +712,8 @@ export function Accordion({ section }) {
                 ),
               }}
             />
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -1826,7 +1859,7 @@ export function SidebarContent({ section }) {
       <div class="container mx-auto">
         <span className="section-heading">{section?.heading}</span>
         <div className="section-title-wrapper mb-4 md:mb-8 2xl:mb-10">
-          <h3 className="section-title">{section?.title}</h3>
+          <h2 className="section-title">{section?.title}</h2>
         </div>
         <BlocksRenderer
           content={section.content}
@@ -1953,6 +1986,48 @@ export function SidebarContent({ section }) {
               );
             })}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function CreditContent({ section }) {
+  return (
+    <section className="mt-8 md:mt-12 2xl:mt-[16px]">
+      <div class="container mx-auto">
+        <div class="w-full bg-secondary rounded-[12px] flex flex-col items-center">
+          <BlocksRenderer
+            content={section.content}
+            blocks={{
+              paragraph: ({ children }) => <p className="!text-[#FFFFFF] text-[24px] font-[300] py-6">{children}</p>,
+              heading: ({ children, level }) => {
+                switch (level) {
+                  case 1:
+                    return <h1>{children}</h1>;
+                  case 2:
+                    return <h2>{children}</h2>;
+                  case 3:
+                    return <h3>{children}</h3>;
+                  case 4:
+                    return <h4>{children}</h4>;
+                  case 5:
+                    return <h5>{children}</h5>;
+                  case 6:
+                    return <h6>{children}</h6>;
+                  default:
+                    return <h1>{children}</h1>;
+                }
+              },
+              link: ({ children, url }) => <Link className="font-bold !underline !underline-offset-2" href={url}>{children}</Link>,
+            }}
+            modifiers={{
+              bold: ({ children }) => <strong>{children}</strong>,
+              italic: ({ children }) => (
+                <span className="italic">{children}</span>
+              ),
+            }}
+          />
         </div>
       </div>
     </section>

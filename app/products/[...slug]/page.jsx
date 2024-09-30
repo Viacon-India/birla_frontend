@@ -137,7 +137,56 @@ export default function Page({ params }) {
       )}
       {collection == "products" && (
         <>
-          <p>Product detail</p>
+          <section className="pt-[140px]">
+            <div className="container mx-auto">
+              <div className="flex items-center gap-1">
+                <Link
+                  href=""
+                  className="flex gap-2 items-center text-[#1A1D21] text-[16px] font-medium pr-5"
+                >
+                  <svg
+                    width="9"
+                    height="14"
+                    viewBox="0 0 9 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.5 0.75L1.25 7L7.5 13.25"
+                      stroke="#1A1D21"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  Back
+                </Link>
+                <Link
+                  href="/"
+                  className="text-[14px] text-[#727C8D] hover:text-secondary active:text-secondary"
+                >
+                  Birla Tyres
+                </Link>
+                <Link
+                  href={`${pageData?.segment?.permalink}`}
+                  className="text-[14px] text-[#727C8D] hover:text-secondary active:text-secondary"
+                >
+                  <span className="pr-1">/</span>
+                  {pageData?.segment?.name}
+                </Link>
+                <p className="text-[14px] text-secondary">
+                  <span className="pr-1">/</span>
+                  {pageData?.name}
+                </p>
+              </div>
+              <div className="flex gap-[60px]">
+                <div className="product-image-sec w-ful md:w-[60%] flex gap-5">
+                  
+                </div>
+                <div className="product-detail-sec w-ful md:w-[40%]">Product Detail</div>
+              </div>
+            </div>
+          </section>
         </>
       )}
       <PageEnd EndPageData={pageData?.end} EndStaticImage={LastBg} />
