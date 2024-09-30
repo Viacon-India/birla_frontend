@@ -149,9 +149,10 @@ export default function Page({ params }) {
             <div className="container mx-auto">
               <div className="flex items-center gap-1">
                 <Link
-                  href=""
+                  href="" 
                   className="flex gap-2 items-center text-[#1A1D21] text-[16px] font-medium pr-5"
                 >
+                  
                   <svg
                     width="9"
                     height="14"
