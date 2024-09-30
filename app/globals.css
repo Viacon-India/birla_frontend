@@ -625,6 +625,13 @@ a.current_dot {
   @apply !top-[35%] 2xl:!top-[40%]
 }
 
+.productDetailSwiper .swiper-button-next{
+  @apply !top-[50%] !right-[4%]
+}
+.productDetailSwiper .swiper-button-prev{
+  @apply !top-[50%] !left-[4%]
+}
+
 
 
 /* sustainability */

@@ -1,13 +1,17 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { FreeMode, Autoplay, Navigation } from "swiper/modules";
+import "swiper/css/navigation";
 import { getStrapiMedia } from "@/lib/utils";
 import SectionSelection from "@/app/components/selection/sectionLayout";
 import "aos/dist/aos.css";
 import "swiper/css/navigation";
 import GradualSpacing from "@/components/GradualSpacing";
 import Link from "next/link";
-
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Navbar from "@/app/components/navbar/navbar";
 import Footer from "@/app/components/footer/footer";
 import Product from "@/app/components/product/card";
@@ -15,6 +19,10 @@ import { PageBanner } from "@/app/components/pageCommon/pageCommon";
 import { PageEnd } from "@/app/components/pageCommon/pageCommon";
 import Banner from "@/app/assets/images/investor-relation-banner.jpg";
 import LastBg from "@/app/assets/images/investor-relation-next.png";
+import Image from "next/image";
+import load from "@/app/assets/images/load.png";
+import pattern from "@/app/assets/images/pattern.png";
+import construction from "@/app/assets/images/axle.jpg";
 
 export default function Page({ params }) {
   const [slugs, setSlugs] = useState(params.slug);
@@ -137,7 +145,7 @@ export default function Page({ params }) {
       )}
       {collection == "products" && (
         <>
-          <section className="pt-[140px]">
+          <section className="pt-[140px] bg-[#F8F8F8]">
             <div className="container mx-auto">
               <div className="flex items-center gap-1">
                 <Link
@@ -179,11 +187,171 @@ export default function Page({ params }) {
                   {pageData?.name}
                 </p>
               </div>
-              <div className="flex gap-[60px]">
-                <div className="product-image-sec w-ful md:w-[60%] flex gap-5">
-                  
+              <div className="flex gap-[60px] mt-6 pb-[60px]">
+                <div className="productImageWrapper w-full md:w-[60%]">
+                  <div className="product-image-sec flex gap-5">
+                    <div className="small-img-sec flex flex-col gap-3 2xl:gap-5 w-[80px] 2xl:w-[100px]">
+                      {pageData?.gallery?.map((gallery) => (
+                        <figure
+                          className="w-full h-[80px] 2xl:h-[100px] bg-primary rounded-[12px] p-2"
+                          key={gallery.id}
+                        >
+                          <Image
+                            width={gallery?.width}
+                            height={gallery?.height}
+                            src={getStrapiMedia(gallery?.url)}
+                            alt={gallery?.alternativeText}
+                            className="w-full h-full object-contain"
+                          />
+                        </figure>
+                      ))}
+                    </div>
+                    <div className="single-image-slider relative w-[85%] h-full bg-[#ffffff] rounded-[12px]">
+                      <span className="bg-primary py-2 px-8 rounded-tr-[12px] text-white text-[18px] font-bold absolute right-0 top-0">
+                        Premium
+                      </span>
+                      <Swiper
+                        navigation={true}
+                        freeMode={true}
+                        speed={500}
+                        loop={true}
+                        pagination={{
+                          clickable: true,
+                        }}
+                        breakpoints={{
+                          0: {
+                            slidesPerView: 1,
+                          },
+                        }}
+                        modules={[FreeMode, Autoplay, Navigation]}
+                        className="productDetailSwiper !py-10"
+                      >
+                        {pageData?.gallery?.map((gallery) => (
+                          <SwiperSlide
+                            key={gallery.id}
+                            className="!flex !justify-center"
+                          >
+                            <figure className="w-[200px] 2xl:w-[260px] h-[280px] 2xl:h-[380px]">
+                              <Image
+                                width={gallery?.width}
+                                height={gallery?.height}
+                                src={getStrapiMedia(gallery?.url)}
+                                alt={gallery?.alternativeText}
+                                className="w-full h-full object-contain"
+                              />
+                            </figure>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+                  </div>
+                  <div className="patter-description flex items-center justify-between mt-6">
+                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
+                      <Image src={load} alt="load-icon" />
+                      <div className="flex flex-col">
+                        <p className="text-[#1A1D21] text-[18px] font-semibold">
+                          Load Type
+                        </p>
+                        <span className="text-[16px] text-[#4F5662]">
+                          {pageData?.type?.load}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
+                      <Image src={pattern} alt="load-icon" />
+                      <div className="flex flex-col">
+                        <p className="text-[#1A1D21] text-[18px] font-semibold">
+                          Pattern
+                        </p>
+                        <span className="text-[16px] text-[#4F5662]">
+                          {pageData?.type?.pattern}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
+                      <Image src={construction} alt="load-icon" />
+                      <div className="flex flex-col">
+                        <p className="text-[#1A1D21] text-[18px] font-semibold">
+                          Construction
+                        </p>
+                        <span className="text-[16px] text-[#4F5662]">
+                          {pageData?.type?.construction}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="product-detail-sec w-ful md:w-[40%]">Product Detail</div>
+                <div className="product-detail-sec w-ful md:w-[40%]">
+                  <h2 className="section-title">{pageData?.name}</h2>
+                  <p className="text-[#1A202C] text-[16px] pt-2">
+                    {pageData?.description}
+                  </p>
+                  {pageData?.details?.map((details) => (
+                    <>
+                      {details.description && (
+                        <p className="pt-6 text-[#3D434C] text-[28px] font-medium border-t border-[#DEE1E5]">
+                          {details.description}
+                        </p>
+                      )}
+                      <BlocksRenderer
+                        content={details?.content}
+                        blocks={{
+                          paragraph: ({ children }) => (
+                            <p className="text-[#4F5662] text-[14px] md:text-[15px] 2xl:text-[16px] pb-4 md:pb-6">
+                              {children}
+                            </p>
+                          ),
+                          heading: ({ children, level }) => {
+                            switch (level) {
+                              case 1:
+                                return <h1>{children}</h1>;
+                              case 2:
+                                return <h2>{children}</h2>;
+                              case 3:
+                                return <h3>{children}</h3>;
+                              case 4:
+                                return <h4>{children}</h4>;
+                              case 5:
+                                return <h5>{children}</h5>;
+                              case 6:
+                                return <h6>{children}</h6>;
+                              default:
+                                return <h1>{children}</h1>;
+                            }
+                          },
+                          list: (props) => {
+                            if (props.format === "ordered") {
+                              return (
+                                <ol className="list-decimal mt-4 md:mt-6 2xl:mt-10 pl-4">
+                                  {props.children}
+                                </ol>
+                              );
+                            }
+                            return (
+                              <ul className="list-disc mt-4 pl-6 pb-4 md:pb-6">
+                                {props.children}
+                              </ul>
+                            );
+                          },
+                          "list-item": (props) => (
+                            <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-4 text-[#3D434C]">
+                              {props.children}
+                            </li>
+                          ),
+                          link: ({ children, url }) => (
+                            <Link href={url}>{children}</Link>
+                          ),
+                        }}
+                        modifiers={{
+                          bold: ({ children }) => <strong>{children}</strong>,
+                          italic: ({ children }) => (
+                            <span className="italic">{children}</span>
+                          ),
+                        }}
+                      />
+                    </>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
