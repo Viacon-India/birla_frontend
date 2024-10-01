@@ -149,10 +149,9 @@ export default function Page({ params }) {
             <div className="container mx-auto">
               <div className="flex items-center gap-1">
                 <Link
-                  href="" 
+                  href=""
                   className="flex gap-2 items-center text-[#1A1D21] text-[16px] font-medium pr-5"
                 >
-                  
                   <svg
                     width="9"
                     height="14"
@@ -188,7 +187,7 @@ export default function Page({ params }) {
                   {pageData?.name}
                 </p>
               </div>
-              <div className="flex gap-[60px] mt-6 pb-[60px] border-b border-[#C9CDD3]">
+              <div className="flex gap-[60px] mt-6 pb-8 md:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
                 <div className="productImageWrapper w-full md:w-[55%]">
                   <div className="product-image-sec flex gap-5">
                     <div className="small-img-sec flex flex-col gap-3 2xl:gap-5 w-[80px] 2xl:w-[100px]">
@@ -352,6 +351,93 @@ export default function Page({ params }) {
                       />
                     </>
                   ))}
+                </div>
+              </div>
+              <div className="table-sec pt-8 md:pt-12 2xl:pt-[60px]">
+                <div className="flex justify-between">
+                  <div className="flex items-center gap-4 2xl:gap-8">
+                    <h2 className="text-[#1A202C] text-[24px] 2xl:text-[32px] font-medium">
+                      Technical Specifications
+                    </h2>
+                    <div className="cat-btn-sec flex items-center gap-3 relative z-10">
+                      <Link
+                        href=""
+                        className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]"
+                        target="_blank"
+                      >
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M14.875 9.875V14.25C14.875 14.4158 14.8092 14.5747 14.6919 14.6919C14.5747 14.8092 14.4158 14.875 14.25 14.875H1.75C1.58424 14.875 1.42527 14.8092 1.30806 14.6919C1.19085 14.5747 1.125 14.4158 1.125 14.25V9.875M4.71875 6.59461L8 9.875L11.2812 6.59461M8 1.125V9.8727"
+                            stroke="#F5811E"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                        Download Product Leaflet
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="country-selection">
+                    <p className="text-[16px] text-[#1A1D21] mb-3 font-medium">
+                      Select Standard
+                    </p>
+                    <div className="flex items-center gap-3 2xl:gap-5">
+                      <input type="radio" checked />
+                      <label className="uppercase text-[14px] font-medium text-secondary">
+                        USA
+                      </label>
+
+                      <input type="radio" />
+                      <label className="uppercase text-[14px] font-medium text-secondary">
+                        European
+                      </label>
+
+                      <input type="radio" />
+                      <label className="uppercase text-[14px] font-medium text-secondary">
+                        International
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div className="product-detail-table w-full overflow-x-auto mt-3">
+                  <table>
+                    {pageData?.section?.map((section) => (
+                      <thead>
+                        {Object.keys(section.row[0])
+                          .filter((key) => key !== "id")
+                          .map((key) => (
+                            <th key={key}>{key}</th>
+                          ))}
+                      </thead>
+                    ))}
+                    <tbody>
+                      {pageData?.section?.map((section) =>
+                        section.row.map((rowData) => (
+                          <tr key={rowData.id}>
+                            <td>{rowData.size}</td>
+                            <td>{rowData.version}</td>
+                            <td>{rowData.tra_code}</td>
+                            <td>{rowData.pr}</td>
+                            <td>{rowData.rim_rec}</td>
+                            <td>{rowData.rim_alt}</td>
+                            <td>{rowData.ow}</td>
+                            <td>{rowData.od}</td>
+                            <td>{rowData.slr}</td>
+                            <td>{rowData.rc}</td>
+                            <td>{rowData.type}</td>
+                            <td>{rowData.ece}</td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

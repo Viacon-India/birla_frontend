@@ -1430,6 +1430,16 @@ input[type=file]::file-selector-button {
 .box-content-sec th {
   @apply bg-[#DEE1E5]
 }
+/* product-detail-table */
+.product-detail-table table {
+  @apply w-full border-collapse
+}
+.product-detail-table th, td {
+  @apply border border-[#DEE1E5] p-2 text-left
+}
+.product-detail-table th {
+  @apply bg-[#DEE1E5]
+}
 
 
 /* Tyre Guide page */
