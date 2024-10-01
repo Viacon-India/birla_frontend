@@ -1158,13 +1158,13 @@ a.current_dot {
   @apply text-[14px] md:text-[15px] 2xl:text-[16px] text-[#454545]
  }
  .form-content{
-  @apply bg-[#FFFFFF] border border-[#DEE1E5] p-6 md:p-[40px] 2xl:p-[60px] rounded-[12px] relative
+  @apply bg-[#FFFFFF] border border-[#DEE1E5] p-6 md:p-[20px] 2xl:p-[40px] rounded-[12px] relative
  }
  .form-btn-sec{
-  @apply flex w-full mb-6 2xl:mb-10 border border-secondary rounded-[12px] 
+  @apply flex w-full mb-4 2xl:mb-10 border border-secondary rounded-[12px] 
  }
  .form-btn{
-  @apply w-1/2 flex justify-center items-center py-[12px] rounded-[10px] text-[14px] md:text-[18px] font-semibold text-secondary
+  @apply w-1/2 flex justify-center items-center py-2 2xl:py-[12px] rounded-[10px] text-[14px] 2xl:text-[18px] font-semibold text-secondary
  }
  .form-active-btn{
   @apply bg-secondary text-white
@@ -1474,14 +1474,14 @@ input[type=file]::file-selector-button {
   @apply w-full flex flex-col
  }
  .tyre-form-label{
-  @apply text-[#1A1D21] text-[14px] md:text-[15px] font-semibold mb-[6px]
+  @apply text-[#1A1D21] text-[14px] 2xl:text-[15px] font-semibold mb-1 2xl:mb-[6px]
  }
  .tyre-form-input{
-  @apply outline-none p-3 text-[14px] placeholder:text-[14px] 
-  placeholder:text-[#9DA4B0] border border-[#B3B8C2] rounded-[4px]
+  @apply outline-none p-3 text-[14px] placeholder:!text-[12px] 
+  placeholder:text-[#9DA4B0] border border-[#B3B8C2] rounded-[4px] 
  }
  .tyre-form-select{
-  @apply p-3 text-[#9DA4B0] text-[14px] outline-none border border-[#B3B8C2] rounded-[4px]
+  @apply px-3 py-1 2xl:p-3 text-[#9DA4B0] text-[14px] outline-none border border-[#B3B8C2] rounded-[4px]
  }
  .tyre-form-select option{
   @apply !p-2 text-[#000000] text-[15px] 2xl:text-[16px]
