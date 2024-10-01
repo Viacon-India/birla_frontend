@@ -11,6 +11,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Triangle1 from "@/app/assets/images/triangle1.png";
 import Triangle2 from "@/app/assets/images/triangle2.png";
+import Triangle3 from "@/app/assets/images/triangle3.png";
+import Triangle4 from "@/app/assets/images/triangle4.png";
 import BGTiger2 from "../../assets/images/tiger-mask2.png";
 import tigerMask from "@/app/assets/images/tiger-mask2.png";
 import tiger from "@/app/assets/images/tiger.png";
@@ -558,7 +560,7 @@ export function Accordion({ section }) {
                     <Image
                       key={image.id}
                       className={cn(
-                        "w-full h-[240px] 2xl:h-[265px] rounded-[12px]",
+                        "w-full h-[240px] 2xl:h-[290px] rounded-[12px]",
                         index == "0" && "col-span-2"
                       )}
                       width={image?.width}
@@ -815,9 +817,7 @@ export function TitleContentFull({ section }) {
           section.collection.map((collection) => (
             <>
               {collection?.description && (
-                <h3 className="section-sub-title">
-                  {collection.description}
-                </h3>
+                <h3 className="section-sub-title">{collection.description}</h3>
               )}
               {collection?.content && collection.content.length > 0 && (
                 <BlocksRenderer
@@ -979,35 +979,60 @@ export function Gallery({ section }) {
                   </span>
                 )}
               </figure>
-              <div className="new-main grid grid-cols-2 gap-6 md:gap-10">
+              <div
+                className={cn(
+                  "new-main relative grid grid-cols-2 gap-6 md:gap-10 overflow-hidden rounded-[12px]",
+                  section?.collection_name ? "" : "p-[40px]"
+                )}
+              >
                 {section.collection.map((image, index) => (
-                  <div
-                    className="value-overlay-card relative overflow-hidden rounded-[12px] group"
-                    key={image.id}
-                  >
-                    <figure
-                      className="w-full h-full"
-                      data-aos={AOCClass[index]}
-                      data-aos-duration="1000"
+                  <>
+                    {!section?.collection_name && (
+                      <>
+                        <Image
+                          className="absolute top-0 left-0 z-1"
+                          src={Triangle3}
+                          alt="img"
+                          data-aos={AOCClass[0]}
+                          data-aos-duration="1000"
+                        />
+                        <Image
+                          className="absolute bottom-0 right-0 z-1"
+                          src={Triangle4}
+                          alt="img"
+                          data-aos={AOCClass[3]}
+                          data-aos-duration="1000"
+                        />
+                      </>
+                    )}
+                    <div
+                      className="value-overlay-card relative overflow-hidden rounded-[12px] group"
+                      key={image.id}
                     >
-                      <Image
-                        className="w-full h-full object-cover"
-                        width={image.image?.width}
-                        height={image.image?.height}
-                        src={getStrapiMedia(image.image?.url)}
-                        alt={image.image?.alternativeText}
-                      />
-                      {section?.collection_name && (
-                        <div
-                          className="value-overlay opacity-75"
-                          style={{ backgroundColor: BGColor[index] }}
-                        >
-                          <h3>{image?.title}</h3>
-                          <p>{image?.description}</p>
-                        </div>
-                      )}
-                    </figure>
-                  </div>
+                      <figure
+                        className="relative z-2 w-full h-full"
+                        data-aos={AOCClass[index]}
+                        data-aos-duration="1000"
+                      >
+                        <Image
+                          className="w-full h-full object-cover"
+                          width={image.image?.width}
+                          height={image.image?.height}
+                          src={getStrapiMedia(image.image?.url)}
+                          alt={image.image?.alternativeText}
+                        />
+                        {section?.collection_name && (
+                          <div
+                            className="value-overlay opacity-75"
+                            style={{ backgroundColor: BGColor[index] }}
+                          >
+                            <h3>{image?.title}</h3>
+                            <p>{image?.description}</p>
+                          </div>
+                        )}
+                      </figure>
+                    </div>
+                  </>
                 ))}
               </div>
             </div>
@@ -1919,7 +1944,9 @@ export function SidebarContent({ section }) {
 
               return (
                 <div key={collection.id}>
-                  <h3 className="section-sub-title">{collection.description}</h3>
+                  <h3 className="section-sub-title">
+                    {collection.description}
+                  </h3>
                   <BlocksRenderer
                     content={collection.content}
                     blocks={{
@@ -2000,7 +2027,11 @@ export function CreditContent({ section }) {
           <BlocksRenderer
             content={section.content}
             blocks={{
-              paragraph: ({ children }) => <p className="!text-[#FFFFFF] text-[24px] font-[300] py-6">{children}</p>,
+              paragraph: ({ children }) => (
+                <p className="!text-[#FFFFFF] text-[24px] font-[300] py-6">
+                  {children}
+                </p>
+              ),
               heading: ({ children, level }) => {
                 switch (level) {
                   case 1:
@@ -2019,7 +2050,14 @@ export function CreditContent({ section }) {
                     return <h1>{children}</h1>;
                 }
               },
-              link: ({ children, url }) => <Link className="font-bold !underline !underline-offset-2" href={url}>{children}</Link>,
+              link: ({ children, url }) => (
+                <Link
+                  className="font-bold !underline !underline-offset-2"
+                  href={url}
+                >
+                  {children}
+                </Link>
+              ),
             }}
             modifiers={{
               bold: ({ children }) => <strong>{children}</strong>,

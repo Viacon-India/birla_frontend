@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import {  FreeMode, Autoplay, Navigation } from "swiper/modules";
+import { FreeMode, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 import Image from "next/image";
 import img1 from "../../assets/images/truck1.jpg";
@@ -70,9 +70,9 @@ export default function Innovation() {
         </div>
         <div class="innovative-slider mt-5 2xl:mt-8">
           <Swiper
-          navigation={true}
+            navigation={true}
             freeMode={true}
-            speed= {2400}
+            speed={2400}
             loop={true}
             autoplay={{
               delay: 2500,
@@ -84,11 +84,11 @@ export default function Innovation() {
             breakpoints={{
               0: {
                 slidesPerView: 1.2,
-                spaceBetween : 20
+                spaceBetween: 20,
               },
               768: {
                 slidesPerView: 3,
-                spaceBetween: 48
+                spaceBetween: 48,
               },
             }}
             modules={[FreeMode, Autoplay, Navigation]}
@@ -101,11 +101,13 @@ export default function Innovation() {
                 data-aos-duration="1000"
               >
                 <figure>
-                  <Image
-                    className="innovation-card-image"
-                    src={img1}
-                    alt="card"
-                  />
+                  <Link href="/products/truck-bus-bias">
+                    <Image
+                      className="innovation-card-image"
+                      src={img1}
+                      alt="card"
+                    />
+                  </Link>
                 </figure>
                 <h2>Truck Bus Bias</h2>
                 <p>Progess in Every Mile</p>
@@ -125,11 +127,13 @@ export default function Innovation() {
                 data-aos-delay="250"
               >
                 <figure>
-                  <Image
-                    className="innovation-card-image"
-                    src={img2}
-                    alt="card"
-                  />
+                  <Link href="/products/off-the-road">
+                    <Image
+                      className="innovation-card-image"
+                      src={img2}
+                      alt="card"
+                    />
+                  </Link>
                 </figure>
                 <h2>Off The Road</h2>
                 <p>Ready for Every Challenge</p>
@@ -149,11 +153,13 @@ export default function Innovation() {
                 data-aos-delay="500"
               >
                 <figure>
-                  <Image
-                    className="innovation-card-image"
-                    src={img3}
-                    alt="card"
-                  />
+                  <Link href="/products/agriculture">
+                    <Image
+                      className="innovation-card-image"
+                      src={img3}
+                      alt="card"
+                    />
+                  </Link>
                 </figure>
                 <h2>Agriculture</h2>
                 <p>Strength in Every Turn</p>
@@ -172,11 +178,13 @@ export default function Innovation() {
                 data-aos-duration="1000"
               >
                 <figure>
-                  <Image
-                    className="innovation-card-image"
-                    src={img1}
-                    alt="card"
-                  />
+                  <Link href="/products/truck-bus-bias">
+                    <Image
+                      className="innovation-card-image"
+                      src={img1}
+                      alt="card"
+                    />
+                  </Link>
                 </figure>
                 <h2>Truck Bus Bias</h2>
                 <p>Progess in Every Mile</p>
@@ -196,11 +204,13 @@ export default function Innovation() {
                 data-aos-delay="250"
               >
                 <figure>
-                  <Image
-                    className="innovation-card-image"
-                    src={img2}
-                    alt="card"
-                  />
+                  <Link href="/products/off-the-road">
+                    <Image
+                      className="innovation-card-image"
+                      src={img2}
+                      alt="card"
+                    />
+                  </Link>
                 </figure>
                 <h2>Off The Road</h2>
                 <p>Ready for Every Challenge</p>
@@ -220,11 +230,13 @@ export default function Innovation() {
                 data-aos-delay="500"
               >
                 <figure>
-                  <Image
-                    className="innovation-card-image"
-                    src={img3}
-                    alt="card"
-                  />
+                  <Link href="/products/agriculture">
+                    <Image
+                      className="innovation-card-image"
+                      src={img3}
+                      alt="card"
+                    />
+                  </Link>
                 </figure>
                 <h2>Agriculture</h2>
                 <p>Strength in Every Turn</p>

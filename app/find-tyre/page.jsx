@@ -93,7 +93,7 @@ export default function FindTyre() {
                     </div>
                   </div>
                 </div>
-                <div className="filter-form w-full md:w-1/2 md:mx-[150px] 2xl:mx-[200px]">
+                <div className="filter-form w-full md:w-1/2 md:mx-[200px]">
                   <div className="form-content relative z-10">
                     <div className="form-btn-sec">
                       <button
