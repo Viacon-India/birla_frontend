@@ -93,7 +93,7 @@ export default function FindTyre() {
                     </div>
                   </div>
                 </div>
-                <div className="filter-form w-full md:w-1/2 md:mx-[100px] 2xl:mx-[200px]">
+                <div className="filter-form w-full md:w-1/2 md:mx-[150px] 2xl:mx-[200px]">
                   <div className="form-content relative z-10">
                     <div className="form-btn-sec">
                       <button
@@ -123,7 +123,7 @@ export default function FindTyre() {
                     </div>
                     {activeTab === "TBB" && (
                       <div id="TBB">
-                        <form className="w-full flex flex-col gap-3 md:gap-5">
+                        <form className="w-full flex flex-col gap-2 2xl:gap-5">
                           <div className="tyre-form-row">
                             <label className="tyre-form-label" htmlFor="">
                               Select Machinery
@@ -195,7 +195,7 @@ export default function FindTyre() {
                     )}
                     {activeTab === "OTR" && (
                       <div id="OTR">
-                        <form className="w-full flex flex-col gap-3 md:gap-5">
+                        <form className="w-full flex flex-col gap-2 2xl:gap-5">
                           <div className="tyre-form-row">
                             <label className="tyre-form-label" htmlFor="">
                               Select Sub-section
@@ -279,7 +279,7 @@ export default function FindTyre() {
                     )}
                     {activeTab === "AGRI" && (
                       <div id="AGRI">
-                        <form className="w-full flex flex-col gap-3 md:gap-5">
+                        <form className="w-full flex flex-col gap-2 2xl:gap-5">
                           <div className="tyre-form-row">
                             <label className="tyre-form-label" htmlFor="">
                               Select Machinery
@@ -369,7 +369,7 @@ export default function FindTyre() {
           </div>
           {pageData.length > 0 && (
             <>
-              <span className="">Showing {pageData.length} matching products</span>
+              <h3 className="text-[#1A1D21] text-[24px] md:text-[28px] 2xl:text-[32px] font-bold pt-4 md:pt-6 2xl:pt-10">Showing {pageData.length} matching products</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10">
                 {pageData.map((product) => (
                   <Product key={product.id} data={product} />

@@ -409,7 +409,7 @@ export default function Page({ params }) {
                 <div className="product-detail-table w-full overflow-x-auto mt-3">
                   <table>
                     {pageData?.section?.map((section) => (
-                      <thead>
+                      <thead key={section.id}>
                         {Object.keys(section.row[0])
                           .filter((key) => key !== "id")
                           .map((key) => (
