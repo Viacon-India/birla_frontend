@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "../components/navbar/navbar";
@@ -9,9 +10,25 @@ import { Float, MainButton } from "../components/pageCommon/pageCommon";
 import Banner from "../assets/images/find1.jpg";
 import find2 from "../assets/images/find2.png";
 import { PageEnd } from "../components/pageCommon/pageCommon";
+import Product from "@/app/components/product/card";
 
 export default function FindTyre() {
   const [activeTab, setActiveTab] = useState("TBB");
+  const [pageData, setPageData] = useState([]);
+  const handleClick = (e) => {
+    setActiveTab(e);
+    fetchData(e);
+  };
+  const fetchData = async (e) => {
+    fetch(getStrapiMedia("/api/products?filters[segment][name]="+e)).then((res) => res.json()).then((page) => {
+      setPageData(page);
+    });
+  };
+  useEffect(() => {
+    fetchData(activeTab);
+  }, []);
+  
+
   return (
     <>
       <Navbar />
@@ -83,7 +100,7 @@ export default function FindTyre() {
                         className={`form-btn ${
                           activeTab === "TBB" ? "form-active-btn" : ""
                         }`}
-                        onClick={() => setActiveTab("TBB")}
+                        onClick={() => handleClick("TBB")}
                       >
                         TBB
                       </button>
@@ -91,7 +108,7 @@ export default function FindTyre() {
                         className={`form-btn ${
                           activeTab === "OTR" ? "form-active-btn" : ""
                         }`}
-                        onClick={() => setActiveTab("OTR")}
+                        onClick={() => handleClick("OTR")}
                       >
                         OTR
                       </button>
@@ -99,7 +116,7 @@ export default function FindTyre() {
                         className={`form-btn ${
                           activeTab === "AGRI" ? "form-active-btn" : ""
                         }`}
-                        onClick={() => setActiveTab("AGRI")}
+                        onClick={() => handleClick("AGRI")}
                       >
                         AGRI
                       </button>
@@ -350,11 +367,16 @@ export default function FindTyre() {
           <div className="section-title-wrapper">
             <h3 className="section-title">Birla Tyre Products</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10">
-            {activeTab === "TBB" && <h2>Tbb</h2>}
-            {activeTab === "OTR" && <h2>OTR</h2>}
-            {activeTab === "AGRI" && <h2>AGRI</h2>}
-          </div>
+          {pageData.length > 0 && (
+            <>
+              <span className="">Showing {pageData.length} matching products</span>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10">
+                {pageData.map((product) => (
+                  <Product key={product.id} data={product} />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
       <PageEnd
