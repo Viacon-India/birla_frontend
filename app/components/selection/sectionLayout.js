@@ -73,6 +73,12 @@ export default function SectionSelection({ section, Background, right }) {
       {section.__component == "section.tab-image" && (
         <TabImage section={section} />
       )}
+      {section.__component == "section.paralax" && (
+        <Parallax section={section} />
+      )}
+      {section.__component == "section.key-points" && (
+        <KeyPoints section={section} />
+      )}
     </>
   );
 }
@@ -1033,35 +1039,60 @@ export function Gallery({ section }) {
                   </span>
                 )}
               </figure>
-              <div className="new-main grid grid-cols-2 gap-6 md:gap-10">
+              <div
+                className={cn(
+                  "new-main relative grid grid-cols-2 gap-6 md:gap-10 overflow-hidden rounded-[12px]",
+                  section?.collection_name ? "" : "p-[40px]"
+                )}
+              >
                 {section.collection.map((image, index) => (
-                  <div
-                    className="value-overlay-card relative overflow-hidden rounded-[12px] group"
-                    key={image.id}
-                  >
-                    <figure
-                      className="w-full h-full"
-                      data-aos={AOCClass[index]}
-                      data-aos-duration="1000"
+                  <>
+                    {!section?.collection_name && (
+                      <>
+                        <Image
+                          className="absolute top-0 left-0 z-1"
+                          src={Triangle3}
+                          alt="img"
+                          data-aos={AOCClass[0]}
+                          data-aos-duration="1000"
+                        />
+                        <Image
+                          className="absolute bottom-0 right-0 z-1"
+                          src={Triangle4}
+                          alt="img"
+                          data-aos={AOCClass[3]}
+                          data-aos-duration="1000"
+                        />
+                      </>
+                    )}
+                    <div
+                      className="value-overlay-card relative overflow-hidden rounded-[12px] group"
+                      key={image.id}
                     >
-                      <Image
-                        className="w-full h-full object-cover"
-                        width={image.image?.width}
-                        height={image.image?.height}
-                        src={getStrapiMedia(image.image?.url)}
-                        alt={image.image?.alternativeText}
-                      />
-                      {section?.collection_name && (
-                        <div
-                          className="value-overlay opacity-75"
-                          style={{ backgroundColor: BGColor[index] }}
-                        >
-                          <h3>{image?.title}</h3>
-                          <p>{image?.description}</p>
-                        </div>
-                      )}
-                    </figure>
-                  </div>
+                      <figure
+                        className="relative z-2 w-full h-full"
+                        data-aos={AOCClass[index]}
+                        data-aos-duration="1000"
+                      >
+                        <Image
+                          className="w-full h-full object-cover"
+                          width={image.image?.width}
+                          height={image.image?.height}
+                          src={getStrapiMedia(image.image?.url)}
+                          alt={image.image?.alternativeText}
+                        />
+                        {section?.collection_name && (
+                          <div
+                            className="value-overlay opacity-75"
+                            style={{ backgroundColor: BGColor[index] }}
+                          >
+                            <h3>{image?.title}</h3>
+                            <p>{image?.description}</p>
+                          </div>
+                        )}
+                      </figure>
+                    </div>
+                  </>
                 ))}
               </div>
             </div>
@@ -1078,7 +1109,11 @@ export function Gallery({ section }) {
             >
               {section.collection.map((image) => (
                 <figure
-                  className={cn("w-full mb-0 overflow-hidden rounded-[20px] relative cursor-pointer sustainability-figure",section?.compact ? "h-[240px]" : "h-[316px]" ,image?.big ? "col-span-2" : "")}
+                  className={cn(
+                    "w-full mb-0 overflow-hidden rounded-[20px] relative cursor-pointer sustainability-figure",
+                    section?.compact ? "h-[240px]" : "h-[316px]",
+                    image?.big ? "col-span-2" : ""
+                  )}
                   data-aos="flip-left"
                   data-aos-duration="1000"
                   key={image.id}
@@ -1088,7 +1123,10 @@ export function Gallery({ section }) {
                     height={image.image?.height}
                     src={getStrapiMedia(image.image?.url)}
                     alt={image.image?.alternativeText}
-                    className={cn("gallery-sec-image",image?.title ? "" : "hover:scale-125 hover:rotate-[5deg]")}
+                    className={cn(
+                      "gallery-sec-image",
+                      image?.title ? "" : "hover:scale-125 hover:rotate-[5deg]"
+                    )}
                   />
                   {image?.title && (
                     <span className="sustainability-overlay">
@@ -2172,9 +2210,11 @@ export function TabImage({ section }) {
               {section?.collection?.map((collection, index) => (
                 <button
                   className={`w-1/4 flex items-center gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-5 ${
-                    activeTab === "tab-"+index ? "bg-primary !text-[#FFFFFF]" : ""
+                    activeTab === "tab-" + index
+                      ? "bg-primary !text-[#FFFFFF]"
+                      : ""
                   }`}
-                  onClick={() => setActiveTab("tab-"+index)}
+                  onClick={() => setActiveTab("tab-" + index)}
                   key={collection.id}
                 >
                   <Image
@@ -2192,75 +2232,203 @@ export function TabImage({ section }) {
                 </button>
               ))}
             </div>
-            {section?.collection.map((collection, index) => (
-              activeTab === "tab-"+index && (
-                <div className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl overflow-hidden">
-                  {collection?.content &&
-                    <BlocksRenderer
-                      content={collection.content}
-                      blocks={{
-                        paragraph: ({ children }) => (
-                          <p data-aos="fade-down" data-aos-duration="1000">
-                            {children}
-                          </p>
-                        ),
-                        heading: ({ children, level }) => {
-                          switch (level) {
-                            case 1:
-                              return <h1>{children}</h1>;
-                            case 2:
-                              return <h2>{children}</h2>;
-                            case 3:
-                              return <h3>{children}</h3>;
-                            case 4:
-                              return <h4>{children}</h4>;
-                            case 5:
-                              return <h5>{children}</h5>;
-                            case 6:
-                              return <h6>{children}</h6>;
-                            default:
-                              return <h1>{children}</h1>;
-                          }
-                        },
-                        link: ({ children, url }) => (
-                          <Link
-                            className="font-bold !underline !underline-offset-2"
-                            href={url}
+            {section?.collection.map(
+              (collection, index) =>
+                activeTab === "tab-" + index && (
+                  <div key={collection.id} className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl overflow-hidden">
+                    {collection?.content && (
+                      <BlocksRenderer
+                        content={collection.content}
+                        blocks={{
+                          paragraph: ({ children }) => (
+                            <p data-aos="fade-down" data-aos-duration="1000">
+                              {children}
+                            </p>
+                          ),
+                          heading: ({ children, level }) => {
+                            switch (level) {
+                              case 1:
+                                return <h1>{children}</h1>;
+                              case 2:
+                                return <h2>{children}</h2>;
+                              case 3:
+                                return <h3>{children}</h3>;
+                              case 4:
+                                return <h4>{children}</h4>;
+                              case 5:
+                                return <h5>{children}</h5>;
+                              case 6:
+                                return <h6>{children}</h6>;
+                              default:
+                                return <h1>{children}</h1>;
+                            }
+                          },
+                          link: ({ children, url }) => (
+                            <Link
+                              className="font-bold !underline !underline-offset-2"
+                              href={url}
+                            >
+                              {children}
+                            </Link>
+                          ),
+                        }}
+                        modifiers={{
+                          bold: ({ children }) => <strong>{children}</strong>,
+                          italic: ({ children }) => (
+                            <span className="italic">{children}</span>
+                          ),
+                        }}
+                      />
+                    )}
+                    {collection?.icon && collection.icon.length > 0 && (
+                      <div className="flex justify-between gap-[35px] overflow-hidden">
+                        {collection.icon.map((image) => (
+                          <figure
+                            key={image.id}
+                            className="w-1/2 h-[260px] 2xl:h-[320px]"
+                            data-aos="fade-down"
+                            data-aos-duration="1000"
                           >
-                            {children}
-                          </Link>
-                        ),
-                      }}
-                      modifiers={{
-                        bold: ({ children }) => <strong>{children}</strong>,
-                        italic: ({ children }) => (
-                          <span className="italic">{children}</span>
-                        ),
-                      }}
+                            <Image
+                              width={image?.width}
+                              height={image?.height}
+                              src={getStrapiMedia(image?.url)}
+                              alt={image?.alternativeText}
+                              className="rounded-xl w-full h-full object-cover"
+                            />
+                          </figure>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )
+            )}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+export function Parallax({ section }) {
+
+  const backgroundImageURL = getStrapiMedia(section.image.url);
+  const backgroundImageStyle = {
+    backgroundAttachment: 'fixed',
+    backgroundImage: `url(${backgroundImageURL})`,
+  };
+  const AOCClass = [
+    "500",
+    "1500",
+    "2000",
+    "3000",
+  ];
+  return (
+    <>
+      <section className="page-content-sec mt-[60px]">
+        <div className="container mx-auto">
+          <div className="parallax-main-wrapper">
+            <h2 className="text-secondary text-[20px] md:text-[28px] 2xl:text-[32px] leading-[1.2] font-bold mb-6 md:mb-8 2xl:mb-10">
+              {section?.description}
+            </h2>
+            <div className="parallax-main">
+              <div id="parallax" className="parallax-item" style={backgroundImageStyle}>
+                {section?.collection?.map((collection, index) => (
+                  <div
+                    className="parallax-card"
+                    data-aos="fade-up"
+                    data-aos-duration={AOCClass[index]}
+                    key={collection.id}
+                  >
+                    <Image
+                      width={collection.image?.width}
+                      height={collection.image?.height}
+                      src={getStrapiMedia(collection.image?.url)}
+                      alt={collection.image?.alternativeText}
                     />
-                  }
-                  {collection?.icon && collection.icon.length > 0 &&
-                    <div className="flex justify-between gap-[35px] overflow-hidden">
-                      {collection.icon.map((image) => (
-                        <figure
-                          className="w-1/2 h-[260px] 2xl:h-[320px]"
-                          data-aos="fade-down"
-                          data-aos-duration="1000"
-                        >
+                    <h3>{collection.title}</h3>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+export function KeyPoints({ section }) {
+  return (
+    <>
+      <section className="page-content-sec mt-[60px]">
+        <div className="container mx-auto">
+          <div className="pillar-sec">
+            <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px] !pb-[100px]">
+              {section?.image &&
+                <figure
+                  className="w-full md:w-[45%] h-[480px] relative glare"
+                  data-aos="flip-right"
+                  data-aos-duration="1500"
+                >
+                  <Image
+                    className="absolute -z-1 w-[90%] h-[90%]"
+                    src={Triangle1}
+                    alt="triangle"
+                  />
+                  <Image
+                    className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+                    width={section.image?.width}
+                    height={section.image?.height}
+                    src={getStrapiMedia(section.image?.url)}
+                    alt={section.image?.alternativeText}
+                  />
+                </figure>
+              }
+              <div className="box-content-sec relative md:w-[55%] flex flex-col">
+                {section?.heading &&
+                  <span
+                    className="section-heading"
+                    data-aos="fade-left"
+                    data-aos-duration="500"
+                  >{section.heading}</span>
+                }
+                {section?.title &&
+                  <div
+                    className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+                    data-aos="fade-left"
+                    data-aos-duration="500"
+                  >
+                    <h3 className="section-title">{section.title}</h3>
+                  </div>
+                }
+                {section?.collection && section.collection.length > 0 &&
+                  <div
+                    className="pillar-list-sec"
+                    data-aos="fade-left"
+                    data-aos-duration="1000"
+                  >
+                    {section.collection.map((point) => point.title &&
+                      <div key={point.id} className="pillar-box">
+                        {point?.icon && (
                           <Image
-                            width={image?.width}
-                            height={image?.height}
-                            src={getStrapiMedia(image?.url)}
-                            alt={image?.alternativeText}
-                            className="rounded-xl w-full h-full object-cover"
+                            key={point.icon.id}
+                            className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center px-4 py-[14px]"
+                            width={point.icon?.width}
+                            height={point.icon?.height}
+                            src={getStrapiMedia(point.icon?.url)}
+                            alt={point.icon?.alternativeText}
                           />
-                        </figure>
-                      ))}
-                    </div>
-                  }
-                </div>
-              )
-            ))}
+                        )}
+                        <div className="pillar-list">
+                          <p>{point.title}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                }
+              </div>
+            </div>
           </div>
         </div>
       </section>
