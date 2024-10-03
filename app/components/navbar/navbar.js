@@ -125,7 +125,7 @@ export default function Navbar() {
                               key={subSubMenu.id}
                             >
                               <Link
-                                className="!pl-2 flex gap-1 hover:translate-x-2 hover:bg-transparent"
+                                className="!pl-2 flex gap-1 hover:translate-x-2 hover:bg-transparent focus:!bg-[#FFFFFF] focus:!text-secondary"
                                 href={`${subSubMenu.attributes.permalink}`}
                               >
                                 <svg
