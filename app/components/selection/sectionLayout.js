@@ -70,6 +70,9 @@ export default function SectionSelection({ section, Background, right }) {
       {section.__component == "section.testimonial" && (
         <Testimonial section={section} />
       )}
+      {section.__component == "section.tab-image" && (
+        <TabImage section={section} />
+      )}
     </>
   );
 }
@@ -1075,10 +1078,7 @@ export function Gallery({ section }) {
             >
               {section.collection.map((image) => (
                 <figure
-                  className={cn(
-                    "w-full h-[316px] mb-0",
-                    image?.big ? "col-span-2" : ""
-                  )}
+                  className={cn("w-full mb-0 overflow-hidden rounded-[20px] relative cursor-pointer sustainability-figure",section?.compact ? "h-[240px]" : "h-[316px]" ,image?.big ? "col-span-2" : "")}
                   data-aos="flip-left"
                   data-aos-duration="1000"
                   key={image.id}
@@ -1088,7 +1088,7 @@ export function Gallery({ section }) {
                     height={image.image?.height}
                     src={getStrapiMedia(image.image?.url)}
                     alt={image.image?.alternativeText}
-                    className="gallery-sec-image"
+                    className={cn("gallery-sec-image",image?.title ? "" : "hover:scale-125 hover:rotate-[5deg]")}
                   />
                   {image?.title && (
                     <span className="sustainability-overlay">
@@ -2107,9 +2107,7 @@ export function Testimonial({ section }) {
                         content={collection.content}
                         blocks={{
                           paragraph: ({ children }) => (
-                            <p className="">
-                              {children}
-                            </p>
+                            <p className="">{children}</p>
                           ),
                           heading: ({ children, level }) => {
                             switch (level) {
@@ -2149,8 +2147,120 @@ export function Testimonial({ section }) {
                   </div>
                 </div>
               ))}
-
             </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+export function TabImage({ section }) {
+  const [activeTab, setActiveTab] = useState("tab-0");
+  return (
+    <>
+      <section className="page-content-sec mt-[60px]">
+        <div className="container mx-auto flex flex-col gap-10">
+          <div className="flex flex-col gap-3">
+            <span className="section-heading">{section?.heading}</span>
+            <div className="section-title-wrapper">
+              <h3 className="section-title">{section?.title}</h3>
+            </div>
+          </div>
+          <div>
+            <div className="flex gap-6 justify-between text-[#4F5662]">
+              {section?.collection?.map((collection, index) => (
+                <button
+                  className={`w-1/4 flex items-center gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-5 ${
+                    activeTab === "tab-"+index ? "bg-primary !text-[#FFFFFF]" : ""
+                  }`}
+                  onClick={() => setActiveTab("tab-"+index)}
+                  key={collection.id}
+                >
+                  <Image
+                    className="w-10 h-10"
+                    width={collection.image?.width}
+                    height={collection.image?.height}
+                    src={getStrapiMedia(collection.image?.url)}
+                    alt={collection.image?.alternativeText}
+                    data-aos="flip-up"
+                    data-aos-duration="1500"
+                  />
+                  <h2 className="text-[28px] 2xl:text-[32px] font-medium leading-[38.4px]">
+                    {collection?.title}
+                  </h2>
+                </button>
+              ))}
+            </div>
+            {section?.collection.map((collection, index) => (
+              activeTab === "tab-"+index && (
+                <div className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl overflow-hidden">
+                  {collection?.content &&
+                    <BlocksRenderer
+                      content={collection.content}
+                      blocks={{
+                        paragraph: ({ children }) => (
+                          <p data-aos="fade-down" data-aos-duration="1000">
+                            {children}
+                          </p>
+                        ),
+                        heading: ({ children, level }) => {
+                          switch (level) {
+                            case 1:
+                              return <h1>{children}</h1>;
+                            case 2:
+                              return <h2>{children}</h2>;
+                            case 3:
+                              return <h3>{children}</h3>;
+                            case 4:
+                              return <h4>{children}</h4>;
+                            case 5:
+                              return <h5>{children}</h5>;
+                            case 6:
+                              return <h6>{children}</h6>;
+                            default:
+                              return <h1>{children}</h1>;
+                          }
+                        },
+                        link: ({ children, url }) => (
+                          <Link
+                            className="font-bold !underline !underline-offset-2"
+                            href={url}
+                          >
+                            {children}
+                          </Link>
+                        ),
+                      }}
+                      modifiers={{
+                        bold: ({ children }) => <strong>{children}</strong>,
+                        italic: ({ children }) => (
+                          <span className="italic">{children}</span>
+                        ),
+                      }}
+                    />
+                  }
+                  {collection?.icon && collection.icon.length > 0 &&
+                    <div className="flex justify-between gap-[35px] overflow-hidden">
+                      {collection.icon.map((image) => (
+                        <figure
+                          className="w-1/2 h-[260px] 2xl:h-[320px]"
+                          data-aos="fade-down"
+                          data-aos-duration="1000"
+                        >
+                          <Image
+                            width={image?.width}
+                            height={image?.height}
+                            src={getStrapiMedia(image?.url)}
+                            alt={image?.alternativeText}
+                            className="rounded-xl w-full h-full object-cover"
+                          />
+                        </figure>
+                      ))}
+                    </div>
+                  }
+                </div>
+              )
+            ))}
           </div>
         </div>
       </section>
