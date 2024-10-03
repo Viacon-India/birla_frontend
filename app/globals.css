@@ -1488,4 +1488,11 @@ input[type=file]::file-selector-button {
  }
 
 
+ /* product-description-page */
+ .small-img-sec .swiper-wrapper{
+  @apply flex flex-col gap-3 2xl:gap-5
+}
+.small-img-sec .swiper-wrapper .swiper-slide-active{
+  @apply !border !border-primary !p-2
+}
 
