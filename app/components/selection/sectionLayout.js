@@ -67,6 +67,9 @@ export default function SectionSelection({ section, Background, right }) {
       {section.__component == "section.credit" && (
         <CreditContent section={section} />
       )}
+      {section.__component == "section.testimonial" && (
+        <Testimonial section={section} />
+      )}
     </>
   );
 }
@@ -315,18 +318,22 @@ export function ImageTitleContent({ section }) {
             data-aos="flip-right"
             data-aos-duration="1500"
           >
-            <Image
-              className={cn(
-                "absolute -z-1 w-[90%] h-[90%]",
-                section?.settings?.right ? "right-0" : "left-0"
-              )}
-              src={section?.settings?.right ? Triangle2 : Triangle1}
-              alt="img"
-            />
+            {section?.triangle && (
+              <Image
+                className={cn(
+                  "absolute -z-1 w-[90%] h-[90%]",
+                  section?.settings?.right ? "right-0" : "left-0"
+                )}
+                src={section?.settings?.right ? Triangle2 : Triangle1}
+                alt="img"
+              />
+            )}
 
             <Image
               className={cn(
-                "absolute top-4 md:top-8 w-[90%] h-[90%] rounded-[12px]",
+                section?.triangle
+                  ? "absolute top-4 md:top-8 w-[90%] h-[90%] rounded-[12px]"
+                  : "w-full h-full",
                 section?.settings?.right
                   ? "right-4 md:right-8"
                   : "left-4 md:left-8"
@@ -415,9 +422,14 @@ export function ImageTitleContent({ section }) {
                 }}
               />
             )}
-            {section?.link && (
-              <Link href={section.link} target="_blank" className="more-btn">
+            {/* {section?.link && (
+              <Link href={section.link} className="more-btn">
                 Know More
+              </Link>
+            )} */}
+            {section?.link && (
+              <Link href={section.link} className="more-btn">
+                {section?.link_text}
               </Link>
             )}
             <div class="line-loader self-end">
@@ -926,142 +938,7 @@ export function Gallery({ section }) {
 
   const renderGalleryContent = () => {
     switch (section.collection.length) {
-      case 6:
-        return (
-          <div className="container mx-auto">
-            <div className="gallery-sec grid grid-cols-4 gap-3 2xl:gap-4 pt-6 md:pt-10 2xl:pt-[60px]">
-              {section.collection.map((image) => (
-                <figure
-                  className={cn(
-                    "w-full h-[316px] mb-0",
-                    image?.big ? "col-span-2" : ""
-                  )}
-                  data-aos="flip-left"
-                  data-aos-duration="1000"
-                  key={image.id}
-                >
-                  <Image
-                    width={image.image?.width}
-                    height={image.image?.height}
-                    src={getStrapiMedia(image.image?.url)}
-                    alt={image.image?.alternativeText}
-                    className="gallery-sec-image"
-                  />
-                </figure>
-              ))}
-            </div>
-          </div>
-        );
-      case 4:
-        return (
-          <div className="container mx-auto">
-            <span className="section-heading">{section?.heading}</span>
-            <div
-              className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
-              data-aos="fade-left"
-              data-aos-duration="1000"
-            >
-              <h3 className="section-title">{section?.title}</h3>
-            </div>
-
-            <div className="relative mt-6">
-              <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
-                <Image
-                  className={section?.collection_name ? "!opacity-15" : ""}
-                  data-aos="zoom-in"
-                  data-aos-duration="2000"
-                  src={tiger}
-                  alt="img"
-                />
-                {section?.collection_name && (
-                  <span className="text-primary font-bold text-[22px] md:text-[36px] 2xl:text-[48px] uppercase absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
-                    {section.collection_name}
-                  </span>
-                )}
-              </figure>
-              <div
-                className={cn(
-                  "new-main relative grid grid-cols-2 gap-6 md:gap-10 overflow-hidden rounded-[12px]",
-                  section?.collection_name ? "" : "p-[40px]"
-                )}
-              >
-                {section.collection.map((image, index) => (
-                  <>
-                    {!section?.collection_name && (
-                      <>
-                        <Image
-                          className="absolute top-0 left-0 z-1"
-                          src={Triangle3}
-                          alt="img"
-                          data-aos={AOCClass[0]}
-                          data-aos-duration="1000"
-                        />
-                        <Image
-                          className="absolute bottom-0 right-0 z-1"
-                          src={Triangle4}
-                          alt="img"
-                          data-aos={AOCClass[3]}
-                          data-aos-duration="1000"
-                        />
-                      </>
-                    )}
-                    <div
-                      className="value-overlay-card relative overflow-hidden rounded-[12px] group"
-                      key={image.id}
-                    >
-                      <figure
-                        className="relative z-2 w-full h-full"
-                        data-aos={AOCClass[index]}
-                        data-aos-duration="1000"
-                      >
-                        <Image
-                          className="w-full h-full object-cover"
-                          width={image.image?.width}
-                          height={image.image?.height}
-                          src={getStrapiMedia(image.image?.url)}
-                          alt={image.image?.alternativeText}
-                        />
-                        {section?.collection_name && (
-                          <div
-                            className="value-overlay opacity-75"
-                            style={{ backgroundColor: BGColor[index] }}
-                          >
-                            <h3>{image?.title}</h3>
-                            <p>{image?.description}</p>
-                          </div>
-                        )}
-                      </figure>
-                    </div>
-                  </>
-                ))}
-              </div>
-            </div>
-          </div>
-        );
-      case 2:
-        return (
-          <div className="container mx-auto">
-            <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
-              {section.collection.map(
-                (collection) =>
-                  collection?.image && (
-                    <figure className="w-1/2" key={collection.image.id}>
-                      <Image
-                        className="w-full rounded-[12px]"
-                        width={collection.image?.width}
-                        height={collection.image?.height}
-                        src={getStrapiMedia(collection.image?.url)}
-                        alt={collection.image?.alternativeText}
-                        data-aos="flip-up"
-                        data-aos-duration="1500"
-                      />
-                    </figure>
-                  )
-              )}
-            </div>
-          </div>
-        );
-      default:
+      case 1:
         if (section.collection[0].image.ext === ".mp4") {
           return (
             <div className="w-[100%] mt-4 2xl:mt-8 relative z-51">
@@ -1103,6 +980,126 @@ export function Gallery({ section }) {
             </div>
           );
         }
+      case 2:
+        return (
+          <div className="container mx-auto">
+            <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
+              {section.collection.map(
+                (collection) =>
+                  collection?.image && (
+                    <figure className="w-1/2" key={collection.image.id}>
+                      <Image
+                        className="w-full rounded-[12px]"
+                        width={collection.image?.width}
+                        height={collection.image?.height}
+                        src={getStrapiMedia(collection.image?.url)}
+                        alt={collection.image?.alternativeText}
+                        data-aos="flip-up"
+                        data-aos-duration="1500"
+                      />
+                    </figure>
+                  )
+              )}
+            </div>
+          </div>
+        );
+      case 4:
+        return (
+          <div className="container mx-auto">
+            <span className="section-heading">{section?.heading}</span>
+            <div
+              className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+            >
+              <h3 className="section-title">{section?.title}</h3>
+            </div>
+
+            <div className="relative mt-6">
+              <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
+                <Image
+                  className={section?.collection_name ? "!opacity-15" : ""}
+                  data-aos="zoom-in"
+                  data-aos-duration="2000"
+                  src={tiger}
+                  alt="img"
+                />
+                {section?.collection_name && (
+                  <span className="text-primary font-bold text-[22px] md:text-[36px] 2xl:text-[48px] uppercase absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+                    {section.collection_name}
+                  </span>
+                )}
+              </figure>
+              <div className="new-main grid grid-cols-2 gap-6 md:gap-10">
+                {section.collection.map((image, index) => (
+                  <div
+                    className="value-overlay-card relative overflow-hidden rounded-[12px] group"
+                    key={image.id}
+                  >
+                    <figure
+                      className="w-full h-full"
+                      data-aos={AOCClass[index]}
+                      data-aos-duration="1000"
+                    >
+                      <Image
+                        className="w-full h-full object-cover"
+                        width={image.image?.width}
+                        height={image.image?.height}
+                        src={getStrapiMedia(image.image?.url)}
+                        alt={image.image?.alternativeText}
+                      />
+                      {section?.collection_name && (
+                        <div
+                          className="value-overlay opacity-75"
+                          style={{ backgroundColor: BGColor[index] }}
+                        >
+                          <h3>{image?.title}</h3>
+                          <p>{image?.description}</p>
+                        </div>
+                      )}
+                    </figure>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      default:
+        return (
+          <div className="container mx-auto">
+            <div
+              className={cn(
+                "gallery-sec grid gap-3 2xl:gap-4 pt-6 md:pt-10 2xl:pt-[60px]",
+                section?.compact ? "grid-cols-5" : "grid-cols-4"
+              )}
+            >
+              {section.collection.map((image) => (
+                <figure
+                  className={cn(
+                    "w-full h-[316px] mb-0",
+                    image?.big ? "col-span-2" : ""
+                  )}
+                  data-aos="flip-left"
+                  data-aos-duration="1000"
+                  key={image.id}
+                >
+                  <Image
+                    width={image.image?.width}
+                    height={image.image?.height}
+                    src={getStrapiMedia(image.image?.url)}
+                    alt={image.image?.alternativeText}
+                    className="gallery-sec-image"
+                  />
+                  {image?.title && (
+                    <span className="sustainability-overlay">
+                      {image.title}
+                    </span>
+                  )}
+                </figure>
+              ))}
+            </div>
+          </div>
+        );
     }
   };
 
@@ -2069,5 +2066,94 @@ export function CreditContent({ section }) {
         </div>
       </div>
     </section>
+  );
+}
+
+export function Testimonial({ section }) {
+  return (
+    <>
+      <section className="page-content-sec mt-[60px] md:mt-[120px]">
+        <div className="container mx-auto">
+          <div className="testimonial-sec">
+            <span className="section-heading">{section?.heading}</span>
+            <div className="section-title-wrapper">
+              <h3 className="section-title">{section?.title}</h3>
+            </div>
+            <div className="grid grid-cols1 md:grid-cols-2 gap-6 md:gap-10 mt-6 md:mt-10 overflow-hidden">
+              {section?.collection?.map((collection) => (
+                <div
+                  className="testimonial-card"
+                  data-aos="fade-down"
+                  data-aos-duration="1000"
+                  key={collection.id}
+                >
+                  <figure className="w-40% h-[320px]">
+                    <Image
+                      className="vast-card-image"
+                      width={collection.image?.width}
+                      height={collection.image?.height}
+                      src={getStrapiMedia(collection.image?.url)}
+                      alt={collection.image?.alternativeText}
+                      data-aos="flip-up"
+                      data-aos-duration="1500"
+                    />
+                  </figure>
+                  <div className="testimonial-card-detail-wrapper">
+                    <h2 className="testimonial-card-title">
+                      {collection?.title}
+                    </h2>
+                    <div class="testimonial-card-detail">
+                      <BlocksRenderer
+                        content={collection.content}
+                        blocks={{
+                          paragraph: ({ children }) => (
+                            <p className="">
+                              {children}
+                            </p>
+                          ),
+                          heading: ({ children, level }) => {
+                            switch (level) {
+                              case 1:
+                                return <h1>{children}</h1>;
+                              case 2:
+                                return <h2>{children}</h2>;
+                              case 3:
+                                return <h3>{children}</h3>;
+                              case 4:
+                                return <h4>{children}</h4>;
+                              case 5:
+                                return <h5>{children}</h5>;
+                              case 6:
+                                return <h6>{children}</h6>;
+                              default:
+                                return <h1>{children}</h1>;
+                            }
+                          },
+                          link: ({ children, url }) => (
+                            <Link
+                              className="font-bold !underline !underline-offset-2"
+                              href={url}
+                            >
+                              {children}
+                            </Link>
+                          ),
+                        }}
+                        modifiers={{
+                          bold: ({ children }) => <strong>{children}</strong>,
+                          italic: ({ children }) => (
+                            <span className="italic">{children}</span>
+                          ),
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

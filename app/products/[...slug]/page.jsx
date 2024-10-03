@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { FreeMode, Autoplay, Navigation } from "swiper/modules";
+import { FreeMode, Autoplay, Navigation, Thumbs } from "swiper/modules";
 import "swiper/css/navigation";
 import { getStrapiMedia } from "@/lib/utils";
 import SectionSelection from "@/app/components/selection/sectionLayout";
@@ -39,6 +39,8 @@ export default function Page({ params }) {
         setPageData(page);
       });
   }, []);
+
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
     <>
@@ -190,22 +192,28 @@ export default function Page({ params }) {
               <div className="flex gap-[60px] mt-6 pb-8 md:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
                 <div className="productImageWrapper w-full md:w-[55%]">
                   <div className="product-image-sec flex gap-5">
-                    <div className="small-img-sec flex flex-col gap-3 2xl:gap-5 w-[80px] 2xl:w-[100px]">
-                      {pageData?.gallery?.map((gallery) => (
-                        <figure
-                          className="w-full h-[80px] 2xl:h-[100px] bg-primary rounded-[12px] p-2"
-                          key={gallery.id}
-                        >
-                          <Image
-                            width={gallery?.width}
-                            height={gallery?.height}
-                            src={getStrapiMedia(gallery?.url)}
-                            alt={gallery?.alternativeText}
-                            className="w-full h-full object-contain"
-                          />
-                        </figure>
+                    <Swiper
+                      onSwiper={setThumbsSwiper}
+                      loop={true}
+                      spaceBetween={10}
+                      slidesPerView={4}
+                      freeMode={true}
+                      watchSlidesProgress={true}
+                      modules={[FreeMode, Navigation, Thumbs]}
+                      className="small-img-sec"
+                    >
+                      {pageData?.gallery?.map((gallery, index) => (
+                        <SwiperSlide key={gallery.id} className="!w-full !h-[80px] 2xl:!h-[100px] bg-primary rounded-[12px] p-2 !mr-0 cursor-pointer">
+                            <Image
+                              width={gallery?.width}
+                              height={gallery?.height}
+                              src={getStrapiMedia(gallery?.url)}
+                              alt={gallery?.alternativeText}
+                              className="w-full h-full object-contain"
+                            />
+                        </SwiperSlide>
                       ))}
-                    </div>
+                    </Swiper>
                     <div className="single-image-slider relative w-[85%] h-full bg-[#ffffff] rounded-[12px]">
                       <span className="bg-primary py-2 px-8 rounded-tr-[12px] text-white text-[18px] font-bold absolute right-0 top-0">
                         Premium
@@ -223,7 +231,8 @@ export default function Page({ params }) {
                             slidesPerView: 1,
                           },
                         }}
-                        modules={[FreeMode, Autoplay, Navigation]}
+                        thumbs={{ swiper: thumbsSwiper }}
+                        modules={[FreeMode, Autoplay, Navigation, Thumbs]}
                         className="productDetailSwiper !py-10"
                       >
                         {pageData?.gallery?.map((gallery) => (
@@ -245,47 +254,57 @@ export default function Page({ params }) {
                       </Swiper>
                     </div>
                   </div>
-                  <div className="patter-description flex items-center justify-between mt-6">
-                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
-                      <Image src={load} alt="load-icon" />
-                      <div className="flex flex-col">
-                        <p className="text-[#1A1D21] text-[18px] font-semibold">
-                          Load Type
-                        </p>
-                        <span className="text-[16px] text-[#4F5662]">
-                          {pageData?.type?.load}
-                        </span>
-                      </div>
+                  {pageData?.type &&
+                    <div className="patter-description flex items-center justify-between mt-6">
+                      {pageData.type?.load &&
+                        <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
+                          <Image src={load} alt="load-icon" />
+                          <div className="flex flex-col">
+                            <p className="text-[#1A1D21] text-[18px] font-semibold">
+                              Load Type
+                            </p>
+                            <span className="text-[16px] text-[#4F5662]">
+                              {pageData.type.load}
+                            </span>
+                          </div>
+                        </div>
+                      }
+                      {pageData.type?.pattern &&
+                        <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
+                          <Image src={pattern} alt="load-icon" />
+                          <div className="flex flex-col">
+                            <p className="text-[#1A1D21] text-[18px] font-semibold">
+                              Pattern
+                            </p>
+                            <span className="text-[16px] text-[#4F5662]">
+                              {pageData.type.pattern}
+                            </span>
+                          </div>
+                        </div>
+                      }
+                      {pageData.type?.construction &&
+                        <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
+                          <Image src={construction} alt="load-icon" />
+                          <div className="flex flex-col">
+                            <p className="text-[#1A1D21] text-[18px] font-semibold">
+                              Construction
+                            </p>
+                            <span className="text-[16px] text-[#4F5662]">
+                              {pageData.type.construction}
+                            </span>
+                          </div>
+                        </div>
+                      }
                     </div>
-                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
-                      <Image src={pattern} alt="load-icon" />
-                      <div className="flex flex-col">
-                        <p className="text-[#1A1D21] text-[18px] font-semibold">
-                          Pattern
-                        </p>
-                        <span className="text-[16px] text-[#4F5662]">
-                          {pageData?.type?.pattern}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
-                      <Image src={construction} alt="load-icon" />
-                      <div className="flex flex-col">
-                        <p className="text-[#1A1D21] text-[18px] font-semibold">
-                          Construction
-                        </p>
-                        <span className="text-[16px] text-[#4F5662]">
-                          {pageData?.type?.construction}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                  }
                 </div>
                 <div className="product-detail-sec w-ful md:w-[45%]">
-                  <h2 className="section-title">{pageData?.name}</h2>
-                  <p className="text-[#1A202C] text-[16px] pt-2">
-                    {pageData?.description}
-                  </p>
+                  {pageData?.name &&
+                    <h2 className="section-title">{pageData.name}</h2>
+                  }
+                  {pageData?.description &&
+                    <p className="text-[#1A202C] text-[16px] pt-2">{pageData.description}</p>
+                  }
                   {pageData?.details?.map((details) => (
                     <>
                       {details.description && (
@@ -353,98 +372,94 @@ export default function Page({ params }) {
                   ))}
                 </div>
               </div>
-              <div className="table-sec pt-8 md:pt-12 2xl:pt-[60px]">
-                <div className="flex justify-between">
-                  <div className="flex items-center gap-4 2xl:gap-8">
-                    <h2 className="text-[#1A202C] text-[24px] 2xl:text-[32px] font-medium">
-                      Technical Specifications
-                    </h2>
-                    <div className="cat-btn-sec flex items-center gap-3 relative z-10">
-                      <Link
-                        href=""
-                        className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]"
-                        target="_blank"
-                      >
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
+              {pageData?.tables &&
+                <div className="table-sec pt-8 md:pt-12 2xl:pt-[60px]">
+                  <div className="flex justify-between">
+                    <div className="flex items-center gap-4 2xl:gap-8">
+                      {pageData.tables?.title &&
+                        <h2 className="text-[#1A202C] text-[24px] 2xl:text-[32px] font-medium">{pageData.tables.title}</h2>
+                      }
+                      <div className="cat-btn-sec flex items-center gap-3 relative z-10">
+                        <Link
+                          href=""
+                          className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]"
+                          target="_blank"
                         >
-                          <path
-                            d="M14.875 9.875V14.25C14.875 14.4158 14.8092 14.5747 14.6919 14.6919C14.5747 14.8092 14.4158 14.875 14.25 14.875H1.75C1.58424 14.875 1.42527 14.8092 1.30806 14.6919C1.19085 14.5747 1.125 14.4158 1.125 14.25V9.875M4.71875 6.59461L8 9.875L11.2812 6.59461M8 1.125V9.8727"
-                            stroke="#F5811E"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </svg>
-                        Download Product Leaflet
-                      </Link>
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M14.875 9.875V14.25C14.875 14.4158 14.8092 14.5747 14.6919 14.6919C14.5747 14.8092 14.4158 14.875 14.25 14.875H1.75C1.58424 14.875 1.42527 14.8092 1.30806 14.6919C1.19085 14.5747 1.125 14.4158 1.125 14.25V9.875M4.71875 6.59461L8 9.875L11.2812 6.59461M8 1.125V9.8727"
+                              stroke="#F5811E"
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                          Download Product Leaflet
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                  <div className="country-selection">
-                    <p className="text-[16px] text-[#1A1D21] mb-3 font-medium">
-                      Select Standard
-                    </p>
-                    <div className="flex items-center gap-3 2xl:gap-5">
-                      <input type="radio" checked />
-                      <label className="uppercase text-[14px] font-medium text-secondary">
-                        USA
-                      </label>
-
-                      <input type="radio" />
-                      <label className="uppercase text-[14px] font-medium text-secondary">
-                        European
-                      </label>
-
-                      <input type="radio" />
-                      <label className="uppercase text-[14px] font-medium text-secondary">
-                        International
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-detail-table w-full overflow-x-auto mt-3">
-                  <table>
-                    {pageData?.section?.map((section) => (
-                      <thead key={section.id}>
-                        {Object.keys(section.row[0])
-                          .filter((key) => key !== "id")
-                          .map((key) => (
-                            <th key={key}>{key}</th>
+                    {pageData.tables?.table && pageData.tables.table.length > 0 &&
+                      <div className="country-selection">
+                        <p className="text-[16px] text-[#1A1D21] mb-3 font-medium">
+                          Select Standard
+                        </p>
+                        <div className="flex items-center gap-3 2xl:gap-5">
+                          {pageData.tables.table.map((table) => (
+                            table?.standard &&
+                            <>
+                              <input key={table.id} type="radio" id={table.standard} name="standard"/>
+                              <label key={table.id} for={table.standard} className="uppercase text-[14px] font-medium text-secondary">{table.standard}</label>
+                            </>
                           ))}
-                      </thead>
-                    ))}
-                    <tbody>
-                      {pageData?.section?.map((section) =>
-                        section.row.map((rowData) => (
-                          <tr key={rowData.id}>
-                            <td>{rowData.size}</td>
-                            <td>{rowData.version}</td>
-                            <td>{rowData.tra_code}</td>
-                            <td>{rowData.pr}</td>
-                            <td>{rowData.rim_rec}</td>
-                            <td>{rowData.rim_alt}</td>
-                            <td>{rowData.ow}</td>
-                            <td>{rowData.od}</td>
-                            <td>{rowData.slr}</td>
-                            <td>{rowData.rc}</td>
-                            <td>{rowData.type}</td>
-                            <td>{rowData.ece}</td>
-                          </tr>
-                        ))
-                      )}
-                    </tbody>
-                  </table>
+                        </div>
+                      </div>
+                    }
+                  </div>
+                  {pageData.tables?.table && pageData.tables.table.length > 0 && pageData.tables.table.map((table) => (
+                    table?.row && table.row.length > 0 &&
+                      <div className="product-detail-table w-full overflow-x-auto mt-3">
+                        <table>
+                          <thead>
+                            {Object.keys(table.row[0])
+                              .filter((key) => key !== "id")
+                              .map((key) => (
+                                <th key={key}>{key}</th>
+                              ))}
+                          </thead>
+                          <tbody>
+                            {table.row.map((rowData) => (
+                                <tr key={rowData.id}>
+                                  <td>{rowData.size}</td>
+                                  <td>{rowData.version}</td>
+                                  <td>{rowData.tra_code}</td>
+                                  <td>{rowData.pr}</td>
+                                  <td>{rowData.rim_rec}</td>
+                                  <td>{rowData.rim_alt}</td>
+                                  <td>{rowData.ow}</td>
+                                  <td>{rowData.od}</td>
+                                  <td>{rowData.slr}</td>
+                                  <td>{rowData.rc}</td>
+                                  <td>{rowData.type}</td>
+                                  <td>{rowData.ece}</td>
+                                </tr>
+                              ))}
+                          </tbody>
+                        </table>
+                      </div>
+                  ))}
                 </div>
-              </div>
+              }
             </div>
           </section>
         </>
       )}
-      <PageEnd EndPageData={pageData?.end} EndStaticImage={LastBg} />
+      <PageEnd EndPageData={pageData?.end} />
       <Footer />
     </>
   );
