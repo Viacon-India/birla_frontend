@@ -1070,7 +1070,7 @@ export function Gallery({ section }) {
                       key={image.id}
                     >
                       <figure
-                        className="relative z-2 w-full h-[210px] 2xl:h-[300px]"
+                        className="relative z-2 w-full h-[190px] 2xl:h-[300px]"
                         data-aos={AOCClass[index]}
                         data-aos-duration="1000"
                       >
