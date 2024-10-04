@@ -30,11 +30,11 @@ export function MainButton() {
 export function SmallButton() {
   return (
     <div class="relative w-full flex md:hidden gap-2 p-2">
-      <Link href="find-tyre" className="primary-btn-1 !w-[50%] !justify-center">
+      <Link href="/find-tyre" className="primary-btn-1 !w-[50%] !justify-center">
         Find a Tyre
       </Link>
       <Link
-        href="dealer-locator"
+        href="/find-dealer"
         className="primary-btn-2 !w-[50%] !justify-center"
       >
         Find a Dealer
@@ -57,8 +57,6 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
                 <GradualSpacing
                   className="top-banner-sec-heading"
                   text={Title}
-                  paddingLeft="pl-5"
-                  paddingRight="pr-5"
                 />
               </div>
             </div>
@@ -221,7 +219,7 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
   return (
     <section
       className={cn(
-        "relative flex pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden",
+        "relative hidden md:flex pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden",
         EndPageData?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
       )}
     >

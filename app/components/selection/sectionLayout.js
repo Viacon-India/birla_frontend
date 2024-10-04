@@ -1025,7 +1025,7 @@ export function Gallery({ section }) {
             </div>
 
             <div className="relative mt-6">
-              <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10">
+              <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10 hidden md:block">
                 <Image
                   className={section?.collection_name ? "!opacity-15" : ""}
                   data-aos="zoom-in"
@@ -1041,8 +1041,8 @@ export function Gallery({ section }) {
               </figure>
               <div
                 className={cn(
-                  "new-main relative grid grid-cols-2 gap-6 md:gap-10 overflow-hidden rounded-[12px]",
-                  section?.collection_name ? "" : "p-[40px]"
+                  "new-main relative grid grid-cols-1 md:grid-cols-2 gap-6 2xl:gap-10 overflow-hidden rounded-[12px]",
+                  section?.collection_name ? "" : "p-4 md:p-[28px]"
                 )}
               >
                 {section.collection.map((image, index) => (
@@ -1050,14 +1050,14 @@ export function Gallery({ section }) {
                     {!section?.collection_name && (
                       <>
                         <Image
-                          className="absolute top-0 left-0 z-1"
+                          className="absolute top-0 left-0 z-1 w-[260px] h-[230px] 2xl:w-[330px] 2xl:h-[300px]"
                           src={Triangle3}
                           alt="img"
                           data-aos={AOCClass[0]}
                           data-aos-duration="1000"
                         />
                         <Image
-                          className="absolute bottom-0 right-0 z-1"
+                          className="absolute bottom-0 right-0 z-1 w-[260px] h-[230px] 2xl:w-[330px] 2xl:h-[300px]"
                           src={Triangle4}
                           alt="img"
                           data-aos={AOCClass[3]}
@@ -1070,7 +1070,7 @@ export function Gallery({ section }) {
                       key={image.id}
                     >
                       <figure
-                        className="relative z-2 w-full h-full"
+                        className="relative z-2 w-full h-[210px] 2xl:h-[300px]"
                         data-aos={AOCClass[index]}
                         data-aos-duration="1000"
                       >
@@ -1176,7 +1176,7 @@ export function ImagePoint({ section }) {
             content={section.content}
             blocks={{
               paragraph: ({ children }) => (
-                <p className="text-[#1A1D21] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
+                <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
                   {children}
                 </p>
               ),

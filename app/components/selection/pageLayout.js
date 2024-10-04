@@ -872,7 +872,7 @@ export function Products({ pageData }) {
             </p>
           </div>
           <div className="flex gap-[60px] mt-6 pb-8 md:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
-            <div className="productImageWrapper w-full md:w-[55%]">
+            <div className="productImageWrapper w-full md:w-[40%]">
               <div className="product-image-sec flex gap-5">
                 <Swiper
                   onSwiper={setThumbsSwiper}
@@ -896,7 +896,7 @@ export function Products({ pageData }) {
                     </SwiperSlide>
                   ))}
                 </Swiper>
-                <div className="single-image-slider relative w-[85%] h-full bg-[#ffffff] rounded-[12px]">
+                <div className="single-image-slider relative w-[80%] h-full bg-[#ffffff] rounded-[12px]">
                   <span className="bg-primary py-2 px-8 rounded-tr-[12px] text-white text-[18px] font-bold absolute right-0 top-0">
                     Premium
                   </span>
@@ -942,10 +942,10 @@ export function Products({ pageData }) {
                     <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
                       <Image src={load} alt="load-icon" />
                       <div className="flex flex-col">
-                        <p className="text-[#1A1D21] text-[18px] font-semibold">
+                        <p className="text-[#1A1D21] text-[12px] 2xl:text-[18px] font-semibold">
                           Load Type
                         </p>
-                        <span className="text-[16px] text-[#4F5662]">
+                        <span className="text-[12px] 2xl:text-[16px] text-[#4F5662]">
                           {pageData.type.load}
                         </span>
                       </div>
@@ -955,10 +955,10 @@ export function Products({ pageData }) {
                     <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
                       <Image src={pattern} alt="load-icon" />
                       <div className="flex flex-col">
-                        <p className="text-[#1A1D21] text-[18px] font-semibold">
+                        <p className="text-[#1A1D21] text-[12px] 2xl:text-[18px] font-semibold">
                           Pattern
                         </p>
-                        <span className="text-[16px] text-[#4F5662]">
+                        <span className="text-[12px] 2xl:text-[16px] text-[#4F5662]">
                           {pageData.type.pattern}
                         </span>
                       </div>
@@ -968,10 +968,10 @@ export function Products({ pageData }) {
                     <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
                       <Image src={construction} alt="load-icon" />
                       <div className="flex flex-col">
-                        <p className="text-[#1A1D21] text-[18px] font-semibold">
+                        <p className="text-[#1A1D21] text-[12px] 2xl:text-[18px] font-semibold">
                           Construction
                         </p>
-                        <span className="text-[16px] text-[#4F5662]">
+                        <span className="text-[12px] 2xl:text-[16px] text-[#4F5662]">
                           {pageData.type.construction}
                         </span>
                       </div>
@@ -980,7 +980,7 @@ export function Products({ pageData }) {
                 </div>
               }
             </div>
-            <div className="product-detail-sec w-ful md:w-[45%]">
+            <div className="product-detail-sec w-ful md:w-[60%]">
               {pageData?.name &&
                 <h2 className="section-title">{pageData.name}</h2>
               }
