@@ -599,7 +599,7 @@ a.current_dot {
 }
 
 .swiper-button-next{
-  @apply !w-10 !h-10 !bg-[#DEE1E5] absolute rounded-full !top-[35%] active:!bg-primary !z-10 !right-[0%] !border border-[#727C8D]
+  @apply !w-10 !h-10 !bg-[#FFFFFF] absolute rounded-full !top-[35%] active:!bg-primary !z-10 !right-[0%] !border border-[#727C8D]
   hover:!bg-primary hover:border-primary transition-all duration-500 !shadow-2xl
 }
 .swiper-button-next::after{
@@ -610,7 +610,7 @@ a.current_dot {
   content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23FFFFFF" width="30" height="30" viewBox="-128 0 512 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg>') !important;
 }
 .swiper-button-prev{
-  @apply !w-10 !h-10 !bg-[#DEE1E5] absolute rounded-full !top-[35%] !left-[0%] md:!left-[0%] !border border-[#727C8D]
+  @apply !w-10 !h-10 !bg-[#FFFFFF] absolute rounded-full !top-[35%] !left-[0%] md:!left-[0%] !border border-[#727C8D]
    2xl:!left-[0%] active:!bg-primary !z-10 hover:!bg-primary hover:border-primary transition-all duration-500 !shadow-2xl
 }
 .swiper-button-prev::after{
@@ -1293,7 +1293,7 @@ a.current_dot {
   @apply text-[#3D434C] text-[14px] md:text-[15px] mt-3
 }
 .mission-card figure{
-  @apply w-full h-[300px] 2xl:h-[380px] rounded-[12px]
+  @apply w-full h-[280px] md:h-[300px] 2xl:h-[380px] rounded-[12px]
 }
 .mission-card img{
   @apply w-full h-full object-cover rounded-[12px]
@@ -1327,11 +1327,11 @@ input[type=file]::file-selector-button {
 
 
 .value-overlay{
-  @apply w-full h-full absolute p-5 top-[50%] group-hover:top-0 transition-all duration-500 flex flex-col group-hover:justify-center !pl-10
+  @apply w-full h-full absolute p-[13px] md:p-5 top-[70%] md:top-[50%] group-hover:top-0 transition-all duration-500 flex flex-col group-hover:justify-center md:!pl-10
 }
 
 .value-overlay h3{
-  @apply text-[#FFFFFF] text-[24px] md:text-[28px] 2xl:text-[32px] font-semibold first-letter:bg-white
+  @apply text-[#FFFFFF] text-[22px] md:text-[28px] 2xl:text-[32px] font-semibold first-letter:bg-white
 }
 .value-overlay p{
   @apply text-[#FFFFFF] text-[14px] md:text-[15px] 2xl:text-[16px]
