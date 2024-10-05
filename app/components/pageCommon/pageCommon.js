@@ -12,7 +12,7 @@ import Tiger from "../../assets/images/tiger-mask3.png";
 export function MainButton() {
   const pathname = usePathname();
   return (
-    <div class="hidden md:flex flex-col gap-5 relative z-10">
+    <div class={pathname == '/' ? "multi-btn-sec" : "hidden md:flex flex-col gap-5 relative z-10"}>
       {pathname != '/find-tyre' &&
         <Link href="/find-tyre" className="primary-btn-1">
           Find a Tyre

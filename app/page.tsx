@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from 'next/link';
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
-import NewHomepage from "./components/homepage/NewHomepage";
+import Homepage from "./components/homepage/homepage";
 // import Cursor from "../app/components/Cursor"
 
 
@@ -26,7 +26,7 @@ export default function Home() {
     <>
       {/* <Cursor /> */}
       <Navbar />
-      <NewHomepage />
+      <Homepage />
       <Footer />
     </>
   );

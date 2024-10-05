@@ -73,6 +73,21 @@ export default function Product({ data }) {
               />
             </figure>
           )}
+          {data.gallery?.data && data.gallery.data.length > 0 && (
+            <figure>
+              <Image
+                class="new-product-card-image"
+                src={getStrapiMedia(data.gallery.data[0].attributes?.url)}
+                width={data.gallery.data[0].attributes?.width}
+                height={data.gallery.data[0].attributes?.height}
+                alt={
+                  data.gallery.data[0].attributes?.alternativeText
+                    ? data.gallery.data[0].attributes.alternativeText
+                    : "product"
+                }
+              />
+            </figure>
+          )}
         </div>
       </Link>
       <div class="new-product-card-detail">
@@ -106,27 +121,46 @@ export default function Product({ data }) {
               </div>
             ))}
         </div>
-        {data?.section &&
-          data.section[0].__component == "collection.product-table" && (
-            <div class="flex gap-3 mt-2 relative">
-              {data.section[0]?.row && (
-                <Swiper
-                  navigation={true}
-                  modules={[Navigation]}
-                  spaceBetween={10}
-                  slidesPerView={2.5}
-                  freeMode={true}
-                  className="chipSwiper !w-[85%] !ml-0 !static"
-                >
-                  {data.section[0].row.map((row) => (
-                    <SwiperSlide className="!w-fit" key={row.id}>
-                      <button class="size-chip">{row.size}</button>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              )}
-            </div>
-          )}
+        {data?.section && data.section[0].__component == "collection.product-table" && (
+          <div class="flex gap-3 mt-2 relative">
+            {data.section[0]?.row && (
+              <Swiper
+                navigation={true}
+                modules={[Navigation]}
+                spaceBetween={10}
+                slidesPerView={2.5}
+                freeMode={true}
+                className="chipSwiper !w-[85%] !ml-0 !static"
+              >
+                {data.section[0].row.map((row) => (
+                  <SwiperSlide className="!w-fit" key={row.id}>
+                    <button class="size-chip">{row.size}</button>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            )}
+          </div>
+        )}
+        {data?.tables?.table && data.tables.table.length > 0 && (
+          <div class="flex gap-3 mt-2 relative">
+            {data.tables.table[0]?.row && (
+              <Swiper
+                navigation={true}
+                modules={[Navigation]}
+                spaceBetween={10}
+                slidesPerView={2.5}
+                freeMode={true}
+                className="chipSwiper !w-[85%] !ml-0 !static"
+              >
+                {data.tables.table[0].row.map((row) => (
+                  <SwiperSlide className="!w-fit" key={row.id}>
+                    <button class="size-chip">{row.size}</button>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
