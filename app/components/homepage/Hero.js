@@ -2,6 +2,7 @@
 
 import { Float } from "../pageCommon/pageCommon";
 import React, { useRef, useState, useEffect } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import $ from "jquery";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -20,7 +21,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MainButton } from "../pageCommon/pageCommon";
 
-export default function Hero() {
+export default function Hero({Data={}}) {
   gsap.registerPlugin(ScrollTrigger);
   
   const handleVideoEnd = () => {
@@ -78,164 +79,84 @@ export default function Hero() {
           </video>
         </div>
       </div>
-
       <Float />
-
-      <Swiper
-        loop={true}
-        speed={3000}
-        effect={"creative"}
-        creativeEffect={{
-          prev: {
-            shadow: true,
-            // translate: [0, 0, -300],
-          },
-          next: {
-            translate: ["100%", 0, 0],
-          },
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
-        className="mySwiper relative !pt-[58px] md:!pt-0 !h-[264px] md:!h-full"
-      >
-        <div class="w-full">
-          <div class="container mx-auto">
-            <div class="multi-btn-sec">
-              <Link href="find-tyre" className="primary-btn-1">
-                Find a Tyre
-              </Link>
-              <Link href="dealer-locator" className="primary-btn-2">
-                Find a Dealer
-              </Link>
+      {Data?.data && Data.data.length > 0 &&
+        <Swiper
+          loop={true}
+          speed={3000}
+          effect={"creative"}
+          creativeEffect={{
+            prev: {
+              shadow: true,
+              // translate: [0, 0, -300],
+            },
+            next: {
+              translate: ["100%", 0, 0],
+            },
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
+          className="mySwiper relative !pt-[58px] md:!pt-0 !h-[264px] md:!h-full"
+        >
+          <div class="w-full">
+            <div class="container mx-auto">
+              <MainButton />
             </div>
           </div>
-        </div>
-        <SwiperSlide>
-          <div class="swiper-card-main">
-            <span className="slider-overlay"></span>
-            <div className="w-full !h-full md:!h-[100vh] flex items-end pb-8 md:pb-[60px]">
-              <video
-                className="absolute top-0 w-full h-fit object-contain"
-                loop
-                autoPlay
-                muted
-              >
-                <source src={"/assets/videos/TBB-3.mov"} type="video/mp4" />
-              </video>
-              <div className="container mx-auto">
-                <div className="swiper-card relative z-10">
-                  <GradualSpacing
-                    className="hero-sec-heading hidden md:block !uppercase"
-                    text="Truck Bus Bias"
-                  />
-                  <GradualSpacing
-                    className="hero-sec-heading md:hidden"
-                    text="TBB"
-                  />
-                  <LetterPullup
-                    className="section-subheading"
-                    words={"Progess in Every Mile"}
-                    delay={0.05}
-                  />
-                  <Link href="/products/truck-bus-bias" class="explore-btn">
-                    <span>Explore Now</span>
-                    <div class="wave"></div>
-                  </Link>
+          {Data.data.map((slider) => ( slider.attributes?.permalink &&
+            <SwiperSlide key={slider.id}>
+              <div class="swiper-card-main">
+                <span className="slider-overlay"></span>
+                <div className="w-full !h-full md:!h-[100vh] flex items-end pb-8 md:pb-[60px]">
+                  {slider.attributes?.hero &&
+                    <video
+                      className="absolute top-0 w-full h-fit object-contain"
+                      loop
+                      autoPlay
+                      muted
+                    >
+                      <source src={getStrapiMedia(slider.attributes.hero?.data.attributes.url)} type="video/mp4" />
+                    </video>
+                  }
+                  <div className="container mx-auto">
+                    <div className="swiper-card relative z-10">
+                      {slider.attributes?.title &&
+                        <GradualSpacing
+                          className="hero-sec-heading hidden md:block !uppercase"
+                          text={slider.attributes.title}
+                        />
+                      }
+                      {slider.attributes?.title &&
+                        <GradualSpacing
+                          className="hero-sec-heading md:hidden"
+                          text={slider.attributes.name}
+                        />
+                      }
+                      {slider.attributes?.tag_line &&
+                        <LetterPullup
+                          className="section-subheading"
+                          words={slider.attributes.tag_line}
+                          delay={0.05}
+                        />
+                      }
+                      <Link href={slider.attributes.permalink} class="explore-btn">
+                        <span>Explore Now</span>
+                        <div class="wave"></div>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div class="swiper-card-main">
-            <span className="slider-overlay"></span>
-            <div className="w-full !h-full md:!h-[100vh] flex items-end pb-8 md:pb-[60px]">
-              <video
-                className="absolute top-0 w-full h-fit object-contain"
-                loop
-                autoPlay
-                muted
-              >
-                <source src={"/assets/videos/OTR.mp4"} type="video/mp4" />
-              </video>
-              <div className="container mx-auto">
-                <div className="swiper-card relative z-10">
-                  <GradualSpacing
-                    className="hero-sec-heading hidden md:block !uppercase"
-                    text="Off The Road"
-                  />
-                  <GradualSpacing
-                    className="hero-sec-heading md:hidden"
-                    text="OTR"
-                  />
-                  <LetterPullup
-                    className="section-subheading"
-                    words={"Ready for Every Challenge"}
-                    delay={0.05}
-                  />
-                  <Link href="/products/off-the-road" class="explore-btn">
-                    <span>Explore Now</span>
-                    <div class="wave"></div>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div class="swiper-card-main">
-            <span className="slider-overlay"></span>
-            <div className="w-full !h-full md:!h-[100vh] flex items-end pb-8 md:pb-[60px]">
-              <video
-                className="absolute top-0 w-full h-fit object-contain"
-                loop
-                autoPlay
-                muted
-              >
-                <source src={"/assets/videos/AGRI-10.mp4"} type="video/mp4" />
-              </video>
-              <div className="container mx-auto">
-                <div className="swiper-card relative z-10">
-                  <GradualSpacing
-                    className="hero-sec-heading hidden md:block !uppercase"
-                    text="Agriculture"
-                  />
-                  <GradualSpacing
-                    className="hero-sec-heading md:hidden"
-                    text="AGRI"
-                  />
-                  <LetterPullup
-                    className="section-subheading"
-                    words={"Strength in Every Turn"}
-                    delay={0.05}
-                  />
-                  <Link href="/products/agriculture" class="explore-btn">
-                    <span>Explore Now</span>
-                    <div class="wave"></div>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-      </Swiper>
-
-      <div class="relative w-full flex md:hidden gap-2 p-2">
-        <Link href="" className="primary-btn-1 !w-[50%] !justify-center">
-          Find a Tyre
-        </Link>
-        <Link href="" className="primary-btn-2 !w-[50%] !justify-center">
-          Find a Dealer
-        </Link>
-      </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      }
     </div>
   );
 }

@@ -4,17 +4,20 @@ import Link from "next/link";
 import Image from "next/image";
 import tigerMask from "../../assets/images/tiger-mask2.png";
 
-export default function Dealer() {
+export default function Dealer({ Heading='', Title=''}) {
   return (
     <section className="dealer-sec sec-gap relative overflow-hidden">
       <Image alt="mask" src={tigerMask} className="absolute left-8 top-0" />
       <div className="container mx-auto overflow-hidden">
         <div className="upper-title-sec">
-          <span className="section-heading">Find a dealer</span>
-          {/* <h3 className="section-title">Media Presence</h3> */}
-          <div className="section-title-wrapper">
-            <GradualSpacing className="section-title" text="Dealer Locator" />
-          </div>
+          {Heading &&
+            <span className="section-heading">{Heading}</span>
+          }
+          {Title &&
+            <div className="section-title-wrapper">
+              <GradualSpacing className="section-title" text={Title} />
+            </div>
+          }
         </div>
         <div class="w-full flex gap-2 md:gap-6 flex-col md:flex-row mt-5 2xl:mt-10">
           <div class="relative md:w-[30%]">

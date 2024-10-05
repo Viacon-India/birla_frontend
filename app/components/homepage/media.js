@@ -1,164 +1,85 @@
 import React from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import Image from "next/image";
-import gallary1 from "../../assets/images/media1.jpg";
-import gallary2 from "../../assets/images/media2.jpg";
-import gallary3 from "../../assets/images/gallary2-original.jpg";
 import Link from "next/link";
 import GradualSpacing from "@/components/GradualSpacing";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-export default function Media() {
+export default function Media({ Heading='', Title=''}) {
+  const [pageData, setPageData] = useState([]);
   useEffect(() => {
+    fetch(getStrapiMedia("/api/media-presences?sort[0]=date:desc&fields[0]=title&fields[1]=description&fields[2]=date&fields[3]=link&populate[image][fields][0]=name&populate[image][fields][1]=width&populate[image][fields][2]=height&populate[image][fields][3]=url&populate[image][fields][4]=alternativeText&pagination[pageSize]=3&pagination[page]=1")).then((res) => res.json()).then((page) => {
+      setPageData(page);
+    });
     AOS.init();
   }, []);
   return (
     <section className="media-sec sec-gap">
       <div className="container mx-auto overflow-hidden">
         <div className="upper-title-sec">
-          <span className="section-heading">our presence</span>
-          <div className="section-title-wrapper">
-            <GradualSpacing className="section-title" text="Media Presence" />
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-5 2xl:mt-10">
-            <div
-              class="media-card"
-              data-aos="fade-right"
-              data-aos-duration="1500"
-              // data-aos-offset="650"
-            >
-              <figure>
-                <Link
-                  target="_blank"
-                  href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
-                >
-                  <Image
-                    className="media-card-image"
-                    src={gallary2}
-                    alt="card"
-                  />
-                </Link>
-                <span></span>
-              </figure>
-              <div className="media-card-detail">
-                <div className="flex justify-between items-center mb-3">
-                  <span className="card-cat">Media</span>
-                  <span className="card-date">24 september 2024</span>
-                </div>
-                <h2 className="media-title">
-                  <Link
-                    target="_blank"
-                    href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
-                  >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, dolore.
-                  </Link>
-                </h2>
-                <p className="media-detail">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ducimus vitae ullam?
-                </p>
-                <Link
-                  target="_blank"
-                  href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
-                  className="primary-btn w-fit !px-6 flip-animate-2"
-                >
-                  <span data-hover="Read More">Read More</span>
-                </Link>
-              </div>
+          {Heading &&
+            <span className="section-heading">{Heading}</span>
+          }
+          {Title &&
+            <div className="section-title-wrapper">
+              <GradualSpacing className="section-title" text={Title} />
             </div>
-            <div
-              class="media-card"
-              data-aos="fade-right"
-              data-aos-duration="1000"
-              // data-aos-offset="650"
-            >
-              <figure>
-                <Link
-                  target="_blank"
-                  href="https://timesofindia.indiatimes.com/city/kolkata/birla-tyres-to-re-enter-market-with-new-products-in-q4/articleshow/111793517.cms"
+          }
+          {pageData?.data && pageData.data.length > 0 &&
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-5 2xl:mt-10">
+              {pageData.data.map((media) => ( media.attributes?.link &&
+                <div key={media.id}
+                  class="media-card"
+                  data-aos="fade-right"
+                  data-aos-duration="1500"
                 >
-                  <Image
-                    className="media-card-image"
-                    src={gallary1}
-                    alt="card"
-                  />
-                </Link>
-              </figure>
-              <div className="media-card-detail">
-                <div className="flex justify-between items-center mb-3">
-                  <span className="card-cat">Media</span>
-                  <span className="card-date">17 July 2024</span>
+                  {media.attributes.image?.data &&
+                    <figure>
+                      <Link
+                        target="_blank"
+                        href={media.attributes.link}
+                      >
+                        <Image
+                          className="media-card-image"
+                          src={getStrapiMedia(media.attributes.image.data.attributes.url)}
+                          width={media.attributes.image.data.attributes.width}
+                          height={media.attributes.image.data.attributes.height}
+                          alt={media.attributes.image.data.attributes.alternativeText}
+                        />
+                      </Link>
+                      <span></span>
+                    </figure>
+                  }
+                  <div className="media-card-detail">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="card-cat">Media</span>
+                      <span className="card-date">24 september 2024</span>
+                    </div>
+                    <h2 className="media-title">
+                      <Link
+                        target="_blank"
+                        href={media.attributes.link}
+                      >
+                        {media.attributes?.title}
+                      </Link>
+                    </h2>
+                    {media.attributes?.description &&
+                      <p className="media-detail">{media.attributes.description}</p>
+                    }
+                    <Link
+                      target="_blank"
+                      href={media.attributes.link}
+                      className="primary-btn w-fit !px-6 flip-animate-2"
+                    >
+                      <span data-hover="Read More">Read More</span>
+                    </Link>
+                  </div>
                 </div>
-                <h2 className="media-title">
-                  <Link
-                    target="_blank"
-                    href="https://timesofindia.indiatimes.com/city/kolkata/birla-tyres-to-re-enter-market-with-new-products-in-q4/articleshow/111793517.cms"
-                  >
-                    Birla Tyres to re-enter mkt with new products in Q4
-                  </Link>
-                </h2>
-                <p className="media-detail">
-                  Birla Tyres is likely to re-enter the market with a new range
-                  of products in the fourth quarter of this fiscal, said Anurag
-                  Choudhary....
-                </p>
-                <Link
-                  target="_blank"
-                  href="https://timesofindia.indiatimes.com/city/kolkata/birla-tyres-to-re-enter-market-with-new-products-in-q4/articleshow/111793517.cms"
-                  className="primary-btn w-fit !px-6 flip-animate-2"
-                >
-                  <span data-hover="Read More">Read More</span>
-                </Link>
-              </div>
+              ))}
             </div>
-            <div
-              class="media-card"
-              data-aos="fade-right"
-              data-aos-duration="1500"
-              // data-aos-offset="650"
-            >
-              <figure>
-                <Link
-                  target="_blank"
-                  href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
-                >
-                  <Image
-                    className="media-card-image"
-                    src={gallary3}
-                    alt="card"
-                  />
-                </Link>
-                <span></span>
-              </figure>
-              <div className="media-card-detail">
-                <div className="flex justify-between items-center mb-3">
-                  <span className="card-cat">Media</span>
-                  <span className="card-date">02 November 2023</span>
-                </div>
-                <h2 className="media-title">
-                  <Link
-                    target="_blank"
-                    href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
-                  >
-                    Birla Tyres set to roll again, acquisition finalised by
-                    consortium of Himadri and Dalmia
-                  </Link>
-                </h2>
-                <p className="media-detail">
-                  Birla Tyres will resurface on Indian roads a year from now,
-                  courtesy the new owners of the company and the brand....
-                </p>
-                <Link
-                  target="_blank"
-                  href="https://www.telegraphindia.com/business/birla-tyres-set-to-roll-again-acquisition-finalised-by-consortium-of-himadri-and-dalmia/cid/1977074"
-                  className="primary-btn w-fit !px-6 flip-animate-2"
-                >
-                  <span data-hover="Read More">Read More</span>
-                </Link>
-              </div>
-            </div>
-          </div>
+          }
         </div>
       </div>
       <div className="media-sec-marker"></div>
