@@ -220,7 +220,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <ul className="footer-list-sec py-4 md:py-10 grid grid-rows-3 md:grid-rows-2 grid-flow-col gap-2">
+        <ul className="footer-list-sec py-4 md:py-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-8 md:gap-2">
           {footerMenu.map((newMenu) => (
             <li className="footer-list-box" key={newMenu.id}>
               <h2>{newMenu.attributes.title}</h2>

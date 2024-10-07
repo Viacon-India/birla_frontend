@@ -690,10 +690,10 @@ a.current_dot {
   @apply text-[#0E0E11] text-[14px] md:text-[15px] leading-[1.5] pt-2 md:pt-0
 }
 .footer-detail-box{
-  @apply flex items-center gap-3 border border-[#727C8D] px-4 py-2 rounded-[4px] w-fit
+  @apply flex items-center gap-1 md:gap-3 border border-[#727C8D] px-4 py-2 rounded-[4px] w-fit
 }
-.footer-detail-box span{
-  @apply text-[14px] md:text-[18px] text-secondary
+.footer-detail-box a{
+  @apply text-[14px] md:text-[15px] text-secondary
 }
 .footer-list{
   @apply flex flex-col gap-3 mt-2 md:mt-5 !pl-0
@@ -711,7 +711,7 @@ a.current_dot {
   @apply opacity-100
 }
 
-.footer-list-box{
+/* .footer-list-box{
   @apply text-secondary text-[20px] leading-[1.2] capitalize
 }
 .footer-list-box:first-child{
@@ -725,7 +725,7 @@ a.current_dot {
 }
 .footer-list-box:nth-child(4){
   @apply md:row-span-2
-}
+} */
 .footer-list-box h2{
   @apply text-secondary text-[20px] leading-[1.2] capitalize opacity-100 font-semibold
 }
@@ -1111,7 +1111,7 @@ a.current_dot {
   @apply relative z-5
 }
 .accordion-list-sec .collapse-title{
-  @apply text-[#1A1D21] !p-0 flex gap-2 items-center font-bold min-h-[3.75rem] md:!min-h-[4.75rem]
+  @apply text-[#1A1D21] !p-0 flex gap-2 items-center font-bold min-h-[3.75rem] md:!min-h-[4.75rem] !pr-5 md:!pr-0
 }
 .accordion-list-sec .collapse-content{
   @apply !pl-0
@@ -1238,8 +1238,7 @@ a.current_dot {
 /* svg-botttom-code */
 .line-loader,
 .bar {
-	width: 120px;
-	height: 50px;
+  @apply w-[80px] md:w-[120px] h-[20px] md:h-[50px]
 }
 .bar {
 	position: absolute;
@@ -1306,8 +1305,8 @@ a.current_dot {
 }
 .vision-overlay{
   @apply absolute top-[75%] w-full h-full bg-secondary opacity-75 rounded-bl-[12px] rounded-br-[12px] text-[#F4F5F6] text-center
-  text-[18px] md:text-[32px] font-semibold transition-all duration-500 group-hover:top-0 flex justify-start group-hover:items-center
-  px-6 md:px-20 2xl:px-[140px]
+  text-[16px] md:text-[28px] 2xl:text-[32px] font-semibold transition-all duration-500 group-hover:top-0 flex justify-start group-hover:items-center
+  px-6 md:px-20 2xl:px-[140px] pt-2
 }
 
 
@@ -1327,14 +1326,14 @@ input[type=file]::file-selector-button {
 
 
 .value-overlay{
-  @apply w-full h-full absolute p-[13px] md:p-5 top-[70%] md:top-[50%] group-hover:top-0 transition-all duration-500 flex flex-col group-hover:justify-center md:!pl-10
+  @apply w-full h-full absolute p-[13px] md:p-5 top-[70%] md:top-[60%] group-hover:top-0 transition-all duration-500 flex flex-col group-hover:justify-center md:!pl-10
 }
 
 .value-overlay h3{
   @apply text-[#FFFFFF] text-[22px] md:text-[28px] 2xl:text-[32px] font-semibold first-letter:bg-white
 }
 .value-overlay p{
-  @apply text-[#FFFFFF] text-[14px] md:text-[15px] 2xl:text-[16px]
+  @apply text-[#FFFFFF] text-[14px] md:text-[15px] 2xl:text-[16px] pt-[10px]
 }
 .new-main .value-overlay-card:nth-child(1) .value-overlay h3::first-letter, .new-main .value-overlay-card:nth-child(4) .value-overlay h3::first-letter{
   @apply !text-secondary
@@ -1398,16 +1397,16 @@ input[type=file]::file-selector-button {
 
 /* Testimonial-card */
 .testimonial-card{
-  @apply bg-[#F4F5F6] rounded-[12px] p-3 md:p-5 flex gap-2 md:gap-3
+  @apply bg-[#F4F5F6] rounded-[12px] p-3 md:p-5 flex flex-col md:flex-row gap-2 md:gap-3
 }
 .testimonial-card-title{
   @apply text-secondary text-[18px] md:text-[24px] font-semibold
 }
 .testimonial-card-detail-wrapper{
-  @apply flex flex-col gap-3 w-[60%]
+  @apply flex flex-col gap-3 w-full md:w-[60%]
 }
 .testimonial-card-detail{
-  @apply text-[#1A1D21] text-[14px] 2xl:text-[16px] leading-[1.5] h-[236px] overflow-y-auto
+  @apply text-[#1A1D21] text-[14px] 2xl:text-[16px] leading-[1.5] h-[160px] md:h-[236px] overflow-y-auto
 }
 
 

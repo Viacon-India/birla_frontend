@@ -7,8 +7,8 @@ import tigerMask from "../../assets/images/tiger-mask2.png";
 export default function Dealer({ Heading='', Title=''}) {
   return (
     <section className="dealer-sec sec-gap relative overflow-hidden">
+      <div className="container mx-auto overflow-hidden relative">
       <Image alt="mask" src={tigerMask} className="absolute left-8 top-0" />
-      <div className="container mx-auto overflow-hidden">
         <div className="upper-title-sec">
           {Heading &&
             <span className="section-heading">{Heading}</span>
