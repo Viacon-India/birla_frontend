@@ -28,7 +28,8 @@ export default function Homepage() {
       <Sustainability Heading={pageData?.section4_heading} Title={pageData?.section4_title} Description={pageData?.section4_description} Video={pageData?.section4_video}/>
       <AboutUs Data={pageData?.section5}/>
       <Media Heading={pageData?.media_heading} Title={pageData?.media_title}/>
-      <Faq />
+      <Faq Heading={pageData?.blog_heading} Title={pageData?.blog_title} Data={pageData?.faq}/>
+ 
     </>
   );
 }

@@ -15,6 +15,7 @@ import Triangle3 from "@/app/assets/images/triangle3.png";
 import Triangle4 from "@/app/assets/images/triangle4.png";
 import BGTiger2 from "../../assets/images/tiger-mask2.png";
 import tigerMask from "@/app/assets/images/tiger-mask2.png";
+import tigerMask3 from "@/app/assets/images/tiger-mask3.png";
 import tiger from "@/app/assets/images/tiger.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -323,7 +324,7 @@ export function ImageTitleContent({ section }) {
           )}
         >
           <figure
-            className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
+            className="w-full md:w-[45%] h-[300px] md:h-[480px] relative glare"
             data-aos="flip-right"
             data-aos-duration="1500"
           >
@@ -581,7 +582,7 @@ export function Accordion({ section }) {
                     <Image
                       key={image.id}
                       className={cn(
-                        "w-full h-[240px] 2xl:h-[290px] rounded-[12px]",
+                        "w-full h-[180px] md:h-[240px] 2xl:h-[290px] rounded-[12px]",
                         index == "0" && "col-span-2"
                       )}
                       width={image?.width}
@@ -594,7 +595,7 @@ export function Accordion({ section }) {
               ) : (
                 <div class="w-full md:w-[40%] h-fit md:sticky top-[90px]">
                   <figure
-                    className="w-full h-[350px] md:h-[500px] 2xl:h-[600px] mb-0"
+                    className="w-full h-[300px] md:h-[500px] 2xl:h-[600px] mb-0"
                     data-aos="zoom-in"
                     data-aos-duration="1000"
                   >
@@ -612,7 +613,7 @@ export function Accordion({ section }) {
           )}
           {section?.items && (
             <div
-              class="accordion-list-sec w-full md:w-[60%] h-[350px] md:h-[500px] 2xl:h-[600px] overflow-y-auto"
+              class="accordion-list-sec w-full md:w-[60%] md:h-[500px] 2xl:h-[600px] md:overflow-y-auto"
               data-aos="fade-left"
               data-aos-duration="1000"
             >
@@ -754,20 +755,18 @@ export function TitleContentHalf({ section }) {
       )}
     >
       <div className="container mx-auto">
-        <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px]">
-          <div
-            className="box-title-sec w-full md:w-[45%] relative"
-            data-aos="fade-right"
-            data-aos-duration="1000"
-          >
+        <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px] relative">
+          <div className="box-title-sec w-full md:w-[45%]">
             <Image
-              src={tigerMask}
+              src={tigerMask3}
               alt="tigermark"
-              className="absolute left-0 top-0"
+              className="absolute left-0 bottom-0"
             />
-            <span className="section-heading">{section?.heading}</span>
-            <div className="section-title-wrapper">
-              <h3 className="section-title">{section?.title}</h3>
+            <div data-aos="fade-right" data-aos-duration="1000">
+              <span className="section-heading">{section?.heading}</span>
+              <div className="section-title-wrapper">
+                <h3 className="section-title">{section?.title}</h3>
+              </div>
             </div>
           </div>
           {section?.content && section.content.length > 0 && (
@@ -1025,7 +1024,7 @@ export function Gallery({ section }) {
             </div>
 
             <div className="relative mt-6">
-              <figure className="absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10 hidden md:block">
+              <figure className="absolute w-[100px] h-[100px] 2xl:w-[150px] 2xl:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10 hidden md:block">
                 <Image
                   className={section?.collection_name ? "!opacity-15" : ""}
                   data-aos="zoom-in"
@@ -1034,7 +1033,7 @@ export function Gallery({ section }) {
                   alt="img"
                 />
                 {section?.collection_name && (
-                  <span className="text-primary font-bold text-[22px] md:text-[36px] 2xl:text-[48px] uppercase absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+                  <span className="text-primary font-bold text-[28px] 2xl:text-[48px] uppercase absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
                     {section.collection_name}
                   </span>
                 )}
@@ -1050,14 +1049,14 @@ export function Gallery({ section }) {
                     {!section?.collection_name && (
                       <>
                         <Image
-                          className="absolute top-0 left-0 z-1 w-[260px] h-[230px] 2xl:w-[330px] 2xl:h-[300px]"
+                          className="absolute top-0 left-0 z-1 w-[220px] md:w-[260px] h-[200px] md:h-[230px] 2xl:w-[330px] 2xl:h-[300px]"
                           src={Triangle3}
                           alt="img"
                           data-aos={AOCClass[0]}
                           data-aos-duration="1000"
                         />
                         <Image
-                          className="absolute bottom-0 right-0 z-1 w-[260px] h-[230px] 2xl:w-[330px] 2xl:h-[300px]"
+                          className="absolute bottom-0 right-0 z-1 w-[220px] md:w-[260px] h-[200px] md:h-[230px] 2xl:w-[330px] 2xl:h-[300px]"
                           src={Triangle4}
                           alt="img"
                           data-aos={AOCClass[3]}
@@ -1165,7 +1164,7 @@ export function ImagePoint({ section }) {
       )}
     >
       <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
-        <div>
+        <div data-aos="fade-left" data-aos-duration="1000">
           <span className="section-heading">{section?.heading}</span>
           <div className="section-title-wrapper">
             <h3 className="section-title">{section?.title}</h3>
@@ -1176,7 +1175,11 @@ export function ImagePoint({ section }) {
             content={section.content}
             blocks={{
               paragraph: ({ children }) => (
-                <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
+                <p
+                  className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]"
+                  data-aos="fade-left"
+                  data-aos-duration="1000"
+                >
                   {children}
                 </p>
               ),
@@ -1229,41 +1232,66 @@ export function ImagePoint({ section }) {
                     />
                   </figure>
                 )}
-                <h2>{collection.title}</h2>
+                <h2 data-aos="fade-left" data-aos-duration="500">
+                  {collection.title}
+                </h2>
                 {collection?.content && collection.content.length > 0 && (
                   <BlocksRenderer
-                    content={collection.content}
-                    blocks={{
-                      paragraph: ({ children }) => <p>{children}</p>,
-                      heading: ({ children, level }) => {
-                        switch (level) {
-                          case 1:
-                            return <h1>{children}</h1>;
-                          case 2:
-                            return <h2>{children}</h2>;
-                          case 3:
-                            return <h3>{children}</h3>;
-                          case 4:
-                            return <h4>{children}</h4>;
-                          case 5:
-                            return <h5>{children}</h5>;
-                          case 6:
-                            return <h6>{children}</h6>;
-                          default:
-                            return <h1>{children}</h1>;
-                        }
-                      },
-                      link: ({ children, url }) => (
-                        <Link href={url}>{children}</Link>
-                      ),
-                    }}
-                    modifiers={{
-                      bold: ({ children }) => <strong>{children}</strong>,
-                      italic: ({ children }) => (
-                        <span className="italic">{children}</span>
-                      ),
-                    }}
-                  />
+                  content={collection.content}
+                  blocks={{
+                    paragraph: ({ children }) => (
+                      <p data-aos="fade-left" data-aos-duration="1000">
+                        {children}
+                      </p>
+                    ),
+                    heading: ({ children, level }) => {
+                      switch (level) {
+                        case 1:
+                          return <h1>{children}</h1>;
+                        case 2:
+                          return <h2>{children}</h2>;
+                        case 3:
+                          return (
+                            <h3 data-aos="fade-left" data-aos-duration="1000">
+                              {children}
+                            </h3>
+                          );
+                        case 4:
+                          return <h4>{children}</h4>;
+                        case 5:
+                          return <h5>{children}</h5>;
+                        case 6:
+                          return <h6>{children}</h6>;
+                        default:
+                          return <h1>{children}</h1>;
+                      }
+                    },
+                    list: (props) => {
+                      if (props.format === "ordered") {
+                        return (
+                          <ol data-aos="fade-left" data-aos-duration="1000">
+                            {props.children}
+                          </ol>
+                        );
+                      }
+                      return (
+                        <ul data-aos="fade-left" data-aos-duration="1000">
+                          {props.children}
+                        </ul>
+                      );
+                    },
+                    "list-item": (props) => <li>{props.children}</li>,
+                    link: ({ children, url }) => (
+                      <Link href={url}>{children}</Link>
+                    ),
+                  }}
+                  modifiers={{
+                    bold: ({ children }) => <strong>{children}</strong>,
+                    italic: ({ children }) => (
+                      <span className="italic">{children}</span>
+                    ),
+                  }}
+                />
                 )}
               </div>
             ))}
@@ -1375,7 +1403,7 @@ export function JobApplication({ section }) {
         section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
       )}
     >
-      <div className="container mx-auto flex flex-col">
+      <div className="container mx-auto flex flex-col overflow-hidden">
         <div className="flex items-center flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px] pt-[60px] md:pt-[120px]">
           <div
             className="box-title-sec w-full md:w-[45%] relative"
@@ -1780,12 +1808,12 @@ export function ImageDetailContent({ section }) {
       <div class="container mx-auto">
         <div
           className={cn(
-            "flex flex-col items-start gap-10 p-10 bg-white border border-[#C9CDD3] rounded-[24px] pt-6 mt-6 md:mt-8 2xl:mt-[60px]",
+            "flex flex-col items-start gap-2 md:gap-4 2xl:gap-10 md:p-10 md:bg-white md:border border-[#C9CDD3] md:rounded-[24px] md:pt-6 mt-8 2xl:mt-[60px]",
             section?.settings?.right ? "md:flex-row-reverse" : "md:flex-row "
           )}
         >
           <figure
-            className="w-full md:w-[40%] h-[480px] relative glare"
+            className="w-full md:w-[40%] h-[300px] md:h-[400px] 2xl:h-[480px] relative glare"
             data-aos="flip-right"
             data-aos-duration="1500"
           >
@@ -1811,7 +1839,7 @@ export function ImageDetailContent({ section }) {
             />
           </figure>
           <div className="flex flex-col justify-center gap-2 md:gap-6 w-full md:w-[60%] relative overflow-hidden">
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-2 md:gap-4 2xl:gap-6">
               <Image
                 className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
                 src={BGTiger2}
@@ -1819,14 +1847,14 @@ export function ImageDetailContent({ section }) {
               />
               <div className="flex gap-2 flex-col">
                 <h2
-                  className="text-[48px] leading-[48px] font-bold text-secondary"
+                  className="text-[24px] md:text-[36px] 2xl:text-[48px] font-bold text-secondary"
                   data-aos="fade-left"
                   data-aos-duration="200"
                 >
                   {section?.name}
                 </h2>
                 <h3
-                  className="uppercase text-primary font-medium text-2xl"
+                  className="uppercase text-primary font-medium text-[18px] md:text-[20px] 2xl:text-[24px]"
                   data-aos="fade-left"
                   data-aos-duration="400"
                 >
@@ -1838,7 +1866,7 @@ export function ImageDetailContent({ section }) {
                 data-aos="fade-left"
                 data-aos-duration="600"
               >
-                <p className="text-[#1A1D21] text-[24px] font-medium">
+                <p className="text-[#1A1D21] text-[20px] md:text-[24px] font-medium">
                   {section.social_title}
                 </p>
                 {section?.social &&
@@ -1866,7 +1894,7 @@ export function ImageDetailContent({ section }) {
                 content={section.content}
                 blocks={{
                   paragraph: ({ children }) => (
-                    <p data-aos="fade-left" data-aos-duration="1000">
+                    <p className="text-[14px] md:text-[15px] 2xl:text-[17px]" data-aos="fade-left" data-aos-duration="1000">
                       {children}
                     </p>
                   ),
@@ -2235,7 +2263,10 @@ export function TabImage({ section }) {
             {section?.collection.map(
               (collection, index) =>
                 activeTab === "tab-" + index && (
-                  <div key={collection.id} className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl overflow-hidden">
+                  <div
+                    key={collection.id}
+                    className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl overflow-hidden"
+                  >
                     {collection?.content && (
                       <BlocksRenderer
                         content={collection.content}
@@ -2311,18 +2342,12 @@ export function TabImage({ section }) {
 }
 
 export function Parallax({ section }) {
-
   const backgroundImageURL = getStrapiMedia(section.image.url);
   const backgroundImageStyle = {
-    backgroundAttachment: 'fixed',
+    backgroundAttachment: "fixed",
     backgroundImage: `url(${backgroundImageURL})`,
   };
-  const AOCClass = [
-    "500",
-    "1500",
-    "2000",
-    "3000",
-  ];
+  const AOCClass = ["500", "1500", "2000", "3000"];
   return (
     <>
       <section className="page-content-sec mt-[60px]">
@@ -2332,7 +2357,11 @@ export function Parallax({ section }) {
               {section?.description}
             </h2>
             <div className="parallax-main">
-              <div id="parallax" className="parallax-item" style={backgroundImageStyle}>
+              <div
+                id="parallax"
+                className="parallax-item"
+                style={backgroundImageStyle}
+              >
                 {section?.collection?.map((collection, index) => (
                   <div
                     className="parallax-card"
@@ -2365,7 +2394,7 @@ export function KeyPoints({ section }) {
         <div className="container mx-auto">
           <div className="pillar-sec">
             <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px] !pb-[100px]">
-              {section?.image &&
+              {section?.image && (
                 <figure
                   className="w-full md:w-[45%] h-[480px] relative glare"
                   data-aos="flip-right"
@@ -2384,16 +2413,18 @@ export function KeyPoints({ section }) {
                     alt={section.image?.alternativeText}
                   />
                 </figure>
-              }
+              )}
               <div className="box-content-sec relative md:w-[55%] flex flex-col">
-                {section?.heading &&
+                {section?.heading && (
                   <span
                     className="section-heading"
                     data-aos="fade-left"
                     data-aos-duration="500"
-                  >{section.heading}</span>
-                }
-                {section?.title &&
+                  >
+                    {section.heading}
+                  </span>
+                )}
+                {section?.title && (
                   <div
                     className="section-title-wrapper mb-5 md:mb-6 2xl:mb-10"
                     data-aos="fade-left"
@@ -2401,32 +2432,35 @@ export function KeyPoints({ section }) {
                   >
                     <h3 className="section-title">{section.title}</h3>
                   </div>
-                }
-                {section?.collection && section.collection.length > 0 &&
+                )}
+                {section?.collection && section.collection.length > 0 && (
                   <div
                     className="pillar-list-sec"
                     data-aos="fade-left"
                     data-aos-duration="1000"
                   >
-                    {section.collection.map((point) => point.title &&
-                      <div key={point.id} className="pillar-box">
-                        {point?.icon && (
-                          <Image
-                            key={point.icon.id}
-                            className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center px-4 py-[14px]"
-                            width={point.icon?.width}
-                            height={point.icon?.height}
-                            src={getStrapiMedia(point.icon?.url)}
-                            alt={point.icon?.alternativeText}
-                          />
-                        )}
-                        <div className="pillar-list">
-                          <p>{point.title}</p>
-                        </div>
-                      </div>
+                    {section.collection.map(
+                      (point) =>
+                        point.title && (
+                          <div key={point.id} className="pillar-box">
+                            {point?.icon && (
+                              <Image
+                                key={point.icon.id}
+                                className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center px-4 py-[14px]"
+                                width={point.icon?.width}
+                                height={point.icon?.height}
+                                src={getStrapiMedia(point.icon?.url)}
+                                alt={point.icon?.alternativeText}
+                              />
+                            )}
+                            <div className="pillar-list">
+                              <p>{point.title}</p>
+                            </div>
+                          </div>
+                        )
                     )}
                   </div>
-                }
+                )}
               </div>
             </div>
           </div>

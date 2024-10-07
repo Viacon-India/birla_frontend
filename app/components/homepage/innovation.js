@@ -67,8 +67,8 @@ export default function Innovation({ Heading='', Title='', Data={}}) {
             }
           </div>
         </div>
-        {Data?.data && Data.data.length > 0 &&
-          <div class="innovative-slider mt-5 2xl:mt-8">
+        <div class="innovative-slider mt-5 2xl:mt-8">
+          {Data?.data && Data.data.length > 0 &&
             <Swiper
               navigation={true}
               freeMode={true}
@@ -165,8 +165,8 @@ export default function Innovation({ Heading='', Title='', Data={}}) {
                 </SwiperSlide>
               ))}
             </Swiper>
-          </div>
-        }
+          }
+        </div>
       </div>
     </section>
   );

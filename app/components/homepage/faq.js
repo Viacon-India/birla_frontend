@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import { getStrapiMedia } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import gallary1 from "../../assets/images/blog1.jpg";
 import gallary2 from "../../assets/images/blog2.jpg";
@@ -9,12 +12,24 @@ import Link from "next/link";
 import faqImage from "../../assets/images/faq-img.jpg";
 import Triangle1 from "../../assets/images/triangle1.png"
 
-export default function Faq() {
+export default function Faq({Heading='', Title='', Data}) {
   const [activeTab, setActiveTab] = useState("faq");
+  const [pageData, setPageData] = useState([]);
+
+  const formatDate = (dateString) => {
+    const options = { day: '2-digit', month: 'long', year: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB', options);
+  };
+
   useEffect(() => {
-    var newPanel = document.getElementsByClassName("ham-accordion active")[0]
-      .nextElementSibling;
-    newPanel.style.maxHeight = newPanel.scrollHeight + "px";
+    fetch(getStrapiMedia("/api/blogs?sort[0]=date:desc&fields[0]=title&fields[1]=description&fields[2]=date&fields[3]=link&populate[image][fields][0]=name&populate[image][fields][1]=width&populate[image][fields][2]=height&populate[image][fields][3]=url&populate[image][fields][4]=alternativeText&pagination[pageSize]=2&pagination[page]=1")).then((res) => res.json()).then((page) => {
+      setPageData(page);
+    });
+
+    // var newPanel = document.getElementsByClassName("ham-accordion active")[0]
+    //   .nextElementSibling;
+    // newPanel.style.maxHeight = newPanel.scrollHeight + "px";
 
     var acc2 = document.getElementsByClassName("ham-accordion");
     for (var j = 0; j < acc2.length; j++) {
@@ -57,113 +72,172 @@ export default function Faq() {
         {activeTab === "faq" && (
           <div className="content-wrapper" id="faq">
             <div className="upper-sec">
-              <span className="section-heading">FAQS</span>
-              <div className="section-title-wrapper">
-                <GradualSpacing
-                  className="section-title"
-                  text="Frequently Asked Questions"
+              {Data?.heading &&
+                <span className="section-heading">{Data.heading}</span>
+              }
+              {Data?.title &&
+                <div className="section-title-wrapper">
+                  <GradualSpacing className="section-title" text={Data.title} />
+                </div>
+              }
+              {Data?.pre_content && Data.pre_content.length > 0 && (
+                <BlocksRenderer
+                  content={Data.pre_content}
+                  blocks={{
+                    paragraph: ({ children }) => (
+                      <p className="text-[#3D434C] text-[14px] md:text-[16px] 2xl:text-[18px] font-medium leading-[1.7] !mt-14 md:!mt-6 2xl:mt-8" data-aos="fade-left" data-aos-duration="1000">
+                        {children}
+                      </p>
+                    ),
+                    heading: ({ children, level }) => {
+                      switch (level) {
+                        case 1:
+                          return <h1>{children}</h1>;
+                        case 2:
+                          return <h2>{children}</h2>;
+                        case 3:
+                          return (
+                            <h3 data-aos="fade-left" data-aos-duration="1000">
+                              {children}
+                            </h3>
+                          );
+                        case 4:
+                          return <h4>{children}</h4>;
+                        case 5:
+                          return <h5>{children}</h5>;
+                        case 6:
+                          return <h6>{children}</h6>;
+                        default:
+                          return <h1>{children}</h1>;
+                      }
+                    },
+                    list: (props) => {
+                      if (props.format === "ordered") {
+                        return (
+                          <ol data-aos="fade-left" data-aos-duration="1000">
+                            {props.children}
+                          </ol>
+                        );
+                      }
+                      return (
+                        <ul data-aos="fade-left" data-aos-duration="1000">
+                          {props.children}
+                        </ul>
+                      );
+                    },
+                    "list-item": (props) => <li>{props.children}</li>,
+                    link: ({ children, url }) => (
+                      <Link href={url}>{children}</Link>
+                    ),
+                  }}
+                  modifiers={{
+                    bold: ({ children }) => <strong>{children}</strong>,
+                    italic: ({ children }) => (
+                      <span className="italic">{children}</span>
+                    ),
+                  }}
                 />
-              </div>
-              <p className="text-[#3D434C] text-[14px] md:text-[16px] 2xl:text-[18px] font-medium leading-[1.7] !mt-14 md:!mt-6 2xl:mt-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Donec vitae mi vulputate, suscipit urna in, malesuada nisl.
-              </p>
+              )}
               <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
-                <div
-                  class="w-full md:w-[45%]"
-                  data-aos="fade-right"
-                  data-aos-duration="1000"
-                >
-                  <figure
-                    className="w-full h-[350px] md:h-[420px] 2xl:h-[520px] relative glare"
-                    data-aos="flip-right"
+                {Data?.images?.data && Data.images.data.length > 0 &&
+                  <div
+                    class="w-full md:w-[45%]"
+                    data-aos="fade-right"
+                    data-aos-duration="1000"
+                  >
+                    <figure
+                      className="w-full h-[350px] md:h-[420px] 2xl:h-[520px] relative glare"
+                      data-aos="flip-right"
+                      data-aos-duration="1500"
+                    >
+                      <Image
+                        className="absolute -z-1 w-[90%] h-[90%]"
+                        src={Triangle1}
+                        alt="triangle"
+                      />
+                      <Image
+                        className="translate-x-4 md:translate-x-8 translate-y-4 md:translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+                        src={getStrapiMedia(Data.images.data[0].attributes?.url)}
+                        width={Data.images.data[0].attributes?.width}
+                        height={Data.images.data[0].attributes?.height}
+                        alt={Data.images.data[0].attributes?.alternativeText}
+                      />
+                    </figure>
+                  </div>
+                }
+                {Data?.items && Data.items.length > 0 &&
+                  <div
+                    class="faq-accordion md:w-[55%] max-h-[360px] md:max-h-[420px] 2xl:max-h-[520px] overflow-y-auto relative z-4"
+                    data-aos="fade-right"
                     data-aos-duration="1500"
                   >
-                    <Image
-                      className="absolute -z-1 w-[90%] h-[90%]"
-                      src={Triangle1}
-                      alt="triangle"
-                    />
-                    <Image
-                      className="translate-x-4 md:translate-x-8 translate-y-4 md:translate-y-8 w-[90%] h-[90%] rounded-[12px]"
-                      src={faqImage}
-                      alt="img"
-                    />
-                  </figure>
-                </div>
-                <div
-                  class="faq-accordion md:w-[55%] max-h-[360px] md:max-h-[420px] 2xl:max-h-[520px] overflow-y-auto relative z-4"
-                  data-aos="fade-right"
-                  data-aos-duration="1500"
-                >
-                  <div class="accordion-content-wrapper">
-                    <h4 className="accordion-title ham-accordion after:top-[0.9rem] after:content-['_-'] active">
-                      What is TBB
-                    </h4>
-                    <p className="accordion-content">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl.
-                    </p>
+                    {Data.items.map((item, index) => (
+                      <div key={item.id} class="accordion-content-wrapper">
+                        <h4 className={cn("accordion-title ham-accordion after:top-[0.9rem] after:content-['_-']", index == 0 ? "active" : "")}>{item?.title}</h4>
+                        <div className="accordion-content">
+                          {item?.content && item.content.length > 0 && (
+                            <BlocksRenderer
+                              content={item.content}
+                              blocks={{
+                                paragraph: ({ children }) => (
+                                  <p className="font-medium leading-[1.7] !mt-14 md:!mt-6 2xl:mt-8">
+                                    {children}
+                                  </p>
+                                ),
+                                heading: ({ children, level }) => {
+                                  switch (level) {
+                                    case 1:
+                                      return <h1>{children}</h1>;
+                                    case 2:
+                                      return <h2>{children}</h2>;
+                                    case 3:
+                                      return (
+                                        <h3 data-aos="fade-left" data-aos-duration="1000">
+                                          {children}
+                                        </h3>
+                                      );
+                                    case 4:
+                                      return <h4>{children}</h4>;
+                                    case 5:
+                                      return <h5>{children}</h5>;
+                                    case 6:
+                                      return <h6>{children}</h6>;
+                                    default:
+                                      return <h1>{children}</h1>;
+                                  }
+                                },
+                                list: (props) => {
+                                  if (props.format === "ordered") {
+                                    return (
+                                      <ol data-aos="fade-left" data-aos-duration="1000">
+                                        {props.children}
+                                      </ol>
+                                    );
+                                  }
+                                  return (
+                                    <ul data-aos="fade-left" data-aos-duration="1000">
+                                      {props.children}
+                                    </ul>
+                                  );
+                                },
+                                "list-item": (props) => <li>{props.children}</li>,
+                                link: ({ children, url }) => (
+                                  <Link href={url}>{children}</Link>
+                                ),
+                              }}
+                              modifiers={{
+                                bold: ({ children }) => <strong>{children}</strong>,
+                                italic: ({ children }) => (
+                                  <span className="italic">{children}</span>
+                                ),
+                              }}
+                            />
+                          )}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <div class="accordion-content-wrapper">
-                    <h4 className="accordion-title ham-accordion after:top-[0.9rem] after:content-['_+']">
-                      What is the basic information about tyres?
-                    </h4>
-                    <p className="accordion-content">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl.
-                    </p>
-                  </div>
-                  <div class="accordion-content-wrapper">
-                    <h4 className="accordion-title ham-accordion after:top-[0.9rem] after:content-['_+']">
-                      How good are TBB tires?
-                    </h4>
-                    <p className="accordion-content">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl.
-                    </p>
-                  </div>
-                  <div class="accordion-content-wrapper">
-                    <h4 className="accordion-title ham-accordion after:top-[0.9rem] after:content-['_+']">
-                      What is the main purpose of a tyre?
-                    </h4>
-                    <p className="accordion-content">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl.
-                    </p>
-                  </div>
-                  <div class="accordion-content-wrapper">
-                    <h4 className="accordion-title ham-accordion after:top-[0.9rem] after:content-['_+']">
-                      Where are TBB tires made?
-                    </h4>
-                    <p className="accordion-content">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl.
-                    </p>
-                  </div>
-                  <div class="accordion-content-wrapper">
-                    <h4 className="accordion-title ham-accordion after:top-[0.9rem] after:content-['_+']">
-                      What is tyre famous for?
-                    </h4>
-                    <p className="accordion-content">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Donec vitae mi vulputate, suscipit urna in,
-                      malesuada nisl.
-                    </p>
-                  </div>
-                </div>
+                }
               </div>
             </div>
           </div>
@@ -171,77 +245,69 @@ export default function Faq() {
 
         {activeTab === "blog" && (
           <div className="content-wrapper" id="blog">
-            <span className="section-heading">Posts</span>
-            <div className="section-title-wrapper">
-              <GradualSpacing className="section-title" text="Blog" />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 !mt-14 md:!mt-6 2xl:mt-10">
-              <div
-                className="media-card"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-              >
-                <figure>
-                  <Image
-                    className="media-card-image"
-                    src={gallary1}
-                    alt="card"
-                  />
-                </figure>
-                <div className="media-card-detail">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="card-cat">Blog</span>
-                    <span className="card-date">24 June 2024</span>
-                  </div>
-                  <h2 className="media-title">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    Lorem ipsum dolor sit amet
-                  </h2>
-                  <p className="media-detail">
-                    Maecenas dignissim justo eget nulla rutrum molestie Maecenas
-                    dignissim justo eget nulla rutrum....
-                  </p>
-                  <Link
-                    href=""
-                    className="primary-btn w-fit !px-6 flip-animate-2"
-                  >
-                    <span data-hover="Read More">Read More</span>
-                  </Link>
-                </div>
+            {Heading &&
+              <span className="section-heading">{Heading}</span>
+            }
+            {Title &&
+              <div className="section-title-wrapper">
+                <GradualSpacing className="section-title" text={Title} />
               </div>
-              <div
-                className="media-card"
-                data-aos="fade-right"
-                data-aos-duration="1500"
-              >
-                <figure>
-                  <Image
-                    className="media-card-image"
-                    src={gallary2}
-                    alt="card"
-                  />
-                </figure>
-                <div className="media-card-detail">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="card-cat">Blog</span>
-                    <span className="card-date">24 June 2024</span>
-                  </div>
-                  <h2 className="media-title">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                  </h2>
-                  <p className="media-detail">
-                    Maecenas dignissim justo eget nulla rutrum molestie Maecenas
-                    dignissim justo eget nulla rutrum....
-                  </p>
-                  <Link
-                    href=""
-                    className="primary-btn w-fit !px-6 flip-animate-2"
+            }
+            {pageData?.data && pageData.data.length > 0 &&
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 !mt-14 md:!mt-6 2xl:mt-10">
+                {pageData.data.map((blog) => ( blog.attributes?.link &&
+                  <div key={blog.id}
+                    className="media-card"
+                    data-aos="fade-right"
+                    data-aos-duration="1000"
                   >
-                    <span data-hover="Read More">Read More</span>
-                  </Link>
-                </div>
+                    {blog.attributes.image?.data &&
+                      <figure>
+                        <Link
+                          target="_blank"
+                          href={blog.attributes.link}
+                        >
+                          <Image
+                            className="media-card-image"
+                            src={getStrapiMedia(blog.attributes.image.data.attributes.url)}
+                            width={blog.attributes.image.data.attributes.width}
+                            height={blog.attributes.image.data.attributes.height}
+                            alt={blog.attributes.image.data.attributes.alternativeText}
+                          />
+                        </Link>
+                      </figure>
+                    }
+                    <div className="media-card-detail">
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="card-cat">Blog</span>
+                        {blog.attributes?.date &&
+                          <span className="card-date">{formatDate(blog.attributes.date)}</span>
+                        }
+                      </div>
+                      {blog.attributes?.title &&
+                        <Link
+                            target="_blank"
+                            href={blog.attributes.link}
+                          >
+                          <h2 className="media-title">
+                            {blog.attributes.title}
+                          </h2>
+                        </Link>
+                      }
+                      {blog.attributes?.description &&
+                        <p className="media-detail">{blog.attributes.description}</p>
+                      }
+                      <Link
+                        href={blog.attributes.link}
+                        className="primary-btn w-fit !px-6 flip-animate-2"
+                      >
+                        <span data-hover="Read More">Read More</span>
+                      </Link>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
+            }
           </div>
         )}
       </div>
