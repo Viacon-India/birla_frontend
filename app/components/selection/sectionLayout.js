@@ -1103,15 +1103,15 @@ export function Gallery({ section }) {
             <div
               className={cn(
                 "gallery-sec grid gap-3 2xl:gap-4 pt-6 md:pt-10 2xl:pt-[60px]",
-                section?.compact ? "grid-cols-5" : "grid-cols-4"
+                section?.compact ? "grid-cols-5" : "grid-cols-1 md:grid-cols-4"
               )}
             >
               {section.collection.map((image) => (
                 <figure
                   className={cn(
                     "w-full mb-0 overflow-hidden rounded-[20px] relative cursor-pointer sustainability-figure",
-                    section?.compact ? "h-[240px]" : "h-[316px]",
-                    image?.big ? "col-span-2" : ""
+                    section?.compact ? "h-[240px]" : "h-[240px] md:h-[316px]",
+                    image?.big ? "md:col-span-2" : ""
                   )}
                   data-aos="flip-left"
                   data-aos-duration="1000"
@@ -1453,7 +1453,7 @@ export function JobApplication({ section }) {
                 }}
               />
             )}
-            <Image alt="mask" src={tigerMask} className="" />
+            <Image alt="mask" src={tigerMask} className="hidden md:block" />
           </div>
           <div className="w-full md:w-1/2">
             <div
@@ -1467,7 +1467,7 @@ export function JobApplication({ section }) {
               >
                 {section?.formName && (
                   <div>
-                    <span className="text-primary text-[32px] md:text-[36px] 2xl:text-[48px] font-bold">
+                    <span className="text-primary text-[28px] md:text-[36px] 2xl:text-[48px] font-bold">
                       {section.formName}
                     </span>
                   </div>
@@ -1589,7 +1589,7 @@ export function JobApplication({ section }) {
                         content={section.concent}
                         blocks={{
                           paragraph: ({ children }) => (
-                            <p className="text-[14px] text-[#000000]">
+                            <p className="text-[12px] md:text-[14px] text-[#000000]">
                               {children}
                             </p>
                           ),

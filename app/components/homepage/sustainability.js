@@ -6,10 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GradualSpacing from "@/components/GradualSpacing";
 import { getStrapiMedia } from "@/lib/utils";
 
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Sustainability({ Heading='', Title='', Description='', Video=''}) {
-  gsap.registerPlugin(ScrollTrigger);
-
   useEffect(() => {
     gsap.to(".sustainabilityVideo", {
       width: "100%",
@@ -46,7 +45,9 @@ export default function Sustainability({ Heading='', Title='', Description='', V
       </div>
       <div class="video-content">
         <video className="sustainabilityVideo" loop autoPlay muted>
-          <source src={"/assets/videos/vid11.mp4"} type="video/mp4" />
+          {Video?.data &&
+            <source src={getStrapiMedia(Video.data.attributes?.url)} type="video/mp4" />
+          }
         </video>
       </div>
     </section>
