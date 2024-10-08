@@ -52,7 +52,7 @@ export default function Innovation({ Heading='', Title='', Data={}}) {
         },
       }
     );
-  }, []);
+  }, [Data]);
   return (
     <section className="innovation-sec sec-gap">
       <div className="container mx-auto">

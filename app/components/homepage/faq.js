@@ -12,7 +12,7 @@ import Link from "next/link";
 import faqImage from "../../assets/images/faq-img.jpg";
 import Triangle1 from "../../assets/images/triangle1.png"
 
-export default function Faq({Heading='', Title='', Data}) {
+export default function Faq({Heading='', Title='', Data={}}) {
   const [activeTab, setActiveTab] = useState("faq");
   const [pageData, setPageData] = useState([]);
 

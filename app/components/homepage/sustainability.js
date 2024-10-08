@@ -24,7 +24,7 @@ export default function Sustainability({ Heading='', Title='', Description='', V
         // markers: true
       },
     });
-  }, []);
+  }, [Video]);
 
   return (
     <section className="sustainability-sec sec-gap relative">

@@ -32,7 +32,7 @@ import img5 from "../../assets/images/about-img-5.jpg";
 
 import { FreeMode, Thumbs, EffectFade } from "swiper/modules";
 
-export default function NewAbout({Data}) {
+export default function NewAbout({Data={}}) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
