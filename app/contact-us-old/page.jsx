@@ -298,7 +298,7 @@ export default function Contact({params}) {
                                 content={section.form1Concent}
                                 blocks={{
                                   paragraph: ({ children }) => (
-                                    <p className="text-[14px] text-[#000000]">
+                                    <p className="text-[12px] md:text-[14px] text-[#000000]">
                                       {children}
                                     </p>
                                   ),

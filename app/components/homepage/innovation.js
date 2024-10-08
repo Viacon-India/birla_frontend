@@ -19,8 +19,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { features } from "process";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Innovation({ Heading='', Title='', Data={}}) {
-  gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
     AOS.init();
 

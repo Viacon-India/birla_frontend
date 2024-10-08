@@ -21,8 +21,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MainButton } from "../pageCommon/pageCommon";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Hero({Data={}}) {
-  gsap.registerPlugin(ScrollTrigger);
   
   const handleVideoEnd = () => {
     $("#preloader").css("transform", "translateY(-150%)");
@@ -30,38 +31,37 @@ export default function Hero({Data={}}) {
   
   useEffect(() => {
     $("#preloader").css("transition", "transform 2s linear"); // Set transition
-    
-    gsap.fromTo(
-      ".sideNav-wrapper",
-      { right: "-48px" },
-      {
-        right: "0px",
-        scrollTrigger: {
-          trigger: ".media-sec-marker",
-          scroller: "body",
-          start: "top top",
-          end: "top 60%",
-          scrub: 2,
-          // markers: true
-        },
-      }
-    );
-
-    gsap.fromTo(
-      ".sideNav-wrapper",
-      { right: "0px" },
-      {
-        right: "-48px",
-        scrollTrigger: {
-          trigger: ".video-content",
-          scroller: "body",
-          start: "top 40%",
-          end: "top top",
-          scrub: 2,
-          // markers: true
-        },
-      }
-    );
+      gsap.fromTo(
+        ".sideNav-wrapper",
+        { right: "-48px" },
+        {
+          right: "0px",
+          scrollTrigger: {
+            trigger: ".media-sec-marker",
+            scroller: "body",
+            start: "top top",
+            end: "top 60%",
+            scrub: 2,
+            // markers: true
+          },
+        }
+      );
+  
+      gsap.fromTo(
+        ".sideNav-wrapper",
+        { right: "0px" },
+        {
+          right: "-48px",
+          scrollTrigger: {
+            trigger: ".video-content",
+            scroller: "body",
+            start: "top 40%",
+            end: "top top",
+            scrub: 2,
+            // markers: true
+          },
+        }
+      );
   });
 
   return (
