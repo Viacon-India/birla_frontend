@@ -17,6 +17,7 @@ import Image from "next/image";
 import BGTiger2 from "../../assets/images/tiger-mask2.png";
 import load from "@/app/assets/images/load.png";
 import pattern from "@/app/assets/images/pattern.png";
+import traImage from "@/app/assets/images/tra.png";
 import construction from "@/app/assets/images/axle.jpg";
 
 export default function PageSelection({ page, slugs, pageData, sidebar }) {
@@ -947,6 +948,19 @@ export function Products({ pageData }) {
                         </p>
                         <span className="text-[12px] 2xl:text-[16px] text-[#4F5662]">
                           {pageData.type.load}
+                        </span>
+                      </div>
+                    </div>
+                  }
+                  {pageData.type?.tra &&
+                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
+                      <Image src={traImage} alt="load-icon" />
+                      <div className="flex flex-col">
+                        <p className="text-[#1A1D21] text-[12px] 2xl:text-[18px] font-semibold">
+                          TRA
+                        </p>
+                        <span className="text-[12px] 2xl:text-[16px] text-[#4F5662]">
+                          {pageData.type.tra}
                         </span>
                       </div>
                     </div>

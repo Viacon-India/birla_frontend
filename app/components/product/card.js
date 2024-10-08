@@ -6,6 +6,7 @@ import { getStrapiMedia } from "@/lib/utils";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import loadImage from "../../assets/images/load.png";
+import traImage from "../../assets/images/tra.png";
 import patternImage from "../../assets/images/pattern.png";
 import constructionImage from "../../assets/images/axle.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -62,7 +63,7 @@ export default function Product({ data }) {
               }
               {data.type?.tra &&
                 <div class="flex gap-[6px] items-center">
-                  <Image src={loadImage} alt="icon" />
+                  <Image src={traImage} alt="icon" />
                   <span>
                     <p class="text-[18px] font-semibold !text-[#727C8D] !mb-0">
                       TRA
@@ -101,35 +102,34 @@ export default function Product({ data }) {
               }
             </div>
           }
-          {data?.gallery && data.gallery.length > 0 && (
-            <figure>
-              <Image
-                class="new-product-card-image"
-                src={getStrapiMedia(data.gallery[0]?.url)}
-                width={data.gallery[0]?.width}
-                height={data.gallery[0]?.height}
-                alt={
-                  data.gallery[0]?.alternativeText
-                    ? data.gallery[0].alternativeText
-                    : "product"
-                }
-              />
+          <div className="w-[145px] h-[195px] 2xl:w-[180px] 2xl:h-[280px] translate-y-[-30px]">
+            <figure class="new-product-card-image">
+              {data?.gallery && data.gallery.length > 0 && (
+                <Image
+                  src={getStrapiMedia(data.gallery[0]?.url)}
+                  width={data.gallery[0]?.width}
+                  height={data.gallery[0]?.height}
+                  alt={
+                    data.gallery[0]?.alternativeText
+                      ? data.gallery[0].alternativeText
+                      : "product"
+                  }
+                />
+              )}
+              {data.gallery?.data && data.gallery.data.length > 0 && (
+                <Image
+                  src={getStrapiMedia(data.gallery.data[0].attributes?.url)}
+                  width={data.gallery.data[0].attributes?.width}
+                  height={data.gallery.data[0].attributes?.height}
+                  alt={
+                    data.gallery.data[0].attributes?.alternativeText
+                      ? data.gallery.data[0].attributes.alternativeText
+                      : "product"
+                  }
+                />
+              )}
             </figure>
-          )}
-          <figure class="new-product-card-image">
-            {data.gallery?.data && data.gallery.data.length > 0 && (
-              <Image
-                src={getStrapiMedia(data.gallery.data[0].attributes?.url)}
-                width={data.gallery.data[0].attributes?.width}
-                height={data.gallery.data[0].attributes?.height}
-                alt={
-                  data.gallery.data[0].attributes?.alternativeText
-                    ? data.gallery.data[0].attributes.alternativeText
-                    : "product"
-                }
-              />
-            )}
-          </figure>
+          </div>
         </div>
       </Link>
       <div class="new-product-card-detail">
@@ -201,26 +201,6 @@ export default function Product({ data }) {
             </Swiper>
           </div>
         ))}
-        {/* {data?.tables?.table && data.tables.table.length > 0 &&
-          <div class="flex gap-3 mt-2 relative">
-            {data.tables.table[0]?.row && (
-              <Swiper
-                navigation={true}
-                modules={[Navigation]}
-                spaceBetween={10}
-                slidesPerView={2.5}
-                freeMode={true}
-                className="chipSwiper !w-[85%] !ml-0 !static"
-              >
-                {data.tables.table[0].row.map((row) => (
-                  <SwiperSlide className="!w-fit" key={row.id}>
-                    <button class="size-chip">{row.size}</button>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            )}
-          </div>
-        } */}
       </div>
     </div>
   );

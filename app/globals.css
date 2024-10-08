@@ -884,9 +884,9 @@ a.current_dot {
 .new-product-card{
   @apply relative border border-secondary rounded-[16px] bg-[#FFFFFF] z-10
 }
-.new-product-card figure{
+/* .new-product-card figure{
   @apply w-[145px] h-[195px] 2xl:w-[180px] 2xl:h-[280px] translate-y-[-30px]
-}
+} */
 .new-product-card-image{
   @apply w-full h-full object-contain transition-all duration-500
 }
