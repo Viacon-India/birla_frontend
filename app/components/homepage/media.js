@@ -25,7 +25,7 @@ export default function Media({ Heading = "", Title = "" }) {
         setPageData(page);
       });
     AOS.init();
-  }, []);
+  }, [Heading]);
   return (
     <section className="media-sec sec-gap">
       <div className="container mx-auto overflow-hidden">

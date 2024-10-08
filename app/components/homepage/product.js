@@ -78,7 +78,7 @@ export default function Products({ Heading='', Title='', Data={}}) {
         },
       }
     );
-  }, []);
+  }, [Data]);
 
   return (
     <section className="product-sec sec-gap">

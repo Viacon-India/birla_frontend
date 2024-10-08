@@ -62,7 +62,7 @@ export default function Hero({Data={}}) {
           },
         }
       );
-  });
+  }, [Data]);
 
   return (
     <div className="relative">
