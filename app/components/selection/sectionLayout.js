@@ -1103,7 +1103,9 @@ export function Gallery({ section }) {
             <div
               className={cn(
                 "gallery-sec grid gap-3 2xl:gap-4 pt-6 md:pt-10 2xl:pt-[60px]",
-                section?.compact ? "grid-cols-5" : "grid-cols-1 md:grid-cols-4"
+                section?.compact
+                  ? "grid-cols-1 md:grid-cols-5"
+                  : "grid-cols-1 md:grid-cols-4"
               )}
             >
               {section.collection.map((image) => (
@@ -1237,61 +1239,61 @@ export function ImagePoint({ section }) {
                 </h2>
                 {collection?.content && collection.content.length > 0 && (
                   <BlocksRenderer
-                  content={collection.content}
-                  blocks={{
-                    paragraph: ({ children }) => (
-                      <p data-aos="fade-left" data-aos-duration="1000">
-                        {children}
-                      </p>
-                    ),
-                    heading: ({ children, level }) => {
-                      switch (level) {
-                        case 1:
-                          return <h1>{children}</h1>;
-                        case 2:
-                          return <h2>{children}</h2>;
-                        case 3:
+                    content={collection.content}
+                    blocks={{
+                      paragraph: ({ children }) => (
+                        <p data-aos="fade-left" data-aos-duration="1000">
+                          {children}
+                        </p>
+                      ),
+                      heading: ({ children, level }) => {
+                        switch (level) {
+                          case 1:
+                            return <h1>{children}</h1>;
+                          case 2:
+                            return <h2>{children}</h2>;
+                          case 3:
+                            return (
+                              <h3 data-aos="fade-left" data-aos-duration="1000">
+                                {children}
+                              </h3>
+                            );
+                          case 4:
+                            return <h4>{children}</h4>;
+                          case 5:
+                            return <h5>{children}</h5>;
+                          case 6:
+                            return <h6>{children}</h6>;
+                          default:
+                            return <h1>{children}</h1>;
+                        }
+                      },
+                      list: (props) => {
+                        if (props.format === "ordered") {
                           return (
-                            <h3 data-aos="fade-left" data-aos-duration="1000">
-                              {children}
-                            </h3>
+                            <ol data-aos="fade-left" data-aos-duration="1000">
+                              {props.children}
+                            </ol>
                           );
-                        case 4:
-                          return <h4>{children}</h4>;
-                        case 5:
-                          return <h5>{children}</h5>;
-                        case 6:
-                          return <h6>{children}</h6>;
-                        default:
-                          return <h1>{children}</h1>;
-                      }
-                    },
-                    list: (props) => {
-                      if (props.format === "ordered") {
+                        }
                         return (
-                          <ol data-aos="fade-left" data-aos-duration="1000">
+                          <ul data-aos="fade-left" data-aos-duration="1000">
                             {props.children}
-                          </ol>
+                          </ul>
                         );
-                      }
-                      return (
-                        <ul data-aos="fade-left" data-aos-duration="1000">
-                          {props.children}
-                        </ul>
-                      );
-                    },
-                    "list-item": (props) => <li>{props.children}</li>,
-                    link: ({ children, url }) => (
-                      <Link href={url}>{children}</Link>
-                    ),
-                  }}
-                  modifiers={{
-                    bold: ({ children }) => <strong>{children}</strong>,
-                    italic: ({ children }) => (
-                      <span className="italic">{children}</span>
-                    ),
-                  }}
-                />
+                      },
+                      "list-item": (props) => <li>{props.children}</li>,
+                      link: ({ children, url }) => (
+                        <Link href={url}>{children}</Link>
+                      ),
+                    }}
+                    modifiers={{
+                      bold: ({ children }) => <strong>{children}</strong>,
+                      italic: ({ children }) => (
+                        <span className="italic">{children}</span>
+                      ),
+                    }}
+                  />
                 )}
               </div>
             ))}
@@ -1894,7 +1896,11 @@ export function ImageDetailContent({ section }) {
                 content={section.content}
                 blocks={{
                   paragraph: ({ children }) => (
-                    <p className="text-[14px] md:text-[15px] 2xl:text-[17px]" data-aos="fade-left" data-aos-duration="1000">
+                    <p
+                      className="text-[14px] md:text-[15px] 2xl:text-[17px]"
+                      data-aos="fade-left"
+                      data-aos-duration="1000"
+                    >
                       {children}
                     </p>
                   ),
@@ -1942,6 +1948,23 @@ export function ImageDetailContent({ section }) {
 
 export function SidebarContent({ section }) {
   const [activeTab, setActiveTab] = useState(section.collection[0].id);
+  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 500);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsWideScreen(window.innerWidth > 500);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const goToTop = () => {
+    window.scrollTo({
+      top: 500,
+      behavior: "smooth",
+    });
+  };
   return (
     <section className="relative mt-6 md:mt-8 2xl:mt-[60px]">
       <div class="container mx-auto">
@@ -1980,8 +2003,8 @@ export function SidebarContent({ section }) {
             ),
           }}
         />
-        <div className="w-full flex items-start gap-10 mt-4 md:mt-10">
-          <div className="w-full md:w-[30%] bg-primary border border-primary rounded-xl text-white leading-[17px] flex flex-col items-start overflow-hidden">
+        <div className="w-full flex flex-col md:flex-row items-start gap-10 mt-4 md:mt-10">
+          <div className="newBoxSection w-full md:w-[30%] bg-primary border border-primary rounded-xl text-white leading-[17px] flex flex-col items-start overflow-hidden">
             {section.collection.map((collection) => (
               <button
                 className={`p-3 w-full text-left transition duration-300 ${
@@ -2003,10 +2026,11 @@ export function SidebarContent({ section }) {
               className="absolute top-10 left-1/2 translate-x-[-50%]"
             />
             {section.collection.map((collection) => {
-              if (collection.id !== activeTab) return null;
+              // if (collection.id !== activeTab) return null;
+              if (isWideScreen && collection.id !== activeTab) return null;
 
               return (
-                <div key={collection.id}>
+                <div className="border-b border-[#C9CDD3] py-4 md:border-none md:py-0" key={collection.id}>
                   <h3 className="section-sub-title">
                     {collection.description}
                   </h3>
@@ -2072,6 +2096,25 @@ export function SidebarContent({ section }) {
                       ),
                     }}
                   />
+                  <div class="relative flex justify-end md:hidden">
+                    <button onClick={goToTop}>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 18 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1.5 16.5L9 9L16.5 16.5M1.5 9L9 1.5L16.5 9"
+                          stroke="#F5811E"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               );
             })}
@@ -2091,7 +2134,7 @@ export function CreditContent({ section }) {
             content={section.content}
             blocks={{
               paragraph: ({ children }) => (
-                <p className="!text-[#FFFFFF] text-[24px] font-[300] py-6">
+                <p className="!text-[#FFFFFF] text-center text-[16px] md:text-[24px] font-[300] p-4 md:py-6">
                   {children}
                 </p>
               ),
@@ -2234,10 +2277,10 @@ export function TabImage({ section }) {
             </div>
           </div>
           <div>
-            <div className="flex gap-6 justify-between text-[#4F5662]">
+            <div className="flex gap-2 md:gap-6 justify-between text-[#4F5662]">
               {section?.collection?.map((collection, index) => (
                 <button
-                  className={`w-1/4 flex items-center gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-5 ${
+                  className={`w-1/4 flex items-center gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-2 md:p-5 ${
                     activeTab === "tab-" + index
                       ? "bg-primary !text-[#FFFFFF]"
                       : ""
@@ -2246,7 +2289,7 @@ export function TabImage({ section }) {
                   key={collection.id}
                 >
                   <Image
-                    className="w-10 h-10"
+                    className="w-10 h-10 hidden md:block"
                     width={collection.image?.width}
                     height={collection.image?.height}
                     src={getStrapiMedia(collection.image?.url)}
@@ -2254,7 +2297,7 @@ export function TabImage({ section }) {
                     data-aos="flip-up"
                     data-aos-duration="1500"
                   />
-                  <h2 className="text-[28px] 2xl:text-[32px] font-medium leading-[38.4px]">
+                  <h2 className="text-[12px] md:text-[28px] 2xl:text-[32px] font-medium">
                     {collection?.title}
                   </h2>
                 </button>
@@ -2265,14 +2308,18 @@ export function TabImage({ section }) {
                 activeTab === "tab-" + index && (
                   <div
                     key={collection.id}
-                    className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl overflow-hidden"
+                    className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-2 md:p-10 !pt-6 rounded-b-xl overflow-hidden"
                   >
                     {collection?.content && (
                       <BlocksRenderer
                         content={collection.content}
                         blocks={{
                           paragraph: ({ children }) => (
-                            <p data-aos="fade-down" data-aos-duration="1000">
+                            <p
+                              className="text-[14px] md:text-[15px]"
+                              data-aos="fade-down"
+                              data-aos-duration="1000"
+                            >
                               {children}
                             </p>
                           ),
@@ -2312,11 +2359,11 @@ export function TabImage({ section }) {
                       />
                     )}
                     {collection?.icon && collection.icon.length > 0 && (
-                      <div className="flex justify-between gap-[35px] overflow-hidden">
+                      <div className="flex flex-col md:flex-row justify-between gap-[35px] overflow-hidden">
                         {collection.icon.map((image) => (
                           <figure
                             key={image.id}
-                            className="w-1/2 h-[260px] 2xl:h-[320px]"
+                            className="w-full md:w-1/2 h-[220px] 2xl:h-[320px]"
                             data-aos="fade-down"
                             data-aos-duration="1000"
                           >
@@ -2396,7 +2443,7 @@ export function KeyPoints({ section }) {
             <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px] !pb-[100px]">
               {section?.image && (
                 <figure
-                  className="w-full md:w-[45%] h-[480px] relative glare"
+                  className="w-full md:w-[45%] h-[300px] md:h-[480px] relative glare"
                   data-aos="flip-right"
                   data-aos-duration="1500"
                 >
@@ -2406,7 +2453,7 @@ export function KeyPoints({ section }) {
                     alt="triangle"
                   />
                   <Image
-                    className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+                    className="absolute top-4 md:top-8 left-4 md:left-8 w-[90%] h-[90%] rounded-[12px]"
                     width={section.image?.width}
                     height={section.image?.height}
                     src={getStrapiMedia(section.image?.url)}

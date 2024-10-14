@@ -29,7 +29,7 @@ export default function Footer() {
   };
 
   return (
-    <div className="footer-main py-5 md:py-10 2xl:py-[60px] bg-[#F2F2F2]">
+    <div className="footer-main py-5 md:py-10 2xl:py-[60px] bg-[#F2F2F2] mt-[60px] md:mt-0">
       <div className="container mx-auto">
         <div className="footer-detail-sec pb-4 md:pb-10 border-b border-[#DEE1E5]">
           <div className="footer-description-sec md:w-[65%]">
@@ -220,7 +220,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <ul className="footer-list-sec py-4 md:py-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-8 md:gap-2">
+        <ul className="footer-list-sec !pl-0 py-4 md:py-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-8 md:gap-2">
           {footerMenu.map((newMenu) => (
             <li className="footer-list-box" key={newMenu.id}>
               <h2>{newMenu.attributes.title}</h2>
@@ -308,6 +308,7 @@ export default function Footer() {
             </svg>
           </button>
         </div>
+        
       </div>
     </div>
   );

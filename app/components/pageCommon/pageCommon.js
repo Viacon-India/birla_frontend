@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname  } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
@@ -12,33 +12,47 @@ import Tiger from "../../assets/images/tiger-mask3.png";
 export function MainButton() {
   const pathname = usePathname();
   return (
-    <div class={pathname == '/' ? "multi-btn-sec" : "hidden md:flex flex-col gap-5 relative z-10"}>
-      {pathname != '/find-tyre' &&
+    <div
+      class={
+        pathname == "/"
+          ? "multi-btn-sec"
+          : "hidden md:flex flex-col gap-5 relative z-10"
+      }
+    >
+      {pathname != "/find-tyre" && (
         <Link href="/find-tyre" className="primary-btn-1">
           Find a Tyre
         </Link>
-      }
-      {pathname != '/find-dealer' &&
+      )}
+      {pathname != "/find-dealer" && (
         <Link href="/find-dealer" className="primary-btn-2">
           Find a Dealer
         </Link>
-      }
+      )}
     </div>
   );
 }
 
 export function SmallButton() {
+  const pathname = usePathname();
   return (
     <div class="relative w-full flex md:hidden gap-2 p-2">
-      <Link href="/find-tyre" className="primary-btn-1 !w-[50%] !justify-center">
-        Find a Tyre
-      </Link>
-      <Link
-        href="/find-dealer"
-        className="primary-btn-2 !w-[50%] !justify-center"
-      >
-        Find a Dealer
-      </Link>
+      {pathname != "/find-tyre" && (
+        <Link
+          href="/find-tyre"
+          className="primary-btn-1 !w-full !justify-center"
+        >
+          Find a Tyre
+        </Link>
+      )}
+      {pathname != "/find-dealer" && (
+        <Link
+          href="/find-dealer"
+          className="primary-btn-2 !w-[50%] !justify-center"
+        >
+          Find a Dealer
+        </Link>
+      )}
     </div>
   );
 }

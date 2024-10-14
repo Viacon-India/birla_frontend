@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
-import { Float, MainButton } from "../components/pageCommon/pageCommon";
+import { Float, MainButton, SmallButton } from "../components/pageCommon/pageCommon";
 import Banner from "../assets/images/find1.jpg";
 import find2 from "../assets/images/find2.png";
 import { PageEnd } from "../components/pageCommon/pageCommon";
@@ -38,14 +38,14 @@ export default function FindTyre() {
           <Float />
           <div className="relative">
             <div className="w-full h-[40vh] md:h-[80vh] flex items-start">
-              <div class="container mx-auto pt-5 pb-[60px] flex">
+              <div class="container mx-auto pt-[60px] md:pt-6 pb-[60px] flex flex-col md:flex-row gap-4">
                 <div className="flex flex-col justify-between h-full w-full md:w-1/2 gap-[100px] 2xl:gap-[200px]">
                   <MainButton />
                   <div className="relative flex flex-col gap-2 md:gap-6 z-10">
-                    <h3 className="text-white text-[56px] font-bold ">
+                    <h3 className="text-white text-[32px] md:text-[42px] 2xl:text-[56px] font-bold ">
                       Find A Tyre
                     </h3>
-                    <p className="text-white text-[16px] md:text-[20px]">
+                    <p className="text-white text-[16px] md:text-[20px] hidden md:block">
                       Use the filters to get type the product or you can simply
                       search by it’s name.
                     </p>
@@ -86,7 +86,7 @@ export default function FindTyre() {
                         </defs>
                       </svg>
                       <input
-                        className="bg-white pl-12 py-4 outline-none rounded-[50px] w-full"
+                        className="bg-white pl-12 py-3 md:py-4 outline-none rounded-[50px] w-full"
                         type="text"
                         placeholder="Search"
                       />
@@ -360,8 +360,9 @@ export default function FindTyre() {
             />
           </div>
         </div>
+        {/* <SmallButton /> */}
       </section>
-      <section className="dealer-sec mt-8 md:mt-12 2xl:mt-[60px] relative overflow-hidden">
+      <section className="dealer-sec mt-[23rem] md:mt-12 2xl:mt-[60px] relative overflow-hidden">
         <div className="container mx-auto overflow-hidden">
           <span className="section-heading">Find A Tyre</span>
           <div className="section-title-wrapper">
@@ -369,7 +370,7 @@ export default function FindTyre() {
           </div>
           {pageData.length > 0 && (
             <>
-              <h3 className="text-[#1A1D21] text-[24px] md:text-[28px] 2xl:text-[32px] font-bold pt-4 md:pt-6 2xl:pt-10">Showing {pageData.length} matching products</h3>
+              <h3 className="text-[#1A1D21] text-[22px] md:text-[28px] 2xl:text-[32px] font-bold pt-4 md:pt-6 2xl:pt-10">Showing {pageData.length} matching products</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10">
                 {pageData.map((product) => (
                   <Product key={product.id} data={product} />
