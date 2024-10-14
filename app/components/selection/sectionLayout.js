@@ -1103,7 +1103,9 @@ export function Gallery({ section }) {
             <div
               className={cn(
                 "gallery-sec grid gap-3 2xl:gap-4 pt-6 md:pt-10 2xl:pt-[60px]",
-                section?.compact ? "grid-cols-1 md:grid-cols-5" : "grid-cols-1 md:grid-cols-4"
+                section?.compact
+                  ? "grid-cols-1 md:grid-cols-5"
+                  : "grid-cols-1 md:grid-cols-4"
               )}
             >
               {section.collection.map((image) => (
@@ -1237,61 +1239,61 @@ export function ImagePoint({ section }) {
                 </h2>
                 {collection?.content && collection.content.length > 0 && (
                   <BlocksRenderer
-                  content={collection.content}
-                  blocks={{
-                    paragraph: ({ children }) => (
-                      <p data-aos="fade-left" data-aos-duration="1000">
-                        {children}
-                      </p>
-                    ),
-                    heading: ({ children, level }) => {
-                      switch (level) {
-                        case 1:
-                          return <h1>{children}</h1>;
-                        case 2:
-                          return <h2>{children}</h2>;
-                        case 3:
+                    content={collection.content}
+                    blocks={{
+                      paragraph: ({ children }) => (
+                        <p data-aos="fade-left" data-aos-duration="1000">
+                          {children}
+                        </p>
+                      ),
+                      heading: ({ children, level }) => {
+                        switch (level) {
+                          case 1:
+                            return <h1>{children}</h1>;
+                          case 2:
+                            return <h2>{children}</h2>;
+                          case 3:
+                            return (
+                              <h3 data-aos="fade-left" data-aos-duration="1000">
+                                {children}
+                              </h3>
+                            );
+                          case 4:
+                            return <h4>{children}</h4>;
+                          case 5:
+                            return <h5>{children}</h5>;
+                          case 6:
+                            return <h6>{children}</h6>;
+                          default:
+                            return <h1>{children}</h1>;
+                        }
+                      },
+                      list: (props) => {
+                        if (props.format === "ordered") {
                           return (
-                            <h3 data-aos="fade-left" data-aos-duration="1000">
-                              {children}
-                            </h3>
+                            <ol data-aos="fade-left" data-aos-duration="1000">
+                              {props.children}
+                            </ol>
                           );
-                        case 4:
-                          return <h4>{children}</h4>;
-                        case 5:
-                          return <h5>{children}</h5>;
-                        case 6:
-                          return <h6>{children}</h6>;
-                        default:
-                          return <h1>{children}</h1>;
-                      }
-                    },
-                    list: (props) => {
-                      if (props.format === "ordered") {
+                        }
                         return (
-                          <ol data-aos="fade-left" data-aos-duration="1000">
+                          <ul data-aos="fade-left" data-aos-duration="1000">
                             {props.children}
-                          </ol>
+                          </ul>
                         );
-                      }
-                      return (
-                        <ul data-aos="fade-left" data-aos-duration="1000">
-                          {props.children}
-                        </ul>
-                      );
-                    },
-                    "list-item": (props) => <li>{props.children}</li>,
-                    link: ({ children, url }) => (
-                      <Link href={url}>{children}</Link>
-                    ),
-                  }}
-                  modifiers={{
-                    bold: ({ children }) => <strong>{children}</strong>,
-                    italic: ({ children }) => (
-                      <span className="italic">{children}</span>
-                    ),
-                  }}
-                />
+                      },
+                      "list-item": (props) => <li>{props.children}</li>,
+                      link: ({ children, url }) => (
+                        <Link href={url}>{children}</Link>
+                      ),
+                    }}
+                    modifiers={{
+                      bold: ({ children }) => <strong>{children}</strong>,
+                      italic: ({ children }) => (
+                        <span className="italic">{children}</span>
+                      ),
+                    }}
+                  />
                 )}
               </div>
             ))}
@@ -1894,7 +1896,11 @@ export function ImageDetailContent({ section }) {
                 content={section.content}
                 blocks={{
                   paragraph: ({ children }) => (
-                    <p className="text-[14px] md:text-[15px] 2xl:text-[17px]" data-aos="fade-left" data-aos-duration="1000">
+                    <p
+                      className="text-[14px] md:text-[15px] 2xl:text-[17px]"
+                      data-aos="fade-left"
+                      data-aos-duration="1000"
+                    >
                       {children}
                     </p>
                   ),
@@ -1942,6 +1948,23 @@ export function ImageDetailContent({ section }) {
 
 export function SidebarContent({ section }) {
   const [activeTab, setActiveTab] = useState(section.collection[0].id);
+  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 500);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsWideScreen(window.innerWidth > 500);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const goToTop = () => {
+    window.scrollTo({
+      top: 500,
+      behavior: "smooth",
+    });
+  };
   return (
     <section className="relative mt-6 md:mt-8 2xl:mt-[60px]">
       <div class="container mx-auto">
@@ -1980,8 +2003,8 @@ export function SidebarContent({ section }) {
             ),
           }}
         />
-        <div className="w-full flex items-start gap-10 mt-4 md:mt-10">
-          <div className="w-full md:w-[30%] bg-primary border border-primary rounded-xl text-white leading-[17px] flex flex-col items-start overflow-hidden">
+        <div className="w-full flex flex-col md:flex-row items-start gap-10 mt-4 md:mt-10">
+          <div className="newBoxSection w-full md:w-[30%] bg-primary border border-primary rounded-xl text-white leading-[17px] flex flex-col items-start overflow-hidden">
             {section.collection.map((collection) => (
               <button
                 className={`p-3 w-full text-left transition duration-300 ${
@@ -2003,10 +2026,11 @@ export function SidebarContent({ section }) {
               className="absolute top-10 left-1/2 translate-x-[-50%]"
             />
             {section.collection.map((collection) => {
-              if (collection.id !== activeTab) return null;
+              // if (collection.id !== activeTab) return null;
+              if (isWideScreen && collection.id !== activeTab) return null;
 
               return (
-                <div key={collection.id}>
+                <div className="border-b border-[#C9CDD3] py-4 md:border-none md:py-0" key={collection.id}>
                   <h3 className="section-sub-title">
                     {collection.description}
                   </h3>
@@ -2072,6 +2096,25 @@ export function SidebarContent({ section }) {
                       ),
                     }}
                   />
+                  <div class="relative flex justify-end md:hidden">
+                    <button onClick={goToTop}>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 18 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1.5 16.5L9 9L16.5 16.5M1.5 9L9 1.5L16.5 9"
+                          stroke="#F5811E"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               );
             })}
@@ -2272,7 +2315,11 @@ export function TabImage({ section }) {
                         content={collection.content}
                         blocks={{
                           paragraph: ({ children }) => (
-                            <p className="text-[14px] md:text-[15px]" data-aos="fade-down" data-aos-duration="1000">
+                            <p
+                              className="text-[14px] md:text-[15px]"
+                              data-aos="fade-down"
+                              data-aos-duration="1000"
+                            >
                               {children}
                             </p>
                           ),

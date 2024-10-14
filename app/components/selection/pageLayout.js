@@ -872,14 +872,14 @@ export function Products({ pageData }) {
               {pageData?.name}
             </p>
           </div>
-          <div className="flex gap-[60px] mt-6 pb-8 md:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
+          <div className="flex flex-col md:flex-row gap-[60px] mt-6 pb-8 md:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
             <div className="productImageWrapper w-full md:w-[40%]">
-              <div className="product-image-sec flex gap-5">
+              <div className="product-image-sec flex flex-col-reverse md:flex-row gap-5">
                 <Swiper
                   onSwiper={setThumbsSwiper}
                   loop={true}
-                  spaceBetween={10}
-                  slidesPerView={4}
+                  // spaceBetween={10}
+                  slidesPerView={1}
                   freeMode={true}
                   watchSlidesProgress={true}
                   modules={[FreeMode, Navigation, Thumbs]}
@@ -897,7 +897,7 @@ export function Products({ pageData }) {
                     </SwiperSlide>
                   ))}
                 </Swiper>
-                <div className="single-image-slider relative w-[80%] h-full bg-[#ffffff] rounded-[12px]">
+                <div className="single-image-slider relative w-full md:w-[80%] h-full bg-[#ffffff] rounded-[12px]">
                   <span className="bg-primary py-2 px-8 rounded-tr-[12px] text-white text-[18px] font-bold absolute right-0 top-0">
                     Premium
                   </span>
