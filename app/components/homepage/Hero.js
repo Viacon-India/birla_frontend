@@ -121,7 +121,7 @@ export default function Hero({Data={}}) {
                       autoPlay
                       muted
                     >
-                      <source src={getStrapiMedia(slider.attributes.hero?.data.attributes.url)} type="video/mp4" />
+                      <source src={getStrapiMedia(slider.attributes.hero?.data?.attributes.url)} type="video/mp4" />
                     </video>
                   }
                   <div className="container mx-auto">

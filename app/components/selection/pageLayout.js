@@ -773,7 +773,7 @@ export function Segments({ pageData }) {
             )}
           </div>
           {pageData?.filters && pageData.filters.length > 0 && (
-            <div className="bg-[#F4F5F6] rounded-xl flex gap-4 p-6 items-end">
+            <div className="bg-[#F4F5F6] rounded-xl flex flex-col md:flex-row gap-4 p-6 items-end">
               {pageData.filters.map((filter) => (
                 <div key={filter.id} className="flex flex-col gap-1 w-full">
                   <label
@@ -814,7 +814,7 @@ export function Segments({ pageData }) {
             </div>
           )}
           {pageData?.products && pageData.products.length > 0 && (
-            <div className="grid grid-cols-3 gap-[50px]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-[50px]">
               {pageData.products.map((product) => (
                 <Product key={product.id} data={product} />
               ))}

@@ -1103,7 +1103,7 @@ export function Gallery({ section }) {
             <div
               className={cn(
                 "gallery-sec grid gap-3 2xl:gap-4 pt-6 md:pt-10 2xl:pt-[60px]",
-                section?.compact ? "grid-cols-5" : "grid-cols-1 md:grid-cols-4"
+                section?.compact ? "grid-cols-1 md:grid-cols-5" : "grid-cols-1 md:grid-cols-4"
               )}
             >
               {section.collection.map((image) => (
@@ -2091,7 +2091,7 @@ export function CreditContent({ section }) {
             content={section.content}
             blocks={{
               paragraph: ({ children }) => (
-                <p className="!text-[#FFFFFF] text-[24px] font-[300] py-6">
+                <p className="!text-[#FFFFFF] text-center text-[16px] md:text-[24px] font-[300] p-4 md:py-6">
                   {children}
                 </p>
               ),
@@ -2234,10 +2234,10 @@ export function TabImage({ section }) {
             </div>
           </div>
           <div>
-            <div className="flex gap-6 justify-between text-[#4F5662]">
+            <div className="flex gap-2 md:gap-6 justify-between text-[#4F5662]">
               {section?.collection?.map((collection, index) => (
                 <button
-                  className={`w-1/4 flex items-center gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-5 ${
+                  className={`w-1/4 flex items-center gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-2 md:p-5 ${
                     activeTab === "tab-" + index
                       ? "bg-primary !text-[#FFFFFF]"
                       : ""
@@ -2246,7 +2246,7 @@ export function TabImage({ section }) {
                   key={collection.id}
                 >
                   <Image
-                    className="w-10 h-10"
+                    className="w-10 h-10 hidden md:block"
                     width={collection.image?.width}
                     height={collection.image?.height}
                     src={getStrapiMedia(collection.image?.url)}
@@ -2254,7 +2254,7 @@ export function TabImage({ section }) {
                     data-aos="flip-up"
                     data-aos-duration="1500"
                   />
-                  <h2 className="text-[28px] 2xl:text-[32px] font-medium leading-[38.4px]">
+                  <h2 className="text-[12px] md:text-[28px] 2xl:text-[32px] font-medium">
                     {collection?.title}
                   </h2>
                 </button>
@@ -2265,14 +2265,14 @@ export function TabImage({ section }) {
                 activeTab === "tab-" + index && (
                   <div
                     key={collection.id}
-                    className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-10 !pt-6 rounded-b-xl overflow-hidden"
+                    className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-2 md:p-10 !pt-6 rounded-b-xl overflow-hidden"
                   >
                     {collection?.content && (
                       <BlocksRenderer
                         content={collection.content}
                         blocks={{
                           paragraph: ({ children }) => (
-                            <p data-aos="fade-down" data-aos-duration="1000">
+                            <p className="text-[14px] md:text-[15px]" data-aos="fade-down" data-aos-duration="1000">
                               {children}
                             </p>
                           ),
@@ -2312,11 +2312,11 @@ export function TabImage({ section }) {
                       />
                     )}
                     {collection?.icon && collection.icon.length > 0 && (
-                      <div className="flex justify-between gap-[35px] overflow-hidden">
+                      <div className="flex flex-col md:flex-row justify-between gap-[35px] overflow-hidden">
                         {collection.icon.map((image) => (
                           <figure
                             key={image.id}
-                            className="w-1/2 h-[260px] 2xl:h-[320px]"
+                            className="w-full md:w-1/2 h-[220px] 2xl:h-[320px]"
                             data-aos="fade-down"
                             data-aos-duration="1000"
                           >
@@ -2396,7 +2396,7 @@ export function KeyPoints({ section }) {
             <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px] !pb-[100px]">
               {section?.image && (
                 <figure
-                  className="w-full md:w-[45%] h-[480px] relative glare"
+                  className="w-full md:w-[45%] h-[300px] md:h-[480px] relative glare"
                   data-aos="flip-right"
                   data-aos-duration="1500"
                 >
@@ -2406,7 +2406,7 @@ export function KeyPoints({ section }) {
                     alt="triangle"
                   />
                   <Image
-                    className="translate-x-8 translate-y-8 w-[90%] h-[90%] rounded-[12px]"
+                    className="absolute top-4 md:top-8 left-4 md:left-8 w-[90%] h-[90%] rounded-[12px]"
                     width={section.image?.width}
                     height={section.image?.height}
                     src={getStrapiMedia(section.image?.url)}

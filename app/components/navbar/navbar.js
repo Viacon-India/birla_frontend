@@ -22,6 +22,7 @@ export default function Navbar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  
   // Toggle submenu
   const toggleSubMenu = (id) => {
     setExpandedSubMenu(expandedSubMenu === id ? null : id);
@@ -51,7 +52,7 @@ export default function Navbar() {
   return (
     <div className="nav-main">
       <div className="container mx-auto">
-        <div className="w-full flex justify-between items-center relative">
+        <div className="md:py-4 xl:py-0 w-full flex justify-between items-center relative">
           <div className="navbar-start w-fit">
             <button className="hamburger-button" onClick={toggleMenu}>
               <svg
@@ -73,7 +74,7 @@ export default function Navbar() {
           </div>
 
           <div className="navbar-center flex items-center gap-6 lg:flex md:pl-7 ml-[-10%] md:ml-0">
-            <ul className="menu menu-horizontal hidden md:flex relative text-lg lg:gap-4 2xl:gap-7 p-0">
+            <ul className="menu menu-horizontal hidden xl:flex relative text-lg lg:gap-4 2xl:gap-7 p-0">
               {navMenu.attributes?.menu.map((menu) => (
                 <li className="nav-drop group" key={menu.id}>
                   {menu?.link ? (
