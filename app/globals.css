@@ -1430,7 +1430,7 @@ input[type=file]::file-selector-button {
   @apply border border-[#DEE1E5] p-2 text-left
 }
 .product-detail-table th {
-  @apply bg-[#DEE1E5] text-[#1A1D21] text-[12px] md:text-[14px] 2xl:text-[16px] font-bold
+  @apply bg-[#DEE1E5] text-[#1A1D21] text-[12px] md:text-[14px] 2xl:text-[16px] font-bold border border-[#C9CDD3]
 }
 .product-detail-table td {
   @apply text-[#3D434C] text-[12px] 2xl:text-[14px]
