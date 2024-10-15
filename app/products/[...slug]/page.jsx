@@ -28,7 +28,6 @@ export default function Page({ params }) {
     <>
       <Navbar />
       <PageSelection page={collection} pageData={pageData}/>
-      <PageEnd EndPageData={pageData?.end} />
       <Footer />
     </>
   );
