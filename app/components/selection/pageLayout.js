@@ -948,7 +948,7 @@ export function Products({ pageData }) {
               {pageData?.type && (
                 <div className="patter-description flex items-center justify-between mt-6">
                   {pageData.type?.load && (
-                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
+                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] p-2 md:py-2 md:px-4 rounded-[12px] border border-primary">
                       <Image
                         className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain"
                         src={load}
@@ -965,7 +965,7 @@ export function Products({ pageData }) {
                     </div>
                   )}
                   {pageData.type?.tra && (
-                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
+                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] p-2 md:py-2 md:px-4 rounded-[12px] border border-primary">
                       <Image
                         className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain"
                         src={traImage}
@@ -982,7 +982,7 @@ export function Products({ pageData }) {
                     </div>
                   )}
                   {pageData.type?.pattern && (
-                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
+                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] p-2 md:py-2 md:px-4 rounded-[12px] border border-primary">
                       <Image
                         className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain"
                         src={pattern}
@@ -999,7 +999,7 @@ export function Products({ pageData }) {
                     </div>
                   )}
                   {pageData.type?.construction && (
-                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
+                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] p-2 md:py-2 md:px-4 rounded-[12px] border border-primary">
                       <Image
                         className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain"
                         src={construction}
@@ -1229,7 +1229,7 @@ export function Products({ pageData }) {
                                   <td>{rowData.ply_rating}</td>
                                 )}
                                 {rowData?.machinery && (
-                                  <td>{rowData.machinery}</td>
+                                  <td>{rowData.machinery.name}</td>
                                 )}
                                 {rowData?.applications && (
                                   <td>{rowData.applications}</td>
