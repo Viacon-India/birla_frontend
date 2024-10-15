@@ -1326,7 +1326,7 @@ input[type=file]::file-selector-button {
 
 
 .value-overlay{
-  @apply w-full h-full absolute p-[13px] md:p-5 top-[70%] md:top-[60%] group-hover:top-0 transition-all duration-500 flex flex-col group-hover:justify-center md:!pl-10
+  @apply w-full h-full absolute p-[13px] md:p-5 top-[70%] md:top-[60%] 2xl:top-[50%] group-hover:top-0 transition-all duration-500 flex flex-col group-hover:justify-center md:!pl-10
 }
 
 .value-overlay h3{
@@ -1430,7 +1430,10 @@ input[type=file]::file-selector-button {
   @apply border border-[#DEE1E5] p-2 text-left
 }
 .product-detail-table th {
-  @apply bg-[#DEE1E5]
+  @apply bg-[#DEE1E5] text-[#1A1D21] text-[12px] md:text-[14px] 2xl:text-[16px] font-bold
+}
+.product-detail-table td {
+  @apply text-[#3D434C] text-[12px] 2xl:text-[14px]
 }
 
 

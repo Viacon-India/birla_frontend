@@ -19,11 +19,18 @@ import load from "@/app/assets/images/load.png";
 import pattern from "@/app/assets/images/pattern.png";
 import traImage from "@/app/assets/images/tra.png";
 import construction from "@/app/assets/images/axle.jpg";
+import LastBg from "../../assets/images/footerupper.png";
 
 export default function PageSelection({ page, slugs, pageData, sidebar }) {
   return (
     <>
-      {page == "InvestorRelations" && <InvestorRelations slugs={slugs} pageData={pageData} sidebar={sidebar} />}
+      {page == "InvestorRelations" && (
+        <InvestorRelations
+          slugs={slugs}
+          pageData={pageData}
+          sidebar={sidebar}
+        />
+      )}
       {page == "ContactUs" && <ContactUs pageData={pageData} />}
       {page == "Pages" && <Pages pageData={pageData} />}
       {page == "segments" && <Segments pageData={pageData} />}
@@ -727,10 +734,7 @@ export function Pages({ pageData }) {
 export function Segments({ pageData }) {
   return (
     <>
-      <PageBanner
-        Title={pageData.title}
-        Banner={pageData.hero}
-      />
+      <PageBanner Title={pageData.title} Banner={pageData.hero} />
       <section className="product-sec mt-10 md:mt-[60px] 2xl:mt-[100px]">
         <div className="container mx-auto overflow-hidden flex flex-col gap-10">
           <div className="upper-title-sec flex gap-3 md:gap-0 flex-col md:flex-row justify-between items-end">
@@ -822,6 +826,7 @@ export function Segments({ pageData }) {
           )}
         </div>
       </section>
+      <PageEnd EndPageData={pageData?.end} />
     </>
   );
 }
@@ -872,28 +877,31 @@ export function Products({ pageData }) {
               {pageData?.name}
             </p>
           </div>
-          <div className="flex flex-col md:flex-row gap-[60px] mt-6 pb-8 md:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
-            <div className="productImageWrapper w-full md:w-[40%]">
-              <div className="product-image-sec flex flex-col-reverse md:flex-row gap-5">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-10 2xl:gap-[60px] mt-6 pb-8 md:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
+            <div className="productImageWrapper w-full md:w-[45%]">
+              <div className="product-image-sec flex gap-5">
                 <Swiper
                   onSwiper={setThumbsSwiper}
                   loop={true}
-                  // spaceBetween={10}
-                  slidesPerView={1}
+                  spaceBetween={10}
+                  slidesPerView={4}
                   freeMode={true}
                   watchSlidesProgress={true}
                   modules={[FreeMode, Navigation, Thumbs]}
-                  className="small-img-sec"
+                  className="small-img-sec !mx-0 !hidden md:!block"
                 >
                   {pageData?.gallery?.map((gallery, index) => (
-                    <SwiperSlide key={gallery.id} className="!w-full !h-[80px] 2xl:!h-[100px] bg-primary rounded-[12px] p-2 !mr-0 cursor-pointer">
-                        <Image
-                          width={gallery?.width}
-                          height={gallery?.height}
-                          src={getStrapiMedia(gallery?.url)}
-                          alt={gallery?.alternativeText}
-                          className="w-full h-full object-contain"
-                        />
+                    <SwiperSlide
+                      key={gallery.id}
+                      className="!w-[80px] !h-[80px] 2xl:!w-[100px] 2xl:!h-[100px] bg-primary rounded-[12px] p-2 !mr-0 cursor-pointer"
+                    >
+                      <Image
+                        width={gallery?.width}
+                        height={gallery?.height}
+                        src={getStrapiMedia(gallery?.url)}
+                        alt={gallery?.alternativeText}
+                        className="w-full h-full object-contain"
+                      />
                     </SwiperSlide>
                   ))}
                 </Swiper>
@@ -937,13 +945,13 @@ export function Products({ pageData }) {
                   </Swiper>
                 </div>
               </div>
-              {pageData?.type &&
+              {pageData?.type && (
                 <div className="patter-description flex items-center justify-between mt-6">
-                  {pageData.type?.load &&
+                  {pageData.type?.load && (
                     <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
-                      <Image src={load} alt="load-icon" />
+                      <Image className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain" src={load} alt="load-icon" />
                       <div className="flex flex-col">
-                        <p className="text-[#1A1D21] text-[12px] 2xl:text-[18px] font-semibold">
+                        <p className="text-[#1A1D21] text-[12px] xl:text-[16px] font-semibold">
                           Load Type
                         </p>
                         <span className="text-[12px] 2xl:text-[16px] text-[#4F5662]">
@@ -951,12 +959,12 @@ export function Products({ pageData }) {
                         </span>
                       </div>
                     </div>
-                  }
-                  {pageData.type?.tra &&
+                  )}
+                  {pageData.type?.tra && (
                     <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
-                      <Image src={traImage} alt="load-icon" />
+                      <Image className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain" src={traImage} alt="load-icon" />
                       <div className="flex flex-col">
-                        <p className="text-[#1A1D21] text-[12px] 2xl:text-[18px] font-semibold">
+                        <p className="text-[#1A1D21] text-[12px] xl:text-[16px] font-semibold">
                           TRA
                         </p>
                         <span className="text-[12px] 2xl:text-[16px] text-[#4F5662]">
@@ -964,12 +972,12 @@ export function Products({ pageData }) {
                         </span>
                       </div>
                     </div>
-                  }
-                  {pageData.type?.pattern &&
+                  )}
+                  {pageData.type?.pattern && (
                     <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
-                      <Image src={pattern} alt="load-icon" />
+                      <Image className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain" src={pattern} alt="load-icon" />
                       <div className="flex flex-col">
-                        <p className="text-[#1A1D21] text-[12px] 2xl:text-[18px] font-semibold">
+                        <p className="text-[#1A1D21] text-[12px] xl:text-[16px] font-semibold">
                           Pattern
                         </p>
                         <span className="text-[12px] 2xl:text-[16px] text-[#4F5662]">
@@ -977,12 +985,12 @@ export function Products({ pageData }) {
                         </span>
                       </div>
                     </div>
-                  }
-                  {pageData.type?.construction &&
+                  )}
+                  {pageData.type?.construction && (
                     <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
-                      <Image src={construction} alt="load-icon" />
+                      <Image className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain" src={construction} alt="load-icon" />
                       <div className="flex flex-col">
-                        <p className="text-[#1A1D21] text-[12px] 2xl:text-[18px] font-semibold">
+                        <p className="text-[#1A1D21] text-[12px] xl:text-[16px] font-semibold">
                           Construction
                         </p>
                         <span className="text-[12px] 2xl:text-[16px] text-[#4F5662]">
@@ -990,17 +998,19 @@ export function Products({ pageData }) {
                         </span>
                       </div>
                     </div>
-                  }
+                  )}
                 </div>
-              }
+              )}
             </div>
-            <div className="product-detail-sec w-ful md:w-[60%]">
-              {pageData?.name &&
+            <div className="product-detail-sec w-ful md:w-[55%]">
+              {pageData?.name && (
                 <h2 className="section-title">{pageData.name}</h2>
-              }
-              {pageData?.description &&
-                <p className="text-[#1A202C] text-[16px] pt-2">{pageData.description}</p>
-              }
+              )}
+              {pageData?.description && (
+                <p className="text-[#1A202C] text-[16px] pt-2 font-semibold">
+                  {pageData.description}
+                </p>
+              )}
               {pageData?.details?.map((details) => (
                 <>
                   {details.description && (
@@ -1068,13 +1078,15 @@ export function Products({ pageData }) {
               ))}
             </div>
           </div>
-          {pageData?.tables &&
+          {pageData?.tables && (
             <div className="table-sec pt-8 md:pt-12 2xl:pt-[60px]">
               <div className="flex justify-between">
                 <div className="flex items-center gap-4 2xl:gap-8">
-                  {pageData.tables?.title &&
-                    <h2 className="text-[#1A202C] text-[24px] 2xl:text-[32px] font-medium">{pageData.tables.title}</h2>
-                  }
+                  {pageData.tables?.title && (
+                    <h2 className="text-[#1A202C] text-[24px] 2xl:text-[32px] font-medium">
+                      {pageData.tables.title}
+                    </h2>
+                  )}
                   <div className="cat-btn-sec flex items-center gap-3 relative z-10">
                     <Link
                       href=""
@@ -1100,59 +1112,172 @@ export function Products({ pageData }) {
                     </Link>
                   </div>
                 </div>
-                {pageData.tables?.table && pageData.tables.table.length > 0 &&
+                {pageData.tables?.table && pageData.tables.table.length > 0 && (
                   <div className="country-selection">
                     <p className="text-[16px] text-[#1A1D21] mb-3 font-medium">
                       Select Standard
                     </p>
                     <div className="flex items-center gap-3 2xl:gap-5">
-                      {pageData.tables.table.map((table) => (
-                        table?.standard &&
-                        <>
-                          <input key={table.id} type="radio" id={table.standard} name="standard"/>
-                          <label key={table.id} for={table.standard} className="uppercase text-[14px] font-medium text-secondary">{table.standard}</label>
-                        </>
-                      ))}
+                      {pageData.tables.table.map(
+                        (table) =>
+                          table?.standard && (
+                            <>
+                              <input
+                                key={table.id}
+                                type="radio"
+                                id={table.standard}
+                                name="standard"
+                              />
+                              <label
+                                key={table.id}
+                                for={table.standard}
+                                className="uppercase text-[14px] font-medium text-secondary"
+                              >
+                                {table.standard}
+                              </label>
+                            </>
+                          )
+                      )}
                     </div>
                   </div>
-                }
+                )}
               </div>
-              {pageData.tables?.table && pageData.tables.table.length > 0 && pageData.tables.table.map((table) => (
-                table?.row && table.row.length > 0 &&
-                  <div className="product-detail-table w-full overflow-x-auto mt-3" key={table.id}>
-                    <table>
-                      <thead>
-                        {Object.keys(table.row[0])
-                          .filter((key) => key !== "id")
-                          .map((key) => (
-                            <th key={key}>{key}</th>
-                          ))}
-                      </thead>
-                      <tbody>
-                        {table.row.map((rowData) => (
-                            <tr key={rowData.id}>
-                              <td>{rowData.size}</td>
-                              <td>{rowData.version}</td>
-                              <td>{rowData.tra_code}</td>
-                              <td>{rowData.pr}</td>
-                              <td>{rowData.rim_rec}</td>
-                              <td>{rowData.rim_alt}</td>
-                              <td>{rowData.ow}</td>
-                              <td>{rowData.od}</td>
-                              <td>{rowData.slr}</td>
-                              <td>{rowData.rc}</td>
-                              <td>{rowData.type}</td>
-                              <td>{rowData.ece}</td>
-                            </tr>
-                          ))}
-                      </tbody>
-                    </table>
-                  </div>
-              ))}
+              {pageData.tables?.table &&
+                pageData.tables.table.length > 0 &&
+                pageData.tables.table.map(
+                  (table) =>
+                    table?.row &&
+                    table.row.length > 0 && (
+                      <div
+                        className="product-detail-table w-full overflow-x-auto mt-3"
+                        key={table.id}
+                      >
+                        <table>
+                          <thead>
+                            {table.row[0]?.size && <th>Size</th>}
+                            {table.row[0]?.type && <th>Type (TT / TL)</th>}
+                            {table.row[0]?.ply_rating && <th>Ply Rating</th>}
+                            {table.row[0]?.tra_code && <th>TRA Code</th>}
+                            {table.row[0]?.rim_recommended && (
+                              <th>Rim Recommended</th>
+                            )}
+                            {table.row[0]?.specified_rim_diameter && (
+                              <th>Specified Rim Diameter (mm)</th>
+                            )}
+                            {table.row[0]?.sectional_width && (
+                              <th>Sectional Width (mm)</th>
+                            )}
+                            {table.row[0]?.overall_diameter && (
+                              <th>Overall Diameter (mm)</th>
+                            )}
+                            {table.row[0]?.tube_value_code && (
+                              <th>Tube Valve Code</th>
+                            )}
+                            {table.row[0]?.rolling_circumfrence && (
+                              <th>Rolling Circumference (mm)</th>
+                            )}
+                            {table.row[0]?.static_loaded_radius && (
+                              <th>Static Loaded Radius (mm)</th>
+                            )}
+                            {table.row[0]?.speed_radius_index && (
+                              <th>Speed Radius Index (mm)</th>
+                            )}
+                            {table.row[0]?.load_index && <th>Load Index</th>}
+                            {table.row[0]?.speed_symbol && (
+                              <th>Speed Symbol</th>
+                            )}
+                            {table.row[0]?.load_range && (
+                              <th> Load range (kg)</th>
+                            )}
+                            {table.row[0]?.inflation_pressure && (
+                              <th> Inflation Pressure (psi)</th>
+                            )}
+                            {table.row[0]?.machinery && <th>Machinery</th>}
+                            {table.row[0]?.applications && (
+                              <th>Applications</th>
+                            )}
+                            {table.row[0]?.construction_type && (
+                              <th> Construction Type</th>
+                            )}
+                            {table.row[0]?.pattern_type && (
+                              <th> Pattern Type</th>
+                            )}
+                            {table.row[0]?.load_type && <th> Load Type</th>}
+                          </thead>
+                          <tbody>
+                            {table.row.map((rowData) => (
+                              <tr key={rowData.id}>
+                                {rowData?.size && <td>{rowData.size}</td>}
+                                {rowData?.type && <td>{rowData.type}</td>}
+                                {rowData?.ply_rating && (
+                                  <td>{rowData.ply_rating}</td>
+                                )}
+                                {rowData?.tra_code && (
+                                  <td>{rowData.tra_code}</td>
+                                )}
+                                {rowData?.rim_recommended && (
+                                  <td>{rowData.rim_recommended}</td>
+                                )}
+                                {rowData?.specified_rim_diameter && (
+                                  <td>{rowData.specified_rim_diameter}</td>
+                                )}
+                                {rowData?.sectional_width && (
+                                  <td>{rowData.sectional_width}</td>
+                                )}
+                                {rowData?.overall_diameter && (
+                                  <td>{rowData.overall_diameter}</td>
+                                )}
+                                {rowData?.tube_value_code && (
+                                  <td>{rowData.tube_value_code}</td>
+                                )}
+                                {rowData?.rolling_circumfrence && (
+                                  <td>{rowData.rolling_circumfrence}</td>
+                                )}
+                                {rowData?.static_loaded_radius && (
+                                  <td>{rowData.static_loaded_radius}</td>
+                                )}
+                                {rowData?.speed_radius_index && (
+                                  <td>{rowData.speed_radius_index}</td>
+                                )}
+                                {rowData?.load_index && (
+                                  <td>{rowData.load_index}</td>
+                                )}
+                                {rowData?.speed_symbol && (
+                                  <td>{rowData.speed_symbol}</td>
+                                )}
+                                {rowData?.load_range && (
+                                  <td>{rowData.load_range}</td>
+                                )}
+                                {rowData?.inflation_pressure && (
+                                  <td>{rowData.inflation_pressure}</td>
+                                )}
+                                {rowData?.machinery && (
+                                  <td>{rowData.machinery}</td>
+                                )}
+                                {rowData?.applications && (
+                                  <td>{rowData.applications}</td>
+                                )}
+                                {rowData?.construction_type && (
+                                  <td>{rowData.construction_type}</td>
+                                )}
+                                {rowData?.pattern_type && (
+                                  <td>{rowData.pattern_type}</td>
+                                )}
+                                {rowData?.load_type && (
+                                  <td>{rowData.load_type}</td>
+                                )}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )
+                )}
             </div>
-          }
+          )}
         </div>
       </section>
+      <PageEnd EndPageData={pageData?.end} EndStaticImage={LastBg} />
     </>
   );
 }
