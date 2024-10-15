@@ -949,7 +949,11 @@ export function Products({ pageData }) {
                 <div className="patter-description flex items-center justify-between mt-6">
                   {pageData.type?.load && (
                     <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
-                      <Image className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain" src={load} alt="load-icon" />
+                      <Image
+                        className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain"
+                        src={load}
+                        alt="load-icon"
+                      />
                       <div className="flex flex-col">
                         <p className="text-[#1A1D21] text-[12px] xl:text-[16px] font-semibold">
                           Load Type
@@ -962,7 +966,11 @@ export function Products({ pageData }) {
                   )}
                   {pageData.type?.tra && (
                     <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
-                      <Image className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain" src={traImage} alt="load-icon" />
+                      <Image
+                        className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain"
+                        src={traImage}
+                        alt="load-icon"
+                      />
                       <div className="flex flex-col">
                         <p className="text-[#1A1D21] text-[12px] xl:text-[16px] font-semibold">
                           TRA
@@ -975,7 +983,11 @@ export function Products({ pageData }) {
                   )}
                   {pageData.type?.pattern && (
                     <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
-                      <Image className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain" src={pattern} alt="load-icon" />
+                      <Image
+                        className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain"
+                        src={pattern}
+                        alt="load-icon"
+                      />
                       <div className="flex flex-col">
                         <p className="text-[#1A1D21] text-[12px] xl:text-[16px] font-semibold">
                           Pattern
@@ -988,7 +1000,11 @@ export function Products({ pageData }) {
                   )}
                   {pageData.type?.construction && (
                     <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] py-2 px-4 rounded-[12px] border border-primary">
-                      <Image className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain" src={construction} alt="load-icon" />
+                      <Image
+                        className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain"
+                        src={construction}
+                        alt="load-icon"
+                      />
                       <div className="flex flex-col">
                         <p className="text-[#1A1D21] text-[12px] xl:text-[16px] font-semibold">
                           Construction
@@ -1157,7 +1173,18 @@ export function Products({ pageData }) {
                             {table.row[0]?.size && <th>Size</th>}
                             {table.row[0]?.type && <th>Type (TT / TL)</th>}
                             {table.row[0]?.ply_rating && <th>Ply Rating</th>}
+                            {table.row[0]?.machinery && <th>Machinery</th>}
+                            {table.row[0]?.applications && (
+                              <th>Applications</th>
+                            )}
+                            {table.row[0]?.construction_type && (
+                              <th> Construction Type</th>
+                            )}
+                            {table.row[0]?.pattern_type && (
+                              <th> Pattern Type</th>
+                            )}
                             {table.row[0]?.tra_code && <th>TRA Code</th>}
+                            {table.row[0]?.load_type && <th> Load Type</th>}
                             {table.row[0]?.rim_recommended && (
                               <th>Rim Recommended</th>
                             )}
@@ -1192,17 +1219,6 @@ export function Products({ pageData }) {
                             {table.row[0]?.inflation_pressure && (
                               <th> Inflation Pressure (psi)</th>
                             )}
-                            {table.row[0]?.machinery && <th>Machinery</th>}
-                            {table.row[0]?.applications && (
-                              <th>Applications</th>
-                            )}
-                            {table.row[0]?.construction_type && (
-                              <th> Construction Type</th>
-                            )}
-                            {table.row[0]?.pattern_type && (
-                              <th> Pattern Type</th>
-                            )}
-                            {table.row[0]?.load_type && <th> Load Type</th>}
                           </thead>
                           <tbody>
                             {table.row.map((rowData) => (
@@ -1212,9 +1228,25 @@ export function Products({ pageData }) {
                                 {rowData?.ply_rating && (
                                   <td>{rowData.ply_rating}</td>
                                 )}
+                                {rowData?.machinery && (
+                                  <td>{rowData.machinery}</td>
+                                )}
+                                {rowData?.applications && (
+                                  <td>{rowData.applications}</td>
+                                )}
+                                {rowData?.construction_type && (
+                                  <td>{rowData.construction_type}</td>
+                                )}
+                                {rowData?.pattern_type && (
+                                  <td>{rowData.pattern_type}</td>
+                                )}
                                 {rowData?.tra_code && (
                                   <td>{rowData.tra_code}</td>
                                 )}
+                                {rowData?.load_type && (
+                                  <td>{rowData.load_type}</td>
+                                )}
+
                                 {rowData?.rim_recommended && (
                                   <td>{rowData.rim_recommended}</td>
                                 )}
@@ -1250,21 +1282,6 @@ export function Products({ pageData }) {
                                 )}
                                 {rowData?.inflation_pressure && (
                                   <td>{rowData.inflation_pressure}</td>
-                                )}
-                                {rowData?.machinery && (
-                                  <td>{rowData.machinery}</td>
-                                )}
-                                {rowData?.applications && (
-                                  <td>{rowData.applications}</td>
-                                )}
-                                {rowData?.construction_type && (
-                                  <td>{rowData.construction_type}</td>
-                                )}
-                                {rowData?.pattern_type && (
-                                  <td>{rowData.pattern_type}</td>
-                                )}
-                                {rowData?.load_type && (
-                                  <td>{rowData.load_type}</td>
                                 )}
                               </tr>
                             ))}
