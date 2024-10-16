@@ -38,10 +38,10 @@ export default function NewAbout({Data={}}) {
   return (
     <section className="new-about-slider sec-gap overflow-hidden h-[100%]">
       <div className="container mx-auto">
-        <div className="flex items-start flex-col-reverse md:flex-row gap-4 md:gap-8 2xl:gap-[60px]">
+        <div className="flex items-start flex-col-reverse lg:flex-row gap-4 lg:gap-8 2xl:gap-[60px]">
           {Data?.image?.data &&
             <figure
-              className="w-full md:w-[45%] h-[350px] md:h-[480px] relative glare"
+              className="w-full lg:w-[45%] h-[350px] md:h-[420px] xl:h-[480px] relative glare"
               data-aos="flip-right"
               data-aos-duration="1500"
             >
@@ -61,7 +61,7 @@ export default function NewAbout({Data={}}) {
               />
             </figure>
           }
-          <div className="box-content-sec relative md:w-[55%] flex flex-col">
+          <div className="box-content-sec relative lg:w-[55%] flex flex-col">
             {Data?.heading &&
               <span className="section-heading">{Data.heading}</span>
             }

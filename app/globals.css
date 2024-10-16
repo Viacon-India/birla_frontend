@@ -21,6 +21,7 @@ body {
   background-color: #FFFFFF;
   font-family: Oak-Sans;
   overflow-x: hidden;
+  @apply !font-oak-sans
 
 }
 ol, ul{
@@ -405,7 +406,7 @@ text-white transition-all duration-500 relative hover:left-[-190px]
 
 /* hero-section */
 .sec-gap{
-  @apply mt-10 md:mt-[100px] 2xl:mt-[150px]
+  @apply mt-10 md:mt-16 xl:mt-[100px] 2xl:mt-[150px]
 }
 
 .multi-btn-sec{
@@ -425,7 +426,7 @@ text-white transition-all duration-500 relative hover:left-[-190px]
   @apply text-[36px] md:text-[50px] 2xl:text-[56px] text-[#FFFFFF] font-extrabold font-oak-sans
 }
 .section-subheading{
-  @apply text-[14px] md:text-[24px] 2xl:text-[32px] text-[#FFFFFF] mb-8 leading-[1.2] hidden md:flex
+  @apply text-[14px] md:text-[24px] 2xl:text-[32px] text-[#FFFFFF] mb-2 xl:mb-8 leading-[1.2] hidden lg:flex
 }
 
 .explore-btn {
@@ -474,7 +475,7 @@ text-white transition-all duration-500 relative hover:left-[-190px]
   before:content-[""] before:w-[3px] before:h-[95%] before:bg-primary before:absolute before:left-0 before:rounded-[100px]
 }
 .section-title{
-  @apply text-secondary text-[22px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px]
+  @apply text-secondary text-[22px] md:text-[28px] lg:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] font-oak-sans
 }
 .section-sub-title{
   @apply text-secondary text-[22px] md:text-[28px] 2xl:text-[32px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] mb-2
@@ -523,7 +524,7 @@ a.current_dot {
 }
 
 .innovation-card figure{
-  @apply w-full h-[220px] 2xl:h-[280px] mb-2 2xl:mb-5 relative overflow-hidden transition-all duration-500
+  @apply w-full h-[180px] lg:h-[220px] 2xl:h-[280px] mb-2 2xl:mb-5 relative overflow-hidden transition-all duration-500
   rounded-[24px]
 }
 .innovation-card-image{
@@ -623,7 +624,9 @@ a.current_dot {
 .myMissionSwiper .swiper-button-next, .myMissionSwiper .swiper-button-prev{
   @apply !top-[35%] 2xl:!top-[40%]
 }
-
+.myProductSwiper .swiper-button-next, .myProductSwiper .swiper-button-prev{
+  @apply !top-[50%]
+}
 .productDetailSwiper .swiper-button-next{
   @apply !top-[50%] !right-[4%]
 }
@@ -648,7 +651,7 @@ a.current_dot {
 /* media-card-section */
 
 .media-card figure{
-  @apply w-full h-[250px] 2xl:h-[360px] mb-2 2xl:mb-6 overflow-hidden relative rounded-[24px]
+  @apply w-full h-[250px] md:h-[200px] lg:h-[250px] 2xl:h-[360px] mb-2 2xl:mb-6 overflow-hidden relative rounded-[24px]
 }
 .media-card-image{
   @apply w-full h-full object-cover rounded-[24px]
@@ -680,7 +683,7 @@ a.current_dot {
 
 /* footer-section */
 .footer-detail-sec{
-  @apply flex flex-col-reverse md:flex-row justify-between md:items-center 
+  @apply flex flex-col-reverse md:flex-row gap-4 md:items-start xl:items-center 
 }
 .footer-description-text{
   @apply text-[#0E0E11] text-[14px] md:text-[15px] leading-[1.5] pt-2 md:pt-0
@@ -781,7 +784,7 @@ a.current_dot {
   @apply p-3 bg-[#F4F5F6] rounded-[4px] mb-2 2xl:mb-5
 }
 .nearest-card h2{
-  @apply text-[#1A1D21] text-[20px] 2xl:text-[24px] 2xl:mb-3
+  @apply text-[#1A1D21] text-[18px] 2xl:text-[24px] 2xl:mb-3
 }
 .nearest-card p{
   @apply text-[#1A1D21] text-[24px] mb-3
@@ -797,7 +800,7 @@ a.current_dot {
   text-[12px] md:text-[18px] placeholder:text-[12px]
 }
 .select-box{
-  @apply bg-[#F4F5F6] py-[12px] border border-[#DEE1E5] w-1/2 rounded-[2px] px-2 text-[14px] md:text-[20px]
+  @apply bg-[#F4F5F6] py-[12px] border border-[#DEE1E5] w-1/2 rounded-[2px] px-2 text-[14px] xl:text-[20px]
 }
 
 

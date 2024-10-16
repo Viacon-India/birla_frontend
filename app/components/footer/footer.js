@@ -89,7 +89,7 @@ export default function Footer() {
             </div>
             <div class="follow-sec flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mt-3 md:mt-6">
               {detail?.social_title && (
-                <span className="text-[#1A1D21] text-[18px] md:text-[24px]">
+                <span className="text-[#1A1D21] text-[18px] lg:text-[24px]">
                   {detail.social_title}
                 </span>
               )}
@@ -195,7 +195,7 @@ export default function Footer() {
             <div class="flex items-center gap-3 md:gap-4">
               {footerLogo[0].image?.data && footerLogo[0].icon_link && (
                 <Link href="https://www.himadri.com/" target="_blank">
-                  <figure className="rounded-none m-0 w-[60px] h-[54px] md:w-fit md:h-[80px] fig-line">
+                  <figure className="rounded-none m-0 w-[60px] h-[54px] md:w-fit md:h-[46px] xl:w-fit xl:h-[80px] fig-line">
                     <Image
                       src={logo2}
                       alt="logo"
@@ -231,7 +231,7 @@ export default function Footer() {
               </svg>
               {footerLogo[1].image?.data && footerLogo[1].icon_link && (
                 <Link href="/">
-                  <figure className="rounded-none m-0 w-[94px] h-[42px] md:w-[180px] md:h-[80px]">
+                  <figure className="rounded-none m-0 w-[94px] h-[42px] md:w-[110px] md:h-[46px] xl:w-[180px] xl:h-[80px]">
                     <Image
                       src={logo1}
                       alt="logo"
