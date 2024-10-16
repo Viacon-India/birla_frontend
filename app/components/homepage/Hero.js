@@ -102,7 +102,7 @@ export default function Hero({Data={}}) {
             disableOnInteraction: false,
           }}
           modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
-          className="mySwiper relative !pt-[58px] md:!pt-0 !h-[264px] md:!h-full"
+          className="mySwiper relative !pt-[58px] md:!pt-0 !h-[264px] md:!h-[550px] xl:!h-[100vh]"
         >
           <div class="w-full">
             <div class="container mx-auto">
@@ -113,7 +113,7 @@ export default function Hero({Data={}}) {
             <SwiperSlide key={slider.id}>
               <div class="swiper-card-main">
                 <span className="slider-overlay"></span>
-                <div className="w-full !h-full md:!h-[100vh] flex items-end pb-8 md:pb-[60px]">
+                <div className="w-full !h-full flex items-end pb-8 md:pb-[24px] xl:pb-[60px]">
                   {slider.attributes?.hero &&
                     <video
                       className="absolute top-0 w-full h-fit object-contain"

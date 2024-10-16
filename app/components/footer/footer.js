@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { getStrapiMedia } from "@/lib/utils";
 import Image from "next/image";
 import logo1 from "../../assets/images/logo1.png";
 import Link from "next/link";
@@ -10,6 +11,7 @@ export default function Footer() {
   const [footerMenu, setFooterMenu] = useState([]);
   const [creditTexts, setCreditTexts] = useState([]);
   const [detail, setDetail] = useState([]);
+  const [footerLogo, setFooterLogo] = useState([]);
   // menus
   useEffect(() => {
     fetch("http://birlatyres.viaconprojects.com:1337/api/footer")
@@ -18,6 +20,7 @@ export default function Footer() {
         setFooterMenu(footer.data.attributes.menus.data);
         setCreditTexts(footer.data.attributes.credit);
         setDetail(footer.data.attributes);
+        setFooterLogo(footer.data.attributes.logo);
       });
   }, []);
 
@@ -51,12 +54,14 @@ export default function Footer() {
                     stroke-linejoin="round"
                   />
                 </svg>
-                <Link
-                  href="mailto:corporate@birlatyre.com"
-                  className="text-secondary"
-                >
-                  corporate@birlatyre.com
-                </Link>
+                {detail?.corporate_mail?.link && (
+                  <Link
+                    href={detail.corporate_mail.link}
+                    className="text-secondary"
+                  >
+                    {detail?.corporate_mail?.name}
+                  </Link>
+                )}
               </div>
               <div className="footer-detail-box">
                 <svg
@@ -71,19 +76,23 @@ export default function Footer() {
                     fill="#2E3192"
                   />
                 </svg>
-                <Link
-                  href="https://genpayhr.geniusconsultant.com/Himadri/ESS/"
-                  target="_blank"
-                  className="text-secondary"
-                >
-                  ESS Portal
-                </Link>
+                {detail?.ess?.link && (
+                  <Link
+                    href={detail.ess.link}
+                    target="_blank"
+                    className="text-secondary"
+                  >
+                    {detail?.ess?.name}
+                  </Link>
+                )}
               </div>
             </div>
             <div class="follow-sec flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mt-3 md:mt-6">
-              <span className="text-[#1A1D21] text-[18px] md:text-[24px]">
-                Follow us on :
-              </span>
+              {detail?.social_title && (
+                <span className="text-[#1A1D21] text-[18px] md:text-[24px]">
+                  {detail.social_title}
+                </span>
+              )}
               <div class="flex items-center gap-4">
                 <Link className="icon-box" href="">
                   <svg
@@ -182,42 +191,66 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div class="flex items-center gap-3 md:gap-4">
-            <Link href="https://www.himadri.com/" target="_blank">
-              <figure className="rounded-none m-0 w-[60px] h-[54px] md:w-fit md:h-[80px] fig-line">
-                <Image
-                  src={logo2}
-                  alt="logo"
-                  className="w-full h-full object-cover"
+          {footerLogo.length > 1 && (
+            <div class="flex items-center gap-3 md:gap-4">
+              {footerLogo[0].image?.data && footerLogo[0].icon_link && (
+                <Link href="https://www.himadri.com/" target="_blank">
+                  <figure className="rounded-none m-0 w-[60px] h-[54px] md:w-fit md:h-[80px] fig-line">
+                    <Image
+                      src={logo2}
+                      alt="logo"
+                      className="w-full h-full object-cover"
+                    />
+                    {/* <Image
+                      src={getStrapiMedia(
+                        footerLogo[0].image.data.attributes.url
+                      )}
+                      width={footerLogo[0].image.data.attributes.width}
+                      height={footerLogo[0].image.data.attributes.height}
+                      alt={footerLogo[0].image.data.attributes?.alternativeText}
+                      className="w-full h-fit object-cover pt-2"
+                    /> */}
+                  </figure>
+                </Link>
+              )}
+              <svg
+                width="2"
+                height="81"
+                viewBox="0 0 2 81"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="0.850586"
+                  y1="80.5"
+                  x2="0.850586"
+                  y2="0.5"
+                  stroke="#C9CDD3"
+                  stroke-dasharray="5 6"
                 />
-              </figure>
-            </Link>
-            <svg
-              width="2"
-              height="81"
-              viewBox="0 0 2 81"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line
-                x1="0.850586"
-                y1="80.5"
-                x2="0.850586"
-                y2="0.5"
-                stroke="#C9CDD3"
-                stroke-dasharray="5 6"
-              />
-            </svg>
-            <Link href="/">
-              <figure className="rounded-none m-0 w-[94px] h-[42px] md:w-[180px] md:h-[80px]">
-                <Image
-                  src={logo1}
-                  alt="logo"
-                  className="w-full h-full object-cover"
-                />
-              </figure>
-            </Link>
-          </div>
+              </svg>
+              {footerLogo[1].image?.data && footerLogo[1].icon_link && (
+                <Link href="/">
+                  <figure className="rounded-none m-0 w-[94px] h-[42px] md:w-[180px] md:h-[80px]">
+                    <Image
+                      src={logo1}
+                      alt="logo"
+                      className="w-full h-full object-cover"
+                    />
+                    {/* <Image
+                      src={getStrapiMedia(
+                        footerLogo[1].image.data.attributes.url
+                      )}
+                      width={footerLogo[1].image.data.attributes.width}
+                      height={footerLogo[1].image.data.attributes.height}
+                      alt={footerLogo[1].image.data.attributes?.alternativeText}
+                      className="w-full h-fit object-cover pt-2"
+                    /> */}
+                  </figure>
+                </Link>
+              )}
+            </div>
+          )}
         </div>
 
         <ul className="footer-list-sec !pl-0 py-4 md:py-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-8 md:gap-2">
@@ -308,7 +341,6 @@ export default function Footer() {
             </svg>
           </button>
         </div>
-        
       </div>
     </div>
   );
