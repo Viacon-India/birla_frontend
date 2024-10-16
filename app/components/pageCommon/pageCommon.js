@@ -40,7 +40,7 @@ export function SmallButton() {
       {pathname != "/find-tyre" && (
         <Link
           href="/find-tyre"
-          className="primary-btn-1 !w-full !justify-center"
+          className="primary-btn-1 !w-[50%] !justify-center"
         >
           Find a Tyre
         </Link>

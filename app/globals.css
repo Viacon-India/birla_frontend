@@ -63,20 +63,16 @@ ol, ul{
   }
 }
 
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-
-}
-
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .container {
-    @apply px-[3rem] max-w-[720px];
+    @apply px-[3rem] max-w-[1024px];
   }
 
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1279px) {
   .container {
-    @apply px-[4rem] max-w-[960px];
+    @apply px-[3rem] max-w-[1280px];
   }
 
 }
@@ -426,7 +422,7 @@ text-white transition-all duration-500 relative hover:left-[-190px]
   @apply absolute top-0 left-0 w-full h-full z-1 bg-[#161746BF]
 }
 .hero-sec-heading{
-  @apply text-[36px] md:text-[50px] 2xl:text-[72px] text-[#FFFFFF] font-extrabold font-oak-sans
+  @apply text-[36px] md:text-[50px] 2xl:text-[56px] text-[#FFFFFF] font-extrabold font-oak-sans
 }
 .section-subheading{
   @apply text-[14px] md:text-[24px] 2xl:text-[32px] text-[#FFFFFF] mb-8 leading-[1.2] hidden md:flex
@@ -1049,9 +1045,6 @@ a.current_dot {
 .top-banner-sec{
   @apply pt-[58px] md:pt-[84px] relative
 }
-/* .top-banner-sec-heading{
-  @apply font-bold text-[32px] md:text-[48px] 2xl:text-[56px] text-secondary !uppercase 
-} */
 .top-banner-sec-heading{
   @apply font-extrabold text-[32px] md:text-[50px] 2xl:text-[56px] text-[#FFFFFF] !uppercase 
 }
@@ -1427,7 +1420,7 @@ input[type=file]::file-selector-button {
   @apply w-full border-collapse
 }
 .product-detail-table th, td {
-  @apply border border-[#DEE1E5] p-2 text-left
+  @apply border border-[#DEE1E5] p-2 text-left !min-w-[100px] md:!min-w-[150px]
 }
 .product-detail-table th {
   @apply bg-[#DEE1E5] text-[#1A1D21] text-[12px] md:text-[14px] 2xl:text-[16px] font-bold border border-[#C9CDD3]

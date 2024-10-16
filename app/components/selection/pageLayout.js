@@ -877,7 +877,7 @@ export function Products({ pageData }) {
               {pageData?.name}
             </p>
           </div>
-          <div className="flex flex-col md:flex-row gap-8 md:gap-10 2xl:gap-[60px] mt-6 pb-8 md:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-10 2xl:gap-[60px] mt-6 md:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
             <div className="productImageWrapper w-full md:w-[45%]">
               <div className="product-image-sec flex gap-5">
                 <Swiper
@@ -906,7 +906,7 @@ export function Products({ pageData }) {
                   ))}
                 </Swiper>
                 <div className="single-image-slider relative w-full md:w-[80%] h-full bg-[#ffffff] rounded-[12px]">
-                  <span className="bg-primary py-2 px-8 rounded-tr-[12px] text-white text-[18px] font-bold absolute right-0 top-0">
+                  <span className="bg-primary py-2 px-8 rounded-tr-[12px] text-white text-[12px] md:text-[18px] font-bold absolute right-0 top-0">
                     Premium
                   </span>
                   <Swiper
@@ -931,7 +931,7 @@ export function Products({ pageData }) {
                         key={gallery.id}
                         className="!flex !justify-center"
                       >
-                        <figure className="w-[200px] 2xl:w-[260px] h-[280px] 2xl:h-[380px]">
+                        <figure className="w-[180px] 2xl:w-[260px] h-[240px] 2xl:h-[380px] pt-3 md:pt-0">
                           <Image
                             width={gallery?.width}
                             height={gallery?.height}
@@ -948,7 +948,7 @@ export function Products({ pageData }) {
               {pageData?.type && (
                 <div className="patter-description flex items-center justify-between mt-6">
                   {pageData.type?.load && (
-                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] p-2 md:py-2 md:px-4 rounded-[12px] border border-primary">
+                    <div className="pattern-box flex items-center gap-1 md:gap-2 2xl:gap-3 bg-[#FFFFFF] px-2 py-1 md:py-2 md:px-4 rounded-[6px] md:rounded-[12px] border border-primary">
                       <Image
                         className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain"
                         src={load}
@@ -965,7 +965,7 @@ export function Products({ pageData }) {
                     </div>
                   )}
                   {pageData.type?.tra && (
-                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] p-2 md:py-2 md:px-4 rounded-[12px] border border-primary">
+                    <div className="pattern-box flex items-center gap-1 md:gap-2 2xl:gap-3 bg-[#FFFFFF] px-2 py-1 md:py-2 md:px-4 rounded-[6px] md:rounded-[12px] border border-primary">
                       <Image
                         className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain"
                         src={traImage}
@@ -982,7 +982,7 @@ export function Products({ pageData }) {
                     </div>
                   )}
                   {pageData.type?.pattern && (
-                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] p-2 md:py-2 md:px-4 rounded-[12px] border border-primary">
+                    <div className="pattern-box flex items-center gap-1 md:gap-2 2xl:gap-3 bg-[#FFFFFF] px-2 py-1 md:py-2 md:px-4 rounded-[6px] md:rounded-[12px] border border-primary">
                       <Image
                         className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain"
                         src={pattern}
@@ -999,7 +999,7 @@ export function Products({ pageData }) {
                     </div>
                   )}
                   {pageData.type?.construction && (
-                    <div className="pattern-box flex items-center gap-2 2xl:gap-3 bg-[#FFFFFF] p-2 md:py-2 md:px-4 rounded-[12px] border border-primary">
+                    <div className="pattern-box flex items-center gap-1 md:gap-2 2xl:gap-3 bg-[#FFFFFF] px-2 py-1 md:py-2 md:px-4 rounded-[6px] md:rounded-[12px] border border-primary">
                       <Image
                         className="w-6 h-6 md:w-10 md:h-8 2xl:w-10 2xl:h-10 object-contain"
                         src={construction}
@@ -1020,7 +1020,7 @@ export function Products({ pageData }) {
             </div>
             <div className="product-detail-sec w-ful md:w-[55%]">
               {pageData?.name && (
-                <h2 className="section-title">{pageData.name}</h2>
+                <h2 className="text-secondary text-[28px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px]">{pageData.name}</h2>
               )}
               {pageData?.description && (
                 <p className="text-[#1A202C] text-[16px] pt-2 font-semibold">
@@ -1030,7 +1030,7 @@ export function Products({ pageData }) {
               {pageData?.details?.map((details) => (
                 <>
                   {details.description && (
-                    <p className="pt-6 text-[#3D434C] text-[28px] font-medium border-t border-[#DEE1E5]">
+                    <p className="pt-2 md:pt-4 2xl:pt-6 text-[#3D434C] text-[22px] md:text-[28px] font-medium border-t border-[#DEE1E5]">
                       {details.description}
                     </p>
                   )}
@@ -1099,14 +1099,14 @@ export function Products({ pageData }) {
               <div className="flex justify-between">
                 <div className="flex items-center gap-4 2xl:gap-8">
                   {pageData.tables?.title && (
-                    <h2 className="text-[#1A202C] text-[24px] 2xl:text-[32px] font-medium">
+                    <h2 className="text-[#1A202C] text-[20px] md:text-[24px] 2xl:text-[32px] font-medium">
                       {pageData.tables.title}
                     </h2>
                   )}
                   <div className="cat-btn-sec flex items-center gap-3 relative z-10">
                     <Link
                       href=""
-                      className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]"
+                      className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[12px] md:text-[16px]"
                       target="_blank"
                     >
                       <svg
@@ -1128,7 +1128,7 @@ export function Products({ pageData }) {
                     </Link>
                   </div>
                 </div>
-                {pageData.tables?.table && pageData.tables.table.length > 0 && (
+                {pageData.tables?.table && pageData.tables.table.length > 1 && (
                   <div className="country-selection">
                     <p className="text-[16px] text-[#1A1D21] mb-3 font-medium">
                       Select Standard
