@@ -37,7 +37,7 @@ export default function Media({ Heading = "", Title = "" }) {
             </div>
           )}
           {pageData?.data && pageData.data.length > 0 && (
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-5 2xl:mt-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 2xl:gap-8 mt-5 2xl:mt-10">
               {pageData.data.map(
                 (media) =>
                   media.attributes?.link && (

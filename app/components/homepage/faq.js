@@ -138,10 +138,10 @@ export default function Faq({Heading='', Title='', Data={}}) {
                   }}
                 />
               )}
-              <div class="flex flex-col md:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
+              <div class="flex flex-col lg:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
                 {Data?.images?.data && Data.images.data.length > 0 &&
                   <div
-                    class="w-full md:w-[45%]"
+                    class="w-full lg:w-[45%]"
                     data-aos="fade-right"
                     data-aos-duration="1000"
                   >
@@ -167,7 +167,7 @@ export default function Faq({Heading='', Title='', Data={}}) {
                 }
                 {Data?.items && Data.items.length > 0 &&
                   <div
-                    class="faq-accordion md:w-[55%] max-h-[360px] md:max-h-[420px] 2xl:max-h-[520px] overflow-y-auto relative z-4"
+                    class="faq-accordion lg:w-[55%] max-h-[360px] md:max-h-[420px] 2xl:max-h-[520px] overflow-y-auto relative z-4"
                     data-aos="fade-right"
                     data-aos-duration="1500"
                   >

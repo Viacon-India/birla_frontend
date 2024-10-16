@@ -22,7 +22,6 @@ export default function Navbar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  
   // Toggle submenu
   const toggleSubMenu = (id) => {
     setExpandedSubMenu(expandedSubMenu === id ? null : id);
@@ -53,190 +52,192 @@ export default function Navbar() {
     <div className="nav-main">
       <div className="container mx-auto">
         <div className="md:py-4 xl:py-0 w-full flex justify-between items-center relative">
-          <div className="navbar-start w-fit">
-            <button className="hamburger-button" onClick={toggleMenu}>
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M5.33398 25.333H18.6673M5.33398 15.9997H26.6673M5.33398 6.66634H26.6673"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
+          <div class="flex items-center">
+            <div className="navbar-start w-fit">
+              <button className="hamburger-button" onClick={toggleMenu}>
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5.33398 25.333H18.6673M5.33398 15.9997H26.6673M5.33398 6.66634H26.6673"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
 
-          <div className="navbar-center flex items-center gap-6 lg:flex md:pl-7 ml-[-10%] md:ml-0">
-            <ul className="menu menu-horizontal hidden xl:flex relative text-lg lg:gap-4 2xl:gap-7 p-0">
-              {navMenu.attributes?.menu.map((menu) => (
-                <li className="nav-drop group" key={menu.id}>
-                  {menu?.link ? (
-                    <Link
-                      href={menu.link}
-                      className="nav-links nav-hov flip-animate"
-                    >
-                      <span data-hover={menu.title}>{menu.title}</span>
-                      <svg
-                        className="nav-arrow"
-                        width="10"
-                        height="6"
-                        viewBox="0 0 10 6"
-                        fill="#333333"
-                        xmlns="http://www.w3.org/2000/svg"
+            <div className="navbar-center flex items-center gap-6 lg:flex pl-3 xl:pl-7 ml-[-10%] md:ml-0">
+              <ul className="menu menu-horizontal hidden xl:flex relative text-lg lg:gap-4 2xl:gap-7 p-0">
+                {navMenu.attributes?.menu.map((menu) => (
+                  <li className="nav-drop group" key={menu.id}>
+                    {menu?.link ? (
+                      <Link
+                        href={menu.link}
+                        className="nav-links nav-hov flip-animate"
                       >
-                        <path
-                          d="M5.00045 3.44752L8.30032 0.147705L9.24312 1.09051L5.00045 5.33319L0.757812 1.09051L1.70063 0.147705L5.00045 3.44752Z"
-                          fill=""
-                        />
-                      </svg>
-                    </Link>
-                  ) : (
-                    <button className="nav-links nav-hov flip-animate">
-                      <span data-hover={menu.title}>{menu.title}</span>
-                      <svg
-                        className="nav-arrow"
-                        width="10"
-                        height="6"
-                        viewBox="0 0 10 6"
-                        fill="#333333"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M5.00045 3.44752L8.30032 0.147705L9.24312 1.09051L5.00045 5.33319L0.757812 1.09051L1.70063 0.147705L5.00045 3.44752Z"
-                          fill=""
-                        />
-                      </svg>
-                    </button>
-                  )}
-                  <ul className="center-dropdown">
-                    {menu.sub_menu.map((subMenu) => (
-                      <li className="subSubText-wrapper" key={subMenu.id}>
-                        <button className="drop-list">{subMenu.title}</button>
-                        <ul className="absolute top-0 !hidden subSubText bg-slate-50 !w-[260px] border-t border-[#DEE1E5] left-[100%] overflow-hidden">
-                          {subMenu.pages.data.map((subSubMenu) => (
-                            <li
-                              className="text-[14px] text-secondary !w-full !-mr-8 font-medium"
-                              key={subSubMenu.id}
-                            >
-                              <Link
-                                className="!pl-2 flex gap-1 hover:translate-x-2 hover:bg-transparent focus:!bg-[#FFFFFF] focus:!text-secondary"
-                                href={`${subSubMenu.attributes.permalink}`}
+                        <span data-hover={menu.title}>{menu.title}</span>
+                        <svg
+                          className="nav-arrow"
+                          width="10"
+                          height="6"
+                          viewBox="0 0 10 6"
+                          fill="#333333"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5.00045 3.44752L8.30032 0.147705L9.24312 1.09051L5.00045 5.33319L0.757812 1.09051L1.70063 0.147705L5.00045 3.44752Z"
+                            fill=""
+                          />
+                        </svg>
+                      </Link>
+                    ) : (
+                      <button className="nav-links nav-hov flip-animate">
+                        <span data-hover={menu.title}>{menu.title}</span>
+                        <svg
+                          className="nav-arrow"
+                          width="10"
+                          height="6"
+                          viewBox="0 0 10 6"
+                          fill="#333333"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5.00045 3.44752L8.30032 0.147705L9.24312 1.09051L5.00045 5.33319L0.757812 1.09051L1.70063 0.147705L5.00045 3.44752Z"
+                            fill=""
+                          />
+                        </svg>
+                      </button>
+                    )}
+                    <ul className="center-dropdown">
+                      {menu.sub_menu.map((subMenu) => (
+                        <li className="subSubText-wrapper" key={subMenu.id}>
+                          <button className="drop-list">{subMenu.title}</button>
+                          <ul className="absolute top-0 !hidden subSubText bg-slate-50 !w-[260px] border-t border-[#DEE1E5] left-[100%] overflow-hidden">
+                            {subMenu.pages.data.map((subSubMenu) => (
+                              <li
+                                className="text-[14px] text-secondary !w-full !-mr-8 font-medium"
+                                key={subSubMenu.id}
                               >
-                                <svg
-                                  width="8"
-                                  height="8"
-                                  viewBox="0 0 10 9"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="mr-2"
+                                <Link
+                                  className="!pl-2 flex gap-1 hover:translate-x-2 hover:bg-transparent focus:!bg-[#FFFFFF] focus:!text-secondary"
+                                  href={`${subSubMenu.attributes.permalink}`}
                                 >
-                                  <path
-                                    d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7"
-                                    stroke="#2E3192"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                  />
-                                </svg>
-                                {subSubMenu.attributes.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </li>
-                    ))}
-                    {menu.segments?.data.map((menu) => (
-                      <li key={menu.id}>
-                        <Link
-                          className="drop-list"
-                          href={`${menu.attributes.permalink}`}
-                        >
-                          {menu.attributes.title}
-                        </Link>
-                      </li>
-                    ))}
-                    {menu.pages?.data.map((menu) => (
-                      <li key={menu.id}>
-                        <Link
-                          className="drop-list"
-                          href={`${menu.attributes.permalink}`}
-                        >
-                          {menu.attributes.name}
-                        </Link>
-                      </li>
-                    ))}
-                    {menu.other_link.map((menu) => (
-                      <li key={menu.id}>
-                        <Link className="drop-list" href={`${menu.link}`}>
-                          {menu.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-              {navMenu.attributes?.segments?.data.map((menu) => (
-                <li className="nav-drop group" key={menu.id}>
-                  <Link
-                    className="nav-links nav-hov flip-animate"
-                    href={`${menu.attributes.permalink}`}
-                  >
-                    <span data-hover={menu.attributes.title}>
-                      {menu.attributes.title}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-              {navMenu.attributes?.pages?.data.map((menu) => (
-                <li className="nav-drop group" key={menu.id}>
-                  <Link
-                    className="nav-links nav-hov flip-animate"
-                    href={`${menu.attributes.permalink}`}
-                  >
-                    <span data-hover={menu.attributes.name}>
-                      {menu.attributes.name}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-              {navMenu.attributes?.other_link.map((menu) => (
-                <li className="nav-drop group" key={menu.id}>
-                  <Link
-                    className="nav-links nav-hov flip-animate"
-                    href={`${menu.link}`}
-                  >
-                    <span data-hover={menu.name}>{menu.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div class="search-wrapper relative hidden md:flex">
-              <input
-                className="search-input"
-                type="text"
-                placeholder="Search website"
-              />
-              <svg
-                width="20"
-                height="21"
-                viewBox="0 0 20 21"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M13.7026 14.2032L17.4995 18.0001M15.625 9.5625C15.625 13.1869 12.6869 16.125 9.0625 16.125C5.43813 16.125 2.5 13.1869 2.5 9.5625C2.5 5.93813 5.43813 3 9.0625 3C12.6869 3 15.625 5.93813 15.625 9.5625Z"
-                  stroke="#1A1D21"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                                  <svg
+                                    width="8"
+                                    height="8"
+                                    viewBox="0 0 10 9"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="mr-2"
+                                  >
+                                    <path
+                                      d="M1 8.5L9 0.5M9 0.5H2.5M9 0.5V7"
+                                      stroke="#2E3192"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                  </svg>
+                                  {subSubMenu.attributes.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
+                      ))}
+                      {menu.segments?.data.map((menu) => (
+                        <li key={menu.id}>
+                          <Link
+                            className="drop-list"
+                            href={`${menu.attributes.permalink}`}
+                          >
+                            {menu.attributes.title}
+                          </Link>
+                        </li>
+                      ))}
+                      {menu.pages?.data.map((menu) => (
+                        <li key={menu.id}>
+                          <Link
+                            className="drop-list"
+                            href={`${menu.attributes.permalink}`}
+                          >
+                            {menu.attributes.name}
+                          </Link>
+                        </li>
+                      ))}
+                      {menu.other_link.map((menu) => (
+                        <li key={menu.id}>
+                          <Link className="drop-list" href={`${menu.link}`}>
+                            {menu.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+                {navMenu.attributes?.segments?.data.map((menu) => (
+                  <li className="nav-drop group" key={menu.id}>
+                    <Link
+                      className="nav-links nav-hov flip-animate"
+                      href={`${menu.attributes.permalink}`}
+                    >
+                      <span data-hover={menu.attributes.title}>
+                        {menu.attributes.title}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+                {navMenu.attributes?.pages?.data.map((menu) => (
+                  <li className="nav-drop group" key={menu.id}>
+                    <Link
+                      className="nav-links nav-hov flip-animate"
+                      href={`${menu.attributes.permalink}`}
+                    >
+                      <span data-hover={menu.attributes.name}>
+                        {menu.attributes.name}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+                {navMenu.attributes?.other_link.map((menu) => (
+                  <li className="nav-drop group" key={menu.id}>
+                    <Link
+                      className="nav-links nav-hov flip-animate"
+                      href={`${menu.link}`}
+                    >
+                      <span data-hover={menu.name}>{menu.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <div class="search-wrapper relative hidden md:flex">
+                <input
+                  className="search-input"
+                  type="text"
+                  placeholder="Search website"
                 />
-              </svg>
+                <svg
+                  width="20"
+                  height="21"
+                  viewBox="0 0 20 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.7026 14.2032L17.4995 18.0001M15.625 9.5625C15.625 13.1869 12.6869 16.125 9.0625 16.125C5.43813 16.125 2.5 13.1869 2.5 9.5625C2.5 5.93813 5.43813 3 9.0625 3C12.6869 3 15.625 5.93813 15.625 9.5625Z"
+                    stroke="#1A1D21"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
 

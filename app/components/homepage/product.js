@@ -84,7 +84,7 @@ export default function Products({ Heading='', Title='', Data={}}) {
     <section className="product-sec sec-gap">
       {Data?.data && Data.data.length > 0 &&
         <div className="container mx-auto overflow-hidden">
-          <div className="upper-title-sec flex gap-3 md:gap-0 flex-col md:flex-row justify-between items-end">
+          <div className="upper-title-sec flex gap-3 lg:gap-0 flex-col lg:flex-row justify-between items-end">
             <div className="self-start">
               {Heading &&
                 <span className="section-heading">{Heading}</span>
@@ -125,7 +125,16 @@ export default function Products({ Heading='', Title='', Data={}}) {
                       slidesPerView: 1,
                     },
                     768: {
+                      slidesPerView: 2,
+                      spaceBetween:30,
+                    },
+                    1024: {
                       slidesPerView: 3,
+                      spaceBetween:10,
+                    },
+                    1280: {
+                      slidesPerView: 3,
+                      spaceBetween:40,
                     },
                   }}
                   spaceBetween={50}

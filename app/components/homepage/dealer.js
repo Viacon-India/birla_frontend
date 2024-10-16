@@ -19,8 +19,8 @@ export default function Dealer({ Heading='', Title=''}) {
             </div>
           }
         </div>
-        <div class="w-full flex gap-2 md:gap-6 flex-col md:flex-row mt-5 2xl:mt-10">
-          <div class="relative md:w-[30%]">
+        <div class="w-full flex gap-2 md:gap-6 flex-col lg:flex-row mt-5 2xl:mt-10">
+          <div class="relative w-full lg:w-[40%] xl:w-[30%]">
             <input
               className="px-4 py-3 bg-[#FFFFFF] border border-[#DEE1E5] rounded-[4px] w-full outline-none"
               type="text"
@@ -40,7 +40,7 @@ export default function Dealer({ Heading='', Title=''}) {
               />
             </svg>
           </div>
-          <div class="flex flex-col md:flex-row justify-between gap-2 mb-2 items-center md:w-[70%]">
+          <div class="flex flex-col md:flex-row justify-between gap-2 mb-2 items-center lg:w-[60%] xl:w-[70%]">
             <div class="area-input-wrapper relative flex gap-4 w-full md:w-[50%]">
               <select className="select-box" name="state" id="state">
                 <option value="Select State">Select State</option>
@@ -82,8 +82,8 @@ export default function Dealer({ Heading='', Title=''}) {
             </div>
           </div>
         </div>
-        <div class="flex flex-col md:flex-row gap-6">
-          <div class="listing-card-sec lg:w-[30%] relative">
+        <div class="flex flex-col lg:flex-row gap-6">
+          <div class="listing-card-sec w-full lg:w-[40%] xl:w-[30%] relative">
             <div class="nearest-card">
               <h2 className="">Nearest Dealer is just 1.5KM away</h2>
               <Link
@@ -529,7 +529,7 @@ export default function Dealer({ Heading='', Title=''}) {
               </div>
             </div>
           </div>
-          <div class="map-sec lg:w-[70%]">
+          <div class="map-sec lg:w-[60%] xl:w-[70%]">
             <iframe src="//maps.google.com/maps?q=53.3381768,-6.2613077&z=15&output=embed"></iframe>
           </div>
         </div>
