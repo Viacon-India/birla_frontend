@@ -32,7 +32,7 @@ export default function Footer() {
   };
 
   return (
-    <div className="footer-main py-5 md:py-10 2xl:py-[60px] bg-[#F2F2F2] mt-[60px] md:mt-0">
+    <div className="footer-main py-5 md:py-10 2xl:py-[60px] bg-[#F2F2F2] mt-[60px] xl:mt-0">
       <div className="container mx-auto">
         <div className="footer-detail-sec pb-4 md:pb-10 border-b border-[#DEE1E5]">
           <div className="footer-description-sec md:w-[65%]">

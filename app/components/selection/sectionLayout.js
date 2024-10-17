@@ -324,7 +324,7 @@ export function ImageTitleContent({ section }) {
           )}
         >
           <figure
-            className="w-full lg:w-[45%] h-[300px] md:h-[480px] lg:h-[380px] xl:h-[480px] relative glare"
+            className="w-full lg:w-[45%] h-[300px] md:h-[550px] lg:h-[380px] xl:h-[480px] relative glare"
             data-aos="flip-right"
             data-aos-duration="1500"
           >
@@ -571,18 +571,18 @@ export function Accordion({ section }) {
         <div
           className={cn(
             "flex flex-col gap-4 md:gap-10",
-            section?.settings?.right ? "md:flex-row-reverse" : "xl:flex-row"
+            section?.settings?.right ? "xl:flex-row-reverse" : "xl:flex-row"
           )}
         >
           {section?.images && section.images.length > 0 && (
             <>
               {section.images.length > 1 ? (
-                <div class="w-full md:w-[40%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
+                <div class="w-full xl:w-[40%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
                   {section.images.map((image, index) => (
                     <Image
                       key={image.id}
                       className={cn(
-                        "w-full h-[180px] md:h-[240px] 2xl:h-[290px] rounded-[12px]",
+                        "w-full h-[180px] md:h-[290px] xl:h-[240px] 2xl:h-[290px] rounded-[12px]",
                         index == "0" && "col-span-2"
                       )}
                       width={image?.width}
@@ -593,9 +593,9 @@ export function Accordion({ section }) {
                   ))}
                 </div>
               ) : (
-                <div class="w-full xl:w-[40%] h-fit md:sticky top-[90px]">
+                // <div class="w-full xl:w-[40%]">
                   <figure
-                    className="w-full h-[300px] md:h-[500px] 2xl:h-[600px] mb-0"
+                    className="w-full  xl:w-[40%] h-[300px] md:h-[500px] 2xl:h-[600px] mb-0"
                     data-aos="zoom-in"
                     data-aos-duration="1000"
                   >
@@ -607,13 +607,13 @@ export function Accordion({ section }) {
                       alt={section.images[0]?.alternativeText}
                     />
                   </figure>
-                </div>
+                // </div>
               )}
             </>
           )}
           {section?.items && (
             <div
-              class="accordion-list-sec w-full xl:w-[60%] md:h-[500px] 2xl:h-[600px] md:overflow-y-auto"
+              class="accordion-list-sec w-full xl:w-[60%] xl:h-[500px] 2xl:h-[600px] md:overflow-y-auto"
               data-aos="fade-left"
               data-aos-duration="1000"
             >
@@ -1104,8 +1104,8 @@ export function Gallery({ section }) {
               className={cn(
                 "gallery-sec grid gap-3 2xl:gap-4 pt-6 md:pt-10 2xl:pt-[60px]",
                 section?.compact
-                  ? "grid-cols-1 md:grid-cols-5"
-                  : "grid-cols-1 md:grid-cols-4"
+                  ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-5"
+                  : "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
               )}
             >
               {section.collection.map((image) => (
@@ -1113,7 +1113,7 @@ export function Gallery({ section }) {
                   className={cn(
                     "w-full mb-0 overflow-hidden rounded-[20px] relative cursor-pointer sustainability-figure",
                     section?.compact ? "h-[240px]" : "h-[240px] md:h-[316px]",
-                    image?.big ? "md:col-span-2" : ""
+                    image?.big ? "lg:col-span-2" : ""
                   )}
                   data-aos="flip-left"
                   data-aos-duration="1000"
@@ -1145,7 +1145,7 @@ export function Gallery({ section }) {
   return (
     <section
       className={cn(
-        "relative pt-6 md:pt-8 2xl:pt-[60px] overflow-hidden pb-6 md:pb-8 2xl:pb-[60px]",
+        "relative overflow-hidden pb-6 md:pb-8 2xl:pb-[60px]",
         section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
       )}
     >
@@ -1214,7 +1214,7 @@ export function ImagePoint({ section }) {
           />
         )}
         {section?.collection && section.collection.length > 0 && (
-          <div className="grid grid-cols1 md:grid-cols-3 gap-6 md:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-3 2xl:gap-10">
             {section.collection.map((collection) => (
               <div
                 key={collection.id}
@@ -1406,9 +1406,9 @@ export function JobApplication({ section }) {
       )}
     >
       <div className="container mx-auto flex flex-col overflow-hidden">
-        <div className="flex items-center flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px] pt-[60px] md:pt-[120px]">
+        <div className="flex items-center flex-col lg:flex-row gap-4 md:gap-8 2xl:gap-[60px] pt-[60px] xl:pt-[120px]">
           <div
-            className="box-title-sec w-full md:w-[45%] relative"
+            className="box-title-sec w-full lg:w-[40%] xl:w-[45%] relative"
             data-aos="fade-right"
             data-aos-duration="1000"
           >
@@ -1455,9 +1455,9 @@ export function JobApplication({ section }) {
                 }}
               />
             )}
-            <Image alt="mask" src={tigerMask} className="hidden md:block" />
+            <Image alt="mask" src={tigerMask} className="hidden lg:block" />
           </div>
-          <div className="w-full md:w-1/2">
+          <div className="w-full lg:w-[60%] xl:w-[55%]">
             <div
               className="form-content"
               data-aos="fade-left"
@@ -1763,14 +1763,14 @@ export function DoubleSlider({ section }) {
                         section.collection[index].slider.length > 3
                           ? 3
                           : section.collection[index].slider.length,
-                      spaceBetween: 48,
+                      spaceBetween: 20,
                     },
                     1024: {
                       slidesPerView:
                         section.collection[index].slider.length > 4
                           ? 4
                           : section.collection[index].slider.length,
-                      spaceBetween: 48,
+                      spaceBetween: 40,
                     },
                   }}
                   modules={[Autoplay, Navigation]}
@@ -1810,12 +1810,12 @@ export function ImageDetailContent({ section }) {
       <div class="container mx-auto">
         <div
           className={cn(
-            "flex flex-col items-start gap-2 md:gap-4 2xl:gap-10 md:p-10 md:bg-white md:border border-[#C9CDD3] md:rounded-[24px] md:pt-6 mt-8 2xl:mt-[60px]",
-            section?.settings?.right ? "md:flex-row-reverse" : "md:flex-row "
+            "flex flex-col items-start gap-2 xl:gap-4 2xl:gap-10 md:p-6 xl:p-10 md:bg-white md:border border-[#C9CDD3] md:rounded-[24px] xl:pt-6 mt-8 2xl:mt-[60px]",
+            section?.settings?.right ? "xl:flex-row-reverse" : "xl:flex-row "
           )}
         >
           <figure
-            className="w-full md:w-[40%] h-[300px] md:h-[400px] 2xl:h-[480px] relative glare"
+            className="w-full xl:w-[40%] h-[300px] md:h-[420px] lg:h-[600px] xl:h-[400px] 2xl:h-[480px] relative glare"
             data-aos="flip-right"
             data-aos-duration="1500"
           >
@@ -1840,7 +1840,7 @@ export function ImageDetailContent({ section }) {
               alt={section?.image.alternativeText}
             />
           </figure>
-          <div className="flex flex-col justify-center gap-2 md:gap-6 w-full md:w-[60%] relative overflow-hidden">
+          <div className="flex flex-col justify-center gap-2 md:gap-6 w-full xl:w-[60%] relative overflow-hidden">
             <div className="flex flex-col gap-2 md:gap-4 2xl:gap-6">
               <Image
                 className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
@@ -2007,7 +2007,7 @@ export function SidebarContent({ section }) {
           <div className="newBoxSection w-full md:w-[30%] bg-primary border border-primary rounded-xl text-white leading-[17px] flex flex-col items-start overflow-hidden">
             {section.collection.map((collection) => (
               <button
-                className={`p-3 w-full text-left transition duration-300 ${
+                className={`p-4 w-full text-left transition duration-300 ${
                   activeTab === collection.id
                     ? "bg-[#FEEFE2] text-primary"
                     : "bg-transparent"
@@ -2182,14 +2182,14 @@ export function CreditContent({ section }) {
 export function Testimonial({ section }) {
   return (
     <>
-      <section className="page-content-sec mt-[60px] md:mt-[120px]">
+      <section className="page-content-sec mt-[60px] xl:mt-[120px]">
         <div className="container mx-auto">
           <div className="testimonial-sec">
             <span className="section-heading">{section?.heading}</span>
             <div className="section-title-wrapper">
               <h3 className="section-title">{section?.title}</h3>
             </div>
-            <div className="grid grid-cols1 md:grid-cols-2 gap-6 md:gap-10 mt-6 md:mt-10 overflow-hidden">
+            <div className="grid grid-cols1 md:grid-cols-2 gap-6 xl:gap-10 mt-6 md:mt-10 overflow-hidden">
               {section?.collection?.map((collection) => (
                 <div
                   className="testimonial-card"
@@ -2197,7 +2197,7 @@ export function Testimonial({ section }) {
                   data-aos-duration="1000"
                   key={collection.id}
                 >
-                  <figure className="w-40% h-[320px]">
+                  <figure className="w-40% h-[240px] lg:h-[320px]">
                     <Image
                       className="vast-card-image"
                       width={collection.image?.width}
@@ -2218,6 +2218,9 @@ export function Testimonial({ section }) {
                         blocks={{
                           paragraph: ({ children }) => (
                             <p className="">{children}</p>
+                          ),
+                          quote: ({ children }) => (
+                            <blockquote className="text-[#1A1D21] text-[14px] md:text-[16px] xl:text-[17px]">{children}</blockquote>
                           ),
                           heading: ({ children, level }) => {
                             switch (level) {
@@ -2281,7 +2284,7 @@ export function TabImage({ section }) {
             <div className="flex gap-2 md:gap-6 justify-between text-[#4F5662]">
               {section?.collection?.map((collection, index) => (
                 <button
-                  className={`w-1/4 flex items-center gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-2 md:p-5 ${
+                  className={`w-1/4 flex items-center gap-2 xl:gap-5 justify-center bg-[#FEEFE2] rounded-tl-[12px] rounded-tr-[12px] p-2 md:p-5 ${
                     activeTab === "tab-" + index
                       ? "bg-primary !text-[#FFFFFF]"
                       : ""
@@ -2290,7 +2293,7 @@ export function TabImage({ section }) {
                   key={collection.id}
                 >
                   <Image
-                    className="w-10 h-10 hidden md:block"
+                    className="w-10 h-10 hidden lg:block"
                     width={collection.image?.width}
                     height={collection.image?.height}
                     src={getStrapiMedia(collection.image?.url)}
@@ -2298,7 +2301,7 @@ export function TabImage({ section }) {
                     data-aos="flip-up"
                     data-aos-duration="1500"
                   />
-                  <h2 className="text-[12px] md:text-[28px] 2xl:text-[32px] font-medium">
+                  <h2 className="text-[12px] md:text-[24px] xl:text-[28px] 2xl:text-[32px] font-medium">
                     {collection?.title}
                   </h2>
                 </button>
@@ -2309,7 +2312,7 @@ export function TabImage({ section }) {
                 activeTab === "tab-" + index && (
                   <div
                     key={collection.id}
-                    className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-2 md:p-10 !pt-6 rounded-b-xl overflow-hidden"
+                    className="bg-[#FFFFFFF] border-2 border-primary rounded-bl-[12px] rounded-br-[12px] border-t-0 flex flex-col text-[#4F5662] gap-6 p-2 md:p-6 xl:p-10 !pt-6 rounded-b-xl overflow-hidden"
                   >
                     {collection?.content && (
                       <BlocksRenderer
@@ -2441,10 +2444,10 @@ export function KeyPoints({ section }) {
       <section className="page-content-sec mt-[60px]">
         <div className="container mx-auto">
           <div className="pillar-sec">
-            <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px] !pb-[100px]">
+            <div className="flex items-start flex-col md:flex-row gap-4 md:gap-2 lg:gap-8 2xl:gap-[60px] !pb-[100px]">
               {section?.image && (
                 <figure
-                  className="w-full md:w-[45%] h-[300px] md:h-[480px] relative glare"
+                  className="w-full md:w-[45%] h-[300px] md:h-[320px] lg:h-[350px] xl:h-[480px] relative glare"
                   data-aos="flip-right"
                   data-aos-duration="1500"
                 >
@@ -2454,7 +2457,7 @@ export function KeyPoints({ section }) {
                     alt="triangle"
                   />
                   <Image
-                    className="absolute top-4 md:top-8 left-4 md:left-8 w-[90%] h-[90%] rounded-[12px]"
+                    className="absolute top-4 xl:top-8 left-4 xl:left-8 w-[90%] h-[90%] rounded-[12px]"
                     width={section.image?.width}
                     height={section.image?.height}
                     src={getStrapiMedia(section.image?.url)}

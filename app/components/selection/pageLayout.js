@@ -208,7 +208,7 @@ export function ContactUs({ pageData }) {
                 <Float />
                 <div className="container mx-auto">
                   <div className="contact-main flex flex-col md:flex-row items-start gap-4 md:gap-6 2xl:gap-10 mt-8 md:mt-12 2xl:mt-[60px]">
-                    <div className="contact-detail w-full md:w-1/2 flex flex-col gap-4 md:gap-6 xl:gap-10 overflow-hidden relative">
+                    <div className="contact-detail w-full md:w-[40%] xl:w-1/2 flex flex-col gap-4 md:gap-6 xl:gap-10 overflow-hidden relative">
                       <Image
                         className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
                         src={BGTiger2}
@@ -271,7 +271,7 @@ export function ContactUs({ pageData }) {
                           </div>
                         ))}
                     </div>
-                    <div className="w-full md:w-1/2">
+                    <div className="w-full md:w-[60%] xl:w-1/2">
                       <div className="form-content">
                         <div className="form-btn-sec">
                           <button
@@ -736,7 +736,7 @@ export function Segments({ pageData }) {
     <>
       <PageBanner Title={pageData.title} Banner={pageData.hero} />
       <section className="product-sec mt-10 md:mt-[60px] 2xl:mt-[100px]">
-        <div className="container mx-auto overflow-hidden flex flex-col gap-10">
+        <div className="container mx-auto overflow-hidden flex flex-col gap-4 md:gap-6 2xl:gap-10">
           <div className="upper-title-sec flex gap-3 md:gap-0 flex-col md:flex-row justify-between items-end">
             <div className="self-start">
               <span className="section-heading">
@@ -818,7 +818,7 @@ export function Segments({ pageData }) {
             </div>
           )}
           {pageData?.products && pageData.products.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-[50px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10 2xl:gap-[50px]">
               {pageData.products.map((product) => (
                 <Product key={product.id} data={product} />
               ))}
@@ -877,8 +877,8 @@ export function Products({ pageData }) {
               {pageData?.name}
             </p>
           </div>
-          <div className="flex flex-col md:flex-row gap-8 md:gap-10 2xl:gap-[60px] mt-6 md:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
-            <div className="productImageWrapper w-full md:w-[45%]">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 2xl:gap-[60px] mt-6 xl:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
+            <div className="productImageWrapper w-full lg:w-[55%] xl:w-[45%]">
               <div className="product-image-sec flex gap-5">
                 <Swiper
                   onSwiper={setThumbsSwiper}
@@ -893,7 +893,7 @@ export function Products({ pageData }) {
                   {pageData?.gallery?.map((gallery, index) => (
                     <SwiperSlide
                       key={gallery.id}
-                      className="!w-[80px] !h-[80px] 2xl:!w-[100px] 2xl:!h-[100px] bg-primary rounded-[12px] p-2 !mr-0 cursor-pointer"
+                      className="!w-[80px] !h-[80px] md:!w-[70px] md:!h-[70px] 2xl:!w-[100px] 2xl:!h-[100px] bg-primary rounded-[12px] p-2 !mr-0 cursor-pointer"
                     >
                       <Image
                         width={gallery?.width}
@@ -907,7 +907,7 @@ export function Products({ pageData }) {
                 </Swiper>
                 <div className="single-image-slider relative w-full md:w-[80%] h-full bg-[#ffffff] rounded-[12px]">
                   <span className="bg-primary py-2 px-8 rounded-tr-[12px] text-white text-[12px] md:text-[18px] font-bold absolute right-0 top-0">
-                    Premium
+                  {pageData.premium ? "Premium" : "Standard"}
                   </span>
                   <Swiper
                     navigation={true}
@@ -946,7 +946,7 @@ export function Products({ pageData }) {
                 </div>
               </div>
               {pageData?.type && (
-                <div className="patter-description flex items-center justify-between mt-6">
+                <div className="patter-description flex items-center justify-between md:justify-start md:gap-2 lg:gap-0 lg:justify-between mt-6">
                   {pageData.type?.load && (
                     <div className="pattern-box flex items-center gap-1 md:gap-2 2xl:gap-3 bg-[#FFFFFF] px-2 py-1 md:py-2 md:px-4 rounded-[6px] md:rounded-[12px] border border-primary">
                       <Image
@@ -1018,7 +1018,7 @@ export function Products({ pageData }) {
                 </div>
               )}
             </div>
-            <div className="product-detail-sec w-ful md:w-[55%]">
+            <div className="product-detail-sec w-ful lg:w-[45%] xl:w-[55%]">
               {pageData?.name && (
                 <h2 className="text-secondary text-[28px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px]">{pageData.name}</h2>
               )}
@@ -1034,62 +1034,64 @@ export function Products({ pageData }) {
                       {details.description}
                     </p>
                   )}
-                  <BlocksRenderer
-                    content={details?.content}
-                    blocks={{
-                      paragraph: ({ children }) => (
-                        <p className="text-[#4F5662] text-[14px] md:text-[15px] 2xl:text-[16px] pb-4 md:pb-6">
-                          {children}
-                        </p>
-                      ),
-                      heading: ({ children, level }) => {
-                        switch (level) {
-                          case 1:
-                            return <h1>{children}</h1>;
-                          case 2:
-                            return <h2>{children}</h2>;
-                          case 3:
-                            return <h3>{children}</h3>;
-                          case 4:
-                            return <h4>{children}</h4>;
-                          case 5:
-                            return <h5>{children}</h5>;
-                          case 6:
-                            return <h6>{children}</h6>;
-                          default:
-                            return <h1>{children}</h1>;
-                        }
-                      },
-                      list: (props) => {
-                        if (props.format === "ordered") {
+                  {details?.content &&
+                    <BlocksRenderer
+                      content={details.content}
+                      blocks={{
+                        paragraph: ({ children }) => (
+                          <p className="text-[#4F5662] text-[14px] md:text-[15px] 2xl:text-[16px] pb-4 md:pb-6">
+                            {children}
+                          </p>
+                        ),
+                        heading: ({ children, level }) => {
+                          switch (level) {
+                            case 1:
+                              return <h1>{children}</h1>;
+                            case 2:
+                              return <h2>{children}</h2>;
+                            case 3:
+                              return <h3>{children}</h3>;
+                            case 4:
+                              return <h4>{children}</h4>;
+                            case 5:
+                              return <h5>{children}</h5>;
+                            case 6:
+                              return <h6>{children}</h6>;
+                            default:
+                              return <h1>{children}</h1>;
+                          }
+                        },
+                        list: (props) => {
+                          if (props.format === "ordered") {
+                            return (
+                              <ol className="list-decimal mt-4 md:mt-6 2xl:mt-10 pl-4">
+                                {props.children}
+                              </ol>
+                            );
+                          }
                           return (
-                            <ol className="list-decimal mt-4 md:mt-6 2xl:mt-10 pl-4">
+                            <ul className="list-disc mt-4 pl-6 pb-4 md:pb-6">
                               {props.children}
-                            </ol>
+                            </ul>
                           );
-                        }
-                        return (
-                          <ul className="list-disc mt-4 pl-6 pb-4 md:pb-6">
+                        },
+                        "list-item": (props) => (
+                          <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-1 text-[#3D434C]">
                             {props.children}
-                          </ul>
-                        );
-                      },
-                      "list-item": (props) => (
-                        <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-1 text-[#3D434C]">
-                          {props.children}
-                        </li>
-                      ),
-                      link: ({ children, url }) => (
-                        <Link href={url}>{children}</Link>
-                      ),
-                    }}
-                    modifiers={{
-                      bold: ({ children }) => <strong>{children}</strong>,
-                      italic: ({ children }) => (
-                        <span className="italic">{children}</span>
-                      ),
-                    }}
-                  />
+                          </li>
+                        ),
+                        link: ({ children, url }) => (
+                          <Link href={url}>{children}</Link>
+                        ),
+                      }}
+                      modifiers={{
+                        bold: ({ children }) => <strong>{children}</strong>,
+                        italic: ({ children }) => (
+                          <span className="italic">{children}</span>
+                        ),
+                      }}
+                    />
+                  }
                 </>
               ))}
             </div>
@@ -1099,14 +1101,14 @@ export function Products({ pageData }) {
               <div className="flex justify-between">
                 <div className="flex items-center gap-4 2xl:gap-8">
                   {pageData.tables?.title && (
-                    <h2 className="text-[#1A202C] text-[20px] md:text-[24px] 2xl:text-[32px] font-medium">
+                    <h2 className="text-[#1A202C] text-[16px] xl:text-[24px] 2xl:text-[32px] font-medium">
                       {pageData.tables.title}
                     </h2>
                   )}
                   <div className="cat-btn-sec flex items-center gap-3 relative z-10">
                     <Link
                       href=""
-                      className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[12px] md:text-[16px]"
+                      className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[10px] md:text-[16px]"
                       target="_blank"
                     >
                       <svg
