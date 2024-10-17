@@ -316,15 +316,15 @@ export function ImageTitleContent({ section }) {
   }, []);
   return (
     <section className="mt-8 md:mt-12 2xl:mt-[60px] overflow-hidden mb-8 md:mb-12 2xl:mb-[60px]">
-      <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
+      <div className="container mx-auto flex flex-col gap-5 lg:gap-6 2xl:gap-10">
         <div
           className={cn(
             "section-layer",
-            section?.settings?.right ? "md:flex-row-reverse" : "md:flex-row "
+            section?.settings?.right ? "lg:flex-row-reverse" : "lg:flex-row "
           )}
         >
           <figure
-            className="w-full md:w-[45%] h-[300px] md:h-[480px] relative glare"
+            className="w-full lg:w-[45%] h-[300px] md:h-[480px] lg:h-[380px] xl:h-[480px] relative glare"
             data-aos="flip-right"
             data-aos-duration="1500"
           >
@@ -355,7 +355,7 @@ export function ImageTitleContent({ section }) {
             />
           </figure>
 
-          <div className="box-content-sec relative md:w-[55%] flex flex-col">
+          <div className="box-content-sec relative lg:w-[55%] flex flex-col">
             {section?.heading && (
               <span
                 className="section-heading"
@@ -571,7 +571,7 @@ export function Accordion({ section }) {
         <div
           className={cn(
             "flex flex-col gap-4 md:gap-10",
-            section?.settings?.right ? "md:flex-row-reverse" : "md:flex-row"
+            section?.settings?.right ? "md:flex-row-reverse" : "xl:flex-row"
           )}
         >
           {section?.images && section.images.length > 0 && (
@@ -593,7 +593,7 @@ export function Accordion({ section }) {
                   ))}
                 </div>
               ) : (
-                <div class="w-full md:w-[40%] h-fit md:sticky top-[90px]">
+                <div class="w-full xl:w-[40%] h-fit md:sticky top-[90px]">
                   <figure
                     className="w-full h-[300px] md:h-[500px] 2xl:h-[600px] mb-0"
                     data-aos="zoom-in"
@@ -613,7 +613,7 @@ export function Accordion({ section }) {
           )}
           {section?.items && (
             <div
-              class="accordion-list-sec w-full md:w-[60%] md:h-[500px] 2xl:h-[600px] md:overflow-y-auto"
+              class="accordion-list-sec w-full xl:w-[60%] md:h-[500px] 2xl:h-[600px] md:overflow-y-auto"
               data-aos="fade-left"
               data-aos-duration="1000"
             >
@@ -755,8 +755,8 @@ export function TitleContentHalf({ section }) {
       )}
     >
       <div className="container mx-auto">
-        <div className="flex items-start flex-col md:flex-row gap-4 md:gap-8 2xl:gap-[60px] relative">
-          <div className="box-title-sec w-full md:w-[45%]">
+        <div className="flex items-start flex-col lg:flex-row gap-4 md:gap-8 2xl:gap-[60px] relative">
+          <div className="box-title-sec w-full lg:w-[45%]">
             <Image
               src={tigerMask3}
               alt="tigermark"
@@ -770,7 +770,7 @@ export function TitleContentHalf({ section }) {
             </div>
           </div>
           {section?.content && section.content.length > 0 && (
-            <div className="box-content-sec w-full md:w-[60%] relative">
+            <div className="box-content-sec w-full lg:w-[60%] relative">
               <BlocksRenderer
                 content={section.content}
                 blocks={{
@@ -2031,20 +2031,21 @@ export function SidebarContent({ section }) {
 
               return (
                 <div className="border-b border-[#C9CDD3] py-4 md:border-none md:py-0" key={collection.id}>
-                  <h3 className="section-sub-title">
+                  {/* <h3 className="section-sub-title">
                     {collection.description}
-                  </h3>
+                  </h3> */}
                   <BlocksRenderer
                     content={collection.content}
                     blocks={{
                       paragraph: ({ children }) => (
                         <p
-                          className="pt-2 md:pt-4"
+                          className="pt-2 md:pt-4 text-[#1A1D21]"
                           data-aos="fade-left"
                           data-aos-duration="1000"
                         >
                           {children}
                         </p>
+                        
                       ),
                       heading: ({ children, level }) => {
                         switch (level) {
@@ -2053,7 +2054,7 @@ export function SidebarContent({ section }) {
                           case 2:
                             return <h2>{children}</h2>;
                           case 3:
-                            return <h3>{children}</h3>;
+                            return <h3 className="section-sub-title">{children}</h3>;
                           case 4:
                             return <h4>{children}</h4>;
                           case 5:
@@ -2068,7 +2069,7 @@ export function SidebarContent({ section }) {
                         if (props.format === "ordered") {
                           return (
                             <ol
-                              className="!pl-0"
+                              className="list-decimal"
                               data-aos="fade-left"
                               data-aos-duration="1000"
                             >
@@ -2077,13 +2078,13 @@ export function SidebarContent({ section }) {
                           );
                         }
                         return (
-                          <ul data-aos="fade-left" data-aos-duration="1000">
+                          <ul data-aos="fade-left" data-aos-duration="1000" className="list-disc">
                             {props.children}
                           </ul>
                         );
                       },
                       "list-item": (props) => (
-                        <li className="pt-3 md:pt-5">{props.children}</li>
+                        <li className="pt-3 md:pt-5 text-[#1A1D21]">{props.children}</li>
                       ),
                       link: ({ children, url }) => (
                         <Link href={url}>{children}</Link>
