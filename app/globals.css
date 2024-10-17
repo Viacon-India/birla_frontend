@@ -478,7 +478,7 @@ text-white transition-all duration-500 relative hover:left-[-190px]
   @apply text-secondary text-[22px] md:text-[28px] lg:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] font-oak-sans
 }
 .section-sub-title{
-  @apply text-secondary text-[22px] md:text-[28px] 2xl:text-[32px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] mb-2
+  @apply text-secondary text-[22px] md:text-[24px] 2xl:text-[32px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] mb-2
 }
 .about-title{
   @apply text-secondary text-[36px] md:text-[40px] 2xl:text-[48px] font-bold leading-[1.2] flex gap-3 items-center !capitalize pl-3 mt-3
@@ -1077,14 +1077,14 @@ a.current_dot {
   @apply text-secondary text-[24px] md:text-[32px] font-bold mb-2
 }
 .vast-card figure{
-  @apply w-full h-[200px] md:h-[252px] mb-2 md:mb-4 2xl:mb-6 relative overflow-hidden 
+  @apply w-full h-[200px] md:h-[180px] lg:h-[220px] xl:h-[252px] mb-2 md:mb-4 2xl:mb-6 relative overflow-hidden 
   transition-all duration-500 rounded-[12px]
 }
 .vast-card-image{
   @apply w-full h-full object-cover rounded-[12px]
 }
 .vast-card h2{
-  @apply text-[#1A1D21] text-[24px] mb-1 md:mb-3 font-bold leading-[1.2]
+  @apply text-[#1A1D21] text-[24px] md:text-[20px] xl:text-[24px] mb-1 xl:mb-3 font-bold leading-[1.2]
 }
 .vast-card p{
   @apply text-[#4F5662] text-[15px] mb-2 
@@ -1098,10 +1098,10 @@ a.current_dot {
   transform: scale(1.2);
 }
 .vast-card ul{
-  @apply flex flex-col pl-6 list-disc
+  @apply flex flex-col pl-2 xl:pl-6 list-disc
 }
 .vast-card ul li{
-  @apply text-[#4F5662] text-[14px] md:text-[15px] 2xl:text-[16px] mb-1
+  @apply text-[#4F5662] text-[14px] lg:text-[15px] 2xl:text-[16px] mb-1
 }
 .accordion-list-sec{
   @apply relative z-5
@@ -1142,7 +1142,7 @@ a.current_dot {
   @apply w-full h-full object-cover rounded-[12px]
 }
 .phil-card h2{
-  @apply text-[#1A1D21] text-[15px] 2xl:text-[18px] leading-[1.2] font-medium text-center h-[36px] 2xl:h-[50px]
+  @apply text-[#1A1D21] text-[15px] 2xl:text-[18px] leading-[1.2] font-medium text-center h-[36px] md:h-[60px] xl:h-[50px]
 }
 
 
@@ -1234,7 +1234,7 @@ a.current_dot {
 /* svg-botttom-code */
 .line-loader,
 .bar {
-  @apply w-[80px] md:w-[120px] h-[20px] md:h-[50px]
+  @apply w-[80px] xl:w-[120px] h-[20px] xl:h-[50px]
 }
 .bar {
 	position: absolute;
@@ -1301,8 +1301,8 @@ a.current_dot {
 }
 .vision-overlay{
   @apply absolute top-[75%] w-full h-full bg-secondary opacity-75 rounded-bl-[12px] rounded-br-[12px] text-[#F4F5F6] text-center
-  text-[16px] md:text-[28px] 2xl:text-[32px] font-semibold transition-all duration-500 group-hover:top-0 flex justify-start group-hover:items-center
-  px-6 md:px-20 2xl:px-[140px] pt-2
+  text-[16px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-semibold transition-all duration-500 group-hover:top-0 flex justify-start group-hover:items-center
+  px-6 md:px-20 lg:px-20 2xl:px-[140px] pt-2
 }
 
 
@@ -1322,7 +1322,7 @@ input[type=file]::file-selector-button {
 
 
 .value-overlay{
-  @apply w-full h-full absolute p-[13px] md:p-5 top-[70%] md:top-[60%] 2xl:top-[50%] group-hover:top-0 transition-all duration-500 flex flex-col group-hover:justify-center md:!pl-10
+  @apply w-full h-full absolute p-[13px] md:p-5 top-[70%] md:top-[65%] lg:top-[60%] 2xl:top-[50%] group-hover:top-0 transition-all duration-500 flex flex-col group-hover:justify-center md:!pl-10
 }
 
 .value-overlay h3{
@@ -1348,11 +1348,11 @@ input[type=file]::file-selector-button {
   @apply rounded-[20px] w-full h-full object-cover transition-all duration-700
 }
 .sustainability-overlay{
-  @apply absolute w-full h-[13%] bg-primary opacity-85 text-white text-[18px] flex items-center justify-center
+  @apply absolute w-full h-[13%] bg-primary opacity-85 text-white text-[18px] flex items-start justify-center
   bottom-0 transition-all duration-700 py-[2px] text-center
 }
 .sustainability-figure:hover .sustainability-overlay{
-  @apply text-[28px] font-bold h-full
+  @apply text-[28px] font-bold h-full flex items-center
 }
 
 .pillar-list-sec{
@@ -1369,18 +1369,12 @@ input[type=file]::file-selector-button {
   @apply flex gap-3 items-center
 }
 
-/* .pillar-box::before{
-  content: url('data:image/svg+xml,<svg width="22" height="22" viewBox="0 0 18 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8.16713H17" stroke="%232E3192" stroke-width="1.5" stroke-linecap="round"/><path d="M1 1.5H17V19.2778C17 19.8671 16.7592 20.4324 16.3305 20.8491C15.9019 21.2659 15.3205 21.5 14.7143 21.5H3.28571C2.67951 21.5 2.09812 21.2659 1.66947 20.8491C1.24082 20.4324 1 19.8671 1 19.2778V1.5Z" stroke="%232E3192" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.57031 12.6113H6.71317M11.2846 12.6113H12.4275M5.57031 17.0558H6.71317M11.2846 17.0558H12.4275" stroke="%231A1D21" stroke-width="1.5" stroke-linecap="round"/></svg>');
-  @apply w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center
-} */
-
-
 
 
 /* parralax */
 .parallax-item {
-  @apply w-full flex flex-col md:flex-row items-center justify-between p-5 md:p-[100px] rounded-[16px]
-  gap-8 bg-cover bg-center min-h-screen overflow-hidden
+  @apply w-full flex flex-col lg:flex-row items-center justify-between p-5 md:p-10 xl:p-[100px] rounded-[16px]
+  gap-8 bg-cover bg-center min-h-screen md:!min-h-[50vh] xl:min-h-screen overflow-hidden
 }
 
 .parallax-card {
@@ -1394,16 +1388,16 @@ input[type=file]::file-selector-button {
 
 /* Testimonial-card */
 .testimonial-card{
-  @apply bg-[#F4F5F6] rounded-[12px] p-3 md:p-5 flex flex-col md:flex-row gap-2 md:gap-3
+  @apply bg-[#F4F5F6] rounded-[12px] p-3 md:p-5 flex flex-col xl:flex-row gap-2 xl:gap-3
 }
 .testimonial-card-title{
   @apply text-secondary text-[18px] md:text-[24px] font-semibold
 }
 .testimonial-card-detail-wrapper{
-  @apply flex flex-col gap-3 w-full md:w-[60%]
+  @apply flex flex-col gap-3 w-full xl:w-[60%]
 }
 .testimonial-card-detail{
-  @apply text-[#1A1D21] text-[14px] 2xl:text-[16px] leading-[1.5] h-[160px] md:h-[236px] overflow-y-auto
+  @apply text-[#1A1D21] text-[14px] 2xl:text-[16px] leading-[1.5] h-[160px] xl:h-[236px] overflow-y-auto
 }
 
 
