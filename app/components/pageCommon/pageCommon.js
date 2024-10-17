@@ -64,8 +64,8 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
         <span className="banner-overlay"></span>
         <Float />
         <div className="relative">
-          <div className="w-full h-[40vh] md:h-[80vh] flex items-end">
-            <div class="container mx-auto flex flex-col justify-end md:justify-between h-full pt-5 pb-3 md:pb-[60px]">
+          <div className="w-full h-[40vh] xl:h-[80vh] flex items-end">
+            <div class="container mx-auto flex flex-col justify-end md:justify-between h-full pt-8 xl:pt-5 pb-3 md:pb-6 xl:pb-[60px]">
               <MainButton />
               <div className="relative z-10">
                 <GradualSpacing
@@ -233,7 +233,7 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
   return (
     <section
       className={cn(
-        "relative hidden md:flex pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden",
+        "relative hidden xl:flex pt-10 md:pt-[60px] 2xl:pt-[100px] overflow-hidden",
         EndPageData?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
       )}
     >
