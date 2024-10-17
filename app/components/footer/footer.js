@@ -194,22 +194,17 @@ export default function Footer() {
           {footerLogo.length > 1 && (
             <div class="flex items-center gap-3 md:gap-4">
               {footerLogo[0].image?.data && footerLogo[0].icon_link && (
-                <Link href="https://www.himadri.com/" target="_blank">
+                <Link href={footerLogo[1].icon_link.link} target="_blank">
                   <figure className="rounded-none m-0 w-[60px] h-[54px] md:w-fit md:h-[46px] xl:w-fit xl:h-[80px] fig-line">
                     <Image
-                      src={logo2}
-                      alt="logo"
-                      className="w-full h-full object-cover"
-                    />
-                    {/* <Image
                       src={getStrapiMedia(
-                        footerLogo[0].image.data.attributes.url
+                        footerLogo[1].image.data.attributes.url
                       )}
-                      width={footerLogo[0].image.data.attributes.width}
-                      height={footerLogo[0].image.data.attributes.height}
-                      alt={footerLogo[0].image.data.attributes?.alternativeText}
-                      className="w-full h-fit object-cover pt-2"
-                    /> */}
+                      width={footerLogo[1].image.data.attributes.width}
+                      height={footerLogo[1].image.data.attributes.height}
+                      alt={footerLogo[1].image.data.attributes?.alternativeText}
+                      className="w-full h-fit object-cover pt-2 xl:pt-4"
+                    />
                   </figure>
                 </Link>
               )}
@@ -230,22 +225,17 @@ export default function Footer() {
                 />
               </svg>
               {footerLogo[1].image?.data && footerLogo[1].icon_link && (
-                <Link href="/">
+                <Link href={footerLogo[0].icon_link.link}>
                   <figure className="rounded-none m-0 w-[94px] h-[42px] md:w-[110px] md:h-[46px] xl:w-[180px] xl:h-[80px]">
                     <Image
-                      src={logo1}
-                      alt="logo"
-                      className="w-full h-full object-cover"
-                    />
-                    {/* <Image
                       src={getStrapiMedia(
-                        footerLogo[1].image.data.attributes.url
+                        footerLogo[0].image.data.attributes.url
                       )}
-                      width={footerLogo[1].image.data.attributes.width}
-                      height={footerLogo[1].image.data.attributes.height}
-                      alt={footerLogo[1].image.data.attributes?.alternativeText}
+                      width={footerLogo[0].image.data.attributes.width}
+                      height={footerLogo[0].image.data.attributes.height}
+                      alt={footerLogo[0].image.data.attributes?.alternativeText}
                       className="w-full h-fit object-cover pt-2"
-                    /> */}
+                    />
                   </figure>
                 </Link>
               )}
