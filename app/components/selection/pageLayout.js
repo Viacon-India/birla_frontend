@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import GradualSpacing from "@/components/GradualSpacing";
+import { cn } from "@/lib/utils";
 import { getStrapiMedia } from "@/lib/utils";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { PageBanner, PageEnd, Float } from "../pageCommon/pageCommon";
@@ -21,7 +22,7 @@ import traImage from "@/app/assets/images/tra.png";
 import construction from "@/app/assets/images/axle.jpg";
 import LastBg from "../../assets/images/footerupper.png";
 
-export default function PageSelection({ page, slugs, pageData, sidebar }) {
+export default function PageSelection({ page, slugs, pageData, sidebar, filters }) {
   return (
     <>
       {page == "InvestorRelations" && (
@@ -33,7 +34,7 @@ export default function PageSelection({ page, slugs, pageData, sidebar }) {
       )}
       {page == "ContactUs" && <ContactUs pageData={pageData} />}
       {page == "Pages" && <Pages pageData={pageData} />}
-      {page == "segments" && <Segments pageData={pageData} />}
+      {page == "segments" && <Segments pageData={pageData} filters={filters} />}
       {page == "products" && <Products pageData={pageData} />}
     </>
   );
@@ -732,6 +733,79 @@ export function Pages({ pageData }) {
 }
 
 export function Segments({ pageData }) {
+  const [filters, setFilterData] = useState([]);
+  const [products, setProductsData] = useState([]);
+
+  const [value, setValue] = useState([]);
+  const updateItem = (index, newValue) => {
+    setValue(prevData => {
+      const newData = [...prevData];
+      newData[index] = newValue;
+      return newData;
+    });
+  };
+  const subSegment = "";
+  const [machinery, setMachinery] = useState("");
+  const [rim, setRim] = useState("");
+  const [size, setSize] = useState("");
+  const [pattern, setPattern] = useState("");
+
+  const productFilters = async (e) => {
+    if(value.length > 4){
+      const subSegment = value[0] ? "&filters[sub_segment][$eq]="+value[0] : "";
+      // value[1] && setMachinery("&filters[tables][table][row][machinery][name][$eq]="+value[1]);
+      // value[2] && setRim("&filters[tables][table][row][rim_recommended][$eq]="+value[2]);
+      // value[3] && setSize("&filters[tables][table][row][size][$eq]="+value[3]);
+      // value[4] && setPattern("&filters[tables][table][row][pattern_type][$eq]="+value[4]);
+    }else{
+      const subSegment = "";
+      // value[0] && setMachinery("&filters[tables][table][row][machinery][name][$eq]="+value[0]);
+      // value[1] && setRim("&filters[tables][table][row][rim_recommended][$eq]="+value[1]);
+      // value[2] && setSize("&filters[tables][table][row][size][$eq]="+value[2]);
+      // value[3] && setPattern("&filters[tables][table][row][pattern_type][$eq]="+value[3]);
+    }
+  };
+  // const filterSubSegment = "&filters[sub_segment][$eq]=Construction and Mining";
+  // const filterMachinery = "&filters[tables][table][row][machinery][name][$eq]=Rigid Dump Truck";
+  // const filterRim = "&filters[tables][table][row][rim_recommended][$eq]=8.5";
+  // const filterSize = "&filters[tables][table][row][size][$eq]=12.00-24";
+  // const filterPattern = "&filters[tables][table][row][pattern_type][$eq]=Rock";
+
+
+
+  useEffect(() => {
+    fetch(getStrapiMedia("/api/products?filters[segment][slug]="+pageData.slug)).then((res) => res.json()).then((filters) => {
+      setFilterData(filters);
+    });
+    fetch(getStrapiMedia("/api/products?filters[segment][slug][$eq]="+pageData.slug+subSegment+machinery+rim+size+pattern)).then((res) => res.json()).then((products) => {
+      setProductsData(products);
+    });
+  }, [pageData,subSegment]);
+
+
+  const subSegmentOptions = new Set(); const machineryOptions = new Set(); const rimOptions = new Set(); const sizeOptions = new Set(); const patternOptions = new Set();
+  filters.forEach(item => {
+    const rows = item.tables.table[0].row;
+    if (item.sub_segment) {
+      subSegmentOptions.add(item.sub_segment);
+    }
+    rows.forEach(row => {
+      if (row.machinery && row.machinery.name) {
+        machineryOptions.add(row.machinery.name);
+      }
+      if (row.rim_recommended) {
+        rimOptions.add(row.rim_recommended);
+      }
+      if (row.size) {
+        sizeOptions.add(row.size);
+      }
+      if (row.pattern_type) {
+        patternOptions.add(row.pattern_type);
+      }
+    });
+  });
+  const filtersArray = pageData?.filters && pageData.filters.length > 4 ? [Array.from(subSegmentOptions), Array.from(machineryOptions), Array.from(rimOptions), Array.from(sizeOptions), Array.from(patternOptions)] : [Array.from(machineryOptions), Array.from(rimOptions), Array.from(sizeOptions), Array.from(patternOptions)];
+
   return (
     <>
       <PageBanner Title={pageData.title} Banner={pageData.hero} />
@@ -778,29 +852,37 @@ export function Segments({ pageData }) {
           </div>
           {pageData?.filters && pageData.filters.length > 0 && (
             <div className="bg-[#F4F5F6] rounded-xl flex flex-col md:flex-row gap-4 p-6 items-end">
-              {pageData.filters.map((filter) => (
+              {pageData.filters.map((filter, index) => (
                 <div key={filter.id} className="flex flex-col gap-1 w-full">
                   <label
                     className="font-semibold text-[#1A1D21] capitalize"
-                    for="machinery"
+                    for={filter.title.replace("Select ", "")}
                   >
                     {filter.title}
                   </label>
                   {filter?.items && filter.items.length > 0 && (
                     <select
-                      name="machinery"
+                      name={filter.title.replace("Select ", "")}
+                      onChange={(e) => {
+                        updateItem(index, e.target.value)
+                      }}
                       className="select-box !w-full max-h-[46px] !text-[14px] !leading-[21px]"
                     >
                       {filter.items.map((item) => (
-                        <option key={item.id} value={item?.value}>
+                        <option key={item.id} value={item?.value?item.value:''}>
                           {item?.name}
+                        </option>
+                      ))}
+                      {filtersArray[index].map((item) => (
+                        <option key={item.id} value={item}>
+                          {item}
                         </option>
                       ))}
                     </select>
                   )}
                 </div>
               ))}
-              <button className="tablinks cat-btn active-cat-btn items-center gap-1 !w-full max-h-[46px] !h-full !text-[18px] leading-[27.75px]">
+              <button onClick={productFilters} className="tablinks cat-btn active-cat-btn items-center gap-1 !w-full max-h-[46px] !h-full !text-[18px] leading-[27.75px]">
                 <svg
                   width="21"
                   height="20"
@@ -817,9 +899,9 @@ export function Segments({ pageData }) {
               </button>
             </div>
           )}
-          {pageData?.products && pageData.products.length > 0 && (
+          {products.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10 2xl:gap-[50px]">
-              {pageData.products.map((product) => (
+              {products.map((product) => (
                 <Product key={product.id} data={product} />
               ))}
             </div>
@@ -906,8 +988,12 @@ export function Products({ pageData }) {
                   ))}
                 </Swiper>
                 <div className="single-image-slider relative w-full md:w-[80%] h-full bg-[#ffffff] rounded-[12px]">
-                  <span className="bg-primary py-2 px-8 rounded-tr-[12px] text-white text-[12px] md:text-[18px] font-bold absolute right-0 top-0">
-                  {pageData.premium ? "Premium" : "Standard"}
+                  <span
+                    className={cn(
+                      "bg-primary py-2 px-8 rounded-tr-[12px] text-[#FFFFFF] text-[12px] md:text-[18px] font-bold absolute right-0 top-0", pageData?.premium && "prem-product-tag"
+                    )}
+                  >
+                    {pageData.premium ? "Premium" : "Standard"}
                   </span>
                   <Swiper
                     navigation={true}

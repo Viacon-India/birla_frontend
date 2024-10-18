@@ -9,7 +9,6 @@ import PageSelection from "@/app/components/selection/pageLayout";
 
 export default function Page({ params }) {
   const [slugs, setSlugs] = useState(params.slug);
-  console.log(slugs.at(-1));
  
   const [pageData, setPageData] = useState([]);
   const [sidebar, setSidebar] = useState([]);
