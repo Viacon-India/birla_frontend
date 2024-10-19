@@ -960,7 +960,7 @@ export function Gallery({ section }) {
           );
         } else {
           return (
-            <div className="container mx-auto">
+            <div className="container mx-auto mt-10 lg:mt-[60px]">
               <div className="overflow-hidden">
                 <span className="section-heading">{section?.heading}</span>
                 <div
@@ -991,7 +991,7 @@ export function Gallery({ section }) {
       case 2:
         return (
           <div className="container mx-auto">
-            <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full">
+            <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full mt-10">
               {section.collection.map(
                 (collection) =>
                   collection?.image && (

@@ -40,15 +40,17 @@ export default function Product({ data }) {
       <Link href={data.permalink}>
         <span
           className={
-            data.premium ? "prem-product-card-tag prem-product-tag" : "new-product-card-tag"
+            data.premium
+              ? "prem-product-card-tag prem-product-tag"
+              : "new-product-card-tag"
           }
         >
           {data.premium ? "Premium" : "Standard"}
         </span>
         <div class="flex gap-8 px-4 pt-4">
-          {data?.type &&
+          {data?.type && (
             <div class="new-product-iconListSec flex flex-col gap-6 2xl:gap-10">
-              {data.type?.load &&
+              {data.type?.load && (
                 <div class="flex gap-[6px] items-center">
                   <Image src={loadImage} alt="icon" />
                   <span>
@@ -60,8 +62,8 @@ export default function Product({ data }) {
                     </p>
                   </span>
                 </div>
-              }
-              {data.type?.tra &&
+              )}
+              {data.type?.tra && (
                 <div class="flex gap-[6px] items-center">
                   <Image src={traImage} alt="icon" />
                   <span>
@@ -73,8 +75,8 @@ export default function Product({ data }) {
                     </p>
                   </span>
                 </div>
-              }
-              {data.type?.pattern &&
+              )}
+              {data.type?.pattern && (
                 <div class="flex gap-[6px] items-center">
                   <Image alt="icon" src={patternImage} />
                   <span>
@@ -86,8 +88,8 @@ export default function Product({ data }) {
                     </p>
                   </span>
                 </div>
-              }
-              {data.type?.construction &&
+              )}
+              {data.type?.construction && (
                 <div class="flex gap-[6px] items-center">
                   <Image alt="icon" src={constructionImage} />
                   <span>
@@ -99,9 +101,9 @@ export default function Product({ data }) {
                     </p>
                   </span>
                 </div>
-              }
+              )}
             </div>
-          }
+          )}
           <div className="w-[145px] h-[195px] 2xl:w-[180px] 2xl:h-[280px] translate-y-[-30px]">
             <figure class="new-product-card-image">
               {data?.gallery && data.gallery.length > 0 && (
@@ -140,12 +142,13 @@ export default function Product({ data }) {
             </Link>
             <p class="!h-[44px] !w-[95%] !line-clamp-2">{data?.description}</p>
           </div>
-          {data?.vehicle_types && data.vehicle_types.length > 0 && data.vehicle_types.map((vehicle) => (
+          {/* {data?.vehicle_types && data.vehicle_types.length > 0 && data.vehicle_types.map((vehicle) => (
             <div
-              class="new-product-svg-wrapper tooltip"
+              class="w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] flex justify-center items-center p-2 tooltip"
               data-tip={vehicle.name}
               key={vehicle.id}
             >
+            
               {vehicle?.icon && (
                 <Image
                   src={getStrapiMedia(vehicle.icon?.url)}
@@ -160,47 +163,88 @@ export default function Product({ data }) {
                 />
               )}
             </div>
-          ))}
-          {data.vehicle_types?.data && data.vehicle_types.data.length > 0 && data.vehicle_types.data.map((vehicle) => (
-            <div
-              class="new-product-svg-wrapper tooltip"
-              data-tip={vehicle.attributes?.name}
-              key={vehicle.id}
-            >
-              {vehicle.attributes.icon?.data && (
-                <Image
-                  src={getStrapiMedia(vehicle.attributes.icon.data.attributes?.url)}
-                  class="h-8 object-cover animate-[moveLtoR_6s_infinite]"
-                  width={vehicle.attributes.icon.data.attributes?.width}
-                  height={vehicle.attributes.icon.data.attributes?.height}
-                  alt={
-                    vehicle.attributes.icon.data.attributes?.alternativeText
-                      ? vehicle.attributes.icon.data.attributes.alternativeText
-                      : "icon"
-                  }
-                />
-              )}
+          ))} */}
+          {data?.vehicle_types &&
+            data.vehicle_types.length > 0 &&
+            <div className="w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] p-2">
+              <div className="overflow-x-hidden">
+                <div className="h-8 object-cover animate-[moveLtoR_6s_infinite] flex justify-center items-center gap-1 w-max">
+                  {data.vehicle_types.map((vehicle) => (
+                    vehicle?.icon && (
+                      <figure key={vehicle.id} className="tooltip" data-tip={vehicle.name}>
+                        <Image
+                          src={getStrapiMedia(vehicle.icon?.url)}
+                          class="h-8 w-full object-cover"
+                          width={vehicle.icon?.width}
+                          height={vehicle.icon?.height}
+                          alt={
+                            vehicle.icon?.alternativeText
+                              ? vehicle.icon.alternativeText
+                              : "icon"
+                          }
+                        />
+                      </figure>
+                    )
+                  ))}
+                </div>
+              </div>
             </div>
-          ))}
+          }
+          {data.vehicle_types?.data &&
+            data.vehicle_types.data.length > 0 &&
+            <div className="w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] p-2">
+              <div className="overflow-hidden">
+                <div className="h-8 object-cover animate-[moveLtoR_6s_infinite] flex justify-center items-center gap-1 w-max">
+                  {data.vehicle_types.data.map((vehicle) => (
+                      vehicle.attributes.icon?.data && (
+                        <Image
+                          src={getStrapiMedia(
+                            vehicle.attributes.icon.data.attributes?.url
+                          )}
+                          class="h-8 w-full object-cover"
+                          width={vehicle.attributes.icon.data.attributes?.width}
+                          height={vehicle.attributes.icon.data.attributes?.height}
+                          alt={
+                            vehicle.attributes.icon.data.attributes?.alternativeText
+                              ? vehicle.attributes.icon.data.attributes
+                                  .alternativeText
+                              : "icon"
+                          }
+                        />
+                      )
+                  ))}
+                </div>
+              </div>
+            </div>
+          }
         </div>
-        {data?.tables && data.tables?.table && data.tables.table.length > 0 && data.tables.table.map((table) => ( table?.standard && table.standard == "USA" && table?.row && table.row.length > 0 &&
-          <div class="flex gap-3 mt-2 relative" key={table.id}>
-            <Swiper
-              navigation={true}
-              modules={[Navigation]}
-              spaceBetween={10}
-              slidesPerView={2.5}
-              freeMode={true}
-              className="chipSwiper !w-[85%] !ml-0 !static"
-            >
-              {table.row.map((row) => (
-                <SwiperSlide className="!w-fit" key={row.id}>
-                  <button class="size-chip">{row.size}</button>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        ))}
+        {data?.tables &&
+          data.tables?.table &&
+          data.tables.table.length > 0 &&
+          data.tables.table.map(
+            (table) =>
+              table?.standard &&
+              table.standard == "USA" &&
+              table?.row &&
+              table.row.length > 0 && (
+                <div class="flex gap-3 mt-2 relative" key={table.id}>
+                  <Swiper
+                    navigation={true}
+                    modules={[Navigation]}
+                    spaceBetween={10}
+                    slidesPerView={2.5}
+                    freeMode={true}
+                    className="chipSwiper !w-[85%] !ml-0 !static"
+                  >
+                    {table.row.map((row) => (
+                      <SwiperSlide className="!w-fit" key={row.id}>
+                        <button class="size-chip">{row.size}</button>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+              )
+          )}
       </div>
     </div>
   );

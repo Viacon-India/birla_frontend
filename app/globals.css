@@ -929,15 +929,39 @@ a.current_dot {
 .new-product-card-detail{
   @apply p-4 bg-[#F4F5F6] rounded-bl-[16px] rounded-br-[16px] relative
 }
-.new-product-svg-wrapper{
+/* .new-product-svg-wrapper{
   @apply w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] flex justify-center items-center p-2
-}
+} */
 /* #TBB .swiper-wrapper .swiper-slide .new-product-svg-wrapper img{
   @apply !object-cover
 } */
-.myProductSwiper .swiper-wrapper .swiper-slide .new-product-svg-wrapper img{
-  @apply text-transparent object-cover animate-[moveLtoR_6s_infinite]
-}
+
+/* @keyframes moveLtoR {
+  
+    0% {
+      object-position: -9% 50%;
+    }
+    50% {
+      object-position: 97% 50%;
+    }
+    100% {
+      object-position: -9% 50%;
+    }
+   
+  } */
+  @keyframes moveLtoR {
+  
+    0% {
+      transform: translateX(-55%);
+    }
+    50% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-55%);
+    }
+   
+  }
 .new-product-card h2{
   @apply text-[#050B20] text-[24px] font-bold
 }
@@ -949,14 +973,14 @@ a.current_dot {
 }
 
 .chipSwiper .swiper-button-next{
-  @apply !w-0 !h-0 !bg-transparent absolute rounded-[4px] !top-[92%]
+  @apply !w-0 !h-0 !bg-transparent absolute rounded-[4px] !top-[92%] border-none
 }
 .chipSwiper .swiper-button-next::after{
   content: url('data:image/svg+xml,<svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.25L7.75 7.5L1.5 13.75" stroke="%231A1D21" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') !important; 
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }
 .chipSwiper .swiper-button-prev{
-  @apply !w-0 !h-0 !bg-transparent absolute rounded-[4px] !top-[92%] !left-[90%] 2xl:!left-[91%]
+  @apply !w-0 !h-0 !bg-transparent absolute rounded-[4px] !top-[92%] !left-[90%] 2xl:!left-[91%] border-none
 }
 .chipSwiper .swiper-button-prev::after{
   content: url('data:image/svg+xml,<svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 1.25L1.25 7.5L7.5 13.75" stroke="%231A1D21" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') !important; 
@@ -981,22 +1005,10 @@ a.current_dot {
   @apply !object-contain
 }
 
-#TBB .swiper-wrapper .swiper-slide:last-child .product-svg-wrapper img{
+/* #TBB .swiper-wrapper .swiper-slide:last-child .product-svg-wrapper img{
   @apply w-[128px] text-transparent object-contain animate-[moveLtoR_6s_infinite];
-}
-@keyframes moveLtoR {
-  /* 0 & 100% might not be needed */
-    0% {
-      object-position: -9% 50%;
-    }
-    50% {
-      object-position: 97% 50%;
-    }
-    100% {
-      object-position: -9% 50%;
-    }
-   
-  }
+} */
+
 
 
 
