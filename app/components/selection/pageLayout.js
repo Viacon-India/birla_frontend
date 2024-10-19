@@ -34,7 +34,7 @@ export default function PageSelection({ page, slugs, pageData, sidebar }) {
       )}
       {page == "ContactUs" && <ContactUs pageData={pageData} />}
       {page == "Pages" && <Pages pageData={pageData} />}
-      {page == "segments" && <Segments pageData={pageData} filters={filters} />}
+      {page == "segments" && <Segments pageData={pageData} />}
       {page == "products" && <Products pageData={pageData} />}
     </>
   );
