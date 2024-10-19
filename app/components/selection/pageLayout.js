@@ -744,43 +744,43 @@ export function Segments({ pageData }) {
       return newData;
     });
   };
-  const subSegment = "";
+  const [subSegment, setSubSegment] = useState("");
   const [machinery, setMachinery] = useState("");
   const [rim, setRim] = useState("");
   const [size, setSize] = useState("");
   const [pattern, setPattern] = useState("");
 
-  const productFilters = async (e) => {
-    if(value.length > 4){
-      const subSegment = value[0] ? "&filters[sub_segment][$eq]="+value[0] : "";
-      // value[1] && setMachinery("&filters[tables][table][row][machinery][name][$eq]="+value[1]);
-      // value[2] && setRim("&filters[tables][table][row][rim_recommended][$eq]="+value[2]);
-      // value[3] && setSize("&filters[tables][table][row][size][$eq]="+value[3]);
-      // value[4] && setPattern("&filters[tables][table][row][pattern_type][$eq]="+value[4]);
+  const productFilters = (value) => {
+    if(pageData?.filters && pageData.filters.length > 4){
+      setSubSegment(value[0]?"&filters[sub_segment][$eq]="+value[0]:'');
+      setMachinery(value[1]?"&filters[tables][table][row][machinery][name][$eq]="+value[1]:'');
+      setRim(value[2]?"&filters[tables][table][row][rim_recommended][$eq]="+value[2]:'');
+      setSize(value[3]?"&filters[tables][table][row][size][$eq]="+value[3]:'');
+      setPattern(value[4]?"&filters[tables][table][row][pattern_type][$eq]="+value[4]:'');
     }else{
-      const subSegment = "";
-      // value[0] && setMachinery("&filters[tables][table][row][machinery][name][$eq]="+value[0]);
-      // value[1] && setRim("&filters[tables][table][row][rim_recommended][$eq]="+value[1]);
-      // value[2] && setSize("&filters[tables][table][row][size][$eq]="+value[2]);
-      // value[3] && setPattern("&filters[tables][table][row][pattern_type][$eq]="+value[3]);
+      setMachinery(value[0]?"&filters[tables][table][row][machinery][name][$eq]="+value[0]:'');
+      setRim(value[1]?"&filters[tables][table][row][rim_recommended][$eq]="+value[1]:'');
+      setSize(value[2]?"&filters[tables][table][row][size][$eq]="+value[2]:'');
+      setPattern(value[3]?"&filters[tables][table][row][pattern_type][$eq]="+value[3]:'');
     }
+    console.log(subSegment);
+    fetchData(subSegment,machinery,rim,size,pattern);
   };
-  // const filterSubSegment = "&filters[sub_segment][$eq]=Construction and Mining";
-  // const filterMachinery = "&filters[tables][table][row][machinery][name][$eq]=Rigid Dump Truck";
-  // const filterRim = "&filters[tables][table][row][rim_recommended][$eq]=8.5";
-  // const filterSize = "&filters[tables][table][row][size][$eq]=12.00-24";
-  // const filterPattern = "&filters[tables][table][row][pattern_type][$eq]=Rock";
 
+
+  const fetchData = async (subSegment,machinery,rim,size,pattern) => {
+    fetch(getStrapiMedia("/api/products?filters[segment][slug][$eq]="+pageData.slug+subSegment+machinery+rim+size+pattern)).then((res) => res.json()).then((products) => {
+      setProductsData(products);
+    });
+  };
 
 
   useEffect(() => {
     fetch(getStrapiMedia("/api/products?filters[segment][slug]="+pageData.slug)).then((res) => res.json()).then((filters) => {
       setFilterData(filters);
     });
-    fetch(getStrapiMedia("/api/products?filters[segment][slug][$eq]="+pageData.slug+subSegment+machinery+rim+size+pattern)).then((res) => res.json()).then((products) => {
-      setProductsData(products);
-    });
-  }, [pageData,subSegment]);
+    fetchData(subSegment,machinery,rim,size,pattern);
+  }, [pageData]);
 
 
   const subSegmentOptions = new Set(); const machineryOptions = new Set(); const rimOptions = new Set(); const sizeOptions = new Set(); const patternOptions = new Set();
@@ -882,7 +882,7 @@ export function Segments({ pageData }) {
                   )}
                 </div>
               ))}
-              <button onClick={productFilters} className="tablinks cat-btn active-cat-btn items-center gap-1 !w-full max-h-[46px] !h-full !text-[18px] leading-[27.75px]">
+              <button onClick={() => productFilters(value)} className="tablinks cat-btn active-cat-btn items-center gap-1 !w-full max-h-[46px] !h-full !text-[18px] leading-[27.75px]">
                 <svg
                   width="21"
                   height="20"
