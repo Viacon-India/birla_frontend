@@ -349,7 +349,7 @@ export default function Navbar() {
                 ) : (
                   <button className="ham-links">{menu.title}</button>
                 )}
-                <ul className="transition-all duration-300 pl-4">
+                <ul className="transition-all duration-100 pl-4">
                   {menu.sub_menu.map((subMenu) => (
                     <li key={subMenu.id}>
                       <div className="flex justify-between">
@@ -387,7 +387,7 @@ export default function Navbar() {
                           )}
                       </div>
                       <ul
-                        className={`transition-all duration-1000 overflow-hidden ${
+                        className={`transition-all duration-300 overflow-hidden ${
                           expandedSubMenu === subMenu.id
                             ? "max-h-screen"
                             : "max-h-0 overflow-hidden"
@@ -395,7 +395,7 @@ export default function Navbar() {
                       >
                         {subMenu.segments?.data.map((subSubMenu) => (
                           <li
-                            className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500"
+                            className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-100"
                             key={subSubMenu.id}
                           >
                             <Link href={`${subSubMenu.attributes.permalink}`}>
@@ -405,7 +405,7 @@ export default function Navbar() {
                         ))}
                         {subMenu.pages?.data.map((subSubMenu) => (
                           <li
-                            className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500"
+                            className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-100"
                             key={subSubMenu.id}
                           >
                             <Link href={`${subSubMenu.attributes.permalink}`}>
@@ -415,7 +415,7 @@ export default function Navbar() {
                         ))}
                         {subMenu.other_link.map((subSubMenu) => (
                           <li
-                            className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-500"
+                            className="text-secondary pl-4 bg-[#F4F4F4] hover:bg-secondary hover:text-[#FFFFFF] py-2 transition-all duration-100"
                             key={subSubMenu.id}
                           >
                             <Link href={`${subSubMenu.link}`}>

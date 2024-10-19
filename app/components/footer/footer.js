@@ -93,20 +93,19 @@ export default function Footer() {
                   {detail.social_title}
                 </span>
               )}
-              {detail?.social > 1 && (
+              {detail?.social && detail.social.length > 0 && (
                 <div class="flex items-center gap-4">
-                  {detail.social.map((social) => (
-                    <Link className="icon-box" href="" key={social.id}>
+                  {detail.social.map((social) => ( social?.link &&
+                    <Link className="icon-box" href={social.link} key={social.id}>
                       <Image
                         src={getStrapiMedia(
-                          social.icon.attributes.url
+                          social.icon.data.attributes.url
                         )}
-                        width={ social.icon.attributes.width}
-                        height={ social.icon.attributes.height}
+                        width={ social.icon.data.attributes.width}
+                        height={ social.icon.data.attributes.height}
                         alt={
-                           social.icon.attributes?.alternativeText
+                           social.icon.data.attributes?.alternativeText
                         }
-                        className="w-full h-fit object-cover pt-2 xl:pt-4"
                       />
                     </Link>
                   ))}
