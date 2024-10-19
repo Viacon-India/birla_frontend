@@ -683,7 +683,7 @@ a.current_dot {
 
 /* footer-section */
 .footer-detail-sec{
-  @apply flex flex-col-reverse md:flex-row gap-4 justify-between md:items-start xl:items-center 
+  @apply flex flex-col-reverse md:flex-row gap-4 !justify-between md:items-start xl:items-center 
 }
 .footer-description-text{
   @apply text-[#0E0E11] text-[14px] md:text-[15px] leading-[1.5] pt-2 md:pt-0

@@ -2007,7 +2007,7 @@ export function SidebarContent({ section }) {
           <div className="newBoxSection w-full md:w-[30%] bg-primary border border-primary rounded-xl text-white leading-[17px] flex flex-col items-start overflow-hidden">
             {section.collection.map((collection) => (
               <button
-                className={`p-4 w-full text-left transition duration-300 ${
+                className={`p-4 md:px-[5px] md:py-3 lg:p-4 w-full text-[16px] md:text-[14px] lg:text-[16px] text-left transition duration-300 ${
                   activeTab === collection.id
                     ? "bg-[#FEEFE2] text-primary"
                     : "bg-transparent"
