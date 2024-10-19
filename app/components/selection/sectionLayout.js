@@ -2003,7 +2003,7 @@ export function SidebarContent({ section }) {
             ),
           }}
         />
-        <div className="w-full flex flex-col md:flex-row items-start gap-10 mt-4 md:mt-10">
+        <div className="w-full flex flex-col md:flex-row items-start gap-3 lg:gap-10 mt-4 md:mt-10">
           <div className="newBoxSection w-full md:w-[30%] bg-primary border border-primary rounded-xl text-white leading-[17px] flex flex-col items-start overflow-hidden">
             {section.collection.map((collection) => (
               <button
