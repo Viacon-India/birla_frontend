@@ -1179,7 +1179,7 @@ export function Products({ pageData }) {
                 <div className="single-image-slider relative w-full md:w-[80%] h-full bg-[#ffffff] rounded-[12px]">
                   <span
                     className={cn(
-                      "bg-primary py-2 px-8 rounded-tr-[12px] text-[#FFFFFF] text-[12px] md:text-[18px] font-bold absolute right-0 top-0", pageData?.premium && "prem-product-tag"
+                      "bg-primary py-2 px-8 rounded-tr-[12px] text-[#FFFFFF] text-[12px] md:text-[18px] font-bold absolute right-0 top-0 overflow-hidden", pageData?.premium && "prem-product-tag"
                     )}
                   >
                     {pageData.premium ? "Premium" : "Standard"}
