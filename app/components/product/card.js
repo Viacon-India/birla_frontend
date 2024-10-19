@@ -204,6 +204,7 @@ export default function Product({ data }) {
                           class="h-8 w-full object-cover"
                           width={vehicle.attributes.icon.data.attributes?.width}
                           height={vehicle.attributes.icon.data.attributes?.height}
+                          key={vehicle.id}
                           alt={
                             vehicle.attributes.icon.data.attributes?.alternativeText
                               ? vehicle.attributes.icon.data.attributes
