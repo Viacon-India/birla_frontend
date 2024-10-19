@@ -40,7 +40,7 @@ export default function Product({ data }) {
       <Link href={data.permalink}>
         <span
           className={
-            data.premium ? "prem-product-card-tag" : "new-product-card-tag"
+            data.premium ? "prem-product-card-tag prem-product-tag" : "new-product-card-tag"
           }
         >
           {data.premium ? "Premium" : "Standard"}

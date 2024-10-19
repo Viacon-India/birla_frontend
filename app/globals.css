@@ -898,7 +898,7 @@ a.current_dot {
   @apply text-[12px] 2xl:text-[16px] text-[#FFFFFF] bg-primary px-6 py-2 rounded-tl-[14px] flex justify-center items-center w-fit relative overflow-hidden
 }
 
-.prem-product-card-tag::before {
+.prem-product-tag::before {
   content: '';
   background: linear-gradient(transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
   height: 200%;
