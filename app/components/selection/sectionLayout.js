@@ -1805,6 +1805,9 @@ export function DoubleSlider({ section }) {
 }
 
 export function ImageDetailContent({ section }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <section className="overflow-hidden bg-[#F8F8F8]">
       <div class="container mx-auto">

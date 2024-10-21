@@ -119,11 +119,11 @@ export default function FindTyre() {
             <div className="relative">
               <Float />
               <div className="relative">
-                <div className="w-full h-[40vh] md:h-[80vh] flex items-start">
-                  <div class="container mx-auto pt-[60px] md:pt-6 pb-[60px] flex flex-col md:flex-row gap-4">
+                <div className="w-full h-[40vh] md:h-[50vh] lg:h-[60vh] xl:h-[80vh] flex items-start">
+                  <div class="container mx-auto pt-[60px] md:pt-10 xl:pt-6 pb-[60px] flex flex-col md:flex-row gap-4">
                     <div className="flex flex-col justify-between h-full w-full md:w-1/2 gap-[100px] 2xl:gap-[200px]">
                       <MainButton />
-                      <div className="relative flex flex-col gap-2 md:gap-6 z-10">
+                      <div className="relative flex flex-col gap-2 xl:gap-6 z-10">
                         <h3 className="text-white text-[32px] md:text-[42px] 2xl:text-[56px] font-bold ">
                           Find A Tyre
                         </h3>
@@ -176,7 +176,7 @@ export default function FindTyre() {
                       </div>
                     </div>
                     {pageData.data.attributes.categories?.data &&
-                      <div className="filter-form w-full md:w-1/2 md:mx-[200px]">
+                      <div className="filter-form w-full md:w-1/2 md:mx-4 xl:mx-[200px]">
                         <div className="form-content relative z-10">
                           <div className="form-btn-sec">
                             {pageData.data.attributes.categories.data.map((categories, index) => (categories.attributes?.name && categories.attributes?.filters &&
@@ -212,7 +212,7 @@ export default function FindTyre() {
                                               {item?.name}
                                             </option>
                                           ))}
-                                          {filtersArray && filtersArray.length > 0 && filtersArray[index].map((item) => (
+                                          {filtersArray && filtersArray.length > 0 && filtersArray[index].sort().map((item) => (
                                             <option key={item.id} value={item}>
                                               {item}
                                             </option>
@@ -262,7 +262,7 @@ export default function FindTyre() {
               {productData.length > 0 && (
                 <>
                   <h3 className="text-[#1A1D21] text-[22px] md:text-[28px] 2xl:text-[32px] font-bold pt-4 md:pt-6 2xl:pt-10">Showing {productData.length} matching products</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10">
                     {productData.map((product) => (
                       <Product key={product.id} data={product} />
                     ))}

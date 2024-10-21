@@ -15,20 +15,42 @@ export default function Page({ params }) {
   const [page, setPage] = useState([]);
  
   useEffect(() => {
-    fetch(getStrapiMedia("/api/pages/"+slugs.at(-1))).then((res) => res.json()).then((page) => {
-      setPageData(page);
-    });
-
-    setPage('Pages');
-    if(slugs.at(-1) == "contact-us"){
-      setPage('ContactUs');
-    }
-    
-    slugs.at(-2) == 'investor-relations' && fetch(getStrapiMedia("/api/investor-relations-sidebar?populate=*")).then((tab) => tab.json()).then((pageSidebar) => {
-      setSidebar(pageSidebar.data.attributes.pages.data);
-      setPage('InvestorRelations');
-    });
-  }, []);
+    const pageInitialData = async () => {
+      try {
+        const response = await fetch(getStrapiMedia(`/api/pages/${slugs.at(-1)}`));
+        if (!response.ok) throw new Error('Network response was not ok');
+       
+        const page = await response.json();
+        setPageData(page);
+ 
+        if (slugs.at(-1) === "contact-us") {
+          setPage('ContactUs');
+        } else {
+          setPage('Pages');
+        }
+      } catch (error) {
+        // console.error("Fetch error:", error);
+ 
+        if (slugs.at(-2) === 'investor-relations') {
+          try {
+            const tabResponse = await fetch(getStrapiMedia("/api/investor-relations-sidebar?populate=*"));
+            if (!tabResponse.ok) throw new Error('Network response was not ok');
+ 
+            const pageSidebar = await tabResponse.json();
+            setSidebar(pageSidebar.data.attributes.pages.data);
+            setPage('InvestorRelations');
+          } catch (sidebarError) {
+            console.error("Sidebar fetch error:", sidebarError);
+          }
+        } else {
+          // push("/404");
+          alert("Redirecting to 404");
+        }
+      }
+    };
+ 
+    pageInitialData();
+  }, [slugs]);
 
   return (
     <>

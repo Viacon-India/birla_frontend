@@ -1062,7 +1062,7 @@ export function Segments({ pageData }) {
                           {item?.name}
                         </option>
                       ))}
-                      {filtersArray[index].map((item) => (
+                      {filtersArray[index].sort().map((item) => (
                         <option key={item.id} value={item}>
                           {item}
                         </option>
