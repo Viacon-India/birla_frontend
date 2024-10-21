@@ -2019,7 +2019,7 @@ export function SidebarContent({ section }) {
               </button>
             ))}
           </div>
-          <div className="relative w-full md:w-[70%]">
+          <div className="relative w-full md:w-[70%] overflow-hidden">
             <Image
               src={tigerMask}
               alt="img"
@@ -2197,7 +2197,7 @@ export function Testimonial({ section }) {
                   data-aos-duration="1000"
                   key={collection.id}
                 >
-                  <figure className="w-40% h-[240px] lg:h-[320px]">
+                  <figure className="w-[40%] h-[240px] lg:h-[320px]">
                     <Image
                       className="vast-card-image"
                       width={collection.image?.width}
