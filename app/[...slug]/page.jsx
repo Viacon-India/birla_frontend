@@ -43,8 +43,7 @@ export default function Page({ params }) {
             console.error("Sidebar fetch error:", sidebarError);
           }
         } else {
-          // push("/404");
-          alert("Redirecting to 404");
+          setPage('error404');
         }
       }
     };

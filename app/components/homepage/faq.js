@@ -48,7 +48,7 @@ export default function Faq({Heading='', Title='', Data={}}) {
   }, []);
 
   return (
-    <section className="faq-sec sec-gap mb-[60px] md:mb-[100px] 2xl:mb-[150px] relative">
+    <section className="faq-sec sec-gap !pb-[60px] md:!pb-[100px] 2xl:!pb-[150px] relative">
       <div className="container mx-auto overflow-hidden relative">
         <div class="relative">
           <div className="flex gap-2 items-center absolute right-0 top-[54px] md:top-[32px] z-20">

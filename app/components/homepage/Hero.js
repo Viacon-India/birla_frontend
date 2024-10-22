@@ -65,7 +65,7 @@ export default function Hero({Data={}}) {
   }, [Data]);
 
   return (
-    <div className="relative">
+    <div className="relative pb-5 pd:pb-8 xl:pb-[50px] 2xl:pb-[75px]">
       <div id="preloader" className="loader-sec">
         <div class="video-wrapper">
           <video

@@ -406,7 +406,7 @@ text-white transition-all duration-500 relative hover:left-[-190px]
 
 /* hero-section */
 .sec-gap{
-  @apply mt-10 md:mt-16 xl:mt-[100px] 2xl:mt-[150px]
+  @apply py-5 md:py-8 xl:py-[50px] 2xl:py-[75px]
 }
 
 .multi-btn-sec{
