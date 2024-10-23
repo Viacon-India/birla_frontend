@@ -635,7 +635,7 @@ export function Accordion({ section }) {
                         {accordion?.icon && (
                           <Image
                             key={accordion.icon.id}
-                            className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center px-4 py-[14px]"
+                            className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center p-3"
                             width={accordion.icon?.width}
                             height={accordion.icon?.height}
                             src={getStrapiMedia(accordion.icon?.url)}
@@ -991,7 +991,7 @@ export function Gallery({ section }) {
       case 2:
         return (
           <div className="container mx-auto">
-            <div className="flex items-start gap-4 md:gap-8 xl:gap-[60px] w-full mt-10">
+            <div className="flex items-start gap-4 md:gap-8 w-full mt-10">
               {section.collection.map(
                 (collection) =>
                   collection?.image && (
@@ -1978,7 +1978,7 @@ export function SidebarContent({ section }) {
         <BlocksRenderer
           content={section.content}
           blocks={{
-            paragraph: ({ children }) => <p>{children}</p>,
+            paragraph: ({ children }) => <p className="text-[#1A1D21]">{children}</p>,
             heading: ({ children, level }) => {
               switch (level) {
                 case 1:
@@ -2072,7 +2072,7 @@ export function SidebarContent({ section }) {
                         if (props.format === "ordered") {
                           return (
                             <ol
-                              className="list-decimal"
+                              className="list-decimal !pl-6"
                               data-aos="fade-left"
                               data-aos-duration="1000"
                             >
@@ -2500,7 +2500,7 @@ export function KeyPoints({ section }) {
                             {point?.icon && (
                               <Image
                                 key={point.icon.id}
-                                className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center px-4 py-[14px]"
+                                className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center p-3"
                                 width={point.icon?.width}
                                 height={point.icon?.height}
                                 src={getStrapiMedia(point.icon?.url)}

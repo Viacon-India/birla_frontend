@@ -22,7 +22,7 @@ export default function Dealer({ Heading='', Title=''}) {
         <div class="w-full flex gap-2 md:gap-6 flex-col lg:flex-row mt-5 2xl:mt-10">
           <div class="relative w-full lg:w-[40%] xl:w-[30%]">
             <input
-              className="px-4 py-3 bg-[#FFFFFF] border border-[#DEE1E5] rounded-[4px] w-full outline-none"
+              className="px-4 py-3 bg-[#FFFFFF] border border-[#DEE1E5] rounded-[4px] w-full outline-none placeholder:text-[18px]"
               type="text"
               placeholder="Search By Pincode"
             />

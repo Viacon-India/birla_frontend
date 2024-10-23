@@ -5,29 +5,36 @@ import { getStrapiMedia } from "@/lib/utils";
 import PageSelection from "@/app/components/selection/pageLayout";
 import Navbar from "@/app/components/navbar/navbar";
 import Footer from "@/app/components/footer/footer";
-import { PageEnd } from "@/app/components/pageCommon/pageCommon";
-
 
 export default function Page({ params }) {
   const [slugs, setSlugs] = useState(params.slug);
-  const [collection, setCollection] = useState(
+  const [page, setPage] = useState(
     slugs.at(-1).includes("-bt-") ? "products" : "segments"
   );
 
   const [pageData, setPageData] = useState([]);
 
   useEffect(() => {
-    fetch(getStrapiMedia("/api/" + collection + "/" + slugs.at(-1)))
-      .then((res) => res.json())
-      .then((page) => {
-        setPageData(page);
-      });
-  }, []);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(getStrapiMedia(`/api/${page}/${slugs.at(-1)}`));
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const apiData = await response.json();
+        setPageData(apiData);
+      } catch (error) {
+        setPage('error404');
+      }
+    };
+  
+    fetchData();
+  }, [page, slugs]);
 
   return (
     <>
       <Navbar />
-      <PageSelection page={collection} pageData={pageData}/>
+      <PageSelection page={page} pageData={pageData}/>
       <Footer />
     </>
   );
