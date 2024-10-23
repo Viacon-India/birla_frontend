@@ -24,6 +24,17 @@ body {
   @apply !font-oak-sans
 
 }
+
+/* ::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cf2330;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+} */
+  
 ol, ul{
   @apply pl-4
 }
@@ -800,8 +811,10 @@ a.current_dot {
   text-[12px] md:text-[18px] placeholder:text-[12px]
 }
 .select-box{
-  @apply bg-[#F4F5F6] py-[12px] border border-[#DEE1E5] w-1/2 rounded-[2px] px-2 text-[14px] xl:text-[20px]
+  @apply py-[12px] border border-[#DEE1E5] w-1/2 !rounded-[6px] px-2 text-[14px] xl:text-[20px] bg-[#FFFFFF] text-[#9DA4B0]
 }
+
+
 
 
 
@@ -1185,10 +1198,10 @@ a.current_dot {
  }
  .contact-input{
   @apply outline-none p-3 text-[14px] placeholder:text-[14px] 
-  placeholder:text-[#9DA4B0]
+  placeholder:text-[#9DA4B0] bg-transparent
  }
  .contact-select{
-  @apply p-3 text-[#9DA4B0] text-[14px] outline-none
+  @apply p-3 text-[#9DA4B0] text-[14px] outline-none bg-transparent
  }
  .contact-select option{
   @apply !p-2 text-[#000000] text-[15px]
@@ -1478,7 +1491,7 @@ input[type=file]::file-selector-button {
   placeholder:text-[#9DA4B0] border border-[#B3B8C2] rounded-[4px] 
  }
  .tyre-form-select{
-  @apply px-3 py-1 2xl:p-3 text-[#9DA4B0] text-[14px] outline-none border border-[#B3B8C2] rounded-[4px]
+  @apply px-3 py-1 2xl:p-3 text-[#9DA4B0] text-[14px] outline-none border border-[#B3B8C2] rounded-[4px] bg-transparent
  }
  .tyre-form-select option{
   @apply !p-2 text-[#000000] text-[15px] 2xl:text-[16px]

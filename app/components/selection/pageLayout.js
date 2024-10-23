@@ -305,7 +305,7 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form1QueryType"
                                   >
-                                    {section.form1QueryLabel}
+                                    <span className="text-red-600">*</span>{section.form1QueryLabel}
                                   </label>
                                 )}
                                 <select
@@ -330,7 +330,7 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form1Description"
                                   >
-                                    {section.form1Description.label}
+                                    <span className="text-red-600">*</span>{section.form1Description.label}
                                   </label>
                                 )}
                                 <input
@@ -350,7 +350,7 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form1FirstName"
                                   >
-                                    {section.form1FirstName.label}
+                                    <span className="text-red-600">*</span>{section.form1FirstName.label}
                                   </label>
                                 )}
                                 <input
@@ -370,7 +370,7 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form1LastName"
                                   >
-                                    {section.form1LastName.label}
+                                    <span className="text-red-600">*</span>{section.form1LastName.label}
                                   </label>
                                 )}
                                 <input
@@ -390,7 +390,7 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form1ContactNumber"
                                   >
-                                    {section.form1ContactNumber.label}
+                                    <span className="text-red-600">*</span>{section.form1ContactNumber.label}
                                   </label>
                                 )}
                                 <input
@@ -410,7 +410,7 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form1Email"
                                   >
-                                    {section.form1Email.label}
+                                    <span className="text-red-600">*</span>{section.form1Email.label}
                                   </label>
                                 )}
                                 <input
@@ -427,6 +427,7 @@ export function ContactUs({ pageData }) {
                               {section?.form1Concent && (
                                 <div className="flex items-start gap-2">
                                   <input
+                                  style={{"color-scheme": "none"}}
                                     type="checkbox"
                                     className="mt-1"
                                     required
@@ -512,7 +513,7 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form2QueryType"
                                   >
-                                    {section.form2QueryLabel}
+                                    <span className="text-red-600">*</span>{section.form2QueryLabel}
                                   </label>
                                 )}
                                 <select
@@ -537,7 +538,7 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form2Description"
                                   >
-                                    {section.form2Description.label}
+                                    <span className="text-red-600">*</span>{section.form2Description.label}
                                   </label>
                                 )}
                                 <input
@@ -557,7 +558,7 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form2FirstName"
                                   >
-                                    {section.form2FirstName.label}
+                                    <span className="text-red-600">*</span>{section.form2FirstName.label}
                                   </label>
                                 )}
                                 <input
@@ -577,7 +578,7 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form2LastName"
                                   >
-                                    {section.form2LastName.label}
+                                    <span className="text-red-600">*</span>{section.form2LastName.label}
                                   </label>
                                 )}
                                 <input
@@ -597,7 +598,7 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form2ContactNumber"
                                   >
-                                    {section.form2ContactNumber.label}
+                                    <span className="text-red-600">*</span>{section.form2ContactNumber.label}
                                   </label>
                                 )}
                                 <input
@@ -617,7 +618,7 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form2Email"
                                   >
-                                    {section.form2Email.label}
+                                    <span className="text-red-600">*</span>{section.form2Email.label}
                                   </label>
                                 )}
                                 <input
@@ -634,6 +635,7 @@ export function ContactUs({ pageData }) {
                               {section?.form2Concent && (
                                 <div className="flex items-start gap-2">
                                   <input
+                                  style={{"color-scheme": "none"}}
                                     type="checkbox"
                                     className="mt-1"
                                     required
@@ -793,7 +795,7 @@ export function Segments({ pageData }) {
     try {
       const response = await fetch(
         getStrapiMedia(
-          `/api/products?filters[segment][slug][$eq]=${pageData.slug}${query}`
+          `/api/products?sort[0]=premium:desc&pagination[pageSize]=50&pagination[page]=1&filters[segment][slug][$eq]=${pageData.slug}${query}`
         )
       );
       const products = await response.json();

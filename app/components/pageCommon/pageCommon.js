@@ -75,7 +75,7 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
               </div>
             </div>
           </div>
-          {Banner?.url ? (
+          {Banner?.url && (
             Banner.ext == ".mp4" ? (
               <video
                 className="absolute top-0 w-full h-full object-cover"
@@ -98,21 +98,6 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
                 className="absolute top-0 w-full h-full object-cover"
               />
             )
-          ) : extension == ".mp4" ? (
-            <video
-              className="absolute top-0 w-full h-full object-cover"
-              loop
-              autoPlay
-              muted
-            >
-              <source src={StaticBanner} type="video/mp4" />
-            </video>
-          ) : (
-            <Image
-              src={StaticBanner}
-              alt="Hero-Banner"
-              className="absolute top-0 w-full h-full object-cover"
-            />
           )}
         </div>
       </div>
