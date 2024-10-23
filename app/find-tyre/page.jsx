@@ -65,7 +65,7 @@ export default function FindTyre() {
     try {
       const response = await fetch(getStrapiMedia(`/api/products?filters[segment][name][$eq]=${activeTab}${query}`));
       const products = await response.json();
-      setProductData(products);
+      setProductData(products.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -76,7 +76,7 @@ export default function FindTyre() {
       try {
         const response = await fetch(getStrapiMedia(`/api/products?filters[segment][name]=${activeTab}`));
         const filters = await response.json();
-        setFilterData(filters);
+        setFilterData(filters.data);
         fetchData("");
       } catch (error) {
         console.error('Error fetching initial data:', error);

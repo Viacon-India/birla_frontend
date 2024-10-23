@@ -170,17 +170,17 @@ ol, ul{
 }
 .search-input {
   @apply w-[0%] h-[44px] border border-[#B3B8C2] outline-none p-3 placeholder:leading-[1] rounded-[24px]
-  placeholder:text-[#B3B8C2] leading-[1] placeholder:text-[14px] !pl-8 bg-[#FFFFFF]
+  placeholder:text-[#B3B8C2] leading-[1] placeholder:text-[14px] !pl-8 bg-[#FFFFFF] placeholder:pl-2
   transition-all duration-500
 }
 .search-wrapper svg{
   @apply absolute bottom-[10px] left-[13px]
 }
 .search-input:focus {
-  @apply w-[80%];
+  @apply w-[60%];
 }
 .search-wrapper.active .search-input {
-  width: 80%;
+  width: 65%;
 }
 .page-template-result .search input{
   @apply w-full
@@ -565,8 +565,8 @@ a.current_dot {
 .cat-btn{
   @apply md:w-[132px] py-2 bg-secondary text-[#FFFFFF]
   focus:bg-primary focus:font-bold text-[15px]
-  rounded-[4px] uppercase px-5 flex justify-center
-  font-[300] hover:bg-primary hover:text-[#FFFFFF] hover:font-normal last:capitalize
+  rounded-[4px] px-5 flex justify-center
+  font-[300] hover:bg-primary hover:text-[#FFFFFF] hover:font-normal
 }
 .active-cat-btn{
   @apply !bg-primary font-normal
@@ -904,11 +904,11 @@ a.current_dot {
 }
 
 .new-product-card-tag{
-  @apply text-[12px] 2xl:text-[16px] text-[#FFFFFF] bg-primary px-6 py-2 rounded-tl-[14px] flex justify-center items-center w-fit
+  @apply text-[12px] 2xl:text-[16px] text-[#FFFFFF] bg-primary px-8 py-1 rounded-tl-[14px] flex justify-center items-center w-fit
 }
 
 .prem-product-card-tag {
-  @apply text-[12px] 2xl:text-[16px] text-[#FFFFFF] bg-primary px-6 py-2 rounded-tl-[14px] flex justify-center items-center w-fit relative overflow-hidden
+  @apply text-[12px] 2xl:text-[16px] text-[#FFFFFF] bg-primary px-8 py-1 rounded-tl-[14px] flex justify-center items-center w-fit relative overflow-hidden
 }
 
 .prem-product-tag::before {
@@ -1099,7 +1099,7 @@ a.current_dot {
   @apply text-[#1A1D21] text-[14px] md:text-[15px] leading-[1.6] mb-1 last:mb-0
 }
 .box-content-sec h3{
-  @apply text-secondary text-[24px] md:text-[32px] font-bold mb-2
+  @apply text-secondary text-[24px] md:text-[32px] font-bold
 }
 .vast-card figure{
   @apply w-full h-[200px] md:h-[180px] lg:h-[220px] xl:h-[252px] mb-2 md:mb-4 2xl:mb-6 relative overflow-hidden 

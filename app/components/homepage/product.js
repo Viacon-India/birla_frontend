@@ -99,7 +99,7 @@ export default function Products({ Heading='', Title='', Data={}}) {
               {Data.data.map((tab) => ( tab.attributes?.name &&
                 <button
                   key={tab.id}
-                  className={`tablinks cat-btn ${activeTab === tab.attributes.name ? "active-cat-btn" : "" }`}
+                  className={`tablinks cat-btn uppercase ${activeTab === tab.attributes.name ? "active-cat-btn" : "" }`}
                   onClick={() => handleTabClick(tab.attributes.name)}
                 >
                   {tab.attributes.name}

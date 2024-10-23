@@ -799,7 +799,7 @@ export function Segments({ pageData }) {
         )
       );
       const products = await response.json();
-      setProductsData(products);
+      setProductsData(products.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -814,7 +814,7 @@ export function Segments({ pageData }) {
           )
         );
         const filters = await response.json();
-        setFilterData(filters);
+        setFilterData(filters.data);
         fetchData("");
       } catch (error) {
         console.error("Error fetching initial data:", error);
@@ -883,7 +883,7 @@ export function Segments({ pageData }) {
               </div>
             </div>
             {pageData?.catalogue && (
-              <div className="cat-btn-sec flex items-center gap-3 relative z-10">
+              <div className="cat-btn-sec flex items-center gap-3 relative z-10 uppercase">
                 <Link
                   href={getStrapiMedia(pageData.catalogue.url)}
                   className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]"
@@ -1259,7 +1259,7 @@ export function Products({ pageData }) {
                       {pageData.tables.title}
                     </h2>
                   )}
-                  <div className="cat-btn-sec flex items-center gap-3 relative z-10">
+                  <div className="cat-btn-sec flex items-center gap-3 relative z-10 uppercase">
                     <Link
                       href=""
                       className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[10px] md:text-[16px]"
