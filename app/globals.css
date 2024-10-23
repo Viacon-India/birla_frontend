@@ -1036,27 +1036,25 @@ a.current_dot {
   @apply text-[#4F5662] text-[14px] md:text-[15px] 2xl:text-[16px] overflow-hidden max-h-0;
   transition: max-height 0.2s ease-out;
 }
-.ham-accordion.active::after{
-  @apply absolute block h-2 w-2;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  transition-duration: 300ms;
-  inset-inline-end: 1.4rem;
-  /* content: "-"; */
-  pointer-events: none;
-}
-.ham-accordion::after{
-  @apply absolute block h-2 w-2;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  transition-duration: 300ms;
-  inset-inline-end: 1.4rem;
-  /* content: "+"; */
-  pointer-events: none;
+
+.ham-accordion:after {
+  content: url('data:image/svg+xml,<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.995 13.444H5.839V7.837H0.351V5.926H5.839V0.312H7.995V5.926H13.483V7.837H7.995V13.444Z" fill="%231A1D21"/></svg>');
+  top: 18px;
+  font-weight: bold;
+  float: right;
 }
 
+.accActive:after {
+  content: url('data:image/svg+xml,<svg width="13" height="3" viewBox="0 0 13 3" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.951 0.886122V2.89512H0.351V0.886122H12.951Z" fill="%231A1D21"/></svg>');
+}
+
+.panel {
+  padding-right: 0 28px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
 
 
 
@@ -1505,4 +1503,5 @@ input[type=file]::file-selector-button {
 .small-img-sec .swiper-wrapper .swiper-slide-active{
   @apply !border !border-primary !p-2
 }
+
 
