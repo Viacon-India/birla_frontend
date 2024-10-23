@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getStrapiMedia } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -25,11 +25,24 @@ export default function Navbar() {
   };
 
   const [isActive, setIsActive] = useState(false);
-
-  // Handle the click event to toggle the state
+  const searchWrapperRef = useRef(null);
   const handleToggle = () => {
     setIsActive(prevState => !prevState);
   };
+
+  // Close the search wrapper if the click is outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchWrapperRef.current && !searchWrapperRef.current.contains(event.target)) {
+        setIsActive(false);
+      }
+    };
+
+    // document.addEventListener('mousedown', handleClickOutside);
+    // return () => {
+    //   document.removeEventListener('mousedown', handleClickOutside);
+    // };
+  }, []);
 
   useEffect(() => {
     fetch("http://birlatyres.viaconprojects.com:1337/api/header")
@@ -112,7 +125,7 @@ export default function Navbar() {
                           {menu.sub_menu.map((subMenu) => (
                             <li className="subSubText-wrapper" key={subMenu.id}>
                               <button className="drop-list">{subMenu.title}</button>
-                              <ul className="absolute top-0 !hidden subSubText bg-slate-50 !w-[260px] border-t border-[#DEE1E5] left-[100%] overflow-hidden">
+                              <ul className="absolute top-0 !hidden subSubText bg-slate-50 !w-[200px] border-t border-[#DEE1E5] left-[100%] overflow-hidden shadow-2xl">
                                 {subMenu.pages.data.map((subSubMenu) => (
                                   <li
                                     className="text-[14px] text-secondary !w-full !-mr-8 font-medium"
@@ -209,7 +222,7 @@ export default function Navbar() {
                       </li>
                     ))}
                   </ul>
-                  <div class={cn("search-wrapper relative hidden md:flex", isActive ? 'active' : '')} onClick={handleToggle}>
+                  <div class={cn("search-wrapper relative hidden md:flex", isActive ? 'active' : '')} onClick={handleToggle} ref={searchWrapperRef}>
                     <input
                       className="search-input"
                       type="text"

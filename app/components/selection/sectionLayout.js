@@ -881,7 +881,7 @@ export function TitleContentFull({ section }) {
                       );
                     },
                     "list-item": (props) => (
-                      <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-4">
+                      <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-4 text-[#1A1D21]">
                         {props.children}
                       </li>
                     ),
@@ -1477,7 +1477,7 @@ export function JobApplication({ section }) {
                 <div className="form-row">
                   {section?.firstName?.label && (
                     <label className="contact-label" htmlFor="firstName">
-                      {section.firstName.label}
+                      <span className="text-red-600">*</span>{section.firstName.label}
                     </label>
                   )}
                   <input
@@ -1492,7 +1492,7 @@ export function JobApplication({ section }) {
                 <div className="form-row">
                   {section?.lastName?.label && (
                     <label className="contact-label" htmlFor="lastName">
-                      {section.lastName.label}
+                      <span className="text-red-600">*</span>{section.lastName.label}
                     </label>
                   )}
                   <input
@@ -1507,7 +1507,7 @@ export function JobApplication({ section }) {
                 <div className="form-row">
                   {section?.email?.label && (
                     <label className="contact-label" htmlFor="email">
-                      {section.email.label}
+                      <span className="text-red-600">*</span>{section.email.label}
                     </label>
                   )}
                   <input
@@ -1524,7 +1524,7 @@ export function JobApplication({ section }) {
                 <div className="form-row">
                   {section?.contactNumber?.label && (
                     <label className="contact-label" htmlFor="contactNumber">
-                      {section.contactNumber.label}
+                      <span className="text-red-600">*</span>{section.contactNumber.label}
                     </label>
                   )}
                   <input
@@ -1540,7 +1540,7 @@ export function JobApplication({ section }) {
                   <div className="form-row">
                     {section?.specializationLabel && (
                       <label className="contact-label" htmlFor="specialization">
-                        {section.specializationLabel}
+                        <span className="text-red-600">*</span>{section.specializationLabel}
                       </label>
                     )}
                     <select
@@ -1563,7 +1563,7 @@ export function JobApplication({ section }) {
                 <div className="w-full flex flex-col">
                   {section?.resume?.label && (
                     <label className="contact-label" htmlFor="resume">
-                      {section.resume.label}
+                      <span className="text-red-600">*</span>{section.resume.label}
                     </label>
                   )}
                   <div className="relative border border-[#727C8D] rounded-[8px]">
@@ -1585,7 +1585,7 @@ export function JobApplication({ section }) {
                 </div>
                 {section?.concent && (
                   <div className="flex items-start gap-2">
-                    <input type="checkbox" className="mt-1" required />
+                    <input type="checkbox" className="mt-1" style={{"color-scheme": "none"}} required />
                     {section.concent.length > 0 && (
                       <BlocksRenderer
                         content={section.concent}
@@ -1900,7 +1900,7 @@ export function ImageDetailContent({ section }) {
                 blocks={{
                   paragraph: ({ children }) => (
                     <p
-                      className="text-[14px] md:text-[15px] 2xl:text-[17px]"
+                      className="text-[14px] md:text-[15px] 2xl:text-[17px] text-[#3D434C]"
                       data-aos="fade-left"
                       data-aos-duration="1000"
                     >
@@ -2208,7 +2208,7 @@ export function Testimonial({ section }) {
                       src={getStrapiMedia(collection.image?.url)}
                       alt={collection.image?.alternativeText}
                       data-aos="flip-up"
-                      data-aos-duration="1500"
+                      data-aos-duration="1000"
                     />
                   </figure>
                   <div className="testimonial-card-detail-wrapper">
