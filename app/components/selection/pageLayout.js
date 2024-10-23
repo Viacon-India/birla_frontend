@@ -739,6 +739,13 @@ export function Segments({ pageData }) {
   const [value, setValue] = useState([]);
   const [productsData, setProductsData] = useState([]);
   const [filterData, setFilterData] = useState([]);
+  const pageSize = 50;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [meta, setProductsMeta] = useState({});
+  const handlePageClick = (event) => {
+    const selectedPage = event.selected;
+    setCurrentPage(selectedPage);
+  };
 
   const updateItem = (index, newValue) => {
     setValue((prevData) => {
@@ -795,11 +802,12 @@ export function Segments({ pageData }) {
     try {
       const response = await fetch(
         getStrapiMedia(
-          `/api/products?sort[0]=premium:desc&pagination[pageSize]=50&pagination[page]=1&filters[segment][slug][$eq]=${pageData.slug}${query}`
+          `/api/products?pagination[pageSize]=${pageSize}&pagination[page]=${currentPage}&sort[0]=premium:desc&filters[segment][slug][$eq]=${pageData.slug}${query}`
         )
       );
       const products = await response.json();
       setProductsData(products.data);
+      setProductsMeta(products.meta);
     } catch (error) {
       console.error("Error fetching data:", error);
     }

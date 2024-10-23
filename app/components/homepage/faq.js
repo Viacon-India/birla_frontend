@@ -27,26 +27,41 @@ export default function Faq({Heading='', Title='', Data={}}) {
       setPageData(page);
     });
 
-    // var newPanel = document.getElementsByClassName("ham-accordion active")[0]
-    //   .nextElementSibling;
-    // newPanel.style.maxHeight = newPanel.scrollHeight + "px";
 
-    var acc2 = document.getElementsByClassName("ham-accordion");
-    for (var j = 0; j < acc2.length; j++) {
-      acc2[j].addEventListener("click", function () {
-        this.classList.toggle("active");
-        this.classList.toggle("after:content-['_-']");
-        this.classList.toggle("after:content-['_+']");
-        var newPanel = this.nextElementSibling;
-        if (newPanel.style.maxHeight) {
-          newPanel.style.maxHeight = null;
-        } else {
-          newPanel.style.maxHeight = newPanel.scrollHeight + "px";
-        }
-      });
-    }
   }, []);
 
+  var acc = document.getElementsByClassName("ham-accordion");
+  var i;
+  
+  // Open the first accordion by default
+  if (acc.length > 0) {
+    acc[0].classList.add("accActive");
+    var firstPanel = acc[0].nextElementSibling;
+    firstPanel.style.maxHeight = firstPanel.scrollHeight + "px";
+  }
+  
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      for (var j = 0; j < acc.length; j++) {
+        if (acc[j] !== this) {
+          acc[j].classList.remove("accActive");
+          var otherPanel = acc[j].nextElementSibling;
+          if (otherPanel.style.maxHeight) {
+            otherPanel.style.maxHeight = null;
+          }
+        }
+      }
+  
+      this.classList.toggle("accActive");
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      } 
+    });
+  }
+  
   return (
     <section className="faq-sec sec-gap !pb-[60px] md:!pb-[100px] 2xl:!pb-[150px] relative">
       <div className="container mx-auto overflow-hidden relative">
@@ -173,14 +188,14 @@ export default function Faq({Heading='', Title='', Data={}}) {
                   >
                     {Data.items.map((item, index) => (
                       <div key={item.id} class="accordion-content-wrapper">
-                        <h4 className={cn("accordion-title ham-accordion after:top-[0.9rem] after:content-['_-']", index == 0 ? "active" : "")}>{item?.title}</h4>
-                        <div className="accordion-content">
+                        <h4 className="accordion-title ham-accordion cursor-pointer">{item?.title}</h4>
+                        <div className="panel">
                           {item?.content && item.content.length > 0 && (
                             <BlocksRenderer
                               content={item.content}
                               blocks={{
                                 paragraph: ({ children }) => (
-                                  <p className="font-medium leading-[1.7] !mt-14 md:!mt-6 2xl:mt-8">
+                                  <p className="text-[#4F5662]">
                                     {children}
                                   </p>
                                 ),
