@@ -26,41 +26,43 @@ export default function Faq({Heading='', Title='', Data={}}) {
     fetch(getStrapiMedia("/api/blogs?sort[0]=date:desc&fields[0]=title&fields[1]=description&fields[2]=date&fields[3]=link&populate[image][fields][0]=name&populate[image][fields][1]=width&populate[image][fields][2]=height&populate[image][fields][3]=url&populate[image][fields][4]=alternativeText&pagination[pageSize]=2&pagination[page]=1")).then((res) => res.json()).then((page) => {
       setPageData(page);
     });
-
-
+    
   }, []);
 
-  var acc = document.getElementsByClassName("ham-accordion");
-  var i;
-  
-  // Open the first accordion by default
-  if (acc.length > 0) {
-    acc[0].classList.add("accActive");
-    var firstPanel = acc[0].nextElementSibling;
-    firstPanel.style.maxHeight = firstPanel.scrollHeight + "px";
-  }
-  
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-      for (var j = 0; j < acc.length; j++) {
-        if (acc[j] !== this) {
-          acc[j].classList.remove("accActive");
-          var otherPanel = acc[j].nextElementSibling;
-          if (otherPanel.style.maxHeight) {
-            otherPanel.style.maxHeight = null;
+  useEffect(() => {
+    var acc = document.getElementsByClassName("ham-accordion");
+    var i;
+    
+    // Open the first accordion by default
+    if (acc.length > 0) {
+      acc[0].classList.add("accActive");
+      var firstPanel = acc[0].nextElementSibling;
+      firstPanel.style.maxHeight = firstPanel.scrollHeight + "px";
+    }
+    
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        for (var j = 0; j < acc.length; j++) {
+          if (acc[j] !== this) {
+            acc[j].classList.remove("accActive");
+            var otherPanel = acc[j].nextElementSibling;
+            if (otherPanel.style.maxHeight) {
+              otherPanel.style.maxHeight = null;
+            }
           }
         }
-      }
-  
-      this.classList.toggle("accActive");
-      var panel = this.nextElementSibling;
-      if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-      } 
-    });
-  }
+    
+        this.classList.toggle("accActive");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+      });
+    }
+  }, [])
+ 
   
   return (
     <section className="faq-sec sec-gap !pb-[60px] md:!pb-[100px] 2xl:!pb-[150px] relative">
