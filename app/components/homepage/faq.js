@@ -33,8 +33,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
         setPageData(page);
       });
 
-        // faq accordion
-
+  // faq accordion
   var acc = document.getElementsByClassName("ham-accordion");
   var i;
 
