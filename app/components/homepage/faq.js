@@ -35,37 +35,36 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
   }, []);
 
   // faq accordion
-  var acc = document.getElementsByClassName("ham-accordion");
-  var i;
+  // var acc = document.getElementsByClassName("ham-accordion");
+  // var i;
 
-  // Open the first accordion by default
-  if (acc.length > 0) {
-    acc[0].classList.add("accActive");
-    var firstPanel = acc[0].nextElementSibling;
-    firstPanel.style.maxHeight = firstPanel.scrollHeight + "px";
-  }
+  // if (acc.length > 0) {
+  //   acc[0].classList.add("accActive");
+  //   var firstPanel = acc[0].nextElementSibling;
+  //   firstPanel.style.maxHeight = firstPanel.scrollHeight + "px";
+  // }
 
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
-      for (var j = 0; j < acc.length; j++) {
-        if (acc[j] !== this) {
-          acc[j].classList.remove("accActive");
-          var otherPanel = acc[j].nextElementSibling;
-          if (otherPanel.style.maxHeight) {
-            otherPanel.style.maxHeight = null;
-          }
-        }
-      }
+  // for (i = 0; i < acc.length; i++) {
+  //   acc[i].addEventListener("click", function () {
+  //     for (var j = 0; j < acc.length; j++) {
+  //       if (acc[j] !== this) {
+  //         acc[j].classList.remove("accActive");
+  //         var otherPanel = acc[j].nextElementSibling;
+  //         if (otherPanel.style.maxHeight) {
+  //           otherPanel.style.maxHeight = null;
+  //         }
+  //       }
+  //     }
 
-      this.classList.toggle("accActive");
-      var panel = this.nextElementSibling;
-      if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-      }
-    });
-  }
+  //     this.classList.toggle("accActive");
+  //     var panel = this.nextElementSibling;
+  //     if (panel.style.maxHeight) {
+  //       panel.style.maxHeight = null;
+  //     } else {
+  //       panel.style.maxHeight = panel.scrollHeight + "px";
+  //     }
+  //   });
+  // }
 
   return (
     <section className="faq-sec sec-gap !pb-[60px] md:!pb-[100px] 2xl:!pb-[150px] relative">
