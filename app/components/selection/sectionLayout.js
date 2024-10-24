@@ -498,6 +498,38 @@ export function ImageTitleContent({ section }) {
 export function Accordion({ section }) {
   useEffect(() => {
     AOS.init();
+
+    // faq accordion
+    var acc = document.getElementsByClassName("single-accordion");
+    var i;
+
+    if (acc.length > 0) {
+      acc[0].classList.add("singleAccActive");
+      var firstPanel = acc[0].nextElementSibling;
+      firstPanel.style.maxHeight = firstPanel.scrollHeight + "px";
+    }
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        for (var j = 0; j < acc.length; j++) {
+          if (acc[j] !== this) {
+            acc[j].classList.remove("singleAccActive");
+            var otherPanel = acc[j].nextElementSibling;
+            if (otherPanel.style.maxHeight) {
+              otherPanel.style.maxHeight = null;
+            }
+          }
+        }
+
+        this.classList.toggle("singleAccActive");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
   }, []);
   return (
     <section
@@ -594,26 +626,26 @@ export function Accordion({ section }) {
                 </div>
               ) : (
                 // <div class="w-full xl:w-[40%]">
-                  <figure
-                    className="w-full  xl:w-[40%] h-[300px] md:h-[500px] 2xl:h-[600px] mb-0"
-                    data-aos="zoom-in"
-                    data-aos-duration="1000"
-                  >
-                    <Image
-                      className="w-full h-full object-cover rounded-[12px]"
-                      width={section.images[0]?.width}
-                      height={section.images[0]?.height}
-                      src={getStrapiMedia(section.images[0]?.url)}
-                      alt={section.images[0]?.alternativeText}
-                    />
-                  </figure>
+                <figure
+                  className="w-full xl:w-[40%] h-[300px] md:h-[500px] 2xl:h-[600px] mb-0"
+                  data-aos="zoom-in"
+                  data-aos-duration="1000"
+                >
+                  <Image
+                    className="w-full h-full object-cover rounded-[12px]"
+                    width={section.images[0]?.width}
+                    height={section.images[0]?.height}
+                    src={getStrapiMedia(section.images[0]?.url)}
+                    alt={section.images[0]?.alternativeText}
+                  />
+                </figure>
                 // </div>
               )}
             </>
           )}
           {section?.items && (
             <div
-              class="accordion-list-sec w-full xl:w-[60%] xl:h-[500px] 2xl:h-[600px] md:overflow-y-auto"
+              class="accordion-list-sec w-full flex flex-col gap-4 xl:gap-6 xl:w-[60%] xl:h-[500px] 2xl:h-[600px] md:overflow-y-auto"
               data-aos="fade-left"
               data-aos-duration="1000"
             >
@@ -621,30 +653,23 @@ export function Accordion({ section }) {
                 (accordion, index) =>
                   accordion?.title &&
                   accordion?.content && (
-                    <div key={accordion.id} className="collapse collapse-plus">
-                      {index == 0 ? (
-                        <input
-                          type="radio"
-                          name="my-accordion-3"
-                          defaultChecked
-                        />
-                      ) : (
-                        <input type="radio" name="my-accordion-3" />
-                      )}
-                      <div className="collapse-title">
-                        {accordion?.icon && (
-                          <Image
-                            key={accordion.icon.id}
-                            className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center p-3"
-                            width={accordion.icon?.width}
-                            height={accordion.icon?.height}
-                            src={getStrapiMedia(accordion.icon?.url)}
-                            alt={accordion.icon?.alternativeText}
-                          />
-                        )}
-                        {accordion.title}
+                    <div key={accordion.id}>
+                      <div className="single-accordion relative">
+                        <div className="flex items-center gap-2">
+                          {accordion?.icon && (
+                            <Image
+                              key={accordion.icon.id}
+                              className="w-12 h-12 rounded-[12px] bg-[#E0E1F5] flex justify-center items-center p-3"
+                              width={accordion.icon?.width}
+                              height={accordion.icon?.height}
+                              src={getStrapiMedia(accordion.icon?.url)}
+                              alt={accordion.icon?.alternativeText}
+                            />
+                          )}
+                          {accordion.title}
+                        </div>
                       </div>
-                      <div className="collapse-content box-content-sec">
+                      <div className="panel">
                         {accordion?.content && accordion.content.length > 0 && (
                           <BlocksRenderer
                             content={accordion.content}
@@ -676,7 +701,7 @@ export function Accordion({ section }) {
                                 }
                                 return <ul>{props.children}</ul>;
                               },
-                              "list-item": (props) => <li>{props.children}</li>,
+                              "list-item": (props) => <li className="text-[#000000] font-medium">{props.children}</li>,
                               link: ({ children, url }) => (
                                 <Link href={url}>{children}</Link>
                               ),
@@ -1477,7 +1502,8 @@ export function JobApplication({ section }) {
                 <div className="form-row">
                   {section?.firstName?.label && (
                     <label className="contact-label" htmlFor="firstName">
-                      <span className="text-red-600">*</span>{section.firstName.label}
+                      <span className="text-red-600">*</span>
+                      {section.firstName.label}
                     </label>
                   )}
                   <input
@@ -1492,7 +1518,8 @@ export function JobApplication({ section }) {
                 <div className="form-row">
                   {section?.lastName?.label && (
                     <label className="contact-label" htmlFor="lastName">
-                      <span className="text-red-600">*</span>{section.lastName.label}
+                      <span className="text-red-600">*</span>
+                      {section.lastName.label}
                     </label>
                   )}
                   <input
@@ -1507,7 +1534,8 @@ export function JobApplication({ section }) {
                 <div className="form-row">
                   {section?.email?.label && (
                     <label className="contact-label" htmlFor="email">
-                      <span className="text-red-600">*</span>{section.email.label}
+                      <span className="text-red-600">*</span>
+                      {section.email.label}
                     </label>
                   )}
                   <input
@@ -1524,7 +1552,8 @@ export function JobApplication({ section }) {
                 <div className="form-row">
                   {section?.contactNumber?.label && (
                     <label className="contact-label" htmlFor="contactNumber">
-                      <span className="text-red-600">*</span>{section.contactNumber.label}
+                      <span className="text-red-600">*</span>
+                      {section.contactNumber.label}
                     </label>
                   )}
                   <input
@@ -1540,7 +1569,8 @@ export function JobApplication({ section }) {
                   <div className="form-row">
                     {section?.specializationLabel && (
                       <label className="contact-label" htmlFor="specialization">
-                        <span className="text-red-600">*</span>{section.specializationLabel}
+                        <span className="text-red-600">*</span>
+                        {section.specializationLabel}
                       </label>
                     )}
                     <select
@@ -1563,7 +1593,8 @@ export function JobApplication({ section }) {
                 <div className="w-full flex flex-col">
                   {section?.resume?.label && (
                     <label className="contact-label" htmlFor="resume">
-                      <span className="text-red-600">*</span>{section.resume.label}
+                      <span className="text-red-600">*</span>
+                      {section.resume.label}
                     </label>
                   )}
                   <div className="relative border border-[#727C8D] rounded-[8px]">
@@ -1585,7 +1616,12 @@ export function JobApplication({ section }) {
                 </div>
                 {section?.concent && (
                   <div className="flex items-start gap-2">
-                    <input type="checkbox" className="mt-1" style={{"color-scheme": "none"}} required />
+                    <input
+                      type="checkbox"
+                      className="mt-1"
+                      style={{ "color-scheme": "none" }}
+                      required
+                    />
                     {section.concent.length > 0 && (
                       <BlocksRenderer
                         content={section.concent}
@@ -1958,8 +1994,8 @@ export function SidebarContent({ section }) {
       setIsWideScreen(window.innerWidth > 500);
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const goToTop = () => {
@@ -1978,7 +2014,9 @@ export function SidebarContent({ section }) {
         <BlocksRenderer
           content={section.content}
           blocks={{
-            paragraph: ({ children }) => <p className="text-[#1A1D21]">{children}</p>,
+            paragraph: ({ children }) => (
+              <p className="text-[#1A1D21]">{children}</p>
+            ),
             heading: ({ children, level }) => {
               switch (level) {
                 case 1:
@@ -2033,7 +2071,10 @@ export function SidebarContent({ section }) {
               if (isWideScreen && collection.id !== activeTab) return null;
 
               return (
-                <div className="border-b border-[#C9CDD3] py-4 md:border-none md:py-0" key={collection.id}>
+                <div
+                  className="border-b border-[#C9CDD3] py-4 md:border-none md:py-0"
+                  key={collection.id}
+                >
                   {/* <h3 className="section-sub-title">
                     {collection.description}
                   </h3> */}
@@ -2048,7 +2089,6 @@ export function SidebarContent({ section }) {
                         >
                           {children}
                         </p>
-                        
                       ),
                       heading: ({ children, level }) => {
                         switch (level) {
@@ -2057,7 +2097,9 @@ export function SidebarContent({ section }) {
                           case 2:
                             return <h2>{children}</h2>;
                           case 3:
-                            return <h3 className="section-sub-title">{children}</h3>;
+                            return (
+                              <h3 className="section-sub-title">{children}</h3>
+                            );
                           case 4:
                             return <h4>{children}</h4>;
                           case 5:
@@ -2081,13 +2123,19 @@ export function SidebarContent({ section }) {
                           );
                         }
                         return (
-                          <ul data-aos="fade-left" data-aos-duration="1000" className="list-disc">
+                          <ul
+                            data-aos="fade-left"
+                            data-aos-duration="1000"
+                            className="list-disc"
+                          >
                             {props.children}
                           </ul>
                         );
                       },
                       "list-item": (props) => (
-                        <li className="pt-3 md:pt-5 text-[#1A1D21]">{props.children}</li>
+                        <li className="pt-3 md:pt-5 text-[#1A1D21]">
+                          {props.children}
+                        </li>
                       ),
                       link: ({ children, url }) => (
                         <Link href={url}>{children}</Link>
@@ -2223,7 +2271,9 @@ export function Testimonial({ section }) {
                             <p className="">{children}</p>
                           ),
                           quote: ({ children }) => (
-                            <blockquote className="text-[#1A1D21] text-[14px] md:text-[16px] xl:text-[17px]">{children}</blockquote>
+                            <blockquote className="text-[#1A1D21] text-[14px] md:text-[16px] xl:text-[17px]">
+                              {children}
+                            </blockquote>
                           ),
                           heading: ({ children, level }) => {
                             switch (level) {
