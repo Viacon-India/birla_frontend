@@ -122,7 +122,7 @@ ol, ul{
 }
 
 .nav-main{
-  @apply w-full p-0 bg-[#FFFFFF] fixed top-0 z-40 backdrop-blur-[50px] border-b border-[#C9CDD3]
+  @apply w-full p-0 bg-[#FFFFFF] fixed top-0 z-52 backdrop-blur-[50px] border-b border-[#C9CDD3]
 }
 
 .nav-links{
@@ -1314,7 +1314,7 @@ a.current_dot {
   @apply w-full h-[280px] md:h-[300px] 2xl:h-[380px] rounded-[12px]
 }
 .mission-card img{
-  @apply w-full h-full object-cover rounded-[12px]
+  @apply w-full h-full object-cover
 }
 .vision-title{
   @apply text-secondary text-[22px] md:text-[32px] !p-0 flex gap-2 items-center font-bold w-fit self-center
@@ -1493,6 +1493,23 @@ input[type=file]::file-selector-button {
  }
  .tyre-form-select option{
   @apply !p-2 text-[#000000] text-[15px] 2xl:text-[16px]
+ }
+
+ .productPagination{
+  @apply flex justify-center gap-4
+ }
+ .productPagination li{
+  @apply bg-[#FFFFFF] border border-[#DEE1E5] px-4 py-2 rounded-[4px]
+  flex items-center justify-center shadow-2xl
+ }
+ .productPagination li a{
+  @apply text-[#727C8D]
+ }
+ .productPagination .active{
+  @apply bg-secondary
+ }
+ .productPagination .active a{
+  @apply text-[#FFFFFF]
  }
 
 
