@@ -1502,8 +1502,8 @@ export function JobApplication({ section }) {
                 <div className="form-row">
                   {section?.firstName?.label && (
                     <label className="contact-label" htmlFor="firstName">
-                      <span className="text-red-600">*</span>
                       {section.firstName.label}
+                      <span className="text-red-600 pl-[2px]">*</span>
                     </label>
                   )}
                   <input
@@ -1518,8 +1518,8 @@ export function JobApplication({ section }) {
                 <div className="form-row">
                   {section?.lastName?.label && (
                     <label className="contact-label" htmlFor="lastName">
-                      <span className="text-red-600">*</span>
                       {section.lastName.label}
+                      <span className="text-red-600 pl-[2px]">*</span>
                     </label>
                   )}
                   <input
@@ -1534,8 +1534,8 @@ export function JobApplication({ section }) {
                 <div className="form-row">
                   {section?.email?.label && (
                     <label className="contact-label" htmlFor="email">
-                      <span className="text-red-600">*</span>
                       {section.email.label}
+                      <span className="text-red-600 pl-[2px]">*</span>
                     </label>
                   )}
                   <input
@@ -1552,8 +1552,8 @@ export function JobApplication({ section }) {
                 <div className="form-row">
                   {section?.contactNumber?.label && (
                     <label className="contact-label" htmlFor="contactNumber">
-                      <span className="text-red-600">*</span>
                       {section.contactNumber.label}
+                      <span className="text-red-600 pl-[2px]">*</span>
                     </label>
                   )}
                   <input
@@ -1569,8 +1569,8 @@ export function JobApplication({ section }) {
                   <div className="form-row">
                     {section?.specializationLabel && (
                       <label className="contact-label" htmlFor="specialization">
-                        <span className="text-red-600">*</span>
                         {section.specializationLabel}
+                        <span className="text-red-600 pl-[2px]">*</span>
                       </label>
                     )}
                     <select
@@ -1593,8 +1593,8 @@ export function JobApplication({ section }) {
                 <div className="w-full flex flex-col">
                   {section?.resume?.label && (
                     <label className="contact-label" htmlFor="resume">
-                      <span className="text-red-600">*</span>
                       {section.resume.label}
+                      <span className="text-red-600 pl-[2px]">*</span>
                     </label>
                   )}
                   <div className="relative border border-[#727C8D] rounded-[8px]">

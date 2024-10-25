@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import ReactPaginate from 'react-paginate';
+import ReactPaginate from "react-paginate";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import GradualSpacing from "@/components/GradualSpacing";
@@ -23,8 +23,15 @@ import pattern from "@/app/assets/images/pattern.png";
 import traImage from "@/app/assets/images/tra.png";
 import construction from "@/app/assets/images/axle.jpg";
 import LastBg from "../../assets/images/footerupper.png";
+import errorImg from "../../assets/images/404-tyre.gif";
 
-export default function PageSelection({ page, slugs, pageData, sidebar, pagination }) {
+export default function PageSelection({
+  page,
+  slugs,
+  pageData,
+  sidebar,
+  pagination,
+}) {
   return (
     <>
       {page == "InvestorRelations" && (
@@ -36,7 +43,9 @@ export default function PageSelection({ page, slugs, pageData, sidebar, paginati
       )}
       {page == "ContactUs" && <ContactUs pageData={pageData} />}
       {page == "Pages" && <Pages pageData={pageData} />}
-      {page == "segments" && <Segments pageData={pageData} pagination={pagination} />}
+      {page == "segments" && (
+        <Segments pageData={pageData} pagination={pagination} />
+      )}
       {page == "products" && <Products pageData={pageData} />}
       {page == "error404" && <Error404 />}
     </>
@@ -307,7 +316,10 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form1QueryType"
                                   >
-                                    <span className="text-red-600">*</span>{section.form1QueryLabel}
+                                    {section.form1QueryLabel}
+                                    <span className="text-red-600 pl-[2px]">
+                                      *
+                                    </span>
                                   </label>
                                 )}
                                 <select
@@ -332,7 +344,10 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form1Description"
                                   >
-                                    <span className="text-red-600">*</span>{section.form1Description.label}
+                                    {section.form1Description.label}
+                                    <span className="text-red-600 pl-[2px]">
+                                      *
+                                    </span>
                                   </label>
                                 )}
                                 <input
@@ -352,7 +367,10 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form1FirstName"
                                   >
-                                    <span className="text-red-600">*</span>{section.form1FirstName.label}
+                                    {section.form1FirstName.label}
+                                    <span className="text-red-600 pl-[2px]">
+                                      *
+                                    </span>
                                   </label>
                                 )}
                                 <input
@@ -372,7 +390,10 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form1LastName"
                                   >
-                                    <span className="text-red-600">*</span>{section.form1LastName.label}
+                                    {section.form1LastName.label}
+                                    <span className="text-red-600 pl-[2px]">
+                                      *
+                                    </span>
                                   </label>
                                 )}
                                 <input
@@ -392,7 +413,10 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form1ContactNumber"
                                   >
-                                    <span className="text-red-600">*</span>{section.form1ContactNumber.label}
+                                    {section.form1ContactNumber.label}
+                                    <span className="text-red-600 pl-[2px]">
+                                      *
+                                    </span>
                                   </label>
                                 )}
                                 <input
@@ -412,7 +436,10 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form1Email"
                                   >
-                                    <span className="text-red-600">*</span>{section.form1Email.label}
+                                    {section.form1Email.label}
+                                    <span className="text-red-600 pl-[2px]">
+                                      *
+                                    </span>
                                   </label>
                                 )}
                                 <input
@@ -429,7 +456,7 @@ export function ContactUs({ pageData }) {
                               {section?.form1Concent && (
                                 <div className="flex items-start gap-2">
                                   <input
-                                  style={{"color-scheme": "none"}}
+                                    style={{ "color-scheme": "none" }}
                                     type="checkbox"
                                     className="mt-1"
                                     required
@@ -515,7 +542,10 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form2QueryType"
                                   >
-                                    <span className="text-red-600">*</span>{section.form2QueryLabel}
+                                    {section.form2QueryLabel}
+                                    <span className="text-red-600 pl-[2px]">
+                                      *
+                                    </span>
                                   </label>
                                 )}
                                 <select
@@ -540,7 +570,10 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form2Description"
                                   >
-                                    <span className="text-red-600">*</span>{section.form2Description.label}
+                                    {section.form2Description.label}
+                                    <span className="text-red-600 pl-[2px]">
+                                      *
+                                    </span>
                                   </label>
                                 )}
                                 <input
@@ -560,7 +593,10 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form2FirstName"
                                   >
-                                    <span className="text-red-600">*</span>{section.form2FirstName.label}
+                                    {section.form2FirstName.label}
+                                    <span className="text-red-600 pl-[2px]">
+                                      *
+                                    </span>
                                   </label>
                                 )}
                                 <input
@@ -580,7 +616,10 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form2LastName"
                                   >
-                                    <span className="text-red-600">*</span>{section.form2LastName.label}
+                                    {section.form2LastName.label}
+                                    <span className="text-red-600 pl-[2px]">
+                                      *
+                                    </span>
                                   </label>
                                 )}
                                 <input
@@ -600,7 +639,10 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form2ContactNumber"
                                   >
-                                    <span className="text-red-600">*</span>{section.form2ContactNumber.label}
+                                    {section.form2ContactNumber.label}
+                                    <span className="text-red-600 pl-[2px]">
+                                      *
+                                    </span>
                                   </label>
                                 )}
                                 <input
@@ -620,7 +662,10 @@ export function ContactUs({ pageData }) {
                                     className="contact-label"
                                     htmlFor="form2Email"
                                   >
-                                    <span className="text-red-600">*</span>{section.form2Email.label}
+                                    {section.form2Email.label}
+                                    <span className="text-red-600 pl-[2px]">
+                                      *
+                                    </span>
                                   </label>
                                 )}
                                 <input
@@ -637,7 +682,7 @@ export function ContactUs({ pageData }) {
                               {section?.form2Concent && (
                                 <div className="flex items-start gap-2">
                                   <input
-                                  style={{"color-scheme": "none"}}
+                                    style={{ "color-scheme": "none" }}
                                     type="checkbox"
                                     className="mt-1"
                                     required
@@ -999,19 +1044,21 @@ export function Segments({ pageData, pagination }) {
   const [meta, setProductsMeta] = useState({});
   const handlePageClick = (event) => {
     const selectedPage = event.selected;
-    if(selectedPage == 0){
-      if(pathname.includes("/page/")){
-        push(pathname.replace(/\/page\/\d+/, ''));
+    if (selectedPage == 0) {
+      if (pathname.includes("/page/")) {
+        push(pathname.replace(/\/page\/\d+/, ""));
       }
-    }else{
-      if(pathname.includes("/page/")){
-        push(pathname.replace(/\/page\/\d+/, '/page/'+(selectedPage+1)));
-      }else{
-        push(pathname.replace(pathname, pathname+'/page/'+(selectedPage+1)));
+    } else {
+      if (pathname.includes("/page/")) {
+        push(pathname.replace(/\/page\/\d+/, "/page/" + (selectedPage + 1)));
+      } else {
+        push(
+          pathname.replace(pathname, pathname + "/page/" + (selectedPage + 1))
+        );
       }
     }
   };
- 
+
   const updateItem = (index, newValue) => {
     setValue((prevData) => {
       const newData = [...prevData];
@@ -1019,7 +1066,7 @@ export function Segments({ pageData, pagination }) {
       return newData;
     });
   };
- 
+
   const productFilters = (value) => {
     const filterQueries = [];
     if (pageData?.filters && pageData.filters.length > 4) {
@@ -1062,7 +1109,7 @@ export function Segments({ pageData, pagination }) {
       filterQueries.length > 0 ? "&" + filterQueries.join("&") : "";
     fetchData(queryString);
   };
- 
+
   const fetchData = async (query) => {
     try {
       const response = await fetch(
@@ -1077,7 +1124,7 @@ export function Segments({ pageData, pagination }) {
       console.error("Error fetching data:", error);
     }
   };
- 
+
   useEffect(() => {
     const fetchInitialData = async () => {
       try {
@@ -1093,10 +1140,10 @@ export function Segments({ pageData, pagination }) {
         console.error("Error fetching initial data:", error);
       }
     };
- 
+
     fetchInitialData();
   }, [pageData]);
- 
+
   const subSegmentOptions = new Set();
   const machineryOptions = new Set();
   const rimOptions = new Set();
@@ -1137,9 +1184,9 @@ export function Segments({ pageData, pagination }) {
           Array.from(sizeOptions),
           Array.from(patternOptions),
         ];
- 
+
   // if(productsData.length == 0) return <Error404/>
- 
+
   return (
     <>
       <PageBanner Title={pageData.title} Banner={pageData.hero} />
@@ -1246,22 +1293,54 @@ export function Segments({ pageData, pagination }) {
               ))}
             </div>
           )}
-          {meta?.pagination &&
+          {meta?.pagination && (
             <ReactPaginate
-              previousLabel={'previous'}
-              nextLabel={'next'}
-              breakLabel={'...'}
-              breakClassName={'break-me'}
-              pageCount={(meta.pagination.pageCount)}
+              previousLabel={
+                <svg
+                  width="9"
+                  height="14"
+                  viewBox="0 0 9 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.5 13.25L1.25 7L7.5 0.75"
+                    stroke="#2E3192"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              }
+              nextLabel={
+                <svg
+                  width="9"
+                  height="14"
+                  viewBox="0 0 9 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.5 0.75L7.75 7L1.5 13.25"
+                    stroke="#2E3192"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              }
+              breakLabel={"..."}
+              breakClassName={"break-me"}
+              pageCount={meta.pagination.pageCount}
               marginPagesDisplayed={1}
               pageRangeDisplayed={3}
               onPageChange={handlePageClick}
-              containerClassName={'pagination'}
-              subContainerClassName={'pages pagination'}
-              activeClassName={'active'}
-              forcePage={(meta.pagination.page-1)}
+              containerClassName={"productPagination"}
+              subContainerClassName={"pages pagination"}
+              activeClassName={"active"}
+              forcePage={meta.pagination.page - 1}
             />
-          }
+          )}
         </div>
       </section>
       <PageEnd EndPageData={pageData?.end} />
@@ -1752,10 +1831,26 @@ export function Error404() {
       <div class="container mx-auto">
         <div class="flex flex-col xl:flex-row gap-2 md:gap-10 xl:gap-[60px] items-center">
           <div class="error-text w-full xl:w-[50%] flex justify-center xl:items-start">
-            <span className="text-[#000000] text-[160px] xl:text-[240px] font-bold text-center">404</span>
+            <div className="flex items-center">
+              <span className="text-[#000000] text-[160px] xl:text-[240px] font-bold text-center translate-x-[20px] xl:translate-x-[40px]">
+                4
+              </span>
+              <Image
+                className="w-[120px] h-[120px] xl:w-[250px] xl:h-[250px]"
+                src={errorImg}
+                alt="errorigif"
+              />
+              <span className="text-[#000000] text-[160px] xl:text-[240px] font-bold text-center ml-[-10px]">
+                4
+              </span>
+            </div>
           </div>
           <div class="error-detail relative z-1 w-full xl:w-[50%] flex flex-col items-center xl:items-start gap-4 md:gap-8 lg:gap-10 2xl:gap-[60px]">
-            <Image className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-[-1]" src={BGTiger2} />
+            <Image
+              className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-[-1]"
+              src={BGTiger2}
+              alt="bgtiger"
+            />
             <span className="section-heading">404 error</span>
             <h2 className="section-title">Oops! Page Not Found</h2>
             <p className="text-[#1A1D21] text-[20px] lg:text-[28px] 2xl:text-[32px] font-medium leading-[1.1] text-center xl:text-start">
