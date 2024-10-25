@@ -1068,6 +1068,7 @@ export function Segments({ pageData, pagination }) {
   };
 
   const productFilters = (value) => {
+    setProductsData([]);
     const filterQueries = [];
     if (pageData?.filters && pageData.filters.length > 4) {
       if (value[0]) filterQueries.push(`filters[sub_segment][$eq]=${value[0]}`);
@@ -1185,7 +1186,12 @@ export function Segments({ pageData, pagination }) {
           Array.from(patternOptions),
         ];
 
-  // if(productsData.length == 0) return <Error404/>
+  if (typeof meta === "undefined" || 
+  (meta.pagination && 
+  meta.pagination.pageCount > 0 && 
+  meta.pagination.pageCount < meta.pagination.page)) {
+    return <Error404 />;
+  }
 
   return (
     <>
@@ -1286,61 +1292,69 @@ export function Segments({ pageData, pagination }) {
               </button>
             </div>
           )}
-          {productsData.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10 2xl:gap-[50px]">
-              {productsData.map((product) => (
-                <Product key={product.id} data={product} />
-              ))}
-            </div>
-          )}
-          {meta?.pagination && (
-            <ReactPaginate
-              previousLabel={
-                <svg
-                  width="9"
-                  height="14"
-                  viewBox="0 0 9 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7.5 13.25L1.25 7L7.5 0.75"
-                    stroke="#2E3192"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              }
-              nextLabel={
-                <svg
-                  width="9"
-                  height="14"
-                  viewBox="0 0 9 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1.5 0.75L7.75 7L1.5 13.25"
-                    stroke="#2E3192"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              }
-              breakLabel={"..."}
-              breakClassName={"break-me"}
-              pageCount={meta.pagination.pageCount}
-              marginPagesDisplayed={1}
-              pageRangeDisplayed={3}
-              onPageChange={handlePageClick}
-              containerClassName={"productPagination"}
-              subContainerClassName={"pages pagination"}
-              activeClassName={"active"}
-              forcePage={meta.pagination.page - 1}
-            />
-          )}
+                    {productsData && 
+            productsData.length > 0 ? (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10 2xl:gap-[50px]">
+                  {productsData.map((product) => (
+                    <Product key={product.id} data={product} />
+                  ))}
+                </div>
+                {meta?.pagination?.pageCount > 0 &&
+                  <>
+                    <ReactPaginate
+                      previousLabel={
+                        <svg
+                          width="9"
+                          height="14"
+                          viewBox="0 0 9 14"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M7.5 13.25L1.25 7L7.5 0.75"
+                            stroke="#2E3192"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      }
+                      nextLabel={
+                        <svg
+                          width="9"
+                          height="14"
+                          viewBox="0 0 9 14"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M1.5 0.75L7.75 7L1.5 13.25"
+                            stroke="#2E3192"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      }
+                      breakLabel={"..."}
+                      breakClassName={"break-me"}
+                      pageCount={meta.pagination.pageCount}
+                      marginPagesDisplayed={1}
+                      pageRangeDisplayed={3}
+                      onPageChange={handlePageClick}
+                      containerClassName={"productPagination"}
+                      subContainerClassName={"pages pagination"}
+                      activeClassName={"active"}
+                      forcePage={(meta.pagination.page - 1)}
+                    />
+                  </>
+                }
+              </>
+            ) : (
+              <p>{meta?.pagination?.pageCount == 0 ? "Sorry, we can't find your combination search!" : "Please wait, your products are loading."}</p>
+            )
+          }
         </div>
       </section>
       <PageEnd EndPageData={pageData?.end} />
