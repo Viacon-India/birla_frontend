@@ -2054,7 +2054,15 @@ export function SidebarContent({ section }) {
                     : "bg-transparent"
                 }`}
                 key={collection.id}
-                onClick={() => setActiveTab(collection.id)}
+                onClick={() => {
+                  setActiveTab(collection.id);
+                  if (window.innerWidth <= 768) { // Adjust this value based on your design
+                    document.getElementById(`section-${collection.id}`).scrollIntoView({
+                      behavior: 'smooth',
+                      block: 'start',
+                    });
+                  }
+                }}
               >
                 {collection.description}
               </button>
@@ -2067,11 +2075,11 @@ export function SidebarContent({ section }) {
               className="absolute top-10 left-1/2 translate-x-[-50%]"
             />
             {section.collection.map((collection) => {
-              // if (collection.id !== activeTab) return null;
               if (isWideScreen && collection.id !== activeTab) return null;
 
               return (
                 <div
+                id={`section-${collection.id}`}
                   className="border-b border-[#C9CDD3] py-4 md:border-none md:py-0"
                   key={collection.id}
                 >
