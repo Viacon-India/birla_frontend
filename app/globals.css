@@ -8,6 +8,7 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -17,13 +18,14 @@
 }
 
 body {
-  
   background-color: #FFFFFF;
   font-family: Oak-Sans;
   overflow-x: hidden;
   @apply !font-oak-sans
 
 }
+
+
 
 /* body::-webkit-scrollbar {
   width: 3px;

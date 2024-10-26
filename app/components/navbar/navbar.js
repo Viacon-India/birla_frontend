@@ -12,37 +12,43 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [headerData, setHeaderData] = useState({});
   const [expandedSubMenu, setExpandedSubMenu] = useState(null);
+  const menuRef = useRef(null);
 
   // console.log(headerLogo);
-  // mega menu
+  // Hamburger Menu open and close
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev) => !prev);
   };
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+    } else {
+      document.removeEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   // Toggle submenu
   const toggleSubMenu = (id) => {
     setExpandedSubMenu(expandedSubMenu === id ? null : id);
   };
 
+
+  // Search Wrapper 
   const [isActive, setIsActive] = useState(false);
   const searchWrapperRef = useRef(null);
   const handleToggle = () => {
     setIsActive(prevState => !prevState);
   };
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setIsMenuOpen(false);
+    }
+  };
 
-  // Close the search wrapper if the click is outside of it
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (searchWrapperRef.current && !searchWrapperRef.current.contains(event.target)) {
-        setIsActive(false);
-      }
-    };
-
-    // document.addEventListener('mousedown', handleClickOutside);
-    // return () => {
-    //   document.removeEventListener('mousedown', handleClickOutside);
-    // };
-  }, []);
 
   useEffect(() => {
     fetch("http://birlatyres.viaconprojects.com:1337/api/header")
@@ -303,6 +309,7 @@ export default function Navbar() {
             className={`hamburger-menu h-[100%] absolute top-0 left-0 z-50 ${
               isMenuOpen ? "open" : ""
             }`}
+            ref={menuRef}
           >
             <button
               className="close text-[40px] absolute right-4 top-[18px] md:top-4 z-1"
