@@ -783,8 +783,6 @@ export function Pages({ pageData }) {
   );
 }
 
-
-
 export function Segments({ pageData, pagination }) {
   const { push } = useRouter();
   const pathname = usePathname();
@@ -938,15 +936,17 @@ export function Segments({ pageData, pagination }) {
           Array.from(patternOptions),
         ];
 
-  if (typeof meta === "undefined" || 
-  (meta.pagination && 
-  meta.pagination.pageCount > 0 && 
-  meta.pagination.pageCount < meta.pagination.page)) {
+  if (
+    typeof meta === "undefined" ||
+    (meta.pagination &&
+      meta.pagination.pageCount > 0 &&
+      meta.pagination.pageCount < meta.pagination.page)
+  ) {
     return <Error404 />;
   }
 
   return (
-    <> 
+    <>
       <PageBanner Title={pageData.title} Banner={pageData.hero} />
       <section className="product-sec mt-10 md:mt-[60px] 2xl:mt-[100px]">
         <div className="container mx-auto overflow-hidden flex flex-col gap-4 md:gap-6 2xl:gap-10">
@@ -1044,69 +1044,71 @@ export function Segments({ pageData, pagination }) {
               </button>
             </div>
           )}
-                    {productsData && 
-            productsData.length > 0 ? (
-              <>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10 2xl:gap-[50px]">
-                  {productsData.map((product) => (
-                    <Product key={product.id} data={product} />
-                  ))}
-                </div>
-                {meta?.pagination?.pageCount > 0 &&
-                  <>
-                    <ReactPaginate
-                      previousLabel={
-                        <svg
-                          width="9"
-                          height="14"
-                          viewBox="0 0 9 14"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M7.5 13.25L1.25 7L7.5 0.75"
-                            stroke="#2E3192"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </svg>
-                      }
-                      nextLabel={
-                        <svg
-                          width="9"
-                          height="14"
-                          viewBox="0 0 9 14"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M1.5 0.75L7.75 7L1.5 13.25"
-                            stroke="#2E3192"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </svg>
-                      }
-                      breakLabel={"..."}
-                      breakClassName={"break-me"}
-                      pageCount={meta.pagination.pageCount}
-                      marginPagesDisplayed={1}
-                      pageRangeDisplayed={3}
-                      onPageChange={handlePageClick}
-                      containerClassName={"productPagination"}
-                      subContainerClassName={"pages pagination"}
-                      activeClassName={"active"}
-                      forcePage={(meta.pagination.page - 1)}
-                    />
-                  </>
-                }
-              </>
-            ) : (
-              <p className="text-[16px] md:text-[24px] text-center font-semibold">{meta?.pagination?.pageCount == 0 ? "Sorry, we can't find your combination search!" : "Please wait, your products are loading."}</p>
-            )
-          }
+          {productsData && productsData.length > 0 ? (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10 2xl:gap-[50px]">
+                {productsData.map((product) => (
+                  <Product key={product.id} data={product} />
+                ))}
+              </div>
+              {meta?.pagination?.pageCount > 0 && (
+                <>
+                  <ReactPaginate
+                    previousLabel={
+                      <svg
+                        width="9"
+                        height="14"
+                        viewBox="0 0 9 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.5 13.25L1.25 7L7.5 0.75"
+                          stroke="#2E3192"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    }
+                    nextLabel={
+                      <svg
+                        width="9"
+                        height="14"
+                        viewBox="0 0 9 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1.5 0.75L7.75 7L1.5 13.25"
+                          stroke="#2E3192"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    }
+                    breakLabel={"..."}
+                    breakClassName={"break-me"}
+                    pageCount={meta.pagination.pageCount}
+                    marginPagesDisplayed={1}
+                    pageRangeDisplayed={3}
+                    onPageChange={handlePageClick}
+                    containerClassName={"productPagination"}
+                    subContainerClassName={"pages pagination"}
+                    activeClassName={"active"}
+                    forcePage={meta.pagination.page - 1}
+                  />
+                </>
+              )}
+            </>
+          ) : (
+            <p className="text-[16px] md:text-[24px] text-center font-semibold">
+              {meta?.pagination?.pageCount == 0
+                ? "Sorry, we can't find your combination search!"
+                : "Please wait, your products are loading."}
+            </p>
+          )}
         </div>
       </section>
       <PageEnd EndPageData={pageData?.end} />
@@ -1116,6 +1118,86 @@ export function Segments({ pageData, pagination }) {
 
 export function Products({ pageData }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  useEffect(() => {
+    var magnifierSize = 200;
+    var magnification = 3;
+  
+    function magnifier() {
+      this.magnifyImg = function (ptr, magnification, magnifierSize) {
+        var $pointer;
+        if (typeof ptr === "string") {
+          $pointer = $(ptr);
+        } else if (typeof ptr === "object") {
+          $pointer = ptr;
+        }
+  
+        magnification = +magnification;
+  
+        $pointer.hover(
+          function () {
+            $(this).css("cursor", "none");
+            $(".magnify").show();
+  
+            // Setting variables for later use
+            var width = $(this).width();
+            var height = $(this).height();
+            var src = $(this).attr("src");
+            var imagePos = $(this).offset();
+            var image = $(this);
+  
+            if (magnifierSize === undefined) {
+              magnifierSize = "150px";
+            }
+  
+            $(".magnify").css({
+              "background-size": width * magnification + "px " + height * magnification + "px",
+              "background-image": 'url("' + src + '")',
+              width: magnifierSize,
+              height: magnifierSize,
+            });
+  
+            var magnifyOffset = +($(".magnify").width() / 2);
+            var rightSide = imagePos.left + $(this).width();
+            var bottomSide = imagePos.top + $(this).height();
+  
+            $(document).mousemove(function (e) {
+              if (
+                e.pageX < imagePos.left - magnifyOffset / 6 ||
+                e.pageX > rightSide + magnifyOffset / 6 ||
+                e.pageY < imagePos.top - magnifyOffset / 6 ||
+                e.pageY > bottomSide + magnifyOffset / 6
+              ) {
+                $(".magnify").hide();
+                $(document).unbind("mousemove");
+              }
+              var backgroundPos =
+                "" -
+                (e.pageX - imagePos.left) * magnification + -magnifyOffset + "px " +
+                -((e.pageY - imagePos.top) * magnification - magnifyOffset) + "px";
+              $(".magnify").css({
+                left: e.pageX - magnifyOffset,
+                top: e.pageY - magnifyOffset,
+                "background-position": backgroundPos,
+              });
+            });
+          },
+          function () {}
+        );
+      };
+  
+      this.init = function () {
+        $("body").prepend('<div class="magnify"></div>');
+      };
+  
+      return this.init();
+    }
+  
+    var magnify = new magnifier();
+    magnify.magnifyImg(".productDetailSwiper img", magnification, magnifierSize);
+  }, [pageData]);
+  
+
   return (
     <>
       <section className="pt-[100px] 2xl:pt-[140px] bg-[#F8F8F8]">
@@ -1212,14 +1294,14 @@ export function Products({ pageData }) {
                     }}
                     thumbs={{ swiper: thumbsSwiper }}
                     modules={[FreeMode, Autoplay, Navigation, Thumbs]}
-                    className="productDetailSwiper !py-10"
+                    className="productDetailSwiper !py-10 overflow-hidden"
                   >
                     {pageData?.gallery?.map((gallery) => (
                       <SwiperSlide
                         key={gallery.id}
                         className="!flex !justify-center"
                       >
-                        <figure className="w-[180px] 2xl:w-[260px] h-[240px] 2xl:h-[380px] pt-3 md:pt-0">
+                        <figure className="w-[180px] 2xl:w-[260px] h-[240px] 2xl:h-[380px] pt-3 md:pt-0 magnifiedImg">
                           <Image
                             width={gallery?.width}
                             height={gallery?.height}
@@ -1636,6 +1718,3 @@ export function Error404() {
     </div>
   );
 }
-
-
-
