@@ -791,7 +791,7 @@ export function Segments({ pageData, pagination }) {
   const [value, setValue] = useState([]);
   const [productsData, setProductsData] = useState([]);
   const [filterData, setFilterData] = useState([]);
-  const pageSize = 1;
+  const pageSize = 9;
   const currentPage = pagination;
   const [meta, setProductsMeta] = useState({});
   const handlePageClick = (event) => {
