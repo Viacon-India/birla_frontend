@@ -946,7 +946,7 @@ export function Segments({ pageData, pagination }) {
   }
 
   return (
-    <>
+    <> 
       <PageBanner Title={pageData.title} Banner={pageData.hero} />
       <section className="product-sec mt-10 md:mt-[60px] 2xl:mt-[100px]">
         <div className="container mx-auto overflow-hidden flex flex-col gap-4 md:gap-6 2xl:gap-10">
