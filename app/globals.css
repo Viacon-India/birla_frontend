@@ -27,12 +27,11 @@ body {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #F5811E transparent !important;
+  scrollbar-color: #F5811E #FFFFFF !important;
 }
 
 
 
-  
 ol, ul{
   @apply pl-4
 }
