@@ -47,7 +47,7 @@ export default function Product({ data }) {
         >
           {data.premium ? "Premium" : "Standard"}
         </span>
-        <div class="flex gap-8 px-4 pt-4">
+        <div class="flex gap-8 px-4 pt-4 xl:justify-between">
           {data?.type && (
             <div class="new-product-iconListSec flex flex-col gap-6 2xl:gap-10">
               {data.type?.load && (
