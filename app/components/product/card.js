@@ -183,6 +183,7 @@ export default function Product({ data }) {
                               : "icon"
                           }
                         />
+                        {/* <span className=" absolute left-0 top-[-20px] bg-red-600">{vehicle.name}</span> */}
                       </figure>
                     )
                   ))}
