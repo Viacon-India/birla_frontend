@@ -1,4 +1,5 @@
 // components/Map.js
+"use client"
 import React from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 
@@ -14,9 +15,10 @@ const Map = () => {
   const [selected, setSelected] = React.useState(null);
 
   return (
-    <LoadScript googleMapsApiKey="YOUR_API_KEY">
+    <LoadScript googleMapsApiKey="">
       <GoogleMap
-        mapContainerStyle={{ width: '500px', height: '400px' }}
+        mapContainerStyle={{ width: '100%', height: '100%', borderRadius: '4px' }}
+        // className="w-full !h-[335px] 2xl:!h-[550px] rounded-[4px]"
         center={{ lat: -33.92, lng: 151.25 }}
         zoom={10}
       >

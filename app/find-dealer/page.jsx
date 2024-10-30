@@ -10,7 +10,7 @@ import dealer2 from "../assets/images/dealer2.png";
 import BGTiger from "../assets/images/tiger-mask3.png";
 import { PageBanner } from "../components/pageCommon/pageCommon";
 import { PageEnd } from "../components/pageCommon/pageCommon";
-// import Map from "../components/Map";
+import Map from "../components/Map";
 
 export default function DealerLocator() {
   const dealers = [
@@ -410,14 +410,11 @@ export default function DealerLocator() {
               </div>
             </div>
             <div class="map-sec lg:w-[70%]">
-              <iframe src="//maps.google.com/maps?q=53.3381768,-6.2613077&z=15&output=embed"></iframe>
+              <Map />
             </div>
           </div>
         </div>
       </section>
-      {/* <section className="pt-[200px]">
-        <Map />
-      </section> */}
       <PageEnd
         EndStaticImage={dealer2}
         Title="Contact Us"
