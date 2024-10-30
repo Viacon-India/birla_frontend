@@ -166,27 +166,29 @@ export default function Product({ data }) {
           ))} */}
           {data?.vehicle_types &&
             data.vehicle_types.length > 0 &&
-            <div className="w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] p-2">
-              <div className="overflow-x-hidden">
-                <div className="h-8 object-cover animate-[moveLtoR_6s_infinite] flex justify-center items-center gap-1 w-max">
-                  {data.vehicle_types.map((vehicle) => (
-                    vehicle?.icon && (
-                      <figure key={vehicle.id} className="tooltip" data-tip={vehicle.name}>
-                        <Image
-                          src={getStrapiMedia(vehicle.icon?.url)}
-                          class="h-8 w-full object-cover"
-                          width={vehicle.icon?.width}
-                          height={vehicle.icon?.height}
-                          alt={
-                            vehicle.icon?.alternativeText
-                              ? vehicle.icon.alternativeText
-                              : "icon"
-                          }
-                        />
-                        {/* <span className=" absolute left-0 top-[-20px] bg-red-600">{vehicle.name}</span> */}
-                      </figure>
-                    )
-                  ))}
+            <div className="tooltip" data-tip={data.vehicle_types.map(vehicle => vehicle.name).join(', ')}>
+              <div className="w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] p-2">
+                <div className="overflow-x-hidden">
+                  <div className="h-8 object-cover animate-[moveLtoR_6s_infinite] flex justify-center items-center gap-1 w-max">
+                    {data.vehicle_types.map((vehicle) => (
+                      vehicle?.icon && (
+                        <figure key={vehicle.id}>
+                          <Image
+                            src={getStrapiMedia(vehicle.icon?.url)}
+                            class="h-8 w-full object-cover"
+                            width={vehicle.icon?.width}
+                            height={vehicle.icon?.height}
+                            alt={
+                              vehicle.icon?.alternativeText
+                                ? vehicle.icon.alternativeText
+                                : "icon"
+                            }
+                          />
+                          {/* <span className=" absolute left-0 top-[-20px] bg-red-600">{vehicle.name}</span> */}
+                        </figure>
+                      )
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
