@@ -13,9 +13,8 @@ import { Float, MainButton, PageEnd } from "@/app/components/pageCommon/pageComm
 import Banner from "@/app/assets/images/find1.jpg";
 import find2 from "@/app/assets/images/find2.png";
 import Product from "@/app/components/product/card";
-import { delay } from "framer-motion";
 
-const FindTyre = () => {
+const FindTyre = ({params}) => {
   const { push } = useRouter();
   const searchParams = new URLSearchParams(useSearchParams());
   const pathname = usePathname();
@@ -25,18 +24,33 @@ const FindTyre = () => {
   const [activeTabIndex, setActiveTabIndex] = useState(searchParams.get("index") ? searchParams.get("index") : 0);
   const [productData, setProductsData] = useState([]);
   const pageSize = 9;
-  const currentPage = 1;
+  const currentPage = params.pagenumber;
+  console.log(currentPage);
   const [meta, setProductsMeta] = useState({});
-  
+
   const handlePageClick = (event) => {
     const selectedPage = event.selected;
-    push(
-      pathname.replace(pathname, pathname + "/page/" + (selectedPage + 1) + "?" + searchParams.toString())
-    );
+    if (selectedPage == 0) {
+      if (pathname.includes("/page/")) {
+        push(pathname.replace(/\/page\/\d+/, "?" + searchParams.toString()));
+      }
+    } else {
+      if (pathname.includes("/page/")) {
+        push(pathname.replace(/\/page\/\d+/, "/page/" + (selectedPage + 1) + "?" + searchParams.toString()));
+      } else {
+        push(
+          pathname.replace(pathname, pathname + "/page/" + (selectedPage + 1) + "?" + searchParams.toString())
+        );
+      }
+    }
   };
 
   const handleClick = (category,index) => {
-    push(pathname.replace("find-tyre", "find-tyre?category="+category+"&index="+index));
+    if (pathname.includes("/page/")) {
+      push(pathname.replace(/\/page\/\d+/, "?category="+category+"&index="+index));
+    }else{
+      push(pathname.replace("find-tyre", "find-tyre?category="+category+"&index="+index));
+    }
     setActiveTab(category);
     setActiveTabIndex(index);
     fetchData('');
@@ -148,10 +162,9 @@ const FindTyre = () => {
         if(searchParams.has("pattern_type")) searchParams.delete("pattern_type");
       }
     }
-    const queryString = filterQueries.length > 0 ? '&' + filterQueries.join('&') : '';
-    return queryString;
+    return filterQueries.length > 0 ? '&' + filterQueries.join('&') : '';
   }
-  
+
   const productFilters = (submitValue) => {
     setProductsData([]);
     fetchData(queryToString(submitValue));
@@ -165,8 +178,6 @@ const FindTyre = () => {
       setPageData(page);
     });
   }, []);
-
-
 
   const fetchData = async (query) => {
     try {
@@ -496,9 +507,9 @@ const FindTyre = () => {
   );
 }
 
-const FindTyrePage = () => (
+const FindTyrePage = ({params}) => (
   <Suspense fallback={<div>Loading...</div>}>
-    <FindTyre />
+    <FindTyre params={params}/>
   </Suspense>
 );
 

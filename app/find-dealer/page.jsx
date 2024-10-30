@@ -4,14 +4,20 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
-import {Float} from "../components/pageCommon/pageCommon";
+import { Float } from "../components/pageCommon/pageCommon";
 import Banner from "../assets/images/dealer1.jpg";
 import dealer2 from "../assets/images/dealer2.png";
 import BGTiger from "../assets/images/tiger-mask3.png";
 import { PageBanner } from "../components/pageCommon/pageCommon";
 import { PageEnd } from "../components/pageCommon/pageCommon";
+// import Map from "../components/Map";
 
 export default function DealerLocator() {
+  const dealers = [
+    { id: 1, name: "Dealer 1", lat: 40.7128, lng: -74.006 },
+    { id: 2, name: "Dealer 2", lat: 34.0522, lng: -118.2437 },
+    // Add more dealers as needed
+  ];
   return (
     <>
       <Navbar />
@@ -409,7 +415,14 @@ export default function DealerLocator() {
           </div>
         </div>
       </section>
-      <PageEnd EndStaticImage={dealer2} Title="Contact Us" TitleLink="/contact-us" />
+      {/* <section className="pt-[200px]">
+        <Map />
+      </section> */}
+      <PageEnd
+        EndStaticImage={dealer2}
+        Title="Contact Us"
+        TitleLink="/contact-us"
+      />
       <Footer />
     </>
   );
