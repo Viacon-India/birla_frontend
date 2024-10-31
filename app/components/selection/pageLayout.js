@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import $ from "jquery";
 import ReactPaginate from "react-paginate";
-import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import GradualSpacing from "@/components/GradualSpacing";
 import { cn } from "@/lib/utils";
 import { getStrapiMedia } from "@/lib/utils";
@@ -45,7 +44,9 @@ export default function PageSelection({
       {page == "ContactUs" && <ContactUs pageData={pageData} />}
       {page == "Pages" && <Pages pageData={pageData} />}
       {page == "segments" && (
-        <Segments pageData={pageData} pagination={pagination} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Segments pageData={pageData} pagination={pagination} />
+        </Suspense>
       )}
       {page == "products" && <Products pageData={pageData} />}
       {page == "error404" && <Error404 />}
@@ -783,8 +784,10 @@ export function Pages({ pageData }) {
   );
 }
 
-export function Segments({ pageData, pagination }) {
+
+const Segments = ({ pageData, pagination }) => {
   const { push } = useRouter();
+  const searchParams = new URLSearchParams(useSearchParams());
   const pathname = usePathname();
   const [value, setValue] = useState([]);
   const [productsData, setProductsData] = useState([]);
@@ -796,14 +799,14 @@ export function Segments({ pageData, pagination }) {
     const selectedPage = event.selected;
     if (selectedPage == 0) {
       if (pathname.includes("/page/")) {
-        push(pathname.replace(/\/page\/\d+/, ""));
+        push(pathname.replace(/\/page\/\d+/, "?" + searchParams.toString()));
       }
     } else {
       if (pathname.includes("/page/")) {
-        push(pathname.replace(/\/page\/\d+/, "/page/" + (selectedPage + 1)));
+        push(pathname.replace(/\/page\/\d+/, "/page/" + (selectedPage + 1) + "?" + searchParams.toString()));
       } else {
         push(
-          pathname.replace(pathname, pathname + "/page/" + (selectedPage + 1))
+          pathname.replace(pathname, pathname + "/page/" + (selectedPage + 1) + "?" + searchParams.toString())
         );
       }
     }
@@ -817,48 +820,150 @@ export function Segments({ pageData, pagination }) {
     });
   };
 
-  const productFilters = (value) => {
-    setProductsData([]);
+  const queryToString = (queryToStringValue) => {
     const filterQueries = [];
-    if (pageData?.filters && pageData.filters.length > 4) {
-      if (value[0]) filterQueries.push(`filters[sub_segment][$eq]=${value[0]}`);
-      if (value[1])
-        filterQueries.push(
-          `filters[tables][table][row][machinery][name][$eq]=${value[1]}`
-        );
-      if (value[2])
-        filterQueries.push(
-          `filters[tables][table][row][rim_recommended][$eq]=${value[2]}`
-        );
-      if (value[3])
-        filterQueries.push(
-          `filters[tables][table][row][size][$eq]=${value[3]}`
-        );
-      if (value[4])
-        filterQueries.push(
-          `filters[tables][table][row][pattern_type][$eq]=${value[4]}`
-        );
+    if(pageData?.filters && pageData.filters.length > 4) {
+      if(queryToStringValue[0]){
+        if(searchParams.has("sub_segment")){
+          searchParams.set("sub_segment",queryToStringValue[0]);
+        }else{
+          searchParams.append("sub_segment",queryToStringValue[0]);
+        }
+        filterQueries.push(`filters[sub_segment][$eq]=${queryToStringValue[0]}`);
+      }else{
+        if(searchParams.has("sub_segment")) searchParams.delete("sub_segment");
+      }
+      if(queryToStringValue[1]){
+        if(searchParams.has("machinery")){
+          searchParams.set("machinery",queryToStringValue[1]);
+        }else{
+          searchParams.append("machinery",queryToStringValue[1]);
+        }
+        filterQueries.push(`filters[tables][table][row][machinery][name][$eq]=${queryToStringValue[1]}`);
+      }else{
+        if(searchParams.has("machinery")) searchParams.delete("machinery");
+      }
+      if(queryToStringValue[2]){
+        if(searchParams.has("rim_recommended")){
+          searchParams.set("rim_recommended",queryToStringValue[2]);
+        }else{
+          searchParams.append("rim_recommended",queryToStringValue[2]);
+        }
+        filterQueries.push(`filters[tables][table][row][rim_recommended][$eq]=${queryToStringValue[2]}`);
+      }else{
+        if(searchParams.has("rim_recommended")) searchParams.delete("rim_recommended");
+      }
+      if(queryToStringValue[3]){
+        if(searchParams.has("size")){
+          searchParams.set("size",queryToStringValue[3]);
+        }else{
+          searchParams.append("size",queryToStringValue[3]);
+        }
+        filterQueries.push(`filters[tables][table][row][size][$eq]=${queryToStringValue[3]}`);
+      }else{
+        if(searchParams.has("size")) searchParams.delete("size");
+      }
+      if(queryToStringValue[4]){
+        if(searchParams.has("pattern_type")){
+          searchParams.set("pattern_type",queryToStringValue[4]);
+        }else{
+          searchParams.append("pattern_type",queryToStringValue[4]);
+        }
+        filterQueries.push(`filters[tables][table][row][pattern_type][$eq]=${queryToStringValue[4]}`);
+      }else{
+        if(searchParams.has("pattern_type")) searchParams.delete("pattern_type");
+      }
     } else {
-      if (value[0])
-        filterQueries.push(
-          `filters[tables][table][row][machinery][name][$eq]=${value[0]}`
-        );
-      if (value[1])
-        filterQueries.push(
-          `filters[tables][table][row][rim_recommended][$eq]=${value[1]}`
-        );
-      if (value[2])
-        filterQueries.push(
-          `filters[tables][table][row][size][$eq]=${value[2]}`
-        );
-      if (value[3])
-        filterQueries.push(
-          `filters[tables][table][row][pattern_type][$eq]=${value[3]}`
-        );
+      if(queryToStringValue[0]){
+        if(searchParams.has("machinery")){
+          searchParams.set("machinery",queryToStringValue[0]);
+        }else{
+          searchParams.append("machinery",queryToStringValue[0]);
+        }
+        filterQueries.push(`filters[tables][table][row][machinery][name][$eq]=${queryToStringValue[0]}`);
+      }else{
+        if(searchParams.has("machinery")) searchParams.delete("machinery");
+      }
+      if(queryToStringValue[1]){
+        if(searchParams.has("rim_recommended")){
+          searchParams.set("rim_recommended",queryToStringValue[1]);
+        }else{
+          searchParams.append("rim_recommended",queryToStringValue[1]);
+        }
+        filterQueries.push(`filters[tables][table][row][rim_recommended][$eq]=${queryToStringValue[1]}`);
+      }else{
+        if(searchParams.has("rim_recommended")) searchParams.delete("rim_recommended");
+      }
+      if(queryToStringValue[2]){
+        if(searchParams.has("size")){
+          searchParams.set("size",queryToStringValue[2]);
+        }else{
+          searchParams.append("size",queryToStringValue[2]);
+        }
+        filterQueries.push(`filters[tables][table][row][size][$eq]=${queryToStringValue[2]}`);
+      }else{
+        if(searchParams.has("size")) searchParams.delete("size");
+      }
+      if(queryToStringValue[3]){
+        if(searchParams.has("pattern_type")){
+          searchParams.set("pattern_type",queryToStringValue[3]);
+        }else{
+          searchParams.append("pattern_type",queryToStringValue[3]);
+        }
+        filterQueries.push(`filters[tables][table][row][pattern_type][$eq]=${queryToStringValue[3]}`);
+      }else{
+        if(searchParams.has("pattern_type")) searchParams.delete("pattern_type");
+      }
     }
-    const queryString =
-      filterQueries.length > 0 ? "&" + filterQueries.join("&") : "";
-    fetchData(queryString);
+    return filterQueries.length > 0 ? '&' + filterQueries.join('&') : '';
+  }
+
+  const productFilters = (submitValue) => {
+    setProductsData([]);
+    fetchData(queryToString(submitValue));
+    if(searchParams.toString()){
+      push(pathname.replace(/\/page\/\d+/, "")+"?"+searchParams.toString());
+    }
+    // const filterQueries = [];
+    // if (pageData?.filters && pageData.filters.length > 4) {
+    //   if (value[0]) filterQueries.push(`filters[sub_segment][$eq]=${value[0]}`);
+    //   if (value[1])
+    //     filterQueries.push(
+    //       `filters[tables][table][row][machinery][name][$eq]=${value[1]}`
+    //     );
+    //   if (value[2])
+    //     filterQueries.push(
+    //       `filters[tables][table][row][rim_recommended][$eq]=${value[2]}`
+    //     );
+    //   if (value[3])
+    //     filterQueries.push(
+    //       `filters[tables][table][row][size][$eq]=${value[3]}`
+    //     );
+    //   if (value[4])
+    //     filterQueries.push(
+    //       `filters[tables][table][row][pattern_type][$eq]=${value[4]}`
+    //     );
+    // } else {
+    //   if (value[0])
+    //     filterQueries.push(
+    //       `filters[tables][table][row][machinery][name][$eq]=${value[0]}`
+    //     );
+    //   if (value[1])
+    //     filterQueries.push(
+    //       `filters[tables][table][row][rim_recommended][$eq]=${value[1]}`
+    //     );
+    //   if (value[2])
+    //     filterQueries.push(
+    //       `filters[tables][table][row][size][$eq]=${value[2]}`
+    //     );
+    //   if (value[3])
+    //     filterQueries.push(
+    //       `filters[tables][table][row][pattern_type][$eq]=${value[3]}`
+    //     );
+    // }
+    // const queryString =
+    //   filterQueries.length > 0 ? "&" + filterQueries.join("&") : "";
+    // fetchData(queryString);
   };
 
   const fetchData = async (query) => {
@@ -1115,6 +1220,7 @@ export function Segments({ pageData, pagination }) {
     </>
   );
 }
+
 
 export function Products({ pageData }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
