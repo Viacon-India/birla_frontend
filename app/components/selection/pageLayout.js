@@ -1118,11 +1118,24 @@ export function Segments({ pageData, pagination }) {
 
 export function Products({ pageData }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [selectedStandard, setSelectedStandard] = useState(null);
+
+
+  // table tab 
+  useEffect(() => {
+    if (pageData?.tables?.table?.length > 0) {
+      setSelectedStandard(pageData.tables.table[0].standard);
+    }
+  }, [pageData]);
+
+  const handleStandardChange = (standard) => {
+    setSelectedStandard(standard);
+  };
 
   useEffect(() => {
     var magnifierSize = 200;
     var magnification = 3;
-  
+
     function magnifier() {
       this.magnifyImg = function (ptr, magnification, magnifierSize) {
         var $pointer;
@@ -1131,36 +1144,37 @@ export function Products({ pageData }) {
         } else if (typeof ptr === "object") {
           $pointer = ptr;
         }
-  
+
         magnification = +magnification;
-  
+
         $pointer.hover(
           function () {
             $(this).css("cursor", "none");
             $(".magnify").show();
-  
+
             // Setting variables for later use
             var width = $(this).width();
             var height = $(this).height();
             var src = $(this).attr("src");
             var imagePos = $(this).offset();
             var image = $(this);
-  
+
             if (magnifierSize === undefined) {
               magnifierSize = "150px";
             }
-  
+
             $(".magnify").css({
-              "background-size": width * magnification + "px " + height * magnification + "px",
+              "background-size":
+                width * magnification + "px " + height * magnification + "px",
               "background-image": 'url("' + src + '")',
               width: magnifierSize,
               height: magnifierSize,
             });
-  
+
             var magnifyOffset = +($(".magnify").width() / 2);
             var rightSide = imagePos.left + $(this).width();
             var bottomSide = imagePos.top + $(this).height();
-  
+
             $(document).mousemove(function (e) {
               if (
                 e.pageX < imagePos.left - magnifyOffset / 6 ||
@@ -1173,8 +1187,10 @@ export function Products({ pageData }) {
               }
               var backgroundPos =
                 "" -
-                ((e.pageX - imagePos.left) * magnification + -magnifyOffset) + "px " +
-                -((e.pageY - imagePos.top) * magnification - magnifyOffset) + "px";
+                ((e.pageX - imagePos.left) * magnification + -magnifyOffset) +
+                "px " +
+                -((e.pageY - imagePos.top) * magnification - magnifyOffset) +
+                "px";
               $(".magnify").css({
                 left: e.pageX - magnifyOffset,
                 top: e.pageY - magnifyOffset,
@@ -1185,28 +1201,31 @@ export function Products({ pageData }) {
           function () {}
         );
       };
-  
+
       this.init = function () {
         $("body").prepend('<div class="magnify"></div>');
       };
-  
+
       return this.init();
     }
-  
-    var magnify = new magnifier();
-    magnify.magnifyImg(".productDetailSwiper img", magnification, magnifierSize);
-  }, [pageData]);
-  
 
-  const [sortOrder, setSortOrder] = useState('desc');
-  const [sortColumn, setSortColumn] = useState('size');
+    var magnify = new magnifier();
+    magnify.magnifyImg(
+      ".productDetailSwiper img",
+      magnification,
+      magnifierSize
+    );
+  }, [pageData]);
+
+  const [sortOrder, setSortOrder] = useState("desc");
+  const [sortColumn, setSortColumn] = useState("size");
 
   const handleSort = (column) => {
     if (sortColumn === column) {
-      setSortOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'));
+      setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
     } else {
       setSortColumn(column);
-      setSortOrder('asc');
+      setSortOrder("asc");
     }
   };
 
@@ -1216,83 +1235,87 @@ export function Products({ pageData }) {
         let valueA, valueB;
 
         switch (sortColumn) {
-          case 'size':
-            valueA = a.size ? a.size.toLowerCase() : '';
-            valueB = b.size ? b.size.toLowerCase() : '';
+          case "size":
+            valueA = a.size ? a.size.toLowerCase() : "";
+            valueB = b.size ? b.size.toLowerCase() : "";
             break;
-          case 'type':
-            valueA = a.type ? a.type.toLowerCase() : '';
-            valueB = b.type ? b.type.toLowerCase() : '';
+          case "type":
+            valueA = a.type ? a.type.toLowerCase() : "";
+            valueB = b.type ? b.type.toLowerCase() : "";
             break;
-          case 'ply_rating':
+          case "ply_rating":
             valueA = a.ply_rating;
             valueB = b.ply_rating;
             break;
-          case 'applications':
-            valueA = a.applications ? a.applications.toLowerCase() : '';
-            valueB = b.applications ? b.applications.toLowerCase() : '';
+          case "applications":
+            valueA = a.applications ? a.applications.toLowerCase() : "";
+            valueB = b.applications ? b.applications.toLowerCase() : "";
             break;
-          case 'construction_type':
-            valueA = a.construction_type ? a.construction_type.toLowerCase() : '';
-            valueB = b.construction_type ? b.construction_type.toLowerCase() : '';
+          case "construction_type":
+            valueA = a.construction_type
+              ? a.construction_type.toLowerCase()
+              : "";
+            valueB = b.construction_type
+              ? b.construction_type.toLowerCase()
+              : "";
             break;
-          case 'pattern_type':
-            valueA = a.pattern_type ? a.pattern_type.toLowerCase() : '';
-            valueB = b.pattern_type ? b.pattern_type.toLowerCase() : '';
+          case "pattern_type":
+            valueA = a.pattern_type ? a.pattern_type.toLowerCase() : "";
+            valueB = b.pattern_type ? b.pattern_type.toLowerCase() : "";
             break;
-          case 'tra_code':
-            valueA = a.tra_code ? a.tra_code.toLowerCase() : '';
-            valueB = b.tra_code ? b.tra_code.toLowerCase() : '';
+          case "tra_code":
+            valueA = a.tra_code ? a.tra_code.toLowerCase() : "";
+            valueB = b.tra_code ? b.tra_code.toLowerCase() : "";
             break;
-          case 'load_type':
-            valueA = a.load_type ? a.load_type.toLowerCase() : '';
-            valueB = b.load_type ? b.load_type.toLowerCase() : '';
+          case "load_type":
+            valueA = a.load_type ? a.load_type.toLowerCase() : "";
+            valueB = b.load_type ? b.load_type.toLowerCase() : "";
             break;
-          case 'rim_recommended':
+          case "rim_recommended":
             valueA = a.rim_recommended;
             valueB = b.rim_recommended;
             break;
-          case 'specified_rim_diameter':
+          case "specified_rim_diameter":
             valueA = a.specified_rim_diameter;
             valueB = b.specified_rim_diameter;
             break;
-          case 'sectional_width':
+          case "sectional_width":
             valueA = a.sectional_width;
             valueB = b.sectional_width;
             break;
-          case 'overall_diameter':
+          case "overall_diameter":
             valueA = a.overall_diameter;
             valueB = b.overall_diameter;
             break;
-          case 'tube_value_code':
-            valueA = a.tube_value_code ? a.tube_value_code.toLowerCase() : '';
-            valueB = b.tube_value_code ? b.tube_value_code.toLowerCase() : '';
+          case "tube_value_code":
+            valueA = a.tube_value_code ? a.tube_value_code.toLowerCase() : "";
+            valueB = b.tube_value_code ? b.tube_value_code.toLowerCase() : "";
             break;
-          case 'rolling_circumfrence':
+          case "rolling_circumfrence":
             valueA = a.rolling_circumfrence;
             valueB = b.rolling_circumfrence;
             break;
-          case 'static_loaded_radius':
+          case "static_loaded_radius":
             valueA = a.static_loaded_radius;
             valueB = b.static_loaded_radius;
             break;
-          case 'speed_radius_index':
+          case "speed_radius_index":
             valueA = a.speed_radius_index;
             valueB = b.speed_radius_index;
             break;
-          case 'load_index':
+          case "load_index":
             valueA = a.load_index;
             valueB = b.load_index;
             break;
-          case 'speed_symbol':
-            valueA = a.speed_symbol ? a.speed_symbol.toLowerCase() : '';
-            valueB = b.speed_symbol ? b.speed_symbol.toLowerCase() : '';
+          case "speed_symbol":
+            valueA = a.speed_symbol ? a.speed_symbol.toLowerCase() : "";
+            valueB = b.speed_symbol ? b.speed_symbol.toLowerCase() : "";
             break;
-          case 'load_range':
+          case "load_range":
             valueA = a.load_range;
             valueB = b.load_range;
             break;
-          case 'inflation_pressure':
+          case "inflation_pressure":
             valueA = a.inflation_pressure;
             valueB = b.inflation_pressure;
             break;
@@ -1300,7 +1323,7 @@ export function Products({ pageData }) {
             return 0;
         }
 
-        if (sortOrder === 'asc') {
+        if (sortOrder === "asc") {
           return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
         } else {
           return valueA > valueB ? -1 : valueA < valueB ? 1 : 0;
@@ -1622,149 +1645,319 @@ export function Products({ pageData }) {
                       Select Standard
                     </p>
                     <div className="flex items-center gap-3 2xl:gap-5">
-                      {pageData.tables.table.map(
-                        (table) =>
-                          table?.standard && (
-                            <>
-                              <input
-                                key={table.id}
-                                type="radio"
-                                id={table.standard}
-                                name="standard"
-                              />
-                              <label
-                                key={table.id}
-                                for={table.standard}
-                                className="uppercase text-[14px] font-medium text-secondary"
-                              >
-                                {table.standard}
-                              </label>
-                            </>
-                          )
+                      {pageData.tables.table.map((table) =>
+                        table?.standard ? (
+                          <div key={table.id}>
+                            <input
+                              type="radio"
+                              id={table.standard}
+                              name="standard"
+                              onChange={() =>
+                                handleStandardChange(table.standard)
+                              }
+                              checked={selectedStandard === table.standard}
+                            />
+                            <label
+                              htmlFor={table.standard}
+                              className="uppercase text-[14px] font-medium text-secondary"
+                            >
+                              {table.standard}
+                            </label>
+                          </div>
+                        ) : null
                       )}
                     </div>
                   </div>
                 )}
               </div>
               {sortedTables &&
-              sortedTables.length > 0 &&
-              sortedTables.map((table) =>
-                table?.row && table.row.length > 0 ? (
-                  <div className="product-detail-table w-full overflow-x-auto mt-3" key={table.id}>
-                    <table>
-                      <thead>
-                        <tr>
-                          {table.row[0]?.size &&
-                            <th onClick={() => handleSort('size')} style={{ cursor: 'pointer' }}>
-                              Size {sortColumn === 'size' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.type &&
-                            <th onClick={() => handleSort('type')} style={{ cursor: 'pointer' }}>
-                              Type (TT / TL) {sortColumn === 'type' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.ply_rating &&
-                            <th onClick={() => handleSort('ply_rating')} style={{ cursor: 'pointer' }}>
-                              Ply Rating {sortColumn === 'ply_rating' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.machinery &&
-                            <th>Machinery</th>
-                          }
-                          {table.row[0]?.applications &&
-                            <th onClick={() => handleSort('applications')} style={{ cursor: 'pointer' }}>
-                              Applications {sortColumn === 'applications' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.construction_type &&
-                            <th onClick={() => handleSort('construction_type')} style={{ cursor: 'pointer' }}>
-                              Construction Type {sortColumn === 'construction_type' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.pattern_type &&
-                            <th onClick={() => handleSort('pattern_type')} style={{ cursor: 'pointer' }}>
-                              Pattern Type {sortColumn === 'pattern_type' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.tra_code &&
-                            <th onClick={() => handleSort('tra_code')} style={{ cursor: 'pointer' }}>
-                              TRA Code {sortColumn === 'tra_code' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.load_type &&
-                            <th onClick={() => handleSort('load_type')} style={{ cursor: 'pointer' }}>
-                              Load Type {sortColumn === 'load_type' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.rim_recommended &&
-                            <th onClick={() => handleSort('rim_recommended')} style={{ cursor: 'pointer' }}>
-                              Rim Recommended {sortColumn === 'rim_recommended' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.specified_rim_diameter &&
-                            <th onClick={() => handleSort('specified_rim_diameter')} style={{ cursor: 'pointer' }}>
-                              Specified Rim Diameter (mm) {sortColumn === 'specified_rim_diameter' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.sectional_width &&
-                            <th onClick={() => handleSort('sectional_width')} style={{ cursor: 'pointer' }}>
-                              Sectional Width (mm) {sortColumn === 'sectional_width' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.overall_diameter &&
-                            <th onClick={() => handleSort('overall_diameter')} style={{ cursor: 'pointer' }}>
-                              Overall Diameter (mm) {sortColumn === 'overall_diameter' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.tube_value_code &&
-                            <th onClick={() => handleSort('tube_value_code')} style={{ cursor: 'pointer' }}>
-                              Tube Valve Code {sortColumn === 'tube_value_code' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.rolling_circumfrence &&
-                            <th onClick={() => handleSort('rolling_circumfrence')} style={{ cursor: 'pointer' }}>
-                              Rolling Circumference (mm) {sortColumn === 'rolling_circumfrence' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.static_loaded_radius &&
-                            <th onClick={() => handleSort('static_loaded_radius')} style={{ cursor: 'pointer' }}>
-                              Static Loaded Radius (mm) {sortColumn === 'static_loaded_radius' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.speed_radius_index &&
-                            <th onClick={() => handleSort('speed_radius_index')} style={{ cursor: 'pointer' }}>
-                              Speed Radius Index (mm) {sortColumn === 'speed_radius_index' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.load_index &&
-                            <th onClick={() => handleSort('load_index')} style={{ cursor: 'pointer' }}>
-                              Load Index {sortColumn === 'load_index' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.speed_symbol &&
-                            <th onClick={() => handleSort('speed_symbol')} style={{ cursor: 'pointer' }}>
-                              Speed Symbol {sortColumn === 'speed_symbol' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.load_range &&
-                            <th onClick={() => handleSort('load_range')} style={{ cursor: 'pointer' }}>
-                              Load Range (kg) {sortColumn === 'load_range' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                          {table.row[0]?.inflation_pressure &&
-                            <th onClick={() => handleSort('inflation_pressure')} style={{ cursor: 'pointer' }}>
-                              Inflation Pressure (psi) {sortColumn === 'inflation_pressure' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
-                            </th>
-                          }
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {table.row.map((rowData) => (
-                          <tr key={rowData.id}>
-                            {rowData?.size && <td>{rowData.size}</td>}
-                            {rowData?.type && <td>{rowData.type}</td>}
-                            {rowData?.ply_rating && (
+                sortedTables.length > 0 &&
+                sortedTables.map((table) =>
+                  table?.row &&
+                  table.row.length > 0 &&
+                  table.standard === selectedStandard ? (
+                    <div
+                      className="product-detail-table w-full overflow-x-auto mt-3"
+                      key={table.id}
+                    >
+                      <table>
+                        <thead>
+                          <tr>
+                            {table.row[0]?.size && (
+                              <th
+                                onClick={() => handleSort("size")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Size{" "}
+                                {sortColumn === "size"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.type && (
+                              <th
+                                onClick={() => handleSort("type")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Type (TT / TL){" "}
+                                {sortColumn === "type"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.ply_rating && (
+                              <th
+                                onClick={() => handleSort("ply_rating")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Ply Rating{" "}
+                                {sortColumn === "ply_rating"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.machinery && <th>Machinery</th>}
+                            {table.row[0]?.applications && (
+                              <th
+                                onClick={() => handleSort("applications")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Applications{" "}
+                                {sortColumn === "applications"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.construction_type && (
+                              <th
+                                onClick={() => handleSort("construction_type")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Construction Type{" "}
+                                {sortColumn === "construction_type"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.pattern_type && (
+                              <th
+                                onClick={() => handleSort("pattern_type")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Pattern Type{" "}
+                                {sortColumn === "pattern_type"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.tra_code && (
+                              <th
+                                onClick={() => handleSort("tra_code")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                TRA Code{" "}
+                                {sortColumn === "tra_code"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.load_type && (
+                              <th
+                                onClick={() => handleSort("load_type")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Load Type{" "}
+                                {sortColumn === "load_type"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.rim_recommended && (
+                              <th
+                                onClick={() => handleSort("rim_recommended")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Rim Recommended{" "}
+                                {sortColumn === "rim_recommended"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.specified_rim_diameter && (
+                              <th
+                                onClick={() =>
+                                  handleSort("specified_rim_diameter")
+                                }
+                                style={{ cursor: "pointer" }}
+                              >
+                                Specified Rim Diameter (mm){" "}
+                                {sortColumn === "specified_rim_diameter"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.sectional_width && (
+                              <th
+                                onClick={() => handleSort("sectional_width")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Sectional Width (mm){" "}
+                                {sortColumn === "sectional_width"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.overall_diameter && (
+                              <th
+                                onClick={() => handleSort("overall_diameter")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Overall Diameter (mm){" "}
+                                {sortColumn === "overall_diameter"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.tube_value_code && (
+                              <th
+                                onClick={() => handleSort("tube_value_code")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Tube Valve Code{" "}
+                                {sortColumn === "tube_value_code"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.rolling_circumfrence && (
+                              <th
+                                onClick={() =>
+                                  handleSort("rolling_circumfrence")
+                                }
+                                style={{ cursor: "pointer" }}
+                              >
+                                Rolling Circumference (mm){" "}
+                                {sortColumn === "rolling_circumfrence"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.static_loaded_radius && (
+                              <th
+                                onClick={() =>
+                                  handleSort("static_loaded_radius")
+                                }
+                                style={{ cursor: "pointer" }}
+                              >
+                                Static Loaded Radius (mm){" "}
+                                {sortColumn === "static_loaded_radius"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.speed_radius_index && (
+                              <th
+                                onClick={() => handleSort("speed_radius_index")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Speed Radius Index (mm){" "}
+                                {sortColumn === "speed_radius_index"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.load_index && (
+                              <th
+                                onClick={() => handleSort("load_index")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Load Index{" "}
+                                {sortColumn === "load_index"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.speed_symbol && (
+                              <th
+                                onClick={() => handleSort("speed_symbol")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Speed Symbol{" "}
+                                {sortColumn === "speed_symbol"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.load_range && (
+                              <th
+                                onClick={() => handleSort("load_range")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Load Range (kg){" "}
+                                {sortColumn === "load_range"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                            {table.row[0]?.inflation_pressure && (
+                              <th
+                                onClick={() => handleSort("inflation_pressure")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Inflation Pressure (psi){" "}
+                                {sortColumn === "inflation_pressure"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {table.row.map((rowData) => (
+                            <tr key={rowData.id}>
+                              {rowData?.size && <td>{rowData.size}</td>}
+                              {rowData?.type && <td>{rowData.type}</td>}
+                              {rowData?.ply_rating && (
                               <td>{rowData.ply_rating}</td>
                             )}
                             {rowData?.machinery && (
@@ -1822,13 +2015,13 @@ export function Products({ pageData }) {
                             {rowData?.inflation_pressure && (
                               <td>{rowData.inflation_pressure}</td>
                             )}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                ) : null
-              )}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : null
+                )}
               {/* {pageData.tables?.table &&
                 pageData.tables.table.length > 0 &&
                 pageData.tables.table.map(
