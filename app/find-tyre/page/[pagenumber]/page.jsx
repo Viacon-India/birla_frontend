@@ -53,7 +53,7 @@ const FindTyre = ({params}) => {
     }
     setActiveTab(category);
     setActiveTabIndex(index);
-    fetchData('');
+    fetchData(category,'');
   };
 
   const [value, setValue] = useState([]);
@@ -167,7 +167,7 @@ const FindTyre = ({params}) => {
 
   const productFilters = (submitValue) => {
     setProductsData([]);
-    fetchData(queryToString(submitValue));
+    fetchData(activeTab, queryToString(submitValue));
     if(searchParams.toString()){
       push(pathname.replace(/\/page\/\d+/, "")+"?"+searchParams.toString());
     }
@@ -179,9 +179,9 @@ const FindTyre = ({params}) => {
     });
   }, []);
 
-  const fetchData = async (query) => {
+  const fetchData = async (category, query) => {
     try {
-      const response = await fetch(getStrapiMedia(`/api/products?pagination[pageSize]=${pageSize}&pagination[page]=${currentPage}&sort[0]=premium:desc&sort[1]=id:asc&filters[segment][name][$eq]=${activeTab}${query}`));
+      const response = await fetch(getStrapiMedia(`/api/products?pagination[pageSize]=${pageSize}&pagination[page]=${currentPage}&sort[0]=premium:desc&sort[1]=id:asc&filters[segment][name][$eq]=${category}${query}`));
       const products = await response.json();
       setProductsData(products.data);
       setProductsMeta(products.meta);
@@ -222,7 +222,7 @@ const FindTyre = ({params}) => {
           }
         }
         setSelectURLParameter(checkURLParameter);
-        fetchData(queryToString(checkURLParameter));
+        fetchData(activeTab, queryToString(checkURLParameter));
       } catch (error) {
         console.error('Error fetching initial data:', error);
       }

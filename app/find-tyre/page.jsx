@@ -39,7 +39,7 @@ const FindTyre = () => {
     push(pathname.replace("find-tyre", "find-tyre?category="+category+"&index="+index));
     setActiveTab(category);
     setActiveTabIndex(index);
-    fetchData('');
+    fetchData(category, '');
   };
 
   const [value, setValue] = useState([]);
@@ -154,7 +154,7 @@ const FindTyre = () => {
   
   const productFilters = (submitValue) => {
     setProductsData([]);
-    fetchData(queryToString(submitValue));
+    fetchData(activeTab, queryToString(submitValue));
     if(searchParams.toString()){
       push(pathname.replace(/\/page\/\d+/, "")+"?"+searchParams.toString());
     }
@@ -168,9 +168,9 @@ const FindTyre = () => {
 
 
 
-  const fetchData = async (query) => {
+  const fetchData = async (category, query) => {
     try {
-      const response = await fetch(getStrapiMedia(`/api/products?pagination[pageSize]=${pageSize}&pagination[page]=${currentPage}&sort[0]=premium:desc&sort[1]=id:asc&filters[segment][name][$eq]=${activeTab}${query}`));
+      const response = await fetch(getStrapiMedia(`/api/products?pagination[pageSize]=${pageSize}&pagination[page]=${currentPage}&sort[0]=premium:desc&sort[1]=id:asc&filters[segment][name][$eq]=${category}${query}`));
       const products = await response.json();
       setProductsData(products.data);
       setProductsMeta(products.meta);
@@ -211,7 +211,7 @@ const FindTyre = () => {
           }
         }
         setSelectURLParameter(checkURLParameter);
-        fetchData(queryToString(checkURLParameter));
+        fetchData(activeTab, queryToString(checkURLParameter));
       } catch (error) {
         console.error('Error fetching initial data:', error);
       }
