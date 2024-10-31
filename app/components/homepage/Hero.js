@@ -19,7 +19,7 @@ import GradualSpacing from "@/components/GradualSpacing";
 import LetterPullup from "@/components/LetterPullup";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MainButton } from "../pageCommon/pageCommon";
+import { MainButton, SmallButton } from "../pageCommon/pageCommon";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -157,6 +157,7 @@ export default function Hero({Data={}}) {
           ))}
         </Swiper>
       }
+      <SmallButton />
     </div>
   );
 }
