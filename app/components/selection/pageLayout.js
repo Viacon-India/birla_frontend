@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, Suspense } from "react";
+import { Country, State, City } from "country-state-city";
 import $ from "jquery";
 import ReactPaginate from "react-paginate";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
@@ -127,6 +128,20 @@ export function ContactUs({ pageData }) {
     form2ContactNumber: "",
     form2Email: "",
   });
+
+  // country state city
+  const [selectedCountry, setSelectedCountry] = useState("IN");
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+
+  const countries = Country.getAllCountries();
+  const states = selectedCountry
+    ? State.getStatesOfCountry(selectedCountry)
+    : [];
+  const cities = selectedState
+    ? City.getCitiesOfState(selectedCountry, selectedState)
+    : [];
+
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
     setFormData({
@@ -144,6 +159,9 @@ export function ContactUs({ pageData }) {
         lastName: formData.form1LastName,
         contactNumber: formData.form1ContactNumber,
         email: formData.form1Email,
+        country: formData.form1Country,
+        state: formData.form1State,
+        city: formData.form1City
       },
     };
     try {
@@ -182,6 +200,9 @@ export function ContactUs({ pageData }) {
         lastName: formData.form2LastName,
         contactNumber: formData.form2ContactNumber,
         email: formData.form2Email,
+        country: formData.form2Country,
+        state: formData.form2State,
+        city: formData.form2City
       },
     };
     try {
@@ -260,7 +281,11 @@ export function ContactUs({ pageData }) {
                                       case 3:
                                         return <h3>{children}</h3>;
                                       case 4:
-                                        return <h4>{children}</h4>;
+                                        return (
+                                          <h4 className="text-[22px] text-[#4F5662]">
+                                            {children}
+                                          </h4>
+                                        );
                                       case 5:
                                         return <h5>{children}</h5>;
                                       case 6:
@@ -288,6 +313,11 @@ export function ContactUs({ pageData }) {
                     </div>
                     <div className="w-full md:w-[60%] xl:w-1/2">
                       <div className="form-content">
+                        {section?.description && (
+                          <h2 className="text-[#1A1D21] text-[20px] text-center font-semibold pb-4">
+                            {section.description}
+                          </h2>
+                        )}
                         <div className="form-btn-sec">
                           <button
                             className={`form-btn ${
@@ -363,97 +393,206 @@ export function ContactUs({ pageData }) {
                                   required
                                 />
                               </div>
-                              <div className="form-row">
-                                {section?.form1FirstName?.label && (
-                                  <label
-                                    className="contact-label"
-                                    htmlFor="form1FirstName"
-                                  >
-                                    {section.form1FirstName.label}
-                                    <span className="text-red-600 pl-[2px]">
-                                      *
-                                    </span>
-                                  </label>
-                                )}
-                                <input
-                                  className="contact-input"
-                                  type="text"
-                                  name="form1FirstName"
-                                  placeholder={
-                                    section?.form1FirstName?.placeholder
-                                  }
-                                  onChange={handleChange}
-                                  required
-                                />
+                              <div class="flex flex-col lg:flex-row gap-4">
+                                <div class="form-row-wrapper">
+                                  <div className="form-row">
+                                    {section?.form1FirstName?.label && (
+                                      <label
+                                        className="contact-label"
+                                        htmlFor="form1FirstName"
+                                      >
+                                        {section.form1FirstName.label}
+                                        <span className="text-red-600 pl-[2px]">
+                                          *
+                                        </span>
+                                      </label>
+                                    )}
+                                    <input
+                                      className="contact-input"
+                                      type="text"
+                                      name="form1FirstName"
+                                      placeholder={
+                                        section?.form1FirstName?.placeholder
+                                      }
+                                      onChange={handleChange}
+                                      required
+                                    />
+                                  </div>
+                                </div>
+                                <div class="form-row-wrapper">
+                                  <div className="form-row">
+                                    {section?.form1LastName?.label && (
+                                      <label
+                                        className="contact-label"
+                                        htmlFor="form1LastName"
+                                      >
+                                        {section.form1LastName.label}
+                                        <span className="text-red-600 pl-[2px]">
+                                          *
+                                        </span>
+                                      </label>
+                                    )}
+                                    <input
+                                      className="contact-input"
+                                      type="text"
+                                      name="form1LastName"
+                                      placeholder={
+                                        section?.form1LastName?.placeholder
+                                      }
+                                      onChange={handleChange}
+                                      required
+                                    />
+                                  </div>
+                                </div>
                               </div>
-                              <div className="form-row">
-                                {section?.form1LastName?.label && (
-                                  <label
-                                    className="contact-label"
-                                    htmlFor="form1LastName"
-                                  >
-                                    {section.form1LastName.label}
-                                    <span className="text-red-600 pl-[2px]">
-                                      *
-                                    </span>
-                                  </label>
-                                )}
-                                <input
-                                  className="contact-input"
-                                  type="text"
-                                  name="form1LastName"
-                                  placeholder={
-                                    section?.form1LastName?.placeholder
-                                  }
-                                  onChange={handleChange}
-                                  required
-                                />
+                              <div class="flex flex-col lg:flex-row gap-4">
+                                <div class="form-row-wrapper">
+                                  <div className="form-row">
+                                    {section?.form1ContactNumber?.label && (
+                                      <label
+                                        className="contact-label"
+                                        htmlFor="form1ContactNumber"
+                                      >
+                                        {section.form1ContactNumber.label}
+                                        <span className="text-red-600 pl-[2px]">
+                                          *
+                                        </span>
+                                      </label>
+                                    )}
+                                    <input
+                                      className="contact-input"
+                                      type="text"
+                                      name="form1ContactNumber"
+                                      placeholder={
+                                        section?.form1ContactNumber?.placeholder
+                                      }
+                                      onChange={handleChange}
+                                      required
+                                    />
+                                  </div>
+                                </div>
+                                <div class="form-row-wrapper">
+                                  <div className="form-row">
+                                    {section?.form1Email?.label && (
+                                      <label
+                                        className="contact-label"
+                                        htmlFor="form1Email"
+                                      >
+                                        {section.form1Email.label}
+                                        <span className="text-red-600 pl-[2px]">
+                                          *
+                                        </span>
+                                      </label>
+                                    )}
+                                    <input
+                                      className="contact-input"
+                                      type="email"
+                                      pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                                      name="form1Email"
+                                      title='"example@email.com"'
+                                      placeholder={
+                                        section?.form1Email?.placeholder
+                                      }
+                                      onChange={handleChange}
+                                      required
+                                    />
+                                  </div>
+                                </div>
                               </div>
-                              <div className="form-row">
-                                {section?.form1ContactNumber?.label && (
-                                  <label
-                                    className="contact-label"
-                                    htmlFor="form1ContactNumber"
-                                  >
-                                    {section.form1ContactNumber.label}
-                                    <span className="text-red-600 pl-[2px]">
-                                      *
-                                    </span>
-                                  </label>
-                                )}
-                                <input
-                                  className="contact-input"
-                                  type="text"
-                                  name="form1ContactNumber"
-                                  placeholder={
-                                    section?.form1ContactNumber?.placeholder
-                                  }
-                                  onChange={handleChange}
-                                  required
-                                />
+                              <div class="flex flex-col lg:flex-row gap-4">
+                                <div class="form-row-wrapper">
+                                  <div class="form-row">
+                                    {section?.form1Country && (
+                                      <label
+                                        className="contact-label"
+                                        htmlFor="form1Country"
+                                      >
+                                        {section.form1Country.label}
+                                        <span className="text-red-600 pl-[2px]">
+                                          *
+                                        </span>
+                                      </label>
+                                    )}
+                                    <select
+                                      className="contact-select"
+                                      name="form1Country"
+                                      value={selectedCountry}
+                                      onChange={(e) => {
+                                        setSelectedCountry(e.target.value);
+                                        setSelectedState("");
+                                        setSelectedCity("");
+                                      }}
+                                    >
+                                      <option value="">Select Country</option>
+                                      {countries.map((country) => (
+                                        <option
+                                          key={country.isoCode}
+                                          value={country.isoCode}
+                                        >
+                                          {country.name}
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="form-row-wrapper">
+                                  <div class="form-row">
+                                    {section?.form1State && (
+                                      <label
+                                        className="contact-label"
+                                        htmlFor="form1State"
+                                      >
+                                        {section.form1State.label}
+                                      </label>
+                                    )}
+                                    <select
+                                      className="contact-select"
+                                      value={selectedState}
+                                      onChange={(e) => {
+                                        setSelectedState(e.target.value);
+                                        setSelectedCity("");
+                                      }}
+                                      name="form1State"
+                                      disabled={!selectedCountry}
+                                    >
+                                      <option value="">Select State</option>
+                                      {states.map((state) => (
+                                        <option
+                                          key={state.isoCode}
+                                          value={state.isoCode}
+                                        >
+                                          {state.name}
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                </div>
                               </div>
-                              <div className="form-row">
-                                {section?.form1Email?.label && (
+                              <div class="form-row">
+                                {section?.form1City && (
                                   <label
                                     className="contact-label"
-                                    htmlFor="form1Email"
+                                    htmlFor="form1City"
                                   >
-                                    {section.form1Email.label}
-                                    <span className="text-red-600 pl-[2px]">
-                                      *
-                                    </span>
+                                    {section.form1City.label}
                                   </label>
                                 )}
-                                <input
-                                  className="contact-input"
-                                  type="email"
-                                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
-                                  name="form1Email"
-                                  title='"example@email.com"'
-                                  placeholder={section?.form1Email?.placeholder}
-                                  onChange={handleChange}
-                                  required
-                                />
+                                <select
+                                  className="contact-select"
+                                  value={selectedCity}
+                                  onChange={(e) =>
+                                    setSelectedCity(e.target.value)
+                                  }
+                                  name="form1City"
+                                  disabled={!selectedState}
+                                >
+                                  <option value="">Select City</option>
+                                  {cities.map((city) => (
+                                    <option key={city.id} value={city.name}>
+                                      {city.name}
+                                    </option>
+                                  ))}
+                                </select>
                               </div>
                               {section?.form1Concent && (
                                 <div className="flex items-start gap-2">
@@ -784,13 +923,13 @@ export function Pages({ pageData }) {
   );
 }
 
-
 const Segments = ({ pageData, pagination }) => {
   const { push } = useRouter();
   const searchParams = new URLSearchParams(useSearchParams());
   const pathname = usePathname();
   const [value, setValue] = useState([]);
   const [productsData, setProductsData] = useState([]);
+  const [selectURLParameter, setSelectURLParameter] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const pageSize = 9;
   const currentPage = pagination;
@@ -803,10 +942,22 @@ const Segments = ({ pageData, pagination }) => {
       }
     } else {
       if (pathname.includes("/page/")) {
-        push(pathname.replace(/\/page\/\d+/, "/page/" + (selectedPage + 1) + "?" + searchParams.toString()));
+        push(
+          pathname.replace(
+            /\/page\/\d+/,
+            "/page/" + (selectedPage + 1) + "?" + searchParams.toString()
+          )
+        );
       } else {
         push(
-          pathname.replace(pathname, pathname + "/page/" + (selectedPage + 1) + "?" + searchParams.toString())
+          pathname.replace(
+            pathname,
+            pathname +
+              "/page/" +
+              (selectedPage + 1) +
+              "?" +
+              searchParams.toString()
+          )
         );
       }
     }
@@ -822,148 +973,132 @@ const Segments = ({ pageData, pagination }) => {
 
   const queryToString = (queryToStringValue) => {
     const filterQueries = [];
-    if(pageData?.filters && pageData.filters.length > 4) {
-      if(queryToStringValue[0]){
-        if(searchParams.has("sub_segment")){
-          searchParams.set("sub_segment",queryToStringValue[0]);
-        }else{
-          searchParams.append("sub_segment",queryToStringValue[0]);
+    if (pageData?.filters && pageData.filters.length > 4) {
+      if (queryToStringValue[0]) {
+        if (searchParams.has("sub_segment")) {
+          searchParams.set("sub_segment", queryToStringValue[0]);
+        } else {
+          searchParams.append("sub_segment", queryToStringValue[0]);
         }
-        filterQueries.push(`filters[sub_segment][$eq]=${queryToStringValue[0]}`);
-      }else{
-        if(searchParams.has("sub_segment")) searchParams.delete("sub_segment");
+        filterQueries.push(
+          `filters[sub_segment][$eq]=${queryToStringValue[0]}`
+        );
+      } else {
+        if (searchParams.has("sub_segment")) searchParams.delete("sub_segment");
       }
-      if(queryToStringValue[1]){
-        if(searchParams.has("machinery")){
-          searchParams.set("machinery",queryToStringValue[1]);
-        }else{
-          searchParams.append("machinery",queryToStringValue[1]);
+      if (queryToStringValue[1]) {
+        if (searchParams.has("machinery")) {
+          searchParams.set("machinery", queryToStringValue[1]);
+        } else {
+          searchParams.append("machinery", queryToStringValue[1]);
         }
-        filterQueries.push(`filters[tables][table][row][machinery][name][$eq]=${queryToStringValue[1]}`);
-      }else{
-        if(searchParams.has("machinery")) searchParams.delete("machinery");
+        filterQueries.push(
+          `filters[tables][table][row][machinery][name][$eq]=${queryToStringValue[1]}`
+        );
+      } else {
+        if (searchParams.has("machinery")) searchParams.delete("machinery");
       }
-      if(queryToStringValue[2]){
-        if(searchParams.has("rim_recommended")){
-          searchParams.set("rim_recommended",queryToStringValue[2]);
-        }else{
-          searchParams.append("rim_recommended",queryToStringValue[2]);
+      if (queryToStringValue[2]) {
+        if (searchParams.has("rim_recommended")) {
+          searchParams.set("rim_recommended", queryToStringValue[2]);
+        } else {
+          searchParams.append("rim_recommended", queryToStringValue[2]);
         }
-        filterQueries.push(`filters[tables][table][row][rim_recommended][$eq]=${queryToStringValue[2]}`);
-      }else{
-        if(searchParams.has("rim_recommended")) searchParams.delete("rim_recommended");
+        filterQueries.push(
+          `filters[tables][table][row][rim_recommended][$eq]=${queryToStringValue[2]}`
+        );
+      } else {
+        if (searchParams.has("rim_recommended"))
+          searchParams.delete("rim_recommended");
       }
-      if(queryToStringValue[3]){
-        if(searchParams.has("size")){
-          searchParams.set("size",queryToStringValue[3]);
-        }else{
-          searchParams.append("size",queryToStringValue[3]);
+      if (queryToStringValue[3]) {
+        if (searchParams.has("size")) {
+          searchParams.set("size", queryToStringValue[3]);
+        } else {
+          searchParams.append("size", queryToStringValue[3]);
         }
-        filterQueries.push(`filters[tables][table][row][size][$eq]=${queryToStringValue[3]}`);
-      }else{
-        if(searchParams.has("size")) searchParams.delete("size");
+        filterQueries.push(
+          `filters[tables][table][row][size][$eq]=${queryToStringValue[3]}`
+        );
+      } else {
+        if (searchParams.has("size")) searchParams.delete("size");
       }
-      if(queryToStringValue[4]){
-        if(searchParams.has("pattern_type")){
-          searchParams.set("pattern_type",queryToStringValue[4]);
-        }else{
-          searchParams.append("pattern_type",queryToStringValue[4]);
+      if (queryToStringValue[4]) {
+        if (searchParams.has("pattern_type")) {
+          searchParams.set("pattern_type", queryToStringValue[4]);
+        } else {
+          searchParams.append("pattern_type", queryToStringValue[4]);
         }
-        filterQueries.push(`filters[tables][table][row][pattern_type][$eq]=${queryToStringValue[4]}`);
-      }else{
-        if(searchParams.has("pattern_type")) searchParams.delete("pattern_type");
+        filterQueries.push(
+          `filters[tables][table][row][pattern_type][$eq]=${queryToStringValue[4]}`
+        );
+      } else {
+        if (searchParams.has("pattern_type"))
+          searchParams.delete("pattern_type");
       }
     } else {
-      if(queryToStringValue[0]){
-        if(searchParams.has("machinery")){
-          searchParams.set("machinery",queryToStringValue[0]);
-        }else{
-          searchParams.append("machinery",queryToStringValue[0]);
+      if (queryToStringValue[0]) {
+        if (searchParams.has("machinery")) {
+          searchParams.set("machinery", queryToStringValue[0]);
+        } else {
+          searchParams.append("machinery", queryToStringValue[0]);
         }
-        filterQueries.push(`filters[tables][table][row][machinery][name][$eq]=${queryToStringValue[0]}`);
-      }else{
-        if(searchParams.has("machinery")) searchParams.delete("machinery");
+        filterQueries.push(
+          `filters[tables][table][row][machinery][name][$eq]=${queryToStringValue[0]}`
+        );
+      } else {
+        if (searchParams.has("machinery")) searchParams.delete("machinery");
       }
-      if(queryToStringValue[1]){
-        if(searchParams.has("rim_recommended")){
-          searchParams.set("rim_recommended",queryToStringValue[1]);
-        }else{
-          searchParams.append("rim_recommended",queryToStringValue[1]);
+      if (queryToStringValue[1]) {
+        if (searchParams.has("rim_recommended")) {
+          searchParams.set("rim_recommended", queryToStringValue[1]);
+        } else {
+          searchParams.append("rim_recommended", queryToStringValue[1]);
         }
-        filterQueries.push(`filters[tables][table][row][rim_recommended][$eq]=${queryToStringValue[1]}`);
-      }else{
-        if(searchParams.has("rim_recommended")) searchParams.delete("rim_recommended");
+        filterQueries.push(
+          `filters[tables][table][row][rim_recommended][$eq]=${queryToStringValue[1]}`
+        );
+      } else {
+        if (searchParams.has("rim_recommended"))
+          searchParams.delete("rim_recommended");
       }
-      if(queryToStringValue[2]){
-        if(searchParams.has("size")){
-          searchParams.set("size",queryToStringValue[2]);
-        }else{
-          searchParams.append("size",queryToStringValue[2]);
+      if (queryToStringValue[2]) {
+        if (searchParams.has("size")) {
+          searchParams.set("size", queryToStringValue[2]);
+        } else {
+          searchParams.append("size", queryToStringValue[2]);
         }
-        filterQueries.push(`filters[tables][table][row][size][$eq]=${queryToStringValue[2]}`);
-      }else{
-        if(searchParams.has("size")) searchParams.delete("size");
+        filterQueries.push(
+          `filters[tables][table][row][size][$eq]=${queryToStringValue[2]}`
+        );
+      } else {
+        if (searchParams.has("size")) searchParams.delete("size");
       }
-      if(queryToStringValue[3]){
-        if(searchParams.has("pattern_type")){
-          searchParams.set("pattern_type",queryToStringValue[3]);
-        }else{
-          searchParams.append("pattern_type",queryToStringValue[3]);
+      if (queryToStringValue[3]) {
+        if (searchParams.has("pattern_type")) {
+          searchParams.set("pattern_type", queryToStringValue[3]);
+        } else {
+          searchParams.append("pattern_type", queryToStringValue[3]);
         }
-        filterQueries.push(`filters[tables][table][row][pattern_type][$eq]=${queryToStringValue[3]}`);
-      }else{
-        if(searchParams.has("pattern_type")) searchParams.delete("pattern_type");
+        filterQueries.push(
+          `filters[tables][table][row][pattern_type][$eq]=${queryToStringValue[3]}`
+        );
+      } else {
+        if (searchParams.has("pattern_type"))
+          searchParams.delete("pattern_type");
       }
     }
-    return filterQueries.length > 0 ? '&' + filterQueries.join('&') : '';
-  }
+    return filterQueries.length > 0 ? "&" + filterQueries.join("&") : "";
+  };
 
   const productFilters = (submitValue) => {
     setProductsData([]);
     fetchData(queryToString(submitValue));
-    if(searchParams.toString()){
-      push(pathname.replace(/\/page\/\d+/, "")+"?"+searchParams.toString());
+    if (searchParams.toString()) {
+      push(pathname.replace(/\/page\/\d+/, "") + "?" + searchParams.toString());
+    } else {
+      push(pathname.replace(/\/page\/\d+/, ""));
     }
-    // const filterQueries = [];
-    // if (pageData?.filters && pageData.filters.length > 4) {
-    //   if (value[0]) filterQueries.push(`filters[sub_segment][$eq]=${value[0]}`);
-    //   if (value[1])
-    //     filterQueries.push(
-    //       `filters[tables][table][row][machinery][name][$eq]=${value[1]}`
-    //     );
-    //   if (value[2])
-    //     filterQueries.push(
-    //       `filters[tables][table][row][rim_recommended][$eq]=${value[2]}`
-    //     );
-    //   if (value[3])
-    //     filterQueries.push(
-    //       `filters[tables][table][row][size][$eq]=${value[3]}`
-    //     );
-    //   if (value[4])
-    //     filterQueries.push(
-    //       `filters[tables][table][row][pattern_type][$eq]=${value[4]}`
-    //     );
-    // } else {
-    //   if (value[0])
-    //     filterQueries.push(
-    //       `filters[tables][table][row][machinery][name][$eq]=${value[0]}`
-    //     );
-    //   if (value[1])
-    //     filterQueries.push(
-    //       `filters[tables][table][row][rim_recommended][$eq]=${value[1]}`
-    //     );
-    //   if (value[2])
-    //     filterQueries.push(
-    //       `filters[tables][table][row][size][$eq]=${value[2]}`
-    //     );
-    //   if (value[3])
-    //     filterQueries.push(
-    //       `filters[tables][table][row][pattern_type][$eq]=${value[3]}`
-    //     );
-    // }
-    // const queryString =
-    //   filterQueries.length > 0 ? "&" + filterQueries.join("&") : "";
-    // fetchData(queryString);
   };
 
   const fetchData = async (query) => {
@@ -991,12 +1126,66 @@ const Segments = ({ pageData, pagination }) => {
         );
         const filters = await response.json();
         setFilterData(filters.data);
-        fetchData("");
+        const checkURLParameter = [];
+        if (searchParams.toString()) {
+          if (
+            pageData.data?.attributes.categories.data[activeTabIndex].attributes
+              .filters.length > 4
+          ) {
+            if (searchParams.has("sub_segment"))
+              checkURLParameter[0] = searchParams
+                .get("sub_segment")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("machinery"))
+              checkURLParameter[1] = searchParams
+                .get("machinery")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("rim_recommended"))
+              checkURLParameter[2] = searchParams
+                .get("rim_recommended")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("size"))
+              checkURLParameter[3] = searchParams
+                .get("size")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("pattern_type"))
+              checkURLParameter[4] = searchParams
+                .get("pattern_type")
+                .replace("+", " ")
+                .replace("%2F", "/");
+          } else {
+            if (searchParams.has("machinery"))
+              checkURLParameter[0] = searchParams
+                .get("machinery")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("rim_recommended"))
+              checkURLParameter[1] = searchParams
+                .get("rim_recommended")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("size"))
+              checkURLParameter[2] = searchParams
+                .get("size")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("pattern_type"))
+              checkURLParameter[3] = searchParams
+                .get("pattern_type")
+                .replace("+", " ")
+                .replace("%2F", "/");
+          }
+        }
+        setSelectURLParameter(checkURLParameter);
+        fetchData(queryToString(checkURLParameter));
       } catch (error) {
         console.error("Error fetching initial data:", error);
       }
     };
-
     fetchInitialData();
   }, [pageData]);
 
@@ -1040,6 +1229,15 @@ const Segments = ({ pageData, pagination }) => {
           Array.from(sizeOptions),
           Array.from(patternOptions),
         ];
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: (100 * window.innerHeight) / 100,
+        behavior: "smooth",
+      });
+    }, 1000);
+  }, [productsData]);
 
   if (
     typeof meta === "undefined" ||
@@ -1116,12 +1314,19 @@ const Segments = ({ pageData, pagination }) => {
                         <option
                           key={item.id}
                           value={item?.value ? item.value : ""}
+                          selected=""
                         >
                           {item?.name}
                         </option>
                       ))}
                       {filtersArray[index].sort().map((item) => (
-                        <option key={item.id} value={item}>
+                        <option
+                          key={item.id}
+                          value={item}
+                          selected={
+                            selectURLParameter[index] == item ? "selected" : ""
+                          }
+                        >
                           {item}
                         </option>
                       ))}
@@ -1219,15 +1424,13 @@ const Segments = ({ pageData, pagination }) => {
       <PageEnd EndPageData={pageData?.end} />
     </>
   );
-}
-
+};
 
 export function Products({ pageData }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [selectedStandard, setSelectedStandard] = useState(null);
 
-
-  // table tab 
+  // table tab
   useEffect(() => {
     if (pageData?.tables?.table?.length > 0) {
       setSelectedStandard(pageData.tables.table[0].standard);
@@ -2064,63 +2267,61 @@ export function Products({ pageData }) {
                               {rowData?.size && <td>{rowData.size}</td>}
                               {rowData?.type && <td>{rowData.type}</td>}
                               {rowData?.ply_rating && (
-                              <td>{rowData.ply_rating}</td>
-                            )}
-                            {rowData?.machinery && (
-                              <td>{rowData.machinery.name}</td>
-                            )}
-                            {rowData?.applications && (
-                              <td>{rowData.applications}</td>
-                            )}
-                            {rowData?.construction_type && (
-                              <td>{rowData.construction_type}</td>
-                            )}
-                            {rowData?.pattern_type && (
-                              <td>{rowData.pattern_type}</td>
-                            )}
-                            {rowData?.tra_code && (
-                              <td>{rowData.tra_code}</td>
-                            )}
-                            {rowData?.load_type && (
-                              <td>{rowData.load_type}</td>
-                            )}
+                                <td>{rowData.ply_rating}</td>
+                              )}
+                              {rowData?.machinery && (
+                                <td>{rowData.machinery.name}</td>
+                              )}
+                              {rowData?.applications && (
+                                <td>{rowData.applications}</td>
+                              )}
+                              {rowData?.construction_type && (
+                                <td>{rowData.construction_type}</td>
+                              )}
+                              {rowData?.pattern_type && (
+                                <td>{rowData.pattern_type}</td>
+                              )}
+                              {rowData?.tra_code && <td>{rowData.tra_code}</td>}
+                              {rowData?.load_type && (
+                                <td>{rowData.load_type}</td>
+                              )}
 
-                            {rowData?.rim_recommended && (
-                              <td>{rowData.rim_recommended}</td>
-                            )}
-                            {rowData?.specified_rim_diameter && (
-                              <td>{rowData.specified_rim_diameter}</td>
-                            )}
-                            {rowData?.sectional_width && (
-                              <td>{rowData.sectional_width}</td>
-                            )}
-                            {rowData?.overall_diameter && (
-                              <td>{rowData.overall_diameter}</td>
-                            )}
-                            {rowData?.tube_value_code && (
-                              <td>{rowData.tube_value_code}</td>
-                            )}
-                            {rowData?.rolling_circumfrence && (
-                              <td>{rowData.rolling_circumfrence}</td>
-                            )}
-                            {rowData?.static_loaded_radius && (
-                              <td>{rowData.static_loaded_radius}</td>
-                            )}
-                            {rowData?.speed_radius_index && (
-                              <td>{rowData.speed_radius_index}</td>
-                            )}
-                            {rowData?.load_index && (
-                              <td>{rowData.load_index}</td>
-                            )}
-                            {rowData?.speed_symbol && (
-                              <td>{rowData.speed_symbol}</td>
-                            )}
-                            {rowData?.load_range && (
-                              <td>{rowData.load_range}</td>
-                            )}
-                            {rowData?.inflation_pressure && (
-                              <td>{rowData.inflation_pressure}</td>
-                            )}
+                              {rowData?.rim_recommended && (
+                                <td>{rowData.rim_recommended}</td>
+                              )}
+                              {rowData?.specified_rim_diameter && (
+                                <td>{rowData.specified_rim_diameter}</td>
+                              )}
+                              {rowData?.sectional_width && (
+                                <td>{rowData.sectional_width}</td>
+                              )}
+                              {rowData?.overall_diameter && (
+                                <td>{rowData.overall_diameter}</td>
+                              )}
+                              {rowData?.tube_value_code && (
+                                <td>{rowData.tube_value_code}</td>
+                              )}
+                              {rowData?.rolling_circumfrence && (
+                                <td>{rowData.rolling_circumfrence}</td>
+                              )}
+                              {rowData?.static_loaded_radius && (
+                                <td>{rowData.static_loaded_radius}</td>
+                              )}
+                              {rowData?.speed_radius_index && (
+                                <td>{rowData.speed_radius_index}</td>
+                              )}
+                              {rowData?.load_index && (
+                                <td>{rowData.load_index}</td>
+                              )}
+                              {rowData?.speed_symbol && (
+                                <td>{rowData.speed_symbol}</td>
+                              )}
+                              {rowData?.load_range && (
+                                <td>{rowData.load_range}</td>
+                              )}
+                              {rowData?.inflation_pressure && (
+                                <td>{rowData.inflation_pressure}</td>
+                              )}
                             </tr>
                           ))}
                         </tbody>

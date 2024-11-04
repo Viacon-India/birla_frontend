@@ -72,7 +72,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
     <section className="faq-sec sec-gap !pb-[60px] md:!pb-[100px] 2xl:!pb-[150px] relative">
       <div className="container mx-auto overflow-hidden relative">
         <div class="relative">
-          <div className="flex gap-2 items-center absolute right-0 top-[54px] md:top-[32px] z-20">
+          {/* <div className="flex gap-2 items-center absolute right-0 top-[54px] md:top-[32px] z-20">
             <button
               className={`cat-btn ${
                 activeTab === "faq" ? "active-cat-btn" : ""
@@ -87,7 +87,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
             >
               Blog
             </button>
-          </div>
+          </div> */}
         </div>
 
         {activeTab === "faq" && (
@@ -209,7 +209,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                               content={item.content}
                               blocks={{
                                 paragraph: ({ children }) => (
-                                  <p className="text-[#4F5662]">{children}</p>
+                                  <p className="text-[#4F5662] py-1">{children}</p>
                                 ),
                                 heading: ({ children, level }) => {
                                   switch (level) {
@@ -249,6 +249,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                                   }
                                   return (
                                     <ul
+                                    className="!pl-0"
                                       data-aos="fade-left"
                                       data-aos-duration="1000"
                                     >
@@ -257,7 +258,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                                   );
                                 },
                                 "list-item": (props) => (
-                                  <li>{props.children}</li>
+                                  <li className="text-[#4F5662] py-1">{props.children}</li>
                                 ),
                                 link: ({ children, url }) => (
                                   <Link href={url}>{children}</Link>
