@@ -1188,6 +1188,9 @@ a.current_dot {
  .form-row{
   @apply w-full flex flex-col border-b border-[#727C8D]
  }
+ .form-row-wrapper{
+  @apply w-full lg:w-[50%]
+ }
  .contact-label{
   @apply text-[#3D434C] text-[14px] font-medium mb-[6px]
  }

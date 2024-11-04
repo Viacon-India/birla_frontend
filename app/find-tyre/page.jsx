@@ -21,6 +21,7 @@ const FindTyre = () => {
   const pathname = usePathname();
   const [pageData, setPageData] = useState([]);
   const [selectURLParameter, setSelectURLParameter] = useState([]);
+  const [searchTyre, setSearchTyre] = useState(searchParams.get("search") ? searchParams.get("search").replace("+", " ").replace("%2F", "/") : '');
   const [activeTab, setActiveTab] = useState(searchParams.get("category") ? searchParams.get("category") : "TBB");
   const [activeTabIndex, setActiveTabIndex] = useState(searchParams.get("index") ? searchParams.get("index") : 0);
   const [productData, setProductsData] = useState([]);
@@ -33,6 +34,13 @@ const FindTyre = () => {
     push(
       pathname.replace(pathname, pathname + "/page/" + (selectedPage + 1) + "?" + searchParams.toString())
     );
+  };
+
+  const handleSearch = () => {
+    if (event.key === 'Enter') {
+      push(pathname.replace("find-tyre", searchTyre? `find-tyre?category=${activeTab}&index=${activeTabIndex}&search=${searchTyre}` : 'find-tyre'));
+      fetchData(activeTab, '?search='+searchTyre);
+    }
   };
 
   const handleClick = (category,index) => {
@@ -321,6 +329,9 @@ const FindTyre = () => {
                           <input
                             className="bg-white pl-12 py-3 md:py-4 outline-none rounded-[50px] w-full"
                             type="text"
+                            value={searchTyre}
+                            onChange={(e) => setSearchTyre(e.target.value)}
+                            onKeyDown={handleSearch}
                             placeholder="Search"
                           />
                         </div>

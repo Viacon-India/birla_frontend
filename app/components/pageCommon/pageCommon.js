@@ -135,7 +135,7 @@ export function Float() {
         </svg>
         Find a Tyre
       </Link>
-      <Link className="sideNav" href="/dealer-locator">
+      <Link className="sideNav" href="/find-dealer">
         <svg
           width="24"
           height="24"
