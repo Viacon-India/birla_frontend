@@ -110,6 +110,7 @@ export function InvestorRelations({ slugs, pageData, sidebar }) {
 export function ContactUs({ pageData }) {
   const [activeTab, setActiveTab] = useState("general");
   const { push } = useRouter();
+  const [formLoading, setLoading] = useState(false);
   const [form1Error, setForm1Error] = useState("");
   const [form1Success, setForm1Success] = useState(false);
   const [form2Error, setForm2Error] = useState("");
@@ -121,12 +122,18 @@ export function ContactUs({ pageData }) {
     form1LastName: "",
     form1ContactNumber: "",
     form1Email: "",
+    form1Country: "",
+    form1State: "",
+    form1City: "",
     form2QueryType: "",
     form2Description: "",
     form2FirstName: "",
     form2LastName: "",
     form2ContactNumber: "",
     form2Email: "",
+    form2Country: "",
+    form2State: "",
+    form2City: ""
   });
 
   // country state city
@@ -150,6 +157,7 @@ export function ContactUs({ pageData }) {
     });
   };
   const form1HandleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const dataToSend = {
       data: {
@@ -159,9 +167,9 @@ export function ContactUs({ pageData }) {
         lastName: formData.form1LastName,
         contactNumber: formData.form1ContactNumber,
         email: formData.form1Email,
-        country: formData.form1Country,
-        state: formData.form1State,
-        city: formData.form1City
+        country: Country.getCountryByCode(selectedCountry).name,
+        state: State.getStateByCodeAndCountry(selectedState, selectedCountry).name,
+        city: selectedCity
       },
     };
     try {
@@ -184,13 +192,14 @@ export function ContactUs({ pageData }) {
       }
       const data = await response.json();
       setForm1Success(true);
-      // console.log('Success:', data);
+      setLoading(false);
     } catch (form1Error) {
-      // console.error('Error:', error);
+      setLoading(false);
       setForm1Error("There was an error submitting the form.");
     }
   };
   const form2HandleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const dataToSend = {
       data: {
@@ -200,9 +209,9 @@ export function ContactUs({ pageData }) {
         lastName: formData.form2LastName,
         contactNumber: formData.form2ContactNumber,
         email: formData.form2Email,
-        country: formData.form2Country,
-        state: formData.form2State,
-        city: formData.form2City
+        country: Country.getCountryByCode(selectedCountry).name,
+        state: State.getStateByCodeAndCountry(selectedState, selectedCountry).name,
+        city: selectedCity
       },
     };
     try {
@@ -224,9 +233,9 @@ export function ContactUs({ pageData }) {
       }
       const data = await response.json();
       setForm2Success(true);
-      // console.log('Success:', data);
+      setLoading(false);
     } catch (form2Error) {
-      // console.error('Error:', error);
+      setLoading(false);
       setForm2Error("There was an error submitting the form.");
     }
   };
@@ -323,7 +332,12 @@ export function ContactUs({ pageData }) {
                             className={`form-btn ${
                               activeTab === "general" ? "form-active-btn" : ""
                             }`}
-                            onClick={() => setActiveTab("general")}
+                            onClick={() => {
+                              setActiveTab("general");
+                              setSelectedCountry('IN');
+                              setSelectedState('');
+                              setSelectedCity('');
+                            }}
                           >
                             {section.form1Name}
                           </button>
@@ -331,7 +345,12 @@ export function ContactUs({ pageData }) {
                             className={`form-btn ${
                               activeTab === "partner" ? "form-active-btn" : ""
                             }`}
-                            onClick={() => setActiveTab("partner")}
+                            onClick={() => {
+                              setActiveTab("partner");
+                              setSelectedCountry('IN');
+                              setSelectedState('');
+                              setSelectedCity('');
+                            }}
                           >
                             {section.form2Name}
                           </button>
@@ -660,14 +679,19 @@ export function ContactUs({ pageData }) {
                                   Application submitted successfully!
                                 </p>
                               )}
-                              <button
-                                type="submit"
-                                className="primary-btn w-fit flip-animate-2"
-                              >
-                                <span data-hover={section.form1Submit}>
-                                  {section.form1Submit}
-                                </span>
-                              </button>
+                              <div className="flex gap-4 items-center">
+                                <button
+                                  type="submit"
+                                  className="primary-btn w-fit flip-animate-2"
+                                >
+                                  <span data-hover={section.form1Submit}>
+                                    {section.form1Submit}
+                                  </span>
+                                </button>
+                                {formLoading &&
+                                  <p>Submitting your Application...</p>
+                                }
+                              </div>
                             </form>
                           </div>
                         )}
@@ -728,97 +752,204 @@ export function ContactUs({ pageData }) {
                                   required
                                 />
                               </div>
-                              <div className="form-row">
-                                {section?.form2FirstName?.label && (
-                                  <label
-                                    className="contact-label"
-                                    htmlFor="form2FirstName"
-                                  >
-                                    {section.form2FirstName.label}
-                                    <span className="text-red-600 pl-[2px]">
-                                      *
-                                    </span>
-                                  </label>
-                                )}
-                                <input
-                                  className="contact-input"
-                                  type="text"
-                                  name="form2FirstName"
-                                  placeholder={
-                                    section?.form2FirstName?.placeholder
-                                  }
-                                  onChange={handleChange}
-                                  required
-                                />
+                              <div class="flex flex-col lg:flex-row gap-4">
+                                <div class="form-row-wrapper">
+                                  <div className="form-row">
+                                    {section?.form2FirstName?.label && (
+                                      <label
+                                        className="contact-label"
+                                        htmlFor="form2FirstName"
+                                      >
+                                        {section.form2FirstName.label}
+                                        <span className="text-red-600 pl-[2px]">
+                                          *
+                                        </span>
+                                      </label>
+                                    )}
+                                    <input
+                                      className="contact-input"
+                                      type="text"
+                                      name="form2FirstName"
+                                      placeholder={
+                                        section?.form2FirstName?.placeholder
+                                      }
+                                      onChange={handleChange}
+                                      required
+                                    />
+                                  </div>
+                                </div>
+                                <div class="form-row-wrapper">
+                                  <div className="form-row">
+                                    {section?.form2LastName?.label && (
+                                      <label
+                                        className="contact-label"
+                                        htmlFor="form2LastName"
+                                      >
+                                        {section.form2LastName.label}
+                                        <span className="text-red-600 pl-[2px]">
+                                          *
+                                        </span>
+                                      </label>
+                                    )}
+                                    <input
+                                      className="contact-input"
+                                      type="text"
+                                      name="form2LastName"
+                                      placeholder={
+                                        section?.form2LastName?.placeholder
+                                      }
+                                      onChange={handleChange}
+                                      required
+                                    />
+                                  </div>
+                                </div>
                               </div>
-                              <div className="form-row">
-                                {section?.form2LastName?.label && (
-                                  <label
-                                    className="contact-label"
-                                    htmlFor="form2LastName"
-                                  >
-                                    {section.form2LastName.label}
-                                    <span className="text-red-600 pl-[2px]">
-                                      *
-                                    </span>
-                                  </label>
-                                )}
-                                <input
-                                  className="contact-input"
-                                  type="text"
-                                  name="form2LastName"
-                                  placeholder={
-                                    section?.form2LastName?.placeholder
-                                  }
-                                  onChange={handleChange}
-                                  required
-                                />
+                              <div class="flex flex-col lg:flex-row gap-4">
+                                <div class="form-row-wrapper">
+                                  <div className="form-row">
+                                    {section?.form2ContactNumber?.label && (
+                                      <label
+                                        className="contact-label"
+                                        htmlFor="form2ContactNumber"
+                                      >
+                                        {section.form2ContactNumber.label}
+                                        <span className="text-red-600 pl-[2px]">
+                                          *
+                                        </span>
+                                      </label>
+                                    )}
+                                    <input
+                                      className="contact-input"
+                                      type="text"
+                                      name="form2ContactNumber"
+                                      placeholder={
+                                        section?.form2ContactNumber?.placeholder
+                                      }
+                                      onChange={handleChange}
+                                      required
+                                    />
+                                  </div>
+                                </div>
+                                <div class="form-row-wrapper">
+                                  <div className="form-row">
+                                    {section?.form2Email?.label && (
+                                      <label
+                                        className="contact-label"
+                                        htmlFor="form2Email"
+                                      >
+                                        {section.form2Email.label}
+                                        <span className="text-red-600 pl-[2px]">
+                                          *
+                                        </span>
+                                      </label>
+                                    )}
+                                    <input
+                                      className="contact-input"
+                                      type="email"
+                                      pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                                      title='"example@email.com"'
+                                      name="form2Email"
+                                      placeholder={section?.form2Email?.placeholder}
+                                      onChange={handleChange}
+                                      required
+                                    />
+                                  </div>
+                                </div>
                               </div>
-                              <div className="form-row">
-                                {section?.form2ContactNumber?.label && (
-                                  <label
-                                    className="contact-label"
-                                    htmlFor="form2ContactNumber"
-                                  >
-                                    {section.form2ContactNumber.label}
-                                    <span className="text-red-600 pl-[2px]">
-                                      *
-                                    </span>
-                                  </label>
-                                )}
-                                <input
-                                  className="contact-input"
-                                  type="text"
-                                  name="form2ContactNumber"
-                                  placeholder={
-                                    section?.form2ContactNumber?.placeholder
-                                  }
-                                  onChange={handleChange}
-                                  required
-                                />
+                              <div class="flex flex-col lg:flex-row gap-4">
+                                <div class="form-row-wrapper">
+                                  <div class="form-row">
+                                    {section?.form2Country && (
+                                      <label
+                                        className="contact-label"
+                                        htmlFor="form2Country"
+                                      >
+                                        {section.form2Country.label}
+                                        <span className="text-red-600 pl-[2px]">
+                                          *
+                                        </span>
+                                      </label>
+                                    )}
+                                    <select
+                                      className="contact-select"
+                                      name="form2Country"
+                                      value={selectedCountry}
+                                      onChange={(e) => {
+                                        setSelectedCountry(e.target.value);
+                                        setSelectedState("");
+                                        setSelectedCity("");
+                                      }}
+                                    >
+                                      <option value="">Select Country</option>
+                                      {countries.map((country) => (
+                                        <option
+                                          key={country.isoCode}
+                                          value={country.isoCode}
+                                        >
+                                          {country.name}
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="form-row-wrapper">
+                                  <div class="form-row">
+                                    {section?.form2State && (
+                                      <label
+                                        className="contact-label"
+                                        htmlFor="form2State"
+                                      >
+                                        {section.form2State.label}
+                                      </label>
+                                    )}
+                                    <select
+                                      className="contact-select"
+                                      value={selectedState}
+                                      onChange={(e) => {
+                                        setSelectedState(e.target.value);
+                                        setSelectedCity("");
+                                      }}
+                                      name="form2State"
+                                      disabled={!selectedCountry}
+                                    >
+                                      <option value="">Select State</option>
+                                      {states.map((state) => (
+                                        <option
+                                          key={state.isoCode}
+                                          value={state.isoCode}
+                                        >
+                                          {state.name}
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                </div>
                               </div>
-                              <div className="form-row">
-                                {section?.form2Email?.label && (
+                              <div class="form-row">
+                                {section?.form2City && (
                                   <label
                                     className="contact-label"
-                                    htmlFor="form2Email"
+                                    htmlFor="form2City"
                                   >
-                                    {section.form2Email.label}
-                                    <span className="text-red-600 pl-[2px]">
-                                      *
-                                    </span>
+                                    {section.form2City.label}
                                   </label>
                                 )}
-                                <input
-                                  className="contact-input"
-                                  type="email"
-                                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
-                                  title='"example@email.com"'
-                                  name="form2Email"
-                                  placeholder={section?.form2Email?.placeholder}
-                                  onChange={handleChange}
-                                  required
-                                />
+                                <select
+                                  className="contact-select"
+                                  value={selectedCity}
+                                  onChange={(e) =>
+                                    setSelectedCity(e.target.value)
+                                  }
+                                  name="form2City"
+                                  disabled={!selectedState}
+                                >
+                                  <option value="">Select City</option>
+                                  {cities.map((city) => (
+                                    <option key={city.id} value={city.name}>
+                                      {city.name}
+                                    </option>
+                                  ))}
+                                </select>
                               </div>
                               {section?.form2Concent && (
                                 <div className="flex items-start gap-2">
@@ -886,14 +1017,19 @@ export function ContactUs({ pageData }) {
                                   Application submitted successfully!
                                 </p>
                               )}
-                              <button
-                                type="submit"
-                                className="primary-btn w-fit flip-animate-2"
-                              >
-                                <span data-hover={section.form2Submit}>
-                                  {section.form2Submit}
-                                </span>
-                              </button>
+                              <div className="flex gap-4 items-center">
+                                <button
+                                  type="submit"
+                                  className="primary-btn w-fit flip-animate-2"
+                                >
+                                  <span data-hover={section.form2Submit}>
+                                    {section.form2Submit}
+                                  </span>
+                                </button>
+                                {formLoading &&
+                                  <p>Submitting your Application...</p>
+                                }
+                              </div>
                             </form>
                           </div>
                         )}
@@ -1916,7 +2052,7 @@ export function Products({ pageData }) {
           </div>
           {pageData?.tables && (
             <div className="table-sec pt-8 md:pt-12 2xl:pt-[60px]">
-              <div className="flex justify-between">
+              <div className="flex flex-col lg:flex-row gap-4 justify-between">
                 <div className="flex items-center gap-4 2xl:gap-8">
                   {pageData.tables?.title && (
                     <h2 className="text-[#1A202C] text-[16px] xl:text-[24px] 2xl:text-[32px] font-medium">

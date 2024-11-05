@@ -69,9 +69,10 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
               <MainButton />
               <div className="relative z-10">
                 <GradualSpacing
-                  className="top-banner-sec-heading"
+                  className="top-banner-sec-heading hidden md:flex"
                   text={Title}
                 />
+                <h1 className="top-banner-sec-heading md:hidden">{Title}</h1>
               </div>
             </div>
           </div>

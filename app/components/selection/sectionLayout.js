@@ -1330,6 +1330,8 @@ export function ImagePoint({ section }) {
 }
 
 export function JobApplication({ section }) {
+  const [formLoading, setLoading] = useState(false);
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -1387,6 +1389,7 @@ export function JobApplication({ section }) {
     }
   };
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const resumeId = await uploadFile(formData.resume);
     const dataToSend = {
@@ -1416,9 +1419,9 @@ export function JobApplication({ section }) {
       }
       const data = await response.json();
       setSuccess(true);
-      // console.log('Success:', data);
+      setLoading(false);
     } catch (error) {
-      // console.error('Error:', error);
+      setLoading(false);
       setError("There was an error submitting the form.");
     }
   };
@@ -1674,12 +1677,17 @@ export function JobApplication({ section }) {
                     Application submitted successfully!
                   </p>
                 )}
-                <button
-                  type="submit"
-                  className="primary-btn w-fit flip-animate-2"
-                >
-                  <span data-hover={section?.submit}>{section?.submit}</span>
-                </button>
+                <div className="flex gap-4 items-center">
+                  <button
+                    type="submit"
+                    className="primary-btn w-fit flip-animate-2"
+                  >
+                    <span data-hover={section?.submit}>{section?.submit}</span>
+                  </button>
+                  {formLoading &&
+                    <p>Submitting your Application...</p>
+                  }
+                </div>
               </form>
             </div>
           </div>
