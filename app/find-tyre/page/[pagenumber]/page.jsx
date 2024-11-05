@@ -49,7 +49,7 @@ const FindTyre = ({params}) => {
   const handleSearch = () => {
     if (event.key === 'Enter') {
       push(pathname.replace("find-tyre", searchTyre? `find-tyre?category=${activeTab}&index=${activeTabIndex}&search=${searchTyre}` : 'find-tyre'));
-      fetchData(activeTab, '?search='+searchTyre);
+      fetchData(activeTab, '&search='+searchTyre);
     }
   };
 
@@ -58,7 +58,7 @@ const FindTyre = ({params}) => {
       push(pathname.replace(/\/page\/\d+/, "?category="+category+"&index="+index));
     }else{
       push(pathname.replace("find-tyre", "find-tyre?category="+category+"&index="+index));
-    }
+    }setValue([]);
     setActiveTab(category);
     setActiveTabIndex(index);
     fetchData(category,'');
