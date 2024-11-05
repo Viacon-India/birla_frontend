@@ -169,7 +169,7 @@ export function Float() {
             stroke-linejoin="round"
           />
         </svg>
-        corporate@birlatyre.com
+        info@birlatyre.com
       </Link>
     </div>
   );
