@@ -7,7 +7,6 @@ import Footer from "../components/footer/footer";
 import { PageBanner } from "../components/pageCommon/pageCommon";
 import { PageEnd } from "../components/pageCommon/pageCommon";
 import Banner from "../assets/images/warranty1.jpg";
-import LastBg from "../assets/images/warranty2.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -27,7 +26,7 @@ export default function WarrantyPolicy({params}) {
   return (
     <>
       <Navbar />
-      <PageBanner Title="Warranty Policy" StaticBanner={Banner} />
+      <PageBanner Title={pageData?.title} Banner={pageData?.hero} />
       <section className="page-content mt-8 md:mt-12 2xl:mt-[60px]">
         <div className="container mx-auto flex flex-col gap-8 md:gap-20 2xl:gap-[120px]">
           <div className="box-content-sec">
@@ -204,7 +203,7 @@ export default function WarrantyPolicy({params}) {
           </div>
         </div>
       </section>
-      <PageEnd EndPageData={pageData?.end} EndStaticImage={LastBg} />
+      <PageEnd EndPageData={pageData?.end}/>
       <Footer />
     </>
   );
