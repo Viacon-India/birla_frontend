@@ -1,6 +1,7 @@
 "use client";
 
 import { Float } from "../pageCommon/pageCommon";
+import Cookies from "js-cookie";
 import React, { useRef, useState, useEffect } from "react";
 import { getStrapiMedia } from "@/lib/utils";
 import $ from "jquery";
@@ -23,63 +24,70 @@ import { MainButton, SmallButton } from "../pageCommon/pageCommon";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Hero({Data={}}) {
-  
+export default function Hero({ Data = {} }) {
   const handleVideoEnd = () => {
     $("#preloader").css("transform", "translateY(-150%)");
+    Cookies.set("videoPlayed", "true", { expires: 1, path: "/" });
   };
-  
+
+  const videoPlayed = Cookies.get("videoPlayed");
+
   useEffect(() => {
     $("#preloader").css("transition", "transform 2s linear"); // Set transition
-      gsap.fromTo(
-        ".sideNav-wrapper",
-        { right: "-48px" },
-        {
-          right: "0px",
-          scrollTrigger: {
-            trigger: ".media-sec-marker",
-            scroller: "body",
-            start: "top top",
-            end: "top 60%",
-            scrub: 2,
-            // markers: true
-          },
-        }
-      );
-  
-      gsap.fromTo(
-        ".sideNav-wrapper",
-        { right: "0px" },
-        {
-          right: "-48px",
-          scrollTrigger: {
-            trigger: ".video-content",
-            scroller: "body",
-            start: "top 40%",
-            end: "top top",
-            scrub: 2,
-            // markers: true
-          },
-        }
-      );
+    gsap.fromTo(
+      ".sideNav-wrapper",
+      { right: "-48px" },
+      {
+        right: "0px",
+        scrollTrigger: {
+          trigger: ".media-sec-marker",
+          scroller: "body",
+          start: "top top",
+          end: "top 60%",
+          scrub: 2,
+          // markers: true
+        },
+      }
+    );
+
+    gsap.fromTo(
+      ".sideNav-wrapper",
+      { right: "0px" },
+      {
+        right: "-48px",
+        scrollTrigger: {
+          trigger: ".video-content",
+          scroller: "body",
+          start: "top 40%",
+          end: "top top",
+          scrub: 2,
+          // markers: true
+        },
+      }
+    );
   }, [Data]);
 
   return (
     <div className="relative pb-5 pd:pb-8 xl:pb-[50px] 2xl:pb-[75px]">
-      <div id="preloader" className="loader-sec">
-        <div class="video-wrapper">
-          <video
-            className="w-full h-fit object-contain"
-            autoPlay
-            muted
-            onEnded={handleVideoEnd}
-          >
-            <source src={"/assets/videos/tyre-loader-6.mp4"} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+      {videoPlayed && (
+        <div id="preloader" className="loader-sec">
+          <div class="video-wrapper">
+            <video
+              className="w-full h-fit object-contain"
+              autoPlay
+              muted
+              onEnded={handleVideoEnd}
+            >
+              <source
+                src={"/assets/videos/tyre-loader-6.mp4"}
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
-      </div>
-      {Data?.data && Data.data.length > 0 &&
+      )}
+      {Data?.data && Data.data.length > 0 && (
         <Swiper
           loop={true}
           speed={3000}
@@ -108,54 +116,65 @@ export default function Hero({Data={}}) {
               <MainButton />
             </div>
           </div>
-          {Data.data.map((slider) => ( slider.attributes?.permalink &&
-            <SwiperSlide key={slider.id}>
-              <div class="swiper-card-main">
-                <span className="slider-overlay"></span>
-                <div className="w-full !h-full flex items-end pb-8 md:pb-2 lg:pb-[24px] xl:pb-[60px]">
-                  {slider.attributes?.hero &&
-                    <video
-                      className="absolute top-0 w-full h-fit object-contain"
-                      loop
-                      autoPlay
-                      muted
-                    >
-                      <source src={getStrapiMedia(slider.attributes.hero?.data?.attributes.url)} type="video/mp4" />
-                    </video>
-                  }
-                  <div className="container mx-auto">
-                    <div className="swiper-card relative z-10">
-                      {slider.attributes?.title &&
-                        <GradualSpacing
-                          className="hero-sec-heading hidden md:block !uppercase"
-                          text={slider.attributes.title}
-                        />
-                      }
-                      {slider.attributes?.title &&
-                        <GradualSpacing
-                          className="hero-sec-heading md:hidden"
-                          text={slider.attributes.name}
-                        />
-                      }
-                      {slider.attributes?.tag_line &&
-                        <LetterPullup
-                          className="section-subheading"
-                          words={slider.attributes.tag_line}
-                          delay={0.05}
-                        />
-                      }
-                      <Link href={slider.attributes.permalink} class="explore-btn">
-                        <span>Explore Now</span>
-                        <div class="wave"></div>
-                      </Link>
+          {Data.data.map(
+            (slider) =>
+              slider.attributes?.permalink && (
+                <SwiperSlide key={slider.id}>
+                  <div class="swiper-card-main">
+                    <span className="slider-overlay"></span>
+                    <div className="w-full !h-full flex items-end pb-8 md:pb-2 lg:pb-[24px] xl:pb-[60px]">
+                      {slider.attributes?.hero && (
+                        <video
+                          className="absolute top-0 w-full h-fit object-contain"
+                          loop
+                          autoPlay
+                          muted
+                        >
+                          <source
+                            src={getStrapiMedia(
+                              slider.attributes.hero?.data?.attributes.url
+                            )}
+                            type="video/mp4"
+                          />
+                        </video>
+                      )}
+                      <div className="container mx-auto">
+                        <div className="swiper-card relative z-10">
+                          {slider.attributes?.title && (
+                            <GradualSpacing
+                              className="hero-sec-heading hidden md:block !uppercase"
+                              text={slider.attributes.title}
+                            />
+                          )}
+                          {slider.attributes?.title && (
+                            <GradualSpacing
+                              className="hero-sec-heading md:hidden"
+                              text={slider.attributes.name}
+                            />
+                          )}
+                          {slider.attributes?.tag_line && (
+                            <LetterPullup
+                              className="section-subheading"
+                              words={slider.attributes.tag_line}
+                              delay={0.05}
+                            />
+                          )}
+                          <Link
+                            href={slider.attributes.permalink}
+                            class="explore-btn"
+                          >
+                            <span>Explore Now</span>
+                            <div class="wave"></div>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
+                </SwiperSlide>
+              )
+          )}
         </Swiper>
-      }
+      )}
       <SmallButton />
     </div>
   );

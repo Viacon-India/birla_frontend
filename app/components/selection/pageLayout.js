@@ -2058,7 +2058,7 @@ export function Products({ pageData }) {
                       {pageData.tables.title}
                     </h2>
                   )}
-                  <div className="cat-btn-sec flex items-center gap-3 relative z-10 uppercase">
+                  <div className="cat-btn-sec flex items-center gap-3 relative z-10">
                     <Link
                       href=""
                       className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[10px] md:text-[16px]"
@@ -2084,8 +2084,8 @@ export function Products({ pageData }) {
                   </div>
                 </div>
                 {pageData.tables?.table && pageData.tables.table.length > 1 && (
-                  <div className="country-selection">
-                    <p className="text-[16px] text-[#1A1D21] mb-3 font-medium">
+                  <div className="country-selection flex justify-between items-center lg:flex-col">
+                    <p className="text-[16px] text-[#1A1D21] lg:mb-3 font-medium">
                       Select Standard
                     </p>
                     <div className="flex items-center gap-3 2xl:gap-5">
