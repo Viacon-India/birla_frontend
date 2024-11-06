@@ -13,11 +13,7 @@ import { PageEnd } from "../components/pageCommon/pageCommon";
 import Map from "../components/Map";
 
 export default function DealerLocator() {
-  const dealers = [
-    { id: 1, name: "Dealer 1", lat: 40.7128, lng: -74.006 },
-    { id: 2, name: "Dealer 2", lat: 34.0522, lng: -118.2437 },
-    // Add more dealers as needed
-  ];
+
   return (
     <>
       <Navbar />
