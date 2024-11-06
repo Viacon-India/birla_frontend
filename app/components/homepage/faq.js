@@ -101,68 +101,6 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                   <GradualSpacing className="section-title" text={Data.title} />
                 </div>
               )}
-              {Data?.pre_content && Data.pre_content.length > 0 && (
-                <BlocksRenderer
-                  content={Data.pre_content}
-                  blocks={{
-                    paragraph: ({ children }) => (
-                      <p
-                        className="text-[#3D434C] text-[14px] md:text-[16px] 2xl:text-[18px] font-medium leading-[1.7] !mt-14 md:!mt-6 2xl:mt-8"
-                        data-aos="fade-left"
-                        data-aos-duration="1000"
-                      >
-                        {children}
-                      </p>
-                    ),
-                    heading: ({ children, level }) => {
-                      switch (level) {
-                        case 1:
-                          return <h1>{children}</h1>;
-                        case 2:
-                          return <h2>{children}</h2>;
-                        case 3:
-                          return (
-                            <h3 data-aos="fade-left" data-aos-duration="1000">
-                              {children}
-                            </h3>
-                          );
-                        case 4:
-                          return <h4>{children}</h4>;
-                        case 5:
-                          return <h5>{children}</h5>;
-                        case 6:
-                          return <h6>{children}</h6>;
-                        default:
-                          return <h1>{children}</h1>;
-                      }
-                    },
-                    list: (props) => {
-                      if (props.format === "ordered") {
-                        return (
-                          <ol data-aos="fade-left" data-aos-duration="1000">
-                            {props.children}
-                          </ol>
-                        );
-                      }
-                      return (
-                        <ul data-aos="fade-left" data-aos-duration="1000">
-                          {props.children}
-                        </ul>
-                      );
-                    },
-                    "list-item": (props) => <li>{props.children}</li>,
-                    link: ({ children, url }) => (
-                      <Link href={url}>{children}</Link>
-                    ),
-                  }}
-                  modifiers={{
-                    bold: ({ children }) => <strong>{children}</strong>,
-                    italic: ({ children }) => (
-                      <span className="italic">{children}</span>
-                    ),
-                  }}
-                />
-              )}
               <div class="flex flex-col lg:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
                 {Data?.images?.data && Data.images.data.length > 0 && (
                   <div

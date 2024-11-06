@@ -250,7 +250,6 @@ export function ContactUs({ pageData }) {
                 className="top-banner-sec bg-[#F8F8F8] relative"
                 key={section.id}
               >
-                <Float />
                 <div className="container mx-auto">
                   <div className="contact-main flex flex-col md:flex-row items-start gap-4 md:gap-6 2xl:gap-10 mt-8 md:mt-12 2xl:mt-[60px]">
                     <div className="contact-detail w-full md:w-[40%] xl:w-1/2 flex flex-col gap-4 md:gap-6 xl:gap-10 overflow-hidden relative">
