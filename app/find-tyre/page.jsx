@@ -277,7 +277,6 @@ const FindTyre = () => {
           <section className="top-banner-sec">
             <span className="tyre-overlay"></span>
             <div className="relative">
-              <Float />
               <div className="relative">
                 <div className="w-full h-[40vh] md:h-[50vh] lg:h-[60vh] xl:h-[80vh] flex items-start">
                   <div class="container mx-auto pt-[60px] md:pt-10 xl:pt-6 pb-[60px] flex flex-col md:flex-row gap-4">

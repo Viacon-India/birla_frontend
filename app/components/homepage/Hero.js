@@ -79,7 +79,6 @@ export default function Hero({Data={}}) {
           </video>
         </div>
       </div>
-      <Float />
       {Data?.data && Data.data.length > 0 &&
         <Swiper
           loop={true}

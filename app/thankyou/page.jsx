@@ -15,7 +15,6 @@ export default function Thankyou() {
     <>
       <Navbar />
       <section className="top-banner-sec bg-[#F8F8F8] relative pb-[60px]">
-        <Float />
         <div className="container mx-auto">
           <div className="thank-main flex flex-col md:flex-row items-center gap-4 md:gap-6 2xl:gap-10 mt-8 md:mt-12 2xl:mt-[60px]">
             <div className="thank-img-sec bg-[#FFFFFF] border border-[#DEE1E5] p-6 md:p-5 rounded-[12px] w-full md:w-[45%]">

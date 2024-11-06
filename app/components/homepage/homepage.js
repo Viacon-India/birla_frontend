@@ -24,7 +24,7 @@ export default function Homepage() {
       <Hero Data={pageData?.categories}/>
       <Innovation Heading={pageData?.section1_heading} Title={pageData?.section1_title} Data={pageData?.categories}/>
       <Product Heading={pageData?.section2_heading} Title={pageData?.section2_title} Data={pageData?.categories}/>
-      <Dealer Heading={pageData?.section3_heading} Title={pageData?.section3_title}/>
+      {/* <Dealer Heading={pageData?.section3_heading} Title={pageData?.section3_title}/> */}
       <Sustainability Heading={pageData?.section4_heading} Title={pageData?.section4_title} Description={pageData?.section4_description} Video={pageData?.section4_video}/>
       <AboutUs Data={pageData?.section5}/>
       <Media Heading={pageData?.media_heading} Title={pageData?.media_title}/>
