@@ -11,10 +11,10 @@ import Link from "next/link";
 const ResultComponent = () => {
   const { push } = useRouter();
   const pathname = usePathname();
+  const queryChnage = useSearchParams().get("search");
   const searchParams = new URLSearchParams(useSearchParams());
   const [searchData, setSearchData] = useState([]);
   const [meta, setSearchMeta] = useState({});
-  console.log(meta);
   const pageSize = 4;
   const currentPage = 1;
 
@@ -80,7 +80,7 @@ const ResultComponent = () => {
     };
  
     fetchInitialData();
-  }, []);
+  }, [queryChnage]);
 
   return (
     <>
