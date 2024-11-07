@@ -32,10 +32,10 @@ import img5 from "../../assets/images/about-img-5.jpg";
 
 import { FreeMode, Thumbs, EffectFade } from "swiper/modules";
 
-export default function NewAbout({Data={}}) {
+export default function NewAbout({Data}) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  return (
+  return ( Data &&
     <section className="new-about-slider sec-gap overflow-hidden h-[100%]">
       <div className="container mx-auto">
         <div className="flex items-start flex-col-reverse lg:flex-row gap-4 lg:gap-8 2xl:gap-[60px]">

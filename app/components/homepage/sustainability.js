@@ -10,20 +10,52 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Sustainability({ Heading='', Title='', Description='', Video=''}) {
   useEffect(() => {
-    gsap.to(".sustainabilityVideo", {
-      width: "100%",
-      height: "100%",
-      borderRadius: "20px",
-      boxShadow : "0px -10px 10px rgba(0, 0, 0, 0.25)",
-      scrollTrigger: {
-        trigger: ".video-content",
-        scroller: "body",
-        start: "top 70%",
-        end: "bottom 40%",
-        scrub: 2,
-        // markers: true
-      },
-    });
+    if(Video){
+        gsap.to(".sustainabilityVideo", {
+          width: "100%",
+          height: "100%",
+          borderRadius: "20px",
+          boxShadow : "0px -10px 10px rgba(0, 0, 0, 0.25)",
+          scrollTrigger: {
+            trigger: ".video-content",
+            scroller: "body",
+            start: "top 70%",
+            end: "bottom 40%",
+            scrub: 2,
+            // markers: true
+          },
+        });
+        gsap.fromTo(
+          ".sideNav-wrapper",
+          { right: "-48px" },
+          {
+            right: "0px",
+            scrollTrigger: {
+              trigger: ".video-content",
+              scroller: "body",
+              start: "top -70%",
+              end: "top -60%",
+              scrub: 2,
+              // markers: true
+            },
+          }
+        );
+        gsap.fromTo(
+          ".sideNav-wrapper",
+          { right: "0px" },
+          {
+            right: "-48px",
+            scrollTrigger: {
+              trigger: ".video-content",
+              scroller: "body",
+              start: "top 35%",
+              end: "top 45%",
+              scrub: 2,
+              // markers: true
+            },
+          }
+        );
+    }
   }, [Video]);
 
   return (

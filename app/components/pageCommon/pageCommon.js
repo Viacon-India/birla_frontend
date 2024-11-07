@@ -107,7 +107,6 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
 }
 
 export function Float(data) {
-  console.log(data);
   return ( data &&
     <div className="sideNav-wrapper">
       {data.data.map((item) => (item?.permalink &&

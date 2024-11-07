@@ -82,7 +82,7 @@ const NavbarComponent = () => {
           <div className="nav-main">
             <div className="container mx-auto">
               <div className="md:py-4 xl:py-0 w-full flex justify-between items-center relative">
-                <div class="flex items-center">
+                <div class="md:flex items-center">
                   <div className="navbar-start w-fit">
                     <button className="hamburger-button" onClick={toggleMenu}>
                       <svg
@@ -306,7 +306,7 @@ const NavbarComponent = () => {
                 </div>
 
                 {headerData.data.attributes.logo.length > 1 && (
-                  <div className="navbar-end gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
+                  <div className="navbar-end w-fit gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
                     {headerData.data.attributes.logo[0].image?.data &&
                       headerData.data.attributes.logo[0].icon_link?.link && (
                         <Link
@@ -412,7 +412,7 @@ const NavbarComponent = () => {
                 </svg>
               </button>
               <div className="dropdown-wrapper">
-                <div
+                <form onSubmit={handleSearchSubmit}
                   class={cn(
                     "search-wrapper relative flex md:hidden my-[3px] mx-2 ",
                     isActive ? "active" : ""
@@ -422,6 +422,8 @@ const NavbarComponent = () => {
                   <input
                     className="search-input"
                     type="text"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
                     placeholder="Search website"
                   />
                   <svg
@@ -439,7 +441,7 @@ const NavbarComponent = () => {
                       stroke-linejoin="round"
                     />
                   </svg>
-                </div>
+                </form>
                 <ul className="h-full overflow-auto px-[16px] pt-4 md:pt-0 xl:pt-[80px] 2xl:!pt-0 border-t-2 md:border-t-0">
                   {headerData.data.attributes.menus.data[1].attributes?.menu.map(
                     (menu) => (

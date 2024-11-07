@@ -26,6 +26,7 @@ export default function Media({ Heading = "", Title = "" }) {
       });
     AOS.init();
   }, [Heading]);
+
   return (
     <section className="media-sec sec-gap">
       <div className="container mx-auto overflow-hidden">
@@ -102,7 +103,6 @@ export default function Media({ Heading = "", Title = "" }) {
           )}
         </div>
       </div>
-      <div className="media-sec-marker"></div>
     </section>
   );
 }

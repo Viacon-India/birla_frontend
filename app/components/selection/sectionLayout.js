@@ -432,21 +432,18 @@ export function ImageTitleContent({ section }) {
                 }}
               />
             )}
-            {/* {section?.link && (
-              <Link href={section.link} className="more-btn">
-                Know More
-              </Link>
-            )} */}
             {section?.link && (
               <Link href={section.link} className="more-btn">
                 {section?.link_text}
               </Link>
             )}
-            <div class="line-loader self-end">
-              <div class="bar bar1"></div>
-              <div class="bar bar2"></div>
-              <div class="bar bar3"></div>
-            </div>
+            {section?.content && section.content.length > 0 &&
+              <div class="line-loader self-end">
+                <div class="bar bar1"></div>
+                <div class="bar bar2"></div>
+                <div class="bar bar3"></div>
+              </div>
+            }
           </div>
         </div>
         {section?.post_content && section.post_content.length > 0 && (
@@ -1129,15 +1126,15 @@ export function Gallery({ section }) {
               className={cn(
                 "gallery-sec grid gap-3 2xl:gap-4 pt-6 md:pt-10 2xl:pt-[60px]",
                 section?.compact
-                  ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-5"
+                  ? "grid-cols-2 md:grid-cols-4 lg:grid-cols-5"
                   : "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
               )}
             >
               {section.collection.map((image) => (
                 <figure
                   className={cn(
-                    "w-full mb-0 overflow-hidden rounded-[20px] relative cursor-pointer sustainability-figure",
-                    section?.compact ? "h-[240px]" : "h-[240px] md:h-[316px]",
+                    "w-full mb-0 overflow-hidden rounded-[20px] relative cursor-pointer sustainability-figure h-fit",
+                    // section?.compact ? "h-[240px]" : "h-[240px] md:h-[316px]",
                     image?.big ? "lg:col-span-2" : ""
                   )}
                   data-aos="flip-left"
@@ -2534,7 +2531,7 @@ export function KeyPoints({ section }) {
                   />
                 </figure>
               )}
-              <div className="box-content-sec relative md:w-[55%] flex flex-col">
+              <div className="box-content-sec relative md:w-[55%] flex flex-col overflow-hidden">
                 {section?.heading && (
                   <span
                     className="section-heading"

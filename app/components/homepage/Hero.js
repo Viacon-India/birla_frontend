@@ -18,58 +18,22 @@ import {
 import Link from "next/link";
 import GradualSpacing from "@/components/GradualSpacing";
 import LetterPullup from "@/components/LetterPullup";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MainButton, SmallButton } from "../pageCommon/pageCommon";
 
-gsap.registerPlugin(ScrollTrigger);
-
-export default function Hero({ Data = {} }) {
+export default function Hero({ Data}) {
   const handleVideoEnd = () => {
     $("#preloader").css("transform", "translateY(-150%)");
-    Cookies.set("videoPlayed", "true", { expires: 1, path: "/" });
+    Cookies.set("videoPlayed", true, { expires: (1 / 1440), path: "/" });
   };
-
-  const videoPlayed = Cookies.get("videoPlayed");
+  const videoPlayed = Cookies.get("videoPlayed") ? Cookies.get("videoPlayed") : false;
 
   useEffect(() => {
-    $("#preloader").css("transition", "transform 2s linear"); // Set transition
-    gsap.fromTo(
-      ".sideNav-wrapper",
-      { right: "-48px" },
-      {
-        right: "0px",
-        scrollTrigger: {
-          trigger: ".media-sec-marker",
-          scroller: "body",
-          start: "top top",
-          end: "top 60%",
-          scrub: 2,
-          // markers: true
-        },
-      }
-    );
-
-    gsap.fromTo(
-      ".sideNav-wrapper",
-      { right: "0px" },
-      {
-        right: "-48px",
-        scrollTrigger: {
-          trigger: ".video-content",
-          scroller: "body",
-          start: "top 40%",
-          end: "top top",
-          scrub: 2,
-          // markers: true
-        },
-      }
-    );
+    $("#preloader").css("transition", "transform 2s linear");
   }, [Data]);
 
   return (
     <div className="relative pb-5 pd:pb-8 xl:pb-[50px] 2xl:pb-[75px]">
-      {videoPlayed && (
+      {(
         <div id="preloader" className="loader-sec">
           <div class="video-wrapper">
             <video
