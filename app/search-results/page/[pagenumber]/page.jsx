@@ -4,11 +4,11 @@ import React, { useEffect, useState, Suspense } from "react";
 import { getStrapiMedia } from "@/lib/utils";
 import ReactPaginate from "react-paginate";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import Navbar from "../components/navbar/navbar";
-import Footer from "../components/footer/footer";
+import Navbar from "@/app/components/navbar/navbar";
+import Footer from "@/app/components/footer/footer";
 import Link from "next/link";
 
-const ResultComponent = () => {
+const ResultComponent = ({params}) => {
   const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = new URLSearchParams(useSearchParams());
@@ -16,7 +16,7 @@ const ResultComponent = () => {
   const [meta, setSearchMeta] = useState({});
   console.log(meta);
   const pageSize = 4;
-  const currentPage = 1;
+  const currentPage = params.pagenumber;
 
   const [searchQuery, setSearchQuery] = useState(
     searchParams.get("search")
@@ -26,9 +26,19 @@ const ResultComponent = () => {
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected;
-    push(
-      pathname.replace(pathname, pathname + "/page/" + (selectedPage + 1) + "?" + searchParams.toString())
-    );
+    if (selectedPage == 0) {
+      if (pathname.includes("/page/")) {
+        push(pathname.replace(/\/page\/\d+/, "?" + searchParams.toString()));
+      }
+    } else {
+      if (pathname.includes("/page/")) {
+        push(pathname.replace(/\/page\/\d+/, "/page/" + (selectedPage + 1) + "?" + searchParams.toString()));
+      } else {
+        push(
+          pathname.replace(pathname, pathname + "/page/" + (selectedPage + 1) + "?" + searchParams.toString())
+        );
+      }
+    }
   };
 
   const handleSearchChange = (e) => {
@@ -199,9 +209,9 @@ const ResultComponent = () => {
   );
 }
 
-const Result = () => (
+const Result = ({params}) => (
   <Suspense fallback={<div>Loading...</div>}>
-    <ResultComponent />
+    <ResultComponent params={params}/>
   </Suspense>
 );
 
