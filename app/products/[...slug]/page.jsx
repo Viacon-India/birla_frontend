@@ -2,6 +2,7 @@
  
 import React, { useEffect, useState } from "react";
 import { getStrapiMedia } from "@/lib/utils";
+import { CollectionTypeSeo } from "@/app/components/pageCommon/pageCommon";
 import PageSelection from "@/app/components/selection/pageLayout";
 import Navbar from "@/app/components/navbar/navbar";
 import Footer from "@/app/components/footer/footer";
@@ -9,7 +10,7 @@ import Footer from "@/app/components/footer/footer";
 export default function Page({ params }) {
   const [slugs, setSlugs] = useState(params.slug);
   const [page, setPage] = useState(
-    slugs.at(1)?.includes("-bt-") ? "products" : "segments"
+    slugs.at(1)?.includes("-bt-") ? "product" : "category"
   );
   const [endPoint, setEndPoint] = useState(
     slugs.at(-2) == "page" ? slugs.at(-3) : slugs.at(-1)
@@ -38,6 +39,7 @@ export default function Page({ params }) {
  
   return (
     <>
+      <CollectionTypeSeo page={page} pageData={pageData}/>
       <Navbar />
       <PageSelection page={page} pageData={pageData} pagination={pagination}/>
       <Footer />
