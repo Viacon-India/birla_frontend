@@ -362,12 +362,9 @@ const FindTyre = () => {
                           {pageData.data.attributes.categories.data.map((categories) => ( categories.attributes?.name && categories.attributes?.filters &&
                             activeTab === categories.attributes.name && (
                               <div key={categories.id} id={categories.attributes.name}>
-                                <div className="w-full grid grid-cols-2 gap-2 2xl:gap-5">
+                                <div className="w-fullflex flex-col gap-2 2xl:gap-5">
                                   {categories.attributes?.filters && categories.attributes.filters.length > 0 && categories.attributes.filters.map((filter, index) => ( categories.attributes?.name && categories.attributes?.filters &&
-                                    <div key={filter.id} className={cn(
-                                      "tyre-form-row col-span-2",
-                                      categories.attributes.filters.length > 4 && index == 0 ? "" : "col-span-2 md:col-span-1 2xl:col-span-2"
-                                    )}>
+                                    <div key={filter.id} className="tyre-form-row">
                                       <label className="tyre-form-label" htmlFor={categories.attributes.name+"-"+filter.title.replace("Select ", "")}>
                                         {filter.title}
                                       </label>
@@ -391,7 +388,7 @@ const FindTyre = () => {
                                       }
                                     </div>
                                   ))}
-                                  <button onClick={() => productFilters(value)} className="col-span-2 primary-btn !w-full flip-animate-2 after:!hidden text-center !flex !justify-center !items-center">
+                                  <button onClick={() => productFilters(value)} className="primary-btn !w-full flip-animate-2 after:!hidden text-center !flex !justify-center !items-center">
                                     <svg
                                       width="18"
                                       height="18"
