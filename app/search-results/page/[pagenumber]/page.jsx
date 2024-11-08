@@ -11,18 +11,13 @@ import Link from "next/link";
 const ResultComponent = ({params}) => {
   const { push } = useRouter();
   const pathname = usePathname();
-  const queryChnage = useSearchParams().get("search");
-  const searchParams = new URLSearchParams(useSearchParams());
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get("search");
+  const [searchInput, setSearchInput] = useState(searchQuery);
   const [searchData, setSearchData] = useState([]);
   const [meta, setSearchMeta] = useState({});
   const pageSize = 4;
   const currentPage = params.pagenumber;
-
-  const [searchQuery, setSearchQuery] = useState(
-    searchParams.get("search")
-      ? searchParams.get("search").replace("+", " ").replace("%2F", "/")
-      : ""
-  );
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected;
@@ -42,17 +37,17 @@ const ResultComponent = ({params}) => {
   };
 
   const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
+    setSearchInput(e.target.value);
   };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    if (searchQuery.trim()) {
-      push(`/search-results?search=${encodeURIComponent(searchQuery.trim())}`);
+    if (searchInput.trim()) {
+      push(`/search-results?search=${encodeURIComponent(searchInput.trim())}`);
     }else{
       push(`/search-results`);
     }
-    fetchData('&search='+searchQuery);
+    fetchData('&search='+searchInput);
   };
 
   const fetchData = async (query) => {
@@ -77,6 +72,8 @@ const ResultComponent = ({params}) => {
   };
 
   useEffect(() => {
+    setSearchData([]);
+    setSearchInput(searchQuery);
     const fetchInitialData = async () => {
       try {
         if(searchQuery){
@@ -90,7 +87,7 @@ const ResultComponent = ({params}) => {
     };
  
     fetchInitialData();
-  }, [queryChnage]);
+  }, [searchQuery]);
 
   return (
     <>
@@ -102,7 +99,7 @@ const ResultComponent = ({params}) => {
           </span>
           {searchData.length > 0 && searchParams.get("search") &&
             <h2 className="section-title">
-              Found “{searchData.length}” results for your search “{searchParams.get("search").replace("+", " ").replace("%2F", "/")}”
+              Found “{meta.pagination.total}” results for your search “{searchParams.get("search").replace("+", " ").replace("%2F", "/")}”
             </h2>
           }
           <form className="relative mt-3 mb-10" onSubmit={handleSearchSubmit}>
@@ -122,7 +119,7 @@ const ResultComponent = ({params}) => {
                 stroke-linejoin="round"
               />
             </svg>
-            <input className="w-full py-[10px] pl-10 border border-[#B3B8C2] bg-transparent rounded-[24px]" type="search" value={searchQuery} onChange={handleSearchChange} placeholder="search here" />
+            <input className="w-full py-[10px] pl-10 border border-[#B3B8C2] bg-transparent rounded-[24px]" type="search" value={searchInput} onChange={handleSearchChange} placeholder="search here" />
           </form>
           {searchData.length > 0 ? (
               <>

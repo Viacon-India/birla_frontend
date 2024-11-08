@@ -47,13 +47,21 @@ const FindTyre = ({params}) => {
   };
 
   const handleSearch = () => {
+    setProductsData([]);
     if (event.key === 'Enter') {
       push(pathname.replace("find-tyre", searchTyre? `find-tyre?category=${activeTab}&index=${activeTabIndex}&search=${searchTyre}` : 'find-tyre'));
       fetchData(activeTab, '&search='+searchTyre);
+      setTimeout(()=>{
+        window.scrollTo({
+          top: (80 * window.innerHeight/100),
+          behavior: "smooth",
+        });
+       }, 1000)
     }
   };
 
   const handleClick = (category,index) => {
+    setProductsData([]);
     if (pathname.includes("/page/")) {
       push(pathname.replace(/\/page\/\d+/, "?category="+category+"&index="+index));
     }else{
@@ -179,6 +187,12 @@ const FindTyre = ({params}) => {
     if(searchParams.toString()){
       push(pathname.replace(/\/page\/\d+/, "")+"?"+searchParams.toString());
     }
+    setTimeout(()=>{
+      window.scrollTo({
+        top: (80 * window.innerHeight/100),
+        behavior: "smooth",
+      });
+     }, 1000)
   };
 
   useEffect(() => {
@@ -238,15 +252,6 @@ const FindTyre = ({params}) => {
  
     fetchInitialData();
   }, [pageData]);
-
-  useEffect(() => {
-    setTimeout(()=>{
-      window.scrollTo({
-        top: (80 * window.innerHeight/100),
-        behavior: "smooth",
-      });
-     }, 1000)
-  }, [productData]);
 
   const subSegmentOptions = new Set(); const machineryOptions = new Set(); const rimOptions = new Set(); const sizeOptions = new Set(); const patternOptions = new Set();
   filterData.forEach(item => {
@@ -434,7 +439,7 @@ const FindTyre = ({params}) => {
               {productData && 
                 productData.length > 0 ? (
                   <>
-                    <h3 className="text-[#1A1D21] text-[22px] md:text-[28px] 2xl:text-[32px] font-bold pt-4 md:pt-6 2xl:pt-10">Showing {productData.length} matching products</h3>
+                    <h3 className="text-[#1A1D21] text-[22px] md:text-[28px] 2xl:text-[32px] font-bold pt-4 md:pt-6 2xl:pt-10">Showing matching {activeTab} products</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10">
                       {productData.map((product) => (
                         <Product key={product.id} data={product} />
