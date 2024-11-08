@@ -12,25 +12,22 @@ import "aos/dist/aos.css";
 
 const NavbarComponent = () => {
   const { push } = useRouter();
-  const searchParams = new URLSearchParams(useSearchParams());
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get("search");
+  const [searchInput, setSearchInput] = useState(searchQuery);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [headerData, setHeaderData] = useState({});
   const [expandedSubMenu, setExpandedSubMenu] = useState(null);
   const menuRef = useRef(null);
-  const [searchQuery, setSearchQuery] = useState(
-    searchParams.get("search")
-      ? searchParams.get("search").replace("+", " ").replace("%2F", "/")
-      : ""
-  );
 
   const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
+    setSearchInput(e.target.value);
   };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    if (searchQuery.trim()) {
-      push(`/search-results?search=${encodeURIComponent(searchQuery.trim())}`);
+    if (searchInput.trim()) {
+      push(`/search-results?search=${encodeURIComponent(searchInput.trim())}`);
     }
   };
 
@@ -281,7 +278,6 @@ const NavbarComponent = () => {
                         <input
                           className="search-input"
                           type="text"
-                          value={searchQuery}
                           onChange={handleSearchChange}
                           placeholder="Search website"
                         />
@@ -422,7 +418,6 @@ const NavbarComponent = () => {
                   <input
                     className="search-input"
                     type="text"
-                    value={searchQuery}
                     onChange={handleSearchChange}
                     placeholder="Search website"
                   />
