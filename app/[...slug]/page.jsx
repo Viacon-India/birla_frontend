@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { getStrapiMedia } from "@/lib/utils";
-
+import { CollectionTypeSeo } from "@/app/components/pageCommon/pageCommon";
 import Navbar from "@/app/components/navbar/navbar";
 import Footer from "@/app/components/footer/footer";
 import PageSelection from "@/app/components/selection/pageLayout";
@@ -26,7 +26,7 @@ export default function Page({ params }) {
         if (slugs.at(-1) === "contact-us") {
           setPage('ContactUs');
         } else {
-          setPage('Pages');
+          setPage('page');
         }
       } catch (error) {
         // console.error("Fetch error:", error);
@@ -53,6 +53,7 @@ export default function Page({ params }) {
 
   return (
     <>
+      <CollectionTypeSeo page={page} pageData={pageData} />
       <Navbar />
       <PageSelection page={page} pageData={pageData} sidebar={sidebar} slugs={slugs}/>
       <Footer />

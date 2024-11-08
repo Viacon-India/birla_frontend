@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Helmet } from 'react-helmet';
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -210,4 +210,45 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
       </div>
     </section>
   );
+}
+
+
+export function SingleTypeSeo({pageData}){
+  return(
+    <Helmet>
+      {pageData.data.attributes?.title && <title>{pageData.data.attributes.title}</title>}
+      {pageData.data.attributes?.seo_description && <meta name="description" content={pageData.data.attributes.seo_description} />}
+      {pageData.data.attributes?.seo_keywords && <meta name="keywords" content={pageData.data.attributes.seo_keywords} />}
+      {pageData.data.attributes?.seo_title && <meta property="og:type" content="page" />}
+      {pageData.data.attributes?.seo_title && <meta property="og:title" content={pageData.data.attributes.seo_title} />}
+      {pageData.data.attributes?.seo_description && <meta property="og:description" content={pageData.data.attributes.seo_description} />}
+      {pageData.data.attributes.seo_image?.data && <meta property="og:image" content={getStrapiMedia(pageData.data.attributes.seo_image.data.attributes?.url)} />}
+      {pageData.data.attributes?.permalink && <meta property="og:url" content={pageData.data.attributes.permalink} />}
+      {pageData.data.attributes?.permalink && <link rel="canonical" href={pageData.data.attributes.permalink} />}
+      {pageData.data.attributes?.seo_title && <meta name="twitter:card" content={pageData.data.attributes.seo_title} />}
+      {pageData.data.attributes?.seo_title && <meta name="twitter:title" content={pageData.data.attributes.seo_title} />}
+      {pageData.data.attributes?.seo_description && <meta name="twitter:description" content={pageData.data.attributes.seo_description} />}
+      {pageData.data.attributes.seo_image?.data && <meta name="twitter:image" content={getStrapiMedia(pageData.data.attributes.seo_image.data.attributes?.url)} />}
+    </Helmet>
+  )
+}
+
+export function CollectionTypeSeo({page, pageData}){
+  return(
+    <Helmet>
+      {pageData?.title && <title>{pageData.title}</title>}
+      {pageData?.seo_description && <meta name="description" content={pageData.seo_description} />}
+      {pageData?.seo_keywords && <meta name="keywords" content={pageData.seo_keywords} />}
+      {page && <meta property="og:type" content={page!='ContactUs'?page:'page'} />}
+      {pageData?.seo_title && <meta property="og:title" content={pageData.seo_title} />}
+      {pageData?.seo_description && <meta property="og:description" content={pageData.seo_description} />}
+      {pageData?.seo_image && <meta property="og:image" content={getStrapiMedia(pageData.seo_image?.url)} />}
+      {pageData?.permalink && <meta property="og:url" content={pageData.permalink} />}
+      {pageData?.permalink && <link rel="canonical" href={pageData.permalink} />}
+      {pageData?.seo_title && <meta name="twitter:card" content={pageData.seo_title} />}
+      {pageData?.seo_title && <meta name="twitter:title" content={pageData.seo_title} />}
+      {pageData?.seo_description && <meta name="twitter:description" content={pageData.seo_description} />}
+      {pageData?.seo_image && <meta name="twitter:image" content={getStrapiMedia(pageData.seo_image?.url)} />}
+    </Helmet>
+  )
 }

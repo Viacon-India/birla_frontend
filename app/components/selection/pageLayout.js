@@ -43,13 +43,13 @@ export default function PageSelection({
         />
       )}
       {page == "ContactUs" && <ContactUs pageData={pageData} />}
-      {page == "Pages" && <Pages pageData={pageData} />}
-      {page == "segments" && (
+      {page == "Page" && <Pages pageData={pageData} />}
+      {page == "category" && (
         <Suspense fallback={<div>Loading...</div>}>
           <Segments pageData={pageData} pagination={pagination} />
         </Suspense>
       )}
-      {page == "products" && <Products pageData={pageData} />}
+      {page == "product" && <Products pageData={pageData} />}
       {page == "error404" && <Error404 />}
     </>
   );
