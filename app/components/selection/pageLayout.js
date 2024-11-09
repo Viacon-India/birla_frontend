@@ -2058,7 +2058,7 @@ export function Products({ pageData }) {
                   <div className="cat-btn-sec flex items-center gap-3 relative z-10">
                     <Link
                       href=""
-                      className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[10px] md:text-[16px]"
+                      className="flex items-center gap-2 text-primary border border-primary rounded-[4px] py-1 px-2 text-[10px] md:text-[16px]"
                       target="_blank"
                     >
                       <svg
@@ -2081,7 +2081,7 @@ export function Products({ pageData }) {
                   </div>
                 </div>
                 {pageData.tables?.table && pageData.tables.table.length > 1 && (
-                  <div className="country-selection flex justify-between items-center lg:flex-col">
+                  <div className="country-selection flex justify-between items-center lg:flex-col lg:items-start">
                     <p className="text-[16px] text-[#1A1D21] lg:mb-3 font-medium">
                       Select Standard
                     </p>

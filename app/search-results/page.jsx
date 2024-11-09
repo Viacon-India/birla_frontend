@@ -82,19 +82,19 @@ const ResultComponent = () => {
   return (
     <>
       <Navbar />
-      <div className="pt-[100px] bg-[#F4F4F4]">
+      <div className="pt-[100px] xl:pt-[140px] bg-[#F4F4F4]">
         <div className="container mx-auto">
           <span className="text-primary text-[20px] uppercase mb-3">
             Search Result
           </span>
           {searchData.length > 0 && searchParams.get("search") &&
-            <h2 className="section-title">
+            <h2 className="text-secondary text-[22px] md:text-[28px] xl:text-[32px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px]">
               Found “{meta.pagination.total}” results for your search “{searchParams.get("search").replace("+", " ").replace("%2F", "/")}”
             </h2>
           }
           <form className="relative mt-3 mb-10" onSubmit={handleSearchSubmit}>
             <svg
-            className="absolute top-[16px] left-[20px]"
+            className="absolute top-[15px] left-[20px]"
               width="18"
               height="18"
               viewBox="0 0 18 18"
@@ -109,19 +109,19 @@ const ResultComponent = () => {
                 stroke-linejoin="round"
               />
             </svg>
-            <input className="w-full py-[10px] pl-10 border border-[#B3B8C2] bg-transparent rounded-[24px]" type="search" value={searchInput} onChange={handleSearchChange} placeholder="search here" />
+            <input className="w-full py-[10px] pl-11 border border-[#B3B8C2] bg-transparent rounded-[24px]" type="search" value={searchInput} onChange={handleSearchChange} placeholder="search here" />
           </form>
           {searchData.length > 0 ? (
               <>
                 {searchData.map((product) => (product?.permalink &&
-                  <Link key={product.id} href={product.permalink} className="result-card flex flex-col p-4 bg-[#FFFFFF] rounded-[8px] mt-10">
+                  <Link key={product.id} href={product.permalink} className="result-card flex flex-col p-4 bg-[#FFFFFF] rounded-[8px] mt-4 xl:mt-10">
                     {product?.segment ?
-                      <h3 className="text-secondary text-[24px] lg:text-[28px] 2xl:text-[32px] font-bold leading-[1] mb-3">{product.segment.title} - {product.name}</h3> :
-                      <h3 className="text-secondary text-[24px] lg:text-[28px] 2xl:text-[32px] font-bold leading-[1] mb-3">Page - {product.name}</h3>
+                      <h3 className="text-secondary text-[20px] lg:text-[24px] leading-[1] mb-3">{product.segment.title} - {product.name}</h3> :
+                      <h3 className="text-secondary text-[20px] lg:text-[24px] leading-[1] mb-3">Page - {product.name}</h3>
                     }
-                    <p className="text-primary text-[18px] lg:text-[20px]">{window.location.hostname+product.permalink}</p>
-                    {product?.meta_description &&
-                      <p className="text-[#4F5662] text-[14px] md:text-[15px] lg:text-[16px] 2xl:text-[17px] line-clamp-4 pt-3">{product.meta_description}</p>
+                    <p className="text-primary text-[16px] lg:text-[20px]">{window.location.hostname+product.permalink}</p>
+                    {product?.seo_description &&
+                      <p className="text-[#4F5662] text-[14px] md:text-[15px] xl:text-[16px] line-clamp-4 pt-3">{product.seo_description}</p>
                     }
                   </Link>
                 ))}

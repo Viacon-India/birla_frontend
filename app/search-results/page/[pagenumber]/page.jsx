@@ -92,7 +92,7 @@ const ResultComponent = ({params}) => {
   return (
     <>
       <Navbar />
-      <div className="pt-[100px] bg-[#F4F4F4]">
+      <div className="pt-[100px] xl:pt-[140px] bg-[#F4F4F4]">
         <div className="container mx-auto">
           <span className="text-primary text-[20px] uppercase mb-3">
             Search Result
@@ -119,12 +119,12 @@ const ResultComponent = ({params}) => {
                 stroke-linejoin="round"
               />
             </svg>
-            <input className="w-full py-[10px] pl-10 border border-[#B3B8C2] bg-transparent rounded-[24px]" type="search" value={searchInput} onChange={handleSearchChange} placeholder="search here" />
+            <input className="w-full py-[10px] pl-11 border border-[#B3B8C2] bg-transparent rounded-[24px]" type="search" value={searchInput} onChange={handleSearchChange} placeholder="search here" />
           </form>
           {searchData.length > 0 ? (
               <>
                 {searchData.map((product) => (product?.permalink &&
-                  <Link key={product.id} href={product.permalink} className="result-card flex flex-col p-4 bg-[#FFFFFF] rounded-[8px] mt-10">
+                  <Link key={product.id} href={product.permalink} className="result-card flex flex-col p-4 bg-[#FFFFFF] rounded-[8px] mt-4 xl:mt-10">
                     {product?.segment ?
                       <h3 className="text-secondary text-[24px] lg:text-[28px] 2xl:text-[32px] font-bold leading-[1] mb-3">{product.segment.title} - {product.name}</h3> :
                       <h3 className="text-secondary text-[24px] lg:text-[28px] 2xl:text-[32px] font-bold leading-[1] mb-3">Page - {product.name}</h3>
