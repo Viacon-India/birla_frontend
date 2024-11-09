@@ -171,7 +171,7 @@ ol, ul{
   transition-all duration-500
 }
 .search-wrapper svg{
-  @apply absolute bottom-[10px] left-[13px]
+  @apply absolute bottom-[11px] left-[13px]
 }
 .search-input:focus {
   @apply w-[60%];

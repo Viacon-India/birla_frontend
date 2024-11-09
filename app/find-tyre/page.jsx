@@ -361,7 +361,7 @@ const FindTyre = () => {
                       {pageData.data.attributes.categories.data.map((categories) => ( categories.attributes?.name && categories.attributes?.filters &&
                         activeTab === categories.attributes.name && (
                           <div key={categories.id} id={categories.attributes.name}>
-                            <div className="w-fullflex flex-col gap-2 2xl:gap-5">
+                            <div className="w-full flex flex-col gap-2 2xl:gap-5">
                               {categories.attributes?.filters && categories.attributes.filters.length > 0 && categories.attributes.filters.map((filter, index) => ( categories.attributes?.name && categories.attributes?.filters &&
                                 <div key={filter.id} className="tyre-form-row">
                                   <label className="tyre-form-label" htmlFor={categories.attributes.name+"-"+filter.title.replace("Select ", "")}>
@@ -419,7 +419,7 @@ const FindTyre = () => {
           </div>
         </div>
       </section>
-      <section className="dealer-sec mt-[23rem] md:mt-12 2xl:mt-[60px] relative overflow-hidden">
+      <section className="dealer-sec pt-[23rem] md:pt-12 2xl:pt-[60px] relative overflow-hidden bg-[#F8F8F8]">
         <div className="container mx-auto overflow-hidden">
           <span className="section-heading">Find A Tyre</span>
           <div className="section-title-wrapper">
