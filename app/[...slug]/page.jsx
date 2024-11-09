@@ -24,9 +24,9 @@ export default function Page({ params }) {
         setPageData(page);
  
         if (slugs.at(-1) === "contact-us") {
-          setPage('ContactUs');
+          setPage('contact-us');
         } else {
-          setPage('page');
+          setPage('pages');
         }
       } catch (error) {
         // console.error("Fetch error:", error);
@@ -53,7 +53,7 @@ export default function Page({ params }) {
 
   return (
     <>
-      <CollectionTypeSeo page={page} pageData={pageData} />
+      <CollectionTypeSeo page={'page'} pageData={pageData} />
       <Navbar />
       <PageSelection page={page} pageData={pageData} sidebar={sidebar} slugs={slugs}/>
       <Footer />
