@@ -434,7 +434,7 @@ const FindTyre = () => {
                     <Product key={product.id} data={product} />
                   ))}
                 </div>
-                {meta?.pagination?.pageCount > 0 &&
+                {meta?.pagination?.pageCount > 1 &&
                   <>
                     <div className="pt-4 md:pt-6 2xl:pt-10">
                       <ReactPaginate

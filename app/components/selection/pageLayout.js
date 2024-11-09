@@ -42,14 +42,14 @@ export default function PageSelection({
           sidebar={sidebar}
         />
       )}
-      {page == "ContactUs" && <ContactUs pageData={pageData} />}
-      {page == "Page" && <Pages pageData={pageData} />}
-      {page == "category" && (
+      {page == "contact-us" && <ContactUs pageData={pageData} />}
+      {page == "pages" && <Pages pageData={pageData} />}
+      {page == "segments" && (
         <Suspense fallback={<div>Loading...</div>}>
           <Segments pageData={pageData} pagination={pagination} />
         </Suspense>
       )}
-      {page == "product" && <Products pageData={pageData} />}
+      {page == "products" && <Products pageData={pageData} />}
       {page == "error404" && <Error404 />}
     </>
   );
@@ -1234,6 +1234,12 @@ const Segments = ({ pageData, pagination }) => {
     } else {
       push(pathname.replace(/\/page\/\d+/, ""));
     }
+    setTimeout(() => {
+      window.scrollTo({
+        top: (100 * window.innerHeight) / 100,
+        behavior: "smooth",
+      });
+    }, 1000);
   };
 
   const fetchData = async (query) => {
@@ -1365,15 +1371,6 @@ const Segments = ({ pageData, pagination }) => {
           Array.from(patternOptions),
         ];
 
-  useEffect(() => {
-    setTimeout(() => {
-      window.scrollTo({
-        top: (100 * window.innerHeight) / 100,
-        behavior: "smooth",
-      });
-    }, 1000);
-  }, [productsData]);
-
   if (
     typeof meta === "undefined" ||
     (meta.pagination &&
@@ -1496,7 +1493,7 @@ const Segments = ({ pageData, pagination }) => {
                   <Product key={product.id} data={product} />
                 ))}
               </div>
-              {meta?.pagination?.pageCount > 0 && (
+              {meta?.pagination?.pageCount > 1 && (
                 <>
                   <ReactPaginate
                     previousLabel={

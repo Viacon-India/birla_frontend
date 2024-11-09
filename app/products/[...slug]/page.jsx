@@ -6,10 +6,14 @@ import { CollectionTypeSeo } from "@/app/components/pageCommon/pageCommon";
 import PageSelection from "@/app/components/selection/pageLayout";
 import Navbar from "@/app/components/navbar/navbar";
 import Footer from "@/app/components/footer/footer";
+import Product from "@/app/components/product/card";
  
 export default function Page({ params }) {
   const [slugs, setSlugs] = useState(params.slug);
   const [page, setPage] = useState(
+    slugs.at(1)?.includes("-bt-") ? "products" : "segments"
+  );
+  const [pageType, setPageType] = useState(
     slugs.at(1)?.includes("-bt-") ? "product" : "category"
   );
   const [endPoint, setEndPoint] = useState(
@@ -31,6 +35,7 @@ export default function Page({ params }) {
         setPageData(apiData);
       } catch (error) {
         setPage('error404');
+        setPageType('page');
       }
     };
  
@@ -39,7 +44,7 @@ export default function Page({ params }) {
  
   return (
     <>
-      <CollectionTypeSeo page={page} pageData={pageData}/>
+      <CollectionTypeSeo page={pageType} pageData={pageData}/>
       <Navbar />
       <PageSelection page={page} pageData={pageData} pagination={pagination}/>
       <Footer />
