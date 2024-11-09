@@ -12,6 +12,9 @@ const nextConfig = {
             },
         ],
     },
+    env: {
+        DOMAIN_NAME: process.env.DOMAIN_NAME,
+    },
 };
 
 module.exports = nextConfig
