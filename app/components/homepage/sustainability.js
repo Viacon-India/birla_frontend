@@ -21,7 +21,7 @@ export default function Sustainability({ Heading='', Title='', Description='', V
             scroller: "body",
             start: "top 70%",
             end: "bottom 40%",
-            scrub: 2,
+            scrub: 1,
             // markers: true
           },
         });
@@ -67,7 +67,7 @@ export default function Sustainability({ Heading='', Title='', Description='', V
           }
           {Title &&
             <div className="section-title-wrapper">
-              <GradualSpacing className="section-title" text={Title} />
+              <GradualSpacing className="section-title-home" text={Title} />
             </div>
           }
           {Description &&

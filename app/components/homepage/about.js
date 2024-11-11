@@ -67,7 +67,7 @@ export default function NewAbout({Data}) {
             }
             {Data?.title &&
               <div className="section-title-wrapper mb-6 md:mb-8 2xl:mb-10">
-                <GradualSpacing className="section-title" text={Data.title} />
+                <GradualSpacing className="section-title-home" text={Data.title} />
               </div>
             }
             {Data?.content && Data.content.length > 0 && (

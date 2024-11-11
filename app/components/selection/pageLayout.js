@@ -1579,7 +1579,7 @@ export function Products({ pageData }) {
 
   useEffect(() => {
     var magnifierSize = 200;
-    var magnification = 3;
+    var magnification = 1.5;
 
     function magnifier() {
       this.magnifyImg = function (ptr, magnification, magnifierSize) {
@@ -2060,30 +2060,32 @@ export function Products({ pageData }) {
                       {pageData.tables.title}
                     </h2>
                   )}
-                  <div className="cat-btn-sec flex items-center gap-3 relative z-10">
-                    <Link
-                      href=""
-                      className="flex items-center gap-2 text-primary border border-primary rounded-[4px] py-1 px-2 text-[10px] md:text-[16px]"
-                      target="_blank"
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                  {pageData?.catalogue &&
+                    <div className="cat-btn-sec flex items-center gap-3 relative z-10">
+                      <Link
+                        href={getStrapiMedia(pageData.catalogue.url)}
+                        className="flex items-center gap-2 text-primary border border-primary rounded-[4px] py-1 px-2 text-[10px] md:text-[16px]"
+                        target="_blank"
                       >
-                        <path
-                          d="M14.875 9.875V14.25C14.875 14.4158 14.8092 14.5747 14.6919 14.6919C14.5747 14.8092 14.4158 14.875 14.25 14.875H1.75C1.58424 14.875 1.42527 14.8092 1.30806 14.6919C1.19085 14.5747 1.125 14.4158 1.125 14.25V9.875M4.71875 6.59461L8 9.875L11.2812 6.59461M8 1.125V9.8727"
-                          stroke="#F5811E"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                      Download Product Leaflet
-                    </Link>
-                  </div>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M14.875 9.875V14.25C14.875 14.4158 14.8092 14.5747 14.6919 14.6919C14.5747 14.8092 14.4158 14.875 14.25 14.875H1.75C1.58424 14.875 1.42527 14.8092 1.30806 14.6919C1.19085 14.5747 1.125 14.4158 1.125 14.25V9.875M4.71875 6.59461L8 9.875L11.2812 6.59461M8 1.125V9.8727"
+                            stroke="#F5811E"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                        Download Product Leaflet
+                      </Link>
+                    </div>
+                  }
                 </div>
                 {pageData.tables?.table && pageData.tables.table.length > 1 && (
                   <div className="country-selection flex justify-between items-center lg:flex-col lg:items-start">
@@ -2607,12 +2609,59 @@ export function Products({ pageData }) {
   );
 }
 
+// export function Error404() {
+//   return (
+//     <div className="py-[60px] md:py-[100px]">
+//       <div class="container mx-auto">
+//         <div class="flex flex-col xl:flex-row gap-2 md:gap-10 xl:gap-[60px] items-center">
+//           <div class="error-text w-full xl:w-[50%] flex justify-center xl:items-start">
+//             <div className="flex items-center">
+//               <span className="text-[#000000] text-[160px] xl:text-[240px] font-bold text-center translate-x-[20px] xl:translate-x-[40px]">
+//                 4
+//               </span>
+//               <Image
+//                 className="w-[120px] h-[120px] xl:w-[250px] xl:h-[250px]"
+//                 src={errorImg}
+//                 alt="errorigif"
+//               />
+//               <span className="text-[#000000] text-[160px] xl:text-[240px] font-bold text-center ml-[-10px]">
+//                 4
+//               </span>
+//             </div>
+//           </div>
+//           <div class="error-detail relative z-1 w-full xl:w-[50%] flex flex-col items-center xl:items-start gap-4 md:gap-8 lg:gap-10 2xl:gap-[60px]">
+//             <Image
+//               className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-[-1]"
+//               src={BGTiger2}
+//               alt="bgtiger"
+//             />
+//             <span className="section-heading">404 error</span>
+//             <h2 className="section-title">Oops! Page Not Found</h2>
+//             <p className="text-[#1A1D21] text-[20px] lg:text-[28px] 2xl:text-[32px] font-medium leading-[1.1] text-center xl:text-start">
+//               The page you are looking for does not exist. How you got here is a
+//               mystery. But you can click the button below to go back to the
+//               homepage.
+//             </p>
+//             <Link
+//               href="/"
+//               className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
+//             >
+//               <span data-hover="Back To Home">Back To Home</span>
+//             </Link>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+
 export function Error404() {
   return (
     <div className="py-[60px] md:py-[100px]">
       <div class="container mx-auto">
-        <div class="flex flex-col xl:flex-row gap-2 md:gap-10 xl:gap-[60px] items-center">
-          <div class="error-text w-full xl:w-[50%] flex justify-center xl:items-start">
+        <div class="flex flex-col items-center">
+          <div class="error-text w-full flex justify-center xl:items-start">
             <div className="flex items-center">
               <span className="text-[#000000] text-[160px] xl:text-[240px] font-bold text-center translate-x-[20px] xl:translate-x-[40px]">
                 4
@@ -2627,19 +2676,13 @@ export function Error404() {
               </span>
             </div>
           </div>
-          <div class="error-detail relative z-1 w-full xl:w-[50%] flex flex-col items-center xl:items-start gap-4 md:gap-8 lg:gap-10 2xl:gap-[60px]">
-            <Image
+          <div class="error-detail relative z-1 w-full flex flex-col items-center justify-center gap-4">
+            {/* <Image
               className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-[-1]"
               src={BGTiger2}
               alt="bgtiger"
-            />
-            <span className="section-heading">404 error</span>
+            /> */}
             <h2 className="section-title">Oops! Page Not Found</h2>
-            <p className="text-[#1A1D21] text-[20px] lg:text-[28px] 2xl:text-[32px] font-medium leading-[1.1] text-center xl:text-start">
-              The page you are looking for does not exist. How you got here is a
-              mystery. But you can click the button below to go back to the
-              homepage.
-            </p>
             <Link
               href="/"
               className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"

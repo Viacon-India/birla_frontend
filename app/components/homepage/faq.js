@@ -98,7 +98,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
               )}
               {Data?.title && (
                 <div className="section-title-wrapper">
-                  <GradualSpacing className="section-title" text={Data.title} />
+                  <GradualSpacing className="section-title-home" text={Data.title} />
                 </div>
               )}
               <div class="flex flex-col lg:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
@@ -227,7 +227,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
             {Heading && <span className="section-heading">{Heading}</span>}
             {Title && (
               <div className="section-title-wrapper">
-                <GradualSpacing className="section-title" text={Title} />
+                <GradualSpacing className="section-title-home" text={Title} />
               </div>
             )}
             {pageData?.data && pageData.data.length > 0 && (
