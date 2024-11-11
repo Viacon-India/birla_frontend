@@ -483,10 +483,13 @@ text-white transition-all duration-500 relative hover:left-[-190px]
   before:content-[""] before:w-[3px] before:h-[95%] before:bg-primary before:absolute before:left-0 before:rounded-[100px]
 }
 .section-title{
-  @apply text-secondary text-[22px] md:text-[28px] lg:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] font-oak-sans
+  @apply text-secondary text-[24px] md:text-[32px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] font-oak-sans capitalize
+}
+.section-title-home{
+  @apply text-secondary text-[24px] md:text-[32px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] font-oak-sans
 }
 .section-sub-title{
-  @apply text-secondary text-[22px] md:text-[24px] 2xl:text-[32px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] mb-2
+  @apply text-secondary text-[20px] md:text-[28px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] mb-2
 }
 .about-title{
   @apply text-secondary text-[36px] md:text-[40px] 2xl:text-[48px] font-bold leading-[1.2] flex gap-3 items-center !capitalize pl-3 mt-3
@@ -659,7 +662,7 @@ a.current_dot {
 /* media-card-section */
 
 .media-card figure{
-  @apply w-full h-[250px] md:h-[200px] lg:h-[250px] 2xl:h-[360px] mb-2 2xl:mb-6 overflow-hidden relative rounded-[24px]
+  @apply w-full h-[250px] md:h-[200px] 2xl:h-[360px] mb-2 2xl:mb-6 overflow-hidden relative rounded-[24px]
 }
 .media-card-image{
   @apply w-full h-full object-cover rounded-[24px]
@@ -1093,7 +1096,7 @@ a.current_dot {
   @apply text-[#1A1D21] text-[14px] md:text-[15px] leading-[1.6] mb-1 last:mb-0
 }
 .box-content-sec h3{
-  @apply text-secondary text-[24px] md:text-[32px] font-bold
+  @apply text-secondary text-[24px] md:text-[32px] font-bold capitalize
 }
 .vast-card figure{
   @apply w-full h-[200px] md:h-[180px] lg:h-[220px] xl:h-[252px] mb-2 md:mb-4 2xl:mb-6 relative overflow-hidden 

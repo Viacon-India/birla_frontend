@@ -34,7 +34,7 @@ export default function Media({ Heading = "", Title = "" }) {
           {Heading && <span className="section-heading">{Heading}</span>}
           {Title && (
             <div className="section-title-wrapper">
-              <GradualSpacing className="section-title" text={Title} />
+              <GradualSpacing className="section-title-home" text={Title} />
             </div>
           )}
           {pageData?.data && pageData.data.length > 0 && (

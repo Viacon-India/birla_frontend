@@ -1150,7 +1150,7 @@ export function Gallery({ section }) {
                     alt={image.image?.alternativeText}
                     className={cn(
                       "gallery-sec-image",
-                      image?.title ? "" : "hover:scale-125 hover:rotate-[5deg]"
+                      section?.compact ? "" : "hover:scale-125 hover:rotate-[5deg]"
                     )}
                   />
                   {image?.title && (
@@ -2472,7 +2472,7 @@ export function Parallax({ section }) {
       <section className="page-content-sec mt-[60px]">
         <div className="container mx-auto">
           <div className="parallax-main-wrapper">
-            <h2 className="text-secondary text-[20px] md:text-[28px] 2xl:text-[32px] leading-[1.2] font-bold mb-6 md:mb-8 2xl:mb-10">
+            <h2 className="text-secondary text-[20px] md:text-[28px] 2xl:text-[32px] leading-[1.2] font-bold mb-6 md:mb-8 2xl:mb-10 capitalize">
               {section?.description}
             </h2>
             <div className="parallax-main">

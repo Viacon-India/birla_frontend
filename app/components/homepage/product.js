@@ -91,7 +91,7 @@ export default function Products({ Heading='', Title='', Data={}}) {
               }
               {Title &&
                 <div className="section-title-wrapper">
-                  <GradualSpacing className="section-title" text={Title} />
+                  <GradualSpacing className="section-title-home" text={Title} />
                 </div>
               }
             </div>

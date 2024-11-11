@@ -15,7 +15,7 @@ export default function Dealer({ Heading='', Title=''}) {
           }
           {Title &&
             <div className="section-title-wrapper">
-              <GradualSpacing className="section-title" text={Title} />
+              <GradualSpacing className="section-title-home" text={Title} />
             </div>
           }
         </div>
