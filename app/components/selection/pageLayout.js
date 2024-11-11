@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, Suspense } from "react";
 import { Country, State, City } from "country-state-city";
+import { CollectionTypeSeo } from "@/app/components/pageCommon/pageCommon";
 import $ from "jquery";
 import ReactPaginate from "react-paginate";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
@@ -1382,6 +1383,9 @@ const Segments = ({ pageData, pagination }) => {
 
   return (
     <>
+      {pageData && pageData?.products &&
+        <CollectionTypeSeo page='category' pageData={pageData}/>
+      }
       <PageBanner Title={pageData.title} Banner={pageData.hero} />
       <section className="product-sec mt-10 md:mt-[60px] 2xl:mt-[100px]">
         <div className="container mx-auto overflow-hidden flex flex-col gap-4 md:gap-6 2xl:gap-10">
@@ -1778,6 +1782,7 @@ export function Products({ pageData }) {
 
   return (
     <>
+      <CollectionTypeSeo page="product" pageData={pageData}/>
       <section className="pt-[100px] 2xl:pt-[140px] bg-[#F8F8F8]">
         <div className="container mx-auto">
           <div className="flex items-center gap-1">
