@@ -189,7 +189,7 @@ export function ContactUs({ pageData }) {
         const errorText = await response.text();
         throw new Error(`Error: ${response.status} - ${errorText}`);
       } else {
-        push("/thankyou");
+        // push("/thankyou");
       }
       const data = await response.json();
       setForm1Success(true);
@@ -481,6 +481,7 @@ export function ContactUs({ pageData }) {
                                     <input
                                       className="contact-input"
                                       type="text"
+                                      maxlength="18"
                                       name="form1ContactNumber"
                                       placeholder={
                                         section?.form1ContactNumber?.placeholder
@@ -821,6 +822,7 @@ export function ContactUs({ pageData }) {
                                     <input
                                       className="contact-input"
                                       type="text"
+                                      maxlength="18"
                                       name="form2ContactNumber"
                                       placeholder={
                                         section?.form2ContactNumber?.placeholder

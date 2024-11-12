@@ -1561,6 +1561,7 @@ export function JobApplication({ section }) {
                   <input
                     className="contact-input"
                     type="text"
+                    maxlength="18"
                     name="contactNumber"
                     placeholder={section?.contactNumber?.placeholder}
                     onChange={handleChange}
@@ -1610,6 +1611,7 @@ export function JobApplication({ section }) {
                     />
                     <input
                       type="file"
+                      accept=".pdf,.docx"
                       name="resume"
                       onChange={handleChange}
                       required

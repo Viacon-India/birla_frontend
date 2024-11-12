@@ -244,7 +244,14 @@ export function SingleTypeSeo({pageData, page='page'}){
       <meta property="og:site_name" content="Birla Tyres" />
       {pageData.data?.attributes?.seo_title && <meta property="og:title" content={pageData.data.attributes.seo_title} />}
       {pageData.data?.attributes?.seo_description && <meta property="og:description" content={pageData.data.attributes.seo_description} />}
-      {pageData.data?.attributes.seo_image?.data && <meta property="og:image" content={getStrapiMedia(pageData.data.attributes.seo_image.data.attributes?.url)} />}
+      {pageData.data?.attributes.seo_image?.data && 
+        <>
+          <meta property="og:image" content={getStrapiMedia(pageData.data.attributes.seo_image.data.attributes?.url)} />
+          <meta property="og:image:width" content={pageData.data.attributes.seo_image.data.attributes?.width} />
+          <meta property="og:image:height" content={pageData.data.attributes.seo_image.data.attributes?.height} />
+          <meta property="og:image:type" content={pageData.data.attributes.seo_image.data.attributes?.mime} />
+        </>
+      }
       {pageData.data?.attributes?.permalink && <meta property="og:url" content={domain+pageData.data.attributes.permalink} />}
       {pageData.data?.attributes?.permalink && <link rel="canonical" href={domain+pageData.data.attributes.permalink} />}
       {pageData.data?.attributes?.seo_title && <meta name="twitter:card" content={pageData.data.attributes.seo_title} />}
@@ -305,7 +312,14 @@ export function CollectionTypeSeo({page, pageData}){
       <meta property="og:site_name" content="Birla Tyres" />
       {pageData?.seo_title && <meta property="og:title" content={pageData.seo_title} />}
       {pageData?.seo_description && <meta property="og:description" content={pageData.seo_description} />}
-      {pageData?.seo_image && <meta property="og:image" content={getStrapiMedia(pageData.seo_image?.url)} />}
+      {pageData?.seo_image && 
+        <>
+          <meta property="og:image" content={getStrapiMedia(pageData.seo_image?.url)} />
+          <meta property="og:image:width" content={pageData.seo_image?.width} />
+          <meta property="og:image:height" content={pageData.seo_image?.height} />
+          <meta property="og:image:type" content={pageData.seo_image?.mime} />
+        </>
+      }
       {pageData?.permalink && <meta property="og:url" content={domain+pageData.permalink} />}
       {pageData?.permalink && <link rel="canonical" href={domain+pageData.permalink} />}
       {pageData?.seo_title && <meta name="twitter:card" content={pageData.seo_title} />}
