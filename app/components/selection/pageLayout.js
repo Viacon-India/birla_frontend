@@ -1578,7 +1578,7 @@ export function Products({ pageData }) {
   };
 
   useEffect(() => {
-    var magnifierSize = 200;
+    var magnifierSize = 150;
     var magnification = 1.5;
 
     function magnifier() {
