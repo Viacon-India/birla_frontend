@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useState, useCallback } from "react";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 import { useRouter } from "next/navigation";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { getStrapiMedia } from "@/lib/utils";
@@ -437,13 +439,13 @@ export function ImageTitleContent({ section }) {
                 {section?.link_text}
               </Link>
             )}
-            {section?.content && section.content.length > 0 &&
+            {section?.content && section.content.length > 0 && (
               <div class="line-loader self-end">
                 <div class="bar bar1"></div>
                 <div class="bar bar2"></div>
                 <div class="bar bar3"></div>
               </div>
-            }
+            )}
           </div>
         </div>
         {section?.post_content && section.post_content.length > 0 && (
@@ -698,7 +700,11 @@ export function Accordion({ section }) {
                                 }
                                 return <ul>{props.children}</ul>;
                               },
-                              "list-item": (props) => <li className="text-[#000000] font-medium">{props.children}</li>,
+                              "list-item": (props) => (
+                                <li className="text-[#000000] font-medium">
+                                  {props.children}
+                                </li>
+                              ),
                               link: ({ children, url }) => (
                                 <Link href={url}>{children}</Link>
                               ),
@@ -1134,9 +1140,10 @@ export function Gallery({ section }) {
                 <figure
                   className={cn(
                     "w-full mb-0 overflow-hidden rounded-[20px] relative cursor-pointer sustainability-figure",
-                    section?.compact ? 
-                    // "h-[240px]"
-                    "h-fit" : "h-[240px] md:h-[316px]",
+                    section?.compact
+                      ? // "h-[240px]"
+                        "h-fit"
+                      : "h-[240px] md:h-[316px]",
                     image?.big ? "lg:col-span-2" : ""
                   )}
                   data-aos="flip-left"
@@ -1150,7 +1157,9 @@ export function Gallery({ section }) {
                     alt={image.image?.alternativeText}
                     className={cn(
                       "gallery-sec-image",
-                      section?.compact ? "" : "hover:scale-125 hover:rotate-[5deg]"
+                      section?.compact
+                        ? ""
+                        : "hover:scale-125 hover:rotate-[5deg]"
                     )}
                   />
                   {image?.title && (
@@ -1330,6 +1339,7 @@ export function ImagePoint({ section }) {
 
 export function JobApplication({ section }) {
   const [formLoading, setLoading] = useState(false);
+  const [value, setValue] = useState();
 
   useEffect(() => {
     AOS.init();
@@ -1363,6 +1373,12 @@ export function JobApplication({ section }) {
         [name]: value,
       });
     }
+  };
+  const handlePhoneChange = (value) => {
+    setFormData({
+      ...formData,
+      ['contactNumber']: value,
+    });
   };
   const uploadFile = async (file) => {
     const formData = new FormData();
@@ -1558,15 +1574,17 @@ export function JobApplication({ section }) {
                       <span className="text-red-600 pl-[2px]">*</span>
                     </label>
                   )}
-                  <input
-                    className="contact-input"
-                    type="text"
-                    maxlength="18"
-                    name="contactNumber"
-                    placeholder={section?.contactNumber?.placeholder}
-                    onChange={handleChange}
-                    required
-                  />
+                    <PhoneInput
+                      className="contact-input pl-[10px]"
+                      international
+                      defaultCountry="IN"
+                      value={value}
+                      name="contactNumber"
+                      placeholder={section?.contactNumber?.placeholder}
+                      onChange={handlePhoneChange}
+                      maxlength="18"
+                      required
+                    />
                 </div>
                 {section?.specialization && (
                   <div className="form-row">
@@ -1685,9 +1703,7 @@ export function JobApplication({ section }) {
                   >
                     <span data-hover={section?.submit}>{section?.submit}</span>
                   </button>
-                  {formLoading &&
-                    <p>Submitting your Application...</p>
-                  }
+                  {formLoading && <p>Submitting your Application...</p>}
                 </div>
               </form>
             </div>
@@ -2065,11 +2081,14 @@ export function SidebarContent({ section }) {
                 key={collection.id}
                 onClick={() => {
                   setActiveTab(collection.id);
-                  if (window.innerWidth <= 768) { // Adjust this value based on your design
-                    document.getElementById(`section-${collection.id}`).scrollIntoView({
-                      behavior: 'smooth',
-                      block: 'start',
-                    });
+                  if (window.innerWidth <= 768) {
+                    // Adjust this value based on your design
+                    document
+                      .getElementById(`section-${collection.id}`)
+                      .scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
                   }
                 }}
               >
@@ -2088,7 +2107,7 @@ export function SidebarContent({ section }) {
 
               return (
                 <div
-                id={`section-${collection.id}`}
+                  id={`section-${collection.id}`}
                   className="border-b border-[#C9CDD3] py-4 md:border-none md:py-0"
                   key={collection.id}
                 >
