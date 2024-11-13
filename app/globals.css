@@ -1170,6 +1170,9 @@ a.current_dot {
 
 
  /* contact-page */
+ .PhoneInputInput{
+  @apply bg-transparent outline-none text-[14px]
+ }
  .contact-detail-box h3{
   @apply text-[28px] 2xl:text-[32px] text-[#454545] font-bold mb-2
  }

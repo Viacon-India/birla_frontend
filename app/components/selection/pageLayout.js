@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState, Suspense } from "react";
 import { Country, State, City } from "country-state-city";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 import { CollectionTypeSeo } from "@/app/components/pageCommon/pageCommon";
 import $ from "jquery";
 import ReactPaginate from "react-paginate";
@@ -141,6 +143,7 @@ export function ContactUs({ pageData }) {
   const [selectedCountry, setSelectedCountry] = useState("IN");
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
+  const [value, setValue] = useState();
 
   const countries = Country.getAllCountries();
   const states = selectedCountry
@@ -155,6 +158,12 @@ export function ContactUs({ pageData }) {
     setFormData({
       ...formData,
       [name]: value,
+    });
+  };
+  const handlePhoneChange = (value) => {
+    setFormData({
+      ...formData,
+      ['contactNumber']: value,
     });
   };
   const form1HandleSubmit = async (e) => {
@@ -478,17 +487,19 @@ export function ContactUs({ pageData }) {
                                         </span>
                                       </label>
                                     )}
-                                    <input
-                                      className="contact-input"
-                                      type="text"
-                                      maxlength="18"
-                                      name="form1ContactNumber"
-                                      placeholder={
-                                        section?.form1ContactNumber?.placeholder
-                                      }
-                                      onChange={handleChange}
-                                      required
-                                    />
+                                                        <PhoneInput
+                      className="contact-input pl-[10px]"
+                      international
+                      defaultCountry="IN"
+                      value={value}
+                      name="form1ContactNumber"
+                      placeholder={
+                        section?.form1ContactNumber?.placeholder
+                      }
+                      onChange={handlePhoneChange}
+                      maxlength="18"
+                      required
+                    />
                                   </div>
                                 </div>
                                 <div class="form-row-wrapper">
@@ -819,17 +830,19 @@ export function ContactUs({ pageData }) {
                                         </span>
                                       </label>
                                     )}
-                                    <input
-                                      className="contact-input"
-                                      type="text"
-                                      maxlength="18"
-                                      name="form2ContactNumber"
-                                      placeholder={
-                                        section?.form2ContactNumber?.placeholder
-                                      }
-                                      onChange={handleChange}
-                                      required
-                                    />
+<PhoneInput
+                      className="contact-input pl-[10px]"
+                      international
+                      defaultCountry="IN"
+                      value={value}
+                      name="form2ContactNumber"
+                      placeholder={
+                        section?.form2ContactNumber?.placeholder
+                      }
+                      onChange={handlePhoneChange}
+                      maxlength="18"
+                      required
+                    />
                                   </div>
                                 </div>
                                 <div class="form-row-wrapper">
