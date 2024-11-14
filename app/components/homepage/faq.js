@@ -138,7 +138,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                   >
                     {Data.items.map((item, index) => (
                       <div key={item.id} class="accordion-content-wrapper">
-                        <h4 className="accordion-title ham-accordion cursor-pointer flex gap-2">
+                        <h4 className="accordion-title ham-accordion cursor-pointer flex gap-2 justify-between">
                           {item?.title}
                         </h4>
                         <div className="panel">
