@@ -1402,22 +1402,21 @@ const Segments = ({ pageData, pagination }) => {
         <CollectionTypeSeo page='category' pageData={pageData}/>
       }
       <PageBanner Title={pageData.title} Banner={pageData.hero} />
-      <section className="product-sec mt-10 md:mt-[60px] 2xl:mt-[100px]">
+      <section className="product-sec pt-10 md:pt-[60px] 2xl:pt-[100px]">
         <div className="container mx-auto overflow-hidden flex flex-col gap-4 md:gap-6 2xl:gap-10">
           <div className="upper-title-sec flex gap-3 md:gap-0 flex-col md:flex-row justify-between items-end">
-            <div className="self-start">
-              <span className="section-heading">
-                {pageData.section_heading}
-              </span>
-              <div className="section-title-wrapper">
-                <GradualSpacing
-                  className="section-title"
-                  text={pageData.section_title}
-                />
+          {(pageData?.section_heading || pageData?.section_title) &&
+              <div className="self-start">
+                {pageData?.section_heading && <span className="section-heading">{pageData.section_heading}</span>}
+                {pageData?.section_title &&
+                  <div className="section-title-wrapper">
+                    <h3 className="section-title">{pageData.section_title}</h3>
+                  </div>
+                }
               </div>
-            </div>
+            }
             {pageData?.catalogue && (
-              <div className="cat-btn-sec flex items-center gap-3 relative z-10 uppercase">
+              <div className="cat-btn-sec flex items-center gap-3 relative z-10">
                 <Link
                   href={getStrapiMedia(pageData.catalogue.url)}
                   className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]"
