@@ -978,7 +978,7 @@ export function Gallery({ section }) {
         if (section.collection[0].image.ext === ".mp4") {
           return (
             <div className="w-[100%] mt-4 2xl:mt-8 relative z-51">
-              <video className="!w-full" loop autoPlay muted>
+              <video className="!w-full" loop autoPlay muted playsInline>
                 <source
                   src={getStrapiMedia(section.collection[0].image?.url)}
                   type="video/mp4"

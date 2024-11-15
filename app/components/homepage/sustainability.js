@@ -76,7 +76,7 @@ export default function Sustainability({ Heading='', Title='', Description='', V
         </div>
       </div>
       <div class="video-content">
-        <video className="sustainabilityVideo" loop autoPlay muted>
+        <video className="sustainabilityVideo" loop autoPlay muted playsInline>
           {Video?.data &&
             <source src={getStrapiMedia(Video.data.attributes?.url)} type="video/mp4" />
           }
