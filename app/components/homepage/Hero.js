@@ -20,12 +20,14 @@ import GradualSpacing from "@/components/GradualSpacing";
 import LetterPullup from "@/components/LetterPullup";
 import { MainButton, SmallButton } from "../pageCommon/pageCommon";
 
-export default function Hero({ Data}) {
+export default function Hero({ Data }) {
   const handleVideoEnd = () => {
     $("#preloader").css("transform", "translateY(-150%)");
-    Cookies.set("videoPlayed", true, { expires: (1 / 1440), path: "/" });
+    Cookies.set("videoPlayed", true, { expires: 1 / 1440, path: "/" });
   };
-  const videoPlayed = Cookies.get("videoPlayed") ? Cookies.get("videoPlayed") : false;
+  const videoPlayed = Cookies.get("videoPlayed")
+    ? Cookies.get("videoPlayed")
+    : false;
 
   useEffect(() => {
     $("#preloader").css("transition", "transform 2s linear");
@@ -33,7 +35,7 @@ export default function Hero({ Data}) {
 
   return (
     <div className="relative pb-5 pd:pb-8 xl:pb-[50px] 2xl:pb-[75px]">
-      {(
+      {
         <div id="preloader" className="loader-sec">
           <div class="video-wrapper">
             <video
@@ -51,7 +53,7 @@ export default function Hero({ Data}) {
             </video>
           </div>
         </div>
-      )}
+      }
       {Data?.data && Data.data.length > 0 && (
         <Swiper
           loop={true}
@@ -90,13 +92,12 @@ export default function Hero({ Data}) {
                     <div className="w-full !h-full flex items-end pb-8 md:pb-2 lg:pb-[24px] xl:pb-[60px]">
                       {slider.attributes?.hero && (
                         <video
-                          className="absolute top-0 w-full h-fit object-contain"
+                          className="absolute top-0 w-full h-auto object-contain"
                           loop
                           autoPlay
                           muted
                           playsInline
                           preload="auto"
-                          crossorigin="anonymous"
                         >
                           <source
                             src={getStrapiMedia(
