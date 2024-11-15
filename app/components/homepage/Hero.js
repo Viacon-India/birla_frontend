@@ -95,6 +95,8 @@ export default function Hero({ Data}) {
                           autoPlay
                           muted
                           playsInline
+                          preload="auto"
+                          crossorigin="anonymous"
                         >
                           <source
                             src={getStrapiMedia(
@@ -102,6 +104,7 @@ export default function Hero({ Data}) {
                             )}
                             type="video/mp4"
                           />
+                          Your browser does not support the video tag.
                         </video>
                       )}
                       <div className="container mx-auto">
