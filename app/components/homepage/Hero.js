@@ -94,6 +94,7 @@ export default function Hero({ Data}) {
                           loop
                           autoPlay
                           muted
+                          playsInline
                         >
                           <source
                             src={getStrapiMedia(
