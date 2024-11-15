@@ -397,7 +397,7 @@ const FindTyre = ({params}) => {
                                   }
                                 </div>
                               ))}
-                              <button onClick={() => productFilters(value)} className="primary-btn !w-full flip-animate-2 after:!hidden text-center !flex !justify-center !items-center">
+                              <button onClick={() => productFilters(value)} className="primary-btn !w-full flip-animate-2 after:!hidden text-center !flex !justify-center !items-center mt-2">
                                 <svg
                                   width="18"
                                   height="18"

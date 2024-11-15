@@ -36,8 +36,8 @@ export function MainButton() {
 export function SmallButton() {
   const pathname = usePathname();
   return (
-    <div class="relative w-full flex md:hidden gap-2 p-2">
-      {pathname != "/find-tyre" && (
+    <div class="relative w-full flex md:hidden gap-2">
+      {/* {pathname != "/find-tyre" && (
         <Link
           href="/find-tyre"
           className="primary-btn-1 !w-[50%] !justify-center"
@@ -45,7 +45,7 @@ export function SmallButton() {
           Find a Tyre
         </Link>
       )}
-      {/* {pathname != "/find-dealer" && (
+      {pathname != "/find-dealer" && (
         <Link
           href="/find-dealer"
           className="primary-btn-2 !w-[50%] !justify-center"
@@ -63,7 +63,7 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
       <div className="relative">
         <span className="banner-overlay"></span>
         <div className="relative">
-          <div className="w-full h-[40vh] xl:h-[80vh] flex items-end">
+          <div className="w-full h-[30vh] md:h-[40vh] xl:h-[80vh] flex items-end">
             <div class="container mx-auto flex flex-col justify-end md:justify-between h-full pt-8 xl:pt-5 pb-3 md:pb-6 xl:pb-[60px]">
               <MainButton />
               <div className="relative z-10">
@@ -78,7 +78,7 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
           {Banner?.url && (
             Banner.ext == ".mp4" ? (
               <video
-                className="absolute top-0 w-full h-full object-cover"
+                className="absolute top-0 w-full h-full object-fill"
                 loop
                 autoPlay
                 muted
@@ -95,7 +95,7 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
                     ? Banner.alternativeText
                     : "Hero-Banner"
                 }
-                className="absolute top-0 w-full h-full object-cover"
+                className="absolute top-0 w-full h-full object-fill"
               />
             )
           )}

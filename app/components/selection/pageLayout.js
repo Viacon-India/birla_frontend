@@ -3,7 +3,7 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { Country, State, City } from "country-state-city";
 import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
+import PhoneInput, { parsePhoneNumber } from "react-phone-number-input";
 import { CollectionTypeSeo } from "@/app/components/pageCommon/pageCommon";
 import $ from "jquery";
 import ReactPaginate from "react-paginate";
@@ -160,10 +160,18 @@ export function ContactUs({ pageData }) {
       [name]: value,
     });
   };
-  const handlePhoneChange = (value) => {
+  const handleForm1PhoneChange = (value) => {
+    setSelectedCountry(parsePhoneNumber(value+'000')?.country);
     setFormData({
       ...formData,
-      ['contactNumber']: value,
+      ['form1ContactNumber']: value,
+    });
+  };
+  const handleForm2PhoneChange = (value) => {
+    setSelectedCountry(parsePhoneNumber(value+'000')?.country);
+    setFormData({
+      ...formData,
+      ['form2ContactNumber']: value,
     });
   };
   const form1HandleSubmit = async (e) => {
@@ -487,19 +495,19 @@ export function ContactUs({ pageData }) {
                                         </span>
                                       </label>
                                     )}
-                                                        <PhoneInput
-                      className="contact-input pl-[10px]"
-                      international
-                      defaultCountry="IN"
-                      value={value}
-                      name="form1ContactNumber"
-                      placeholder={
-                        section?.form1ContactNumber?.placeholder
-                      }
-                      onChange={handlePhoneChange}
-                      maxlength="18"
-                      required
-                    />
+                                    <PhoneInput
+                                      className="contact-input pl-[10px]"
+                                      international
+                                      defaultCountry={selectedCountry}
+                                      value={value}
+                                      name="form1ContactNumber"
+                                      placeholder={
+                                        section?.form1ContactNumber?.placeholder
+                                      }
+                                      onChange={handleForm1PhoneChange}
+                                      maxlength="18"
+                                      required
+                                    />
                                   </div>
                                 </div>
                                 <div class="form-row-wrapper">
@@ -830,19 +838,19 @@ export function ContactUs({ pageData }) {
                                         </span>
                                       </label>
                                     )}
-<PhoneInput
-                      className="contact-input pl-[10px]"
-                      international
-                      defaultCountry="IN"
-                      value={value}
-                      name="form2ContactNumber"
-                      placeholder={
-                        section?.form2ContactNumber?.placeholder
-                      }
-                      onChange={handlePhoneChange}
-                      maxlength="18"
-                      required
-                    />
+                                    <PhoneInput
+                                      className="contact-input pl-[10px]"
+                                      international
+                                      defaultCountry={selectedCountry}
+                                      value={value}
+                                      name="form2ContactNumber"
+                                      placeholder={
+                                        section?.form2ContactNumber?.placeholder
+                                      }
+                                      onChange={handleForm2PhoneChange}
+                                      maxlength="18"
+                                      required
+                                    />
                                   </div>
                                 </div>
                                 <div class="form-row-wrapper">
