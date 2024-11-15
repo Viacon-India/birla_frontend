@@ -74,7 +74,7 @@ export default function Hero({ Data}) {
             disableOnInteraction: false,
           }}
           modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
-          className="mySwiper relative !pt-[58px] md:!pt-0 !h-[264px] md:!h-[430px] lg:!h-[550px] xl:!h-[100vh]"
+          className="mySwiper relative !pt-[74px] md:!pt-0 !h-[264px] md:!h-[430px] lg:!h-[550px] xl:!h-[100vh]"
         >
           <div class="w-full">
             <div class="container mx-auto">
