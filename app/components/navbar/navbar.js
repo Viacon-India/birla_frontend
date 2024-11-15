@@ -80,7 +80,7 @@ const NavbarComponent = () => {
             <div className="container mx-auto">
               <div className="md:py-4 xl:py-0 w-full flex justify-between items-center relative">
                 <div class="md:flex items-center">
-                  <div className="navbar-start w-fit">
+                  <div className="navbar-start w-fit flex gap-2 items-center">
                     <button className="hamburger-button" onClick={toggleMenu}>
                       <svg
                         width="32"
@@ -98,6 +98,13 @@ const NavbarComponent = () => {
                         />
                       </svg>
                     </button>
+
+                    <Link
+                      href="/find-tyre"
+                      className="primary-btn-1 !w-[100%] !justify-center flex md:hidden !py-[4px]"
+                    >
+                      Find a Tyre
+                    </Link>
                   </div>
 
                   <div className="navbar-center flex items-center gap-6 lg:flex pl-3 xl:pl-7 ml-[-10%] md:ml-0">
@@ -408,9 +415,10 @@ const NavbarComponent = () => {
                 </svg>
               </button>
               <div className="dropdown-wrapper">
-                <form onSubmit={handleSearchSubmit}
+                <form
+                  onSubmit={handleSearchSubmit}
                   class={cn(
-                    "search-wrapper relative flex md:hidden my-[3px] mx-2 ",
+                    "search-wrapper relative flex md:hidden my-[3px] mx-2 mb-2",
                     isActive ? "active" : ""
                   )}
                   onClick={handleToggle}

@@ -486,7 +486,7 @@ text-white transition-all duration-500 relative hover:left-[-190px]
   @apply text-secondary text-[24px] md:text-[32px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] font-oak-sans capitalize
 }
 .section-title-home{
-  @apply text-secondary text-[24px] md:text-[32px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] font-oak-sans
+  @apply text-secondary text-[22px] md:text-[32px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] font-oak-sans
 }
 .section-sub-title{
   @apply text-secondary text-[20px] md:text-[28px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] mb-2
@@ -535,17 +535,17 @@ a.current_dot {
 }
 
 .innovation-card figure{
-  @apply w-full h-[180px] lg:h-[220px] 2xl:h-[280px] mb-2 2xl:mb-5 relative overflow-hidden transition-all duration-500
+  @apply w-full h-[150px] lg:h-[220px] 2xl:h-[280px] mb-2 2xl:mb-5 relative overflow-hidden transition-all duration-500
   rounded-[24px]
 }
 .innovation-card-image{
   @apply w-full h-full object-cover rounded-[24px]
 }
 .innovation-card h2{
-  @apply text-[#0E0E11] text-[26px] md:text-[32px] mb-1 md:mb-2 font-semibold leading-[1.2]
+  @apply text-[#0E0E11] text-[20px] md:text-[32px] mb-1 md:mb-2 font-semibold leading-[1.2]
 }
 .innovation-card p{
-  @apply text-[#0E0E11] text-[16px] md:text-[18px] mb-2 
+  @apply text-[#0E0E11] text-[14px] md:text-[18px] mb-2 
 }
 
 
@@ -1068,10 +1068,10 @@ a.current_dot {
 
 /* who we are page */
 .top-banner-sec{
-  @apply pt-[58px] md:pt-[84px] relative
+  @apply pt-[74px] md:pt-[84px] relative
 }
 .top-banner-sec-heading{
-  @apply font-extrabold text-[32px] md:text-[50px] 2xl:text-[56px] text-[#FFFFFF] !uppercase 
+  @apply font-extrabold text-[24px] md:text-[50px] 2xl:text-[56px] text-[#FFFFFF] !uppercase 
 }
 .banner-overlay{
   background: linear-gradient(to top, rgba(0,0,0,0.99), rgba(0,0,0,0));
@@ -1201,11 +1201,11 @@ a.current_dot {
   @apply text-[#3D434C] text-[14px] font-medium mb-[6px]
  }
  .contact-input{
-  @apply outline-none p-3 text-[14px] placeholder:text-[14px] 
+  @apply outline-none p-[6px] md:p-3 text-[14px] placeholder:text-[14px] 
   placeholder:text-[#9DA4B0] bg-transparent
  }
  .contact-select{
-  @apply p-3 text-[#9DA4B0] text-[14px] outline-none bg-transparent
+  @apply p-[6px] md:p-3 text-[#9DA4B0] text-[14px] outline-none bg-transparent
  }
  .contact-select option{
   @apply !p-2 text-[#000000] text-[15px]
@@ -1336,7 +1336,7 @@ a.current_dot {
 
 
 input[type=file] {
-  @apply w-[90px] text-[#FFFFFF] bg-[#ffffff] text-[12px] absolute right-[0px] top-[4px]
+  @apply w-[88px] text-[#FFFFFF] bg-[#ffffff] text-[12px] absolute right-[0px] top-[4px]
 }
 
 input[type=file]::file-selector-button {

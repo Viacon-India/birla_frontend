@@ -930,9 +930,9 @@ export function TitleContentFull({ section }) {
                   collection.images.length > 0 &&
                   collection.images.map((image) => (
                     <div class="tyre-care-card" key={image.id}>
-                      <figure className="w-full h-[240px] rounded-[12px]">
+                      <figure className="w-full h-[190px] md:h-[240px] rounded-[12px]">
                         <Image
-                          className="w-full h-full object-cover rounded-[12px]"
+                          className="w-full h-full object-fill rounded-[12px]"
                           width={image?.image.width}
                           height={image?.image.height}
                           src={getStrapiMedia(image?.image.url)}
@@ -999,7 +999,7 @@ export function Gallery({ section }) {
                   <h3 className="section-title">{section?.title}</h3>
                 </div>
                 <div className="relative rounded-[12px] overflow-hidden">
-                  <figure className="relative w-full h-[350px] md:h-[450px] 2xl:h-[600px] rounded-[12px] group">
+                  <figure className="relative w-full h-[240px] md:h-[450px] 2xl:h-[600px] rounded-[12px] group">
                     <Image
                       width={section.collection[0].image?.width}
                       height={section.collection[0].image?.height}
@@ -1620,7 +1620,7 @@ export function JobApplication({ section }) {
                   )}
                   <div className="relative border border-[#727C8D] rounded-[8px]">
                     <input
-                      className="contact-input w-full rounded-[8px]"
+                      className="contact-input !p-3 placeholder:!text-[10px] md:placeholder:!text-[14px] w-full rounded-[8px]"
                       type="none"
                       name="resumeName"
                       value={fileName}
@@ -2120,8 +2120,6 @@ export function SidebarContent({ section }) {
                       paragraph: ({ children }) => (
                         <p
                           className="pt-2 md:pt-4 text-[#1A1D21]"
-                          data-aos="fade-left"
-                          data-aos-duration="1000"
                         >
                           {children}
                         </p>
@@ -2151,8 +2149,6 @@ export function SidebarContent({ section }) {
                           return (
                             <ol
                               className="list-decimal !pl-6"
-                              data-aos="fade-left"
-                              data-aos-duration="1000"
                             >
                               {props.children}
                             </ol>
@@ -2160,8 +2156,6 @@ export function SidebarContent({ section }) {
                         }
                         return (
                           <ul
-                            data-aos="fade-left"
-                            data-aos-duration="1000"
                             className="list-disc"
                           >
                             {props.children}
@@ -2284,7 +2278,7 @@ export function Testimonial({ section }) {
                   data-aos-duration="1000"
                   key={collection.id}
                 >
-                  <figure className="w-[40%] h-[240px] lg:h-[320px]">
+                  <figure className="w-full xl:w-[40%] h-[240px] lg:h-[320px]">
                     <Image
                       className="vast-card-image"
                       width={collection.image?.width}
@@ -2452,7 +2446,7 @@ export function TabImage({ section }) {
                       />
                     )}
                     {collection?.icon && collection.icon.length > 0 && (
-                      <div className="flex flex-col md:flex-row justify-between gap-[35px] overflow-hidden">
+                      <div className="flex flex-col md:flex-row justify-between gap-2 xl:gap-6 overflow-hidden">
                         {collection.icon.map((image) => (
                           <figure
                             key={image.id}
