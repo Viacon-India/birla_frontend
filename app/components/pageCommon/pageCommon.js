@@ -82,6 +82,7 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
                 loop
                 autoPlay
                 muted
+                playsInline
               >
                 <source src={getStrapiMedia(Banner.url)} type="video/mp4" />
               </video>
