@@ -2025,7 +2025,7 @@ export function SidebarContent({ section }) {
 
   const goToTop = () => {
     window.scrollTo({
-      top: 500,
+      top: 450,
       behavior: "smooth",
     });
   };
@@ -2119,7 +2119,7 @@ export function SidebarContent({ section }) {
                     blocks={{
                       paragraph: ({ children }) => (
                         <p
-                          className="pt-2 md:pt-4 text-[#1A1D21]"
+                          className="pt-2 md:pt-4 text-[#1A1D21] text-[14px] md:text-[15px] xl:text-[16px]"
                         >
                           {children}
                         </p>
@@ -2163,7 +2163,7 @@ export function SidebarContent({ section }) {
                         );
                       },
                       "list-item": (props) => (
-                        <li className="pt-3 md:pt-5 text-[#1A1D21]">
+                        <li className="pt-3 md:pt-5 text-[#1A1D21] text-[14px] md:text-[15px] xl:text-[16px]">
                           {props.children}
                         </li>
                       ),
@@ -2172,7 +2172,7 @@ export function SidebarContent({ section }) {
                       ),
                     }}
                     modifiers={{
-                      bold: ({ children }) => <strong>{children}</strong>,
+                      bold: ({ children }) => <strong className="text-[14px] md:text-[15px] xl:text-[16px]">{children}</strong>,
                       italic: ({ children }) => (
                         <span className="italic">{children}</span>
                       ),
