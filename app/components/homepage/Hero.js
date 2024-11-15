@@ -40,6 +40,7 @@ export default function Hero({ Data}) {
               className="w-full h-fit object-contain"
               autoPlay
               muted
+              playsInline
               onEnded={handleVideoEnd}
             >
               <source
