@@ -78,7 +78,7 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
           {Banner?.url && (
             Banner.ext == ".mp4" ? (
               <video
-                className="absolute top-0 w-full h-full object-fill"
+                className="absolute top-0 w-full h-full object-cover"
                 loop
                 autoPlay
                 muted

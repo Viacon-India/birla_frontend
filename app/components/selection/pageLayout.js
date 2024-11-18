@@ -206,7 +206,7 @@ export function ContactUs({ pageData }) {
         const errorText = await response.text();
         throw new Error(`Error: ${response.status} - ${errorText}`);
       } else {
-        // push("/thankyou");
+        push("/thankyou");
       }
       const data = await response.json();
       setForm1Success(true);
