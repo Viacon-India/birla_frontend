@@ -1174,7 +1174,7 @@ a.current_dot {
   @apply bg-transparent outline-none text-[14px]
  }
  .contact-detail-box h3{
-  @apply text-[28px] 2xl:text-[32px] text-[#454545] font-bold mb-2
+  @apply text-[22px] md:text-[28px] 2xl:text-[32px] text-[#454545] font-bold mb-2
  }
  .contact-detail-box p{
   @apply text-[14px] md:text-[15px] 2xl:text-[16px] text-[#454545]
@@ -1205,7 +1205,7 @@ a.current_dot {
   placeholder:text-[#9DA4B0] bg-transparent
  }
  .contact-select{
-  @apply p-[6px] md:p-3 text-[#9DA4B0] text-[14px] outline-none bg-transparent
+  @apply p-[6px] md:p-3 text-[#9DA4B0] text-[14px] outline-none bg-[#FFFFFF]
  }
  .contact-select option{
   @apply !p-2 text-[#000000] text-[15px]
@@ -1495,11 +1495,11 @@ input[type=file]::file-selector-button {
   placeholder:text-[#9DA4B0] border border-[#B3B8C2] rounded-[4px] 
  }
  .tyre-form-select{
-  @apply px-3 py-1 2xl:p-3 text-[#9DA4B0] text-[14px] outline-none border border-[#B3B8C2] rounded-[4px] bg-transparent
+  @apply px-3 py-1 2xl:p-3 text-[#9DA4B0] text-[14px] outline-none border border-[#B3B8C2] rounded-[4px] bg-[#FFFFFF]
  }
- .tyre-form-select option{
+ /* .tyre-form-select option{
   @apply !p-2 text-[#000000] text-[15px] 2xl:text-[16px]
- }
+ } */
 
  .productPagination{
   @apply flex justify-center gap-4

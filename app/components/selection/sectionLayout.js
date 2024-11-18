@@ -1404,8 +1404,14 @@ export function JobApplication({ section }) {
     }
   };
   const handleSubmit = async (e) => {
+    setError('');
     setLoading(true);
     e.preventDefault();
+    if (!formData.contactNumber || !/^\+?\d{1,4}[\s\-\(\)]?\(?[\d\(\)\-\s\+]{6,20}$/g.test(formData.contactNumber)) {
+      setLoading(false);
+      setError('Please enter a valid phone number.');
+      return;
+    }
     const resumeId = await uploadFile(formData.resume);
     const dataToSend = {
       data: {
@@ -1620,7 +1626,7 @@ export function JobApplication({ section }) {
                   )}
                   <div className="relative border border-[#727C8D] rounded-[8px]">
                     <input
-                      className="contact-input !p-3 placeholder:!text-[10px] md:placeholder:!text-[14px] w-full rounded-[8px]"
+                      className="contact-input !p-3 placeholder:!text-[#000000] placeholder:!text-[10px] md:placeholder:!text-[14px] w-full rounded-[8px]"
                       type="none"
                       name="resumeName"
                       value={fileName}
@@ -1640,7 +1646,7 @@ export function JobApplication({ section }) {
                   <div className="flex items-start gap-2">
                     <input
                       type="checkbox"
-                      className="mt-1"
+                      className="mt-1 min-w-[16px]"
                       style={{ "color-scheme": "none" }}
                       required
                     />
@@ -2278,9 +2284,9 @@ export function Testimonial({ section }) {
                   data-aos-duration="1000"
                   key={collection.id}
                 >
-                  <figure className="w-full xl:w-[40%] h-[240px] lg:h-[320px]">
+                  <figure className="w-full xl:w-[40%] h-[320px]">
                     <Image
-                      className="vast-card-image"
+                      className="vast-card-image !object-fill"
                       width={collection.image?.width}
                       height={collection.image?.height}
                       src={getStrapiMedia(collection.image?.url)}

@@ -175,8 +175,14 @@ export function ContactUs({ pageData }) {
     });
   };
   const form1HandleSubmit = async (e) => {
+    setForm1Error('');
     setLoading(true);
     e.preventDefault();
+    if (!formData.form1ContactNumber || !/^\+?\d{1,4}[\s\-\(\)]?\(?[\d\(\)\-\s\+]{6,20}$/g.test(formData.form1ContactNumber)) {
+      setLoading(false);
+      setForm1Error('Please enter a valid phone number.');
+      return;
+    }
     const dataToSend = {
       data: {
         queryType: formData.form1QueryType,
@@ -217,8 +223,14 @@ export function ContactUs({ pageData }) {
     }
   };
   const form2HandleSubmit = async (e) => {
+    setForm1Error('');
     setLoading(true);
     e.preventDefault();
+    if (!formData.form2ContactNumber || !/^\+?\d{1,4}[\s\-\(\)]?\(?[\d\(\)\-\s\+]{6,20}$/g.test(formData.form2ContactNumber)) {
+      setLoading(false);
+      setForm1Error('Please enter a valid phone number.');
+      return;
+    }
     const dataToSend = {
       data: {
         queryType: formData.form2QueryType,
@@ -638,7 +650,7 @@ export function ContactUs({ pageData }) {
                                   <input
                                     style={{ "color-scheme": "none" }}
                                     type="checkbox"
-                                    className="mt-1"
+                                    className="mt-1 min-w-[16px]"
                                     required
                                   />
                                   {section.form1Concent.length > 0 && (
@@ -979,7 +991,7 @@ export function ContactUs({ pageData }) {
                                   <input
                                     style={{ "color-scheme": "none" }}
                                     type="checkbox"
-                                    className="mt-1"
+                                    className="mt-1 min-w-[16px]"
                                     required
                                   />
                                   {section.form2Concent.length > 0 && (
