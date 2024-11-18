@@ -37,11 +37,11 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
   var acc = document.getElementsByClassName("ham-accordion");
   var i;
 
-  if (acc.length > 0) {
-    acc[0].classList.add("accActive");
-    var firstPanel = acc[0].nextElementSibling;
-    firstPanel.style.maxHeight = firstPanel.scrollHeight + "px";
-  }
+  // if (acc.length > 0) {
+  //   acc[0].classList.add("accActive");
+  //   var firstPanel = acc[0].nextElementSibling;
+  //   firstPanel.style.maxHeight = firstPanel.scrollHeight + "px";
+  // }
 
   for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function () {
@@ -132,7 +132,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                 )}
                 {Data?.items && Data.items.length > 0 && (
                   <div
-                    class="faq-accordion lg:w-[55%] max-h-[360px] md:max-h-[420px] 2xl:max-h-[520px] overflow-y-auto relative z-4"
+                    class="faq-accordion lg:w-[55%] md:max-h-[420px] 2xl:max-h-[520px] overflow-y-auto relative z-4"
                     data-aos="fade-right"
                     data-aos-duration="1500"
                   >
@@ -158,8 +158,6 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                                     case 3:
                                       return (
                                         <h3
-                                          data-aos="fade-left"
-                                          data-aos-duration="1000"
                                         >
                                           {children}
                                         </h3>
@@ -178,8 +176,6 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                                   if (props.format === "ordered") {
                                     return (
                                       <ol
-                                        data-aos="fade-left"
-                                        data-aos-duration="1000"
                                       >
                                         {props.children}
                                       </ol>
@@ -188,8 +184,6 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                                   return (
                                     <ul
                                     className="!pl-0"
-                                      data-aos="fade-left"
-                                      data-aos-duration="1000"
                                     >
                                       {props.children}
                                     </ul>
