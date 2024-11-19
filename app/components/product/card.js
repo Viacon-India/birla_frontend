@@ -142,40 +142,18 @@ export default function Product({ data }) {
             </Link>
             <p class="!h-[44px] !w-[95%] !line-clamp-2">{data?.description}</p>
           </div>
-          {/* {data?.vehicle_types && data.vehicle_types.length > 0 && data.vehicle_types.map((vehicle) => (
-            <div
-              class="w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] flex justify-center items-center p-2 tooltip"
-              data-tip={vehicle.name}
-              key={vehicle.id}
-            >
-            
-              {vehicle?.icon && (
-                <Image
-                  src={getStrapiMedia(vehicle.icon?.url)}
-                  class="h-8 object-cover animate-[moveLtoR_6s_infinite]"
-                  width={vehicle.icon?.width}
-                  height={vehicle.icon?.height}
-                  alt={
-                    vehicle.icon?.alternativeText
-                      ? vehicle.icon.alternativeText
-                      : "icon"
-                  }
-                />
-              )}
-            </div>
-          ))} */}
           {data?.vehicle_types &&
             data.vehicle_types.length > 0 &&
             <div className="tooltip" data-tip={data.vehicle_types.map(vehicle => vehicle.name).join(', ')}>
               <div className="w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] p-2">
                 <div className="overflow-x-hidden">
-                  <div className="h-8 object-cover animate-[moveLtoR_6s_infinite] flex justify-center items-center gap-1 w-max">
+                  <div className="h-8 animate-[moveLtoR_4s_infinite] flex justify-center items-center gap-1 w-max">
                     {data.vehicle_types.map((vehicle) => (
                       vehicle?.icon && (
                         <figure key={vehicle.id}>
                           <Image
                             src={getStrapiMedia(vehicle.icon?.url)}
-                            class="h-8 w-full object-cover"
+                            class="h-8 w-full object-contain"
                             width={vehicle.icon?.width}
                             height={vehicle.icon?.height}
                             alt={
@@ -197,14 +175,14 @@ export default function Product({ data }) {
             data.vehicle_types.data.length > 0 &&
             <div className="w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] p-2">
               <div className="overflow-hidden">
-                <div className="h-8 object-cover animate-[moveLtoR_6s_infinite] flex justify-center items-center gap-1 w-max">
+                <div className="h-8 animate-[moveLtoR_4s_infinite] flex justify-center items-center gap-1 w-max">
                   {data.vehicle_types.data.map((vehicle) => (
                       vehicle.attributes.icon?.data && (
                         <Image
                           src={getStrapiMedia(
                             vehicle.attributes.icon.data.attributes?.url
                           )}
-                          class="h-8 w-full object-cover"
+                          class="h-8 w-full object-contain"
                           width={vehicle.attributes.icon.data.attributes?.width}
                           height={vehicle.attributes.icon.data.attributes?.height}
                           key={vehicle.id}
