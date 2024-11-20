@@ -187,7 +187,7 @@ const FindTyre = () => {
     fetch(getStrapiMedia("/api/find-tyre")).then((res) => res.json()).then((page) => {
       setPageData(page);
     });
-  }, []);
+  }, [activeTab]);
 
 
 

@@ -277,7 +277,7 @@ export function ContactUs({ pageData }) {
           (section) =>
             section.__component == "section.contact-form" && (
               <section
-                className="top-banner-sec bg-[#F8F8F8] relative"
+                className="top-banner-sec xl:bg-[#F8F8F8] relative"
                 key={section.id}
               >
                 <div className="container mx-auto">

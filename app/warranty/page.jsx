@@ -22,7 +22,7 @@ export default function WarrantyPolicy({params}) {
     .then((pages) => {
       setPageData(pages);
     });
-  }, []);
+  }, [params]);
   return (
     <>
       <Navbar />
