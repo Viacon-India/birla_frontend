@@ -34,7 +34,7 @@ export default function Product({ data }) {
         },
       }
     );
-  }, []);
+  }, [data]);
   return (
     <div class="new-product-card">
       <Link href={data.permalink}>

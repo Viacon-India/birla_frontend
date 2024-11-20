@@ -89,7 +89,7 @@ export default function SectionSelection({ section, Background, right }) {
 export function Files({ section }) {
   useEffect(() => {
     AOS.init();
-  }, []);
+  }, [section]);
   return (
     <>
       {section?.title && (
@@ -534,7 +534,7 @@ export function Accordion({ section }) {
     <section
       className={cn(
         "py-6 md:py-10 2xl:py-[60px] overflow-hidden",
-        section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
+        section?.settings?.background ? "xl:bg-[#F8F8F8]" : "bg-white"
       )}
     >
       <div className="container mx-auto flex flex-col gap-5 md:gap-6 2xl:gap-10">
@@ -1451,7 +1451,7 @@ export function JobApplication({ section }) {
     <section
       className={cn(
         "page-content-sec",
-        section?.settings?.background ? "bg-[#F8F8F8]" : "bg-white"
+        section?.settings?.background ? "xl:bg-[#F8F8F8]" : "bg-white"
       )}
     >
       <div className="container mx-auto flex flex-col overflow-hidden">
@@ -1876,7 +1876,7 @@ export function ImageDetailContent({ section }) {
     AOS.init();
   }, []);
   return (
-    <section className="overflow-hidden bg-[#F8F8F8]">
+    <section className="overflow-hidden xl:bg-[#F8F8F8]">
       <div class="container mx-auto">
         <div
           className={cn(
