@@ -429,7 +429,7 @@ const FindTyre = ({params}) => {
           </div>
         </div>
       </section>
-      <section className="dealer-sec pt-[23rem] md:pt-12 2xl:pt-[60px] relative overflow-hidden bg-[#F8F8F8]">
+      <section className="dealer-sec pt-[23rem] md:pt-12 2xl:pt-[60px] relative overflow-hidden xl:bg-[#F8F8F8]">
         <div className="container mx-auto overflow-hidden">
           <span className="section-heading">Find A Tyre</span>
           <div className="section-title-wrapper">
