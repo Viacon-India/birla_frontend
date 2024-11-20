@@ -550,7 +550,7 @@ export function ContactUs({ pageData }) {
                                   </div>
                                 </div>
                               </div>
-                              <div class="flex flex-col lg:flex-row gap-4">
+                              <div class="flex flex-col lg:flex-row gap-4 lg:w-[97%] 2xl:w-full">
                                 <div class="form-row-wrapper">
                                   <div class="form-row">
                                     {section?.form1Country && (
@@ -891,7 +891,7 @@ export function ContactUs({ pageData }) {
                                   </div>
                                 </div>
                               </div>
-                              <div class="flex flex-col lg:flex-row gap-4">
+                              <div class="flex flex-col lg:flex-row gap-4 lg:w-[97%] 2xl:w-full">
                                 <div class="form-row-wrapper">
                                   <div class="form-row">
                                     {section?.form2Country && (
