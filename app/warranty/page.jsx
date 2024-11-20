@@ -4,9 +4,7 @@ import React, { useEffect, useState } from "react";
 import { getStrapiMedia } from "@/lib/utils";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
-import { PageBanner } from "../components/pageCommon/pageCommon";
-import { PageEnd } from "../components/pageCommon/pageCommon";
-import Banner from "../assets/images/warranty1.jpg";
+import { PageBanner, PageEnd, Chatbot} from "../components/pageCommon/pageCommon";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -204,6 +202,7 @@ export default function WarrantyPolicy({params}) {
         </div>
       </section>
       <PageEnd EndPageData={pageData?.end}/>
+      <Chatbot/>
       <Footer />
     </>
   );

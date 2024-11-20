@@ -1521,3 +1521,14 @@ input[type=file]::file-selector-button {
 
 
 
+/* Chatbot css */
+.chatBotMain{
+  @apply fixed bottom-0 right-[50px] w-[400px] shadow-2xl rounded-tr-[25px] rounded-tl-[25px] bg-[#fff] z-10
+}
+.chatBotHead{
+  @apply bg-primary rounded-tr-[25px] rounded-tl-[25px] px-5 py-[10px] flex justify-between items-center
+}
+.chatBotStatus{
+  @apply text-[#E9E9E9] text-[13px] before:content-[""] before:w-[10px] before:h-[10px] before:rounded-full flex gap-[6px] items-center
+  before:border before:border-[#FFFFFF] before:flex before:bg-[#81C784]
+}

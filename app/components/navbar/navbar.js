@@ -81,7 +81,7 @@ const NavbarComponent = () => {
               <div className="md:py-4 xl:py-0 w-full flex justify-between items-center relative">
                 <div class="md:flex items-center">
                   <div className="navbar-start w-fit flex gap-2 items-center">
-                    <button className="hamburger-button" onClick={toggleMenu}>
+                    <button className="hamburger-button" onClick={toggleMenu} aria-label="hamburger-button">
                       <svg
                         width="32"
                         height="32"
@@ -170,7 +170,7 @@ const NavbarComponent = () => {
                                         key={subSubMenu.id}
                                       >
                                         <Link
-                                          className="!pl-2 flex gap-1 hover:translate-x-2 hover:bg-transparent focus:!bg-[#FFFFFF] focus:!text-secondary"
+                                          className="!pl-3 !py-1 flex gap-1 text-[14px] hover:translate-x-2 hover:bg-transparent focus:!bg-[#FFFFFF] focus:!text-secondary font-medium"
                                           href={`${subSubMenu.attributes.permalink}`}
                                         >
                                           <svg
