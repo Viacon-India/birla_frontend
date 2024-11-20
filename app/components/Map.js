@@ -31,7 +31,7 @@ const Map = () => {
     }
   }, []);
 
-  const center = userLocation || { lat: 22.57879, lng: 88.47168 }; // Default to your original center if location not available
+  const center = userLocation || { lat: 22.57879, lng: 88.47168 };
 
   return (
     <LoadScript googleMapsApiKey="">
