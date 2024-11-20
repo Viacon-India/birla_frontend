@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import { usePathname } from "next/navigation";
@@ -10,6 +10,7 @@ import { getStrapiMedia } from "@/lib/utils";
 import GradualSpacing from "@/components/GradualSpacing";
 import { cn } from "@/lib/utils";
 import Tiger from "../../assets/images/tiger-mask3.png";
+import Bot from "../../assets/images/bot.png"
 
 export function MainButton() {
   const pathname = usePathname();
@@ -129,13 +130,10 @@ export function Float(data) {
             )
         )}
         <button className="sideNav">
-            {/* <Image
-              src={getStrapiMedia(item.icon.data.attributes?.url)}
-              width={item.icon.data.attributes?.width}
-              height={item.icon.data.attributes?.height}
-              alt={item.icon.data.attributes?.alternativeText}
-            /> */}
-            Chatbot
+            <Image
+              src={Bot}
+              className="w-6 h-6 object-cover"
+            />ChatBot
         </button>
       </div>
     )
@@ -448,17 +446,18 @@ export function CollectionTypeSeo({ page, pageData }) {
 }
 
 export function Chatbot() {
+  const [isBottom, setIsBottom] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-
+  const [status, setStatus] = useState('offline');
+ 
   const sendMessage = async (message) => {
     if(!message) return;
-    console.log(message);
     setMessages((prevMessages) => [
       ...prevMessages,
       { text: message, sender: "user" },
     ]);
-
+ 
     try {
       const response = await axios.post(
         "http://birlatyres.viaconprojects.com:5005/webhooks/rest/webhook",
@@ -466,22 +465,37 @@ export function Chatbot() {
           message: message,
         }
       );
-
-      console.log(response.data);
-
-      const botMessages = response.data.map((msg) => ({
-        text: msg?.text,
-        image: msg?.image,
-        sender: "bot",
-      }));
-      setMessages((prevMessages) => [...prevMessages, ...botMessages]);
+      if (Array.isArray(response.data)) {
+        setStatus('online');
+        const botMessages = response.data.map((msg) => ({
+          text: msg?.text || null,
+          image: msg?.image || null,
+          sender: "bot",
+        }));
+        setMessages((prevMessages) => [...prevMessages, ...botMessages]);
+      } else {
+        setStatus('offline');
+        console.error("Unexpected response format:", response.data);
+      }
     } catch (error) {
+      setStatus('offline');
       console.error("Error sending message to Rasa:", error);
     }
   };
+ 
+  useEffect(() => {
+    sendMessage('who are you?');
+  }, []);
+ 
+
+  const handleClick = () => {
+    setIsBottom(!isBottom);
+  };
 
   return (
-    <div className="chatBotMain">
+    <div className={`chatBotMain ${
+      isBottom ? "!bottom-[-100%]" : ""
+    }`}>
       <div class="chatBotHead">
         <div class="flex gap-4 items-center">
           <div class="w-11 h-11 flex justify-center items-center rounded-full border border-white">
@@ -502,10 +516,10 @@ export function Chatbot() {
             <span className="text-[#ffffff] text-[16px] mb-[6px] leading-[1]">
               ChatBot
             </span>
-            <span className="chatBotStatus">online</span>
+            {status == 'offline' ? <span className="chatBotStatusOffline">offline</span> : <span className="chatBotStatusOnline">online</span>}
           </div>
         </div>
-        <div class="w-7 h-7 flex justify-center items-center rounded-full border border-white">
+        <button onClick={handleClick} class="w-7 h-7 flex justify-center items-center rounded-full border border-white">
           <svg
             width="12"
             height="12"
@@ -518,7 +532,7 @@ export function Chatbot() {
               fill="white"
             />
           </svg>
-        </div>
+        </button>
       </div>
       <p className="text-[14px] text-[#88909F] text-center pt-3">
         Chat started on 8:25PM, 5th Dec, 2024
