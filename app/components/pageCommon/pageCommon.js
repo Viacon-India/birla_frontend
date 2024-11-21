@@ -111,15 +111,13 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
 }
 
 export function Float(data) {
-  const [isBottom, setIsBottom] = useState(false);
   const handleClick = () => {
     const bottomValue = $(".chatBotMain").css("bottom");
     if(bottomValue == '0px'){
-      setIsBottom(false);
+      $(".chatBotMain").css("bottom", "-100%");
     }else{
-      setIsBottom(true);
+      $(".chatBotMain").css("bottom", "0");
     }
-    alert(isBottom);
   };
   return (
     <>
@@ -141,15 +139,15 @@ export function Float(data) {
                 </Link>
               )
           )}
-          <button className="sideNav" onClick={handleClick}>
+          <button className="flex gap-4 mb-2 justify-start items-center rounded-tl-[4px] rounded-bl-[4px] h-12 bg-primary w-[280px] px-[10px] left-[11px] text-white transition-all duration-500 relative" onClick={handleClick}>
               <Image
                 src={Bot}
                 className="w-6 h-6 object-cover"
-              />ChatBot
+              />
           </button>
         </div>
       )}
-      <Chatbot bottom={isBottom}/>
+      <Chatbot/>
     </>
   );
 }
@@ -459,8 +457,7 @@ export function CollectionTypeSeo({ page, pageData }) {
   );
 }
 
-export function Chatbot({bottom}) {  
-  const [isBottom, setIsBottom] = useState(bottom);
+export function Chatbot() {  
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [status, setStatus] = useState('offline');
@@ -505,13 +502,11 @@ export function Chatbot({bottom}) {
  
 
   const handleClick = () => {
-    setIsBottom(false);
+    $(".chatBotMain").css("bottom", "-100%");
   };
 
   return (
-    <div className={`chatBotMain ${
-      isBottom ? "!bottom-0" : ""
-    }`}>
+    <div className="chatBotMain">
       <div class="chatBotHead">
         <div class="flex gap-4 items-center">
           <div class="w-11 h-11 flex justify-center items-center rounded-full border border-white">
