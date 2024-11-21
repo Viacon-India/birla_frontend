@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import loadImage from "../../assets/images/load.png";
 import traImage from "../../assets/images/tra.png";
 import patternImage from "../../assets/images/pattern.png";
-import constructionImage from "../../assets/images/axle.jpg";
+import constructionImage from "../../assets/images/axle.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation } from "swiper/modules";

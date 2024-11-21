@@ -31,7 +31,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import load from "../../assets/images/load.png";
 import pattern from "../../assets/images/pattern.png";
-import construction from "../../assets/images/axle.jpg";
+import construction from "../../assets/images/axle.png";
 import Product from "@/app/components/product/card";
 
 gsap.registerPlugin(ScrollTrigger);

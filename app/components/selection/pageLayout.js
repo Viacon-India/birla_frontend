@@ -25,7 +25,7 @@ import BGTiger2 from "../../assets/images/tiger-mask2.png";
 import load from "@/app/assets/images/load.png";
 import pattern from "@/app/assets/images/pattern.png";
 import traImage from "@/app/assets/images/tra.png";
-import construction from "@/app/assets/images/axle.jpg";
+import construction from "@/app/assets/images/axle.png";
 import LastBg from "../../assets/images/footerupper.png";
 import errorImg from "../../assets/images/404-tyre.gif";
 
