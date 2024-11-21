@@ -465,23 +465,16 @@ export function Chatbot({bottom}) {
   const [input, setInput] = useState("");
   const [status, setStatus] = useState('offline');
  
-  const sendMessage = async (message) => {
-    if(!message) return;
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { text: message, sender: "user" },
-    ]);
- 
+  const response = async (message) => {
     try {
-      const response = await axios.post(
+      const res = await axios.post(
         "http://birlatyres.viaconprojects.com:5005/webhooks/rest/webhook",
-        {
-          message: message,
-        }
+        { message }
       );
-      if (Array.isArray(response.data)) {
+ 
+      if (Array.isArray(res.data)) {
         setStatus('online');
-        const botMessages = response.data.map((msg) => ({
+        const botMessages = res.data.map((msg) => ({
           text: msg?.text || null,
           image: msg?.image || null,
           sender: "bot",
@@ -489,7 +482,7 @@ export function Chatbot({bottom}) {
         setMessages((prevMessages) => [...prevMessages, ...botMessages]);
       } else {
         setStatus('offline');
-        console.error("Unexpected response format:", response.data);
+        console.error("Unexpected response format:", res.data);
       }
     } catch (error) {
       setStatus('offline');
@@ -497,8 +490,17 @@ export function Chatbot({bottom}) {
     }
   };
  
+  const sendMessage = async (message) => {
+    if (!message) return;
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { text: message, sender: "user" },
+    ]);
+    response(message);
+  };
+ 
   useEffect(() => {
-    sendMessage('who are you?');
+    response('who are you?');
   }, []);
  
 
