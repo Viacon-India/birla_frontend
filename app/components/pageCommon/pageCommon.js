@@ -139,12 +139,12 @@ export function Float(data) {
                 </Link>
               )
           )}
-          <button className="flex gap-4 mb-2 justify-start items-center rounded-tl-[4px] rounded-bl-[4px] h-12 bg-primary w-[280px] px-[10px] left-[11px] text-white transition-all duration-500 relative" onClick={handleClick}>
+          {/* <button className="flex gap-4 mb-2 justify-start items-center rounded-tl-[4px] rounded-bl-[4px] h-12 bg-primary w-[280px] px-[10px] left-[11px] text-white transition-all duration-500 relative" onClick={handleClick}>
               <Image
                 src={Bot}
                 className="w-6 h-6 object-cover"
               />
-          </button>
+          </button> */}
         </div>
       )}
       <Chatbot/>
@@ -507,6 +507,7 @@ export function Chatbot() {
 
   return (
     <div className="chatBotMain">
+      <Image className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" src={Tiger} alt="tiger" />
       <div class="chatBotHead">
         <div class="flex gap-4 items-center">
           <div class="w-11 h-11 flex justify-center items-center rounded-full border border-white">
