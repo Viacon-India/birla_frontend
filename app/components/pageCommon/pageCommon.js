@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import $ from "jquery";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import { usePathname } from "next/navigation";
@@ -67,9 +68,9 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
         <span className="banner-overlay"></span>
         <div className="relative">
           <div className="w-full h-[30vh] md:h-[40vh] xl:h-[80vh] flex items-end">
-            <div class="container mx-auto flex flex-col justify-end md:justify-between h-full pt-8 xl:pt-5 pb-3 md:pb-6 xl:pb-[60px]">
+            <div class="container mx-auto flex flex-col justify-end md:justify-between h-full pt-8 xl:pt-5 pb-3 md:pb-6 xl:pb-[60px] z-1">
               <MainButton />
-              <div className="relative z-10">
+              <div className="relative">
                 <GradualSpacing
                   className="top-banner-sec-heading hidden md:flex"
                   text={Title}
@@ -110,33 +111,46 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
 }
 
 export function Float(data) {
+  const [isBottom, setIsBottom] = useState(false);
+  const handleClick = () => {
+    const bottomValue = $(".chatBotMain").css("bottom");
+    if(bottomValue == '0px'){
+      setIsBottom(false);
+    }else{
+      setIsBottom(true);
+    }
+    alert(isBottom);
+  };
   return (
-    data && (
-      <div className="sideNav-wrapper">
-        {data.data.map(
-          (item) =>
-            item?.permalink && (
-              <Link className="sideNav" href={item.permalink} key={item.id}>
-                {item.icon?.data && (
-                  <Image
-                    src={getStrapiMedia(item.icon.data.attributes?.url)}
-                    width={item.icon.data.attributes?.width}
-                    height={item.icon.data.attributes?.height}
-                    alt={item.icon.data.attributes?.alternativeText}
-                  />
-                )}
-                {item?.name}
-              </Link>
-            )
-        )}
-        <button className="sideNav">
-            <Image
-              src={Bot}
-              className="w-6 h-6 object-cover"
-            />ChatBot
-        </button>
-      </div>
-    )
+    <>
+      {data && (
+        <div className="sideNav-wrapper">
+          {data.data.map(
+            (item) =>
+              item?.permalink && (
+                <Link className="sideNav" href={item.permalink} key={item.id}>
+                  {item.icon?.data && (
+                    <Image
+                      src={getStrapiMedia(item.icon.data.attributes?.url)}
+                      width={item.icon.data.attributes?.width}
+                      height={item.icon.data.attributes?.height}
+                      alt={item.icon.data.attributes?.alternativeText}
+                    />
+                  )}
+                  {item?.name}
+                </Link>
+              )
+          )}
+          <button className="sideNav" onClick={handleClick}>
+              <Image
+                src={Bot}
+                className="w-6 h-6 object-cover"
+              />ChatBot
+          </button>
+        </div>
+      )}
+      <Chatbot bottom={isBottom}/>
+    </>
   );
 }
 
@@ -445,29 +459,22 @@ export function CollectionTypeSeo({ page, pageData }) {
   );
 }
 
-export function Chatbot() {
-  const [isBottom, setIsBottom] = useState(false);
+export function Chatbot({bottom}) {  
+  const [isBottom, setIsBottom] = useState(bottom);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [status, setStatus] = useState('offline');
  
-  const sendMessage = async (message) => {
-    if(!message) return;
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { text: message, sender: "user" },
-    ]);
- 
+  const response = async (message) => {
     try {
-      const response = await axios.post(
+      const res = await axios.post(
         "http://birlatyres.viaconprojects.com:5005/webhooks/rest/webhook",
-        {
-          message: message,
-        }
+        { message }
       );
-      if (Array.isArray(response.data)) {
+ 
+      if (Array.isArray(res.data)) {
         setStatus('online');
-        const botMessages = response.data.map((msg) => ({
+        const botMessages = res.data.map((msg) => ({
           text: msg?.text || null,
           image: msg?.image || null,
           sender: "bot",
@@ -475,7 +482,7 @@ export function Chatbot() {
         setMessages((prevMessages) => [...prevMessages, ...botMessages]);
       } else {
         setStatus('offline');
-        console.error("Unexpected response format:", response.data);
+        console.error("Unexpected response format:", res.data);
       }
     } catch (error) {
       setStatus('offline');
@@ -483,18 +490,27 @@ export function Chatbot() {
     }
   };
  
+  const sendMessage = async (message) => {
+    if (!message) return;
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { text: message, sender: "user" },
+    ]);
+    response(message);
+  };
+ 
   useEffect(() => {
-    sendMessage('who are you?');
+    response('who are you?');
   }, []);
  
 
   const handleClick = () => {
-    setIsBottom(!isBottom);
+    setIsBottom(false);
   };
 
   return (
     <div className={`chatBotMain ${
-      isBottom ? "!bottom-[-100%]" : ""
+      isBottom ? "!bottom-0" : ""
     }`}>
       <div class="chatBotHead">
         <div class="flex gap-4 items-center">
