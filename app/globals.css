@@ -1052,7 +1052,7 @@ a.current_dot {
 }
 .banner-overlay{
   background: linear-gradient(to top, rgba(0,0,0,0.99), rgba(0,0,0,0));
-  @apply absolute bottom-0 left-0 w-full h-[60%] z-10
+  @apply absolute bottom-0 left-0 w-full h-[60%] z-1
 }
 .sub-section-wrapper{
   @apply flex flex-col gap-8 md:gap-10
@@ -1523,7 +1523,8 @@ input[type=file]::file-selector-button {
 
 /* Chatbot css */
 .chatBotMain{
-  @apply fixed bottom-0 right-[50px] w-[400px] shadow-2xl rounded-tr-[25px] rounded-tl-[25px] bg-[#fff] z-10 transition-all duration-1000
+  @apply fixed right-[50px] w-[400px] shadow-2xl rounded-tr-[25px] rounded-tl-[25px] bg-[#fff] z-10 transition-all duration-1000;
+  bottom: -100%;
 }
 .chatBotHead{
   @apply bg-primary rounded-tr-[25px] rounded-tl-[25px] px-5 py-[10px] flex justify-between items-center
