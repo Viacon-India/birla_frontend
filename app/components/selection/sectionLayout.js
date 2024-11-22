@@ -654,7 +654,7 @@ export function Accordion({ section }) {
                   accordion?.content && (
                     <div key={accordion.id}>
                       <div className="single-accordion relative">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 p-2">
                           {accordion?.icon && (
                             <Image
                               key={accordion.icon.id}
@@ -674,7 +674,7 @@ export function Accordion({ section }) {
                             content={accordion.content}
                             blocks={{
                               paragraph: ({ children }) => (
-                                <p className="text-[#3D434C]">{children}</p>
+                                <p className="text-[#3D434C] p-2">{children}</p>
                               ),
                               heading: ({ children, level }) => {
                                 switch (level) {
