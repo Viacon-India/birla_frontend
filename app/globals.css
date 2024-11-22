@@ -662,7 +662,7 @@ a.current_dot {
 /* media-card-section */
 
 .media-card figure{
-  @apply w-full h-[250px] md:h-[220px] xl:h-[180px] 2xl:h-[360px] mb-2 2xl:mb-6 overflow-hidden relative rounded-[24px]
+  @apply w-full h-[250px] md:h-[220px] xl:h-[210px] 2xl:h-[360px] mb-2 2xl:mb-6 overflow-hidden relative rounded-[24px]
 }
 .media-card-image{
   @apply w-full h-full object-cover rounded-[24px]
