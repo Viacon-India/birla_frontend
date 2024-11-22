@@ -1132,7 +1132,7 @@ export function Gallery({ section }) {
               className={cn(
                 "gallery-sec grid gap-3 2xl:gap-4 pt-6 md:pt-10 2xl:pt-[60px]",
                 section?.compact
-                  ? "grid-cols-2 md:grid-cols-4 lg:grid-cols-6"
+                  ? "grid-cols-2 md:grid-cols-4 lg:grid-cols-7 2xl:grid-cols-6"
                   : "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
               )}
             >
@@ -1142,7 +1142,7 @@ export function Gallery({ section }) {
                     "w-full mb-0 overflow-hidden rounded-[20px] relative cursor-pointer sustainability-figure",
                     section?.compact
                       ? // "h-[240px]"
-                        "h-fit"
+                        "lg:w-[150px] lg:h-[150px] 2xl:w-full 2xl:h-fit"
                       : "h-[240px] md:h-[316px]",
                     image?.big ? "lg:col-span-2" : ""
                   )}
