@@ -112,7 +112,7 @@ export default function Footer() {
                 <div class="flex items-center gap-3 md:gap-4">
                   {footerData.data.attributes.logo[0].image?.data && footerData.data.attributes.logo[0].icon_link && (
                     <Link href={footerData.data.attributes.logo[1].icon_link.link} target="_blank">
-                      <figure className="rounded-none m-0 w-[60px] h-[54px] md:w-fit md:h-[46px] xl:w-fit xl:h-[80px] fig-line">
+                      <figure className="rounded-none m-0 w-[50px] h-[50px] md:w-[65px] md:h-[65px] fig-line">
                         <Image
                           src={getStrapiMedia(
                             footerData.data.attributes.logo[1].image.data.attributes.url
@@ -143,7 +143,7 @@ export default function Footer() {
                   </svg>
                   {footerData.data.attributes.logo[1].image?.data && footerData.data.attributes.logo[1].icon_link && (
                     <Link href={footerData.data.attributes.logo[0].icon_link.link}>
-                      <figure className="rounded-none m-0 w-[94px] h-[42px] md:w-[110px] md:h-[46px] xl:w-[140px] xl:h-[61px]">
+                      <figure className="rounded-none m-0 w-[80px] h-[35px] md:w-[136px] md:h-[60px]">
                         <Image
                           src={getStrapiMedia(
                             footerData.data.attributes.logo[0].image.data.attributes.url
