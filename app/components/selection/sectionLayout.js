@@ -668,7 +668,7 @@ export function Accordion({ section }) {
                           {accordion.title}
                         </div>
                       </div>
-                      <div className="panel">
+                      <div className="panel bg-[#F4F5F6] rounded-bl-[8px] rounded-br-[8px]">
                         {accordion?.content && accordion.content.length > 0 && (
                           <BlocksRenderer
                             content={accordion.content}

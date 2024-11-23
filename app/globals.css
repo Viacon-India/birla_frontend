@@ -1030,8 +1030,6 @@ a.current_dot {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  background-color: #F4F5F6;
-  @apply rounded-bl-[8px] rounded-br-[8px]
 }
 .singleAccActive{
   @apply bg-[#F4F5F6] rounded-tr-[8px] rounded-tl-[8px]
