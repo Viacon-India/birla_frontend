@@ -163,7 +163,7 @@ const NavbarComponent = () => {
                                   <button className="drop-list">
                                     {subMenu.title}
                                   </button>
-                                  <ul className="absolute top-0 !hidden subSubText bg-slate-50 !w-[200px] border-t border-[#DEE1E5] left-[100%] overflow-hidden shadow-2xl">
+                                  <ul className="absolute top-0 !hidden subSubText bg-slate-50 !w-[200px] border-t border-[#DEE1E5] left-[100%] overflow-hidden shadow-2xl py-2">
                                     {subMenu.pages.data.map((subSubMenu) => (
                                       <li
                                         className="text-[14px] text-secondary !w-full !-mr-8 font-medium"
