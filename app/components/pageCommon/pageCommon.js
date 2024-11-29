@@ -459,8 +459,21 @@ export function CollectionTypeSeo({ page, pageData }) {
 
 export function Chatbot() {  
   const [messages, setMessages] = useState([]);
+  const [typing, setTyping] = useState(false);
   const [input, setInput] = useState("");
+  const [currentTime, setCurrentTime] = useState("");
   const [status, setStatus] = useState('offline');
+  const [bottom, setBottom] = useState(null);
+ 
+  const scrollToBottom = () => {
+    const chatContainer = document.getElementsByClassName('scrollTo')[0];
+    if (chatContainer) {
+      chatContainer.scrollTo({
+        top: chatContainer.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
+  };
  
   const response = async (message) => {
     try {
@@ -470,14 +483,74 @@ export function Chatbot() {
       );
  
       if (Array.isArray(res.data)) {
+        setTyping(true);
         setStatus('online');
         const botMessages = res.data.map((msg) => ({
           text: msg?.text || null,
           image: msg?.image || null,
           sender: "bot",
         }));
-        setMessages((prevMessages) => [...prevMessages, ...botMessages]);
+        const processMessages = async () => {
+          for (const botMessage of botMessages) {
+            let newMessages = [];
+            newMessages.unshift(botMessage);
+            if (newMessages[0].text) {
+              const words = newMessages[0].text.split(' ');
+              await new Promise((resolve) => {
+                setTimeout(() => {
+                  setTyping(false);
+                  newMessages[0].text = words[0];
+                  setMessages((prevMessages) => [...prevMessages, ...newMessages]);
+                  scrollToBottom();
+                  resolve();
+                }, newMessages[0].text.length < 1000 ? 5 * newMessages[0].text.length : 5000);
+              });
+              for (let index = 1; index < words.length; index++) {
+                await new Promise((resolve) => {
+                  setTimeout(() => {
+                    setMessages((prevMessages) => {
+                      prevMessages[prevMessages.length - 1].text = newMessages[0].text + ' ' + words[index];
+                      return [...prevMessages];
+                    });
+                    scrollToBottom();
+                    resolve();
+                  }, 90);
+                });
+              }
+            } else {
+              setMessages((prevMessages) => [...prevMessages, ...newMessages]);
+            }
+          }
+        };
+        processMessages();
+        // botMessages.forEach((botMessage) => {
+        //   let newMessages = [];
+        //   newMessages.unshift(botMessage);
+        //   if(newMessages[0].text){
+        //     setTimeout(() => {
+        //       setTyping(false);
+        //       const words = newMessages[0].text.split(' ');
+        //       newMessages[0].text = words[0];
+        //       setMessages((prevMessages) => [...prevMessages, ...newMessages]);
+        //       scrollToBottom();
+        //       words.forEach((word, index) => {
+        //         if (index !== 0) {
+        //           setTimeout(() => {
+        //             setMessages((prevMessages) => {
+        //               prevMessages[prevMessages.length - 1].text = newMessages[0].text + ' ' + word;
+        //               return [...prevMessages];
+        //             });
+        //             scrollToBottom();
+        //           }, 90 * index);
+        //         }
+        //       });
+        //     }, newMessages[0].text.length < 1000 ? 5*newMessages[0].text.length : 5000);
+        //   }else{
+        //     setMessages((prevMessages) => [...prevMessages, ...newMessages]);
+        //   }
+        // });
       } else {
+        setTyping(false);
         setStatus('offline');
         console.error("Unexpected response format:", res.data);
       }
@@ -496,15 +569,63 @@ export function Chatbot() {
     response(message);
   };
  
-  useEffect(() => {
-    response('who are you?');
-  }, []);
+  const getFormattedDate = () => {
+    const currentTimeStamp = new Date();
+    const day = currentTimeStamp.getDate();
+    const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
+    const dateOptions = { day: 'numeric', month: 'short', year: 'numeric' };
+    const time = currentTimeStamp.toLocaleTimeString([], timeOptions).replace(' ', '');
+    const date = currentTimeStamp.toLocaleDateString([], dateOptions).replace(day,'').trim().replace(' ', ', ');
+    const dayWithSuffix = addOrdinalSuffix(day);
+    return `${time}, ${dayWithSuffix} ${date}`;
+  };
  
-
+  const addOrdinalSuffix = (day) => {
+    const remainder = day % 10;
+    const exception = [11, 12, 13];
+    switch (true) {
+      case exception.includes(day):
+        return `${day}th`;
+      case remainder === 1:
+        return `${day}st`;
+      case remainder === 2:
+        return `${day}nd`;
+      case remainder === 3:
+        return `${day}rd`;
+      default:
+        return `${day}th`;
+    }
+  };
+ 
+  useEffect(() => {
+    if(messages.length == 0){
+      const chatBotElement = document.querySelector(".chatBotMain");
+      const checkBottomValue = () => {
+        const bottomValue = window.getComputedStyle(chatBotElement).bottom;
+        setBottom(bottomValue);
+      };
+      checkBottomValue();
+      const intervalId = setInterval(() => {
+        checkBottomValue();
+      }, 100);
+      return () => clearInterval(intervalId);
+    }
+  }, []);  
+ 
+  useEffect(() => {
+    if(bottom == '0px' && messages.length == 0){
+      if(!currentTime){
+        setCurrentTime(getFormattedDate());
+      }
+      response('on initial start.');
+    }
+  }, [bottom]);
+ 
+ 
   const handleClick = () => {
     $(".chatBotMain").css("bottom", "-100%");
   };
-
+ 
   return (
     <div className="chatBotMain">
       <Image className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" src={Tiger} alt="tiger" />
@@ -528,7 +649,9 @@ export function Chatbot() {
             <span className="text-[#ffffff] text-[16px] mb-[6px] leading-[1]">
               ChatBot
             </span>
-            {status == 'offline' ? <span className="chatBotStatusOffline">offline</span> : <span className="chatBotStatusOnline">online</span>}
+            {typing ? <span className="chatBotStatusOnline">Typing...</span> :
+              (status == 'offline' ? <span className="chatBotStatusOffline">offline</span> : <span className="chatBotStatusOnline">online</span>)
+            }
           </div>
         </div>
         <button onClick={handleClick} class="w-7 h-7 flex justify-center items-center rounded-full border border-white">
@@ -546,12 +669,14 @@ export function Chatbot() {
           </svg>
         </button>
       </div>
-      <p className="text-[14px] text-[#88909F] text-center pt-3">
-        Chat started on 8:25PM, 5th Dec, 2024
-      </p>
+      {currentTime &&
+        <p className="text-[14px] text-[#88909F] text-center pt-3">
+          Chat started on {currentTime}
+        </p>
+      }
       <div class="flex w-full items-end">
-        <div class="p-4 flex flex-col gap-5 w-full h-[400px] !overflow-y-auto">
-          {messages.map((msg, index) => ( 
+        <div class="p-4 flex flex-col gap-5 w-full h-[400px] !overflow-y-auto scrollTo">
+          {messages.map((msg, index) => (
             msg.sender === 'user' ? (
               <span key={index} className="bg-primary p-[6px] text-[#FFFFFF] text-[15px] rounded-[6px] self-end w-fit">
                 {msg?.text && msg.text}
@@ -572,7 +697,7 @@ export function Chatbot() {
                     />
                   </svg>
                 </div>
-                <span className="bg-[#E3E3E3] p-[6px] text-[#1A1D21] text-[15px] rounded-[6px]">
+                <span className="p-[6px] text-[#1A1D21] text-[15px] rounded-[6px]">
                   {msg?.text && msg.text}
                   {msg?.image &&
                     <Link href={msg?.image} rel="noopener noreferrer" target="_blank">
