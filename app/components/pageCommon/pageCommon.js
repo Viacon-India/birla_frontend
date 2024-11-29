@@ -474,6 +474,9 @@ export function Chatbot() {
       });
     }
   };
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
  
   const response = async (message) => {
     try {
@@ -501,7 +504,6 @@ export function Chatbot() {
                   setTyping(false);
                   newMessages[0].text = words[0];
                   setMessages((prevMessages) => [...prevMessages, ...newMessages]);
-                  scrollToBottom();
                   resolve();
                 }, newMessages[0].text.length < 1000 ? 5 * newMessages[0].text.length : 5000);
               });
@@ -512,7 +514,6 @@ export function Chatbot() {
                       prevMessages[prevMessages.length - 1].text = newMessages[0].text + ' ' + words[index];
                       return [...prevMessages];
                     });
-                    scrollToBottom();
                     resolve();
                   }, 90);
                 });
@@ -532,7 +533,6 @@ export function Chatbot() {
         //       const words = newMessages[0].text.split(' ');
         //       newMessages[0].text = words[0];
         //       setMessages((prevMessages) => [...prevMessages, ...newMessages]);
-        //       scrollToBottom();
         //       words.forEach((word, index) => {
         //         if (index !== 0) {
         //           setTimeout(() => {
@@ -540,7 +540,6 @@ export function Chatbot() {
         //               prevMessages[prevMessages.length - 1].text = newMessages[0].text + ' ' + word;
         //               return [...prevMessages];
         //             });
-        //             scrollToBottom();
         //           }, 90 * index);
         //         }
         //       });
