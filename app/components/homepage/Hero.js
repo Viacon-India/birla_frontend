@@ -30,7 +30,7 @@ export default function Hero({ Data }) {
     : false;
 
   useEffect(() => {
-    $("#preloader").css("transition", "transform 2s linear");
+    $("#preloader").css("transition", "transform 1.5s linear");
   }, [Data]);
 
   return (
