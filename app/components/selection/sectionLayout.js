@@ -23,6 +23,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FreeMode, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css/navigation";
+import loadGif from "../../assets/images/loading.gif"
 
 export default function SectionSelection({ section, Background, right }) {
   return (
@@ -1702,14 +1703,21 @@ export function JobApplication({ section }) {
                     Application submitted successfully!
                   </p>
                 )}
-                <div className="flex gap-4 items-center">
+                <div className="flex gap-2 xl:gap-4 items-center">
                   <button
                     type="submit"
                     className="primary-btn w-fit flip-animate-2"
                   >
                     <span data-hover={section?.submit}>{section?.submit}</span>
                   </button>
-                  {formLoading && <p>Submitting your Application...</p>}
+                  {formLoading && <>
+                    <p>Loading...</p>
+                    <Image
+                                  className="w-[40px] h-[40px]"
+                                  src={loadGif}
+                                  alt="loadigif"
+                                />
+                  </> }
                 </div>
               </form>
             </div>
@@ -2284,7 +2292,7 @@ export function Testimonial({ section }) {
                   data-aos-duration="1000"
                   key={collection.id}
                 >
-                  <figure className="w-full xl:w-[40%] h-[320px]">
+                  <figure className="w-full xl:w-[40%] h-[320px] xl:h-[250px]">
                     <Image
                       className="vast-card-image !object-fill"
                       width={collection.image?.width}
@@ -2307,7 +2315,7 @@ export function Testimonial({ section }) {
                             <p className="">{children}</p>
                           ),
                           quote: ({ children }) => (
-                            <blockquote className="text-[#1A1D21] text-[14px] md:text-[16px] xl:text-[17px]">
+                            <blockquote className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px]">
                               {children}
                             </blockquote>
                           ),
