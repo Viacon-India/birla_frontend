@@ -28,6 +28,7 @@ import traImage from "@/app/assets/images/tra.png";
 import construction from "@/app/assets/images/axle.png";
 import LastBg from "../../assets/images/footerupper.png";
 import errorImg from "../../assets/images/404-tyre.gif";
+import loadGif from "../../assets/images/loading.gif"
 
 export default function PageSelection({
   page,
@@ -711,7 +712,7 @@ export function ContactUs({ pageData }) {
                                   Application submitted successfully!
                                 </p>
                               )}
-                              <div className="flex gap-4 items-center">
+                              <div className="flex gap-2 xl:gap-4 items-center">
                                 <button
                                   type="submit"
                                   className="primary-btn w-fit flip-animate-2"
@@ -721,7 +722,14 @@ export function ContactUs({ pageData }) {
                                   </span>
                                 </button>
                                 {formLoading &&
-                                  <p>Submitting your Application...</p>
+                                <>
+                                  <p>Loading...</p>
+                                  <Image
+                                  className="w-[40px] h-[40px]"
+                                  src={loadGif}
+                                  alt="loadigif"
+                                />
+                                </>
                                 }
                               </div>
                             </form>
@@ -1052,7 +1060,7 @@ export function ContactUs({ pageData }) {
                                   Application submitted successfully!
                                 </p>
                               )}
-                              <div className="flex gap-4 items-center">
+                              <div className="flex gap-2 xl:gap-4 items-center">
                                 <button
                                   type="submit"
                                   className="primary-btn w-fit flip-animate-2"
@@ -1062,7 +1070,14 @@ export function ContactUs({ pageData }) {
                                   </span>
                                 </button>
                                 {formLoading &&
-                                  <p>Submitting your Application...</p>
+                                <>
+                                  <p>Loading...</p>
+                                  <Image
+                                  className="w-[40px] h-[40px]"
+                                  src={loadGif}
+                                  alt="loadigif"
+                                />
+                                  </>
                                 }
                               </div>
                             </form>

@@ -1400,13 +1400,13 @@ input[type=file]::file-selector-button {
   @apply bg-[#F4F5F6] rounded-[12px] p-3 md:p-5 flex flex-col xl:flex-row gap-2 xl:gap-3
 }
 .testimonial-card-title{
-  @apply text-secondary text-[18px] md:text-[24px] font-semibold
+  @apply text-secondary text-[18px] xl:text-[20px] 2xl:text-[24px] font-semibold
 }
 .testimonial-card-detail-wrapper{
   @apply flex flex-col gap-3 w-full xl:w-[60%]
 }
 .testimonial-card-detail{
-  @apply text-[#1A1D21] text-[14px] 2xl:text-[16px] leading-[1.5] h-[160px] xl:h-[180px] overflow-y-auto
+  @apply text-[#1A1D21] text-[14px] 2xl:text-[16px] leading-[1.5] h-[160px] xl:h-[140px] 2xl:h-[160px] overflow-y-auto
 }
 
 
