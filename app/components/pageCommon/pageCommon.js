@@ -12,6 +12,7 @@ import GradualSpacing from "@/components/GradualSpacing";
 import { cn } from "@/lib/utils";
 import Tiger from "../../assets/images/tiger-mask3.png";
 import Bot from "../../assets/images/bot.png"
+import smallTiger from "../../assets/images/small-tiger.png"
 
 export function MainButton() {
   const pathname = usePathname();
@@ -630,19 +631,8 @@ export function Chatbot() {
       <Image className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" src={Tiger} alt="tiger" />
       <div class="chatBotHead">
         <div class="flex gap-4 items-center">
-          <div class="w-11 h-11 flex justify-center items-center rounded-full border border-white">
-            <svg
-              width="29"
-              height="29"
-              viewBox="0 0 29 29"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M27.1562 12.9335V8.74993C27.1562 8.00401 26.8599 7.28864 26.3325 6.76119C25.805 6.23375 25.0897 5.93743 24.3438 5.93743H15.9062V4.09243C16.3352 3.70712 16.6094 3.15306 16.6094 2.53149C16.6094 1.97205 16.3871 1.43553 15.9916 1.03994C15.596 0.644356 15.0594 0.422119 14.5 0.422119C13.9406 0.422119 13.404 0.644356 13.0084 1.03994C12.6129 1.43553 12.3906 1.97205 12.3906 2.53149C12.3906 3.15306 12.6648 3.70712 13.0938 4.09243V5.93743H4.65625C3.91033 5.93743 3.19496 6.23375 2.66751 6.76119C2.14007 7.28864 1.84375 8.00401 1.84375 8.74993V12.9659L1.7425 12.9729C1.38797 12.9982 1.05619 13.1569 0.814023 13.417C0.571859 13.6772 0.437313 14.0195 0.4375 14.3749V17.1874C0.4375 17.5604 0.585658 17.9181 0.849381 18.1818C1.1131 18.4455 1.47079 18.5937 1.84375 18.5937V25.6249C1.84375 26.3709 2.14007 27.0862 2.66751 27.6137C3.19496 28.1411 3.91033 28.4374 4.65625 28.4374H24.3438C25.0897 28.4374 25.805 28.1411 26.3325 27.6137C26.8599 27.0862 27.1562 26.3709 27.1562 25.6249V18.5937C27.5292 18.5937 27.8869 18.4455 28.1506 18.1818C28.4143 17.9181 28.5625 17.5604 28.5625 17.1874V14.4621C28.5788 14.2439 28.5441 14.0248 28.4612 13.8223C28.1772 13.136 27.5683 12.9715 27.1562 12.9335ZM7.46875 14.3749C7.46875 12.8224 8.41375 11.5624 9.57812 11.5624C10.7425 11.5624 11.6875 12.8224 11.6875 14.3749C11.6875 15.9274 10.7425 17.1874 9.57812 17.1874C8.41375 17.1874 7.46875 15.9274 7.46875 14.3749ZM20.1222 22.8124C18.7145 22.8082 8.875 22.8124 8.875 22.8124V19.9999C8.875 19.9999 18.7202 19.9971 20.1278 19.9999L20.1222 22.8124ZM19.4219 17.1874C18.2575 17.1874 17.3125 15.9274 17.3125 14.3749C17.3125 12.8224 18.2575 11.5624 19.4219 11.5624C20.5863 11.5624 21.5312 12.8224 21.5312 14.3749C21.5312 15.9274 20.5863 17.1874 19.4219 17.1874Z"
-                fill="#ECF4FF"
-              />
-            </svg>
+          <div class="w-[50px] h-[50px] flex justify-center items-center rounded-full border border-white bg-white">
+            <Image className="w-10 h-10 object-contain" src={smallTiger} alt= "smallTiger" />
           </div>
           <div class="chatBotTitle">
             <span className="text-[#ffffff] text-[16px] mb-[6px] leading-[1]">
@@ -681,22 +671,11 @@ export function Chatbot() {
                 {msg?.text && msg.text}
               </span>
             ) : (
-              <div key={index} class="flex gap-5 items-center">
-                <div class="w-11 h-11 flex justify-center items-center rounded-full bg-[#DCDCEB]">
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 28 28"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M25.9993 12.6334V8.66675C25.9993 7.95951 25.7184 7.28123 25.2183 6.78113C24.7182 6.28104 24.0399 6.00009 23.3327 6.00009H15.3327V4.25075C15.7393 3.88542 15.9993 3.36009 15.9993 2.77075C15.9993 2.24032 15.7886 1.73161 15.4136 1.35654C15.0385 0.981466 14.5298 0.770752 13.9993 0.770752C13.4689 0.770752 12.9602 0.981466 12.5851 1.35654C12.2101 1.73161 11.9993 2.24032 11.9993 2.77075C11.9993 3.36009 12.2593 3.88542 12.666 4.25075V6.00009H4.66602C3.95877 6.00009 3.28049 6.28104 2.7804 6.78113C2.2803 7.28123 1.99935 7.95951 1.99935 8.66675V12.6641L1.90335 12.6708C1.5672 12.6947 1.25262 12.8452 1.02302 13.0919C0.793408 13.3385 0.665838 13.6631 0.666016 14.0001V16.6668C0.666016 17.0204 0.806492 17.3595 1.05654 17.6096C1.30659 17.8596 1.64573 18.0001 1.99935 18.0001V24.6668C1.99935 25.374 2.2803 26.0523 2.7804 26.5524C3.28049 27.0525 3.95877 27.3334 4.66602 27.3334H23.3327C24.0399 27.3334 24.7182 27.0525 25.2183 26.5524C25.7184 26.0523 25.9993 25.374 25.9993 24.6668V18.0001C26.353 18.0001 26.6921 17.8596 26.9422 17.6096C27.1922 17.3595 27.3327 17.0204 27.3327 16.6668V14.0828C27.3481 13.8758 27.3153 13.6681 27.2367 13.4761C26.9674 12.8254 26.39 12.6694 25.9993 12.6334ZM7.33268 14.0001C7.33268 12.5281 8.22868 11.3334 9.33268 11.3334C10.4367 11.3334 11.3327 12.5281 11.3327 14.0001C11.3327 15.4721 10.4367 16.6668 9.33268 16.6668C8.22868 16.6668 7.33268 15.4721 7.33268 14.0001ZM19.33 22.0001C17.9953 21.9961 8.66602 22.0001 8.66602 22.0001V19.3334C8.66602 19.3334 18.0007 19.3308 19.3354 19.3334L19.33 22.0001ZM18.666 16.6668C17.562 16.6668 16.666 15.4721 16.666 14.0001C16.666 12.5281 17.562 11.3334 18.666 11.3334C19.77 11.3334 20.666 12.5281 20.666 14.0001C20.666 15.4721 19.77 16.6668 18.666 16.6668Z"
-                      fill="#2E3192"
-                    />
-                  </svg>
+              <div key={index} class="flex gap-3 items-start">
+                <div class="min-w-11 h-11 flex justify-center items-center rounded-full bg-[#FFFFFF] border-2 border-primary">
+                <Image className="w-8 h-8 object-contain" src={smallTiger} alt= "smallTiger" />
                 </div>
-                <span className="p-[6px] text-[#1A1D21] text-[15px] rounded-[6px]">
+                <span className="p-[6px] text-[#1A1D21] text-[15px] leading-[1.2] rounded-[6px] font-medium">
                   {msg?.text && msg.text}
                   {msg?.image &&
                     <Link href={msg?.image} rel="noopener noreferrer" target="_blank">
@@ -709,7 +688,7 @@ export function Chatbot() {
           ))}
         </div>
       </div>
-      <div class="chatInputWrapper flex gap-2 items-center relative px-5 py-4 border-t border-[#ACACAC]">
+      <div class="chatInputWrapper flex gap-2 items-center relative px-5 py-4 border-t border-[#ACACAC] bg-[#FFFFFF]">
         <input placeholder="Ask your question..." className="w-full bg-[#FFFFFF] outline-none" type="text" value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
