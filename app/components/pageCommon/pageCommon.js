@@ -628,7 +628,7 @@ export function Chatbot() {
  
   return (
     <div className="chatBotMain">
-      <Image className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" src={Tiger} alt="tiger" />
+      <Image className="absolute z-[-1] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" src={Tiger} alt="tiger" />
       <div class="chatBotHead">
         <div class="flex gap-4 items-center">
           <div class="w-[50px] h-[50px] flex justify-center items-center rounded-full border border-white bg-white">
