@@ -1526,10 +1526,10 @@ input[type=file]::file-selector-button {
 
 /* Chatbot css */
 .chatBotMain{
-  @apply fixed right-[50px] w-[400px] shadow-2xl rounded-tr-[25px] rounded-tl-[25px] bg-[#fff] z-10 transition-all duration-1000 bottom-[-100%]
+  @apply fixed right-[50px] w-[400px] shadow-2xl rounded-tr-[25px] rounded-tl-[25px] bg-[#F4F5F6] z-10 transition-all duration-1000 bottom-[-100%]
 }
 .chatBotHead{
-  @apply bg-primary rounded-tr-[25px] rounded-tl-[25px] px-5 py-[10px] flex justify-between items-center
+  @apply bg-secondary rounded-tr-[25px] rounded-tl-[25px] px-5 py-[10px] flex justify-between items-center
 }
 .chatBotStatusOnline{
   @apply text-[#E9E9E9] text-[13px] before:content-[""] before:w-[10px] before:h-[10px] before:rounded-full flex gap-[6px] items-center
