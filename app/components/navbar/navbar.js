@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import loadGif from "../../assets/images/loading.gif";
 
 const NavbarComponent = () => {
   const { push } = useRouter();
@@ -73,7 +74,13 @@ const NavbarComponent = () => {
   }, []);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense
+      fallback={
+        <div>
+          <Image className="w-[40px] h-[40px]" src={loadGif} alt="loadigif" />
+        </div>
+      }
+    >
       {headerData.data?.attributes && (
         <>
           <div className="nav-main">
@@ -81,7 +88,11 @@ const NavbarComponent = () => {
               <div className="md:py-4 xl:py-0 w-full flex justify-between items-center relative">
                 <div class="md:flex items-center">
                   <div className="navbar-start w-fit flex gap-2 items-center">
-                    <button className="hamburger-button" onClick={toggleMenu} aria-label="hamburger-button">
+                    <button
+                      className="hamburger-button"
+                      onClick={toggleMenu}
+                      aria-label="hamburger-button"
+                    >
                       <svg
                         width="32"
                         height="32"
@@ -625,7 +636,13 @@ const NavbarComponent = () => {
 };
 
 const Navbar = () => (
-  <Suspense fallback={<div>Loading...</div>}>
+  <Suspense
+    fallback={
+      <div>
+        <Image className="w-[40px] h-[40px]" src={loadGif} alt="loadigif" />
+      </div>
+    }
+  >
     <NavbarComponent />
   </Suspense>
 );

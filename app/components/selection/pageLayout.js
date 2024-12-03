@@ -723,7 +723,7 @@ export function ContactUs({ pageData }) {
                                 </button>
                                 {formLoading &&
                                 <>
-                                  <p>Loading...</p>
+                                  {/* <p>Loading...</p> */}
                                   <Image
                                   className="w-[40px] h-[40px]"
                                   src={loadGif}
@@ -1071,7 +1071,7 @@ export function ContactUs({ pageData }) {
                                 </button>
                                 {formLoading &&
                                 <>
-                                  <p>Loading...</p>
+                                  {/* <p>Loading...</p> */}
                                   <Image
                                   className="w-[40px] h-[40px]"
                                   src={loadGif}
