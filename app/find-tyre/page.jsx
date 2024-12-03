@@ -19,7 +19,7 @@ import Banner from "@/app/assets/images/find1.jpg";
 import find2 from "@/app/assets/images/find2.png";
 import Product from "@/app/components/product/card";
 import { delay } from "framer-motion";
-import loadGif from "../../assets/images/loading.gif"
+import loadGif from "../assets/images/loading.gif"
 
 const FindTyre = () => {
   const { push } = useRouter();
