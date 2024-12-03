@@ -1711,7 +1711,7 @@ export function JobApplication({ section }) {
                     <span data-hover={section?.submit}>{section?.submit}</span>
                   </button>
                   {formLoading && <>
-                    <p>Loading...</p>
+                    {/* <p>Loading...</p> */}
                     <Image
                                   className="w-[40px] h-[40px]"
                                   src={loadGif}
