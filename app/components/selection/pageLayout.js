@@ -1614,7 +1614,12 @@ const Segments = ({ pageData, pagination }) => {
 export function Products({ pageData }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [selectedStandard, setSelectedStandard] = useState(null);
-
+  // for back button
+  const router = useRouter();
+  const handleBack = () => {
+    router.back();
+  };
+ 
   // table tab
   useEffect(() => {
     if (pageData?.tables?.table?.length > 0) {
@@ -1835,8 +1840,7 @@ export function Products({ pageData }) {
       <section className="pt-[100px] 2xl:pt-[140px] bg-[#F8F8F8]">
         <div className="container mx-auto">
           <div className="flex items-center gap-1">
-            <Link
-              href=""
+            <button onClick={handleBack}
               className="flex gap-2 items-center text-[#1A1D21] text-[16px] font-medium pr-5"
             >
               <svg
@@ -1855,7 +1859,7 @@ export function Products({ pageData }) {
                 />
               </svg>
               Back
-            </Link>
+            </button>
             <Link
               href="/"
               className="text-[14px] text-[#727C8D] hover:text-secondary active:text-secondary"
