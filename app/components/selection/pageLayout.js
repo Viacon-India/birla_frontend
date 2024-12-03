@@ -28,7 +28,7 @@ import traImage from "@/app/assets/images/tra.png";
 import construction from "@/app/assets/images/axle.png";
 import LastBg from "../../assets/images/footerupper.png";
 import errorImg from "../../assets/images/404-tyre.gif";
-import loadGif from "../../assets/images/loading.gif"
+import loadGif from "../../assets/images/loading.gif";
 
 export default function PageSelection({
   page,
@@ -49,7 +49,17 @@ export default function PageSelection({
       {page == "contact-us" && <ContactUs pageData={pageData} />}
       {page == "pages" && <Pages pageData={pageData} />}
       {page == "segments" && (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div>
+              <Image
+                className="w-[40px] h-[40px]"
+                src={loadGif}
+                alt="loadigif"
+              />
+            </div>
+          }
+        >
           <Segments pageData={pageData} pagination={pagination} />
         </Suspense>
       )}
@@ -137,7 +147,7 @@ export function ContactUs({ pageData }) {
     form2Email: "",
     form2Country: "",
     form2State: "",
-    form2City: ""
+    form2City: "",
   });
 
   // country state city
@@ -162,26 +172,31 @@ export function ContactUs({ pageData }) {
     });
   };
   const handleForm1PhoneChange = (value) => {
-    setSelectedCountry(parsePhoneNumber(value+'000')?.country);
+    setSelectedCountry(parsePhoneNumber(value + "000")?.country);
     setFormData({
       ...formData,
-      ['form1ContactNumber']: value,
+      ["form1ContactNumber"]: value,
     });
   };
   const handleForm2PhoneChange = (value) => {
-    setSelectedCountry(parsePhoneNumber(value+'000')?.country);
+    setSelectedCountry(parsePhoneNumber(value + "000")?.country);
     setFormData({
       ...formData,
-      ['form2ContactNumber']: value,
+      ["form2ContactNumber"]: value,
     });
   };
   const form1HandleSubmit = async (e) => {
-    setForm1Error('');
+    setForm1Error("");
     setLoading(true);
     e.preventDefault();
-    if (!formData.form1ContactNumber || !/^\+?\d{1,4}[\s\-\(\)]?\(?[\d\(\)\-\s\+]{6,20}$/g.test(formData.form1ContactNumber)) {
+    if (
+      !formData.form1ContactNumber ||
+      !/^\+?\d{1,4}[\s\-\(\)]?\(?[\d\(\)\-\s\+]{6,20}$/g.test(
+        formData.form1ContactNumber
+      )
+    ) {
       setLoading(false);
-      setForm1Error('Please enter a valid phone number.');
+      setForm1Error("Please enter a valid phone number.");
       return;
     }
     const dataToSend = {
@@ -193,8 +208,9 @@ export function ContactUs({ pageData }) {
         contactNumber: formData.form1ContactNumber,
         email: formData.form1Email,
         country: Country.getCountryByCode(selectedCountry).name,
-        state: State.getStateByCodeAndCountry(selectedState, selectedCountry).name,
-        city: selectedCity
+        state: State.getStateByCodeAndCountry(selectedState, selectedCountry)
+          .name,
+        city: selectedCity,
       },
     };
     try {
@@ -224,12 +240,17 @@ export function ContactUs({ pageData }) {
     }
   };
   const form2HandleSubmit = async (e) => {
-    setForm1Error('');
+    setForm1Error("");
     setLoading(true);
     e.preventDefault();
-    if (!formData.form2ContactNumber || !/^\+?\d{1,4}[\s\-\(\)]?\(?[\d\(\)\-\s\+]{6,20}$/g.test(formData.form2ContactNumber)) {
+    if (
+      !formData.form2ContactNumber ||
+      !/^\+?\d{1,4}[\s\-\(\)]?\(?[\d\(\)\-\s\+]{6,20}$/g.test(
+        formData.form2ContactNumber
+      )
+    ) {
       setLoading(false);
-      setForm1Error('Please enter a valid phone number.');
+      setForm1Error("Please enter a valid phone number.");
       return;
     }
     const dataToSend = {
@@ -241,8 +262,9 @@ export function ContactUs({ pageData }) {
         contactNumber: formData.form2ContactNumber,
         email: formData.form2Email,
         country: Country.getCountryByCode(selectedCountry).name,
-        state: State.getStateByCodeAndCountry(selectedState, selectedCountry).name,
-        city: selectedCity
+        state: State.getStateByCodeAndCountry(selectedState, selectedCountry)
+          .name,
+        city: selectedCity,
       },
     };
     try {
@@ -364,9 +386,9 @@ export function ContactUs({ pageData }) {
                             }`}
                             onClick={() => {
                               setActiveTab("general");
-                              setSelectedCountry('IN');
-                              setSelectedState('');
-                              setSelectedCity('');
+                              setSelectedCountry("IN");
+                              setSelectedState("");
+                              setSelectedCity("");
                             }}
                           >
                             {section.form1Name}
@@ -377,9 +399,9 @@ export function ContactUs({ pageData }) {
                             }`}
                             onClick={() => {
                               setActiveTab("partner");
-                              setSelectedCountry('IN');
-                              setSelectedState('');
-                              setSelectedCity('');
+                              setSelectedCountry("IN");
+                              setSelectedState("");
+                              setSelectedCity("");
                             }}
                           >
                             {section.form2Name}
@@ -721,16 +743,16 @@ export function ContactUs({ pageData }) {
                                     {section.form1Submit}
                                   </span>
                                 </button>
-                                {formLoading &&
-                                <>
-                                  {/* <p>Loading...</p> */}
-                                  <Image
-                                  className="w-[40px] h-[40px]"
-                                  src={loadGif}
-                                  alt="loadigif"
-                                />
-                                </>
-                                }
+                                {formLoading && (
+                                  <>
+                                    {/* <p>Loading...</p> */}
+                                    <Image
+                                      className="w-[40px] h-[40px]"
+                                      src={loadGif}
+                                      alt="loadigif"
+                                    />
+                                  </>
+                                )}
                               </div>
                             </form>
                           </div>
@@ -892,7 +914,9 @@ export function ContactUs({ pageData }) {
                                       pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                                       title='"example@email.com"'
                                       name="form2Email"
-                                      placeholder={section?.form2Email?.placeholder}
+                                      placeholder={
+                                        section?.form2Email?.placeholder
+                                      }
                                       onChange={handleChange}
                                       required
                                     />
@@ -1069,16 +1093,16 @@ export function ContactUs({ pageData }) {
                                     {section.form2Submit}
                                   </span>
                                 </button>
-                                {formLoading &&
-                                <>
-                                  {/* <p>Loading...</p> */}
-                                  <Image
-                                  className="w-[40px] h-[40px]"
-                                  src={loadGif}
-                                  alt="loadigif"
-                                />
+                                {formLoading && (
+                                  <>
+                                    {/* <p>Loading...</p> */}
+                                    <Image
+                                      className="w-[40px] h-[40px]"
+                                      src={loadGif}
+                                      alt="loadigif"
+                                    />
                                   </>
-                                }
+                                )}
                               </div>
                             </form>
                           </div>
@@ -1433,23 +1457,27 @@ const Segments = ({ pageData, pagination }) => {
 
   return (
     <>
-      {pageData && pageData?.products &&
-        <CollectionTypeSeo page='category' pageData={pageData}/>
-      }
+      {pageData && pageData?.products && (
+        <CollectionTypeSeo page="category" pageData={pageData} />
+      )}
       <PageBanner Title={pageData.title} Banner={pageData.hero} />
       <section className="product-sec pt-10 md:pt-[60px] 2xl:pt-[100px]">
         <div className="container mx-auto overflow-hidden flex flex-col gap-4 md:gap-6 2xl:gap-10">
           <div className="upper-title-sec flex gap-3 md:gap-0 flex-col md:flex-row justify-between items-end">
-          {(pageData?.section_heading || pageData?.section_title) &&
+            {(pageData?.section_heading || pageData?.section_title) && (
               <div className="self-start">
-                {pageData?.section_heading && <span className="section-heading">{pageData.section_heading}</span>}
-                {pageData?.section_title &&
+                {pageData?.section_heading && (
+                  <span className="section-heading">
+                    {pageData.section_heading}
+                  </span>
+                )}
+                {pageData?.section_title && (
                   <div className="section-title-wrapper">
                     <h3 className="section-title">{pageData.section_title}</h3>
                   </div>
-                }
+                )}
               </div>
-            }
+            )}
             {pageData?.catalogue && (
               <div className="cat-btn-sec flex items-center gap-3 relative z-10">
                 <Link
@@ -1619,7 +1647,7 @@ export function Products({ pageData }) {
   const handleBack = () => {
     router.back();
   };
- 
+
   // table tab
   useEffect(() => {
     if (pageData?.tables?.table?.length > 0) {
@@ -1836,11 +1864,12 @@ export function Products({ pageData }) {
 
   return (
     <>
-      <CollectionTypeSeo page="product" pageData={pageData}/>
+      <CollectionTypeSeo page="product" pageData={pageData} />
       <section className="pt-[100px] 2xl:pt-[140px] bg-[#F8F8F8]">
         <div className="container mx-auto">
           <div className="flex items-center gap-1">
-            <button onClick={handleBack}
+            <button
+              onClick={handleBack}
               className="flex gap-2 items-center text-[#1A1D21] text-[16px] font-medium pr-5"
             >
               <svg
@@ -2113,7 +2142,7 @@ export function Products({ pageData }) {
                       {pageData.tables.title}
                     </h2>
                   )}
-                  {pageData?.catalogue &&
+                  {pageData?.catalogue && (
                     <div className="cat-btn-sec flex items-center gap-3 relative z-10">
                       <Link
                         href={getStrapiMedia(pageData.catalogue.url)}
@@ -2138,7 +2167,7 @@ export function Products({ pageData }) {
                         Download Product Leaflet
                       </Link>
                     </div>
-                  }
+                  )}
                 </div>
                 {pageData.tables?.table && pageData.tables.table.length > 1 && (
                   <div className="country-selection flex justify-between items-center lg:flex-col lg:items-start">
@@ -2707,7 +2736,6 @@ export function Products({ pageData }) {
 //     </div>
 //   );
 // }
-
 
 export function Error404() {
   return (
