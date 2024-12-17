@@ -1321,7 +1321,7 @@ const Segments = ({ pageData, pagination }) => {
     try {
       const response = await fetch(
         getStrapiMedia(
-          `/api/products?pagination[pageSize]=${pageSize}&pagination[page]=${currentPage}&sort[0]=premium:desc&filters[segment][slug][$eq]=${pageData.slug}${query}`
+          `/api/products?pagination[pageSize]=${pageSize}&pagination[page]=${currentPage}&sort[0]=premium:desc&sort[1]=id:asc&filters[segment][slug][$eq]=${pageData.slug}${query}`
         )
       );
       const products = await response.json();
