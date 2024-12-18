@@ -104,7 +104,7 @@ export default function Product({ data }) {
               )}
             </div>
           )}
-          <div className="w-[145px] h-[195px] 2xl:w-[180px] 2xl:h-[280px] translate-y-[-30px]">
+          <div className="w-[136px] h-[195px] 2xl:w-[196px] 2xl:h-[280px] translate-y-[-30px]">
             <figure class="new-product-card-image">
               {data?.gallery && data.gallery.length > 0 && (
                 <Image

@@ -1966,7 +1966,7 @@ export function Products({ pageData }) {
                         key={gallery.id}
                         className="!flex !justify-center"
                       >
-                        <figure className="w-[180px] 2xl:w-[260px] h-[240px] 2xl:h-[380px] pt-3 md:pt-0 magnifiedImg">
+                        <figure className="w-[180px] lg:w-[300px] 2xl:w-[320px] h-[240px] 2xl:h-[380px] pt-3 md:pt-0 magnifiedImg">
                           <Image
                             width={gallery?.width}
                             height={gallery?.height}
