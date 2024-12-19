@@ -189,6 +189,7 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
               className="text-[#F5811E] font-medium flex items-center gap-1"
               href={EndPageData.page.permalink}
               prefetch={false}
+              scroll={false}
             >
               {EndPageData.page.title}
               <svg
@@ -214,6 +215,8 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
               <Link
                 className="text-[#F5811E] font-medium flex items-center gap-1"
                 href={EndPageData.segment.permalink}
+                prefetch={false}
+                scroll={false}
               >
                 Products - {EndPageData.segment.title}
                 <svg
