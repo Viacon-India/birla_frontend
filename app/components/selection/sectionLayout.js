@@ -1807,7 +1807,7 @@ export function DoubleSlider({ section }) {
     <section className="page-content-sec my-8 md:my-12 2xl:my-[60px] overflow-hidden">
       <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
         <div className="manufacture-slider-sec">
-          <div class="mt-5 md:mt-10 2xl:mt-12">
+          <div>
             <span className="section-heading">{section?.heading}</span>
             <div className="section-title-wrapper">
               <h3 className="section-title">{section.title}</h3>

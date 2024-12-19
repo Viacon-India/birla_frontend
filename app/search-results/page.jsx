@@ -98,7 +98,7 @@ const ResultComponent = () => {
   return (
     <>
       <Navbar />
-      <div className="pt-[100px] xl:pt-[140px] bg-[#F4F4F4]">
+      <div className="pt-[100px] xl:pt-[140px] bg-[#F4F4F4] pb-10 md:pb-[60px] 2xl:pb-[100px]">
         <div className="container mx-auto">
           <span className="text-primary text-[20px] uppercase mb-3">
             Search Result
@@ -128,7 +128,7 @@ const ResultComponent = () => {
               />
             </svg>
             <input
-              className="w-full py-[10px] pl-11 border border-[#B3B8C2] bg-transparent rounded-[24px]"
+              className="w-full py-[10px] pl-11 border border-[#B3B8C2] bg-transparent rounded-[24px] pr-5 outline-none"
               type="search"
               value={searchInput}
               onChange={handleSearchChange}
