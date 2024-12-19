@@ -188,6 +188,7 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
             <Link
               className="text-[#F5811E] font-medium flex items-center gap-1"
               href={EndPageData.page.permalink}
+              prefetch={false}
             >
               {EndPageData.page.title}
               <svg

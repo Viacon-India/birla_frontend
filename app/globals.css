@@ -1332,7 +1332,7 @@ input[type=file]::file-selector-button {
 
 
 .value-overlay{
-  @apply w-full h-full absolute p-[13px] md:p-5 top-[70%] md:top-[65%] lg:top-[60%] 2xl:top-[50%] group-hover:top-0 transition-all duration-500 flex flex-col group-hover:justify-center md:!pl-10
+  @apply w-full bottom-0 absolute p-[13px] md:p-5 h-[30%] md:h-[35%] lg:h-[40%] 2xl:h-[50%] group-hover:h-full transition-all duration-500 md:!pl-10 flex flex-col justify-center
 }
 
 .value-overlay h3{
