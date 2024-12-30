@@ -193,7 +193,15 @@ ol, ul{
 .search-btn{
     @apply flex gap-x-[5px] items-center
 }
-
+input[type = 'search']::-webkit-search-cancel-button{
+  content: url('data:image/svg+xml,<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.18822 1.00921C1.86277 0.683778 1.33514 0.683778 1.0097 1.00921C0.684267 1.33465 0.684267 1.86229 1.0097 2.18773L5.82197 6.99998L1.00975 11.8122C0.684317 12.1376 0.684317 12.6653 1.00975 12.9907C1.33519 13.3161 1.86283 13.3161 2.18826 12.9907L7.00047 8.17848L11.8127 12.9907C12.1381 13.3161 12.6658 13.3161 12.9912 12.9907C13.3166 12.6653 13.3166 12.1376 12.9912 11.8122L8.17897 6.99998L12.9913 2.18773C13.3167 1.86229 13.3167 1.33465 12.9913 1.00921C12.6659 0.683778 12.1382 0.683778 11.8128 1.00921L7.00047 5.82148L2.18822 1.00921Z" fill="%231A1D21"/></svg>');
+	background-color: #DEE1E5;
+  border-radius: 50%;
+	-webkit-appearance: none;	
+	height: 16px;
+	width: 16px;
+  padding: 4px;
+}
 .nav-hov:after {
 @apply content-[''] absolute w-[90%] h-px bg-primary origin-bottom-right transition-transform duration-[0.25s] ease-[ease-out] scale-x-0 left-0 bottom-0;
 }
@@ -1504,7 +1512,7 @@ input[type=file]::file-selector-button {
  .small-img-sec .swiper-wrapper{
   @apply flex flex-col gap-3 2xl:gap-5
 }
-.small-img-sec .swiper-wrapper .swiper-slide-active{
+.small-img-sec .swiper-wrapper .swiper-slide-thumb-active{
   @apply !border !border-primary !p-2
 }
 

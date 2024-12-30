@@ -128,7 +128,7 @@ const ResultComponent = () => {
               />
             </svg>
             <input
-              className="w-full py-[10px] pl-11 border border-[#B3B8C2] bg-transparent rounded-[24px] pr-5 outline-none"
+              className="w-full py-[10px] pl-11 border border-[#B3B8C2] bg-transparent rounded-[24px] pr-3 outline-none"
               type="search"
               value={searchInput}
               onChange={handleSearchChange}
