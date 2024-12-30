@@ -1923,7 +1923,7 @@ export function Products({ pageData }) {
                   {pageData?.gallery?.map((gallery, index) => (
                     <SwiperSlide
                       key={gallery.id}
-                      className="!w-[80px] !h-[80px] md:!w-[70px] md:!h-[70px] 2xl:!w-[100px] 2xl:!h-[100px] bg-primary rounded-[12px] p-2 !mr-0 cursor-pointer"
+                      className="!w-[80px] !h-[80px] md:!w-[70px] md:!h-[70px] 2xl:!w-[100px] 2xl:!h-[100px] bg-[#FFFFFF] rounded-[12px] p-2 !mr-0 cursor-pointer"
                     >
                       <Image
                         width={gallery?.width}
