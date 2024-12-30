@@ -1660,89 +1660,31 @@ export function Products({ pageData }) {
   };
 
   useEffect(() => {
-    var magnifierSize = 150;
-    var magnification = 1.5;
-
-    function magnifier() {
-      this.magnifyImg = function (ptr, magnification, magnifierSize) {
-        var $pointer;
-        if (typeof ptr === "string") {
-          $pointer = $(ptr);
-        } else if (typeof ptr === "object") {
-          $pointer = ptr;
-        }
-
-        magnification = +magnification;
-
-        $pointer.hover(
-          function () {
-            $(this).css("cursor", "none");
-            $(".magnify").show();
-
-            // Setting variables for later use
-            var width = $(this).width();
-            var height = $(this).height();
-            var src = $(this).attr("src");
-            var imagePos = $(this).offset();
-            var image = $(this);
-
-            if (magnifierSize === undefined) {
-              magnifierSize = "150px";
-            }
-
-            $(".magnify").css({
-              "background-size":
-                width * magnification + "px " + height * magnification + "px",
-              "background-image": 'url("' + src + '")',
-              width: magnifierSize,
-              height: magnifierSize,
-            });
-
-            var magnifyOffset = +($(".magnify").width() / 2);
-            var rightSide = imagePos.left + $(this).width();
-            var bottomSide = imagePos.top + $(this).height();
-
-            $(document).mousemove(function (e) {
-              if (
-                e.pageX < imagePos.left - magnifyOffset / 6 ||
-                e.pageX > rightSide + magnifyOffset / 6 ||
-                e.pageY < imagePos.top - magnifyOffset / 6 ||
-                e.pageY > bottomSide + magnifyOffset / 6
-              ) {
-                $(".magnify").hide();
-                $(document).unbind("mousemove");
-              }
-              var backgroundPos =
-                "" -
-                ((e.pageX - imagePos.left) * magnification + -magnifyOffset) +
-                "px " +
-                -((e.pageY - imagePos.top) * magnification - magnifyOffset) +
-                "px";
-              $(".magnify").css({
-                left: e.pageX - magnifyOffset,
-                top: e.pageY - magnifyOffset,
-                "background-position": backgroundPos,
-              });
-            });
-          },
-          function () {}
-        );
-      };
-
-      this.init = function () {
-        $("body").prepend('<div class="magnify"></div>');
-      };
-
-      return this.init();
-    }
-
-    var magnify = new magnifier();
-    magnify.magnifyImg(
-      ".productDetailSwiper img",
-      magnification,
-      magnifierSize
-    );
+    $(".zoom_image")
+      .on("mouseenter", function () {
+        // Apply the zoom effect on hover
+        $(this).addClass("zoom_mode_active");
+        $(window).width() > 767
+          ? $(this).children("img").css({ transform: "scale(2)" })
+          : $(this).children("img").css({ transform: "scale(5)" });
+      })
+      .on("mousemove", function (e) {
+        $(this)
+          .children("img")
+          .css({
+            "transform-origin":
+              ((e.pageX - $(this).offset().left) / $(this).width()) * 100 +
+              "% " +
+              ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +
+              "%",
+          });
+      })
+      .on("mouseleave", function () {
+        $(this).removeClass("zoom_mode_active");
+        $(this).children("img").css({ transform: "scale(1)" });
+      });
   }, [pageData]);
+  
 
   const [sortOrder, setSortOrder] = useState("desc");
   const [sortColumn, setSortColumn] = useState("size");
@@ -1966,7 +1908,7 @@ export function Products({ pageData }) {
                         key={gallery.id}
                         className="!flex !justify-center"
                       >
-                        <figure className="w-[180px] lg:w-[300px] 2xl:w-[320px] h-[240px] 2xl:h-[380px] pt-3 md:pt-0 magnifiedImg">
+                        <figure className="w-[180px] lg:w-[300px] 2xl:w-[320px] h-[240px] 2xl:h-[380px] pt-3 md:pt-0 zoom_image">
                           <Image
                             width={gallery?.width}
                             height={gallery?.height}
