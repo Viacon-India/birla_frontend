@@ -1641,6 +1641,7 @@ const Segments = ({ pageData, pagination }) => {
 
 export function Products({ pageData }) {
   const [storedValue, setStoredValue] = useState(null);
+  const [mostVisited, setMostVisited] = useState([]);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [selectedStandard, setSelectedStandard] = useState(null);
   // for back button
@@ -1811,14 +1812,53 @@ export function Products({ pageData }) {
       localStorage.setItem("lastProduct", pageData.slug);
     }
   };
+  
+  const handleArraySave = () => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("mostVisited", JSON.stringify(mostVisited));
+    }
+  };
+
+  const findMostCommonValue = (arr) => {
+    if(Array.isArray(arr)){
+      const countMap = arr.reduce((acc, val) => {
+        acc[val] = (acc[val] || 0) + 1;
+        return acc;
+      }, {});
+      let mostCommonValue = null;
+      let maxCount = 0;
+      for (const [key, count] of Object.entries(countMap)) {
+        if (count > maxCount) {
+          maxCount = count;
+          mostCommonValue = key;
+        }
+      }
+      return mostCommonValue;
+    }else{
+      return arr;
+    }
+  };
 
   useEffect(() => {
     handleSave();
     if (typeof window !== "undefined") {
       const value = localStorage.getItem("lastProduct");
       setStoredValue(value);
+      const mostVisitedString = localStorage.getItem("mostVisited");
+      if(mostVisitedString) {
+        let mostVisitedArray = JSON.parse(mostVisitedString);
+        let updatedArray = mostVisitedArray.filter(item => item !== "undefined");
+        setMostVisited(updatedArray);
+        setMostVisited(prevData => [...prevData, value]);
+      }
     }
   }, [pageData]);
+  
+  useEffect(() => {
+    handleArraySave();
+  }, [mostVisited]);
+
+  console.log(findMostCommonValue(mostVisited));
 
 
   return (
