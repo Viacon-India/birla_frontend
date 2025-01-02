@@ -1640,6 +1640,7 @@ const Segments = ({ pageData, pagination }) => {
 };
 
 export function Products({ pageData }) {
+  const [storedValue, setStoredValue] = useState(null);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [selectedStandard, setSelectedStandard] = useState(null);
   // for back button
@@ -1804,11 +1805,28 @@ export function Products({ pageData }) {
     return table;
   });
 
+
+  const handleSave = () => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("lastProduct", pageData.slug);
+    }
+  };
+
+  useEffect(() => {
+    handleSave();
+    if (typeof window !== "undefined") {
+      const value = localStorage.getItem("lastProduct");
+      setStoredValue(value);
+    }
+  }, [pageData]);
+
+
   return (
     <>
       <CollectionTypeSeo page="product" pageData={pageData} />
       <section className="pt-[100px] 2xl:pt-[140px] bg-[#F8F8F8]">
         <div className="container mx-auto">
+          <h1>Stored Value: {storedValue}</h1>
           <div className="flex items-center gap-1">
             <button
               onClick={handleBack}
