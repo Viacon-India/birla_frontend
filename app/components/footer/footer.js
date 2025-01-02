@@ -91,7 +91,7 @@ export default function Footer() {
                   {footerData.data.attributes?.social && footerData.data.attributes.social.length > 0 && (
                     <div class="flex items-center gap-4">
                       {footerData.data.attributes.social.map((social) => ( social?.link &&
-                        <Link className="icon-box" href={social.link} key={social.id}>
+                        <Link className="icon-box" href={social.link} target="_blank" key={social.id}>
                           <Image
                             src={getStrapiMedia(
                               social.icon.data.attributes.url
