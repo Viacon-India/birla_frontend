@@ -1826,7 +1826,6 @@ export function Products({ pageData }) {
       <CollectionTypeSeo page="product" pageData={pageData} />
       <section className="pt-[100px] 2xl:pt-[140px] bg-[#F8F8F8]">
         <div className="container mx-auto">
-          <h1>Stored Value: {storedValue}</h1>
           <div className="flex items-center gap-1">
             <button
               onClick={handleBack}
