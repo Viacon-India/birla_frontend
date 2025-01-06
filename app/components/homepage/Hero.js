@@ -1,7 +1,6 @@
 "use client";
 
 import { Float } from "../pageCommon/pageCommon";
-import Cookies from "js-cookie";
 import React, { useRef, useState, useEffect } from "react";
 import { getStrapiMedia } from "@/lib/utils";
 import $ from "jquery";
@@ -21,21 +20,33 @@ import LetterPullup from "@/components/LetterPullup";
 import { MainButton, SmallButton } from "../pageCommon/pageCommon";
 
 export default function Hero({ Data }) {
+  const [storedValue, setStoredValue] = useState(null);
+
+  const handleSave = () => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("preloader", 'watched');
+    }
+  };
+
   const handleVideoEnd = () => {
     $("#preloader").css("transform", "translateY(-150%)");
-    Cookies.set("videoPlayed", true, { expires: 1 / 1440, path: "/" });
+    handleSave();
   };
-  const videoPlayed = Cookies.get("videoPlayed")
-    ? Cookies.get("videoPlayed")
-    : false;
 
   useEffect(() => {
     $("#preloader").css("transition", "transform 1.5s linear");
   }, [Data]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const value = sessionStorage.getItem("preloader");
+      setStoredValue(value);
+    }
+  }, []);
+
   return (
     <div className="relative pb-5 pd:pb-8 xl:pb-[50px] 2xl:pb-[75px]">
-      {
+      {storedValue !== "watched" &&
         <div id="preloader" className="loader-sec">
           <div class="video-wrapper">
             <video
