@@ -14,7 +14,7 @@ import { getStrapiMedia } from "@/lib/utils";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { PageBanner, PageEnd, Float } from "../pageCommon/pageCommon";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Autoplay, Navigation, Thumbs } from "swiper/modules";
+import { FreeMode, Autoplay, Navigation, Thumbs, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import SectionSelection from "../selection/sectionLayout";
@@ -1643,6 +1643,8 @@ export function Products({ pageData }) {
   const [storedValue, setStoredValue] = useState(null);
   const [mostVisited, setMostVisited] = useState([]);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [popupVisible, setPopupVisible] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedStandard, setSelectedStandard] = useState(null);
   // for back button
   const router = useRouter();
@@ -1664,7 +1666,6 @@ export function Products({ pageData }) {
   useEffect(() => {
     $(".zoom_image")
       .on("mouseenter", function () {
-        // Apply the zoom effect on hover
         $(this).addClass("zoom_mode_active");
         $(window).width() > 767
           ? $(this).children("img").css({ transform: "scale(2)" })
@@ -1686,6 +1687,18 @@ export function Products({ pageData }) {
         $(this).children("img").css({ transform: "scale(1)" });
       });
   }, [pageData]);
+
+  const openPopup = (index) => {
+    if(window.innerWidth<=600){
+      setCurrentIndex(index);
+
+      setPopupVisible(true);
+    }
+  };
+
+  const closePopup = () => {
+    setPopupVisible(false);
+  };
   
 
   const [sortOrder, setSortOrder] = useState("desc");
@@ -1908,7 +1921,7 @@ export function Products({ pageData }) {
           </div>
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 2xl:gap-[60px] mt-6 xl:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
             <div className="productImageWrapper w-full lg:w-[55%] xl:w-[45%]">
-              <div className="product-image-sec flex gap-5">
+              <div className="product-image-sec flex flex-col-reverse md:flex-row gap-5">
                 <Swiper
                   onSwiper={setThumbsSwiper}
                   loop={true}
@@ -1917,7 +1930,7 @@ export function Products({ pageData }) {
                   freeMode={true}
                   watchSlidesProgress={true}
                   modules={[FreeMode, Navigation, Thumbs]}
-                  className="small-img-sec !mx-0 !hidden md:!block"
+                  className="small-img-sec !mx-0"
                 >
                   {pageData?.gallery?.map((gallery, index) => (
                     <SwiperSlide
@@ -1935,49 +1948,94 @@ export function Products({ pageData }) {
                   ))}
                 </Swiper>
                 <div className="single-image-slider relative w-full md:w-[80%] h-full bg-[#ffffff] rounded-[12px]">
-                  <span
-                    className={cn(
-                      "bg-primary py-1 px-10 rounded-tr-[12px] text-[#FFFFFF] text-[12px] md:text-[18px] font-medium absolute right-0 top-0 overflow-hidden",
-                      pageData?.premium && "prem-product-tag"
-                    )}
-                  >
-                    {pageData.premium ? "Premium" : "Standard"}
-                  </span>
-                  <Swiper
-                    navigation={true}
-                    freeMode={true}
-                    speed={500}
-                    loop={true}
-                    pagination={{
-                      clickable: true,
-                    }}
-                    breakpoints={{
-                      0: {
-                        slidesPerView: 1,
-                      },
-                    }}
-                    thumbs={{ swiper: thumbsSwiper }}
-                    modules={[FreeMode, Autoplay, Navigation, Thumbs]}
-                    className="productDetailSwiper !py-10 overflow-hidden"
-                  >
-                    {pageData?.gallery?.map((gallery) => (
-                      <SwiperSlide
-                        key={gallery.id}
-                        className="!flex !justify-center"
-                      >
-                        <figure className="w-[180px] lg:w-[300px] 2xl:w-[320px] h-[240px] 2xl:h-[380px] pt-3 md:pt-0 zoom_image">
-                          <Image
-                            width={gallery?.width}
-                            height={gallery?.height}
-                            src={getStrapiMedia(gallery?.url)}
-                            alt={gallery?.alternativeText}
-                            className="w-full h-full object-contain"
-                          />
-                        </figure>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </div>
+        <span
+          className={`bg-primary py-1 px-10 rounded-tr-[12px] text-[#FFFFFF] text-[12px] md:text-[18px] font-medium absolute right-0 top-0 overflow-hidden ${
+            pageData?.premium ? "prem-product-tag" : ""
+          }`}
+        >
+          {pageData.premium ? "Premium" : "Standard"}
+        </span>
+        <Swiper
+          navigation={true}
+          freeMode={true}
+          speed={500}
+          loop={true}
+          pagination={{
+            clickable: true,
+          }}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+            },
+          }}
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[FreeMode, Autoplay, Navigation, Thumbs]}
+          className="productDetailSwiper !py-10 overflow-hidden"
+        >
+          {pageData?.gallery?.map((gallery, index) => (
+            <SwiperSlide
+              key={gallery.id}
+              className="!flex !justify-center"
+              onClick={() => openPopup(index)}
+            >
+              <figure className="w-[180px] lg:w-[300px] 2xl:w-[320px] h-[240px] 2xl:h-[380px] pt-3 md:pt-0 zoom_image">
+                <img
+                  width={gallery?.width}
+                  height={gallery?.height}
+                  src={getStrapiMedia(gallery?.url)}
+                  alt={gallery?.alternativeText}
+                  className="w-full h-full object-contain"
+                />
+              </figure>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      {/* Popup */}
+      {popupVisible && (
+        <div className="popup-overlay fixed inset-0 bg-black bg-opacity-80 z-60 flex items-center justify-center">
+          <div className="popup-content relative bg-white w-[100%] h-[100%] rounded-[12px] overflow-hidden">
+            <button
+              className="absolute z-10 top-4 right-4 text-white bg-primary rounded-full w-8 h-8 flex items-center justify-center font-bold"
+              onClick={closePopup}
+            >
+              ×
+            </button>
+            <Swiper
+              navigation={true}
+              freeMode={true}
+              speed={500}
+              loop={true}
+              initialSlide={currentIndex}
+              pagination={{
+                clickable: true,
+              }}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1,
+                },
+              }}
+              modules={[FreeMode, Autoplay, Navigation, Thumbs, Pagination]}
+              className="productPopUpSlider h-full !py-10 overflow-hidden"
+            >
+              {pageData?.gallery?.map((gallery) => (
+                <SwiperSlide key={gallery.id} className="!flex !justify-center">
+                  <figure className="w-[280px] h-[280px]">
+                    <img
+                      width={gallery?.width}
+                      height={gallery?.height}
+                      src={getStrapiMedia(gallery?.url)}
+                      alt={gallery?.alternativeText}
+                      className="w-full h-full object-contain"
+                    />
+                  </figure>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+      )}
               </div>
               {pageData?.type && (
                 <div className="patter-description flex items-center justify-between md:justify-start md:gap-2 lg:gap-0 lg:justify-between mt-6">

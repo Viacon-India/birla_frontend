@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getStrapiMedia } from "@/lib/utils";
  
-import { SingleTypeSeo } from "@/app/components/pageCommon/pageCommon";
+import { SingleTypeSeo, Popup } from "@/app/components/pageCommon/pageCommon";
  
 import Hero from "./Hero"
 import Innovation from "./innovation";
@@ -23,6 +23,7 @@ export default function Homepage() {
     <>
       <SingleTypeSeo pageData={pageData} page='website' />
       <Hero Data={pageData.data?.attributes?.categories}/>
+      <Popup />
       <Innovation Heading={pageData.data?.attributes?.section1_heading} Title={pageData.data?.attributes?.section1_title} Data={pageData.data?.attributes?.categories}/>
       <Product Heading={pageData.data?.attributes?.section2_heading} Title={pageData.data?.attributes?.section2_title} Data={pageData.data?.attributes?.categories}/>
       {/* <Dealer Heading={pageData.data?.attributes?.section3_heading} Title={pageData.data?.attributes?.section3_title}/> */}

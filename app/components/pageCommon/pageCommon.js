@@ -11,8 +11,8 @@ import { getStrapiMedia } from "@/lib/utils";
 import GradualSpacing from "@/components/GradualSpacing";
 import { cn } from "@/lib/utils";
 import Tiger from "../../assets/images/tiger-mask3.png";
-import Bot from "../../assets/images/bot.png"
-import smallTiger from "../../assets/images/small-tiger.png"
+import Bot from "../../assets/images/bot.png";
+import smallTiger from "../../assets/images/small-tiger.png";
 
 export function MainButton() {
   const pathname = usePathname();
@@ -114,9 +114,9 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
 export function Float(data) {
   const handleClick = () => {
     const bottomValue = $(".chatBotMain").css("bottom");
-    if(bottomValue == '0px'){
+    if (bottomValue == "0px") {
       $(".chatBotMain").css("bottom", "-100%");
-    }else{
+    } else {
       $(".chatBotMain").css("bottom", "0");
     }
   };
@@ -148,7 +148,7 @@ export function Float(data) {
           </button> */}
         </div>
       )}
-      <Chatbot/>
+      <Chatbot />
     </>
   );
 }
@@ -462,37 +462,37 @@ export function CollectionTypeSeo({ page, pageData }) {
   );
 }
 
-export function Chatbot() {  
+export function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [typing, setTyping] = useState(false);
   const [input, setInput] = useState("");
   const [currentTime, setCurrentTime] = useState("");
-  const [status, setStatus] = useState('offline');
+  const [status, setStatus] = useState("offline");
   const [bottom, setBottom] = useState(null);
- 
+
   const scrollToBottom = () => {
-    const chatContainer = document.getElementsByClassName('scrollTo')[0];
+    const chatContainer = document.getElementsByClassName("scrollTo")[0];
     if (chatContainer) {
       chatContainer.scrollTo({
         top: chatContainer.scrollHeight,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   };
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
- 
+
   const response = async (message) => {
     try {
       const res = await axios.post(
         "http://birlatyres.viaconprojects.com:5005/webhooks/rest/webhook",
         { message }
       );
- 
+
       if (Array.isArray(res.data)) {
         setTyping(true);
-        setStatus('online');
+        setStatus("online");
         const botMessages = res.data.map((msg) => ({
           text: msg?.text || null,
           image: msg?.image || null,
@@ -503,20 +503,29 @@ export function Chatbot() {
             let newMessages = [];
             newMessages.unshift(botMessage);
             if (newMessages[0].text) {
-              const words = newMessages[0].text.split(' ');
+              const words = newMessages[0].text.split(" ");
               await new Promise((resolve) => {
-                setTimeout(() => {
-                  setTyping(false);
-                  newMessages[0].text = words[0];
-                  setMessages((prevMessages) => [...prevMessages, ...newMessages]);
-                  resolve();
-                }, newMessages[0].text.length < 1000 ? 5 * newMessages[0].text.length : 5000);
+                setTimeout(
+                  () => {
+                    setTyping(false);
+                    newMessages[0].text = words[0];
+                    setMessages((prevMessages) => [
+                      ...prevMessages,
+                      ...newMessages,
+                    ]);
+                    resolve();
+                  },
+                  newMessages[0].text.length < 1000
+                    ? 5 * newMessages[0].text.length
+                    : 5000
+                );
               });
               for (let index = 1; index < words.length; index++) {
                 await new Promise((resolve) => {
                   setTimeout(() => {
                     setMessages((prevMessages) => {
-                      prevMessages[prevMessages.length - 1].text = newMessages[0].text + ' ' + words[index];
+                      prevMessages[prevMessages.length - 1].text =
+                        newMessages[0].text + " " + words[index];
                       return [...prevMessages];
                     });
                     resolve();
@@ -555,15 +564,15 @@ export function Chatbot() {
         // });
       } else {
         setTyping(false);
-        setStatus('offline');
+        setStatus("offline");
         console.error("Unexpected response format:", res.data);
       }
     } catch (error) {
-      setStatus('offline');
+      setStatus("offline");
       console.error("Error sending message to Rasa:", error);
     }
   };
- 
+
   const sendMessage = async (message) => {
     if (!message) return;
     setMessages((prevMessages) => [
@@ -572,18 +581,24 @@ export function Chatbot() {
     ]);
     response(message);
   };
- 
+
   const getFormattedDate = () => {
     const currentTimeStamp = new Date();
     const day = currentTimeStamp.getDate();
-    const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
-    const dateOptions = { day: 'numeric', month: 'short', year: 'numeric' };
-    const time = currentTimeStamp.toLocaleTimeString([], timeOptions).replace(' ', '');
-    const date = currentTimeStamp.toLocaleDateString([], dateOptions).replace(day,'').trim().replace(' ', ', ');
+    const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: true };
+    const dateOptions = { day: "numeric", month: "short", year: "numeric" };
+    const time = currentTimeStamp
+      .toLocaleTimeString([], timeOptions)
+      .replace(" ", "");
+    const date = currentTimeStamp
+      .toLocaleDateString([], dateOptions)
+      .replace(day, "")
+      .trim()
+      .replace(" ", ", ");
     const dayWithSuffix = addOrdinalSuffix(day);
     return `${time}, ${dayWithSuffix} ${date}`;
   };
- 
+
   const addOrdinalSuffix = (day) => {
     const remainder = day % 10;
     const exception = [11, 12, 13];
@@ -600,9 +615,9 @@ export function Chatbot() {
         return `${day}th`;
     }
   };
- 
+
   useEffect(() => {
-    if(messages.length == 0){
+    if (messages.length == 0) {
       const chatBotElement = document.querySelector(".chatBotMain");
       const checkBottomValue = () => {
         const bottomValue = window.getComputedStyle(chatBotElement).bottom;
@@ -614,40 +629,54 @@ export function Chatbot() {
       }, 100);
       return () => clearInterval(intervalId);
     }
-  }, []);  
- 
+  }, []);
+
   useEffect(() => {
-    if(bottom == '0px' && messages.length == 0){
-      if(!currentTime){
+    if (bottom == "0px" && messages.length == 0) {
+      if (!currentTime) {
         setCurrentTime(getFormattedDate());
       }
-      response('on initial start.');
+      response("on initial start.");
     }
   }, [bottom]);
- 
- 
+
   const handleClick = () => {
     $(".chatBotMain").css("bottom", "-100%");
   };
- 
+
   return (
     <div className="chatBotMain">
-      <Image className="absolute z-[-1] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" src={Tiger} alt="tiger" />
+      <Image
+        className="absolute z-[-1] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+        src={Tiger}
+        alt="tiger"
+      />
       <div class="chatBotHead">
         <div class="flex gap-4 items-center">
           <div class="w-[50px] h-[50px] flex justify-center items-center rounded-full border border-white bg-white">
-            <Image className="w-10 h-10 object-contain" src={smallTiger} alt= "smallTiger" />
+            <Image
+              className="w-10 h-10 object-contain"
+              src={smallTiger}
+              alt="smallTiger"
+            />
           </div>
           <div class="chatBotTitle">
             <span className="text-[#ffffff] text-[16px] mb-[6px] leading-[1]">
               ChatBot
             </span>
-            {typing ? <span className="chatBotStatusOnline">Typing...</span> :
-              (status == 'offline' ? <span className="chatBotStatusOffline">offline</span> : <span className="chatBotStatusOnline">online</span>)
-            }
+            {typing ? (
+              <span className="chatBotStatusOnline">Typing...</span>
+            ) : status == "offline" ? (
+              <span className="chatBotStatusOffline">offline</span>
+            ) : (
+              <span className="chatBotStatusOnline">online</span>
+            )}
           </div>
         </div>
-        <button onClick={handleClick} class="w-7 h-7 flex justify-center items-center rounded-full border border-white">
+        <button
+          onClick={handleClick}
+          class="w-7 h-7 flex justify-center items-center rounded-full border border-white"
+        >
           <svg
             width="12"
             height="12"
@@ -662,46 +691,68 @@ export function Chatbot() {
           </svg>
         </button>
       </div>
-      {currentTime &&
+      {currentTime && (
         <p className="text-[14px] text-[#88909F] text-center pt-3">
           Chat started on {currentTime}
         </p>
-      }
+      )}
       <div class="flex w-full items-end">
         <div class="p-4 flex flex-col gap-5 w-full h-[400px] !overflow-y-auto scrollTo">
-          {messages.map((msg, index) => (
-            msg.sender === 'user' ? (
-              <span key={index} className="bg-primary p-[6px] text-[#FFFFFF] text-[15px] rounded-[6px] self-end w-fit">
+          {messages.map((msg, index) =>
+            msg.sender === "user" ? (
+              <span
+                key={index}
+                className="bg-primary p-[6px] text-[#FFFFFF] text-[15px] rounded-[6px] self-end w-fit"
+              >
                 {msg?.text && msg.text}
               </span>
             ) : (
               <div key={index} class="flex gap-3 items-start">
                 <div class="min-w-11 h-11 flex justify-center items-center rounded-full bg-[#FFFFFF] border-2 border-primary">
-                <Image className="w-8 h-8 object-contain" src={smallTiger} alt= "smallTiger" />
+                  <Image
+                    className="w-8 h-8 object-contain"
+                    src={smallTiger}
+                    alt="smallTiger"
+                  />
                 </div>
                 <span className="p-[6px] text-[#1A1D21] text-[15px] leading-[1.2] rounded-[6px] font-medium">
                   {msg?.text && msg.text}
-                  {msg?.image &&
-                    <Link href={msg?.image} rel="noopener noreferrer" target="_blank">
+                  {msg?.image && (
+                    <Link
+                      href={msg?.image}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
                       {msg?.image}
                     </Link>
-                  }
+                  )}
                 </span>
               </div>
             )
-          ))}
+          )}
         </div>
       </div>
       <div class="chatInputWrapper flex gap-2 items-center relative px-5 py-4 border-t border-[#ACACAC] bg-[#FFFFFF]">
-        <input placeholder="Ask your question..." className="w-full bg-[#FFFFFF] outline-none" type="text" value={input}
+        <input
+          placeholder="Ask your question..."
+          className="w-full bg-[#FFFFFF] outline-none"
+          type="text"
+          value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === 'Enter' && input.trim()) {
+            if (e.key === "Enter" && input.trim()) {
               sendMessage(input);
-              setInput('');
+              setInput("");
             }
-          }}/>
-        <button className="w-fit" onClick={() => {sendMessage(input); setInput('');}}>
+          }}
+        />
+        <button
+          className="w-fit"
+          onClick={() => {
+            sendMessage(input);
+            setInput("");
+          }}
+        >
           <svg
             width="20"
             height="17"
@@ -717,5 +768,36 @@ export function Chatbot() {
         </button>
       </div>
     </div>
+  );
+}
+export function Popup() {
+  const [isPopup, setIsPopup] = useState(true);
+  
+  const handlePopup = () => {
+    setIsPopup(false);
+  }
+  return (
+    <>
+      {isPopup && (
+        <div className="w-full h-full flex justify-center items-center fixed top-0 z-[150] bg-[#101010] bg-opacity-75">
+          <div class="bg-white rounded-[4px] p-6 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%] 2xl:w-[20%]">
+            <h3 className="text-[22px] text-[#1A1D21] font-bold">
+              Do you want to continue where you left?
+            </h3>
+            <div class="flex gap-3 mt-6">
+              <button
+                onClick={handlePopup}
+                className="px-4 py-2 border border-[#DEE1E5] rounded-[4px] text-[#727C8D] font-medium text-[14px]"
+              >
+                No, Skip
+              </button>
+              <button onClick={handlePopup} className="px-4 py-2 border rounded-[4px] text-[#FFFFFF] font-medium text-[14px] bg-primary">
+                Yes, Continue
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
