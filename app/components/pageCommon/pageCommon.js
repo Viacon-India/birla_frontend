@@ -771,15 +771,49 @@ export function Chatbot() {
   );
 }
 export function Popup() {
-  const [isPopup, setIsPopup] = useState(true);
+  const [productVisited, setProductVisited] = useState('not visited');
+  const [storedValue, setStoredValue] = useState(null);
+  const [isPopup, setIsPopup] = useState(false);
+  const [lastData, setLastData] = useState('');
+
+  console.log(productVisited);
+  console.log(storedValue);
   
   const handlePopup = () => {
     setIsPopup(false);
   }
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const value = localStorage.getItem("lastProduct");
+      setStoredValue(value);
+      value && setIsPopup(true);
+      const visited = sessionStorage.getItem("lastProductVisit");
+      visited && setProductVisited(visited);
+    }
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(getStrapiMedia(`/api/products/${storedValue}`));
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const lastData = await response.json();
+        setLastData(lastData);
+      } catch (error) {
+        setLastData('');
+      }
+    };
+ 
+    fetchData();
+  }, [storedValue]);
+
   return (
     <>
-      {isPopup && (
-        <div className="w-full h-full flex justify-center items-center fixed top-0 z-[150] bg-[#101010] bg-opacity-75">
+      {isPopup && lastData && productVisited=='not visited' && (
+        <div className="w-full h-full flex justify-center items-center fixed top-0 z-[99] bg-[#101010] bg-opacity-75">
           <div class="bg-white rounded-[4px] p-6 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%] 2xl:w-[20%]">
             <h3 className="text-[22px] text-[#1A1D21] font-bold">
               Do you want to continue where you left?
@@ -791,9 +825,9 @@ export function Popup() {
               >
                 No, Skip
               </button>
-              <button onClick={handlePopup} className="px-4 py-2 border rounded-[4px] text-[#FFFFFF] font-medium text-[14px] bg-primary">
+              <Link href={lastData.permalink} className="px-4 py-2 border rounded-[4px] text-[#FFFFFF] font-medium text-[14px] bg-primary">
                 Yes, Continue
-              </button>
+              </Link>
             </div>
           </div>
         </div>

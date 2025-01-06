@@ -1823,6 +1823,7 @@ export function Products({ pageData }) {
   const handleSave = () => {
     if (typeof window !== "undefined") {
       localStorage.setItem("lastProduct", pageData.slug);
+      sessionStorage.setItem("lastProductVisit", 'visited');
     }
   };
   
