@@ -2004,10 +2004,10 @@ export function Products({ pageData }) {
               ×
             </button>
             <Swiper
-              navigation={true}
+              // navigation={true}
               freeMode={true}
               speed={500}
-              loop={true}
+              // loop={true}
               initialSlide={currentIndex}
               pagination={{
                 clickable: true,
@@ -2021,7 +2021,7 @@ export function Products({ pageData }) {
               className="productPopUpSlider h-full !py-10 overflow-hidden"
             >
               {pageData?.gallery?.map((gallery) => (
-                <SwiperSlide key={gallery.id} className="!flex !justify-center">
+                <SwiperSlide key={gallery.id} className="!flex !justify-center !items-center">
                   <figure className="w-[280px] h-[280px]">
                     <img
                       width={gallery?.width}
