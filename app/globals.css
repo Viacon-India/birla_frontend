@@ -666,7 +666,7 @@ a.current_dot {
   @apply !bg-primary
 }
 .productPopUpSlider .swiper-pagination{
-  @apply !bottom-0
+  @apply !bottom-[12px]
 }
 
 
