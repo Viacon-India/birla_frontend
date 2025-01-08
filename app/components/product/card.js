@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
 import gsap from "gsap";
@@ -10,12 +10,23 @@ import traImage from "../../assets/images/tra.png";
 import patternImage from "../../assets/images/pattern.png";
 import constructionImage from "../../assets/images/axle.png";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useSearchParams } from "next/navigation";
 import "swiper/css";
 import { Navigation } from "swiper/modules";
 import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Product({ data }) {
+  const searchParams = new URLSearchParams(useSearchParams());
+  const sub_segment = searchParams.get("sub_segment");
+  const machinery = searchParams.get("machinery");
+  const rim_recommended = searchParams.get("rim_recommended");
+  const size = searchParams.get("size");
+  const pattern_type = searchParams.get("pattern_type");
+
+
+  const [filteredSizes, setFilteredSizes] = useState([]);
+  
   useEffect(() => {
     gsap.fromTo(
       ".new-product-card-image",
@@ -34,6 +45,29 @@ export default function Product({ data }) {
         },
       }
     );
+    if(machinery) {
+      const getSizesFromUSA = (data) => {
+        if(data?.tables &&
+          data.tables?.table &&
+          data.tables.table.length > 0) {
+          let sizes = [];
+          data.tables.table.forEach((tableEntry) => {
+            if (tableEntry.standard === 'USA') {
+              tableEntry.row.forEach((rowEntry) => {
+                if (rowEntry.machinery && rowEntry.machinery.name === machinery) {
+                  sizes.push(rowEntry.size);
+                }
+                // if ((rowEntry.machinery && rowEntry.machinery.name === machinery) && (rowEntry.size && rowEntry.size === size)) {
+                //   sizes.push(rowEntry.size);
+                // }
+              });
+            }
+          });
+          return sizes;
+        }
+      };
+      setFilteredSizes(getSizesFromUSA(data));
+    }
   }, [data]);
   return (
     <div class="new-product-card">
@@ -200,7 +234,25 @@ export default function Product({ data }) {
             </div>
           }
         </div>
-        {data?.tables &&
+        {filteredSizes && filteredSizes.length > 0 &&(
+          <div class="flex gap-3 mt-2 relative">
+            <Swiper
+              navigation={true}
+              modules={[Navigation]}
+              spaceBetween={10}
+              slidesPerView={2.5}
+              freeMode={true}
+              className="chipSwiper !w-[85%] !ml-0 !static"
+            >
+              {filteredSizes.map((row, index) => (
+                <SwiperSlide className="!w-fit" key={index}>
+                  <button class="size-chip">{row}</button>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        )}
+        {!filteredSizes.length > 0 && data?.tables &&
           data.tables?.table &&
           data.tables.table.length > 0 &&
           data.tables.table.map(
