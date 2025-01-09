@@ -925,7 +925,7 @@ a.current_dot {
   @apply w-full h-full object-contain transition-all duration-500
 }
 .new-product-card-image img{
-  @apply object-contain
+  @apply object-contain h-full
 }
 
 .new-product-card-tag{

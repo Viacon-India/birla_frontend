@@ -319,9 +319,9 @@ const NavbarComponent = () => {
                   </div>
                 </div>
 
-                {headerData.data.attributes.logo.length > 1 && (
+                {headerData.data.attributes.logo.length > 0 && (
                   <div className="navbar-end w-fit gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
-                    {headerData.data.attributes.logo[0].image?.data &&
+                    {/* {headerData.data.attributes.logo[0].image?.data &&
                       headerData.data.attributes.logo[0].icon_link?.link && (
                         <Link
                           href={
@@ -367,7 +367,7 @@ const NavbarComponent = () => {
                         stroke="#C9CDD3"
                         stroke-dasharray="5 6"
                       />
-                    </svg>
+                    </svg> */}
                     {headerData.data.attributes.logo[1].image?.data &&
                       headerData.data.attributes.logo[1].icon_link?.link && (
                         <Link

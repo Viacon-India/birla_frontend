@@ -117,37 +117,46 @@ export default function Products({ Heading='', Title='', Data={}}) {
               }`}
             >
               {tab.attributes.products?.data &&
-                <Swiper
-                  navigation={true}
-                  modules={[Navigation]}
-                  breakpoints={{
-                    0: {
-                      slidesPerView: 1,
-                    },
-                    768: {
-                      slidesPerView: 2,
-                      spaceBetween:30,
-                    },
-                    1024: {
-                      slidesPerView: 3,
-                      spaceBetween:10,
-                    },
-                    1280: {
-                      slidesPerView: 3,
-                      spaceBetween:40,
-                    },
-                  }}
-                  spaceBetween={50}
-                  freeMode={true}
-                  pagination={{ clickable: true }}
-                  className="myProductSwiper !overflow-visible"
-                >
-                  {tab.attributes.products.data.map((product) => (
-                    <SwiperSlide key={product.id}>
-                      <Product data={product.attributes} />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+                <>
+                  <Swiper
+                    navigation={true}
+                    modules={[Navigation]}
+                    breakpoints={{
+                      0: {
+                        slidesPerView: 1,
+                      },
+                      768: {
+                        slidesPerView: 2,
+                        spaceBetween:30,
+                      },
+                      1024: {
+                        slidesPerView: 3,
+                        spaceBetween:10,
+                      },
+                      1280: {
+                        slidesPerView: 3,
+                        spaceBetween:40,
+                      },
+                    }}
+                    spaceBetween={50}
+                    freeMode={true}
+                    pagination={{ clickable: true }}
+                    className="myProductSwiper !overflow-visible"
+                  >
+                    {tab.attributes.products.data.map((product) => (
+                      <SwiperSlide key={product.id}>
+                        <Product data={product.attributes} />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                  {tab.attributes?.permalink &&
+                    <div className="flex justify-center mt-5 2xl:mt-[32px]">
+                      <Link href={tab.attributes.permalink} className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2">
+                        <span data-hover="View All Products">View All Products</span>
+                      </Link>
+                    </div>
+                  }
+                </>
               }
             </div>
           ))}

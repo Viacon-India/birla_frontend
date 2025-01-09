@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import $ from "jquery";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
@@ -154,6 +154,10 @@ export function Float(data) {
 }
 
 export function PageEnd({ EndPageData, EndStaticImage, Background }) {
+  const { push } = useRouter();
+  const handleClick = (permalink) => {
+    push(permalink);
+  };
   return (
     <section
       className={cn(
@@ -185,9 +189,9 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
         {EndPageData?.page ? (
           <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4 relative z-5">
             Next Page:
-            <Link
+            <button
               className="text-[#F5811E] font-medium flex items-center gap-1"
-              href={EndPageData.page.permalink}
+              onClick={() => handleClick(EndPageData.page.permalink)}
               prefetch={false}
               scroll={false}
             >
@@ -206,15 +210,15 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
                   stroke-linejoin="round"
                 />
               </svg>
-            </Link>
+            </button>
           </p>
         ) : (
           EndPageData?.segment && (
             <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4 relative z-5">
               Next Page:
-              <Link
+              <button
                 className="text-[#F5811E] font-medium flex items-center gap-1"
-                href={EndPageData.segment.permalink}
+                onClick={() => handleClick(EndPageData.segment.permalink)}
                 prefetch={false}
                 scroll={false}
               >
@@ -233,7 +237,7 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
                     stroke-linejoin="round"
                   />
                 </svg>
-              </Link>
+              </button>
             </p>
           )
         )}
