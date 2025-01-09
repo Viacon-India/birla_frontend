@@ -1941,35 +1941,40 @@ export function ImageDetailContent({ section }) {
                   {section?.designation}
                 </h3>
               </div>
-              <div
-                class="relative flex gap-2"
-                data-aos="fade-left"
-                data-aos-duration="600"
-              >
-                <p className="text-[#1A1D21] text-[20px] md:text-[24px] font-medium">
-                  {section.social_title}
-                </p>
-                {section?.social &&
+              {section?.social &&
                   section.social.length > 0 &&
-                  section.social.map(
-                    (social) =>
-                      social?.link &&
-                      social?.icon && (
-                        <Link
-                          href={social.link}
-                          target="_blank"
-                          key={social.id}
-                        >
-                          <Image
-                            width={social.icon.width}
-                            height={social.icon.height}
-                            src={getStrapiMedia(social.icon.url)}
-                            alt={social.icon.alternativeText}
-                          />
-                        </Link>
-                      )
-                  )}
-              </div>
+                <div
+                  class="relative flex gap-2"
+                  data-aos="fade-left"
+                  data-aos-duration="600"
+                >
+                  {section?.social_title &&
+                    <p className="text-[#1A1D21] text-[20px] md:text-[24px] font-medium">
+                      {section.social_title}
+                    </p>
+                  }
+                  {section?.social &&
+                    section.social.length > 0 &&
+                    section.social.map(
+                      (social) =>
+                        social?.link &&
+                        social?.icon && (
+                          <Link
+                            href={social.link}
+                            target="_blank"
+                            key={social.id}
+                          >
+                            <Image
+                              width={social.icon.width}
+                              height={social.icon.height}
+                              src={getStrapiMedia(social.icon.url)}
+                              alt={social.icon.alternativeText}
+                            />
+                          </Link>
+                        )
+                    )}
+                </div>
+              }
               <BlocksRenderer
                 content={section.content}
                 blocks={{

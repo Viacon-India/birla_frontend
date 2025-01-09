@@ -371,6 +371,80 @@ export function ContactUs({ pageData }) {
                             )}
                           </div>
                         ))}
+                        {(section?.logo1 || section.logo1) &&
+                          <div className="navbar-end w-fit gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
+                            {section?.logo1?.image?.url && section.logo1?.icon_link?.link &&(
+                              <Link
+                                href={
+                                  section.logo1.icon_link.link
+                                }
+                                target="_blank"
+                              >
+                                <figure className="rounded-none m-0 w-[50px] h-[50px] md:w-[65px] md:h-[65px]">
+                                  <Image
+                                    src={getStrapiMedia(
+                                      section.logo1.image.url
+                                    )}
+                                    width={
+                                      section.logo1.image.width
+                                    }
+                                    height={
+                                      section.logo1.image.height
+                                    }
+                                    alt={
+                                      section.logo1.image?.alternativeText
+                                    }
+                                    className="w-full h-fit object-cover pt-2"
+                                  />
+                                </figure>
+                              </Link>
+                            )}
+                            {section?.logo1 && section.logo1 && (
+                              <svg
+                                width="2"
+                                height="65"
+                                viewBox="0 0 2 65"
+                                fill="none"
+                                xmlns="
+                                http://www.w3.org/2000/svg"
+                              >
+                                <line
+                                  x1="1.31543"
+                                  y1="65"
+                                  x2="1.31543"
+                                  stroke="#C9CDD3"
+                                  stroke-dasharray="5 6"
+                                />
+                              </svg>
+                            )}
+                            {section?.logo2?.image?.url && section.logo2?.icon_link?.link &&(
+                              <Link
+                                href={
+                                  section.logo2.icon_link.link
+                                }
+                                target="_blank"
+                              >
+                                <figure className="rounded-none m-0 w-[80px] h-[35px] md:w-[136px] md:h-[60px]">
+                                  <Image
+                                    src={getStrapiMedia(
+                                      section.logo2.image.url
+                                    )}
+                                    width={
+                                      section.logo2.image.width
+                                    }
+                                    height={
+                                      section.logo2.image.height
+                                    }
+                                    alt={
+                                      section.logo2.image?.alternativeText
+                                    }
+                                    className="w-full h-full object-cover"
+                                  />
+                                </figure>
+                              </Link>
+                            )}
+                          </div>
+                        }
                     </div>
                     <div className="w-full md:w-[60%] xl:w-1/2">
                       <div className="form-content">

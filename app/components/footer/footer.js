@@ -2,10 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { getStrapiMedia } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
-import logo1 from "../../assets/images/logo1.png";
 import Link from "next/link";
-import logo2 from "../../assets/images/himadri-logo-65.png";
 
 export default function Footer() {
   const [footerData, setFooterData] = useState({});
@@ -31,8 +30,10 @@ export default function Footer() {
           <div className="container mx-auto">
             <div className="footer-detail-sec pb-4 md:pb-10 border-b border-[#DEE1E5]">
               <div className="footer-description-sec md:w-[65%]">
-                <p className="footer-description-text">{footerData.data.attributes.description}</p>
-                <div className="flex flex-col md:flex-row gap-4 md:items-center mt-4">
+                {footerData.data.attributes?.description &&
+                  <p className="footer-description-text">{footerData.data.attributes.description}</p>
+                }
+                <div className={cn("flex flex-col md:flex-row gap-4 md:items-center",footerData.data.attributes?.description ? "mt-4" : "" )}>
                   <div className="footer-detail-box">
                     <svg
                       width="20"
