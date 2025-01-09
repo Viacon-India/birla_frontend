@@ -154,6 +154,27 @@ export default function Hero({ Data }) {
                 </SwiperSlide>
               )
           )}
+          <SwiperSlide>
+            <div class="swiper-card-main">
+              {/* <span className="slider-overlay"></span> */}
+              <div className="w-full !h-full flex items-end pb-8 md:pb-2 lg:pb-[24px] xl:pb-[60px]">
+                  <video
+                    className="absolute top-0 w-full h-auto object-contain"
+                    loop
+                    autoPlay
+                    muted
+                    playsInline
+                    preload="auto"
+                  >
+                    <source
+                      src="/assets/videos/tyre-loader-6.mp4"
+                      type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+              </div>
+            </div>
+          </SwiperSlide>
         </Swiper>
       )}
       <SmallButton />
