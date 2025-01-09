@@ -12,16 +12,16 @@ export default function Sustainability({ Heading='', Title='', Description='', V
   useEffect(() => {
     if(Video){
         gsap.to(".sustainabilityVideo", {
-          width: "100%",
-          height: "100%",
+          // width: "100%",
+          height: "90vh",
           borderRadius: "20px",
           boxShadow : "0px -10px 10px rgba(0, 0, 0, 0.25)",
           scrollTrigger: {
             trigger: ".video-content",
             scroller: "body",
-            start: "top 70%",
-            end: "bottom 40%",
-            scrub: 1,
+            start: "top 40%",
+            end: "bottom 30%",
+            scrub: 2,
             // markers: true
           },
         });
