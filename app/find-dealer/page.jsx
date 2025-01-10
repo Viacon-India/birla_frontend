@@ -20,8 +20,8 @@ export default function DealerLocator() {
       <PageBanner Title="Dealer Locator" StaticBanner={Banner} />
       <section className="dealer-sec mt-10 md:mt-[60px] relative overflow-hidden">
         <div className="container mx-auto overflow-hidden">
-          <div class="w-full flex gap-2 md:gap-6 flex-col md:flex-row">
-            <div class="relative md:w-[30%]">
+          <div className="w-full flex gap-2 md:gap-6 flex-col md:flex-row">
+            <div className="relative md:w-[30%]">
               <input
                 className="px-4 py-3 bg-[#FFFFFF] border border-[#DEE1E5] rounded-[4px] w-full outline-none"
                 type="text"
@@ -41,8 +41,8 @@ export default function DealerLocator() {
                 />
               </svg>
             </div>
-            <div class="flex flex-col md:flex-row justify-between gap-2 mb-2 items-center md:w-[70%]">
-              <div class="area-input-wrapper relative flex gap-4 w-full md:w-[50%]">
+            <div className="flex flex-col md:flex-row justify-between gap-2 mb-2 items-center md:w-[70%]">
+              <div className="area-input-wrapper relative flex gap-4 w-full md:w-[50%]">
                 <select className="select-box" name="state" id="state">
                   <option value="Select State">Select State</option>
                   <option value="West Bengal">West Bengal</option>
@@ -57,7 +57,7 @@ export default function DealerLocator() {
                 </select>
               </div>
               <span className="hidden md:block">Or</span>
-              <div class="address-input-wrapper relative w-full md:w-[50%]">
+              <div className="address-input-wrapper relative w-full md:w-[50%]">
                 <input
                   className="address-input pr-[60px]"
                   type="search"
@@ -83,9 +83,9 @@ export default function DealerLocator() {
               </div>
             </div>
           </div>
-          <div class="flex flex-col md:flex-row gap-6">
-            <div class="listing-card-sec lg:w-[30%] relative">
-              <div class="nearest-card">
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="listing-card-sec lg:w-[30%] relative">
+              <div className="nearest-card">
                 <h2 className="">Nearest Dealer is just 1.5KM away</h2>
                 <Link
                   className="tertiary-button underline underline-offset-2"
@@ -97,14 +97,14 @@ export default function DealerLocator() {
               <h4 className="result-number">
                 Showing <span>15 Results</span>
               </h4>
-              <div class="listing-card-wrapper">
-              <div class="listing-card">
-                <div class="flex items-center justify-between">
-                  <div class="flex gap-2 items-center">
-                    <h2 class="listing-card-title">ABC Birla Tyres</h2>
-                    <span class="listing-card-status">10.7 Km</span>
+              <div className="listing-card-wrapper">
+              <div className="listing-card">
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-2 items-center">
+                    <h2 className="listing-card-title">ABC Birla Tyres</h2>
+                    <span className="listing-card-status">10.7 Km</span>
                   </div>
-                  <div class="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     <svg
                       width="20"
                       height="20"
@@ -145,7 +145,7 @@ export default function DealerLocator() {
                     </svg>
                   </div>
                 </div>
-                <div class="listing-reviews">
+                <div className="listing-reviews">
                   4.0
                   <svg
                     width="86"
@@ -177,20 +177,20 @@ export default function DealerLocator() {
                   </svg>
                   <span>(18)</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <p class="listing-card-status">
+                <div className="flex items-center justify-between">
+                  <p className="listing-card-status">
                     <span>open</span>closes 8pm
                   </p>
-                  <p class="listing-card-status">10.7 Km</p>
+                  <p className="listing-card-status">10.7 Km</p>
                 </div>
               </div>
-              <div class="listing-card">
-                <div class="flex items-center justify-between">
-                  <div class="flex gap-2 items-center">
-                    <h2 class="listing-card-title">DEF Birla Tyres</h2>
-                    <span class="listing-card-status">2.5 Km</span>
+              <div className="listing-card">
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-2 items-center">
+                    <h2 className="listing-card-title">DEF Birla Tyres</h2>
+                    <span className="listing-card-status">2.5 Km</span>
                   </div>
-                  <div class="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     <svg
                       width="20"
                       height="20"
@@ -231,7 +231,7 @@ export default function DealerLocator() {
                     </svg>
                   </div>
                 </div>
-                <div class="listing-reviews">
+                <div className="listing-reviews">
                   4.0
                   <svg
                     width="86"
@@ -263,20 +263,20 @@ export default function DealerLocator() {
                   </svg>
                   <span>(18)</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <p class="listing-card-status">
+                <div className="flex items-center justify-between">
+                  <p className="listing-card-status">
                     <span>open</span>closes 8pm
                   </p>
-                  <p class="listing-card-status">10.7 Km</p>
+                  <p className="listing-card-status">10.7 Km</p>
                 </div>
               </div>
-              <div class="listing-card">
-                <div class="flex items-center justify-between">
-                  <div class="flex gap-2 items-center">
-                    <h2 class="listing-card-title">GHI Birla Tyres</h2>
-                    <span class="listing-card-status">5.8Km</span>
+              <div className="listing-card">
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-2 items-center">
+                    <h2 className="listing-card-title">GHI Birla Tyres</h2>
+                    <span className="listing-card-status">5.8Km</span>
                   </div>
-                  <div class="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     <svg
                       width="20"
                       height="20"
@@ -317,7 +317,7 @@ export default function DealerLocator() {
                     </svg>
                   </div>
                 </div>
-                <div class="listing-reviews">
+                <div className="listing-reviews">
                   4.0
                   <svg
                     width="86"
@@ -349,20 +349,20 @@ export default function DealerLocator() {
                   </svg>
                   <span>(18)</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <p class="listing-card-status">
+                <div className="flex items-center justify-between">
+                  <p className="listing-card-status">
                     <span>open</span>closes 8pm
                   </p>
-                  <p class="listing-card-status">10.7 Km</p>
+                  <p className="listing-card-status">10.7 Km</p>
                 </div>
               </div>
-              <div class="listing-card">
-                <div class="flex items-center justify-between">
-                  <div class="flex gap-2 items-center">
-                    <h2 class="listing-card-title">JKL Birla Tyres</h2>
-                    <span class="listing-card-status">10.7 Km</span>
+              <div className="listing-card">
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-2 items-center">
+                    <h2 className="listing-card-title">JKL Birla Tyres</h2>
+                    <span className="listing-card-status">10.7 Km</span>
                   </div>
-                  <div class="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     <svg
                       width="20"
                       height="20"
@@ -403,7 +403,7 @@ export default function DealerLocator() {
                     </svg>
                   </div>
                 </div>
-                <div class="listing-reviews">
+                <div className="listing-reviews">
                   4.0
                   <svg
                     width="86"
@@ -435,20 +435,20 @@ export default function DealerLocator() {
                   </svg>
                   <span>(18)</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <p class="listing-card-status">
+                <div className="flex items-center justify-between">
+                  <p className="listing-card-status">
                     <span>open</span>closes 8pm
                   </p>
-                  <p class="listing-card-status">10.7 Km</p>
+                  <p className="listing-card-status">10.7 Km</p>
                 </div>
               </div>
-              <div class="listing-card">
-                <div class="flex items-center justify-between">
-                  <div class="flex gap-2 items-center">
-                    <h2 class="listing-card-title">MNO Birla Tyres</h2>
-                    <span class="listing-card-status">10.7 Km</span>
+              <div className="listing-card">
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-2 items-center">
+                    <h2 className="listing-card-title">MNO Birla Tyres</h2>
+                    <span className="listing-card-status">10.7 Km</span>
                   </div>
-                  <div class="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     <svg
                       width="20"
                       height="20"
@@ -489,7 +489,7 @@ export default function DealerLocator() {
                     </svg>
                   </div>
                 </div>
-                <div class="listing-reviews">
+                <div className="listing-reviews">
                   4.0
                   <svg
                     width="86"
@@ -521,16 +521,16 @@ export default function DealerLocator() {
                   </svg>
                   <span>(18)</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <p class="listing-card-status">
+                <div className="flex items-center justify-between">
+                  <p className="listing-card-status">
                     <span>open</span>closes 8pm
                   </p>
-                  <p class="listing-card-status">10.7 Km</p>
+                  <p className="listing-card-status">10.7 Km</p>
                 </div>
               </div>
             </div>
             </div>
-            <div class="map-sec lg:w-[70%]">
+            <div className="map-sec lg:w-[70%]">
               <Map />
             </div>
           </div>

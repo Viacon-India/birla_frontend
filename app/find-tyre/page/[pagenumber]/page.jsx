@@ -430,7 +430,7 @@ const FindTyre = ({ params }) => {
           <div className="relative">
             <div className="relative">
               <div className="w-full h-[40vh] md:h-[50vh] lg:h-[60vh] xl:h-[80vh] flex items-start">
-                <div class="container mx-auto pt-[60px] md:pt-10 xl:pt-6 pb-[60px] flex flex-col md:flex-row gap-4">
+                <div className="container mx-auto pt-[60px] md:pt-10 xl:pt-6 pb-[60px] flex flex-col md:flex-row gap-4">
                   <div className="flex flex-col justify-between h-full w-full md:w-1/2 gap-[100px] 2xl:gap-[200px]">
                     <MainButton />
                     <div className="relative flex flex-col gap-2 xl:gap-6 z-10">

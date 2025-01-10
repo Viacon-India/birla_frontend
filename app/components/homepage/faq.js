@@ -71,7 +71,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
   return (
     <section className="faq-sec sec-gap !pb-[60px] md:!pb-[100px] 2xl:!pb-[150px] relative">
       <div className="container mx-auto overflow-hidden relative">
-        <div class="relative">
+        <div className="relative">
           {/* <div className="flex gap-2 items-center absolute right-0 top-[54px] md:top-[32px] z-20">
             <button
               className={`cat-btn ${
@@ -101,10 +101,10 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                   <GradualSpacing className="section-title-home" text={Data.title} />
                 </div>
               )}
-              <div class="flex flex-col lg:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
+              <div className="flex flex-col lg:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
                 {Data?.images?.data && Data.images.data.length > 0 && (
                   <div
-                    class="w-full lg:w-[45%]"
+                    className="w-full lg:w-[45%]"
                     data-aos="fade-right"
                     data-aos-duration="1000"
                   >
@@ -132,12 +132,12 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                 )}
                 {Data?.items && Data.items.length > 0 && (
                   <div
-                    class="faq-accordion lg:w-[55%] md:max-h-[420px] 2xl:max-h-[520px] overflow-y-auto relative z-4"
+                    className="faq-accordion lg:w-[55%] md:max-h-[420px] 2xl:max-h-[520px] overflow-y-auto relative z-4"
                     data-aos="fade-right"
                     data-aos-duration="1500"
                   >
                     {Data.items.map((item, index) => (
-                      <div key={item.id} class="accordion-content-wrapper">
+                      <div key={item.id} className="accordion-content-wrapper">
                         <h4 className="accordion-title ham-accordion cursor-pointer flex gap-2 justify-between">
                           {item?.title}
                         </h4>

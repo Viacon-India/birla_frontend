@@ -133,10 +133,10 @@ export default function NewAbout({Data}) {
                 Know More
               </Link>
             }
-            <div class="line-loader self-end">
-              <div class="bar bar1"></div>
-              <div class="bar bar2"></div>
-              <div class="bar bar3"></div>
+            <div className="line-loader self-end">
+              <div className="bar bar1"></div>
+              <div className="bar bar2"></div>
+              <div className="bar bar3"></div>
             </div>
           </div>
         </div>

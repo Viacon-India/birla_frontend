@@ -70,7 +70,7 @@ export default function Product({ data }) {
     }
   }, [data]);
   return (
-    <div class="new-product-card">
+    <div className="new-product-card">
       <Link href={data.permalink}>
         <span
           className={
@@ -81,56 +81,56 @@ export default function Product({ data }) {
         >
           {data.premium ? "Premium" : "Standard"}
         </span>
-        <div class="flex gap-8 px-4 pt-4 xl:justify-between">
+        <div className="flex gap-8 px-4 pt-4 xl:justify-between">
           {data?.type && (
-            <div class="new-product-iconListSec flex flex-col gap-6 2xl:gap-10">
+            <div className="new-product-iconListSec flex flex-col gap-6 2xl:gap-10">
               {data.type?.load && (
-                <div class="flex gap-[6px] items-center">
+                <div className="flex gap-[6px] items-center">
                   <Image src={loadImage} alt="icon" />
                   <span>
-                    <p class="text-[18px] font-semibold !text-[#727C8D] !mb-0">
+                    <p className="text-[18px] font-semibold !text-[#727C8D] !mb-0">
                       Load Type
                     </p>
-                    <p class="text-[15px] !text-[#727C8D] !mb-0">
+                    <p className="text-[15px] !text-[#727C8D] !mb-0">
                       {data.type.load}
                     </p>
                   </span>
                 </div>
               )}
               {data.type?.tra && (
-                <div class="flex gap-[6px] items-center">
+                <div className="flex gap-[6px] items-center">
                   <Image src={traImage} alt="icon" />
                   <span>
-                    <p class="text-[18px] font-semibold !text-[#727C8D] !mb-0">
+                    <p className="text-[18px] font-semibold !text-[#727C8D] !mb-0">
                       TRA
                     </p>
-                    <p class="text-[15px] !text-[#727C8D] !mb-0">
+                    <p className="text-[15px] !text-[#727C8D] !mb-0">
                       {data.type.tra}
                     </p>
                   </span>
                 </div>
               )}
               {data.type?.pattern && (
-                <div class="flex gap-[6px] items-center">
+                <div className="flex gap-[6px] items-center">
                   <Image alt="icon" src={patternImage} />
                   <span>
-                    <p class="text-[18px] font-semibold !text-[#727C8D] !mb-0">
+                    <p className="text-[18px] font-semibold !text-[#727C8D] !mb-0">
                       Pattern
                     </p>
-                    <p class="text-[15px] !text-[#727C8D] !mb-0">
+                    <p className="text-[15px] !text-[#727C8D] !mb-0">
                       {data.type.pattern}
                     </p>
                   </span>
                 </div>
               )}
               {data.type?.construction && (
-                <div class="flex gap-[6px] items-center">
+                <div className="flex gap-[6px] items-center">
                   <Image alt="icon" src={constructionImage} />
                   <span>
-                    <p class="text-[18px] font-semibold !text-[#727C8D] !mb-0">
+                    <p className="text-[18px] font-semibold !text-[#727C8D] !mb-0">
                       Construction
                     </p>
-                    <p class="text-[15px] !text-[#727C8D] !mb-0">
+                    <p className="text-[15px] !text-[#727C8D] !mb-0">
                       {data.type.construction}
                     </p>
                   </span>
@@ -139,7 +139,7 @@ export default function Product({ data }) {
             </div>
           )}
           <div className="w-[136px] h-[195px] 2xl:w-[196px] 2xl:h-[280px] translate-y-[-30px]">
-            <figure class="new-product-card-image">
+            <figure className="new-product-card-image">
               {data?.gallery && data.gallery.length > 0 && (
                 <Image
                   src={getStrapiMedia(data.gallery[0]?.url)}
@@ -168,13 +168,13 @@ export default function Product({ data }) {
           </div>
         </div>
       </Link>
-      <div class="new-product-card-detail">
+      <div className="new-product-card-detail">
         <div className="flex">
           <div className="flex flex-col w-full">
             <Link href={data?.permalink}>
               <h2 className="line-clamp-1">{data?.title}</h2>
             </Link>
-            <p class="!h-[44px] !w-[95%] !line-clamp-2">{data?.description}</p>
+            <p className="!h-[44px] !w-[95%] !line-clamp-2">{data?.description}</p>
           </div>
           {data?.vehicle_types &&
             data.vehicle_types.length > 0 &&
@@ -187,7 +187,7 @@ export default function Product({ data }) {
                         <figure key={vehicle.id}>
                           <Image
                             src={getStrapiMedia(vehicle.icon?.url)}
-                            class="h-8 w-full object-contain"
+                            className="h-8 w-full object-contain"
                             width={vehicle.icon?.width}
                             height={vehicle.icon?.height}
                             alt={
@@ -216,7 +216,7 @@ export default function Product({ data }) {
                           src={getStrapiMedia(
                             vehicle.attributes.icon.data.attributes?.url
                           )}
-                          class="h-8 w-full object-contain"
+                          className="h-8 w-full object-contain"
                           width={vehicle.attributes.icon.data.attributes?.width}
                           height={vehicle.attributes.icon.data.attributes?.height}
                           key={vehicle.id}
@@ -235,7 +235,7 @@ export default function Product({ data }) {
           }
         </div>
         {filteredSizes && filteredSizes.length > 0 &&(
-          <div class="flex gap-3 mt-2 relative">
+          <div className="flex gap-3 mt-2 relative">
             <Swiper
               navigation={true}
               modules={[Navigation]}
@@ -246,7 +246,7 @@ export default function Product({ data }) {
             >
               {filteredSizes.map((row, index) => (
                 <SwiperSlide className="!w-fit" key={index}>
-                  <button class="size-chip">{row}</button>
+                  <button className="size-chip">{row}</button>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -261,7 +261,7 @@ export default function Product({ data }) {
               table.standard == "USA" &&
               table?.row &&
               table.row.length > 0 && (
-                <div class="flex gap-3 mt-2 relative" key={table.id}>
+                <div className="flex gap-3 mt-2 relative" key={table.id}>
                   <Swiper
                     navigation={true}
                     modules={[Navigation]}
@@ -272,7 +272,7 @@ export default function Product({ data }) {
                   >
                     {table.row.map((row) => (
                       <SwiperSlide className="!w-fit" key={row.id}>
-                        <button class="size-chip">{row.size}</button>
+                        <button className="size-chip">{row.size}</button>
                       </SwiperSlide>
                     ))}
                   </Swiper>

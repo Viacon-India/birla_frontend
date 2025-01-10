@@ -538,8 +538,8 @@ export function ContactUs({ pageData }) {
                                   required
                                 />
                               </div>
-                              <div class="flex flex-col lg:flex-row gap-4">
-                                <div class="form-row-wrapper">
+                              <div className="flex flex-col lg:flex-row gap-4">
+                                <div className="form-row-wrapper">
                                   <div className="form-row">
                                     {section?.form1FirstName?.label && (
                                       <label
@@ -564,7 +564,7 @@ export function ContactUs({ pageData }) {
                                     />
                                   </div>
                                 </div>
-                                <div class="form-row-wrapper">
+                                <div className="form-row-wrapper">
                                   <div className="form-row">
                                     {section?.form1LastName?.label && (
                                       <label
@@ -590,8 +590,8 @@ export function ContactUs({ pageData }) {
                                   </div>
                                 </div>
                               </div>
-                              <div class="flex flex-col lg:flex-row gap-4">
-                                <div class="form-row-wrapper">
+                              <div className="flex flex-col lg:flex-row gap-4">
+                                <div className="form-row-wrapper">
                                   <div className="form-row">
                                     {section?.form1ContactNumber?.label && (
                                       <label
@@ -619,7 +619,7 @@ export function ContactUs({ pageData }) {
                                     />
                                   </div>
                                 </div>
-                                <div class="form-row-wrapper">
+                                <div className="form-row-wrapper">
                                   <div className="form-row">
                                     {section?.form1Email?.label && (
                                       <label
@@ -647,9 +647,9 @@ export function ContactUs({ pageData }) {
                                   </div>
                                 </div>
                               </div>
-                              <div class="flex flex-col lg:flex-row gap-4 lg:w-[97%] 2xl:w-full">
-                                <div class="form-row-wrapper">
-                                  <div class="form-row">
+                              <div className="flex flex-col lg:flex-row gap-4 lg:w-[97%] 2xl:w-full">
+                                <div className="form-row-wrapper">
+                                  <div className="form-row">
                                     {section?.form1Country && (
                                       <label
                                         className="contact-label"
@@ -683,8 +683,8 @@ export function ContactUs({ pageData }) {
                                     </select>
                                   </div>
                                 </div>
-                                <div class="form-row-wrapper">
-                                  <div class="form-row">
+                                <div className="form-row-wrapper">
+                                  <div className="form-row">
                                     {section?.form1State && (
                                       <label
                                         className="contact-label"
@@ -716,7 +716,7 @@ export function ContactUs({ pageData }) {
                                   </div>
                                 </div>
                               </div>
-                              <div class="form-row">
+                              <div className="form-row">
                                 {section?.form1City && (
                                   <label
                                     className="contact-label"
@@ -888,8 +888,8 @@ export function ContactUs({ pageData }) {
                                   required
                                 />
                               </div>
-                              <div class="flex flex-col lg:flex-row gap-4">
-                                <div class="form-row-wrapper">
+                              <div className="flex flex-col lg:flex-row gap-4">
+                                <div className="form-row-wrapper">
                                   <div className="form-row">
                                     {section?.form2FirstName?.label && (
                                       <label
@@ -914,7 +914,7 @@ export function ContactUs({ pageData }) {
                                     />
                                   </div>
                                 </div>
-                                <div class="form-row-wrapper">
+                                <div className="form-row-wrapper">
                                   <div className="form-row">
                                     {section?.form2LastName?.label && (
                                       <label
@@ -940,8 +940,8 @@ export function ContactUs({ pageData }) {
                                   </div>
                                 </div>
                               </div>
-                              <div class="flex flex-col lg:flex-row gap-4">
-                                <div class="form-row-wrapper">
+                              <div className="flex flex-col lg:flex-row gap-4">
+                                <div className="form-row-wrapper">
                                   <div className="form-row">
                                     {section?.form2ContactNumber?.label && (
                                       <label
@@ -969,7 +969,7 @@ export function ContactUs({ pageData }) {
                                     />
                                   </div>
                                 </div>
-                                <div class="form-row-wrapper">
+                                <div className="form-row-wrapper">
                                   <div className="form-row">
                                     {section?.form2Email?.label && (
                                       <label
@@ -997,9 +997,9 @@ export function ContactUs({ pageData }) {
                                   </div>
                                 </div>
                               </div>
-                              <div class="flex flex-col lg:flex-row gap-4 lg:w-[97%] 2xl:w-full">
-                                <div class="form-row-wrapper">
-                                  <div class="form-row">
+                              <div className="flex flex-col lg:flex-row gap-4 lg:w-[97%] 2xl:w-full">
+                                <div className="form-row-wrapper">
+                                  <div className="form-row">
                                     {section?.form2Country && (
                                       <label
                                         className="contact-label"
@@ -1033,8 +1033,8 @@ export function ContactUs({ pageData }) {
                                     </select>
                                   </div>
                                 </div>
-                                <div class="form-row-wrapper">
-                                  <div class="form-row">
+                                <div className="form-row-wrapper">
+                                  <div className="form-row">
                                     {section?.form2State && (
                                       <label
                                         className="contact-label"
@@ -1066,7 +1066,7 @@ export function ContactUs({ pageData }) {
                                   </div>
                                 </div>
                               </div>
-                              <div class="form-row">
+                              <div className="form-row">
                                 {section?.form2City && (
                                   <label
                                     className="contact-label"
@@ -2826,9 +2826,9 @@ export function Products({ pageData }) {
 // export function Error404() {
 //   return (
 //     <div className="py-[60px] md:py-[100px]">
-//       <div class="container mx-auto">
-//         <div class="flex flex-col xl:flex-row gap-2 md:gap-10 xl:gap-[60px] items-center">
-//           <div class="error-text w-full xl:w-[50%] flex justify-center xl:items-start">
+//       <div className="container mx-auto">
+//         <div className="flex flex-col xl:flex-row gap-2 md:gap-10 xl:gap-[60px] items-center">
+//           <div className="error-text w-full xl:w-[50%] flex justify-center xl:items-start">
 //             <div className="flex items-center">
 //               <span className="text-[#000000] text-[160px] xl:text-[240px] font-bold text-center translate-x-[20px] xl:translate-x-[40px]">
 //                 4
@@ -2843,7 +2843,7 @@ export function Products({ pageData }) {
 //               </span>
 //             </div>
 //           </div>
-//           <div class="error-detail relative z-1 w-full xl:w-[50%] flex flex-col items-center xl:items-start gap-4 md:gap-8 lg:gap-10 2xl:gap-[60px]">
+//           <div className="error-detail relative z-1 w-full xl:w-[50%] flex flex-col items-center xl:items-start gap-4 md:gap-8 lg:gap-10 2xl:gap-[60px]">
 //             <Image
 //               className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-[-1]"
 //               src={BGTiger2}
@@ -2872,9 +2872,9 @@ export function Products({ pageData }) {
 export function Error404() {
   return (
     <div className="py-[60px] md:py-[100px]">
-      <div class="container mx-auto">
-        <div class="flex flex-col items-center">
-          <div class="error-text w-full flex justify-center xl:items-start">
+      <div className="container mx-auto">
+        <div className="flex flex-col items-center">
+          <div className="error-text w-full flex justify-center xl:items-start">
             <div className="flex items-center">
               <span className="text-[#000000] text-[160px] xl:text-[240px] font-bold text-center translate-x-[20px] xl:translate-x-[40px]">
                 4
@@ -2889,7 +2889,7 @@ export function Error404() {
               </span>
             </div>
           </div>
-          <div class="error-detail relative z-1 w-full flex flex-col items-center justify-center gap-4">
+          <div className="error-detail relative z-1 w-full flex flex-col items-center justify-center gap-4">
             {/* <Image
               className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-[-1]"
               src={BGTiger2}

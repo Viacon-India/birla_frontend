@@ -150,9 +150,9 @@ export default function Products({ Heading='', Title='', Data={}}) {
                     ))}
                   </Swiper>
                   {tab.attributes?.permalink &&
-                    <div className="flex justify-center mt-5 2xl:mt-[32px]">
+                    <div className="mt-5 2xl:mt-[32px]">
                       <Link href={tab.attributes.permalink} className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2">
-                        <span data-hover="View All Products">View All Products</span>
+                        <span data-hover="View The Complete Range">View The Complete Range</span>
                       </Link>
                     </div>
                   }

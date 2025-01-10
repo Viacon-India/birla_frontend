@@ -86,7 +86,7 @@ const NavbarComponent = () => {
           <div className="nav-main">
             <div className="container mx-auto">
               <div className="md:py-4 xl:py-0 w-full flex justify-between items-center relative">
-                <div class="md:flex items-center">
+                <div className="md:flex items-center">
                   <div className="navbar-start w-fit flex gap-2 items-center">
                     <button
                       className="hamburger-button"
@@ -282,7 +282,7 @@ const NavbarComponent = () => {
                       )}
                     </ul>
                     <div
-                      class={cn(
+                      className={cn(
                         "search-wrapper relative hidden md:flex",
                         isActive ? "active" : ""
                       )}
@@ -428,7 +428,7 @@ const NavbarComponent = () => {
               <div className="dropdown-wrapper">
                 <form
                   onSubmit={handleSearchSubmit}
-                  class={cn(
+                  className={cn(
                     "search-wrapper relative flex md:hidden my-[3px] mx-2 mb-2",
                     isActive ? "active" : ""
                   )}
