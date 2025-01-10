@@ -124,7 +124,7 @@ export default function Footer() {
                 <div className="flex items-center gap-3 md:gap-4">
                   {footerData.data.attributes.logo[0].image?.data && footerData.data.attributes.logo[0].icon_link && (
                     <Link href={footerData.data.attributes.logo[1].icon_link.link} target="_blank">
-                      <figure className="rounded-none m-0 w-[50px] h-[50px] md:w-[65px] md:h-[65px] fig-line">
+                      <figure className="rounded-none m-0 w-[50px] h-[50px] md:w-[65px] md:h-[65px]">
                         <Image
                           src={getStrapiMedia(
                             footerData.data.attributes.logo[1].image.data.attributes.url
@@ -132,14 +132,14 @@ export default function Footer() {
                           width={footerData.data.attributes.logo[1].image.data.attributes.width}
                           height={footerData.data.attributes.logo[1].image.data.attributes.height}
                           alt={footerData.data.attributes.logo[1].image.data.attributes?.alternativeText}
-                          className="w-full h-fit object-cover pt-2 xl:pt-4"
+                          className="w-full h-fit object-cover"
                         />
                       </figure>
                     </Link>
                   )}
                   <svg
                     width="2"
-                    height="81"
+                    height="60"
                     viewBox="0 0 2 81"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +163,7 @@ export default function Footer() {
                           width={footerData.data.attributes.logo[0].image.data.attributes.width}
                           height={footerData.data.attributes.logo[0].image.data.attributes.height}
                           alt={footerData.data.attributes.logo[0].image.data.attributes?.alternativeText}
-                          className="w-full h-fit object-cover pt-2"
+                          className="w-full h-fit object-cover"
                         />
                       </figure>
                     </Link>
