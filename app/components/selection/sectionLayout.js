@@ -191,17 +191,17 @@ export function Table({ section }) {
               </h3>
             )}
             {tables.row.length > 0 && (
-              <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left rtl:text-right">
-                  <thead class="font-semibold text-[16px] leading-[20px] text-secondary bg-[#E0E1F5]">
+              <div className="relative overflow-x-auto">
+                <table className="w-full text-sm text-left rtl:text-right">
+                  <thead className="font-semibold text-[16px] leading-[20px] text-secondary bg-[#E0E1F5]">
                     <tr>
-                      <th scope="col" class="px-2 py-3 border border-[#C9CDD3]">
+                      <th scope="col" className="px-2 py-3 border border-[#C9CDD3]">
                         Sr. No.
                       </th>
-                      <th scope="col" class="px-2 py-3 border border-[#C9CDD3]">
+                      <th scope="col" className="px-2 py-3 border border-[#C9CDD3]">
                         {tables.first_row.name}
                       </th>
-                      <th scope="col" class="px-2 py-3 border border-[#C9CDD3]">
+                      <th scope="col" className="px-2 py-3 border border-[#C9CDD3]">
                         {tables.first_row.status}
                       </th>
                     </tr>
@@ -209,19 +209,19 @@ export function Table({ section }) {
                   <tbody>
                     {tables.row.map((rows, index) => (
                       <tr
-                        class="font-medium text-[14px] leading-[17px] text-[#3D434C]"
+                        className="font-medium text-[14px] leading-[17px] text-[#3D434C]"
                         key={rows.id}
                       >
                         <th
                           scope="row"
-                          class="px-2 py-3 border border-[#C9CDD3]"
+                          className="px-2 py-3 border border-[#C9CDD3]"
                         >
                           {index + 1}
                         </th>
                         {rows?.name && (
                           <th
                             scope="row"
-                            class="px-2 py-3 border border-[#C9CDD3]"
+                            className="px-2 py-3 border border-[#C9CDD3]"
                           >
                             {rows.name}
                           </th>
@@ -229,7 +229,7 @@ export function Table({ section }) {
                         {rows?.status && (
                           <th
                             scope="row"
-                            class="px-2 py-3 border border-[#C9CDD3]"
+                            className="px-2 py-3 border border-[#C9CDD3]"
                           >
                             {rows.status}
                           </th>
@@ -441,10 +441,10 @@ export function ImageTitleContent({ section }) {
               </Link>
             )}
             {section?.content && section.content.length > 0 && (
-              <div class="line-loader self-end">
-                <div class="bar bar1"></div>
-                <div class="bar bar2"></div>
-                <div class="bar bar3"></div>
+              <div className="line-loader self-end">
+                <div className="bar bar1"></div>
+                <div className="bar bar2"></div>
+                <div className="bar bar3"></div>
               </div>
             )}
           </div>
@@ -609,7 +609,7 @@ export function Accordion({ section }) {
           {section?.images && section.images.length > 0 && (
             <>
               {section.images.length > 1 ? (
-                <div class="w-full xl:w-[40%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
+                <div className="w-full xl:w-[40%] h-fit md:sticky top-[90px] grid grid-cols-2 gap-4 md:gap-6">
                   {section.images.map((image, index) => (
                     <Image
                       key={image.id}
@@ -625,7 +625,7 @@ export function Accordion({ section }) {
                   ))}
                 </div>
               ) : (
-                // <div class="w-full xl:w-[40%]">
+                // <div className="w-full xl:w-[40%]">
                 <figure
                   className="w-full xl:w-[40%] h-[300px] md:h-[500px] 2xl:h-[600px] mb-0"
                   data-aos="zoom-in"
@@ -645,7 +645,7 @@ export function Accordion({ section }) {
           )}
           {section?.items && (
             <div
-              class="accordion-list-sec w-full flex flex-col gap-4 xl:gap-6 xl:w-[60%] xl:h-[500px] 2xl:h-[600px] md:overflow-y-auto"
+              className="accordion-list-sec w-full flex flex-col gap-4 xl:gap-6 xl:w-[60%] xl:h-[500px] 2xl:h-[600px] md:overflow-y-auto"
               data-aos="fade-left"
               data-aos-duration="1000"
             >
@@ -926,11 +926,11 @@ export function TitleContentFull({ section }) {
                   }}
                 />
               )}
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10">
                 {collection?.images &&
                   collection.images.length > 0 &&
                   collection.images.map((image) => (
-                    <div class="tyre-care-card" key={image.id}>
+                    <div className="tyre-care-card" key={image.id}>
                       <figure className="w-full h-[190px] md:h-[240px] rounded-[12px]">
                         <Image
                           className="w-full h-full object-fill rounded-[12px]"
@@ -1885,7 +1885,7 @@ export function ImageDetailContent({ section }) {
   }, []);
   return (
     <section className="overflow-hidden xl:bg-[#F8F8F8]">
-      <div class="container mx-auto">
+      <div className="container mx-auto">
         <div
           className={cn(
             "flex flex-col items-start gap-2 xl:gap-4 2xl:gap-10 md:p-6 xl:p-10 md:bg-white md:border border-[#C9CDD3] md:rounded-[24px] xl:pt-6 mt-8 2xl:mt-[60px]",
@@ -1944,7 +1944,7 @@ export function ImageDetailContent({ section }) {
               {section?.social &&
                   section.social.length > 0 &&
                 <div
-                  class="relative flex gap-2"
+                  className="relative flex gap-2"
                   data-aos="fade-left"
                   data-aos-duration="600"
                 >
@@ -2016,10 +2016,10 @@ export function ImageDetailContent({ section }) {
                   ),
                 }}
               />
-              <div class="line-loader self-end">
-                <div class="bar bar1"></div>
-                <div class="bar bar2"></div>
-                <div class="bar bar3"></div>
+              <div className="line-loader self-end">
+                <div className="bar bar1"></div>
+                <div className="bar bar2"></div>
+                <div className="bar bar3"></div>
               </div>
             </div>
           </div>
@@ -2050,7 +2050,7 @@ export function SidebarContent({ section }) {
   };
   return (
     <section className="relative mt-6 md:mt-8 2xl:mt-[60px]">
-      <div class="container mx-auto">
+      <div className="container mx-auto">
         <span className="section-heading">{section?.heading}</span>
         <div className="section-title-wrapper mb-4 md:mb-8 2xl:mb-10">
           <h2 className="section-title">{section?.title}</h2>
@@ -2197,7 +2197,7 @@ export function SidebarContent({ section }) {
                       ),
                     }}
                   />
-                  <div class="relative flex justify-end md:hidden">
+                  <div className="relative flex justify-end md:hidden">
                     <button onClick={goToTop}>
                       <svg
                         width="18"
@@ -2229,8 +2229,8 @@ export function SidebarContent({ section }) {
 export function CreditContent({ section }) {
   return (
     <section className="mt-8 md:mt-12 2xl:mt-[16px]">
-      <div class="container mx-auto">
-        <div class="w-full bg-secondary rounded-[12px] flex flex-col items-center">
+      <div className="container mx-auto">
+        <div className="w-full bg-secondary rounded-[12px] flex flex-col items-center">
           <BlocksRenderer
             content={section.content}
             blocks={{
@@ -2312,7 +2312,7 @@ export function Testimonial({ section }) {
                     <h2 className="testimonial-card-title">
                       {collection?.title}
                     </h2>
-                    <div class="testimonial-card-detail">
+                    <div className="testimonial-card-detail">
                       <BlocksRenderer
                         content={collection.content}
                         blocks={{

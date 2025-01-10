@@ -18,7 +18,7 @@ export function MainButton() {
   const pathname = usePathname();
   return (
     <div
-      class={
+      className={
         pathname == "/"
           ? "multi-btn-sec"
           : "hidden md:flex flex-col gap-5 relative z-10"
@@ -41,7 +41,7 @@ export function MainButton() {
 export function SmallButton() {
   const pathname = usePathname();
   return (
-    <div class="relative w-full flex md:hidden gap-2">
+    <div className="relative w-full flex md:hidden gap-2">
       {/* {pathname != "/find-tyre" && (
         <Link
           href="/find-tyre"
@@ -69,7 +69,7 @@ export function PageBanner({ Title, Banner, StaticBanner, extension }) {
         <span className="banner-overlay"></span>
         <div className="relative">
           <div className="w-full h-[30vh] md:h-[40vh] xl:h-[80vh] flex items-end">
-            <div class="container mx-auto flex flex-col justify-end md:justify-between h-full pt-8 xl:pt-5 pb-3 md:pb-6 xl:pb-[60px] z-1">
+            <div className="container mx-auto flex flex-col justify-end md:justify-between h-full pt-8 xl:pt-5 pb-3 md:pb-6 xl:pb-[60px] z-1">
               <MainButton />
               <div className="relative">
                 <GradualSpacing
@@ -655,16 +655,16 @@ export function Chatbot() {
         src={Tiger}
         alt="tiger"
       />
-      <div class="chatBotHead">
-        <div class="flex gap-4 items-center">
-          <div class="w-[50px] h-[50px] flex justify-center items-center rounded-full border border-white bg-white">
+      <div className="chatBotHead">
+        <div className="flex gap-4 items-center">
+          <div className="w-[50px] h-[50px] flex justify-center items-center rounded-full border border-white bg-white">
             <Image
               className="w-10 h-10 object-contain"
               src={smallTiger}
               alt="smallTiger"
             />
           </div>
-          <div class="chatBotTitle">
+          <div className="chatBotTitle">
             <span className="text-[#ffffff] text-[16px] mb-[6px] leading-[1]">
               ChatBot
             </span>
@@ -679,7 +679,7 @@ export function Chatbot() {
         </div>
         <button
           onClick={handleClick}
-          class="w-7 h-7 flex justify-center items-center rounded-full border border-white"
+          className="w-7 h-7 flex justify-center items-center rounded-full border border-white"
         >
           <svg
             width="12"
@@ -700,8 +700,8 @@ export function Chatbot() {
           Chat started on {currentTime}
         </p>
       )}
-      <div class="flex w-full items-end">
-        <div class="p-4 flex flex-col gap-5 w-full h-[400px] !overflow-y-auto scrollTo">
+      <div className="flex w-full items-end">
+        <div className="p-4 flex flex-col gap-5 w-full h-[400px] !overflow-y-auto scrollTo">
           {messages.map((msg, index) =>
             msg.sender === "user" ? (
               <span
@@ -711,8 +711,8 @@ export function Chatbot() {
                 {msg?.text && msg.text}
               </span>
             ) : (
-              <div key={index} class="flex gap-3 items-start">
-                <div class="min-w-11 h-11 flex justify-center items-center rounded-full bg-[#FFFFFF] border-2 border-primary">
+              <div key={index} className="flex gap-3 items-start">
+                <div className="min-w-11 h-11 flex justify-center items-center rounded-full bg-[#FFFFFF] border-2 border-primary">
                   <Image
                     className="w-8 h-8 object-contain"
                     src={smallTiger}
@@ -736,7 +736,7 @@ export function Chatbot() {
           )}
         </div>
       </div>
-      <div class="chatInputWrapper flex gap-2 items-center relative px-5 py-4 border-t border-[#ACACAC] bg-[#FFFFFF]">
+      <div className="chatInputWrapper flex gap-2 items-center relative px-5 py-4 border-t border-[#ACACAC] bg-[#FFFFFF]">
         <input
           placeholder="Ask your question..."
           className="w-full bg-[#FFFFFF] outline-none"
@@ -785,6 +785,9 @@ export function Popup() {
   
   const handlePopup = () => {
     setIsPopup(false);
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("lastProductVisit", 'visited');
+    }
   }
 
   useEffect(() => {
@@ -818,11 +821,11 @@ export function Popup() {
     <>
       {isPopup && lastData && productVisited=='not visited' && (
         <div className="w-full h-full flex justify-center items-center fixed top-0 z-[99] bg-[#101010] bg-opacity-75">
-          <div class="bg-white rounded-[4px] p-6 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%] 2xl:w-[20%]">
+          <div className="bg-white rounded-[4px] p-6 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%] 2xl:w-[20%]">
             <h3 className="text-[22px] text-[#1A1D21] font-bold">
               Do you want to continue where you left?
             </h3>
-            <div class="flex gap-3 mt-6">
+            <div className="flex gap-3 mt-6">
               <button
                 onClick={handlePopup}
                 className="px-4 py-2 border border-[#DEE1E5] rounded-[4px] text-[#727C8D] font-medium text-[14px]"

@@ -82,15 +82,26 @@ export default function Footer() {
                       </Link>
                     )}
                   </div>
+                  <div className="footer-detail-box">
+                    {footerData.data.attributes?.himadri?.link && (
+                      <Link
+                        href={footerData.data.attributes.himadri.link}
+                        target="_blank"
+                        className="text-secondary"
+                      >
+                        {footerData.data.attributes?.himadri?.name}
+                      </Link>
+                    )}
+                  </div>
                 </div>
-                <div class="follow-sec flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mt-3 md:mt-6">
+                <div className="follow-sec flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mt-3 md:mt-6">
                   {footerData.data.attributes?.social_title && (
                     <span className="text-[#1A1D21] text-[18px] lg:text-[24px]">
                       {footerData.data.attributes.social_title}
                     </span>
                   )}
                   {footerData.data.attributes?.social && footerData.data.attributes.social.length > 0 && (
-                    <div class="flex items-center gap-4">
+                    <div className="flex items-center gap-4">
                       {footerData.data.attributes.social.map((social) => ( social?.link &&
                         <Link className="icon-box" href={social.link} target="_blank" key={social.id}>
                           <Image
@@ -110,7 +121,7 @@ export default function Footer() {
                 </div>
               </div>
               {footerData.data.attributes.logo.length > 1 && (
-                <div class="flex items-center gap-3 md:gap-4">
+                <div className="flex items-center gap-3 md:gap-4">
                   {footerData.data.attributes.logo[0].image?.data && footerData.data.attributes.logo[0].icon_link && (
                     <Link href={footerData.data.attributes.logo[1].icon_link.link} target="_blank">
                       <figure className="rounded-none m-0 w-[50px] h-[50px] md:w-[65px] md:h-[65px] fig-line">

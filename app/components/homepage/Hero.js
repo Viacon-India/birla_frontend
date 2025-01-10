@@ -48,7 +48,7 @@ export default function Hero({ Data }) {
     <div className="relative pb-5 pd:pb-8 xl:pb-[50px] 2xl:pb-[75px]">
       {storedValue !== "watched" &&
         <div id="preloader" className="loader-sec">
-          <div class="video-wrapper">
+          <div className="video-wrapper">
             <video
               className="w-full h-fit object-contain"
               autoPlay
@@ -89,8 +89,8 @@ export default function Hero({ Data }) {
           modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
           className="mySwiper relative !pt-[74px] md:!pt-0 !h-[264px] md:!h-[430px] lg:!h-[550px] xl:!h-[100vh]"
         >
-          <div class="w-full">
-            <div class="container mx-auto">
+          <div className="w-full">
+            <div className="container mx-auto">
               <MainButton />
             </div>
           </div>
@@ -98,7 +98,7 @@ export default function Hero({ Data }) {
             (slider) =>
               slider.attributes?.permalink && (
                 <SwiperSlide key={slider.id}>
-                  <div class="swiper-card-main">
+                  <div className="swiper-card-main">
                     <span className="slider-overlay"></span>
                     <div className="w-full !h-full flex items-end pb-8 md:pb-2 lg:pb-[24px] xl:pb-[60px]">
                       {slider.attributes?.hero && (
@@ -142,10 +142,10 @@ export default function Hero({ Data }) {
                           )}
                           <Link
                             href={slider.attributes.permalink}
-                            class="explore-btn"
+                            className="explore-btn"
                           >
                             <span>Explore Now</span>
-                            <div class="wave"></div>
+                            <div className="wave"></div>
                           </Link>
                         </div>
                       </div>
@@ -155,7 +155,7 @@ export default function Hero({ Data }) {
               )
           )}
           <SwiperSlide>
-            <div class="swiper-card-main">
+            <div className="swiper-card-main">
               {/* <span className="slider-overlay"></span> */}
               <div className="w-full !h-full flex items-end pb-8 md:pb-2 lg:pb-[24px] xl:pb-[60px]">
                   <video

@@ -68,7 +68,7 @@ export default function Innovation({ Heading='', Title='', Data={}}) {
             }
           </div>
         </div>
-        <div class="innovative-slider mt-5 2xl:mt-8">
+        <div className="innovative-slider mt-5 2xl:mt-8">
           {Data?.data && Data.data.length > 0 &&
             <Swiper
               navigation={true}
