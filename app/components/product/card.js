@@ -104,6 +104,7 @@ export default function Product({ data }) {
                 !rim_recommended || rowEntry.rim_recommended === rim_recommended,
                 !size || rowEntry.size === size,
                 !pattern_type || rowEntry.pattern_type === pattern_type,
+                !sub_segment || rowEntry.sub_segment === sub_segment,
               ].every(Boolean);
 
               if (matchesFilters) {
@@ -118,7 +119,7 @@ export default function Product({ data }) {
     };
 
     setFilteredSizes(filterSizes(data));
-  }, [machinery, rim_recommended, size, pattern_type, data]);
+  }, [machinery, rim_recommended, size, pattern_type, sub_segment, data]);
 
   return (
     <div className="new-product-card">
