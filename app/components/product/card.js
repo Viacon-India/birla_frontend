@@ -27,6 +27,50 @@ export default function Product({ data }) {
 
   const [filteredSizes, setFilteredSizes] = useState([]);
   
+  // useEffect(() => {
+  //   gsap.fromTo(
+  //     ".new-product-card-image",
+  //     { scale: "0.2", opacity: 0.9, transition: "1s" },
+  //     {
+  //       scale: 1,
+  //       opacity: 1,
+  //       duration: 0.1,
+  //       // ease: "power1.out",
+  //       scrollTrigger: {
+  //         trigger: ".product-sec",
+  //         start: "top 55%",
+  //         end: "top 55%",
+  //         scrub: 1,
+  //         // markers: true,
+  //       },
+  //     }
+  //   );
+  //   if(machinery) {
+  //     const getSizesFromUSA = (data) => {
+  //       if(data?.tables &&
+  //         data.tables?.table &&
+  //         data.tables.table.length > 0) {
+  //         let sizes = [];
+  //         data.tables.table.forEach((tableEntry) => {
+  //           if (tableEntry.standard === 'USA') {
+  //             tableEntry.row.forEach((rowEntry) => {
+  //               if (rowEntry.machinery && rowEntry.machinery.name === machinery) {
+  //                 sizes.push(rowEntry.size);
+  //               }
+  //               // if ((rowEntry.machinery && rowEntry.machinery.name === machinery) && (rowEntry.size && rowEntry.size === size)) {
+  //               //   sizes.push(rowEntry.size);
+  //               // }
+  //             });
+  //           }
+  //         });
+  //         return sizes;
+  //       }
+  //     };
+  //     setFilteredSizes(getSizesFromUSA(data));
+  //   }
+  // }, [data]);
+
+
   useEffect(() => {
     gsap.fromTo(
       ".new-product-card-image",
@@ -45,30 +89,37 @@ export default function Product({ data }) {
         },
       }
     );
-    if(machinery) {
-      const getSizesFromUSA = (data) => {
-        if(data?.tables &&
-          data.tables?.table &&
-          data.tables.table.length > 0) {
-          let sizes = [];
-          data.tables.table.forEach((tableEntry) => {
-            if (tableEntry.standard === 'USA') {
-              tableEntry.row.forEach((rowEntry) => {
-                if (rowEntry.machinery && rowEntry.machinery.name === machinery) {
-                  sizes.push(rowEntry.size);
-                }
-                // if ((rowEntry.machinery && rowEntry.machinery.name === machinery) && (rowEntry.size && rowEntry.size === size)) {
-                //   sizes.push(rowEntry.size);
-                // }
-              });
-            }
-          });
-          return sizes;
-        }
-      };
-      setFilteredSizes(getSizesFromUSA(data));
-    }
-  }, [data]);
+    const filterSizes = (data) => {
+      if (
+        data?.tables &&
+        data.tables?.table &&
+        data.tables.table.length > 0
+      ) {
+        let sizes = [];
+        data.tables.table.forEach((tableEntry) => {
+          if (tableEntry.standard === "USA") {
+            tableEntry.row.forEach((rowEntry) => {
+              const matchesFilters = [
+                !machinery || (rowEntry.machinery && rowEntry.machinery.name === machinery),
+                !rim_recommended || rowEntry.rim_recommended === rim_recommended,
+                !size || rowEntry.size === size,
+                !pattern_type || rowEntry.pattern_type === pattern_type,
+              ].every(Boolean);
+
+              if (matchesFilters) {
+                sizes.push(rowEntry.size);
+              }
+            });
+          }
+        });
+        return sizes;
+      }
+      return [];
+    };
+
+    setFilteredSizes(filterSizes(data));
+  }, [machinery, rim_recommended, size, pattern_type, data]);
+
   return (
     <div className="new-product-card">
       <Link href={data.permalink}>
