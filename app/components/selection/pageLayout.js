@@ -2208,7 +2208,7 @@ export function Products({ pageData }) {
                       content={details.content}
                       blocks={{
                         paragraph: ({ children }) => (
-                          <p className="text-[#4F5662] text-[14px] md:text-[15px] 2xl:text-[16px] pb-4 md:pb-6">
+                          <p className="text-[#4F5662] text-[14px] md:text-[15px] 2xl:text-[16px] pb-4 md:pb-6 uppercase">
                             {children}
                           </p>
                         ),

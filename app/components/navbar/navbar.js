@@ -85,7 +85,7 @@ const NavbarComponent = () => {
         <>
           <div className="nav-main">
             <div className="container mx-auto">
-              <div className="md:py-4 xl:py-0 w-full flex justify-between items-center relative">
+              <div className="py-4 xl:py-0 w-full flex justify-between items-center relative">
                 <div className="md:flex items-center">
                   <div className="navbar-start w-fit flex gap-2 items-center">
                     <button
