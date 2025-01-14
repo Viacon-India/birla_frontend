@@ -122,7 +122,7 @@ export default function Footer() {
               </div>
               {footerData.data.attributes.logo.length > 1 && (
                 <div className="flex items-center gap-3 md:gap-4">
-                  {footerData.data.attributes.logo[0].image?.data && footerData.data.attributes.logo[0].icon_link && (
+                  {/* {footerData.data.attributes.logo[0].image?.data && footerData.data.attributes.logo[0].icon_link && (
                     <Link href={footerData.data.attributes.logo[1].icon_link.link} target="_blank">
                       <figure className="rounded-none m-0 w-[50px] h-[50px] md:w-[65px] md:h-[65px]">
                         <Image
@@ -152,10 +152,10 @@ export default function Footer() {
                       stroke="#C9CDD3"
                       stroke-dasharray="5 6"
                     />
-                  </svg>
+                  </svg> */}
                   {footerData.data.attributes.logo[1].image?.data && footerData.data.attributes.logo[1].icon_link && (
                     <Link href={footerData.data.attributes.logo[0].icon_link.link}>
-                      <figure className="rounded-none m-0 w-[80px] h-[35px] md:w-[136px] md:h-[60px]">
+                      <figure className="rounded-none m-0 w-[100px] h-[50px] md:w-[136px] md:h-[60px]">
                         <Image
                           src={getStrapiMedia(
                             footerData.data.attributes.logo[0].image.data.attributes.url
