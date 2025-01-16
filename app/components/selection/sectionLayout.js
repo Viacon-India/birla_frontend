@@ -1006,7 +1006,7 @@ export function Gallery({ section }) {
                       height={section.collection[0].image?.height}
                       src={getStrapiMedia(section.collection[0].image?.url)}
                       alt={section.collection[0].image?.alternativeText}
-                      className="w-full h-full"
+                      className="w-full h-full object-cover"
                     />
                     <span className="vision-overlay">
                       {section?.collection[0].description}
