@@ -3,6 +3,7 @@ const nextConfig = {
     transpilePackages: ['gsap'],
     reactStrictMode: false,
     images: {
+        unoptimized: true,
         remotePatterns: [
             {
                 protocol: "http",
