@@ -24,9 +24,8 @@ export default function Product({ data }) {
   const size = searchParams.get("size");
   const pattern_type = searchParams.get("pattern_type");
 
-
   const [filteredSizes, setFilteredSizes] = useState([]);
-  
+
   // useEffect(() => {
   //   gsap.fromTo(
   //     ".new-product-card-image",
@@ -70,7 +69,6 @@ export default function Product({ data }) {
   //   }
   // }, [data]);
 
-
   useEffect(() => {
     gsap.fromTo(
       ".new-product-card-image",
@@ -90,18 +88,16 @@ export default function Product({ data }) {
       }
     );
     const filterSizes = (data) => {
-      if (
-        data?.tables &&
-        data.tables?.table &&
-        data.tables.table.length > 0
-      ) {
+      if (data?.tables && data.tables?.table && data.tables.table.length > 0) {
         let sizes = [];
         data.tables.table.forEach((tableEntry) => {
           if (tableEntry.standard === "USA") {
             tableEntry.row.forEach((rowEntry) => {
               const matchesFilters = [
-                !machinery || (rowEntry.machinery && rowEntry.machinery.name === machinery),
-                !rim_recommended || rowEntry.rim_recommended === rim_recommended,
+                !machinery ||
+                  (rowEntry.machinery && rowEntry.machinery.name === machinery),
+                !rim_recommended ||
+                  rowEntry.rim_recommended === rim_recommended,
                 !size || rowEntry.size === size,
                 !pattern_type || rowEntry.pattern_type === pattern_type,
                 !sub_segment || rowEntry.sub_segment === sub_segment,
@@ -226,43 +222,50 @@ export default function Product({ data }) {
             <Link href={data?.permalink}>
               <h2 className="line-clamp-1">{data?.title}</h2>
             </Link>
-            <p className="!h-[44px] !w-[95%] !line-clamp-2">{data?.description}</p>
+            <p className="!h-[44px] !w-[95%] !line-clamp-2">
+              {data?.description}
+            </p>
           </div>
-          {data?.vehicle_types &&
-            data.vehicle_types.length > 0 &&
-            <div className="tooltip" data-tip={data.vehicle_types.map(vehicle => vehicle.name).join(', ')}>
+          {data?.vehicle_types && data.vehicle_types.length > 0 && (
+            <div
+              className="tooltip"
+              data-tip={data.vehicle_types
+                .map((vehicle) => vehicle.name)
+                .join(", ")}
+            >
               <div className="w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] p-2">
                 <div className="overflow-x-hidden">
                   <div className="h-8 animate-[moveLtoR_4s_infinite] flex justify-center items-center gap-1 w-max">
-                    {data.vehicle_types.map((vehicle) => (
-                      vehicle?.icon && (
-                        <figure key={vehicle.id}>
-                          <Image
-                            src={getStrapiMedia(vehicle.icon?.url)}
-                            className="h-8 w-full object-contain"
-                            width={vehicle.icon?.width}
-                            height={vehicle.icon?.height}
-                            alt={
-                              vehicle.icon?.alternativeText
-                                ? vehicle.icon.alternativeText
-                                : "icon"
-                            }
-                          />
-                          {/* <span className=" absolute left-0 top-[-20px] bg-red-600">{vehicle.name}</span> */}
-                        </figure>
-                      )
-                    ))}
+                    {data.vehicle_types.map(
+                      (vehicle) =>
+                        vehicle?.icon && (
+                          <figure key={vehicle.id}>
+                            <Image
+                              src={getStrapiMedia(vehicle.icon?.url)}
+                              className="h-8 w-full object-contain"
+                              width={vehicle.icon?.width}
+                              height={vehicle.icon?.height}
+                              alt={
+                                vehicle.icon?.alternativeText
+                                  ? vehicle.icon.alternativeText
+                                  : "icon"
+                              }
+                            />
+                            {/* <span className=" absolute left-0 top-[-20px] bg-red-600">{vehicle.name}</span> */}
+                          </figure>
+                        )
+                    )}
                   </div>
                 </div>
               </div>
             </div>
-          }
-          {data.vehicle_types?.data &&
-            data.vehicle_types.data.length > 0 &&
+          )}
+          {data.vehicle_types?.data && data.vehicle_types.data.length > 0 && (
             <div className="w-[72px] h-[48px] bg-[#E2DCF4] rounded-[12px] p-2">
               <div className="overflow-hidden">
                 <div className="h-8 animate-[moveLtoR_4s_infinite] flex justify-center items-center gap-1 w-max">
-                  {data.vehicle_types.data.map((vehicle) => (
+                  {data.vehicle_types.data.map(
+                    (vehicle) =>
                       vehicle.attributes.icon?.data && (
                         <Image
                           src={getStrapiMedia(
@@ -270,23 +273,26 @@ export default function Product({ data }) {
                           )}
                           className="h-8 w-full object-contain"
                           width={vehicle.attributes.icon.data.attributes?.width}
-                          height={vehicle.attributes.icon.data.attributes?.height}
+                          height={
+                            vehicle.attributes.icon.data.attributes?.height
+                          }
                           key={vehicle.id}
                           alt={
-                            vehicle.attributes.icon.data.attributes?.alternativeText
+                            vehicle.attributes.icon.data.attributes
+                              ?.alternativeText
                               ? vehicle.attributes.icon.data.attributes
                                   .alternativeText
                               : "icon"
                           }
                         />
                       )
-                  ))}
+                  )}
                 </div>
               </div>
             </div>
-          }
+          )}
         </div>
-        {filteredSizes && filteredSizes.length > 0 &&(
+        {filteredSizes && filteredSizes.length > 0 && (
           <div className="flex gap-3 mt-2 relative">
             <Swiper
               navigation={true}
@@ -296,15 +302,21 @@ export default function Product({ data }) {
               freeMode={true}
               className="chipSwiper !w-[85%] !ml-0 !static"
             >
-              {filteredSizes.map((row, index) => (
-                <SwiperSlide className="!w-fit" key={index}>
-                  <button className="size-chip">{row}</button>
-                </SwiperSlide>
-              ))}
+              {filteredSizes
+                .sort(
+                  (a, b) =>
+                    parseFloat(a.split("-")[0]) - parseFloat(b.split("-")[0])
+                )
+                .map((row, index) => (
+                  <SwiperSlide className="!w-fit" key={index}>
+                    <button className="size-chip">{row}</button>
+                  </SwiperSlide>
+                ))}
             </Swiper>
           </div>
         )}
-        {!filteredSizes.length > 0 && data?.tables &&
+        {!filteredSizes.length > 0 &&
+          data?.tables &&
           data.tables?.table &&
           data.tables.table.length > 0 &&
           data.tables.table.map(
