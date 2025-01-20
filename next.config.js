@@ -3,6 +3,7 @@ const nextConfig = {
     transpilePackages: ['gsap'],
     reactStrictMode: false,
     images: {
+        domains: process.env.DOMAIN_NAME,
         remotePatterns: [
             {
                 protocol: "http",
