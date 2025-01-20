@@ -303,10 +303,11 @@ export default function Product({ data }) {
               className="chipSwiper !w-[85%] !ml-0 !static"
             >
               {filteredSizes
-                .sort(
-                  (a, b) =>
-                    parseFloat(a.split("-")[0]) - parseFloat(b.split("-")[0])
-                )
+                .sort((a, b) => {
+                  const [numA1, numA2] = a.split("-").map(parseFloat);
+                  const [numB1, numB2] = b.split("-").map(parseFloat);
+                  return numA1 - numB1 || numA2 - numB2;
+                })
                 .map((row, index) => (
                   <SwiperSlide className="!w-fit" key={index}>
                     <button className="size-chip">{row}</button>
