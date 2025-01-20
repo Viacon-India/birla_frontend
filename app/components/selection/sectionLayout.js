@@ -1190,6 +1190,7 @@ export function Gallery({ section }) {
 
 export function ImagePoint({ section }) {
   useEffect(() => {
+    console.log(section.collection);
     AOS.init();
   }, []);
   return (
