@@ -1201,7 +1201,7 @@ export function Pages({ pageData }) {
       }
       {pageData?.section &&
         pageData.section.length > 0 &&
-        <div className={!pageData?.hero && 'pt-[100px] 2xl:pt-[140px]'}>
+        <div className={!pageData?.hero && 'pt-[76px]'}>
           {pageData.section.map((section) => (
             <SectionSelection key={section.id} section={section}/>
           ))}
