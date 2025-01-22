@@ -40,7 +40,6 @@ const FindTyre = ({ params }) => {
   const [productData, setProductsData] = useState([]);
   const pageSize = 9;
   const currentPage = params.pagenumber;
-  console.log(currentPage);
   const [meta, setProductsMeta] = useState({});
 
   const handlePageClick = (event) => {

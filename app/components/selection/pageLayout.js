@@ -1196,12 +1196,17 @@ export function ContactUs({ pageData }) {
 export function Pages({ pageData }) {
   return (
     <>
-      <PageBanner Title={pageData?.title} Banner={pageData?.hero} />
+      {pageData?.hero &&
+        <PageBanner Title={pageData?.title} Banner={pageData?.hero} />
+      }
       {pageData?.section &&
         pageData.section.length > 0 &&
-        pageData.section.map((section) => (
-          <SectionSelection key={section.id} section={section} />
-        ))}
+        <div className={!pageData?.hero && 'pt-[100px] 2xl:pt-[140px]'}>
+          {pageData.section.map((section) => (
+            <SectionSelection key={section.id} section={section}/>
+          ))}
+        </div>
+      }
       <PageEnd EndPageData={pageData?.end} />
     </>
   );
@@ -1775,7 +1780,7 @@ export function Products({ pageData }) {
   };
   
 
-  const [sortOrder, setSortOrder] = useState("desc");
+  const [sortOrder, setSortOrder] = useState("asc"); // intial order
   const [sortColumn, setSortColumn] = useState("size");
 
   const handleSort = (column) => {
@@ -1791,11 +1796,13 @@ export function Products({ pageData }) {
     if (table?.row && table.row.length > 0) {
       const sortedRows = [...table.row].sort((a, b) => {
         let valueA, valueB;
-
+  
         switch (sortColumn) {
           case "size":
-            valueA = a.size ? a.size.toLowerCase() : "";
-            valueB = b.size ? b.size.toLowerCase() : "";
+            const [sizeA, sizeB] = a.size ? a.size.split("-").map(Number) : [0, 0];
+            const [sizeC, sizeD] = b.size ? b.size.split("-").map(Number) : [0, 0];
+            valueA = sizeA * 1000 + sizeB;
+            valueB = sizeC * 1000 + sizeD;
             break;
           case "type":
             valueA = a.type ? a.type.toLowerCase() : "";
@@ -1810,12 +1817,8 @@ export function Products({ pageData }) {
             valueB = b.applications ? b.applications.toLowerCase() : "";
             break;
           case "construction_type":
-            valueA = a.construction_type
-              ? a.construction_type.toLowerCase()
-              : "";
-            valueB = b.construction_type
-              ? b.construction_type.toLowerCase()
-              : "";
+            valueA = a.construction_type ? a.construction_type.toLowerCase() : "";
+            valueB = b.construction_type ? b.construction_type.toLowerCase() : "";
             break;
           case "pattern_type":
             valueA = a.pattern_type ? a.pattern_type.toLowerCase() : "";
@@ -1880,19 +1883,18 @@ export function Products({ pageData }) {
           default:
             return 0;
         }
-
+  
         if (sortOrder === "asc") {
           return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
         } else {
           return valueA > valueB ? -1 : valueA < valueB ? 1 : 0;
         }
       });
-
+  
       return { ...table, row: sortedRows };
     }
     return table;
   });
-
 
   const handleSave = () => {
     if (typeof window !== "undefined") {
