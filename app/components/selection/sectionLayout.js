@@ -857,10 +857,50 @@ export function TitleContentFull({ section }) {
       )}
     >
       <div className="container mx-auto">
-        <span className="section-heading">{section?.heading}</span>
-        <div className="section-title-wrapper mb-6 md:mb-10">
-          <h3 className="section-title">{section?.title}</h3>
-        </div>
+        {(section?.heading || section?.title || section?.file) && (
+          <div className="upper-title-sec flex gap-3 md:gap-0 flex-col md:flex-row justify-between items-end mb-6 md:mb-10">
+            {(section?.heading || section?.title) && (
+              <div className="self-start">
+                {section?.heading && (
+                  <span className="section-heading">
+                    {section.heading}
+                  </span>
+                )}
+                {section?.title && (
+                  <div className="section-title-wrapper">
+                    <h3 className="section-title">{section.title}</h3>
+                  </div>
+                )}
+              </div>
+            )}
+            {section?.file && (
+              <div className="cat-btn-sec flex items-center gap-3 relative z-10">
+                <Link
+                  href={getStrapiMedia(section.file.url)}
+                  className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]"
+                  target="_blank"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14.875 9.875V14.25C14.875 14.4158 14.8092 14.5747 14.6919 14.6919C14.5747 14.8092 14.4158 14.875 14.25 14.875H1.75C1.58424 14.875 1.42527 14.8092 1.30806 14.6919C1.19085 14.5747 1.125 14.4158 1.125 14.25V9.875M4.71875 6.59461L8 9.875L11.2812 6.59461M8 1.125V9.8727"
+                      stroke="#F5811E"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  Download {section.title}
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
         {section?.collection &&
           section.collection.length > 0 &&
           section.collection.map((collection) => (
@@ -1190,7 +1230,6 @@ export function Gallery({ section }) {
 
 export function ImagePoint({ section }) {
   useEffect(() => {
-    console.log(section.collection);
     AOS.init();
   }, []);
   return (

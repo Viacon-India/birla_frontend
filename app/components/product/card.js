@@ -304,9 +304,17 @@ export default function Product({ data }) {
             >
               {filteredSizes
                 .sort((a, b) => {
-                  const [numA1, numA2] = a.split("-").map(parseFloat);
-                  const [numB1, numB2] = b.split("-").map(parseFloat);
-                  return numA1 - numB1 || numA2 - numB2;
+                  let valueA, valueB;
+                  const sortOrder = "asc"; // intial order
+                  const [sizeA, sizeB] = a ? a.split("-").map(Number) : [0, 0];
+                  const [sizeC, sizeD] = b ? b.split("-").map(Number) : [0, 0];
+                  valueA = sizeA * 1000 + sizeB;
+                  valueB = sizeC * 1000 + sizeD;
+                  if (sortOrder === "asc") {
+                    return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
+                  } else {
+                    return valueA > valueB ? -1 : valueA < valueB ? 1 : 0;
+                  }
                 })
                 .map((row, index) => (
                   <SwiperSlide className="!w-fit" key={index}>
