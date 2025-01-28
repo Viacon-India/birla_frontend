@@ -29,7 +29,7 @@ import chakra from "../../assets/images/chakra-icon.png";
 // import chakra from "../../assets/images/chakra-icon2.svg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import load from "../../assets/images/load.png";
+import load from "../../assets/images/load-rated.png";
 import pattern from "../../assets/images/pattern.png";
 import construction from "../../assets/images/axle.png";
 import Product from "@/app/components/product/card";

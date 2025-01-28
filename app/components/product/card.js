@@ -5,7 +5,9 @@ import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import loadImage from "../../assets/images/load.png";
+import loadRatedImage from "../../assets/images/load-rated.png";
+import loadModerateImage from "../../assets/images/load-moderate.png";
+import loadHeavyImage from "../../assets/images/load-heavy.png";
 import traImage from "../../assets/images/tra.png";
 import patternImage from "../../assets/images/pattern.png";
 import constructionImage from "../../assets/images/axle.png";
@@ -134,7 +136,15 @@ export default function Product({ data }) {
             <div className="new-product-iconListSec flex flex-col gap-6 2xl:gap-10">
               {data.type?.load && (
                 <div className="flex gap-[6px] items-center">
-                  <Image src={loadImage} alt="icon" />
+                  {data.type.load === "Rated" && (
+                    <Image src={loadRatedImage} alt="icon" />
+                  )}
+                  {data.type.load === "Moderate" && (
+                    <Image src={loadModerateImage} alt="icon" />
+                  )}
+                  {data.type.load === "Heavy" && (
+                    <Image src={loadHeavyImage} alt="icon" />
+                  )}
                   <span>
                     <p className="text-[18px] font-semibold !text-[#727C8D] !mb-0">
                       Load Type
@@ -302,7 +312,7 @@ export default function Product({ data }) {
               freeMode={true}
               className="chipSwiper !w-[85%] !ml-0 !static"
             >
-              {filteredSizes
+              {[...new Set(filteredSizes)]
                 .sort((a, b) => {
                   let valueA, valueB;
                   const sortOrder = "asc"; // intial order
