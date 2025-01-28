@@ -22,7 +22,7 @@ import Product from "@/app/components/product/card";
 import Link from "next/link";
 import Image from "next/image";
 import BGTiger2 from "../../assets/images/tiger-mask2.png";
-import load from "@/app/assets/images/load.png";
+import load from "@/app/assets/images/load-rated.png";
 import pattern from "@/app/assets/images/pattern.png";
 import traImage from "@/app/assets/images/tra.png";
 import construction from "@/app/assets/images/axle.png";
