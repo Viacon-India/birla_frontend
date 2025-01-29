@@ -1294,7 +1294,7 @@ const Segments = ({ pageData, pagination }) => {
           searchParams.append("rim_recommended", queryToStringValue[2]);
         }
         filterQueries.push(
-          `filters[tables][table][row][rim_recommended][$eq]=${queryToStringValue[2]}`
+          `filters[tables][table][row][size][$contains]=${queryToStringValue[2]}`
         );
       } else {
         if (searchParams.has("rim_recommended"))
@@ -1345,7 +1345,7 @@ const Segments = ({ pageData, pagination }) => {
           searchParams.append("rim_recommended", queryToStringValue[1]);
         }
         filterQueries.push(
-          `filters[tables][table][row][rim_recommended][$eq]=${queryToStringValue[1]}`
+          `filters[tables][table][row][size][$contains]=${queryToStringValue[1]}`
         );
       } else {
         if (searchParams.has("rim_recommended"))
@@ -1499,7 +1499,7 @@ const Segments = ({ pageData, pagination }) => {
         machineryOptions.add(row.machinery.name);
       }
       if (row.rim_recommended) {
-        rimOptions.add(row.rim_recommended);
+        rimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]+'"');
       }
       if (row.size) {
         sizeOptions.add(row.size);
@@ -1614,7 +1614,7 @@ const Segments = ({ pageData, pagination }) => {
                       {filtersArray[index].sort().map((item) => (
                         <option
                           key={item.id}
-                          value={item}
+                          value={item.replace(/"/g, '')}
                           selected={
                             selectURLParameter[index] == item ? "selected" : ""
                           }
