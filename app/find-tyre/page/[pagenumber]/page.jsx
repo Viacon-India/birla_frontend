@@ -163,7 +163,7 @@ const FindTyre = ({ params }) => {
           searchParams.append("rim_recommended", queryToStringValue[2]);
         }
         filterQueries.push(
-          `filters[tables][table][row][rim_recommended][$eq]=${queryToStringValue[2]}`
+          `filters[tables][table][row][size][$contains]=${queryToStringValue[2]}`
         );
       } else {
         if (searchParams.has("rim_recommended"))
@@ -214,7 +214,7 @@ const FindTyre = ({ params }) => {
           searchParams.append("rim_recommended", queryToStringValue[1]);
         }
         filterQueries.push(
-          `filters[tables][table][row][rim_recommended][$eq]=${queryToStringValue[1]}`
+          `filters[tables][table][row][size][$contains]=${queryToStringValue[1]}`
         );
       } else {
         if (searchParams.has("rim_recommended"))
@@ -382,8 +382,8 @@ const FindTyre = ({ params }) => {
       if (row.machinery && row.machinery.name) {
         machineryOptions.add(row.machinery.name);
       }
-      if (row.rim_recommended) {
-        rimOptions.add(row.rim_recommended);
+      if (row.size) {
+        rimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]+'"');
       }
       if (row.size) {
         sizeOptions.add(row.size);
@@ -585,7 +585,7 @@ const FindTyre = ({ params }) => {
                                                     .map((item) => (
                                                       <option
                                                         key={item.id}
-                                                        value={item}
+                                                        value={item.replace(/"/g, '')}
                                                         selected={
                                                           selectURLParameter[
                                                             index
