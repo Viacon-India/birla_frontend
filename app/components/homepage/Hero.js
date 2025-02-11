@@ -21,16 +21,37 @@ import { MainButton, SmallButton } from "../pageCommon/pageCommon";
 
 export default function Hero({ Data }) {
   const [storedValue, setStoredValue] = useState(null);
+  const swiperRef = useRef(null);
 
   const handleSave = () => {
     if (typeof window !== "undefined") {
-      sessionStorage.setItem("preloader", 'watched');
+      sessionStorage.setItem("preloader", "watched");
     }
   };
 
   const handleVideoEnd = () => {
     $("#preloader").css("transform", "translateY(-150%)");
     handleSave();
+  };
+
+  const handleVideoPlay = (videoElement) => {
+    videoElement.addEventListener("loadedmetadata", () => {
+      const duration = videoElement.duration * 1000; // Convert seconds to milliseconds
+
+      // Schedule the slide change after the video ends
+      setTimeout(() => {
+        if (swiperRef.current && swiperRef.current.slideNext) {
+          swiperRef.current.slideNext();
+        }
+      }, duration);
+    });
+
+    // In case the video ends before the timeout (for extra safety)
+    videoElement.addEventListener("ended", () => {
+      if (swiperRef.current && swiperRef.current.slideNext) {
+        swiperRef.current.slideNext();
+      }
+    });
   };
 
   useEffect(() => {
@@ -46,7 +67,7 @@ export default function Hero({ Data }) {
 
   return (
     <div className="relative pb-5 pd:pb-8 xl:pb-[50px] 2xl:pb-[75px]">
-      {storedValue !== "watched" &&
+      {storedValue !== "watched" && (
         <div id="preloader" className="loader-sec">
           <div className="video-wrapper">
             <video
@@ -56,36 +77,25 @@ export default function Hero({ Data }) {
               playsInline
               onEnded={handleVideoEnd}
             >
-              <source
-                src={"/assets/videos/tyre-loader-6.mp4"}
-                type="video/mp4"
-              />
+              <source src={"/assets/videos/tyre-loader-6.mp4"} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
         </div>
-      }
+      )}
+
       {Data?.data && Data.data.length > 0 && (
         <Swiper
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
           loop={true}
-          speed={3000}
+          speed={1000} // Speed of slide transition
           effect={"creative"}
           creativeEffect={{
-            prev: {
-              shadow: true,
-              // translate: [0, 0, -300],
-            },
-            next: {
-              translate: ["100%", 0, 0],
-            },
+            prev: { shadow: true },
+            next: { translate: ["100%", 0, 0] },
           }}
-          pagination={{
-            clickable: true,
-          }}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
+          pagination={{ clickable: true }}
+          autoplay={false} // Disable default autoplay to handle it manually
           modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
           className="mySwiper relative !pt-[74px] md:!pt-0 !h-[264px] md:!h-[430px] lg:!h-[550px] xl:!h-[100vh]"
         >
@@ -94,6 +104,7 @@ export default function Hero({ Data }) {
               <MainButton />
             </div>
           </div>
+
           {Data.data.map(
             (slider) =>
               slider.attributes?.permalink && (
@@ -104,16 +115,15 @@ export default function Hero({ Data }) {
                       {slider.attributes?.hero && (
                         <video
                           className="absolute top-0 w-full h-auto object-contain"
-                          loop
+                          loop={false} // Play video once
                           autoPlay
                           muted
                           playsInline
                           preload="auto"
+                          onPlay={(e) => handleVideoPlay(e.target)}
                         >
                           <source
-                            src={getStrapiMedia(
-                              slider.attributes.hero?.data?.attributes.url
-                            )}
+                            src={getStrapiMedia(slider.attributes.hero?.data?.attributes.url)}
                             type="video/mp4"
                           />
                           Your browser does not support the video tag.
@@ -140,10 +150,7 @@ export default function Hero({ Data }) {
                               delay={0.05}
                             />
                           )}
-                          <Link
-                            href={slider.attributes.permalink}
-                            className="explore-btn"
-                          >
+                          <Link href={slider.attributes.permalink} className="explore-btn">
                             <span>Explore Now</span>
                             <div className="wave"></div>
                           </Link>
@@ -154,24 +161,23 @@ export default function Hero({ Data }) {
                 </SwiperSlide>
               )
           )}
+
+          {/* Static Slide for Additional Video */}
           <SwiperSlide>
             <div className="swiper-card-main">
-              {/* <span className="slider-overlay"></span> */}
               <div className="w-full !h-full flex items-end pb-8 md:pb-2 lg:pb-[24px] xl:pb-[60px]">
-                  <video
-                    className="absolute top-0 w-full h-auto object-contain"
-                    loop
-                    autoPlay
-                    muted
-                    playsInline
-                    preload="auto"
-                  >
-                    <source
-                      src="/assets/videos/tyre-loader-6.mp4"
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
+                <video
+                  className="absolute top-0 w-full h-auto object-contain"
+                  loop={false}
+                  autoPlay
+                  muted
+                  playsInline
+                  preload="auto"
+                  onPlay={(e) => handleVideoPlay(e.target)}
+                >
+                  <source src="/assets/videos/tyre-loader-6.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
           </SwiperSlide>
