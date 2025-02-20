@@ -1,6 +1,5 @@
 "use client";
 
-import { Float } from "../pageCommon/pageCommon";
 import React, { useRef, useState, useEffect } from "react";
 import { getStrapiMedia } from "@/lib/utils";
 import $ from "jquery";
@@ -20,8 +19,16 @@ import LetterPullup from "@/components/LetterPullup";
 import { MainButton, SmallButton } from "../pageCommon/pageCommon";
 
 export default function Hero({ Data }) {
+  const [isPreloaderComplete, setIsPreloaderComplete] = useState(false);
   const [storedValue, setStoredValue] = useState(null);
   const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const value = sessionStorage.getItem("preloader");
+      setStoredValue(value);
+    }
+  }, []);
 
   const handleSave = () => {
     if (typeof window !== "undefined") {
@@ -29,24 +36,19 @@ export default function Hero({ Data }) {
     }
   };
 
+  // Preloader Video Ends
   const handleVideoEnd = () => {
     $("#preloader").css("transform", "translateY(-150%)");
     handleSave();
+    setIsPreloaderComplete(true); // Set preloader completion state
   };
 
-  const handleVideoPlay = (videoElement) => {
-    videoElement.addEventListener("loadedmetadata", () => {
-      const duration = videoElement.duration * 1000; // Convert seconds to milliseconds
+  const handleSwiperVideoPlay = (videoElement) => {
+    if (!isPreloaderComplete) return; // Ensure videos start only after preloader finishes
 
-      // Schedule the slide change after the video ends
-      setTimeout(() => {
-        if (swiperRef.current && swiperRef.current.slideNext) {
-          swiperRef.current.slideNext();
-        }
-      }, duration);
-    });
-
-    // In case the video ends before the timeout (for extra safety)
+    videoElement.currentTime = 0;
+    videoElement.play();
+    
     videoElement.addEventListener("ended", () => {
       if (swiperRef.current && swiperRef.current.slideNext) {
         swiperRef.current.slideNext();
@@ -57,13 +59,6 @@ export default function Hero({ Data }) {
   useEffect(() => {
     $("#preloader").css("transition", "transform 1.5s linear");
   }, [Data]);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const value = sessionStorage.getItem("preloader");
-      setStoredValue(value);
-    }
-  }, []);
 
   return (
     <div className="relative pb-5 pd:pb-8 xl:pb-[50px] 2xl:pb-[75px]">
@@ -87,29 +82,34 @@ export default function Hero({ Data }) {
         </div>
       )}
 
-      {Data?.data && Data.data.length > 0 && (
+      {isPreloaderComplete && Data?.data?.length > 0 && (
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           onSlideChange={(swiper) => {
             setTimeout(() => {
-              const activeSlide = swiper.slides[swiper.activeIndex];
-              const videoElement = activeSlide.querySelector("video");
-
-              if (videoElement) {
-                videoElement.currentTime = 0; // Reset video to start
-                videoElement.play(); // Play video again
+              if (swiper && swiper.slides && swiper.activeIndex >= 0) {
+                const activeSlide = swiper.slides[swiper.activeIndex];
+                
+                if (activeSlide) {
+                  const videoElement = activeSlide.querySelector("video");
+                  
+                  if (videoElement) {
+                    handleSwiperVideoPlay(videoElement);
+                  }
+                }
               }
-            }, 100); // Small delay to ensure smooth transition
+            }, 100); // Delay to ensure smooth transition
           }}
+          
           loop={true}
-          speed={1000} // Speed of slide transition
+          speed={1000}
           effect={"creative"}
           creativeEffect={{
             prev: { shadow: true },
             next: { translate: ["100%", 0, 0] },
           }}
           pagination={{ clickable: true }}
-          autoplay={false} // Disable default autoplay to handle it manually
+          autoplay={false}
           modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
           className="mySwiper relative !pt-[74px] md:!pt-0 !h-[264px] md:!h-[430px] lg:!h-[550px] xl:!h-[100vh]"
         >
@@ -119,66 +119,64 @@ export default function Hero({ Data }) {
             </div>
           </div>
 
-          {Data.data.map(
-            (slider) =>
-              slider.attributes?.permalink && (
-                <SwiperSlide key={slider.id}>
-                  <div className="swiper-card-main">
-                    <span className="slider-overlay"></span>
-                    <div className="w-full !h-full flex items-end pb-8 md:pb-2 lg:pb-[24px] xl:pb-[60px]">
-                      {slider.attributes?.hero && (
-                        <video
-                          className="absolute top-0 w-full h-auto object-contain"
-                          loop={false} // Play video once
-                          autoPlay
-                          muted
-                          playsInline
-                          preload="auto"
-                          onPlay={(e) => handleVideoPlay(e.target)}
-                        >
-                          <source
-                            src={getStrapiMedia(
-                              slider.attributes.hero?.data?.attributes.url
-                            )}
-                            type="video/mp4"
+          {Data.data.map((slider) =>
+            slider.attributes?.permalink ? (
+              <SwiperSlide key={slider.id}>
+                <div className="swiper-card-main">
+                  <span className="slider-overlay"></span>
+                  <div className="w-full !h-full flex items-end pb-8 md:pb-2 lg:pb-[24px] xl:pb-[60px]">
+                    {slider.attributes?.hero && (
+                      <video
+                        className="absolute top-0 w-full h-auto object-contain"
+                        loop={false}
+                        muted
+                        playsInline
+                        preload="auto"
+                        onPlay={(e) => handleSwiperVideoPlay(e.target)}
+                      >
+                        <source
+                          src={getStrapiMedia(
+                            slider.attributes.hero?.data?.attributes.url
+                          )}
+                          type="video/mp4"
+                        />
+                        Your browser does not support the video tag.
+                      </video>
+                    )}
+                    <div className="container mx-auto">
+                      <div className="swiper-card relative z-10">
+                        {slider.attributes?.title && (
+                          <GradualSpacing
+                            className="hero-sec-heading hidden md:block !uppercase"
+                            text={slider.attributes.title}
                           />
-                          Your browser does not support the video tag.
-                        </video>
-                      )}
-                      <div className="container mx-auto">
-                        <div className="swiper-card relative z-10">
-                          {slider.attributes?.title && (
-                            <GradualSpacing
-                              className="hero-sec-heading hidden md:block !uppercase"
-                              text={slider.attributes.title}
-                            />
-                          )}
-                          {slider.attributes?.title && (
-                            <GradualSpacing
-                              className="hero-sec-heading md:hidden"
-                              text={slider.attributes.name}
-                            />
-                          )}
-                          {slider.attributes?.tag_line && (
-                            <LetterPullup
-                              className="section-subheading"
-                              words={slider.attributes.tag_line}
-                              delay={0.05}
-                            />
-                          )}
-                          <Link
-                            href={slider.attributes.permalink}
-                            className="explore-btn"
-                          >
-                            <span>Explore Now</span>
-                            <div className="wave"></div>
-                          </Link>
-                        </div>
+                        )}
+                        {slider.attributes?.title && (
+                          <GradualSpacing
+                            className="hero-sec-heading md:hidden"
+                            text={slider.attributes.name}
+                          />
+                        )}
+                        {slider.attributes?.tag_line && (
+                          <LetterPullup
+                            className="section-subheading"
+                            words={slider.attributes.tag_line}
+                            delay={0.05}
+                          />
+                        )}
+                        <Link
+                          href={slider.attributes.permalink}
+                          className="explore-btn"
+                        >
+                          <span>Explore Now</span>
+                          <div className="wave"></div>
+                        </Link>
                       </div>
                     </div>
                   </div>
-                </SwiperSlide>
-              )
+                </div>
+              </SwiperSlide>
+            ) : null
           )}
 
           {/* Static Slide for Additional Video */}
@@ -188,11 +186,10 @@ export default function Hero({ Data }) {
                 <video
                   className="absolute top-0 w-full h-auto object-contain"
                   loop={false}
-                  autoPlay
                   muted
                   playsInline
                   preload="auto"
-                  onPlay={(e) => handleVideoPlay(e.target)}
+                  onPlay={(e) => handleSwiperVideoPlay(e.target)}
                 >
                   <source
                     src="/assets/videos/tyre-loader-6.mp4"
