@@ -16,6 +16,9 @@ import {
   SingleTypeSeo,
 } from "@/app/components/pageCommon/pageCommon";
 import Banner from "@/app/assets/images/find1.jpg";
+import BannerTTB from "@/app/assets/images/find-TTB.jpg";
+import BannerOTR from "@/app/assets/images/find-OTR.jpg";
+import BannerAGRI from "@/app/assets/images/find-AGRI.jpg";
 import find2 from "@/app/assets/images/find2.png";
 import Product from "@/app/components/product/card";
 import { delay } from "framer-motion";
@@ -42,6 +45,8 @@ const FindTyre = () => {
   const pageSize = 9;
   const currentPage = 1;
   const [meta, setProductsMeta] = useState({});
+
+  const [activeBannerImage, setActiveBannerImage] = useState(BannerTTB);
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected;
@@ -75,6 +80,15 @@ const FindTyre = () => {
   };
 
   const handleClick = (category, index) => {
+
+    if (category === 'TBB' ) {
+      setActiveBannerImage(BannerTTB);
+    } else if (category === 'OTR') {
+      setActiveBannerImage(BannerOTR);
+    } else {
+      setActiveBannerImage(BannerAGRI);
+    }
+
     setProductsData([]);
     push(
       pathname.replace(
@@ -606,7 +620,7 @@ const FindTyre = () => {
                 </div>
               </div>
               <Image
-                src={Banner}
+                src={activeBannerImage}
                 alt="Hero-Banner"
                 className="absolute top-0 w-full h-full object-cover"
               />

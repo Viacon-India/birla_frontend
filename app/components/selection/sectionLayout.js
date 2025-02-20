@@ -436,7 +436,7 @@ export function ImageTitleContent({ section }) {
               />
             )}
             {section?.link && (
-              <Link href={section.link} className="more-btn">
+              <Link target="_blank" href={section.link} className="more-btn">
                 {section?.link_text}
               </Link>
             )}
