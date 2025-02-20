@@ -77,7 +77,10 @@ export default function Hero({ Data }) {
               playsInline
               onEnded={handleVideoEnd}
             >
-              <source src={"/assets/videos/tyre-loader-6.mp4"} type="video/mp4" />
+              <source
+                src={"/assets/videos/tyre-loader-6.mp4"}
+                type="video/mp4"
+              />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -87,6 +90,17 @@ export default function Hero({ Data }) {
       {Data?.data && Data.data.length > 0 && (
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSlideChange={(swiper) => {
+            setTimeout(() => {
+              const activeSlide = swiper.slides[swiper.activeIndex];
+              const videoElement = activeSlide.querySelector("video");
+
+              if (videoElement) {
+                videoElement.currentTime = 0; // Reset video to start
+                videoElement.play(); // Play video again
+              }
+            }, 100); // Small delay to ensure smooth transition
+          }}
           loop={true}
           speed={1000} // Speed of slide transition
           effect={"creative"}
@@ -123,7 +137,9 @@ export default function Hero({ Data }) {
                           onPlay={(e) => handleVideoPlay(e.target)}
                         >
                           <source
-                            src={getStrapiMedia(slider.attributes.hero?.data?.attributes.url)}
+                            src={getStrapiMedia(
+                              slider.attributes.hero?.data?.attributes.url
+                            )}
                             type="video/mp4"
                           />
                           Your browser does not support the video tag.
@@ -150,7 +166,10 @@ export default function Hero({ Data }) {
                               delay={0.05}
                             />
                           )}
-                          <Link href={slider.attributes.permalink} className="explore-btn">
+                          <Link
+                            href={slider.attributes.permalink}
+                            className="explore-btn"
+                          >
                             <span>Explore Now</span>
                             <div className="wave"></div>
                           </Link>
@@ -175,7 +194,10 @@ export default function Hero({ Data }) {
                   preload="auto"
                   onPlay={(e) => handleVideoPlay(e.target)}
                 >
-                  <source src="/assets/videos/tyre-loader-6.mp4" type="video/mp4" />
+                  <source
+                    src="/assets/videos/tyre-loader-6.mp4"
+                    type="video/mp4"
+                  />
                   Your browser does not support the video tag.
                 </video>
               </div>
