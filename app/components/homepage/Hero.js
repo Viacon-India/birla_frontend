@@ -112,7 +112,7 @@ export default function Hero({ Data }) {
               }, 100); // Delay to ensure smooth transition
             }}
             loop={true}
-            speed={1000}
+            speed={3000}
             effect={"creative"}
             creativeEffect={{
               prev: { shadow: true },
