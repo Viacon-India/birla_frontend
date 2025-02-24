@@ -119,6 +119,8 @@ export default function Product({ data }) {
     setFilteredSizes(filterSizes(data));
   }, [machinery, rim_recommended, size, pattern_type, sub_segment, data]);
 
+  let newTableData = [];
+
   return (
     <div className="new-product-card">
       <Link href={data.permalink}>
@@ -340,10 +342,14 @@ export default function Product({ data }) {
           data.tables.table.length > 0 &&
           data.tables.table.map(
             (table) =>
+              
               table?.standard &&
               table.standard == "USA" &&
               table?.row &&
               table.row.length > 0 && (
+
+                
+
                 <div className="flex gap-3 mt-2 relative" key={table.id}>
                   <Swiper
                     navigation={true}
@@ -353,11 +359,35 @@ export default function Product({ data }) {
                     freeMode={true}
                     className="chipSwiper !w-[85%] !ml-0 !static"
                   >
-                    {table.row.map((row) => (
+
+                    {table.row.forEach(function(row, index) {
+                      newTableData.push(row.size);
+                    })}
+
+                    {[...new Set(newTableData)]
+                      .sort((a2, b2) => {
+                        let valueA2, valueB2;
+                        const sortOrder2 = "asc"; // intial order
+                        const [sizeA2, sizeB2] = a2 ? a2.split("-").map(Number) : [0, 0];
+                        const [sizeC2, sizeD2] = b2 ? b2.split("-").map(Number) : [0, 0];
+                        valueA2 = sizeA2 * 1000 + sizeB2;
+                        valueB2 = sizeC2 * 1000 + sizeD2;
+                        if (sortOrder2 === "asc") {
+                          return valueA2 < valueB2 ? -1 : valueA2 > valueB2 ? 1 : 0;
+                        } else {
+                          return valueA2 > valueB2 ? -1 : valueA2 < valueB2 ? 1 : 0;
+                        }
+                    })
+                    .map((newRow, index) => (
+                      <SwiperSlide className="!w-fit" key={index}>
+                        <button className="size-chip">{newRow}</button>
+                      </SwiperSlide>
+                    ))}
+                    {/* {table.row.map((row) => (
                       <SwiperSlide className="!w-fit" key={row.id}>
                         <button className="size-chip">{row.size}</button>
                       </SwiperSlide>
-                    ))}
+                    ))} */}
                   </Swiper>
                 </div>
               )
