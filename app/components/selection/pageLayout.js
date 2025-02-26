@@ -30,6 +30,9 @@ import LastBg from "../../assets/images/footerupper.png";
 import errorImg from "../../assets/images/404-tyre.gif";
 import loadGif from "../../assets/images/loading.gif";
 
+import { useRef } from "react";
+
+
 export default function PageSelection({
   page,
   slugs,
@@ -1951,6 +1954,48 @@ export function Products({ pageData }) {
   console.log(findMostCommonValue(mostVisited));
 
 
+  const contentRef = useRef(null);
+
+
+  const getLeaflet = async () => {
+    if (contentRef.current) {
+      var htmlContent =contentRef.current.innerHTML; // Display HTML in an alert
+
+
+      try {
+        const response = await fetch("/api/pdf", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ htmlContent }),
+        });
+  
+        if (!response.ok) throw new Error("Failed to generate PDF");
+  
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+  
+        // Create a link element and trigger download
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "document.pdf";
+        document.body.appendChild(link);
+        link.click();
+  
+        // Cleanup
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      } catch (error) {
+        console.error("Error downloading PDF:", error);
+      } finally {
+        // setLoading(false);
+      }
+
+
+    }
+
+  }
+
+
   return (
     <>
       <CollectionTypeSeo page="product" pageData={pageData} />
@@ -1996,7 +2041,7 @@ export function Products({ pageData }) {
               {pageData?.name}
             </p>
           </div>
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 2xl:gap-[60px] mt-6 xl:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
+          <div id="details" ref={contentRef} className="flex flex-col lg:flex-row gap-8 lg:gap-10 2xl:gap-[60px] mt-6 xl:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
             <div className="productImageWrapper w-full lg:w-[55%] xl:w-[45%]">
               <div className="product-image-sec flex flex-col-reverse md:flex-row gap-5">
                 <Swiper
@@ -2302,6 +2347,20 @@ export function Products({ pageData }) {
                       </Link>
                     </div>
                   )}
+
+
+                    <div className="flex items-center gap-3 relative z-10">
+                      <Link onClick={getLeaflet}
+                        href=""
+                        className="flex items-center gap-2 text-primary border border-primary rounded-[4px] py-1 px-2 text-[10px] md:text-[16px]"
+                        target="_blank"
+                      >                        
+                        Download Product Leaflet2
+                      </Link>
+                    </div>
+
+
+
                 </div>
                 {pageData.tables?.table && pageData.tables.table.length > 1 && (
                   <div className="country-selection flex justify-between items-center lg:flex-col lg:items-start">
