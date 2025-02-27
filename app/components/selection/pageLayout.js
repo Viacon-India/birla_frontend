@@ -1955,11 +1955,23 @@ export function Products({ pageData }) {
 
 
   const contentRef = useRef(null);
+  const tableRef = useRef(null);
 
 
   const getLeaflet = async () => {
     if (contentRef.current) {
       var htmlContent =contentRef.current.innerHTML; // Display HTML in an alert
+
+      if(tableRef.current){
+        var tableContent = tableRef.current.innerHTML;
+
+        htmlContent += tableContent;
+
+      }
+
+      console.log(htmlContent);
+
+
 
 
       try {
@@ -2321,7 +2333,7 @@ export function Products({ pageData }) {
                       {pageData.tables.title}
                     </h2>
                   )}
-                  {pageData?.catalogue && (
+                  {/* {pageData?.catalogue && (
                     <div className="cat-btn-sec flex items-center gap-3 relative z-10">
                       <Link
                         href={getStrapiMedia(pageData.catalogue.url)}
@@ -2346,16 +2358,15 @@ export function Products({ pageData }) {
                         Download Product Leaflet
                       </Link>
                     </div>
-                  )}
+                  )} */}
 
 
                     <div className="flex items-center gap-3 relative z-10">
                       <Link onClick={getLeaflet}
                         href=""
                         className="flex items-center gap-2 text-primary border border-primary rounded-[4px] py-1 px-2 text-[10px] md:text-[16px]"
-                        target="_blank"
-                      >                        
-                        Download Product Leaflet2
+                        >                        
+                        Download Product Leaflet
                       </Link>
                     </div>
 
@@ -2399,7 +2410,7 @@ export function Products({ pageData }) {
                   table?.row &&
                   table.row.length > 0 &&
                   table.standard === selectedStandard ? (
-                    <div
+                    <div ref={tableRef} 
                       className="product-detail-table w-full overflow-x-auto mt-3"
                       key={table.id}
                     >

@@ -23,6 +23,7 @@
     "eslint-config-next": "14.2.4",
     "font-awesome": "^4.7.0",
     "framer-motion": "^11.3.19",
+    "fs": "^0.0.1-security",
     "gsap": "^3.12.5",
     "gsap-trial": "^3.12.5",
     "husky": "^9.1.5",
