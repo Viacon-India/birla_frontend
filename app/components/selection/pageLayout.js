@@ -2365,6 +2365,7 @@ export function Products({ pageData }) {
 
                     <div className="flex items-center gap-3 relative z-10">
                       <Link onClick={getLeaflet}
+                      target="_blank"
                         href=""
                         className="flex items-center gap-2 text-primary border border-primary rounded-[4px] py-1 px-2 text-[10px] md:text-[16px]"
                         >                        
