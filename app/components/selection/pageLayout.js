@@ -1960,19 +1960,21 @@ export function Products({ pageData }) {
 
   const getLeaflet = async () => {
     if (contentRef.current) {
-      var htmlContent =contentRef.current.innerHTML; // Display HTML in an alert
+      var htmlContent = '<div style="padding:10px;">';
+      htmlContent += contentRef.current.innerHTML; // Display HTML in an alert
 
       if(tableRef.current){
-        var tableContent = tableRef.current.innerHTML;
+        var tableContent = '<div class="table-sec pt-8 md:pt-12 2xl:pt-[60px]"><div class="product-detail-table w-full mt-3">';
+        tableContent += tableRef.current.innerHTML;
+        tableContent += '</div></div>';
 
         htmlContent += tableContent;
 
       }
 
-      console.log(htmlContent);
+      htmlContent += '</div>';
 
-
-
+      // console.log(htmlContent);
 
       try {
         const response = await fetch("/api/pdf", {
@@ -2081,7 +2083,7 @@ export function Products({ pageData }) {
                     </SwiperSlide>
                   ))}
                 </Swiper>
-                <div className="single-image-slider relative w-full md:w-[80%] h-full bg-[#ffffff] rounded-[12px]">
+                <div className="product-slider single-image-slider relative w-full md:w-[80%] h-full bg-[#ffffff] rounded-[12px]">
         <span
           className={`bg-primary py-1 px-10 rounded-tr-[12px] text-[#FFFFFF] text-[12px] md:text-[18px] font-medium absolute right-0 top-0 overflow-hidden ${
             pageData?.premium ? "prem-product-tag" : ""
