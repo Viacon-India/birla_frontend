@@ -1959,6 +1959,10 @@ export function Products({ pageData }) {
 
 
   const getLeaflet = async () => {
+
+    // const name = document.getElementById("product-name");
+    // console.log(name);
+
     if (contentRef.current) {
       var htmlContent = '<div style="padding:10px;">';
       htmlContent += contentRef.current.innerHTML; // Display HTML in an alert
@@ -2246,7 +2250,7 @@ export function Products({ pageData }) {
                 </div>
               )}
             </div>
-            <div className="product-detail-sec w-ful lg:w-[45%] xl:w-[55%]">
+            <div className="product-detail-sec w-ful lg:w-[45%] xl:w-[55%]" id="product-name">
               {pageData?.name && (
                 <h2 className="text-secondary text-[28px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px]">
                   {pageData.name}
