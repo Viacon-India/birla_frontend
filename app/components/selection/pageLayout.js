@@ -346,9 +346,9 @@ export function ContactUs({ pageData }) {
                                         return <h3>{children}</h3>;
                                       case 4:
                                         return (
-                                          <h4 className="text-[22px] text-[#4F5662]">
+                                          <p>
                                             {children}
-                                          </h4>
+                                          </p>
                                         );
                                       case 5:
                                         return <h5>{children}</h5>;
@@ -2306,7 +2306,7 @@ export function Products({ pageData }) {
                           );
                         },
                         "list-item": (props) => (
-                          <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-1 text-[#3D434C]">
+                          <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-1 text-[#3D434C] capitalize">
                             {props.children}
                           </li>
                         ),
