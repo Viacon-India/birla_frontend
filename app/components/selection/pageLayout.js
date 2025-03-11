@@ -2306,7 +2306,7 @@ export function Products({ pageData }) {
                           );
                         },
                         "list-item": (props) => (
-                          <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-1 text-[#3D434C] capitalize">
+                          <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-1 text-[#3D434C] lowercase first-letter:capitalize">
                             {props.children}
                           </li>
                         ),
