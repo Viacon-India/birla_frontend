@@ -29,12 +29,7 @@ export async function POST(req) {
             <link rel="stylesheet" href="http://birlatyre.viaconprojects.com:3000/_next/static/css/app/page.css?v=1740721215072">
             <link rel="stylesheet" href="http://birlatyre.viaconprojects.com:3000/css/page.css" >
             <style>
-              .product-slider .swiper .swiper-slide, .swiper-button-prev, .swiper-button-next {
-                display: none !important;
-              }
-              .product-slider .swiper .swiper-slide-active {
-                display: block !important;
-              }
+              .product-slider .swiper-slide:not(.swiper-slide-active) { display: none; }
               .product-detail-table th, td {
                   min-width: 68px !important;
                   padding: 2px !important;
