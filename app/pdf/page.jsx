@@ -36,7 +36,7 @@ const DownloadPDF = () => {
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (error) {
-      console.error("Error downloading PDF:", error);
+      console.error("Old Error downloading PDF:", error);
     } finally {
       setLoading(false);
     }
@@ -45,7 +45,7 @@ const DownloadPDF = () => {
   return (
     <div>
       <button onClick={downloadPDF} disabled={loading}>
-        {loading ? "Generating PDF..." : "Download PDF"}
+        {loading ? "Old Generating PDF..." : "Download PDF"}
       </button>
     </div>
   );
