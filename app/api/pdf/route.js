@@ -43,7 +43,20 @@ export async function POST(req) {
     // console.log(cssPath);
     // return 'Okay';
 
-    const browser = await puppeteer.launch();
+    // const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      headless: 'new', // Use 'true' or 'new' for headless mode in latest Puppeteer versions
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-accelerated-2d-canvas",
+        "--no-first-run",
+        "--no-zygote",
+        "--single-process", 
+        "--disable-gpu"
+      ],
+    });
     const page = await browser.newPage();
     await page.setContent(htmlContent2, { waitUntil: 'networkidle0' });
 
