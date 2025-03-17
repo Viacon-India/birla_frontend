@@ -27,6 +27,12 @@ export async function POST(req) {
     const htmlContent2 = `
     <html>
       <head>            
+            <link rel="stylesheet" href="http://birlatyre.viaconprojects.com:3000/css/global.css">
+            <link rel="stylesheet" href="http://birlatyre.viaconprojects.com:3000/css/layout.css">
+            
+            <link rel="stylesheet" href="http://birlatyre.viaconprojects.com:3000/_next/static/css/app/page.css?v=1740721215072">
+            <link rel="stylesheet" href="http://birlatyre.viaconprojects.com:3000/css/page.css" >
+
             <style>
               .product-slider .swiper-slide:not(.swiper-slide-active) { display: none; }
               .product-detail-table th, td {
