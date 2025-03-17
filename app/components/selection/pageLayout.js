@@ -1978,7 +1978,7 @@ export function Products({ pageData }) {
 
       htmlContent += '</div>';
 
-      // console.log(htmlContent);
+      console.log('htmlContent');
 
       try {
         const response = await fetch("/api/pdf", {
@@ -1987,7 +1987,7 @@ export function Products({ pageData }) {
           body: JSON.stringify({ htmlContent }),
         });
   
-        if (!response.ok) throw new Error("Failed to generate PDF");
+        if (!response.ok) throw new Error("Failed to generate PDF!");
   
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
@@ -2003,7 +2003,7 @@ export function Products({ pageData }) {
         document.body.removeChild(link);
         window.URL.revokeObjectURL(url);
       } catch (error) {
-        console.error("Error downloading PDF:", error);
+        console.error("!Error downloading PDF:", error);
       } finally {
         // setLoading(false);
       }

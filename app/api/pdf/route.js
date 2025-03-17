@@ -3,6 +3,8 @@ import puppeteer from 'puppeteer';
 import path from 'path';
 
 export async function POST(req) {
+  console.log('Entered');
+  
   try {
 
     const { htmlContent } = await req.json();
