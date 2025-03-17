@@ -1,6 +1,8 @@
-import puppeteer from 'puppeteer';
+// import puppeteer from 'puppeteer';
 // import fs from 'fs';
 import path from 'path';
+import puppeteer from "puppeteer-core";
+// import chromium from "@sparticuz/chromium"; // For Vercel & AWS Lambda
 
 export async function POST(req) {
   console.log('Entered');
@@ -45,17 +47,9 @@ export async function POST(req) {
 
     // const browser = await puppeteer.launch();
     const browser = await puppeteer.launch({
-      headless: 'new', // Use 'true' or 'new' for headless mode in latest Puppeteer versions
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-dev-shm-usage",
-        "--disable-accelerated-2d-canvas",
-        "--no-first-run",
-        "--no-zygote",
-        "--single-process", 
-        "--disable-gpu"
-      ],
+      executablePath: "/usr/bin/chromium-browser", // or your Chromium path
+      headless: "new",
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     const page = await browser.newPage();
     await page.setContent(htmlContent2, { waitUntil: 'networkidle0' });
