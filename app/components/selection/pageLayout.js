@@ -1970,7 +1970,9 @@ export function Products({ pageData }) {
       if(tableRef.current){
         var tableContent = '<div class="table-sec pt-8 md:pt-12 2xl:pt-[60px]"><div class="product-detail-table w-full mt-3">';
         tableContent += tableRef.current.innerHTML;
-        tableContent += '</div></div>';
+        tableContent += '</div>';
+        tableContent += '<div class="page-break"></div>';
+        tableContent += '</div>';
 
         htmlContent += tableContent;
 
