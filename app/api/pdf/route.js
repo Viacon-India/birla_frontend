@@ -1,7 +1,7 @@
-// import puppeteer from 'puppeteer';
+// import puppeteer from 'puppeteer'; //for local
 // import fs from 'fs';
 import path from 'path';
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer-core"; //For live
 // import chromium from "@sparticuz/chromium"; // For Vercel & AWS Lambda
 
 export async function POST(req) {
@@ -36,12 +36,15 @@ export async function POST(req) {
             <style>
               .product-slider .swiper-slide { opacity: 0; transition: opacity 0.3s; }
               .product-slider .swiper-slide.swiper-slide-active { opacity: 1; }
-              
+              .page-break { page-break-before: always; }
               .product-detail-table th, td {
                   min-width: 68px !important;
                   padding: 2px !important;
                   font-size: 10px;
               }
+              h2 { font-size: 89px !important;}
+              p { font-size: 48px !important; }
+              li { font-size: 36px !important; }
             </style>
       </head>
       <body>
@@ -50,19 +53,19 @@ export async function POST(req) {
     </html>
     `;
 
-    // console.log(htmlContent2);
+    console.log(htmlContent2);
     // return 'Okay';
 
-    // const browser = await puppeteer.launch();
+    // const browser = await puppeteer.launch(); //For local
     const browser = await puppeteer.launch({
       executablePath: "/usr/bin/chromium-browser", // or your Chromium path
       headless: "new",
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
+    }); //For live
     const page = await browser.newPage();
     await page.setContent(htmlContent2, { waitUntil: 'networkidle0' });
 
-    const pdfBuffer = await page.pdf({ format: 'A4', printBackground: true });
+    const pdfBuffer = await page.pdf({ format: 'A3', printBackground: true });
     await browser.close();
 
     return new Response(pdfBuffer, {
