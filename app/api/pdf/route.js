@@ -34,7 +34,9 @@ export async function POST(req) {
             <link rel="stylesheet" href="http://birlatyre.viaconprojects.com:3000/css/page.css" >
 
             <style>
-              .product-slider .swiper-slide:not(.swiper-slide-active) { display: none; }
+              .product-slider .swiper-slide { opacity: 0; transition: opacity 0.3s; }
+              .product-slider .swiper-slide.swiper-slide-active { opacity: 1; }
+              
               .product-detail-table th, td {
                   min-width: 68px !important;
                   padding: 2px !important;
@@ -48,7 +50,7 @@ export async function POST(req) {
     </html>
     `;
 
-    // console.log(cssPath);
+    // console.log(htmlContent2);
     // return 'Okay';
 
     // const browser = await puppeteer.launch();
