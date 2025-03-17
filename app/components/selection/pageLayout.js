@@ -1960,8 +1960,8 @@ export function Products({ pageData }) {
 
   const getLeaflet = async () => {
 
-    // const name = document.getElementById("product-name");
-    // console.log(name);
+    const productName = document.querySelector("#product-name h2").innerText.trim();
+    console.log(productName);
 
     if (contentRef.current) {
       var htmlContent = '<div style="padding:10px;">';
@@ -1978,7 +1978,7 @@ export function Products({ pageData }) {
 
       htmlContent += '</div>';
 
-      console.log('htmlContent');
+      // console.log('htmlContent');
 
       try {
         const response = await fetch("/api/pdf", {
@@ -1995,7 +1995,7 @@ export function Products({ pageData }) {
         // Create a link element and trigger download
         const link = document.createElement("a");
         link.href = url;
-        link.download = "document.pdf";
+        link.download = `${productName}.pdf`;
         document.body.appendChild(link);
         link.click();
   
