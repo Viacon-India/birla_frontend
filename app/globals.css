@@ -1101,7 +1101,7 @@ a.current_dot {
   @apply text-[#1A1D21] text-[14px] md:text-[15px] leading-[1.6] mb-1 last:mb-0
 }
 .box-content-sec h3{
-  @apply text-secondary text-[24px] md:text-[32px] font-bold capitalize
+  @apply text-secondary text-[24px] md:text-[32px] font-bold
 }
 .vast-card figure{
   @apply w-full h-[200px] md:h-[180px] lg:h-[220px] xl:h-[252px] mb-2 md:mb-4 2xl:mb-6 relative overflow-hidden 
