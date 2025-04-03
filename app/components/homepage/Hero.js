@@ -78,7 +78,7 @@ export default function Hero({ Data }) {
             <video
               className="w-full h-fit object-contain"
               autoPlay
-              muted
+              unmuted
               playsInline
               onEnded={handleVideoEnd}
             >
@@ -196,7 +196,7 @@ export default function Hero({ Data }) {
                   <video
                     className="absolute top-0 w-full h-auto object-contain"
                     loop={false}
-                    muted
+                    unmuted
                     playsInline
                     preload="auto"
                     onPlay={(e) => handleSwiperVideoPlay(e.target)}
