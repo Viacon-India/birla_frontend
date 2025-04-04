@@ -69,6 +69,7 @@ export default function Hero({ Data }) {
       setStoredValue(value);
     }
   }, []);
+  
 
   return (
     <div className="relative pb-5 pd:pb-8 xl:pb-[50px] 2xl:pb-[75px]">
@@ -77,13 +78,13 @@ export default function Hero({ Data }) {
           <div className="video-wrapper">
             <video
               className="w-full h-fit object-contain"
+              muted
               autoPlay
-              unmuted
               playsInline
               onEnded={handleVideoEnd}
             >
               <source
-                src={"/assets/videos/tyre-loader-6.mp4"}
+                src={"/assets/videos/tyre-loader-7.mp4"}
                 type="video/mp4"
               />
               Your browser does not support the video tag.
@@ -196,13 +197,13 @@ export default function Hero({ Data }) {
                   <video
                     className="absolute top-0 w-full h-auto object-contain"
                     loop={false}
-                    unmuted
+                    muted
                     playsInline
                     preload="auto"
                     onPlay={(e) => handleSwiperVideoPlay(e.target)}
                   >
                     <source
-                      src="/assets/videos/tyre-loader-6.mp4"
+                      src="/assets/videos/tyre-loader-7.mp4"
                       type="video/mp4"
                     />
                     Your browser does not support the video tag.
