@@ -69,11 +69,12 @@ export default function Hero({ Data }) {
       setStoredValue(value);
     }
   }, []);
-  
 
   return (
     <div className="relative pb-5 pd:pb-8 xl:pb-[50px] 2xl:pb-[75px]">
-      {storedValue !== "watched" && (
+
+      {/* one time preloader load */}
+      {/* {storedValue !== "watched" && (
         <div id="preloader" className="loader-sec">
           <div className="video-wrapper">
             <video
@@ -91,7 +92,23 @@ export default function Hero({ Data }) {
             </video>
           </div>
         </div>
-      )}
+      )} */}
+
+      {/* Every time preloader loads */}
+      <div id="preloader" className="loader-sec">
+        <div className="video-wrapper">
+          <video
+            className="w-full h-fit object-contain"
+            muted
+            autoPlay
+            playsInline
+            onEnded={handleVideoEnd}
+          >
+            <source src={"/assets/videos/tyre-loader-7.mp4"} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
 
       {(storedValue === "watched" || isPreloaderComplete) &&
         Data?.data?.length > 0 && (
