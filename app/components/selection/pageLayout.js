@@ -1220,12 +1220,20 @@ const Segments = ({ pageData, pagination }) => {
   const searchParams = new URLSearchParams(useSearchParams());
   const pathname = usePathname();
   const [value, setValue] = useState([]);
+  const [filtersArray, setFiltersArray] = useState([]);
   const [productsData, setProductsData] = useState([]);
   const [selectURLParameter, setSelectURLParameter] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const pageSize = 9;
   const currentPage = pagination;
   const [meta, setProductsMeta] = useState({});
+  
+  const subSegmentOptions = new Set();
+  const machineryOptions = new Set();
+  const rimOptions = new Set();
+  const sizeOptions = new Set();
+  const patternOptions = new Set();
+
   const handlePageClick = (event) => {
     const selectedPage = event.selected;
     if (selectedPage == 0) {
@@ -1253,14 +1261,6 @@ const Segments = ({ pageData, pagination }) => {
         );
       }
     }
-  };
-
-  const updateItem = (index, newValue) => {
-    setValue((prevData) => {
-      const newData = [...prevData];
-      newData[index] = newValue;
-      return newData;
-    });
   };
 
   const queryToString = (queryToStringValue) => {
@@ -1487,46 +1487,169 @@ const Segments = ({ pageData, pagination }) => {
     fetchInitialData();
   }, [pageData]);
 
-  const subSegmentOptions = new Set();
-  const machineryOptions = new Set();
-  const rimOptions = new Set();
-  const sizeOptions = new Set();
-  const patternOptions = new Set();
-  filterData.forEach((item) => {
-    const rows = item.tables.table[0].row;
-    if (item.sub_segment) {
-      subSegmentOptions.add(item.sub_segment);
+  useEffect(() => {
+    if (filterData.length > 0) {
+      initFilterData();
     }
-    rows.forEach((row) => {
-      if (row.machinery && row.machinery.name) {
-        machineryOptions.add(row.machinery.name);
-      }
-      if (row.rim_recommended) {
-        rimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]+'"');
-      }
-      if (row.size) {
-        sizeOptions.add(row.size);
-      }
-      if (row.pattern_type) {
-        patternOptions.add(row.pattern_type);
-      }
+  }, [filterData]);
+
+  async function initFilterData(){
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+      filterData.forEach((item) => {
+        const rows = item.tables.table[0].row;
+        if (item.sub_segment) {
+          subSegmentOptions.add(item.sub_segment);
+        }
+        rows.forEach((row) => {
+          if (row.machinery && row.machinery.name) {
+            machineryOptions.add(row.machinery.name);
+          }
+          if (row.rim_recommended) {
+            rimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]+'"');
+          }
+          if (row.size) {
+            sizeOptions.add(row.size);
+          }
+          if (row.pattern_type) {
+            patternOptions.add(row.pattern_type);
+          }
+        });
+      });
+
+      setFiltersArray(pageData?.filters && pageData.filters.length > 4
+        ? [
+            Array.from(subSegmentOptions),
+            Array.from(machineryOptions),
+            Array.from(rimOptions),
+            Array.from(sizeOptions),
+            Array.from(patternOptions),
+          ]
+        : [
+            Array.from(machineryOptions),
+            Array.from(rimOptions),
+            Array.from(sizeOptions),
+            Array.from(patternOptions),
+          ]);
+  }
+
+  const updateItem = (index, newValue) => {
+    setValue((prevData) => {
+      const newData = [...prevData];
+      newData[index] = newValue;
+      return newData;
     });
-  });
-  const filtersArray =
-    pageData?.filters && pageData.filters.length > 4
-      ? [
-          Array.from(subSegmentOptions),
-          Array.from(machineryOptions),
-          Array.from(rimOptions),
-          Array.from(sizeOptions),
-          Array.from(patternOptions),
-        ]
-      : [
-          Array.from(machineryOptions),
-          Array.from(rimOptions),
-          Array.from(sizeOptions),
-          Array.from(patternOptions),
-        ];
+  };
+
+  useEffect(() => {
+    if(pageData.section_heading === "Off The Road Segment"){
+      if(value[1] !== undefined) {
+        changeFilterData("Sub-section");
+      }
+    } else {
+      changeFilterData("Machinery");
+    }
+  }, [value]);
+
+  function changeFilterData(filterOptionName) {
+  switch(filterOptionName){
+    case "Machinery":
+      const newRimOptions = getDataByKeyFromJsonMap(value[0], "rimOptions");
+      const newSizeOptions = getDataByKeyFromJsonMap(value[0], "sizeOptions");
+      const newPatternOptions = getDataByKeyFromJsonMap(value[0], "patternOptions");
+      setFiltersArray((prevFiltersArray) => [
+        [...(prevFiltersArray[0] || []), ...machineryOptions],
+        [...newRimOptions],
+        [...newSizeOptions],
+        [...newPatternOptions],
+      ]);
+      break;
+    case "Sub-section":
+      const newRimOptions1 = getDataByKeyFromJsonMap(value[1], "rimOptions");
+      const newSizeOptions1 = getDataByKeyFromJsonMap(value[1], "sizeOptions");
+      const newPatternOptions1 = getDataByKeyFromJsonMap(value[1], "patternOptions");
+      setFiltersArray((prevFiltersArray) => [
+        [...(prevFiltersArray[0] || []), ...subSegmentOptions],
+        [...(prevFiltersArray[1] || []), ...machineryOptions],
+        [...newRimOptions1],
+        [...newSizeOptions1],
+        [...newPatternOptions1],
+      ]);
+      break;
+  }
+}
+
+function getDataByKeyFromJsonMap(keyName, subKeyName) {
+  const jsonMap = {
+    "Tractor": {
+      "rimOptions": ["28", "30"],
+      "sizeOptions": ["12.4-28", "13.6-28", "14.9-28","16.9-28","16.9-30","18.4-30"],
+      "patternOptions": ["Traction"]
+    },
+    "Tractor Trailer": {
+      "rimOptions": ["16", "20"],
+      "sizeOptions": ["9.00-16", "6.00-16", "7.50-16", "6.50-20"],
+      "patternOptions": ["Lug", "Rib"]
+    },
+    "Backhoe Loader": {
+      "rimOptions": [],
+      "sizeOptions": [],
+      "patternOptions": []
+    },
+    "Grader": {
+      "rimOptions": ["24"],
+      "sizeOptions": ["13.00-24", "14.00-24"],
+      "patternOptions": ["Traction"]
+    },
+    "LPDT (Underground Mining Vehicle)": {
+      "rimOptions": ["25"],
+      "sizeOptions": ["26.5-25"],
+      "patternOptions": ["Smooth"]
+    },
+    "Loader": {
+      "rimOptions": ["28", "18","25"],
+      "sizeOptions": ["14.00-25", "17.5-25", "26.5-25","29.5-25","16.9-28","12.5/80-18"],
+      "patternOptions": ["Traction","Rock","Rated"]
+    },
+    "Reach Stacker": {
+      "rimOptions": ["25"],
+      "sizeOptions": ["18.00-25"],
+      "patternOptions": ["Rock"]
+    },
+    "Rigid Dump Truck": {
+      "rimOptions": ["33"],
+      "sizeOptions": ["18.00-25", "18.00-33", "21.00-35","24.00-35","26.5-25","18.00-33"],
+      "patternOptions": ["Rock"]
+    },
+    "Tipper Truck": {
+      "rimOptions": ["20", "24"],
+      "sizeOptions": ["14.00-24","9.00-20","10.00-20", "11.00-20","12.00-20", "12.00-24"],
+      "patternOptions": ["Rock", "Lug"]
+    },
+    "LCV": {
+      "rimOptions": ["16", "20","15","20"],
+      "sizeOptions": ["7.00-16","7.50-16", "8.25-16", "7.50-16","8.25-16","8.25-20","165 D 12"],
+      "patternOptions": ["Lug","Rib"]
+    },
+    "Truck": {
+      "rimOptions": ["20"],
+      "sizeOptions": ["10.00-20"],
+      "patternOptions": ["Lug"]
+    },
+    "Truck/Bus": {
+      "rimOptions": ["20"],
+      "sizeOptions": ["10.00-20", "8.25-20","9.00-20","295/95 D20","295/95 D20"],
+      "patternOptions": ["Lug", "Rib"]
+    },
+    "ULT": {
+      "rimOptions": ["12"],
+      "sizeOptions": ["12.4-28", "13.6-28", "14.9-28","16.9-28","16.9-30","18.4-30"],
+      "patternOptions": ["Lug", "Rib"]
+    },
+  };
+  if (!(keyName in jsonMap)) return [];
+  const data = jsonMap[keyName][subKeyName];
+  return Array.isArray(data) ? data : [data];
+}
 
   if (
     typeof meta === "undefined" ||
@@ -1614,7 +1737,7 @@ const Segments = ({ pageData, pagination }) => {
                           {item?.name}
                         </option>
                       ))}
-                      {filtersArray[index].sort().map((item) => (
+                      {Array.isArray(filtersArray[index]) && filtersArray[index].sort().map((item) => (
                         <option
                           key={item.id}
                           value={item.replace(/"/g, '')}
