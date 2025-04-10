@@ -151,7 +151,22 @@ export function Float(data) {
           {data.data.map(
             (item) =>
               item?.permalink && (
-                <Link className="sideNav" href={item.permalink} key={item.id}>
+                <Link
+                  className="sideNav"
+                  href={item.permalink}
+                  key={item.id}
+                  onClick={async (e) => {
+                    e.preventDefault(); // Stop default navigation
+                    try {
+                      await navigator.clipboard.writeText(item?.name || "");
+                      console.log("Copied:", item?.name);
+                    } catch (err) {
+                      console.error("Failed to copy!", err);
+                    }
+                    // Navigate after copying
+                    window.location.href = item.permalink;
+                  }}
+                >
                   {item.icon?.data && (
                     <Image
                       src={getStrapiMedia(item.icon.data.attributes?.url)}
@@ -160,23 +175,16 @@ export function Float(data) {
                       alt={item.icon.data.attributes?.alternativeText}
                     />
                   )}
-                  {/* Wrap name in a span with click handler */}
-                  <span
-                    onClick={(e) => {
-                      e.preventDefault(); // prevent link navigation
-                      e.stopPropagation(); // stop event from bubbling
-                      navigator.clipboard.writeText(item?.name).then(() => {
-                        console.log("Copied to clipboard:", item?.name);
-                      });
-                    }}
-                    className="cursor-pointer"
-                    title="Click to copy"
-                  >
-                    {item?.name}
-                  </span>
+                  {item?.name}
                 </Link>
               )
           )}
+          {/* <button
+            className="flex gap-4 mb-2 justify-start items-center rounded-tl-[4px] rounded-bl-[4px] h-12 bg-primary w-[280px] px-[10px] left-[11px] text-white transition-all duration-500 relative"
+            onClick={handleClick}
+          >
+            <Image src={Bot} className="w-6 h-6 object-cover" />
+          </button> */}
         </div>
       )}
       <Chatbot />
