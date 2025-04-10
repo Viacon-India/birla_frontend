@@ -123,11 +123,50 @@ export function Float(data) {
   return (
     <>
       {data && (
+        // <div className="sideNav-wrapper">
+        //   {data.data.map(
+        //     (item) =>
+        //       item?.permalink && (
+        //         <Link className="sideNav" href={item.permalink} key={item.id}>
+        //           {item.icon?.data && (
+        //             <Image
+        //               src={getStrapiMedia(item.icon.data.attributes?.url)}
+        //               width={item.icon.data.attributes?.width}
+        //               height={item.icon.data.attributes?.height}
+        //               alt={item.icon.data.attributes?.alternativeText}
+        //             />
+        //           )}
+        //           {item?.name}
+        //         </Link>
+        //       )
+        //   )}
+        //   {/* <button className="flex gap-4 mb-2 justify-start items-center rounded-tl-[4px] rounded-bl-[4px] h-12 bg-primary w-[280px] px-[10px] left-[11px] text-white transition-all duration-500 relative" onClick={handleClick}>
+        //       <Image
+        //         src={Bot}
+        //         className="w-6 h-6 object-cover"
+        //       />
+        //   </button> */}
+        // </div>
         <div className="sideNav-wrapper">
           {data.data.map(
             (item) =>
               item?.permalink && (
-                <Link className="sideNav" href={item.permalink} key={item.id}>
+                <Link
+                  className="sideNav"
+                  href={item.permalink}
+                  key={item.id}
+                  onClick={async (e) => {
+                    e.preventDefault(); // Stop default navigation
+                    try {
+                      await navigator.clipboard.writeText(item?.name || "");
+                      console.log("Copied:", item?.name);
+                    } catch (err) {
+                      console.error("Failed to copy!", err);
+                    }
+                    // Navigate after copying
+                    window.location.href = item.permalink;
+                  }}
+                >
                   {item.icon?.data && (
                     <Image
                       src={getStrapiMedia(item.icon.data.attributes?.url)}
@@ -140,11 +179,11 @@ export function Float(data) {
                 </Link>
               )
           )}
-          {/* <button className="flex gap-4 mb-2 justify-start items-center rounded-tl-[4px] rounded-bl-[4px] h-12 bg-primary w-[280px] px-[10px] left-[11px] text-white transition-all duration-500 relative" onClick={handleClick}>
-              <Image
-                src={Bot}
-                className="w-6 h-6 object-cover"
-              />
+          {/* <button
+            className="flex gap-4 mb-2 justify-start items-center rounded-tl-[4px] rounded-bl-[4px] h-12 bg-primary w-[280px] px-[10px] left-[11px] text-white transition-all duration-500 relative"
+            onClick={handleClick}
+          >
+            <Image src={Bot} className="w-6 h-6 object-cover" />
           </button> */}
         </div>
       )}
@@ -775,20 +814,20 @@ export function Chatbot() {
   );
 }
 export function Popup() {
-  const [productVisited, setProductVisited] = useState('not visited');
+  const [productVisited, setProductVisited] = useState("not visited");
   const [storedValue, setStoredValue] = useState(null);
   const [isPopup, setIsPopup] = useState(false);
-  const [lastData, setLastData] = useState('');
+  const [lastData, setLastData] = useState("");
 
   console.log(productVisited);
   console.log(storedValue);
-  
+
   const handlePopup = () => {
     setIsPopup(false);
     if (typeof window !== "undefined") {
-      sessionStorage.setItem("lastProductVisit", 'visited');
+      sessionStorage.setItem("lastProductVisit", "visited");
     }
-  }
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -803,24 +842,26 @@ export function Popup() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(getStrapiMedia(`/api/products/${storedValue}`));
+        const response = await fetch(
+          getStrapiMedia(`/api/products/${storedValue}`)
+        );
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const lastData = await response.json();
         setLastData(lastData);
       } catch (error) {
-        setLastData('');
+        setLastData("");
       }
     };
- 
+
     fetchData();
   }, [storedValue]);
 
   return (
     <>
-      {isPopup && lastData && productVisited=='not visited' && (
-        <div className="w-full h-full flex justify-center items-center fixed top-0 z-[99] bg-[#101010] bg-opacity-75">
+      {isPopup && lastData && productVisited == "not visited" && (
+        <div className="w-full h-full justify-center items-center fixed top-0 z-[99] bg-[#101010] bg-opacity-75 !hidden">
           <div className="bg-white rounded-[4px] p-6 w-[90%] md:w-[50%] lg:w-[30%] xl:w-[25%] 2xl:w-[20%]">
             <h3 className="text-[22px] text-[#1A1D21] font-bold">
               Do you want to continue where you left?
@@ -832,7 +873,10 @@ export function Popup() {
               >
                 No, Skip
               </button>
-              <Link href={lastData.permalink} className="px-4 py-2 border rounded-[4px] text-[#FFFFFF] font-medium text-[14px] bg-primary">
+              <Link
+                href={lastData.permalink}
+                className="px-4 py-2 border rounded-[4px] text-[#FFFFFF] font-medium text-[14px] bg-primary"
+              >
                 Yes, Continue
               </Link>
             </div>
