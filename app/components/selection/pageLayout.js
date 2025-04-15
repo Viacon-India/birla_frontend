@@ -1227,6 +1227,7 @@ const Segments = ({ pageData, pagination }) => {
   const pageSize = 9;
   const currentPage = pagination;
   const [meta, setProductsMeta] = useState({});
+  const [filterMapping, setFilterMapping] = useState(new Map());
   
   const subSegmentOptions = new Set();
   const machineryOptions = new Set();
@@ -1493,28 +1494,69 @@ const Segments = ({ pageData, pagination }) => {
     }
   }, [filterData]);
 
+  class FilterMappingModel {
+    constructor(filterRimOptions = [], filerSizeOptions = [], filterPatternOptions = []) {
+      this.filterRimOptions = new Set(filterRimOptions);
+      this.filerSizeOptions = new Set(filerSizeOptions);
+      this.filterPatternOptions = new Set(filterPatternOptions);
+    }
+
+    toArray() {
+      return {
+        filterRimOptions: Array.from(this.filterRimOptions),
+        filerSizeOptions: Array.from(this.filerSizeOptions),
+        filterPatternOptions: Array.from(this.filterPatternOptions),
+      };
+    }
+  
+    addOptions(addfilterRimOptions = [], addfilerSizeOptions = [], addfilterPatternOptions = []) {
+      addfilterRimOptions.forEach((option) => this.filterRimOptions.add(option));
+      addfilerSizeOptions.forEach((option) => this.filerSizeOptions.add(option));
+      addfilterPatternOptions.forEach((option) => this.filterPatternOptions.add(option));
+    }
+  }
+
   async function initFilterData(){
+    let tempfilterMapping = new Map();
     await new Promise((resolve) => setTimeout(resolve, 1000));
       filterData.forEach((item) => {
         const rows = item.tables.table[0].row;
+        let machineryName;
+        let rim_recommended;
+        let size;
+        let pattern_type;
+
         if (item.sub_segment) {
           subSegmentOptions.add(item.sub_segment);
         }
         rows.forEach((row) => {
-          if (row.machinery && row.machinery.name) {
-            machineryOptions.add(row.machinery.name);
-          }
           if (row.rim_recommended) {
-            rimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]+'"');
+            rim_recommended = row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+            rimOptions.add(rim_recommended);
           }
           if (row.size) {
-            sizeOptions.add(row.size);
+            size = row.size;
+            sizeOptions.add(size);
           }
           if (row.pattern_type) {
-            patternOptions.add(row.pattern_type);
+            pattern_type = row.pattern_type;
+            patternOptions.add(pattern_type);
+          }
+          if (row.machinery && row.machinery.name) {
+            machineryOptions.add(row.machinery.name);
+            machineryName = row.machinery.name;
+          }
+          if(!tempfilterMapping.has(machineryName)){
+            tempfilterMapping.set(machineryName,new FilterMappingModel([rim_recommended], [row.size], [row.pattern_type]));
+          } else {
+             let tempdata = tempfilterMapping.get(machineryName);
+             tempdata.addOptions([rim_recommended], [row.size], [row.pattern_type]);
+             tempfilterMapping.set(machineryName,tempdata);
           }
         });
       });
+      
+      setFilterMapping(tempfilterMapping);
 
       setFiltersArray(pageData?.filters && pageData.filters.length > 4
         ? [
@@ -1541,21 +1583,28 @@ const Segments = ({ pageData, pagination }) => {
   };
 
   useEffect(() => {
-    if(pageData.section_heading === "Off The Road Segment"){
-      if(value[1] !== undefined) {
-        changeFilterData("Sub-section");
+    if(filterMapping.size !== 0){
+      if(pageData.section_heading === "Off The Road Segment"){
+        if(value[1] !== undefined) {
+          changeFilterData("Sub-section");
+        }
+      } else {
+        changeFilterData("Machinery");
       }
-    } else {
-      changeFilterData("Machinery");
     }
   }, [value]);
 
   function changeFilterData(filterOptionName) {
   switch(filterOptionName){
     case "Machinery":
-      const newRimOptions = getDataByKeyFromJsonMap(value[0], "rimOptions");
-      const newSizeOptions = getDataByKeyFromJsonMap(value[0], "sizeOptions");
-      const newPatternOptions = getDataByKeyFromJsonMap(value[0], "patternOptions");
+      const filterMappingEntry = filterMapping.get(value[0]);
+      if(filterMappingEntry === undefined) {
+        initFilterData();
+        return;
+      }
+      const newRimOptions = filterMappingEntry.toArray().filterRimOptions;
+      const newSizeOptions = filterMappingEntry.toArray().filerSizeOptions;
+      const newPatternOptions = filterMappingEntry.toArray().filterPatternOptions;
       setFiltersArray((prevFiltersArray) => [
         [...(prevFiltersArray[0] || []), ...machineryOptions],
         [...newRimOptions],
@@ -1564,9 +1613,14 @@ const Segments = ({ pageData, pagination }) => {
       ]);
       break;
     case "Sub-section":
-      const newRimOptions1 = getDataByKeyFromJsonMap(value[1], "rimOptions");
-      const newSizeOptions1 = getDataByKeyFromJsonMap(value[1], "sizeOptions");
-      const newPatternOptions1 = getDataByKeyFromJsonMap(value[1], "patternOptions");
+      const filterMappingEntry1 = filterMapping.get(value[1]);
+      if(filterMappingEntry === undefined) {
+        initFilterData();
+        return;
+      }
+      const newRimOptions1 = filterMappingEntry1.toArray().filterRimOptions;
+      const newSizeOptions1 = filterMappingEntry1.toArray().filerSizeOptions;
+      const newPatternOptions1 = filterMappingEntry1.toArray().filterPatternOptions;
       setFiltersArray((prevFiltersArray) => [
         [...(prevFiltersArray[0] || []), ...subSegmentOptions],
         [...(prevFiltersArray[1] || []), ...machineryOptions],
@@ -1576,79 +1630,6 @@ const Segments = ({ pageData, pagination }) => {
       ]);
       break;
   }
-}
-
-function getDataByKeyFromJsonMap(keyName, subKeyName) {
-  const jsonMap = {
-    "Tractor": {
-      "rimOptions": ["28", "30"],
-      "sizeOptions": ["12.4-28", "13.6-28", "14.9-28","16.9-28","16.9-30","18.4-30"],
-      "patternOptions": ["Traction"]
-    },
-    "Tractor Trailer": {
-      "rimOptions": ["16", "20"],
-      "sizeOptions": ["9.00-16", "6.00-16", "7.50-16", "6.50-20"],
-      "patternOptions": ["Lug", "Rib"]
-    },
-    "Backhoe Loader": {
-      "rimOptions": [],
-      "sizeOptions": [],
-      "patternOptions": []
-    },
-    "Grader": {
-      "rimOptions": ["24"],
-      "sizeOptions": ["13.00-24", "14.00-24"],
-      "patternOptions": ["Traction"]
-    },
-    "LPDT (Underground Mining Vehicle)": {
-      "rimOptions": ["25"],
-      "sizeOptions": ["26.5-25"],
-      "patternOptions": ["Smooth"]
-    },
-    "Loader": {
-      "rimOptions": ["28", "18","25"],
-      "sizeOptions": ["14.00-25", "17.5-25", "26.5-25","29.5-25","16.9-28","12.5/80-18"],
-      "patternOptions": ["Traction","Rock","Rated"]
-    },
-    "Reach Stacker": {
-      "rimOptions": ["25"],
-      "sizeOptions": ["18.00-25"],
-      "patternOptions": ["Rock"]
-    },
-    "Rigid Dump Truck": {
-      "rimOptions": ["33"],
-      "sizeOptions": ["18.00-25", "18.00-33", "21.00-35","24.00-35","26.5-25","18.00-33"],
-      "patternOptions": ["Rock"]
-    },
-    "Tipper Truck": {
-      "rimOptions": ["20", "24"],
-      "sizeOptions": ["14.00-24","9.00-20","10.00-20", "11.00-20","12.00-20", "12.00-24"],
-      "patternOptions": ["Rock", "Lug"]
-    },
-    "LCV": {
-      "rimOptions": ["16", "20","15","20"],
-      "sizeOptions": ["7.00-16","7.50-16", "8.25-16", "7.50-16","8.25-16","8.25-20","165 D 12"],
-      "patternOptions": ["Lug","Rib"]
-    },
-    "Truck": {
-      "rimOptions": ["20"],
-      "sizeOptions": ["10.00-20"],
-      "patternOptions": ["Lug"]
-    },
-    "Truck/Bus": {
-      "rimOptions": ["20"],
-      "sizeOptions": ["10.00-20", "8.25-20","9.00-20","295/95 D20","295/95 D20"],
-      "patternOptions": ["Lug", "Rib"]
-    },
-    "ULT": {
-      "rimOptions": ["12"],
-      "sizeOptions": ["12.4-28", "13.6-28", "14.9-28","16.9-28","16.9-30","18.4-30"],
-      "patternOptions": ["Lug", "Rib"]
-    },
-  };
-  if (!(keyName in jsonMap)) return [];
-  const data = jsonMap[keyName][subKeyName];
-  return Array.isArray(data) ? data : [data];
 }
 
   if (
