@@ -2464,7 +2464,7 @@ export function Products({ pageData }) {
                       {pageData.tables.title}
                     </h2>
                   )}
-                  {/* {pageData?.catalogue && (
+                  {pageData?.catalogue && (
                     <div className="cat-btn-sec flex items-center gap-3 relative z-10">
                       <Link
                         href={getStrapiMedia(pageData.catalogue.url)}
@@ -2489,10 +2489,10 @@ export function Products({ pageData }) {
                         Download Product Leaflet
                       </Link>
                     </div>
-                  )} */}
+                  )}
 
 
-                    <div className="flex items-center gap-3 relative z-10">
+                    {/* <div className="flex items-center gap-3 relative z-10">
                       <Link onClick={getLeaflet}
                       target="_blank"
                         href=""
@@ -2500,7 +2500,7 @@ export function Products({ pageData }) {
                         >                        
                         Download Product Leaflet
                       </Link>
-                    </div>
+                    </div> */}
 
 
 
