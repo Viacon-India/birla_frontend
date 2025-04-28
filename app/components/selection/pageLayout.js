@@ -1228,12 +1228,49 @@ const Segments = ({ pageData, pagination }) => {
   const currentPage = pagination;
   const [meta, setProductsMeta] = useState({});
   const [filterMapping, setFilterMapping] = useState(new Map());
-  
+  const [selectedFilters, setSelectedFilters] = useState(new Map());
+
   const subSegmentOptions = new Set();
   const machineryOptions = new Set();
   const rimOptions = new Set();
   const sizeOptions = new Set();
   const patternOptions = new Set();
+
+  const updateSelectedFilters = (filterTitle, value) => {
+    setSelectedFilters((prevFilters) => {
+      const updatedFilters = new Map(prevFilters);
+      updatedFilters.set(filterTitle, value);
+      return updatedFilters;
+    });
+  };
+
+  // const filterFilterMapping = () => {
+  //   let filteredMapping = new Map(filterMapping);
+
+  //   selectedFilters.forEach((value, key) => {
+  //     if (value) {
+  //       filteredMapping = new Map(
+  //         Array.from(filteredMapping).filter(([machineryName, filterModel]) => {
+  //           const { filterRimOptions, filerSizeOptions, filterPatternOptions } =
+  //             filterModel.toArray();
+
+  //           switch (key) {
+  //             case "Rim":
+  //               return filterRimOptions.includes(value);
+  //             case "Size":
+  //               return filerSizeOptions.includes(value);
+  //             case "Pattern":
+  //               return filterPatternOptions.includes(value);
+  //             default:
+  //               return true;
+  //           }
+  //         })
+  //       );
+  //     }
+  //   });
+
+  //   return filteredMapping;
+  // };
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected;
@@ -1509,10 +1546,19 @@ const Segments = ({ pageData, pagination }) => {
       };
     }
   
-    addOptions(addfilterRimOptions = [], addfilerSizeOptions = [], addfilterPatternOptions = []) {
-      addfilterRimOptions.forEach((option) => this.filterRimOptions.add(option));
-      addfilerSizeOptions.forEach((option) => this.filerSizeOptions.add(option));
-      addfilterPatternOptions.forEach((option) => this.filterPatternOptions.add(option));
+    addOptions({ addfilterRimOptions = [], addfilerSizeOptions = [], addfilterPatternOptions = [] } = {}) {
+      if (addfilterRimOptions.length > 0) {
+        this.filterRimOptions.clear();
+        addfilterRimOptions.forEach((option) => this.filterRimOptions.add(option));
+      }
+      if (addfilerSizeOptions.length > 0) {
+        this.filerSizeOptions.clear();
+        addfilerSizeOptions.forEach((option) => this.filerSizeOptions.add(option));
+      }
+      if (addfilterPatternOptions.length > 0) {
+        this.filterPatternOptions.clear();
+        addfilterPatternOptions.forEach((option) => this.filterPatternOptions.add(option));
+      }
     }
   }
 
@@ -1550,7 +1596,7 @@ const Segments = ({ pageData, pagination }) => {
             tempfilterMapping.set(machineryName,new FilterMappingModel([rim_recommended], [row.size], [row.pattern_type]));
           } else {
              let tempdata = tempfilterMapping.get(machineryName);
-             tempdata.addOptions([rim_recommended], [row.size], [row.pattern_type]);
+             tempdata.addOptions({ addfilterRimOptions: [rim_recommended], addfilerSizeOptions: [row.size], addfilterPatternOptions: [row.pattern_type] });
              tempfilterMapping.set(machineryName,tempdata);
           }
         });
@@ -1574,6 +1620,96 @@ const Segments = ({ pageData, pagination }) => {
           ]);
   }
 
+  useEffect(() => {
+    if (filterMapping.size !== 0) {
+      changeFilterValue();
+    }
+  }, [filterMapping]);
+
+  function updateFilterData() {
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    if(selectedFilters.get("Select Machinery") !== undefined){
+      let tempdata = filterMapping.get(selectedFilters.get("Select Machinery"));
+      if (tempdata) {
+      tempdata.addOptions({ addfilterRimOptions: getFilterDataByKey("Select Machinery")});
+      setFilterMapping((prevFilters) => {
+      const updatedData = new Map(prevFilters);
+      updatedData.set(selectedFilters.get("Select Machinery"), tempdata);
+      return updatedData;
+    });
+    }
+    }
+    if(selectedFilters.get("Select Rim") !== undefined){
+      let tempdata = filterMapping.get(selectedFilters.get("Select Machinery"));
+      if (tempdata) {
+      tempdata.addOptions({addfilerSizeOptions: getFilterDataByKey("Select Rim")});
+      setFilterMapping((prevFilters) => {
+      const updatedData = new Map(prevFilters);
+      updatedData.set(selectedFilters.get("Select Rim"), tempdata);
+      return updatedData;
+    });
+  }
+    }
+    if(selectedFilters.get("Select Size") !== undefined){
+      let tempdata = filterMapping.get(selectedFilters.get("Select Machinery"));
+      if (tempdata) {
+      tempdata.addOptions({addfilterPatternOptions: getFilterDataByKey("Select Size") });
+      setFilterMapping((prevFilters) => {
+      const updatedData = new Map(prevFilters);
+      updatedData.set(selectedFilters.get("Select Size"), tempdata);
+      return updatedData;
+    });
+  }
+    }
+    // if(selectedFilters.get("Rim") !== undefined){
+    //   const rimFilter = selectedFilters.get("Rim");
+    //   const matchLength = rimFilter.length;
+    //   if (size.slice(-matchLength) === rimFilter) {
+        
+    //   }
+    // }
+  }
+
+  function getFilterDataByKey(key) {
+        switch (key) {
+          case "Select Machinery":
+            let temp_rim_recommended = new Set();
+            filterData.forEach((item) => {
+              const rows = item.tables.table[0].row;
+            rows.forEach((row) => {
+            if (row.rim_recommended && row.machinery && selectedFilters.get(key) === row.machinery.name) {
+              temp_rim_recommended.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+            }
+            });
+          });
+            return Array.from(temp_rim_recommended);
+          case "Select Rim":
+            let size = new Set();
+            filterData.forEach((item) => {
+            const rows = item.tables.table[0].row;
+            rows.forEach((row) => {
+              if (row.size && selectedFilters.get(key) === row.size.match(/(\d+)(?=[\s-]*$)/)[0]) {
+                size.add(row.size);
+              }
+            });
+            });
+            return Array.from(size);
+          case "Select Size":
+            let pattern_type = new Set();
+            filterData.forEach((item) => {
+              const rows = item.tables.table[0].row;
+            rows.forEach((row) => {
+              if (row.pattern_type && selectedFilters.get(key) === row.size) {
+                pattern_type.add(row.pattern_type);
+              }
+            });
+          });
+            return Array.from(pattern_type);
+          default:
+            return true;
+        }
+  }
+
   const updateItem = (index, newValue) => {
     setValue((prevData) => {
       const newData = [...prevData];
@@ -1583,25 +1719,55 @@ const Segments = ({ pageData, pagination }) => {
   };
 
   useEffect(() => {
-    if(filterMapping.size !== 0){
+    // const filteredMapping = filterFilterMapping();
+    // const newFiltersArray = [
+    //   // Array.from(subSegmentOptions),
+    //   Array.from(machineryOptions),
+    //   Array.from(filteredMapping.keys()), // Update Rim options
+    //   Array.from(filteredMapping.values()).flatMap((model) =>
+    //     model.toArray().filerSizeOptions
+    //   ), // Update Size options
+    //   Array.from(filteredMapping.values()).flatMap((model) =>
+    //     model.toArray().filterPatternOptions
+    //   ), // Update Pattern options
+    // ];
+    // setFiltersArray(newFiltersArray);
+    
+    updateFilterData();
+  }, [selectedFilters]);
+
+  // useEffect(() => {
+  //   // changeFilterValue();
+  // }, [value]);
+
+  function changeFilterValue() {
       if(pageData.section_heading === "Off The Road Segment"){
+        const filterMappingEntry1 = filterMapping.get(value[1]);
+        if(filterMappingEntry1 === undefined) {
+          initFilterData();
+          return;
+        }
         if(value[1] !== undefined) {
           changeFilterData("Sub-section");
         }
       } else {
+        const filterMappingEntry = filterMapping.get(value[0]);
+        if(filterMappingEntry === undefined) {
+          initFilterData();
+          return;
+        }
         changeFilterData("Machinery");
       }
-    }
-  }, [value]);
+  }
 
   function changeFilterData(filterOptionName) {
   switch(filterOptionName){
     case "Machinery":
       const filterMappingEntry = filterMapping.get(value[0]);
-      if(filterMappingEntry === undefined) {
-        initFilterData();
-        return;
-      }
+      // if(filterMappingEntry === undefined) {
+      //   initFilterData();
+      //   return;
+      // }
       const newRimOptions = filterMappingEntry.toArray().filterRimOptions;
       const newSizeOptions = filterMappingEntry.toArray().filerSizeOptions;
       const newPatternOptions = filterMappingEntry.toArray().filterPatternOptions;
@@ -1614,10 +1780,10 @@ const Segments = ({ pageData, pagination }) => {
       break;
     case "Sub-section":
       const filterMappingEntry1 = filterMapping.get(value[1]);
-      if(filterMappingEntry === undefined) {
-        initFilterData();
-        return;
-      }
+      // if(filterMappingEntry === undefined) {
+      //   initFilterData();
+      //   return;
+      // }
       const newRimOptions1 = filterMappingEntry1.toArray().filterRimOptions;
       const newSizeOptions1 = filterMappingEntry1.toArray().filerSizeOptions;
       const newPatternOptions1 = filterMappingEntry1.toArray().filterPatternOptions;
@@ -1705,6 +1871,7 @@ const Segments = ({ pageData, pagination }) => {
                     <select
                       name={filter.title.replace("Select ", "")}
                       onChange={(e) => {
+                        updateSelectedFilters(filter.title, e.target.value);
                         updateItem(index, e.target.value);
                       }}
                       className="select-box !w-full max-h-[46px] !text-[14px] !leading-[21px]"
@@ -1720,8 +1887,8 @@ const Segments = ({ pageData, pagination }) => {
                       ))}
                       {Array.isArray(filtersArray[index]) && filtersArray[index].sort().map((item) => (
                         <option
-                          key={item.id}
-                          value={item.replace(/"/g, '')}
+                          key={item !== undefined && item.id}
+                          value={item !== undefined ? item.replace(/"/g, '') : ""}
                           selected={
                             selectURLParameter[index] == item ? "selected" : ""
                           }
