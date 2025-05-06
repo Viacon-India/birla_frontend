@@ -1683,6 +1683,20 @@ const Segments = ({ pageData, pagination }) => {
     updateFilterData();
   };
 
+  const clearFilters = () => {
+    // Reset the selected filters to an empty Map or default values
+    setSelectedFilters(new Map());
+  
+    // Reset the value state to an empty array or default values
+    setValue([]);
+  
+    // Optionally reset filtersArray if needed
+    setFiltersArray([]);
+  
+    // Update the filter data
+    updateFilterData();
+  };
+
   useEffect(() => {
     updateFilterData();
   }, [selectedFilters]);
@@ -1838,6 +1852,7 @@ const Segments = ({ pageData, pagination }) => {
                   )}
                 </div>
               ))}
+              <div className="flex flex-row gap-1 w-full">
               <button
                 onClick={() => productFilters(value)}
                 className="tablinks cat-btn active-cat-btn items-center gap-1 !w-full max-h-[46px] !h-full !text-[18px] leading-[27.75px] md:col-span-2 xl:col-span-1"
@@ -1856,6 +1871,13 @@ const Segments = ({ pageData, pagination }) => {
                 </svg>
                 Search
               </button>
+              <button
+                onClick={() => clearFilters()}
+                className="tablinks cat-btn active-cat-btn items-center gap-1 !w-full max-h-[46px] !h-full !text-[18px] leading-[27.75px] md:col-span-2 xl:col-span-1 whitespace-nowrap"
+              >
+                Clear Filter
+              </button>
+              </div>
             </div>
           )}
           {productsData && productsData.length > 0 ? (
