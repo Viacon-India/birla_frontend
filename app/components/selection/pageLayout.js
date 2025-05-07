@@ -14,7 +14,13 @@ import { getStrapiMedia } from "@/lib/utils";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { PageBanner, PageEnd, Float } from "../pageCommon/pageCommon";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Autoplay, Navigation, Thumbs, Pagination } from "swiper/modules";
+import {
+  FreeMode,
+  Autoplay,
+  Navigation,
+  Thumbs,
+  Pagination,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import SectionSelection from "../selection/sectionLayout";
@@ -31,7 +37,6 @@ import errorImg from "../../assets/images/404-tyre.gif";
 import loadGif from "../../assets/images/loading.gif";
 
 import { useRef } from "react";
-
 
 export default function PageSelection({
   page,
@@ -309,11 +314,11 @@ export function ContactUs({ pageData }) {
                 <div className="container mx-auto">
                   <div className="contact-main flex flex-col md:flex-row items-start gap-4 md:gap-6 2xl:gap-10 mt-8 md:mt-12 2xl:mt-[60px]">
                     <div className="contact-detail w-full md:w-[40%] xl:w-1/2 flex flex-col gap-4 md:gap-6 xl:gap-10 overflow-hidden relative">
-                      <Image
+                      {/* <Image
                         className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
                         src={BGTiger2}
                         alt="img"
-                      />
+                      /> */}
                       <div className="contact-title-wrapper">
                         <span className="section-heading">
                           {section?.heading}
@@ -345,11 +350,7 @@ export function ContactUs({ pageData }) {
                                       case 3:
                                         return <h3>{children}</h3>;
                                       case 4:
-                                        return (
-                                          <p>
-                                            {children}
-                                          </p>
-                                        );
+                                        return <p>{children}</p>;
                                       case 5:
                                         return <h5>{children}</h5>;
                                       case 6:
@@ -374,80 +375,6 @@ export function ContactUs({ pageData }) {
                             )}
                           </div>
                         ))}
-                        {(section?.logo1 || section.logo1) &&
-                          <div className="navbar-end w-fit gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
-                            {section?.logo1?.image?.url && section.logo1?.icon_link?.link &&(
-                              <Link
-                                href={
-                                  section.logo1.icon_link.link
-                                }
-                                target="_blank"
-                              >
-                                <figure className="rounded-none m-0 w-[50px] h-[50px] md:w-[65px] md:h-[65px]">
-                                  <Image
-                                    src={getStrapiMedia(
-                                      section.logo1.image.url
-                                    )}
-                                    width={
-                                      section.logo1.image.width
-                                    }
-                                    height={
-                                      section.logo1.image.height
-                                    }
-                                    alt={
-                                      section.logo1.image?.alternativeText
-                                    }
-                                    className="w-full h-fit object-cover pt-2"
-                                  />
-                                </figure>
-                              </Link>
-                            )}
-                            {section?.logo1 && section.logo1 && (
-                              <svg
-                                width="2"
-                                height="65"
-                                viewBox="0 0 2 65"
-                                fill="none"
-                                xmlns="
-                                http://www.w3.org/2000/svg"
-                              >
-                                <line
-                                  x1="1.31543"
-                                  y1="65"
-                                  x2="1.31543"
-                                  stroke="#C9CDD3"
-                                  stroke-dasharray="5 6"
-                                />
-                              </svg>
-                            )}
-                            {section?.logo2?.image?.url && section.logo2?.icon_link?.link &&(
-                              <Link
-                                href={
-                                  section.logo2.icon_link.link
-                                }
-                                target="_blank"
-                              >
-                                <figure className="rounded-none m-0 w-[80px] h-[35px] md:w-[136px] md:h-[60px]">
-                                  <Image
-                                    src={getStrapiMedia(
-                                      section.logo2.image.url
-                                    )}
-                                    width={
-                                      section.logo2.image.width
-                                    }
-                                    height={
-                                      section.logo2.image.height
-                                    }
-                                    alt={
-                                      section.logo2.image?.alternativeText
-                                    }
-                                    className="w-full h-full object-cover"
-                                  />
-                                </figure>
-                              </Link>
-                            )}
-                          </div>
-                        }
                     </div>
                     <div className="w-full md:w-[60%] xl:w-1/2">
                       <div className="form-content">
@@ -1185,6 +1112,68 @@ export function ContactUs({ pageData }) {
                           </div>
                         )}
                       </div>
+                      <div className="w-full flex justify-end mt-6">
+                        {(section?.logo1 || section.logo1) && (
+                          <div className="navbar-end w-fit gap-2 md:gap-3 group flex justify-end items-center py-1 md:py-0">
+                            {section?.logo1?.image?.url &&
+                              section.logo1?.icon_link?.link && (
+                                <Link
+                                  href={section.logo1.icon_link.link}
+                                  target="_blank"
+                                >
+                                  <figure className="rounded-none m-0 w-[50px] h-[50px] md:w-[65px] md:h-[65px]">
+                                    <Image
+                                      src={getStrapiMedia(
+                                        section.logo1.image.url
+                                      )}
+                                      width={section.logo1.image.width}
+                                      height={section.logo1.image.height}
+                                      alt={section.logo1.image?.alternativeText}
+                                      className="w-full h-fit object-cover pt-2"
+                                    />
+                                  </figure>
+                                </Link>
+                              )}
+                            {section?.logo1 && section.logo1 && (
+                              <svg
+                                width="2"
+                                height="65"
+                                viewBox="0 0 2 65"
+                                fill="none"
+                                xmlns="
+                                http://www.w3.org/2000/svg"
+                              >
+                                <line
+                                  x1="1.31543"
+                                  y1="65"
+                                  x2="1.31543"
+                                  stroke="#C9CDD3"
+                                  stroke-dasharray="5 6"
+                                />
+                              </svg>
+                            )}
+                            {section?.logo2?.image?.url &&
+                              section.logo2?.icon_link?.link && (
+                                <Link
+                                  href={section.logo2.icon_link.link}
+                                  target="_blank"
+                                >
+                                  <figure className="rounded-none m-0 w-[80px] h-[35px] md:w-[136px] md:h-[60px]">
+                                    <Image
+                                      src={getStrapiMedia(
+                                        section.logo2.image.url
+                                      )}
+                                      width={section.logo2.image.width}
+                                      height={section.logo2.image.height}
+                                      alt={section.logo2.image?.alternativeText}
+                                      className="w-full h-full object-cover"
+                                    />
+                                  </figure>
+                                </Link>
+                              )}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1199,17 +1188,16 @@ export function ContactUs({ pageData }) {
 export function Pages({ pageData }) {
   return (
     <>
-      {pageData?.hero &&
+      {pageData?.hero && (
         <PageBanner Title={pageData?.title} Banner={pageData?.hero} />
-      }
-      {pageData?.section &&
-        pageData.section.length > 0 &&
-        <div className={!pageData?.hero && 'pt-[76px]'}>
+      )}
+      {pageData?.section && pageData.section.length > 0 && (
+        <div className={!pageData?.hero && "pt-[76px]"}>
           {pageData.section.map((section) => (
-            <SectionSelection key={section.id} section={section}/>
+            <SectionSelection key={section.id} section={section} />
           ))}
         </div>
-      }
+      )}
       <PageEnd EndPageData={pageData?.end} />
     </>
   );
@@ -1504,7 +1492,11 @@ const Segments = ({ pageData, pagination }) => {
   }, [filterData]);
 
   class FilterMappingModel {
-    constructor(filterRimOptions = [], filerSizeOptions = [], filterPatternOptions = []) {
+    constructor(
+      filterRimOptions = [],
+      filerSizeOptions = [],
+      filterPatternOptions = []
+    ) {
       this.filterRimOptions = new Set(filterRimOptions);
       this.filerSizeOptions = new Set(filerSizeOptions);
       this.filterPatternOptions = new Set(filterPatternOptions);
@@ -1517,66 +1509,88 @@ const Segments = ({ pageData, pagination }) => {
         filterPatternOptions: Array.from(this.filterPatternOptions),
       };
     }
-  
-    addOptions({ addfilterRimOptions = [], addfilerSizeOptions = [], addfilterPatternOptions = [] } = {}) {
+
+    addOptions({
+      addfilterRimOptions = [],
+      addfilerSizeOptions = [],
+      addfilterPatternOptions = [],
+    } = {}) {
       if (addfilterRimOptions.length > 0) {
         this.filterRimOptions.clear();
-        addfilterRimOptions.forEach((option) => this.filterRimOptions.add(option));
+        addfilterRimOptions.forEach((option) =>
+          this.filterRimOptions.add(option)
+        );
       }
       if (addfilerSizeOptions.length > 0) {
         this.filerSizeOptions.clear();
-        addfilerSizeOptions.forEach((option) => this.filerSizeOptions.add(option));
+        addfilerSizeOptions.forEach((option) =>
+          this.filerSizeOptions.add(option)
+        );
       }
       if (addfilterPatternOptions.length > 0) {
         this.filterPatternOptions.clear();
-        addfilterPatternOptions.forEach((option) => this.filterPatternOptions.add(option));
+        addfilterPatternOptions.forEach((option) =>
+          this.filterPatternOptions.add(option)
+        );
       }
     }
   }
 
-  async function initFilterData(){
+  async function initFilterData() {
     let tempfilterMapping = new Map();
     await new Promise((resolve) => setTimeout(resolve, 1000));
-      filterData.forEach((item) => {
-        const rows = item.tables.table[0].row;
-        let machineryName;
-        let rim_recommended;
-        let size;
-        let pattern_type;
+    filterData.forEach((item) => {
+      const rows = item.tables.table[0].row;
+      let machineryName;
+      let rim_recommended;
+      let size;
+      let pattern_type;
 
-        if (item.sub_segment) {
-          subSegmentOptions.add(item.sub_segment);
+      if (item.sub_segment) {
+        subSegmentOptions.add(item.sub_segment);
+      }
+      rows.forEach((row) => {
+        if (row.rim_recommended) {
+          rim_recommended = row.size.match(/(\d+)(?=[\s-]*$)/)[0];
+          rimOptions.add(rim_recommended);
         }
-        rows.forEach((row) => {
-          if (row.rim_recommended) {
-            rim_recommended = row.size.match(/(\d+)(?=[\s-]*$)/)[0]
-            rimOptions.add(rim_recommended);
-          }
-          if (row.size) {
-            size = row.size;
-            sizeOptions.add(size);
-          }
-          if (row.pattern_type) {
-            pattern_type = row.pattern_type;
-            patternOptions.add(pattern_type);
-          }
-          if (row.machinery && row.machinery.name) {
-            machineryOptions.add(row.machinery.name);
-            machineryName = row.machinery.name;
-          }
-          if(!tempfilterMapping.has(machineryName)){
-            tempfilterMapping.set(machineryName,new FilterMappingModel([rim_recommended], [row.size], [row.pattern_type]));
-          } else {
-             let tempdata = tempfilterMapping.get(machineryName);
-             tempdata.addOptions({ addfilterRimOptions: [rim_recommended], addfilerSizeOptions: [row.size], addfilterPatternOptions: [row.pattern_type] });
-             tempfilterMapping.set(machineryName,tempdata);
-          }
-        });
+        if (row.size) {
+          size = row.size;
+          sizeOptions.add(size);
+        }
+        if (row.pattern_type) {
+          pattern_type = row.pattern_type;
+          patternOptions.add(pattern_type);
+        }
+        if (row.machinery && row.machinery.name) {
+          machineryOptions.add(row.machinery.name);
+          machineryName = row.machinery.name;
+        }
+        if (!tempfilterMapping.has(machineryName)) {
+          tempfilterMapping.set(
+            machineryName,
+            new FilterMappingModel(
+              [rim_recommended],
+              [row.size],
+              [row.pattern_type]
+            )
+          );
+        } else {
+          let tempdata = tempfilterMapping.get(machineryName);
+          tempdata.addOptions({
+            addfilterRimOptions: [rim_recommended],
+            addfilerSizeOptions: [row.size],
+            addfilterPatternOptions: [row.pattern_type],
+          });
+          tempfilterMapping.set(machineryName, tempdata);
+        }
       });
-      
-      setFilterMapping(tempfilterMapping);
+    });
 
-      setFiltersArray(pageData?.filters && pageData.filters.length > 4
+    setFilterMapping(tempfilterMapping);
+
+    setFiltersArray(
+      pageData?.filters && pageData.filters.length > 4
         ? [
             Array.from(subSegmentOptions),
             Array.from(machineryOptions),
@@ -1589,7 +1603,8 @@ const Segments = ({ pageData, pagination }) => {
             Array.from(rimOptions),
             Array.from(sizeOptions),
             Array.from(patternOptions),
-          ]);
+          ]
+    );
   }
 
   useEffect(() => {
@@ -1599,86 +1614,100 @@ const Segments = ({ pageData, pagination }) => {
   }, [filterMapping]);
 
   function updateFilterData() {
-    if(selectedFilters.get("Select Machinery") !== undefined){
+    if (selectedFilters.get("Select Machinery") !== undefined) {
       let tempdata = filterMapping.get(selectedFilters.get("Select Machinery"));
       if (tempdata) {
-      tempdata.addOptions({ addfilterRimOptions: getFilterDataByKey("Select Machinery")});
-      setFilterMapping((prevFilters) => {
-      const updatedData = new Map(prevFilters);
-      updatedData.set(selectedFilters.get("Select Machinery"), tempdata);
-      return updatedData;
-    });
+        tempdata.addOptions({
+          addfilterRimOptions: getFilterDataByKey("Select Machinery"),
+        });
+        setFilterMapping((prevFilters) => {
+          const updatedData = new Map(prevFilters);
+          updatedData.set(selectedFilters.get("Select Machinery"), tempdata);
+          return updatedData;
+        });
+      }
     }
-    }
-    if(selectedFilters.get("Select Rim") !== undefined){
+    if (selectedFilters.get("Select Rim") !== undefined) {
       let tempdata = filterMapping.get(selectedFilters.get("Select Machinery"));
       if (tempdata) {
-      tempdata.addOptions({addfilerSizeOptions: getFilterDataByKey("Select Rim")});
-      setFilterMapping((prevFilters) => {
-      const updatedData = new Map(prevFilters);
-      updatedData.set(selectedFilters.get("Select Rim"), tempdata);
-      return updatedData;
-    });
+        tempdata.addOptions({
+          addfilerSizeOptions: getFilterDataByKey("Select Rim"),
+        });
+        setFilterMapping((prevFilters) => {
+          const updatedData = new Map(prevFilters);
+          updatedData.set(selectedFilters.get("Select Rim"), tempdata);
+          return updatedData;
+        });
+      }
     }
-    }
-    if(selectedFilters.get("Select Size") !== undefined){
+    if (selectedFilters.get("Select Size") !== undefined) {
       let tempdata = filterMapping.get(selectedFilters.get("Select Machinery"));
       if (tempdata) {
-      tempdata.addOptions({addfilterPatternOptions: getFilterDataByKey("Select Size") });
-      setFilterMapping((prevFilters) => {
-      const updatedData = new Map(prevFilters);
-      updatedData.set(selectedFilters.get("Select Size"), tempdata);
-      return updatedData;
-    });
-    }
+        tempdata.addOptions({
+          addfilterPatternOptions: getFilterDataByKey("Select Size"),
+        });
+        setFilterMapping((prevFilters) => {
+          const updatedData = new Map(prevFilters);
+          updatedData.set(selectedFilters.get("Select Size"), tempdata);
+          return updatedData;
+        });
+      }
     }
   }
 
   function getFilterDataByKey(key) {
-        switch (key) {
-          case "Select Machinery":
-            let temp_rim_recommended = new Set();
-            filterData.forEach((item) => {
-              const rows = item.tables.table[0].row;
-            rows.forEach((row) => {
-            if (row.rim_recommended && row.machinery && selectedFilters.get(key) === row.machinery.name) {
+    switch (key) {
+      case "Select Machinery":
+        let temp_rim_recommended = new Set();
+        filterData.forEach((item) => {
+          const rows = item.tables.table[0].row;
+          rows.forEach((row) => {
+            if (
+              row.rim_recommended &&
+              row.machinery &&
+              selectedFilters.get(key) === row.machinery.name
+            ) {
               temp_rim_recommended.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
             }
-            });
           });
-            return Array.from(temp_rim_recommended);
-          case "Select Rim":
-            let size = new Set();
-            filterData.forEach((item) => {
-            const rows = item.tables.table[0].row;
-            rows.forEach((row) => {
-              if (row.size && selectedFilters.get(key).slice(-2) === row.size.match(/(\d+)(?=[\s-]*$)/)[0]) {
-                size.add(row.size);
-              }
-            });
-            });
-            return Array.from(size);
-          case "Select Size":
-            let pattern_type = new Set();
-            filterData.forEach((item) => {
-              const rows = item.tables.table[0].row;
-            rows.forEach((row) => {
-              if (row.pattern_type && selectedFilters.get(key) === row.size) {
-                pattern_type.add(row.pattern_type);
-              }
-            });
+        });
+        return Array.from(temp_rim_recommended);
+      case "Select Rim":
+        let size = new Set();
+        filterData.forEach((item) => {
+          const rows = item.tables.table[0].row;
+          rows.forEach((row) => {
+            if (
+              row.size &&
+              selectedFilters.get(key).slice(-2) ===
+                row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+            ) {
+              size.add(row.size);
+            }
           });
-            return Array.from(pattern_type);
-          default:
-            return true;
-        }
+        });
+        return Array.from(size);
+      case "Select Size":
+        let pattern_type = new Set();
+        filterData.forEach((item) => {
+          const rows = item.tables.table[0].row;
+          rows.forEach((row) => {
+            if (row.pattern_type && selectedFilters.get(key) === row.size) {
+              pattern_type.add(row.pattern_type);
+            }
+          });
+        });
+        return Array.from(pattern_type);
+      default:
+        return true;
+    }
   }
 
   const updateItem = (index, newValue) => {
     setValue((prevData) => {
       const newData = [...prevData];
       newData[index] = newValue;
-      return newData.slice(0, index + 1);;
+      return newData.slice(0, index + 1);
     });
     updateFilterData();
   };
@@ -1686,13 +1715,13 @@ const Segments = ({ pageData, pagination }) => {
   const clearFilters = () => {
     // Reset the selected filters to an empty Map or default values
     setSelectedFilters(new Map());
-  
+
     // Reset the value state to an empty array or default values
     setValue([]);
-  
+
     // Optionally reset filtersArray if needed
     setFiltersArray([]);
-  
+
     // Update the filter data
     updateFilterData();
   };
@@ -1702,53 +1731,55 @@ const Segments = ({ pageData, pagination }) => {
   }, [selectedFilters]);
 
   function changeFilterValue() {
-      if(pageData.section_heading === "Off The Road Segment"){
-        const filterMappingEntry1 = filterMapping.get(value[1]);
-        if(filterMappingEntry1 === undefined) {
-          initFilterData();
-          return;
-        }
-        if(value[1] !== undefined) {
-          changeFilterData("Sub-section");
-        }
-      } else {
-        const filterMappingEntry = filterMapping.get(value[0]);
-        if(filterMappingEntry === undefined) {
-          initFilterData();
-          return;
-        }
-        changeFilterData("Machinery");
+    if (pageData.section_heading === "Off The Road Segment") {
+      const filterMappingEntry1 = filterMapping.get(value[1]);
+      if (filterMappingEntry1 === undefined) {
+        initFilterData();
+        return;
       }
+      if (value[1] !== undefined) {
+        changeFilterData("Sub-section");
+      }
+    } else {
+      const filterMappingEntry = filterMapping.get(value[0]);
+      if (filterMappingEntry === undefined) {
+        initFilterData();
+        return;
+      }
+      changeFilterData("Machinery");
+    }
   }
 
   function changeFilterData(filterOptionName) {
-  switch(filterOptionName){
-    case "Machinery":
-      const filterMappingEntry = filterMapping.get(value[0]);
-      const newRimOptions = filterMappingEntry.toArray().filterRimOptions;
-      const newSizeOptions = filterMappingEntry.toArray().filerSizeOptions;
-      const newPatternOptions = filterMappingEntry.toArray().filterPatternOptions;
-      setFiltersArray((prevFiltersArray) => [
-        [...(prevFiltersArray[0] || []), ...machineryOptions],
-        [...newRimOptions],
-        [...newSizeOptions],
-        [...newPatternOptions],
-      ]);
-      break;
-    case "Sub-section":
-      const newRimOptions1 = filterMappingEntry1.toArray().filterRimOptions;
-      const newSizeOptions1 = filterMappingEntry1.toArray().filerSizeOptions;
-      const newPatternOptions1 = filterMappingEntry1.toArray().filterPatternOptions;
-      setFiltersArray((prevFiltersArray) => [
-        [...(prevFiltersArray[0] || []), ...subSegmentOptions],
-        [...(prevFiltersArray[1] || []), ...machineryOptions],
-        [...newRimOptions1],
-        [...newSizeOptions1],
-        [...newPatternOptions1],
-      ]);
-      break;
+    switch (filterOptionName) {
+      case "Machinery":
+        const filterMappingEntry = filterMapping.get(value[0]);
+        const newRimOptions = filterMappingEntry.toArray().filterRimOptions;
+        const newSizeOptions = filterMappingEntry.toArray().filerSizeOptions;
+        const newPatternOptions =
+          filterMappingEntry.toArray().filterPatternOptions;
+        setFiltersArray((prevFiltersArray) => [
+          [...(prevFiltersArray[0] || []), ...machineryOptions],
+          [...newRimOptions],
+          [...newSizeOptions],
+          [...newPatternOptions],
+        ]);
+        break;
+      case "Sub-section":
+        const newRimOptions1 = filterMappingEntry1.toArray().filterRimOptions;
+        const newSizeOptions1 = filterMappingEntry1.toArray().filerSizeOptions;
+        const newPatternOptions1 =
+          filterMappingEntry1.toArray().filterPatternOptions;
+        setFiltersArray((prevFiltersArray) => [
+          [...(prevFiltersArray[0] || []), ...subSegmentOptions],
+          [...(prevFiltersArray[1] || []), ...machineryOptions],
+          [...newRimOptions1],
+          [...newSizeOptions1],
+          [...newPatternOptions1],
+        ]);
+        break;
+    }
   }
-}
 
   if (
     typeof meta === "undefined" ||
@@ -1837,46 +1868,51 @@ const Segments = ({ pageData, pagination }) => {
                           {item?.name}
                         </option>
                       ))}
-                      {Array.isArray(filtersArray[index]) && filtersArray[index].sort().map((item) => (
-                        <option
-                          key={item !== undefined && item.id}
-                          value={item !== undefined ? item.replace(/"/g, '') : ""}
-                          selected={
-                            selectURLParameter[index] == item ? "selected" : ""
-                          }
-                        >
-                          {item}
-                        </option>
-                      ))}
+                      {Array.isArray(filtersArray[index]) &&
+                        filtersArray[index].sort().map((item) => (
+                          <option
+                            key={item !== undefined && item.id}
+                            value={
+                              item !== undefined ? item.replace(/"/g, "") : ""
+                            }
+                            selected={
+                              selectURLParameter[index] == item
+                                ? "selected"
+                                : ""
+                            }
+                          >
+                            {item}
+                          </option>
+                        ))}
                     </select>
                   )}
                 </div>
               ))}
               <div className="flex flex-row gap-1 w-full">
-              <button
-                onClick={() => productFilters(value)}
-                className="tablinks cat-btn active-cat-btn items-center gap-1 !w-full max-h-[46px] !h-full !text-[18px] leading-[27.75px] md:col-span-2 xl:col-span-1"
-              >
-                <svg
-                  width="21"
-                  height="20"
-                  viewBox="0 0 21 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <button
+                  onClick={() => productFilters(value)}
+                  className="tablinks cat-btn active-cat-btn items-center gap-1 !w-full max-h-[46px] !h-full !text-[18px] leading-[27.75px] md:col-span-2 xl:col-span-1"
                 >
-                  <path
-                    d="M9.33216 1.59992C7.95438 1.59992 6.69883 1.93325 5.5655 2.59992C4.43216 3.26658 3.52105 4.1777 2.83216 5.33325C2.14327 6.48881 1.79883 7.74436 1.79883 9.09992C1.79883 10.4555 2.14327 11.711 2.83216 12.8666C3.52105 14.0221 4.43216 14.9333 5.5655 15.5999C6.69883 16.2666 7.95438 16.5999 9.33216 16.5999C10.1766 16.5999 10.9988 16.4555 11.7988 16.1666C12.5988 15.8777 13.3322 15.4888 13.9988 14.9999L17.1322 18.0666C17.2655 18.2444 17.4544 18.3333 17.6988 18.3333C17.9433 18.3333 18.1433 18.2555 18.2988 18.0999C18.4544 17.9444 18.5322 17.7444 18.5322 17.4999C18.5322 17.2555 18.4433 17.0666 18.2655 16.9333L15.1988 13.7999C15.6877 13.1333 16.0766 12.3999 16.3655 11.5999C16.6544 10.7999 16.7988 9.9777 16.7988 9.13325C16.7988 7.75547 16.4655 6.48881 15.7988 5.33325C15.1322 4.1777 14.2211 3.26658 13.0655 2.59992C11.9099 1.93325 10.6655 1.59992 9.33216 1.59992ZM9.33216 3.26658C10.3988 3.26658 11.3766 3.53325 12.2655 4.06658C13.1544 4.59992 13.8544 5.31103 14.3655 6.19992C14.8766 7.08881 15.1322 8.05547 15.1322 9.09992C15.1322 10.1444 14.8766 11.1221 14.3655 12.0333C13.8544 12.9444 13.1544 13.6555 12.2655 14.1666C11.3766 14.6777 10.3988 14.9333 9.33216 14.9333C8.2655 14.9333 7.28772 14.6777 6.39883 14.1666C5.50994 13.6555 4.79883 12.9444 4.26549 12.0333C3.73216 11.1221 3.46549 10.1444 3.46549 9.09992C3.46549 8.05547 3.73216 7.08881 4.26549 6.19992C4.79883 5.31103 5.50994 4.59992 6.39883 4.06658C7.28772 3.53325 8.2655 3.26658 9.33216 3.26658Z"
-                    fill="white"
-                  />
-                </svg>
-                Search
-              </button>
-              <button
-                onClick={() => clearFilters()}
-                className="tablinks cat-btn active-cat-btn items-center gap-1 !w-full max-h-[46px] !h-full !text-[18px] leading-[27.75px] md:col-span-2 xl:col-span-1 whitespace-nowrap"
-              >
-                Clear Filter
-              </button>
+                  <svg
+                    width="21"
+                    height="20"
+                    viewBox="0 0 21 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.33216 1.59992C7.95438 1.59992 6.69883 1.93325 5.5655 2.59992C4.43216 3.26658 3.52105 4.1777 2.83216 5.33325C2.14327 6.48881 1.79883 7.74436 1.79883 9.09992C1.79883 10.4555 2.14327 11.711 2.83216 12.8666C3.52105 14.0221 4.43216 14.9333 5.5655 15.5999C6.69883 16.2666 7.95438 16.5999 9.33216 16.5999C10.1766 16.5999 10.9988 16.4555 11.7988 16.1666C12.5988 15.8777 13.3322 15.4888 13.9988 14.9999L17.1322 18.0666C17.2655 18.2444 17.4544 18.3333 17.6988 18.3333C17.9433 18.3333 18.1433 18.2555 18.2988 18.0999C18.4544 17.9444 18.5322 17.7444 18.5322 17.4999C18.5322 17.2555 18.4433 17.0666 18.2655 16.9333L15.1988 13.7999C15.6877 13.1333 16.0766 12.3999 16.3655 11.5999C16.6544 10.7999 16.7988 9.9777 16.7988 9.13325C16.7988 7.75547 16.4655 6.48881 15.7988 5.33325C15.1322 4.1777 14.2211 3.26658 13.0655 2.59992C11.9099 1.93325 10.6655 1.59992 9.33216 1.59992ZM9.33216 3.26658C10.3988 3.26658 11.3766 3.53325 12.2655 4.06658C13.1544 4.59992 13.8544 5.31103 14.3655 6.19992C14.8766 7.08881 15.1322 8.05547 15.1322 9.09992C15.1322 10.1444 14.8766 11.1221 14.3655 12.0333C13.8544 12.9444 13.1544 13.6555 12.2655 14.1666C11.3766 14.6777 10.3988 14.9333 9.33216 14.9333C8.2655 14.9333 7.28772 14.6777 6.39883 14.1666C5.50994 13.6555 4.79883 12.9444 4.26549 12.0333C3.73216 11.1221 3.46549 10.1444 3.46549 9.09992C3.46549 8.05547 3.73216 7.08881 4.26549 6.19992C4.79883 5.31103 5.50994 4.59992 6.39883 4.06658C7.28772 3.53325 8.2655 3.26658 9.33216 3.26658Z"
+                      fill="white"
+                    />
+                  </svg>
+                  Search
+                </button>
+                <button
+                  onClick={() => clearFilters()}
+                  className="tablinks cat-btn active-cat-btn items-center gap-1 !w-full max-h-[46px] !h-full !text-[18px] leading-[27.75px] md:col-span-2 xl:col-span-1 whitespace-nowrap"
+                >
+                  Clear Filter
+                </button>
               </div>
             </div>
           )}
@@ -2002,7 +2038,7 @@ export function Products({ pageData }) {
   }, [pageData]);
 
   const openPopup = (index) => {
-    if(window.innerWidth<=600){
+    if (window.innerWidth <= 600) {
       setCurrentIndex(index);
 
       setPopupVisible(true);
@@ -2012,7 +2048,6 @@ export function Products({ pageData }) {
   const closePopup = () => {
     setPopupVisible(false);
   };
-  
 
   const [sortOrder, setSortOrder] = useState("asc"); // intial order
   const [sortColumn, setSortColumn] = useState("size");
@@ -2030,11 +2065,15 @@ export function Products({ pageData }) {
     if (table?.row && table.row.length > 0) {
       const sortedRows = [...table.row].sort((a, b) => {
         let valueA, valueB;
-  
+
         switch (sortColumn) {
           case "size":
-            const [sizeA, sizeB] = a.size ? a.size.split("-").map(Number) : [0, 0];
-            const [sizeC, sizeD] = b.size ? b.size.split("-").map(Number) : [0, 0];
+            const [sizeA, sizeB] = a.size
+              ? a.size.split("-").map(Number)
+              : [0, 0];
+            const [sizeC, sizeD] = b.size
+              ? b.size.split("-").map(Number)
+              : [0, 0];
             valueA = sizeA * 1000 + sizeB;
             valueB = sizeC * 1000 + sizeD;
             break;
@@ -2051,8 +2090,12 @@ export function Products({ pageData }) {
             valueB = b.applications ? b.applications.toLowerCase() : "";
             break;
           case "construction_type":
-            valueA = a.construction_type ? a.construction_type.toLowerCase() : "";
-            valueB = b.construction_type ? b.construction_type.toLowerCase() : "";
+            valueA = a.construction_type
+              ? a.construction_type.toLowerCase()
+              : "";
+            valueB = b.construction_type
+              ? b.construction_type.toLowerCase()
+              : "";
             break;
           case "pattern_type":
             valueA = a.pattern_type ? a.pattern_type.toLowerCase() : "";
@@ -2117,14 +2160,14 @@ export function Products({ pageData }) {
           default:
             return 0;
         }
-  
+
         if (sortOrder === "asc") {
           return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
         } else {
           return valueA > valueB ? -1 : valueA < valueB ? 1 : 0;
         }
       });
-  
+
       return { ...table, row: sortedRows };
     }
     return table;
@@ -2133,10 +2176,10 @@ export function Products({ pageData }) {
   const handleSave = () => {
     if (typeof window !== "undefined") {
       localStorage.setItem("lastProduct", pageData.slug);
-      sessionStorage.setItem("lastProductVisit", 'visited');
+      sessionStorage.setItem("lastProductVisit", "visited");
     }
   };
-  
+
   const handleArraySave = () => {
     if (typeof window !== "undefined") {
       localStorage.setItem("mostVisited", JSON.stringify(mostVisited));
@@ -2144,7 +2187,7 @@ export function Products({ pageData }) {
   };
 
   const findMostCommonValue = (arr) => {
-    if(Array.isArray(arr)){
+    if (Array.isArray(arr)) {
       const countMap = arr.reduce((acc, val) => {
         acc[val] = (acc[val] || 0) + 1;
         return acc;
@@ -2158,7 +2201,7 @@ export function Products({ pageData }) {
         }
       }
       return mostCommonValue;
-    }else{
+    } else {
       return arr;
     }
   };
@@ -2169,47 +2212,48 @@ export function Products({ pageData }) {
       const value = localStorage.getItem("lastProduct");
       setStoredValue(value);
       const mostVisitedString = localStorage.getItem("mostVisited");
-      if(mostVisitedString) {
+      if (mostVisitedString) {
         let mostVisitedArray = JSON.parse(mostVisitedString);
-        let updatedArray = mostVisitedArray.filter(item => item !== "undefined");
+        let updatedArray = mostVisitedArray.filter(
+          (item) => item !== "undefined"
+        );
         setMostVisited(updatedArray);
-        setMostVisited(prevData => [...prevData, value]);
+        setMostVisited((prevData) => [...prevData, value]);
       }
     }
   }, [pageData]);
-  
+
   useEffect(() => {
     handleArraySave();
   }, [mostVisited]);
 
   console.log(findMostCommonValue(mostVisited));
 
-
   const contentRef = useRef(null);
   const tableRef = useRef(null);
 
-
   const getLeaflet = async () => {
-
-    const productName = document.querySelector("#product-name h2").innerText.trim();
+    const productName = document
+      .querySelector("#product-name h2")
+      .innerText.trim();
     console.log(productName);
 
     if (contentRef.current) {
       var htmlContent = '<div style="padding:10px;">';
       htmlContent += contentRef.current.innerHTML; // Display HTML in an alert
 
-      if(tableRef.current){
-        var tableContent = '<div class="table-sec pt-8 md:pt-12 2xl:pt-[60px]"><div class="product-detail-table w-full mt-3">';
+      if (tableRef.current) {
+        var tableContent =
+          '<div class="table-sec pt-8 md:pt-12 2xl:pt-[60px]"><div class="product-detail-table w-full mt-3">';
         tableContent += tableRef.current.innerHTML;
-        tableContent += '</div>';
+        tableContent += "</div>";
         tableContent += '<div class="page-break"></div>';
-        tableContent += '</div>';
+        tableContent += "</div>";
 
         htmlContent += tableContent;
-
       }
 
-      htmlContent += '</div>';
+      htmlContent += "</div>";
 
       // console.log('htmlContent');
 
@@ -2219,19 +2263,19 @@ export function Products({ pageData }) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ htmlContent }),
         });
-  
+
         if (!response.ok) throw new Error("Failed to generate PDF!");
-  
+
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
-  
+
         // Create a link element and trigger download
         const link = document.createElement("a");
         link.href = url;
         link.download = `${productName}.pdf`;
         document.body.appendChild(link);
         link.click();
-  
+
         // Cleanup
         document.body.removeChild(link);
         window.URL.revokeObjectURL(url);
@@ -2240,12 +2284,8 @@ export function Products({ pageData }) {
       } finally {
         // setLoading(false);
       }
-
-
     }
-
-  }
-
+  };
 
   return (
     <>
@@ -2292,7 +2332,11 @@ export function Products({ pageData }) {
               {pageData?.name}
             </p>
           </div>
-          <div id="details" ref={contentRef} className="flex flex-col lg:flex-row gap-8 lg:gap-10 2xl:gap-[60px] mt-6 xl:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]">
+          <div
+            id="details"
+            ref={contentRef}
+            className="flex flex-col lg:flex-row gap-8 lg:gap-10 2xl:gap-[60px] mt-6 xl:pb-12 2xl:pb-[60px] border-b border-[#C9CDD3]"
+          >
             <div className="productImageWrapper w-full lg:w-[55%] xl:w-[45%]">
               <div className="product-image-sec flex flex-col-reverse md:flex-row gap-5">
                 <Swiper
@@ -2321,94 +2365,103 @@ export function Products({ pageData }) {
                   ))}
                 </Swiper>
                 <div className="product-slider single-image-slider relative w-full md:w-[80%] h-full bg-[#ffffff] rounded-[12px]">
-        <span
-          className={`bg-primary py-1 px-10 rounded-tr-[12px] text-[#FFFFFF] text-[12px] md:text-[18px] font-medium absolute right-0 top-0 overflow-hidden ${
-            pageData?.premium ? "prem-product-tag" : ""
-          }`}
-        >
-          {pageData.premium ? "Premium" : "Standard"}
-        </span>
-        <Swiper
-          navigation={true}
-          freeMode={true}
-          speed={500}
-          loop={true}
-          pagination={{
-            clickable: true,
-          }}
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-            },
-          }}
-          thumbs={{ swiper: thumbsSwiper }}
-          modules={[FreeMode, Autoplay, Navigation, Thumbs]}
-          className="productDetailSwiper !py-10 overflow-hidden"
-        >
-          {pageData?.gallery?.map((gallery, index) => (
-            <SwiperSlide
-              key={gallery.id}
-              className="!flex !justify-center"
-              onClick={() => openPopup(index)}
-            >
-              <figure className="w-[180px] lg:w-[300px] 2xl:w-[320px] h-[240px] 2xl:h-[380px] pt-3 md:pt-0 zoom_image">
-                <img
-                  width={gallery?.width}
-                  height={gallery?.height}
-                  src={getStrapiMedia(gallery?.url)}
-                  alt={gallery?.alternativeText}
-                  className="w-full h-full object-contain"
-                />
-              </figure>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+                  <span
+                    className={`bg-primary py-1 px-10 rounded-tr-[12px] text-[#FFFFFF] text-[12px] md:text-[18px] font-medium absolute right-0 top-0 overflow-hidden ${
+                      pageData?.premium ? "prem-product-tag" : ""
+                    }`}
+                  >
+                    {pageData.premium ? "Premium" : "Standard"}
+                  </span>
+                  <Swiper
+                    navigation={true}
+                    freeMode={true}
+                    speed={500}
+                    loop={true}
+                    pagination={{
+                      clickable: true,
+                    }}
+                    breakpoints={{
+                      0: {
+                        slidesPerView: 1,
+                      },
+                    }}
+                    thumbs={{ swiper: thumbsSwiper }}
+                    modules={[FreeMode, Autoplay, Navigation, Thumbs]}
+                    className="productDetailSwiper !py-10 overflow-hidden"
+                  >
+                    {pageData?.gallery?.map((gallery, index) => (
+                      <SwiperSlide
+                        key={gallery.id}
+                        className="!flex !justify-center"
+                        onClick={() => openPopup(index)}
+                      >
+                        <figure className="w-[180px] lg:w-[300px] 2xl:w-[320px] h-[240px] 2xl:h-[380px] pt-3 md:pt-0 zoom_image">
+                          <img
+                            width={gallery?.width}
+                            height={gallery?.height}
+                            src={getStrapiMedia(gallery?.url)}
+                            alt={gallery?.alternativeText}
+                            className="w-full h-full object-contain"
+                          />
+                        </figure>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
 
-      {/* Popup */}
-      {popupVisible && (
-        <div className="popup-overlay fixed inset-0 bg-black bg-opacity-80 z-60 flex items-center justify-center">
-          <div className="popup-content relative bg-white w-[100%] h-[100%] rounded-[12px] overflow-hidden">
-            <button
-              className="absolute z-10 top-4 right-4 text-white bg-primary rounded-full w-8 h-8 flex items-center justify-center font-bold"
-              onClick={closePopup}
-            >
-              ×
-            </button>
-            <Swiper
-              // navigation={true}
-              freeMode={true}
-              speed={500}
-              // loop={true}
-              initialSlide={currentIndex}
-              pagination={{
-                clickable: true,
-              }}
-              breakpoints={{
-                0: {
-                  slidesPerView: 1,
-                },
-              }}
-              modules={[FreeMode, Autoplay, Navigation, Thumbs, Pagination]}
-              className="productPopUpSlider h-full !py-10 overflow-hidden"
-            >
-              {pageData?.gallery?.map((gallery) => (
-                <SwiperSlide key={gallery.id} className="!flex !justify-center !items-center">
-                  <figure className="w-[280px] h-[280px]">
-                    <img
-                      width={gallery?.width}
-                      height={gallery?.height}
-                      src={getStrapiMedia(gallery?.url)}
-                      alt={gallery?.alternativeText}
-                      className="w-full h-full object-contain"
-                    />
-                  </figure>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
-      )}
+                {/* Popup */}
+                {popupVisible && (
+                  <div className="popup-overlay fixed inset-0 bg-black bg-opacity-80 z-60 flex items-center justify-center">
+                    <div className="popup-content relative bg-white w-[100%] h-[100%] rounded-[12px] overflow-hidden">
+                      <button
+                        className="absolute z-10 top-4 right-4 text-white bg-primary rounded-full w-8 h-8 flex items-center justify-center font-bold"
+                        onClick={closePopup}
+                      >
+                        ×
+                      </button>
+                      <Swiper
+                        // navigation={true}
+                        freeMode={true}
+                        speed={500}
+                        // loop={true}
+                        initialSlide={currentIndex}
+                        pagination={{
+                          clickable: true,
+                        }}
+                        breakpoints={{
+                          0: {
+                            slidesPerView: 1,
+                          },
+                        }}
+                        modules={[
+                          FreeMode,
+                          Autoplay,
+                          Navigation,
+                          Thumbs,
+                          Pagination,
+                        ]}
+                        className="productPopUpSlider h-full !py-10 overflow-hidden"
+                      >
+                        {pageData?.gallery?.map((gallery) => (
+                          <SwiperSlide
+                            key={gallery.id}
+                            className="!flex !justify-center !items-center"
+                          >
+                            <figure className="w-[280px] h-[280px]">
+                              <img
+                                width={gallery?.width}
+                                height={gallery?.height}
+                                src={getStrapiMedia(gallery?.url)}
+                                alt={gallery?.alternativeText}
+                                className="w-full h-full object-contain"
+                              />
+                            </figure>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+                  </div>
+                )}
               </div>
               {pageData?.type && (
                 <div className="patter-description flex items-center justify-between md:justify-start md:gap-2 lg:gap-0 lg:justify-between mt-6">
@@ -2483,7 +2536,10 @@ export function Products({ pageData }) {
                 </div>
               )}
             </div>
-            <div className="product-detail-sec w-ful lg:w-[45%] xl:w-[55%]" id="product-name">
+            <div
+              className="product-detail-sec w-ful lg:w-[45%] xl:w-[55%]"
+              id="product-name"
+            >
               {pageData?.name && (
                 <h2 className="text-secondary text-[28px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px]">
                   {pageData.name}
@@ -2599,8 +2655,7 @@ export function Products({ pageData }) {
                     </div>
                   )}
 
-
-                    {/* <div className="flex items-center gap-3 relative z-10">
+                  {/* <div className="flex items-center gap-3 relative z-10">
                       <Link onClick={getLeaflet}
                       target="_blank"
                         href=""
@@ -2609,9 +2664,6 @@ export function Products({ pageData }) {
                         Download Product Leaflet
                       </Link>
                     </div> */}
-
-
-
                 </div>
                 {pageData.tables?.table && pageData.tables.table.length > 1 && (
                   <div className="country-selection flex justify-between items-center lg:flex-col lg:items-start">
@@ -2650,7 +2702,8 @@ export function Products({ pageData }) {
                   table?.row &&
                   table.row.length > 0 &&
                   table.standard === selectedStandard ? (
-                    <div ref={tableRef} 
+                    <div
+                      ref={tableRef}
                       className="product-detail-table w-full overflow-x-auto mt-3"
                       key={table.id}
                     >

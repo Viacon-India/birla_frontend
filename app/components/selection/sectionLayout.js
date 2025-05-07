@@ -19,11 +19,12 @@ import BGTiger2 from "../../assets/images/tiger-mask2.png";
 import tigerMask from "@/app/assets/images/tiger-mask2.png";
 import tigerMask3 from "@/app/assets/images/tiger-mask3.png";
 import tiger from "@/app/assets/images/tiger.png";
+import tyreRoll from "@/app/assets/images/tyre-roll.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FreeMode, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css/navigation";
-import loadGif from "../../assets/images/loading.gif"
+import loadGif from "../../assets/images/loading.gif";
 
 export default function SectionSelection({ section, Background, right }) {
   return (
@@ -195,13 +196,22 @@ export function Table({ section }) {
                 <table className="w-full text-sm text-left rtl:text-right">
                   <thead className="font-semibold text-[16px] leading-[20px] text-secondary bg-[#E0E1F5]">
                     <tr>
-                      <th scope="col" className="px-2 py-3 border border-[#C9CDD3]">
+                      <th
+                        scope="col"
+                        className="px-2 py-3 border border-[#C9CDD3]"
+                      >
                         Sr. No.
                       </th>
-                      <th scope="col" className="px-2 py-3 border border-[#C9CDD3]">
+                      <th
+                        scope="col"
+                        className="px-2 py-3 border border-[#C9CDD3]"
+                      >
                         {tables.first_row.name}
                       </th>
-                      <th scope="col" className="px-2 py-3 border border-[#C9CDD3]">
+                      <th
+                        scope="col"
+                        className="px-2 py-3 border border-[#C9CDD3]"
+                      >
                         {tables.first_row.status}
                       </th>
                     </tr>
@@ -786,11 +796,11 @@ export function TitleContentHalf({ section }) {
       <div className="container mx-auto">
         <div className="flex items-start flex-col lg:flex-row gap-4 md:gap-8 2xl:gap-[60px] relative">
           <div className="box-title-sec w-full lg:w-[45%]">
-            <Image
+            {/* <Image
               src={tigerMask3}
               alt="tigermark"
               className="absolute left-0 bottom-0"
-            />
+            /> */}
             <div data-aos="fade-right" data-aos-duration="1000">
               <span className="section-heading">{section?.heading}</span>
               <div className="section-title-wrapper">
@@ -860,11 +870,10 @@ export function TitleContentFull({ section }) {
         {(section?.heading || section?.title || section?.file) && (
           <div className="upper-title-sec flex gap-3 md:gap-0 flex-col md:flex-row justify-between items-end mb-6 md:mb-10">
             {(section?.heading || section?.title) && (
-              <div className="self-start">
+              
+              <div className="self-start" data-aos="fade-right" data-aos-duration="1000">
                 {section?.heading && (
-                  <span className="section-heading">
-                    {section.heading}
-                  </span>
+                  <span className="section-heading">{section.heading}</span>
                 )}
                 {section?.title && (
                   <div className="section-title-wrapper">
@@ -970,7 +979,7 @@ export function TitleContentFull({ section }) {
                 {collection?.images &&
                   collection.images.length > 0 &&
                   collection.images.map((image) => (
-                    <div className="tyre-care-card" key={image.id}>
+                    <div className="tyre-care-card" key={image.id} data-aos="fade-up" data-aos-duration="1000">
                       <figure className="w-full h-[190px] md:h-[240px] rounded-[12px]">
                         <Image
                           className="w-full h-full object-fill rounded-[12px]"
@@ -1093,12 +1102,12 @@ export function Gallery({ section }) {
             </div>
 
             <div className="relative mt-6">
-              <figure className="absolute w-[100px] h-[100px] 2xl:w-[150px] 2xl:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-7 z-10 hidden md:block">
+              <figure className="absolute w-[100px] h-[100px] 2xl:w-[150px] 2xl:h-[150px] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white rounded-full p-0 z-10 hidden md:flex justify-center items-center ">
                 <Image
-                  className={section?.collection_name ? "!opacity-15" : ""}
-                  data-aos="zoom-in"
-                  data-aos-duration="2000"
-                  src={tiger}
+                  className={`${
+                    section?.collection_name ? "!opacity-0" : ""
+                  } animate-[spin_2s_linear_infinite]`}
+                  src={tyreRoll}
                   alt="img"
                 />
                 {section?.collection_name && (
@@ -1418,7 +1427,7 @@ export function JobApplication({ section }) {
   const handlePhoneChange = (value) => {
     setFormData({
       ...formData,
-      ['contactNumber']: value,
+      ["contactNumber"]: value,
     });
   };
   const uploadFile = async (file) => {
@@ -1445,12 +1454,17 @@ export function JobApplication({ section }) {
     }
   };
   const handleSubmit = async (e) => {
-    setError('');
+    setError("");
     setLoading(true);
     e.preventDefault();
-    if (!formData.contactNumber || !/^\+?\d{1,4}[\s\-\(\)]?\(?[\d\(\)\-\s\+]{6,20}$/g.test(formData.contactNumber)) {
+    if (
+      !formData.contactNumber ||
+      !/^\+?\d{1,4}[\s\-\(\)]?\(?[\d\(\)\-\s\+]{6,20}$/g.test(
+        formData.contactNumber
+      )
+    ) {
       setLoading(false);
-      setError('Please enter a valid phone number.');
+      setError("Please enter a valid phone number.");
       return;
     }
     const resumeId = await uploadFile(formData.resume);
@@ -1545,7 +1559,7 @@ export function JobApplication({ section }) {
                 }}
               />
             )}
-            <Image alt="mask" src={tigerMask} className="hidden lg:block" />
+            {/* <Image alt="mask" src={tigerMask} className="hidden lg:block" /> */}
           </div>
           <div className="w-full lg:w-[60%] xl:w-[55%]">
             <div
@@ -1621,17 +1635,17 @@ export function JobApplication({ section }) {
                       <span className="text-red-600 pl-[2px]">*</span>
                     </label>
                   )}
-                    <PhoneInput
-                      className="contact-input pl-[10px]"
-                      international
-                      defaultCountry="IN"
-                      value={value}
-                      name="contactNumber"
-                      placeholder={section?.contactNumber?.placeholder}
-                      onChange={handlePhoneChange}
-                      maxlength="18"
-                      required
-                    />
+                  <PhoneInput
+                    className="contact-input pl-[10px]"
+                    international
+                    defaultCountry="IN"
+                    value={value}
+                    name="contactNumber"
+                    placeholder={section?.contactNumber?.placeholder}
+                    onChange={handlePhoneChange}
+                    maxlength="18"
+                    required
+                  />
                 </div>
                 {section?.specialization && (
                   <div className="form-row">
@@ -1750,14 +1764,16 @@ export function JobApplication({ section }) {
                   >
                     <span data-hover={section?.submit}>{section?.submit}</span>
                   </button>
-                  {formLoading && <>
-                    {/* <p>Loading...</p> */}
-                    <Image
-                                  className="w-[40px] h-[40px]"
-                                  src={loadGif}
-                                  alt="loadigif"
-                                />
-                  </> }
+                  {formLoading && (
+                    <>
+                      {/* <p>Loading...</p> */}
+                      <Image
+                        className="w-[40px] h-[40px]"
+                        src={loadGif}
+                        alt="loadigif"
+                      />
+                    </>
+                  )}
                 </div>
               </form>
             </div>
@@ -1960,11 +1976,11 @@ export function ImageDetailContent({ section }) {
           </figure>
           <div className="flex flex-col justify-center gap-2 md:gap-6 w-full xl:w-[60%] relative overflow-hidden">
             <div className="flex flex-col gap-2 md:gap-4 2xl:gap-6">
-              <Image
+              {/* <Image
                 className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
                 src={BGTiger2}
                 alt=""
-              />
+              /> */}
               <div className="flex gap-2 flex-col">
                 <h2
                   className="text-[24px] md:text-[36px] 2xl:text-[48px] font-bold text-secondary"
@@ -1981,18 +1997,17 @@ export function ImageDetailContent({ section }) {
                   {section?.designation}
                 </h3>
               </div>
-              {section?.social &&
-                  section.social.length > 0 &&
+              {section?.social && section.social.length > 0 && (
                 <div
                   className="relative flex gap-2"
                   data-aos="fade-left"
                   data-aos-duration="600"
                 >
-                  {section?.social_title &&
+                  {section?.social_title && (
                     <p className="text-[#1A1D21] text-[20px] md:text-[24px] font-medium">
                       {section.social_title}
                     </p>
-                  }
+                  )}
                   {section?.social &&
                     section.social.length > 0 &&
                     section.social.map(
@@ -2014,7 +2029,7 @@ export function ImageDetailContent({ section }) {
                         )
                     )}
                 </div>
-              }
+              )}
               <BlocksRenderer
                 content={section.content}
                 blocks={{
@@ -2091,9 +2106,11 @@ export function SidebarContent({ section }) {
   return (
     <section className="relative mt-6 md:mt-8 2xl:mt-[60px]">
       <div className="container mx-auto">
-        <span className="section-heading">{section?.heading}</span>
-        <div className="section-title-wrapper mb-4 md:mb-8 2xl:mb-10">
-          <h2 className="section-title">{section?.title}</h2>
+        <div data-aos="fade-right" data-aos-duration="1000">
+          <span className="section-heading">{section?.heading}</span>
+          <div className="section-title-wrapper mb-4 md:mb-8 2xl:mb-10">
+            <h2 className="section-title">{section?.title}</h2>
+          </div>
         </div>
         <BlocksRenderer
           content={section.content}
@@ -2177,9 +2194,7 @@ export function SidebarContent({ section }) {
                     content={collection.content}
                     blocks={{
                       paragraph: ({ children }) => (
-                        <p
-                          className="pt-2 md:pt-4 text-[#1A1D21] text-[14px] md:text-[15px] xl:text-[16px]"
-                        >
+                        <p className="pt-2 md:pt-4 text-[#1A1D21] text-[14px] md:text-[15px] xl:text-[16px]">
                           {children}
                         </p>
                       ),
@@ -2206,20 +2221,12 @@ export function SidebarContent({ section }) {
                       list: (props) => {
                         if (props.format === "ordered") {
                           return (
-                            <ol
-                              className="list-decimal !pl-6"
-                            >
+                            <ol className="list-decimal !pl-6">
                               {props.children}
                             </ol>
                           );
                         }
-                        return (
-                          <ul
-                            className="list-disc"
-                          >
-                            {props.children}
-                          </ul>
-                        );
+                        return <ul className="list-disc">{props.children}</ul>;
                       },
                       "list-item": (props) => (
                         <li className="pt-3 md:pt-5 text-[#1A1D21] text-[14px] md:text-[15px] xl:text-[16px]">
@@ -2231,7 +2238,11 @@ export function SidebarContent({ section }) {
                       ),
                     }}
                     modifiers={{
-                      bold: ({ children }) => <strong className="text-[14px] md:text-[15px] xl:text-[16px]">{children}</strong>,
+                      bold: ({ children }) => (
+                        <strong className="text-[14px] md:text-[15px] xl:text-[16px]">
+                          {children}
+                        </strong>
+                      ),
                       italic: ({ children }) => (
                         <span className="italic">{children}</span>
                       ),

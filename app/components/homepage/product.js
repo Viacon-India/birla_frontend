@@ -119,8 +119,8 @@ export default function Products({ Heading='', Title='', Data={}}) {
               {tab.attributes.products?.data &&
                 <>
                   <Swiper
-                    navigation={true}
-                    modules={[Navigation]}
+                    // navigation={true}
+                    // modules={[Navigation]}
                     breakpoints={{
                       0: {
                         slidesPerView: 1,
@@ -141,7 +141,7 @@ export default function Products({ Heading='', Title='', Data={}}) {
                     spaceBetween={50}
                     freeMode={true}
                     pagination={{ clickable: true }}
-                    className="myProductSwiper !overflow-visible"
+                    className="myProductSwiper"
                   >
                     {tab.attributes.products.data.map((product) => (
                       <SwiperSlide key={product.id}>

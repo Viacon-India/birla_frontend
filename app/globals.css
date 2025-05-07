@@ -725,6 +725,7 @@ a.current_dot {
 }
 .footer-detail-box{
   @apply flex items-center gap-1 md:gap-3 border border-[#727C8D] px-4 py-2 rounded-[4px] w-fit
+  hover:bg-secondary transition-all duration-300
 }
 .footer-detail-box a{
   @apply text-[14px] md:text-[15px] text-secondary
@@ -768,7 +769,8 @@ a.current_dot {
   @apply w-10 h-10 bg-primary flex justify-center items-center rounded-[4px] self-end
 }
 .icon-box{
-  @apply bg-secondary w-8 h-8 md:w-10 md:h-10 flex justify-center items-center rounded-[4px]
+  @apply bg-secondary w-8 h-8 md:w-10 md:h-10 flex justify-center items-center rounded-[4px] border
+  border-secondary hover:bg-transparent hover:!border-[#000000]
 }
 
 
