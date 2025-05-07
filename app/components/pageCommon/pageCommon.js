@@ -224,7 +224,7 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
         />
       )}
       <div className="container mx-auto relative h-[200px] flex items-end justify-end">
-        <Image src={Tiger} alt="bottom-img" className="absolute right-[20%]" />
+        {/* <Image src={Tiger} alt="bottom-img" className="absolute right-[20%]" />s */}
         {EndPageData?.page ? (
           <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4 relative z-5">
             Next Page:
