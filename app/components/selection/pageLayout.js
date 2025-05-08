@@ -1227,7 +1227,31 @@ const Segments = ({ pageData, pagination }) => {
   const updateSelectedFilters = (filterTitle, value) => {
     setSelectedFilters((prevFilters) => {
       const updatedFilters = new Map(prevFilters);
-      updatedFilters.set(filterTitle, value);
+      if(value === ""){
+        switch (filterTitle) {
+          case "Select Machinery":
+            updatedFilters.delete("Select Machinery");
+            updatedFilters.delete("Select Rim");
+            updatedFilters.delete("Select Size");
+            updatedFilters.delete("Select Pattern");
+            break;
+          case "Select Rim":
+            updatedFilters.delete("Select Rim");
+            updatedFilters.delete("Select Size");
+            updatedFilters.delete("Select Pattern");
+            break;
+          case "Select Size":
+            updatedFilters.delete("Select Size");
+            updatedFilters.delete("Select Pattern");
+            break;
+          case "Select Pattern":
+            updatedFilters.delete("Select Pattern");
+            break;
+        }
+        setSelectedFilters(new Map());
+      } else {
+        updatedFilters.set(filterTitle, value);
+      }
       return updatedFilters;
     });
   };
@@ -1709,21 +1733,13 @@ const Segments = ({ pageData, pagination }) => {
       newData[index] = newValue;
       return newData.slice(0, index + 1);
     });
-    updateFilterData();
   };
 
   const clearFilters = () => {
-    // Reset the selected filters to an empty Map or default values
     setSelectedFilters(new Map());
-
-    // Reset the value state to an empty array or default values
     setValue([]);
-
-    // Optionally reset filtersArray if needed
     setFiltersArray([]);
-
-    // Update the filter data
-    updateFilterData();
+    initFilterData();
   };
 
   useEffect(() => {
@@ -1734,7 +1750,7 @@ const Segments = ({ pageData, pagination }) => {
     if (pageData.section_heading === "Off The Road Segment") {
       const filterMappingEntry1 = filterMapping.get(value[1]);
       if (filterMappingEntry1 === undefined) {
-        initFilterData();
+        // initFilterData();
         return;
       }
       if (value[1] !== undefined) {
@@ -1743,7 +1759,7 @@ const Segments = ({ pageData, pagination }) => {
     } else {
       const filterMappingEntry = filterMapping.get(value[0]);
       if (filterMappingEntry === undefined) {
-        initFilterData();
+        // initFilterData();
         return;
       }
       changeFilterData("Machinery");
