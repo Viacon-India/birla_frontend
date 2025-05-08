@@ -1750,7 +1750,6 @@ const Segments = ({ pageData, pagination }) => {
     if (pageData.section_heading === "Off The Road Segment") {
       const filterMappingEntry1 = filterMapping.get(value[1]);
       if (filterMappingEntry1 === undefined) {
-        // initFilterData();
         return;
       }
       if (value[1] !== undefined) {
@@ -1759,7 +1758,6 @@ const Segments = ({ pageData, pagination }) => {
     } else {
       const filterMappingEntry = filterMapping.get(value[0]);
       if (filterMappingEntry === undefined) {
-        // initFilterData();
         return;
       }
       changeFilterData("Machinery");
