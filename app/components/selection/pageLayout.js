@@ -1203,6 +1203,51 @@ export function Pages({ pageData }) {
   );
 }
 
+  class FilterMappingModel {
+    constructor(
+      filterRimOptions = [],
+      filerSizeOptions = [],
+      filterPatternOptions = []
+    ) {
+      this.filterRimOptions = new Set(filterRimOptions);
+      this.filerSizeOptions = new Set(filerSizeOptions);
+      this.filterPatternOptions = new Set(filterPatternOptions);
+    }
+
+    toArray() {
+      return {
+        filterRimOptions: Array.from(this.filterRimOptions),
+        filerSizeOptions: Array.from(this.filerSizeOptions),
+        filterPatternOptions: Array.from(this.filterPatternOptions),
+      };
+    }
+
+    addOptions({
+      addfilterRimOptions = [],
+      addfilerSizeOptions = [],
+      addfilterPatternOptions = [],
+    } = {}) {
+      if (addfilterRimOptions.length > 0) {
+        this.filterRimOptions.clear();
+        addfilterRimOptions.forEach((option) =>
+          this.filterRimOptions.add(option)
+        );
+      }
+      if (addfilerSizeOptions.length > 0) {
+        this.filerSizeOptions.clear();
+        addfilerSizeOptions.forEach((option) =>
+          this.filerSizeOptions.add(option)
+        );
+      }
+      if (addfilterPatternOptions.length > 0) {
+        this.filterPatternOptions.clear();
+        addfilterPatternOptions.forEach((option) =>
+          this.filterPatternOptions.add(option)
+        );
+      }
+    }
+  }
+
 const Segments = ({ pageData, pagination }) => {
   const { push } = useRouter();
   const searchParams = new URLSearchParams(useSearchParams());
@@ -1223,6 +1268,281 @@ const Segments = ({ pageData, pagination }) => {
   const rimOptions = new Set();
   const sizeOptions = new Set();
   const patternOptions = new Set();
+
+  const fetchData = async (query) => {
+    try {
+      const response = await fetch(
+        getStrapiMedia(
+          `/api/products?pagination[pageSize]=${pageSize}&pagination[page]=${currentPage}&sort[0]=premium:desc&sort[1]=id:asc&filters[segment][slug][$eq]=${pageData.slug}${query}`
+        )
+      );
+      const products = await response.json();
+      setProductsData(products.data);
+      setProductsMeta(products.meta);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      try {
+        const response = await fetch(
+          getStrapiMedia(
+            `/api/products?filters[segment][slug]=${pageData.slug}`
+          )
+        );
+        const filters = await response.json();
+        setFilterData(filters.data);
+        const checkURLParameter = [];
+        if (searchParams.toString()) {
+          if (
+            pageData.data?.attributes.categories.data[activeTabIndex].attributes
+              .filters.length > 4
+          ) {
+            if (searchParams.has("sub_segment"))
+              checkURLParameter[0] = searchParams
+                .get("sub_segment")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("machinery"))
+              checkURLParameter[1] = searchParams
+                .get("machinery")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("rim_recommended"))
+              checkURLParameter[2] = searchParams
+                .get("rim_recommended")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("size"))
+              checkURLParameter[3] = searchParams
+                .get("size")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("pattern_type"))
+              checkURLParameter[4] = searchParams
+                .get("pattern_type")
+                .replace("+", " ")
+                .replace("%2F", "/");
+          } else {
+            if (searchParams.has("machinery"))
+              checkURLParameter[0] = searchParams
+                .get("machinery")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("rim_recommended"))
+              checkURLParameter[1] = searchParams
+                .get("rim_recommended")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("size"))
+              checkURLParameter[2] = searchParams
+                .get("size")
+                .replace("+", " ")
+                .replace("%2F", "/");
+            if (searchParams.has("pattern_type"))
+              checkURLParameter[3] = searchParams
+                .get("pattern_type")
+                .replace("+", " ")
+                .replace("%2F", "/");
+          }
+        }
+        setSelectURLParameter(checkURLParameter);
+        fetchData(queryToString(checkURLParameter));
+      } catch (error) {
+        console.error("Error fetching initial data:", error);
+      }
+    };
+    fetchInitialData();
+  }, [pageData]);
+
+  useEffect(() => {
+    if (filterMapping.size !== 0) {
+      changeFilterValue();
+    }
+  }, [filterMapping]);
+  
+  useEffect(() => {
+    if (filterData.length > 0) {
+      initFilterData();
+    }
+  }, [filterData]);
+  
+  useEffect(() => {
+    if(selectedFilters.size > 0){
+    updateFilterData();
+    }
+  }, [selectedFilters]);
+
+  async function initFilterData() {
+    let tempfilterMapping = new Map();
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    filterData.forEach((item) => {
+      const rows = item.tables.table[0].row;
+      let machineryName;
+      let rim_recommended;
+      let size;
+      let pattern_type;
+
+      if (item.sub_segment) {
+        subSegmentOptions.add(item.sub_segment);
+      }
+      rows.forEach((row) => {
+        if (row.rim_recommended) {
+          rim_recommended = row.size.match(/(\d+)(?=[\s-]*$)/)[0];
+          rimOptions.add(rim_recommended);
+        }
+        if (row.size) {
+          size = row.size;
+          sizeOptions.add(size);
+        }
+        if (row.pattern_type) {
+          pattern_type = row.pattern_type;
+          patternOptions.add(pattern_type);
+        }
+        if (row.machinery && row.machinery.name) {
+          machineryOptions.add(row.machinery.name);
+          machineryName = row.machinery.name;
+        }
+        if (!tempfilterMapping.has(machineryName)) {
+          tempfilterMapping.set(
+            machineryName,
+            new FilterMappingModel(
+              [rim_recommended],
+              [row.size],
+              [row.pattern_type]
+            )
+          );
+        } else {
+          let tempdata = tempfilterMapping.get(machineryName);
+          tempdata.addOptions({
+            addfilterRimOptions: [rim_recommended],
+            addfilerSizeOptions: [row.size],
+            addfilterPatternOptions: [row.pattern_type],
+          });
+          tempfilterMapping.set(machineryName, tempdata);
+        }
+      });
+    });
+
+    setFilterMapping(tempfilterMapping);
+
+    setFiltersArray(
+      pageData?.filters && pageData.filters.length > 4
+        ? [
+            Array.from(subSegmentOptions),
+            Array.from(machineryOptions),
+            Array.from(rimOptions),
+            Array.from(sizeOptions),
+            Array.from(patternOptions),
+          ]
+        : [
+            Array.from(machineryOptions),
+            Array.from(rimOptions),
+            Array.from(sizeOptions),
+            Array.from(patternOptions),
+          ]
+    );
+  }
+
+  function updateFilterData() {
+    if (selectedFilters.get("Select Machinery") !== undefined) {
+      let tempdata = filterMapping.get(selectedFilters.get("Select Machinery"));
+      if (tempdata) {
+        tempdata.addOptions({
+          addfilterRimOptions: getFilterDataByKey("Select Machinery"),
+        });
+        setFilterMapping((prevFilters) => {
+          const updatedData = new Map(prevFilters);
+          updatedData.set(selectedFilters.get("Select Machinery"), tempdata);
+          return updatedData;
+        });
+      }
+    }
+    if (selectedFilters.get("Select Rim") !== undefined) {
+      let tempdata = filterMapping.get(selectedFilters.get("Select Machinery"));
+      if (tempdata) {
+        tempdata.addOptions({
+          addfilerSizeOptions: getFilterDataByKey("Select Rim"),
+        });
+        setFilterMapping((prevFilters) => {
+          const updatedData = new Map(prevFilters);
+          updatedData.set(selectedFilters.get("Select Rim"), tempdata);
+          return updatedData;
+        });
+      }
+    }
+    if (selectedFilters.get("Select Size") !== undefined) {
+      let tempdata = filterMapping.get(selectedFilters.get("Select Machinery"));
+      if (tempdata) {
+        tempdata.addOptions({
+          addfilterPatternOptions: getFilterDataByKey("Select Size"),
+        });
+        setFilterMapping((prevFilters) => {
+          const updatedData = new Map(prevFilters);
+          updatedData.set(selectedFilters.get("Select Size"), tempdata);
+          return updatedData;
+        });
+      }
+    }
+  }
+
+  function getFilterDataByKey(key) {
+    switch (key) {
+      case "Select Machinery":
+        let temp_rim_recommended = new Set();
+        filterData.forEach((item) => {
+          const rows = item.tables.table[0].row;
+          rows.forEach((row) => {
+            if (
+              row.rim_recommended &&
+              row.machinery &&
+              selectedFilters.get(key) === row.machinery.name
+            ) {
+              temp_rim_recommended.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+            }
+          });
+        });
+        return Array.from(temp_rim_recommended);
+      case "Select Rim":
+        let size = new Set();
+        filterData.forEach((item) => {
+          const rows = item.tables.table[0].row;
+          rows.forEach((row) => {
+            if (
+              row.size &&
+              selectedFilters.get(key).slice(-2) ===
+                row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+            ) {
+              size.add(row.size);
+            }
+          });
+        });
+        return Array.from(size);
+      case "Select Size":
+        let pattern_type = new Set();
+        filterData.forEach((item) => {
+          const rows = item.tables.table[0].row;
+          rows.forEach((row) => {
+            if (row.pattern_type && selectedFilters.get(key) === row.size) {
+              pattern_type.add(row.pattern_type);
+            }
+          });
+        });
+        return Array.from(pattern_type);
+      default:
+        return true;
+    }
+  }
+
+  const updateItem = (index, newValue) => {
+    setValue((prevData) => {
+      const newData = [...prevData];
+      newData[index] = newValue;
+      return newData.slice(0, index + 1);
+    });
+  };
 
   const updateSelectedFilters = (filterTitle, value) => {
     setSelectedFilters((prevFilters) => {
@@ -1248,12 +1568,67 @@ const Segments = ({ pageData, pagination }) => {
             updatedFilters.delete("Select Pattern");
             break;
         }
-        setSelectedFilters(new Map());
       } else {
         updatedFilters.set(filterTitle, value);
       }
       return updatedFilters;
     });
+  };
+
+  function changeFilterValue() {
+    if (pageData.section_heading === "Off The Road Segment") {
+      const filterMappingEntry1 = filterMapping.get(value[1]);
+      if (filterMappingEntry1 === undefined) {
+        return;
+      }
+      if (value[1] !== undefined) {
+        changeFilterData("Sub-section");
+      }
+    } else {
+      const filterMappingEntry = filterMapping.get(value[0]);
+      if (filterMappingEntry === undefined) {
+        return;
+      }
+      changeFilterData("Machinery");
+    }
+  }
+
+  function changeFilterData(filterOptionName) {
+    switch (filterOptionName) {
+      case "Machinery":
+        const filterMappingEntry = filterMapping.get(value[0]);
+        const newRimOptions = filterMappingEntry.toArray().filterRimOptions;
+        const newSizeOptions = filterMappingEntry.toArray().filerSizeOptions;
+        const newPatternOptions =
+          filterMappingEntry.toArray().filterPatternOptions;
+        setFiltersArray((prevFiltersArray) => [
+          [...(prevFiltersArray[0] || []), ...machineryOptions],
+          [...newRimOptions],
+          [...newSizeOptions],
+          [...newPatternOptions],
+        ]);
+        break;
+      case "Sub-section":
+        const newRimOptions1 = filterMappingEntry1.toArray().filterRimOptions;
+        const newSizeOptions1 = filterMappingEntry1.toArray().filerSizeOptions;
+        const newPatternOptions1 =
+          filterMappingEntry1.toArray().filterPatternOptions;
+        setFiltersArray((prevFiltersArray) => [
+          [...(prevFiltersArray[0] || []), ...subSegmentOptions],
+          [...(prevFiltersArray[1] || []), ...machineryOptions],
+          [...newRimOptions1],
+          [...newSizeOptions1],
+          [...newPatternOptions1],
+        ]);
+        break;
+    }
+  }
+
+  const clearFilters = () => {
+    setSelectedFilters(new Map());
+    setValue([]);
+    setFiltersArray([]);
+    initFilterData();
   };
 
   const handlePageClick = (event) => {
@@ -1421,380 +1796,6 @@ const Segments = ({ pageData, pagination }) => {
     }, 1000);
   };
 
-  const fetchData = async (query) => {
-    try {
-      const response = await fetch(
-        getStrapiMedia(
-          `/api/products?pagination[pageSize]=${pageSize}&pagination[page]=${currentPage}&sort[0]=premium:desc&sort[1]=id:asc&filters[segment][slug][$eq]=${pageData.slug}${query}`
-        )
-      );
-      const products = await response.json();
-      setProductsData(products.data);
-      setProductsMeta(products.meta);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  useEffect(() => {
-    const fetchInitialData = async () => {
-      try {
-        const response = await fetch(
-          getStrapiMedia(
-            `/api/products?filters[segment][slug]=${pageData.slug}`
-          )
-        );
-        const filters = await response.json();
-        setFilterData(filters.data);
-        const checkURLParameter = [];
-        if (searchParams.toString()) {
-          if (
-            pageData.data?.attributes.categories.data[activeTabIndex].attributes
-              .filters.length > 4
-          ) {
-            if (searchParams.has("sub_segment"))
-              checkURLParameter[0] = searchParams
-                .get("sub_segment")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("machinery"))
-              checkURLParameter[1] = searchParams
-                .get("machinery")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("rim_recommended"))
-              checkURLParameter[2] = searchParams
-                .get("rim_recommended")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("size"))
-              checkURLParameter[3] = searchParams
-                .get("size")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("pattern_type"))
-              checkURLParameter[4] = searchParams
-                .get("pattern_type")
-                .replace("+", " ")
-                .replace("%2F", "/");
-          } else {
-            if (searchParams.has("machinery"))
-              checkURLParameter[0] = searchParams
-                .get("machinery")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("rim_recommended"))
-              checkURLParameter[1] = searchParams
-                .get("rim_recommended")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("size"))
-              checkURLParameter[2] = searchParams
-                .get("size")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("pattern_type"))
-              checkURLParameter[3] = searchParams
-                .get("pattern_type")
-                .replace("+", " ")
-                .replace("%2F", "/");
-          }
-        }
-        setSelectURLParameter(checkURLParameter);
-        fetchData(queryToString(checkURLParameter));
-      } catch (error) {
-        console.error("Error fetching initial data:", error);
-      }
-    };
-    fetchInitialData();
-  }, [pageData]);
-
-  useEffect(() => {
-    if (filterData.length > 0) {
-      initFilterData();
-    }
-  }, [filterData]);
-
-  class FilterMappingModel {
-    constructor(
-      filterRimOptions = [],
-      filerSizeOptions = [],
-      filterPatternOptions = []
-    ) {
-      this.filterRimOptions = new Set(filterRimOptions);
-      this.filerSizeOptions = new Set(filerSizeOptions);
-      this.filterPatternOptions = new Set(filterPatternOptions);
-    }
-
-    toArray() {
-      return {
-        filterRimOptions: Array.from(this.filterRimOptions),
-        filerSizeOptions: Array.from(this.filerSizeOptions),
-        filterPatternOptions: Array.from(this.filterPatternOptions),
-      };
-    }
-
-    addOptions({
-      addfilterRimOptions = [],
-      addfilerSizeOptions = [],
-      addfilterPatternOptions = [],
-    } = {}) {
-      if (addfilterRimOptions.length > 0) {
-        this.filterRimOptions.clear();
-        addfilterRimOptions.forEach((option) =>
-          this.filterRimOptions.add(option)
-        );
-      }
-      if (addfilerSizeOptions.length > 0) {
-        this.filerSizeOptions.clear();
-        addfilerSizeOptions.forEach((option) =>
-          this.filerSizeOptions.add(option)
-        );
-      }
-      if (addfilterPatternOptions.length > 0) {
-        this.filterPatternOptions.clear();
-        addfilterPatternOptions.forEach((option) =>
-          this.filterPatternOptions.add(option)
-        );
-      }
-    }
-  }
-
-  async function initFilterData() {
-    let tempfilterMapping = new Map();
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    filterData.forEach((item) => {
-      const rows = item.tables.table[0].row;
-      let machineryName;
-      let rim_recommended;
-      let size;
-      let pattern_type;
-
-      if (item.sub_segment) {
-        subSegmentOptions.add(item.sub_segment);
-      }
-      rows.forEach((row) => {
-        if (row.rim_recommended) {
-          rim_recommended = row.size.match(/(\d+)(?=[\s-]*$)/)[0];
-          rimOptions.add(rim_recommended);
-        }
-        if (row.size) {
-          size = row.size;
-          sizeOptions.add(size);
-        }
-        if (row.pattern_type) {
-          pattern_type = row.pattern_type;
-          patternOptions.add(pattern_type);
-        }
-        if (row.machinery && row.machinery.name) {
-          machineryOptions.add(row.machinery.name);
-          machineryName = row.machinery.name;
-        }
-        if (!tempfilterMapping.has(machineryName)) {
-          tempfilterMapping.set(
-            machineryName,
-            new FilterMappingModel(
-              [rim_recommended],
-              [row.size],
-              [row.pattern_type]
-            )
-          );
-        } else {
-          let tempdata = tempfilterMapping.get(machineryName);
-          tempdata.addOptions({
-            addfilterRimOptions: [rim_recommended],
-            addfilerSizeOptions: [row.size],
-            addfilterPatternOptions: [row.pattern_type],
-          });
-          tempfilterMapping.set(machineryName, tempdata);
-        }
-      });
-    });
-
-    setFilterMapping(tempfilterMapping);
-
-    setFiltersArray(
-      pageData?.filters && pageData.filters.length > 4
-        ? [
-            Array.from(subSegmentOptions),
-            Array.from(machineryOptions),
-            Array.from(rimOptions),
-            Array.from(sizeOptions),
-            Array.from(patternOptions),
-          ]
-        : [
-            Array.from(machineryOptions),
-            Array.from(rimOptions),
-            Array.from(sizeOptions),
-            Array.from(patternOptions),
-          ]
-    );
-  }
-
-  useEffect(() => {
-    if (filterMapping.size !== 0) {
-      changeFilterValue();
-    }
-  }, [filterMapping]);
-
-  function updateFilterData() {
-    if (selectedFilters.get("Select Machinery") !== undefined) {
-      let tempdata = filterMapping.get(selectedFilters.get("Select Machinery"));
-      if (tempdata) {
-        tempdata.addOptions({
-          addfilterRimOptions: getFilterDataByKey("Select Machinery"),
-        });
-        setFilterMapping((prevFilters) => {
-          const updatedData = new Map(prevFilters);
-          updatedData.set(selectedFilters.get("Select Machinery"), tempdata);
-          return updatedData;
-        });
-      }
-    }
-    if (selectedFilters.get("Select Rim") !== undefined) {
-      let tempdata = filterMapping.get(selectedFilters.get("Select Machinery"));
-      if (tempdata) {
-        tempdata.addOptions({
-          addfilerSizeOptions: getFilterDataByKey("Select Rim"),
-        });
-        setFilterMapping((prevFilters) => {
-          const updatedData = new Map(prevFilters);
-          updatedData.set(selectedFilters.get("Select Rim"), tempdata);
-          return updatedData;
-        });
-      }
-    }
-    if (selectedFilters.get("Select Size") !== undefined) {
-      let tempdata = filterMapping.get(selectedFilters.get("Select Machinery"));
-      if (tempdata) {
-        tempdata.addOptions({
-          addfilterPatternOptions: getFilterDataByKey("Select Size"),
-        });
-        setFilterMapping((prevFilters) => {
-          const updatedData = new Map(prevFilters);
-          updatedData.set(selectedFilters.get("Select Size"), tempdata);
-          return updatedData;
-        });
-      }
-    }
-  }
-
-  function getFilterDataByKey(key) {
-    switch (key) {
-      case "Select Machinery":
-        let temp_rim_recommended = new Set();
-        filterData.forEach((item) => {
-          const rows = item.tables.table[0].row;
-          rows.forEach((row) => {
-            if (
-              row.rim_recommended &&
-              row.machinery &&
-              selectedFilters.get(key) === row.machinery.name
-            ) {
-              temp_rim_recommended.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-            }
-          });
-        });
-        return Array.from(temp_rim_recommended);
-      case "Select Rim":
-        let size = new Set();
-        filterData.forEach((item) => {
-          const rows = item.tables.table[0].row;
-          rows.forEach((row) => {
-            if (
-              row.size &&
-              selectedFilters.get(key).slice(-2) ===
-                row.size.match(/(\d+)(?=[\s-]*$)/)[0]
-            ) {
-              size.add(row.size);
-            }
-          });
-        });
-        return Array.from(size);
-      case "Select Size":
-        let pattern_type = new Set();
-        filterData.forEach((item) => {
-          const rows = item.tables.table[0].row;
-          rows.forEach((row) => {
-            if (row.pattern_type && selectedFilters.get(key) === row.size) {
-              pattern_type.add(row.pattern_type);
-            }
-          });
-        });
-        return Array.from(pattern_type);
-      default:
-        return true;
-    }
-  }
-
-  const updateItem = (index, newValue) => {
-    setValue((prevData) => {
-      const newData = [...prevData];
-      newData[index] = newValue;
-      return newData.slice(0, index + 1);
-    });
-  };
-
-  const clearFilters = () => {
-    setSelectedFilters(new Map());
-    setValue([]);
-    setFiltersArray([]);
-    initFilterData();
-  };
-
-  useEffect(() => {
-    updateFilterData();
-  }, [selectedFilters]);
-
-  function changeFilterValue() {
-    if (pageData.section_heading === "Off The Road Segment") {
-      const filterMappingEntry1 = filterMapping.get(value[1]);
-      if (filterMappingEntry1 === undefined) {
-        return;
-      }
-      if (value[1] !== undefined) {
-        changeFilterData("Sub-section");
-      }
-    } else {
-      const filterMappingEntry = filterMapping.get(value[0]);
-      if (filterMappingEntry === undefined) {
-        return;
-      }
-      changeFilterData("Machinery");
-    }
-  }
-
-  function changeFilterData(filterOptionName) {
-    switch (filterOptionName) {
-      case "Machinery":
-        const filterMappingEntry = filterMapping.get(value[0]);
-        const newRimOptions = filterMappingEntry.toArray().filterRimOptions;
-        const newSizeOptions = filterMappingEntry.toArray().filerSizeOptions;
-        const newPatternOptions =
-          filterMappingEntry.toArray().filterPatternOptions;
-        setFiltersArray((prevFiltersArray) => [
-          [...(prevFiltersArray[0] || []), ...machineryOptions],
-          [...newRimOptions],
-          [...newSizeOptions],
-          [...newPatternOptions],
-        ]);
-        break;
-      case "Sub-section":
-        const newRimOptions1 = filterMappingEntry1.toArray().filterRimOptions;
-        const newSizeOptions1 = filterMappingEntry1.toArray().filerSizeOptions;
-        const newPatternOptions1 =
-          filterMappingEntry1.toArray().filterPatternOptions;
-        setFiltersArray((prevFiltersArray) => [
-          [...(prevFiltersArray[0] || []), ...subSegmentOptions],
-          [...(prevFiltersArray[1] || []), ...machineryOptions],
-          [...newRimOptions1],
-          [...newSizeOptions1],
-          [...newPatternOptions1],
-        ]);
-        break;
-    }
-  }
-
   if (
     typeof meta === "undefined" ||
     (meta.pagination &&
@@ -1866,22 +1867,15 @@ const Segments = ({ pageData, pagination }) => {
                   </label>
                   {filter?.items && filter.items.length > 0 && (
                     <select
-                      name={filter.title.replace("Select ", "")}
+                      // name={filter.title.replace("Select ", "")}
+                      value={selectedFilters.get(filter.title) || ""}
                       onChange={(e) => {
                         updateSelectedFilters(filter.title, e.target.value);
                         updateItem(index, e.target.value);
                       }}
                       className="select-box !w-full max-h-[46px] !text-[14px] !leading-[21px]"
-                    >
-                      {filter.items.map((item) => (
-                        <option
-                          key={item.id}
-                          value={item?.value ? item.value : ""}
-                          selected=""
-                        >
-                          {item?.name}
-                        </option>
-                      ))}
+                      >
+                      <option value="">Select {filter.title.replace("Select ", "")}</option>
                       {Array.isArray(filtersArray[index]) &&
                         filtersArray[index].sort().map((item) => (
                           <option
