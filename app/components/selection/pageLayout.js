@@ -1609,6 +1609,7 @@ const Segments = ({ pageData, pagination }) => {
         ]);
         break;
       case "Sub-section":
+        const filterMappingEntry1 = filterMapping.get(value[1]);
         const newRimOptions1 = filterMappingEntry1.toArray().filterRimOptions;
         const newSizeOptions1 = filterMappingEntry1.toArray().filerSizeOptions;
         const newPatternOptions1 =
