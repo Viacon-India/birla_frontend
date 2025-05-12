@@ -1695,7 +1695,7 @@ const Segments = ({ pageData, pagination }) => {
           searchParams.append("rim_recommended", queryToStringValue[2]);
         }
         filterQueries.push(
-          `filters[tables][table][row][size][$contains]=${queryToStringValue[2]}`
+          `filters[tables][table][row][size][$endsWith]=${queryToStringValue[2]}`
         );
       } else {
         if (searchParams.has("rim_recommended"))
@@ -1746,7 +1746,7 @@ const Segments = ({ pageData, pagination }) => {
           searchParams.append("rim_recommended", queryToStringValue[1]);
         }
         filterQueries.push(
-          `filters[tables][table][row][size][$contains]=${queryToStringValue[1]}`
+          `filters[tables][table][row][size][$endsWith]=${queryToStringValue[1]}`
         );
       } else {
         if (searchParams.has("rim_recommended"))
