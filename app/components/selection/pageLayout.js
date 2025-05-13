@@ -12,7 +12,12 @@ import GradualSpacing from "@/components/GradualSpacing";
 import { cn } from "@/lib/utils";
 import { getStrapiMedia } from "@/lib/utils";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
-import { PageBanner, PageEnd, Float } from "../pageCommon/pageCommon";
+import {
+  PageBanner,
+  PageEnd,
+  Float,
+  InnerBanner,
+} from "../pageCommon/pageCommon";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   FreeMode,
@@ -35,6 +40,7 @@ import construction from "@/app/assets/images/axle.png";
 import LastBg from "../../assets/images/footerupper.png";
 import errorImg from "../../assets/images/404-tyre.gif";
 import loadGif from "../../assets/images/loading.gif";
+import greenImg from "../../assets/images/green.png"
 
 import { useRef } from "react";
 
@@ -328,11 +334,16 @@ export function ContactUs({ pageData }) {
                         </div>
                       </div>
                       {section?.data &&
-                        section.data.map((details) => (
+                        section.data.map((details, index) => (
                           <div className="contact-detail-box" key={details.id}>
                             {details.content.length > 0 &&
                               details?.description && (
-                                <h3>{details.description}</h3>
+                                <div>
+                                  <h3 className="!text-secondary">
+                                    {details.description}
+                                  </h3>
+                                  <Image className={`w-[260px] mb-1 ${index === 0 || index === 1 ? 'hidden' : ''}`} src={greenImg} alt="" />
+                                </div>
                               )}
                             {details.content.length > 0 && (
                               <BlocksRenderer
@@ -1147,7 +1158,7 @@ export function ContactUs({ pageData }) {
                                   x1="1.31543"
                                   y1="65"
                                   x2="1.31543"
-                                  stroke="#C9CDD3"
+                                  stroke="#000000"
                                   stroke-dasharray="5 6"
                                 />
                               </svg>
@@ -1795,7 +1806,8 @@ const Segments = ({ pageData, pagination }) => {
       {pageData && pageData?.products && (
         <CollectionTypeSeo page="category" pageData={pageData} />
       )}
-      <PageBanner Title={pageData.title} Banner={pageData.hero} />
+      {/* <PageBanner Title={pageData.title} Banner={pageData.hero} /> */}
+      <InnerBanner Title={pageData.title} Banner={pageData.inner_video} />
       <section className="product-sec pt-10 md:pt-[60px] 2xl:pt-[100px]">
         <div className="container mx-auto overflow-hidden flex flex-col gap-4 md:gap-6 2xl:gap-10">
           <div className="upper-title-sec flex gap-3 md:gap-0 flex-col md:flex-row justify-between items-end">
@@ -1816,7 +1828,7 @@ const Segments = ({ pageData, pagination }) => {
             {pageData?.catalogue && (
               <div className="cat-btn-sec flex items-center gap-3 relative z-10">
                 <Link
-                  href={getStrapiMedia(pageData.catalogue.url)}
+                  href={getStrapiMedia(pageData.catalogue?.url)}
                   className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]"
                   target="_blank"
                 >
