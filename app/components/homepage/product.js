@@ -36,7 +36,7 @@ import Product from "@/app/components/product/card";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Products({ Heading='', Title='', Data={}}) {
+export default function Products({ Heading = "", Title = "", Data = {} }) {
   const [activeTab, setActiveTab] = useState("TBB");
 
   // Define the animation function
@@ -82,86 +82,107 @@ export default function Products({ Heading='', Title='', Data={}}) {
 
   return (
     <section className="product-sec sec-gap">
-      {Data?.data && Data.data.length > 0 &&
+      {Data?.data && Data.data.length > 0 && (
         <div className="container mx-auto overflow-hidden">
           <div className="upper-title-sec flex gap-3 lg:gap-0 flex-col lg:flex-row justify-between items-end">
             <div className="self-start">
-              {Heading &&
-                <span className="section-heading">{Heading}</span>
-              }
-              {Title &&
+              {Heading && <span className="section-heading">{Heading}</span>}
+              {Title && (
                 <div className="section-title-wrapper">
                   <GradualSpacing className="section-title-home" text={Title} />
                 </div>
-              }
+              )}
             </div>
             <div className="cat-btn-sec flex items-center gap-3 relative z-10">
-              {Data.data.map((tab) => ( tab.attributes?.name &&
-                <button
-                  key={tab.id}
-                  className={`tablinks cat-btn uppercase ${activeTab === tab.attributes.name ? "active-cat-btn" : "" }`}
-                  onClick={() => handleTabClick(tab.attributes.name)}
-                >
-                  {tab.attributes.name}
-                </button>
-              ))}
+              {Data.data.map(
+                (tab) =>
+                  tab.attributes?.name && (
+                    <button
+                      key={tab.id}
+                      className={`tablinks cat-btn uppercase ${
+                        activeTab === tab.attributes.name
+                          ? "active-cat-btn"
+                          : ""
+                      }`}
+                      onClick={() => handleTabClick(tab.attributes.name)}
+                    >
+                      {tab.attributes.name}
+                    </button>
+                  )
+              )}
             </div>
           </div>
 
-          {Data.data.map((tab) => ( tab.attributes?.name &&
-            <div
-              key={tab.id}
-              id={tab.attributes.name}
-              className={`tabcontent product-slider mt-5 2xl:mt-[32px] ${
-                activeTab === tab.attributes.name ? "" : "hidden"
-              }`}
-            >
-              {tab.attributes.products?.data &&
-                <>
-                  <Swiper
-                    // navigation={true}
-                    // modules={[Navigation]}
-                    breakpoints={{
-                      0: {
-                        slidesPerView: 1,
-                      },
-                      768: {
-                        slidesPerView: 2,
-                        spaceBetween:30,
-                      },
-                      1024: {
-                        slidesPerView: 3,
-                        spaceBetween:10,
-                      },
-                      1280: {
-                        slidesPerView: 3,
-                        spaceBetween:40,
-                      },
-                    }}
-                    spaceBetween={50}
-                    freeMode={true}
-                    pagination={{ clickable: true }}
-                    className="myProductSwiper"
-                  >
-                    {tab.attributes.products.data.map((product) => (
-                      <SwiperSlide key={product.id}>
-                        <Product data={product.attributes} />
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                  {tab.attributes?.permalink &&
-                    <div className="mt-5 2xl:mt-[32px]">
-                      <Link href={tab.attributes.permalink} className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2">
-                        <span data-hover="View The Complete Range">View The Complete Range</span>
-                      </Link>
-                    </div>
-                  }
-                </>
-              }
-            </div>
-          ))}
+          {Data.data.map(
+            (tab) =>
+              tab.attributes?.name && (
+                <div
+                  key={tab.id}
+                  id={tab.attributes.name}
+                  className={`tabcontent product-slider mt-5 2xl:mt-[32px] ${
+                    activeTab === tab.attributes.name ? "" : "hidden"
+                  }`}
+                >
+                  {tab.attributes.products?.data && (
+                    <>
+                      <Swiper
+                        // navigation={true}
+                        // modules={[Navigation]}
+                        breakpoints={{
+                          0: {
+                            slidesPerView: 1,
+                          },
+                          768: {
+                            slidesPerView: 2,
+                            spaceBetween: 30,
+                          },
+                          1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 10,
+                          },
+                          1280: {
+                            slidesPerView: 3,
+                            spaceBetween: 40,
+                          },
+                        }}
+                        spaceBetween={50}
+                        freeMode={true}
+                        pagination={{ clickable: true }}
+                        className="myProductSwiper"
+                      >
+                        {tab.attributes.products.data.map((product) => (
+                          <SwiperSlide key={product.id}>
+                            <Product data={product.attributes} />
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                      {tab.attributes?.permalink && (
+                        <div className="mt-5 2xl:mt-[32px] flex justify-between items-center">
+                          <Link
+                            href={tab.attributes.permalink}
+                            className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
+                          >
+                            <span data-hover="View The Complete Range">
+                              View The Complete Range
+                            </span>
+                          </Link>
+                          <Link
+                            href="#"
+                            className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
+                          >
+                            <span data-hover="View The Complete Range">
+                              Download Master Catalogue
+                            </span>
+                          </Link>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              )
+          )}
         </div>
-      }
+      )}
     </section>
   );
 }

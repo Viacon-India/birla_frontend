@@ -25,6 +25,7 @@ import "swiper/css";
 import { FreeMode, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 import loadGif from "../../assets/images/loading.gif";
+import directorImg from "@/app/assets/images/director-1.jpg"
 
 export default function SectionSelection({ section, Background, right }) {
   return (
@@ -466,7 +467,7 @@ export function ImageTitleContent({ section }) {
               paragraph: ({ children }) => (
                 <p
                   className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6] mb-3 md:mb-10 2xl:mb-[60px]"
-                  data-aos="fade-right"
+                  data-aos="fade-left"
                   data-aos-duration="2000"
                 >
                   {children}
@@ -577,7 +578,11 @@ export function Accordion({ section }) {
               content={section.pre_content}
               blocks={{
                 paragraph: ({ children }) => (
-                  <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
+                  <p
+                    data-aos="fade-left"
+                    data-aos-duration="1000"
+                    className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]"
+                  >
                     {children}
                   </p>
                 ),
@@ -744,7 +749,11 @@ export function Accordion({ section }) {
               content={section.post_content}
               blocks={{
                 paragraph: ({ children }) => (
-                  <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]">
+                  <p
+                    data-aos="fade-left"
+                    data-aos-duration="1000"
+                    className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6]"
+                  >
                     {children}
                   </p>
                 ),
@@ -870,8 +879,11 @@ export function TitleContentFull({ section }) {
         {(section?.heading || section?.title || section?.file) && (
           <div className="upper-title-sec flex gap-3 md:gap-0 flex-col md:flex-row justify-between items-end mb-6 md:mb-10">
             {(section?.heading || section?.title) && (
-              
-              <div className="self-start" data-aos="fade-right" data-aos-duration="1000">
+              <div
+                className="self-start"
+                data-aos="fade-right"
+                data-aos-duration="1000"
+              >
                 {section?.heading && (
                   <span className="section-heading">{section.heading}</span>
                 )}
@@ -915,14 +927,24 @@ export function TitleContentFull({ section }) {
           section.collection.map((collection) => (
             <>
               {collection?.description && (
-                <h3 className="section-sub-title">{collection.description}</h3>
+                <h3
+                  data-aos="fade-right"
+                  data-aos-duration="1000"
+                  className="section-sub-title"
+                >
+                  {collection.description}
+                </h3>
               )}
               {collection?.content && collection.content.length > 0 && (
                 <BlocksRenderer
                   content={collection.content}
                   blocks={{
                     paragraph: ({ children }) => (
-                      <p className="text-[#4F5662] text-[14px] md:text-[15px] 2xl:text-[16px] mb-4 mt-">
+                      <p
+                        data-aos="fade-right"
+                        data-aos-duration="1000"
+                        className="text-[#4F5662] text-[14px] md:text-[15px] 2xl:text-[16px] mb-4 mt-"
+                      >
                         {children}
                       </p>
                     ),
@@ -959,7 +981,11 @@ export function TitleContentFull({ section }) {
                       );
                     },
                     "list-item": (props) => (
-                      <li className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-4 text-[#1A1D21]">
+                      <li
+                        data-aos="fade-right"
+                        data-aos-duration="1000"
+                        className="text-[14px] md:text-[15px] 2xl:text-[16px] mt-4 text-[#1A1D21]"
+                      >
                         {props.children}
                       </li>
                     ),
@@ -979,7 +1005,12 @@ export function TitleContentFull({ section }) {
                 {collection?.images &&
                   collection.images.length > 0 &&
                   collection.images.map((image) => (
-                    <div className="tyre-care-card" key={image.id} data-aos="fade-up" data-aos-duration="1000">
+                    <div
+                      className="tyre-care-card"
+                      key={image.id}
+                      data-aos="fade-up"
+                      data-aos-duration="1000"
+                    >
                       <figure className="w-full h-[190px] md:h-[240px] rounded-[12px]">
                         <Image
                           className="w-full h-full object-fill rounded-[12px]"
@@ -1306,14 +1337,14 @@ export function ImagePoint({ section }) {
                 data-aos-duration="1000"
                 data-aos-offset="100"
               >
-                {collection?.image && (
+                {collection?.point_image && (
                   <figure>
                     <Image
                       className="vast-card-image"
-                      src={getStrapiMedia(collection.image.url)}
-                      alt={collection.image.alternativeText}
-                      width={collection.image.width}
-                      height={collection.image.height}
+                      src={getStrapiMedia(collection.point_image.url)}
+                      alt={collection.point_image.alternativeText}
+                      width={collection.point_image.width}
+                      height={collection.point_image.height}
                     />
                   </figure>
                 )}
@@ -1525,7 +1556,11 @@ export function JobApplication({ section }) {
                 content={section.content}
                 blocks={{
                   paragraph: ({ children }) => (
-                    <p className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6] mt-6">
+                    <p
+                      data-aos="fade-left"
+                      data-aos-duration="1000"
+                      className="text-[#1A1D21] text-[14px] md:text-[15px] 2xl:text-[16px] leading-[1.6] mt-6"
+                    >
                       {children}
                     </p>
                   ),
@@ -1863,7 +1898,7 @@ export function DoubleSlider({ section }) {
     <section className="page-content-sec my-8 md:my-12 2xl:my-[60px] overflow-hidden">
       <div className="container mx-auto flex flex-col gap-8 md:gap-[120px]">
         <div className="manufacture-slider-sec">
-          <div>
+          <div data-aos="fade-right" data-aos-duration="1000">
             <span className="section-heading">{section?.heading}</span>
             <div className="section-title-wrapper">
               <h3 className="section-title">{section.title}</h3>
@@ -1911,7 +1946,11 @@ export function DoubleSlider({ section }) {
                     collection.slider.length > 0 &&
                     collection.slider.map((item) => (
                       <SwiperSlide key={item.id}>
-                        <div className="phil-card">
+                        <div
+                          className="phil-card"
+                          data-aos="zoom-in-down"
+                          data-aos-duration="1000"
+                        >
                           <figure>
                             <Image
                               className="phil-card-image"
@@ -2079,6 +2118,43 @@ export function ImageDetailContent({ section }) {
             </div>
           </div>
         </div>
+        <div class="grid grid-cols-5 gap-10">
+{/* {[...Array(5)].map((_, index) => (
+  <div className="sub-leader-card" key={index}>
+    <figure
+      className="w-full h-[260px] relative glare"
+      data-aos="flip-right"
+      data-aos-duration="1500"
+    >
+      <Image
+        className="absolute -z-1 w-[90%] h-[90%] left-0"
+        src={Triangle1}
+        alt="triangle"
+      />
+      <Image
+        className="absolute top-4 w-[90%] h-[90%] rounded-[8px] left-4"
+        src={directorImg}
+        alt={section?.image.alternativeText}
+      />
+    </figure>
+    <h2
+      className="text-[20px] text-secondary font-medium"
+      data-aos="fade-left"
+      data-aos-duration="200"
+    >
+      Anuraj Chaudhry
+    </h2>
+    <h3
+      className="text-primary font-medium text-[16px]"
+      data-aos="fade-left"
+      data-aos-duration="400"
+    >
+      Business Head
+    </h3>
+  </div>
+))} */}
+
+        </div>
       </div>
     </section>
   );
@@ -2116,7 +2192,13 @@ export function SidebarContent({ section }) {
           content={section.content}
           blocks={{
             paragraph: ({ children }) => (
-              <p className="text-[#1A1D21]">{children}</p>
+              <p
+                data-aos="fade-right"
+                data-aos-duration="1000"
+                className="text-[#1A1D21]"
+              >
+                {children}
+              </p>
             ),
             heading: ({ children, level }) => {
               switch (level) {
@@ -2173,11 +2255,11 @@ export function SidebarContent({ section }) {
             ))}
           </div>
           <div className="relative w-full md:w-[70%] overflow-hidden">
-            <Image
+            {/* <Image
               src={tigerMask}
               alt="img"
               className="absolute top-10 left-1/2 translate-x-[-50%]"
-            />
+            /> */}
             {section.collection.map((collection) => {
               if (isWideScreen && collection.id !== activeTab) return null;
 
@@ -2194,7 +2276,11 @@ export function SidebarContent({ section }) {
                     content={collection.content}
                     blocks={{
                       paragraph: ({ children }) => (
-                        <p className="pt-2 md:pt-4 text-[#1A1D21] text-[14px] md:text-[15px] xl:text-[16px]">
+                        <p
+                          data-aos="fade-right"
+                          data-aos-duration="1000"
+                          className="pt-2 md:pt-4 text-[#1A1D21] text-[14px] md:text-[15px] xl:text-[16px]"
+                        >
                           {children}
                         </p>
                       ),
@@ -2206,7 +2292,13 @@ export function SidebarContent({ section }) {
                             return <h2>{children}</h2>;
                           case 3:
                             return (
-                              <h3 className="section-sub-title">{children}</h3>
+                              <h3
+                                data-aos="fade-right"
+                                data-aos-duration="1000"
+                                className="section-sub-title"
+                              >
+                                {children}
+                              </h3>
                             );
                           case 4:
                             return <h4>{children}</h4>;
@@ -2221,12 +2313,24 @@ export function SidebarContent({ section }) {
                       list: (props) => {
                         if (props.format === "ordered") {
                           return (
-                            <ol className="list-decimal !pl-6">
+                            <ol
+                              data-aos="fade-right"
+                              data-aos-duration="1000"
+                              className="list-decimal !pl-6"
+                            >
                               {props.children}
                             </ol>
                           );
                         }
-                        return <ul className="list-disc">{props.children}</ul>;
+                        return (
+                          <ul
+                            data-aos="fade-right"
+                            data-aos-duration="1000"
+                            className="list-disc"
+                          >
+                            {props.children}
+                          </ul>
+                        );
                       },
                       "list-item": (props) => (
                         <li className="pt-3 md:pt-5 text-[#1A1D21] text-[14px] md:text-[15px] xl:text-[16px]">

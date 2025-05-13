@@ -1183,6 +1183,9 @@ a.current_dot {
  .contact-detail-box h3{
   @apply text-[22px] md:text-[28px] 2xl:text-[32px] text-[#454545] font-bold mb-2
  }
+ /* .contact-detail .contact-detail-box:nth-child(1) img {
+  @apply hidden;
+} */
  .contact-detail-box p{
   @apply text-[14px] md:text-[15px] 2xl:text-[16px] text-[#454545]
  }
