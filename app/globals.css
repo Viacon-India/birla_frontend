@@ -1572,3 +1572,7 @@ input[type=file]::file-selector-button {
   @apply text-[#E9E9E9] text-[13px] before:content-[""] before:w-[10px] before:h-[10px] before:rounded-full flex gap-[6px] items-center
   before:border before:border-[#FFFFFF] before:flex before:bg-[red]
 }
+
+.dialog .form-row .contact-input{
+  @apply !p-0
+}
