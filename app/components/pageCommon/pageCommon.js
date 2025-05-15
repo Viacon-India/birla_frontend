@@ -206,6 +206,9 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
     >
       {EndPageData && EndPageData?.image ? (
         <Image
+          data-aos="flip-down"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
           src={getStrapiMedia(EndPageData.image.url)}
           width={EndPageData.image.width}
           height={EndPageData.image.height}
@@ -226,15 +229,18 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
       <div className="container mx-auto relative h-[200px] flex items-end justify-end">
         {/* <Image src={Tiger} alt="bottom-img" className="absolute right-[20%]" />s */}
         {EndPageData?.page ? (
-          <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4 relative z-5">
+          <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4 relative z-5 ">
             Next Page:
             <button
-              className="text-[#F5811E] font-medium flex items-center gap-1"
+              className="text-[#F5811E] font-medium flex items-center gap-1 nav-hov flip-animate"
               onClick={() => handleClick(EndPageData.page.permalink)}
               prefetch={false}
               scroll={false}
             >
-              {EndPageData.page.title}
+              <span data-hover={EndPageData.page.title}>
+                {EndPageData.page.title}
+              </span>
+              {/* {EndPageData.page.title} */}
               <svg
                 width="14"
                 height="13"
@@ -256,12 +262,15 @@ export function PageEnd({ EndPageData, EndStaticImage, Background }) {
             <p className="flex font-oak-sans font-bold text-2xl text-[#1A1D21] gap-1 pb-4 relative z-5">
               Next Page:
               <button
-                className="text-[#F5811E] font-medium flex items-center gap-1"
+                className="text-[#F5811E] font-medium flex items-center gap-1 nav-hov flip-animate"
                 onClick={() => handleClick(EndPageData.segment.permalink)}
                 prefetch={false}
                 scroll={false}
               >
-                Products - {EndPageData.segment.title}
+                <span data-hover={EndPageData.segment.title}>
+                  {EndPageData.segment.title}
+                </span>
+                {/* Products - {EndPageData.segment.title} */}
                 <svg
                   width="14"
                   height="13"
@@ -884,5 +893,54 @@ export function Popup() {
         </div>
       )}
     </>
+  );
+}
+
+export function InnerBanner({ Title, Banner }) {
+  return (
+    <section className="top-banner-sec bg-[#F8F8F8]">
+      <div className="relative">
+        <span className="banner-overlay"></span>
+        <div className="relative">
+          <div className="w-full h-[30vh] md:h-[40vh] xl:h-[80vh] flex items-end">
+            <div className="container mx-auto flex flex-col justify-end md:justify-between h-full pt-8 xl:pt-5 pb-3 md:pb-6 xl:pb-[60px] z-1">
+              <MainButton />
+              <div className="relative">
+                <GradualSpacing
+                  className="top-banner-sec-heading hidden md:flex"
+                  text={Title}
+                />
+                <h1 className="top-banner-sec-heading md:hidden">{Title}</h1>
+              </div>
+            </div>
+          </div>
+          {Banner?.url &&
+            (Banner.ext == ".mp4" ? (
+              <video
+                className="absolute top-0 w-full h-full object-cover"
+                loop
+                autoPlay
+                muted
+                playsInline
+              >
+                <source src={getStrapiMedia(Banner.url)} type="video/mp4" />
+              </video>
+            ) : (
+              <Image
+                src={getStrapiMedia(Banner.url)}
+                width={Banner.width}
+                height={Banner.height}
+                alt={
+                  Banner?.alternativeText
+                    ? Banner.alternativeText
+                    : "Hero-Banner"
+                }
+                className="absolute top-0 w-full h-full object-fill"
+              />
+            ))}
+        </div>
+      </div>
+      <SmallButton />
+    </section>
   );
 }
