@@ -1214,51 +1214,6 @@ export function Pages({ pageData }) {
   );
 }
 
-  class FilterMappingModel {
-    constructor(
-      filterRimOptions = [],
-      filerSizeOptions = [],
-      filterPatternOptions = []
-    ) {
-      this.filterRimOptions = new Set(filterRimOptions);
-      this.filerSizeOptions = new Set(filerSizeOptions);
-      this.filterPatternOptions = new Set(filterPatternOptions);
-    }
-
-    toArray() {
-      return {
-        filterRimOptions: Array.from(this.filterRimOptions),
-        filerSizeOptions: Array.from(this.filerSizeOptions),
-        filterPatternOptions: Array.from(this.filterPatternOptions),
-      };
-    }
-
-    addOptions({
-      addfilterRimOptions = [],
-      addfilerSizeOptions = [],
-      addfilterPatternOptions = [],
-    } = {}) {
-      if (addfilterRimOptions.length > 0) {
-        this.filterRimOptions.clear();
-        addfilterRimOptions.forEach((option) =>
-          this.filterRimOptions.add(option)
-        );
-      }
-      if (addfilerSizeOptions.length > 0) {
-        this.filerSizeOptions.clear();
-        addfilerSizeOptions.forEach((option) =>
-          this.filerSizeOptions.add(option)
-        );
-      }
-      if (addfilterPatternOptions.length > 0) {
-        this.filterPatternOptions.clear();
-        addfilterPatternOptions.forEach((option) =>
-          this.filterPatternOptions.add(option)
-        );
-      }
-    }
-  }
-
   let filterTitle = "";
   let filterValue = "";
 const Segments = ({ pageData, pagination }) => {
@@ -1385,7 +1340,6 @@ const Segments = ({ pageData, pagination }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     filterData.forEach((item) => {
       const rows = item.tables.table[0].row;
-      let machineryName;
       let rim_recommended;
       let size;
       let pattern_type;
@@ -1408,7 +1362,6 @@ const Segments = ({ pageData, pagination }) => {
         }
         if (row.machinery && row.machinery.name) {
           machineryOptions.add(row.machinery.name);
-          machineryName = row.machinery.name;
         }
       });
     });
