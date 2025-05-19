@@ -1217,49 +1217,51 @@ export function Pages({ pageData }) {
           ))}
         </div>
       )}
-      <section className="overflow-hidden xl:bg-[#F8F8F8] pt-10 2xl:pt-12">
-        <div className="container mx-auto">
-          <h2 data-aos="fade-left" data-aos-duration="1000" className="section-title">Key Management Personnel</h2>
-          <div class="grid grid-cols-5 gap-10 mt-6">
-            {managementPersonnelList.map((section, index) => {
-              return (
-                <div key={section?.id || index} className="sub-leader-card">
-                  <figure
-                    className="w-full h-[260px] relative glare"
-                    data-aos="flip-right"
-                    data-aos-duration="1500"
-                  >
-                    <Image
-                      className="absolute -z-1 w-[90%] h-[90%] left-0"
-                      src={Triangle1}
-                      alt="triangle"
-                    />
-                    <Image
-                      className="absolute top-4 w-[90%] h-[90%] rounded-[8px] left-4"
-                      width={section?.image.width}
-                      height={section?.image.height}
-                      src={getStrapiMedia(section?.image.url)}
-                      alt={section?.image.alternativeText}
-                    />
-                  </figure>
-                  <h2
-                    className="text-[20px] text-secondary font-medium"
-                    data-aos="fade-left"
-                    data-aos-duration="200"
-                  >
-                    {section?.name}
-                  </h2>
-                  <h3
-                    className="text-primary font-medium text-[16px]"
-                    data-aos="fade-left"
-                    data-aos-duration="400"
-                  >
-                    {section?.designation}
-                  </h3>
-                </div>
-              );
-            })}
-          </div>
+
+    <section className="overflow-hidden xl:bg-[#F8F8F8] pt-10 2xl:pt-12">
+      <div className="container mx-auto">
+        <h2 data-aos="fade-left" data-aos-duration="1000" className="section-title">Key Management Personnel</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 2xl:gap-10 mt-6">
+          {managementPersonnelList.map((section) => {
+            return (
+              <div className="sub-leader-card">
+                <figure
+                  className="w-full h-[300px] lg:h-[235px] 2xl:h-[260px] relative glare"
+                  data-aos="flip-right"
+                  data-aos-duration="1500"
+                >
+                  <Image
+                    className="absolute -z-1 w-[90%] h-[90%] left-0"
+                    src={Triangle1}
+                    alt="triangle"
+                  />
+                  <Image
+                    className="absolute top-4 w-[90%] h-[90%] rounded-[8px] left-4"
+                    width={section?.image.width}
+                    height={section?.image.height}
+                    src={getStrapiMedia(section?.image.url)}
+                    alt={section?.image.alternativeText}
+                  />
+                </figure>
+                <h2
+                  className="text-[20px] text-secondary font-medium"
+                  data-aos="fade-left"
+                  data-aos-duration="200"
+                >
+                  {section?.name}
+                </h2>
+                <h3
+                  className="text-primary font-medium text-[16px]"
+                  data-aos="fade-left"
+                  data-aos-duration="400"
+                >
+                  {section?.designation}
+                </h3>
+              </div>
+            );
+          })}
+
+
         </div>
       </section>
       <PageEnd EndPageData={pageData?.end} />
