@@ -1217,6 +1217,7 @@ export function Pages({ pageData }) {
           ))}
         </div>
       )}
+
     <section className="overflow-hidden xl:bg-[#F8F8F8] pt-10 2xl:pt-12">
       <div className="container mx-auto">
         <h2 data-aos="fade-left" data-aos-duration="1000" className="section-title">Key Management Personnel</h2>
@@ -1259,61 +1260,17 @@ export function Pages({ pageData }) {
               </div>
             );
           })}
+
+
         </div>
-      </div>
-    </section>
+      </section>
       <PageEnd EndPageData={pageData?.end} />
     </>
   );
 }
 
-  class FilterMappingModel {
-    constructor(
-      filterRimOptions = [],
-      filerSizeOptions = [],
-      filterPatternOptions = []
-    ) {
-      this.filterRimOptions = new Set(filterRimOptions);
-      this.filerSizeOptions = new Set(filerSizeOptions);
-      this.filterPatternOptions = new Set(filterPatternOptions);
-    }
-
-    toArray() {
-      return {
-        filterRimOptions: Array.from(this.filterRimOptions),
-        filerSizeOptions: Array.from(this.filerSizeOptions),
-        filterPatternOptions: Array.from(this.filterPatternOptions),
-      };
-    }
-
-    addOptions({
-      addfilterRimOptions = [],
-      addfilerSizeOptions = [],
-      addfilterPatternOptions = [],
-    } = {}) {
-      if (addfilterRimOptions.length > 0) {
-        this.filterRimOptions.clear();
-        addfilterRimOptions.forEach((option) =>
-          this.filterRimOptions.add(option)
-        );
-      }
-      if (addfilerSizeOptions.length > 0) {
-        this.filerSizeOptions.clear();
-        addfilerSizeOptions.forEach((option) =>
-          this.filerSizeOptions.add(option)
-        );
-      }
-      if (addfilterPatternOptions.length > 0) {
-        this.filterPatternOptions.clear();
-        addfilterPatternOptions.forEach((option) =>
-          this.filterPatternOptions.add(option)
-        );
-      }
-    }
-  }
-
-  let filterTitle = "";
-  let filterValue = "";
+let filterTitle = "";
+let filterValue = "";
 const Segments = ({ pageData, pagination }) => {
   const { push } = useRouter();
   const searchParams = new URLSearchParams(useSearchParams());
@@ -1438,7 +1395,6 @@ const Segments = ({ pageData, pagination }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     filterData.forEach((item) => {
       const rows = item.tables.table[0].row;
-      let machineryName;
       let rim_recommended;
       let size;
       let pattern_type;
@@ -1461,7 +1417,6 @@ const Segments = ({ pageData, pagination }) => {
         }
         if (row.machinery && row.machinery.name) {
           machineryOptions.add(row.machinery.name);
-          machineryName = row.machinery.name;
         }
       });
     });
@@ -1486,22 +1441,34 @@ const Segments = ({ pageData, pagination }) => {
       rows.forEach((row) => {
         switch (filterTitle) {
           case "Select Sub-section":
-                if (selectedFilters.get("Select Sub-section") === item.sub_segment){
-                  if(row.machinery && row.machinery.name) {
-                      if(selectedFilters.has("Select Machinery")){
-                        if(row.machinery.name === selectedFilters.get("Select Machinery")){
-                          newMachineryOptions.add(row.machinery.name);
-                        }
-                      } else {
+              if (selectedFilters.get("Select Sub-section") === item.sub_segment){
+                if(row.machinery && row.machinery.name) {
+                    if(selectedFilters.has("Select Machinery")){
+                      if(row.machinery.name === selectedFilters.get("Select Machinery")){
                         newMachineryOptions.add(row.machinery.name);
                       }
-                  }
+                    } else {
+                      newMachineryOptions.add(row.machinery.name);
+                    }
+                }
                 if(selectedFilters.has("Select Rim")){
                   if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
-                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    if(selectedFilters.has("Select Size")){
+                      if(row.size === selectedFilters.get("Select Size")){
+                        newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      }
+                    } else {
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    }
                   }
                 } else {
-                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  if(selectedFilters.has("Select Size")){
+                    if(row.size === selectedFilters.get("Select Size")){
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    }
+                  } else {
+                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  }
                 }
                 if(selectedFilters.has("Select Size")){
                   if(row.size === selectedFilters.get("Select Size")){
@@ -1549,10 +1516,22 @@ const Segments = ({ pageData, pagination }) => {
                 }
                 if(selectedFilters.has("Select Rim")){
                   if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
-                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    if(selectedFilters.has("Select Size")){
+                      if(row.size === selectedFilters.get("Select Size")){
+                        newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      }
+                    } else {
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    }
                   }
                 } else {
-                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  if(selectedFilters.has("Select Size")){
+                    if(row.size === selectedFilters.get("Select Size")){
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    }
+                  } else {
+                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  }
                 }
                 if(selectedFilters.has("Select Size")){
                   if(row.size === selectedFilters.get("Select Size")){
@@ -1703,10 +1682,22 @@ const Segments = ({ pageData, pagination }) => {
                 }
                 if(selectedFilters.has("Select Rim")){
                   if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
-                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    if(selectedFilters.has("Select Size")){
+                      if(row.size === selectedFilters.get("Select Size")){
+                        newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      }
+                    } else {
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    }
                   }
                 } else {
-                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  if(selectedFilters.has("Select Size")){
+                    if(row.size === selectedFilters.get("Select Size")){
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    }
+                  } else {
+                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  }
                 }
                 if(selectedFilters.has("Select Size")){
                   if(row.size === selectedFilters.get("Select Size")){
