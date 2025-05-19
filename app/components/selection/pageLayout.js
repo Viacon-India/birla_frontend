@@ -1217,58 +1217,58 @@ export function Pages({ pageData }) {
           ))}
         </div>
       )}
-    <section className="overflow-hidden xl:bg-[#F8F8F8] pt-10 2xl:pt-12">
-      <div className="container mx-auto">
-        <h2 data-aos="fade-left" data-aos-duration="1000" className="section-title">Key Management Personnel</h2>
-        <div class="grid grid-cols-5 gap-10 mt-6">
-          {managementPersonnelList.map((section, index) => {
-            return (
-              <div key={section?.id || index} className="sub-leader-card">
-                <figure
-                  className="w-full h-[260px] relative glare"
-                  data-aos="flip-right"
-                  data-aos-duration="1500"
-                >
-                  <Image
-                    className="absolute -z-1 w-[90%] h-[90%] left-0"
-                    src={Triangle1}
-                    alt="triangle"
-                  />
-                  <Image
-                    className="absolute top-4 w-[90%] h-[90%] rounded-[8px] left-4"
-                    width={section?.image.width}
-                    height={section?.image.height}
-                    src={getStrapiMedia(section?.image.url)}
-                    alt={section?.image.alternativeText}
-                  />
-                </figure>
-                <h2
-                  className="text-[20px] text-secondary font-medium"
-                  data-aos="fade-left"
-                  data-aos-duration="200"
-                >
-                  {section?.name}
-                </h2>
-                <h3
-                  className="text-primary font-medium text-[16px]"
-                  data-aos="fade-left"
-                  data-aos-duration="400"
-                >
-                  {section?.designation}
-                </h3>
-              </div>
-            );
-          })}
+      <section className="overflow-hidden xl:bg-[#F8F8F8] pt-10 2xl:pt-12">
+        <div className="container mx-auto">
+          <h2 data-aos="fade-left" data-aos-duration="1000" className="section-title">Key Management Personnel</h2>
+          <div class="grid grid-cols-5 gap-10 mt-6">
+            {managementPersonnelList.map((section, index) => {
+              return (
+                <div key={section?.id || index} className="sub-leader-card">
+                  <figure
+                    className="w-full h-[260px] relative glare"
+                    data-aos="flip-right"
+                    data-aos-duration="1500"
+                  >
+                    <Image
+                      className="absolute -z-1 w-[90%] h-[90%] left-0"
+                      src={Triangle1}
+                      alt="triangle"
+                    />
+                    <Image
+                      className="absolute top-4 w-[90%] h-[90%] rounded-[8px] left-4"
+                      width={section?.image.width}
+                      height={section?.image.height}
+                      src={getStrapiMedia(section?.image.url)}
+                      alt={section?.image.alternativeText}
+                    />
+                  </figure>
+                  <h2
+                    className="text-[20px] text-secondary font-medium"
+                    data-aos="fade-left"
+                    data-aos-duration="200"
+                  >
+                    {section?.name}
+                  </h2>
+                  <h3
+                    className="text-primary font-medium text-[16px]"
+                    data-aos="fade-left"
+                    data-aos-duration="400"
+                  >
+                    {section?.designation}
+                  </h3>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
       <PageEnd EndPageData={pageData?.end} />
     </>
   );
 }
 
-  let filterTitle = "";
-  let filterValue = "";
+let filterTitle = "";
+let filterValue = "";
 const Segments = ({ pageData, pagination }) => {
   const { push } = useRouter();
   const searchParams = new URLSearchParams(useSearchParams());
@@ -1439,22 +1439,34 @@ const Segments = ({ pageData, pagination }) => {
       rows.forEach((row) => {
         switch (filterTitle) {
           case "Select Sub-section":
-                if (selectedFilters.get("Select Sub-section") === item.sub_segment){
-                  if(row.machinery && row.machinery.name) {
-                      if(selectedFilters.has("Select Machinery")){
-                        if(row.machinery.name === selectedFilters.get("Select Machinery")){
-                          newMachineryOptions.add(row.machinery.name);
-                        }
-                      } else {
+              if (selectedFilters.get("Select Sub-section") === item.sub_segment){
+                if(row.machinery && row.machinery.name) {
+                    if(selectedFilters.has("Select Machinery")){
+                      if(row.machinery.name === selectedFilters.get("Select Machinery")){
                         newMachineryOptions.add(row.machinery.name);
                       }
-                  }
+                    } else {
+                      newMachineryOptions.add(row.machinery.name);
+                    }
+                }
                 if(selectedFilters.has("Select Rim")){
                   if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
-                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    if(selectedFilters.has("Select Size")){
+                      if(row.size === selectedFilters.get("Select Size")){
+                        newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      }
+                    } else {
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    }
                   }
                 } else {
-                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  if(selectedFilters.has("Select Size")){
+                    if(row.size === selectedFilters.get("Select Size")){
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    }
+                  } else {
+                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  }
                 }
                 if(selectedFilters.has("Select Size")){
                   if(row.size === selectedFilters.get("Select Size")){
@@ -1502,10 +1514,22 @@ const Segments = ({ pageData, pagination }) => {
                 }
                 if(selectedFilters.has("Select Rim")){
                   if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
-                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    if(selectedFilters.has("Select Size")){
+                      if(row.size === selectedFilters.get("Select Size")){
+                        newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      }
+                    } else {
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    }
                   }
                 } else {
-                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  if(selectedFilters.has("Select Size")){
+                    if(row.size === selectedFilters.get("Select Size")){
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    }
+                  } else {
+                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  }
                 }
                 if(selectedFilters.has("Select Size")){
                   if(row.size === selectedFilters.get("Select Size")){
@@ -1656,10 +1680,22 @@ const Segments = ({ pageData, pagination }) => {
                 }
                 if(selectedFilters.has("Select Rim")){
                   if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
-                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    if(selectedFilters.has("Select Size")){
+                      if(row.size === selectedFilters.get("Select Size")){
+                        newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      }
+                    } else {
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    }
                   }
                 } else {
-                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  if(selectedFilters.has("Select Size")){
+                    if(row.size === selectedFilters.get("Select Size")){
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    }
+                  } else {
+                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  }
                 }
                 if(selectedFilters.has("Select Size")){
                   if(row.size === selectedFilters.get("Select Size")){
