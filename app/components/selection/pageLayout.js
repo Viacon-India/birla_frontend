@@ -1259,6 +1259,8 @@ export function Pages({ pageData }) {
     }
   }
 
+  let filterTitle = "";
+  let filterValue = "";
 const Segments = ({ pageData, pagination }) => {
   const { push } = useRouter();
   const searchParams = new URLSearchParams(useSearchParams());
@@ -1374,9 +1376,12 @@ const Segments = ({ pageData, pagination }) => {
       initFilterData();
     }
   }, [filterData]);
+  
+  useEffect(() => {
+    updateFilterData();
+  }, [selectedFilters]);
 
   async function initFilterData() {
-    let tempfilterMapping = new Map();
     await new Promise((resolve) => setTimeout(resolve, 1000));
     filterData.forEach((item) => {
       const rows = item.tables.table[0].row;
@@ -1405,24 +1410,6 @@ const Segments = ({ pageData, pagination }) => {
           machineryOptions.add(row.machinery.name);
           machineryName = row.machinery.name;
         }
-        if (!tempfilterMapping.has(machineryName)) {
-          tempfilterMapping.set(
-            machineryName,
-            new FilterMappingModel(
-              [rim_recommended],
-              [row.size],
-              [row.pattern_type]
-            )
-          );
-        } else {
-          let tempdata = tempfilterMapping.get(machineryName);
-          tempdata.addOptions({
-            addfilterRimOptions: [rim_recommended],
-            addfilerSizeOptions: [row.size],
-            addfilterPatternOptions: [row.pattern_type],
-          });
-          tempfilterMapping.set(machineryName, tempdata);
-        }
       });
     });
 
@@ -1435,7 +1422,7 @@ const Segments = ({ pageData, pagination }) => {
     ]);
   }
 
-  function updateFilterData(key,value) {
+  function updateFilterData() {
     const newSubSegmentOptions = new Set();
     const newMachineryOptions = new Set();
     const newRimOptions = new Set();
@@ -1444,14 +1431,51 @@ const Segments = ({ pageData, pagination }) => {
     filterData.forEach((item) => {
       const rows = item.tables.table[0].row;
       rows.forEach((row) => {
-        switch (key) {
+        switch (filterTitle) {
           case "Select Sub-section":
-                if (selectedFilters.get("Select Sub-section") === item.sub_segment) {
-                if(row.machinery && row.machinery.name)
-                newMachineryOptions.add(row.machinery.name);
-                newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-                newSizeOptions.add(row.size);
-                newPatternOptions.add(row.pattern_type);
+                if (selectedFilters.get("Select Sub-section") === item.sub_segment){
+                  if(row.machinery && row.machinery.name) {
+                      if(selectedFilters.has("Select Machinery")){
+                        if(row.machinery.name === selectedFilters.get("Select Machinery")){
+                          newMachineryOptions.add(row.machinery.name);
+                        }
+                      } else {
+                        newMachineryOptions.add(row.machinery.name);
+                      }
+                  }
+                if(selectedFilters.has("Select Rim")){
+                  if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
+                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  }
+                } else {
+                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                }
+                if(selectedFilters.has("Select Size")){
+                  if(row.size === selectedFilters.get("Select Size")){
+                    if(selectedFilters.has("Select Rim")){
+                      if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
+                        newSizeOptions.add(row.size);
+                      }
+                    } else {
+                      newSizeOptions.add(row.size);
+                    }
+                  }
+                } else {
+                  if(selectedFilters.has("Select Rim")){
+                    if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
+                      newSizeOptions.add(row.size);
+                    }
+                  } else {
+                    newSizeOptions.add(row.size);
+                  }
+                }
+                if(selectedFilters.has("Select Pattern")){
+                  if(row.pattern_type === selectedFilters.get("Select Pattern")){
+                    newPatternOptions.add(row.pattern_type);
+                  }
+                } else {
+                  newPatternOptions.add(row.pattern_type);
+                }
                 setFiltersArray((prevData) => [
                   [...(prevData[0] || [])],
                   [...newMachineryOptions],
@@ -1462,27 +1486,100 @@ const Segments = ({ pageData, pagination }) => {
               }
               break;
           case "Select Machinery":
-            if (row.machinery && value === row.machinery.name) {
-                newSubSegmentOptions.add(item.sub_segment);
-                newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-                newSizeOptions.add(row.size);
-                newPatternOptions.add(row.pattern_type);
-                setFiltersArray((prevData) => [
-                  [...newSubSegmentOptions],
-                  [...(prevData[1] || [])],
-                  [...newRimOptions],
-                  [...newSizeOptions],
-                  [...newPatternOptions],
-                ]);
-              }
-              break;
+            if (row.machinery && filterValue === row.machinery.name) {
+                if(selectedFilters.has("Select Sub-section")){
+                  if(item.sub_segment === selectedFilters.get("Select Sub-section")){
+                    newSubSegmentOptions.add(item.sub_segment);
+                  }
+                } else {
+                  newSubSegmentOptions.add(item.sub_segment);
+                }
+                if(selectedFilters.has("Select Rim")){
+                  if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
+                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  }
+                } else {
+                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                }
+                if(selectedFilters.has("Select Size")){
+                  if(row.size === selectedFilters.get("Select Size")){
+                    if(selectedFilters.has("Select Rim")){
+                      if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
+                        newSizeOptions.add(row.size);
+                      }
+                    } else {
+                      newSizeOptions.add(row.size);
+                    }
+                  }
+                } else {
+                  if(selectedFilters.has("Select Rim")){
+                    if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
+                      newSizeOptions.add(row.size);
+                    }
+                  } else {
+                    newSizeOptions.add(row.size);
+                  }
+                }
+                if(selectedFilters.has("Select Pattern")){
+                  if(row.pattern_type === selectedFilters.get("Select Pattern")){
+                    newPatternOptions.add(row.pattern_type);
+                  }
+                } else {
+                  newPatternOptions.add(row.pattern_type);
+                }
+              setFiltersArray((prevData) => [
+                [...newSubSegmentOptions],
+                [...(prevData[1] || [])],
+                [...newRimOptions],
+                [...newSizeOptions],
+                [...newPatternOptions],
+              ]);
+            }
+            break;
           case "Select Rim":
-            if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === value){
-              newSubSegmentOptions.add(item.sub_segment);
-              if(row.machinery && row.machinery.name)
-              newMachineryOptions.add(row.machinery.name);
-              newSizeOptions.add(row.size);
-              newPatternOptions.add(row.pattern_type);
+            if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === filterValue){
+              if(selectedFilters.has("Select Sub-section")){
+                  if(item.sub_segment === selectedFilters.get("Select Sub-section")){
+                    newSubSegmentOptions.add(item.sub_segment);
+                  }
+                } else {
+                  newSubSegmentOptions.add(item.sub_segment);
+                }
+                if(row.machinery && row.machinery.name) {
+                  if(selectedFilters.has("Select Machinery")){
+                    if(row.machinery.name === selectedFilters.get("Select Machinery")){
+                      newMachineryOptions.add(row.machinery.name);
+                    }
+                  } else {
+                    newMachineryOptions.add(row.machinery.name);
+                  }
+                }
+                if(selectedFilters.has("Select Size")){
+                  if(row.size === selectedFilters.get("Select Size")){
+                    if(selectedFilters.has("Select Rim")){
+                      if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
+                        newSizeOptions.add(row.size);
+                      }
+                    } else {
+                      newSizeOptions.add(row.size);
+                    }
+                  }
+                } else {
+                  if(selectedFilters.has("Select Rim")){
+                    if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
+                      newSizeOptions.add(row.size);
+                    }
+                  } else {
+                    newSizeOptions.add(row.size);
+                  }
+                }
+                if(selectedFilters.has("Select Pattern")){
+                  if(row.pattern_type === selectedFilters.get("Select Pattern")){
+                    newPatternOptions.add(row.pattern_type);
+                  }
+                } else {
+                  newPatternOptions.add(row.pattern_type);
+                }
               setFiltersArray((prevData) => [
                 [...newSubSegmentOptions],
                 [...newMachineryOptions],
@@ -1493,12 +1590,37 @@ const Segments = ({ pageData, pagination }) => {
             }
             break;
           case "Select Size":
-            if(value === row.size){
-              newSubSegmentOptions.add(item.sub_segment);
-              if(row.machinery && row.machinery.name)
-              newMachineryOptions.add(row.machinery.name);
-              newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-              newPatternOptions.add(row.pattern_type);
+            if(filterValue === row.size){
+              if(selectedFilters.has("Select Sub-section")){
+                  if(item.sub_segment === selectedFilters.get("Select Sub-section")){
+                    newSubSegmentOptions.add(item.sub_segment);
+                  }
+                } else {
+                  newSubSegmentOptions.add(item.sub_segment);
+                }
+                if(row.machinery && row.machinery.name) {
+                  if(selectedFilters.has("Select Machinery")){
+                    if(row.machinery.name === selectedFilters.get("Select Machinery")){
+                      newMachineryOptions.add(row.machinery.name);
+                    }
+                  } else {
+                    newMachineryOptions.add(row.machinery.name);
+                  }
+                }
+                if(selectedFilters.has("Select Rim")){
+                  if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
+                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  }
+                } else {
+                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                }
+                if(selectedFilters.has("Select Pattern")){
+                  if(row.pattern_type === selectedFilters.get("Select Pattern")){
+                    newPatternOptions.add(row.pattern_type);
+                  }
+                } else {
+                  newPatternOptions.add(row.pattern_type);
+                }
               setFiltersArray((prevData) => [
                 [...newSubSegmentOptions],
                 [...newMachineryOptions],
@@ -1509,13 +1631,49 @@ const Segments = ({ pageData, pagination }) => {
             }
             break;
           case "Select Pattern":
-            if(value === row.pattern_type){
-              newSubSegmentOptions.add(item.sub_segment);
-              if(row.machinery && row.machinery.name)
-              newMachineryOptions.add(row.machinery.name);
-              newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-              newSizeOptions.add(row.size);
-              newPatternOptions.add(row.pattern_type);
+            if(filterValue === row.pattern_type){
+              if(selectedFilters.has("Select Sub-section")){
+                  if(item.sub_segment === selectedFilters.get("Select Sub-section")){
+                    newSubSegmentOptions.add(item.sub_segment);
+                  }
+                } else {
+                  newSubSegmentOptions.add(item.sub_segment);
+                }
+                if(row.machinery && row.machinery.name) {
+                  if(selectedFilters.has("Select Machinery")){
+                    if(row.machinery.name === selectedFilters.get("Select Machinery")){
+                      newMachineryOptions.add(row.machinery.name);
+                    }
+                  } else {
+                    newMachineryOptions.add(row.machinery.name);
+                  }
+                }
+                if(selectedFilters.has("Select Rim")){
+                  if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
+                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                  }
+                } else {
+                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                }
+                if(selectedFilters.has("Select Size")){
+                  if(row.size === selectedFilters.get("Select Size")){
+                    if(selectedFilters.has("Select Rim")){
+                      if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
+                        newSizeOptions.add(row.size);
+                      }
+                    } else {
+                      newSizeOptions.add(row.size);
+                    }
+                  }
+                } else {
+                  if(selectedFilters.has("Select Rim")){
+                    if(row.size.match(/(\d+)(?=[\s-]*$)/)[0] === selectedFilters.get("Select Rim")){
+                      newSizeOptions.add(row.size);
+                    }
+                  } else {
+                    newSizeOptions.add(row.size);
+                  }
+                }
               setFiltersArray((prevData) => [
                 [...newSubSegmentOptions],
                 [...newMachineryOptions],
@@ -1538,8 +1696,9 @@ const Segments = ({ pageData, pagination }) => {
     });
   };
 
-  const updateSelectedFilters = (filterTitle, value) => {
-    updateFilterData(filterTitle, value);
+  const updateSelectedFilters = (updateFilterTitle, value) => {
+    filterTitle = updateFilterTitle;
+    filterValue = value;
     setSelectedFilters((prevFilters) => {
       const updatedFilters = new Map(prevFilters);
       // if(value === ""){
@@ -1564,7 +1723,7 @@ const Segments = ({ pageData, pagination }) => {
       //       break;
       //   }
       // } else {
-        updatedFilters.set(filterTitle, value);
+        updatedFilters.set(updateFilterTitle, value);
       // }
       return updatedFilters;
     });
