@@ -25,7 +25,7 @@ import "swiper/css";
 import { FreeMode, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 import loadGif from "../../assets/images/loading.gif";
-import directorImg from "@/app/assets/images/director-1.jpg"
+import directorImg from "@/app/assets/images/director-1.jpg";
 
 export default function SectionSelection({ section, Background, right }) {
   return (
@@ -64,9 +64,14 @@ export default function SectionSelection({ section, Background, right }) {
       {section.__component == "section.double-slider" && (
         <DoubleSlider section={section} />
       )}
-      {section.__component == "section.leader" && (
-        <ImageDetailContent section={section} />
-      )}
+      {section.__component == "section.leader" &&
+        section.IsKeyManagementPersonnel === false && (
+          <ImageDetailContent section={section} />
+        )}
+      {section.__component === "section.leader" &&
+        section.IsKeyManagementPersonnel === true && (
+          <IsManagementContent section={section} />
+        )}
       {section.__component == "section.sidebar-content" && (
         <SidebarContent section={section} />
       )}
@@ -2118,42 +2123,54 @@ export function ImageDetailContent({ section }) {
             </div>
           </div>
         </div>
-        <div class="grid grid-cols-5 gap-10">
-{/* {[...Array(5)].map((_, index) => (
-  <div className="sub-leader-card" key={index}>
-    <figure
-      className="w-full h-[260px] relative glare"
-      data-aos="flip-right"
-      data-aos-duration="1500"
-    >
-      <Image
-        className="absolute -z-1 w-[90%] h-[90%] left-0"
-        src={Triangle1}
-        alt="triangle"
-      />
-      <Image
-        className="absolute top-4 w-[90%] h-[90%] rounded-[8px] left-4"
-        src={directorImg}
-        alt={section?.image.alternativeText}
-      />
-    </figure>
-    <h2
-      className="text-[20px] text-secondary font-medium"
-      data-aos="fade-left"
-      data-aos-duration="200"
-    >
-      Anuraj Chaudhry
-    </h2>
-    <h3
-      className="text-primary font-medium text-[16px]"
-      data-aos="fade-left"
-      data-aos-duration="400"
-    >
-      Business Head
-    </h3>
-  </div>
-))} */}
+      </div>
+    </section>
+  );
+}
 
+export function IsManagementContent({ section }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+  return (
+    <section className="overflow-hidden xl:bg-[#F8F8F8] pt-10 2xl:pt-12">
+      <div className="container mx-auto">
+        <h2 data-aos="fade-left" data-aos-duration="1000" className="section-title">Key Management Personnel</h2>
+        <div class="grid grid-cols-5 gap-10 mt-6">
+          <div className="sub-leader-card">
+            <figure
+              className="w-full h-[260px] relative glare"
+              data-aos="flip-right"
+              data-aos-duration="1500"
+            >
+              <Image
+                className="absolute -z-1 w-[90%] h-[90%] left-0"
+                src={Triangle1}
+                alt="triangle"
+              />
+              <Image
+                className="absolute top-4 w-[90%] h-[90%] rounded-[8px] left-4"
+                width={section?.image.width}
+                height={section?.image.height}
+                src={getStrapiMedia(section?.image.url)}
+                alt={section?.image.alternativeText}
+              />
+            </figure>
+            <h2
+              className="text-[20px] text-secondary font-medium"
+              data-aos="fade-left"
+              data-aos-duration="200"
+            >
+              {section?.name}
+            </h2>
+            <h3
+              className="text-primary font-medium text-[16px]"
+              data-aos="fade-left"
+              data-aos-duration="400"
+            >
+              {section?.designation}
+            </h3>
+          </div>
         </div>
       </div>
     </section>
