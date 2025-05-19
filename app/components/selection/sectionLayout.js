@@ -68,10 +68,10 @@ export default function SectionSelection({ section, Background, right }) {
         section.IsKeyManagementPersonnel === false && (
           <ImageDetailContent section={section} />
         )}
-      {section.__component === "section.leader" &&
+      {/* {section.__component === "section.leader" &&
         section.IsKeyManagementPersonnel === true && (
           <IsManagementContent section={section} />
-        )}
+        )} */}
       {section.__component == "section.sidebar-content" && (
         <SidebarContent section={section} />
       )}
