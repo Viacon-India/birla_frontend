@@ -1222,9 +1222,9 @@ export function Pages({ pageData }) {
       <div className="container mx-auto">
         <h2 data-aos="fade-left" data-aos-duration="1000" className="section-title">Key Management Personnel</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 2xl:gap-10 mt-6">
-          {managementPersonnelList.map((section) => {
+          {managementPersonnelList.map((section, index) => {
             return (
-              <div className="sub-leader-card">
+              <div id={section.id ?? index} className="sub-leader-card">
                 <figure
                   className="w-full h-[300px] lg:h-[235px] 2xl:h-[260px] relative glare"
                   data-aos="flip-right"
