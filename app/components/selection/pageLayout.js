@@ -1263,6 +1263,7 @@ export function Pages({ pageData }) {
 
 
         </div>
+        </div>
       </section>
       <PageEnd EndPageData={pageData?.end} />
     </>
