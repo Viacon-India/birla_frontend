@@ -215,6 +215,7 @@ export default function Footer() {
                           <li key={submenu.id}>
                             <Link
                               href={`${submenu.attributes.permalink}`}
+                              scroll={false}
                               className="footer-list-item"
                             >
                               {submenu.attributes.title}
