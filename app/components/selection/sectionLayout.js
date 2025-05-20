@@ -365,7 +365,7 @@ export function ImageTitleContent({ section }) {
                   : "w-full h-full",
                 section?.settings?.right
                   ? "right-4 md:right-8"
-                  : "left-4 md:left-8"
+                  : "left-4 md:left-8 !object-cover"
               )}
               width={section?.image.width}
               height={section?.image.height}
@@ -641,6 +641,8 @@ export function Accordion({ section }) {
                       height={image?.height}
                       src={getStrapiMedia(image?.url)}
                       alt={image?.alternativeText}
+                      data-aos="zoom-in"
+                      data-aos-duration="500"
                     />
                   ))}
                 </div>
@@ -1546,7 +1548,7 @@ export function JobApplication({ section }) {
       )}
     >
       <div className="container mx-auto flex flex-col overflow-hidden">
-        <div className="flex items-center flex-col lg:flex-row gap-4 md:gap-8 2xl:gap-[60px] pt-[60px] xl:pt-[120px]">
+        <div className="flex items-start flex-col lg:flex-row gap-4 md:gap-8 2xl:gap-[60px] pt-[60px] xl:pt-[120px]">
           <div
             className="box-title-sec w-full lg:w-[40%] xl:w-[45%] relative"
             data-aos="fade-right"
@@ -1993,7 +1995,7 @@ export function ImageDetailContent({ section }) {
           )}
         >
           <figure
-            className="w-full xl:w-[40%] h-[300px] md:h-[420px] lg:h-[600px] xl:h-[400px] 2xl:h-[480px] relative glare"
+            className="w-full xl:w-[40%] h-[300px] md:h-[420px] lg:h-[600px] xl:h-[400px] 2xl:h-[480px] object-cover relative glare"
             data-aos="flip-right"
             data-aos-duration="1500"
           >
