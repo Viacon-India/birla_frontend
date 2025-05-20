@@ -1224,7 +1224,7 @@ export function Pages({ pageData }) {
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 2xl:gap-10 mt-6">
           {managementPersonnelList.map((section, index) => {
             return (
-              <div id={section.id ?? index} className="sub-leader-card">
+              <div key={section.id ?? index} className="sub-leader-card">
                 <figure
                   className="w-full h-[300px] lg:h-[235px] 2xl:h-[260px] relative glare"
                   data-aos="flip-right"
