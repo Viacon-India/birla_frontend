@@ -18,7 +18,7 @@ import { Navigation } from "swiper/modules";
 import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Product({ data }) {
+export default function Product({ data, selectedFilterSize }) {
   const searchParams = new URLSearchParams(useSearchParams());
   const sub_segment = searchParams.get("sub_segment");
   const machinery = searchParams.get("machinery");
@@ -95,6 +95,10 @@ export default function Product({ data }) {
         data.tables.table.forEach((tableEntry) => {
           if (tableEntry.standard === "USA") {
             tableEntry.row.forEach((rowEntry) => {
+              if(selectedFilterSize === rowEntry.size) {
+                sizes.push(rowEntry.size);
+                return sizes;
+              }
               const matchesFilters = [
                 !machinery ||
                   (rowEntry.machinery && rowEntry.machinery.name === machinery),

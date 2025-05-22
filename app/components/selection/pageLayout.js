@@ -1285,7 +1285,7 @@ const Segments = ({ pageData, pagination }) => {
   const { push } = useRouter();
   const searchParams = new URLSearchParams(useSearchParams());
   const pathname = usePathname();
-  // const [value, setValue] = useState([]);
+  const [value, setValue] = useState([]);
   const [filtersArray, setFiltersArray] = useState([]);
   const [productsData, setProductsData] = useState([]);
   const [selectURLParameter, setSelectURLParameter] = useState([]);
@@ -2295,7 +2295,11 @@ const Segments = ({ pageData, pagination }) => {
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10 2xl:gap-[50px]">
                 {productsData.map((product) => (
-                  <Product key={product.id} data={product} />
+                  <Product
+                    key={product.id}
+                    data={product}
+                    selectedFilterSize={selectedFilters.get("Select Size")}
+                  />
                 ))}
               </div>
               {meta?.pagination?.pageCount > 1 && (
