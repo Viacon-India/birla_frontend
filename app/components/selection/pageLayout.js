@@ -1281,12 +1281,11 @@ export function Pages({ pageData }) {
 }
 
 let filterTitle = "";
-let filterValue = "";
 const Segments = ({ pageData, pagination }) => {
   const { push } = useRouter();
   const searchParams = new URLSearchParams(useSearchParams());
   const pathname = usePathname();
-  const [value, setValue] = useState([]);
+  // const [value, setValue] = useState([]);
   const [filtersArray, setFiltersArray] = useState([]);
   const [productsData, setProductsData] = useState([]);
   const [selectURLParameter, setSelectURLParameter] = useState([]);
@@ -1296,6 +1295,7 @@ const Segments = ({ pageData, pagination }) => {
   const [meta, setProductsMeta] = useState({});
   const [selectedFilters, setSelectedFilters] = useState(new Map());
 
+  let isFilterFirstTime = true;
   const subSegmentOptions = new Set();
   const machineryOptions = new Set();
   const rimOptions = new Set();
@@ -1447,26 +1447,345 @@ const Segments = ({ pageData, pagination }) => {
     const newRimOptions = new Set();
     const newSizeOptions = new Set();
     const newPatternOptions = new Set();
+    const tempfilterList = new Set();
+
     filterData.forEach((item) => {
       const rows = item.tables.table[0].row;
       rows.forEach((row) => {
-        switch (filterTitle) {
-          case "Select Sub-section":
-            if (
-              selectedFilters.get("Select Sub-section") === item.sub_segment
-            ) {
-              if (row.machinery && row.machinery.name) {
-                if (selectedFilters.has("Select Machinery")) {
+        if (selectedFilters.has("Select Sub-section")) {
+          if (item.sub_segment === selectedFilters.get("Select Sub-section")) {
+            if (row.machinery && row.machinery.name) {
+              if (selectedFilters.has("Select Machinery")) {
+                if (
+                  row.machinery.name === selectedFilters.get("Select Machinery")
+                ) {
+                  if (selectedFilters.has("Select Rim")) {
+                    if (
+                      row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
+                      selectedFilters.get("Select Rim")
+                    ) {
+                      if (selectedFilters.has("Select Size")) {
+                        if (row.size === selectedFilters.get("Select Size")) {
+                          if (selectedFilters.has("Select Pattern")) {
+                            if (
+                              row.pattern_type ===
+                              selectedFilters.get("Select Pattern")
+                            ) {
+                              newMachineryOptions.add(row.machinery.name);
+                              newRimOptions.add(
+                                row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                              );
+                              newSizeOptions.add(row.size);
+                              newPatternOptions.add(row.pattern_type);
+                              newSubSegmentOptions.add(item.sub_segment);
+                            }
+                          } else {
+                            newMachineryOptions.add(row.machinery.name);
+                            newRimOptions.add(
+                              row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                            );
+                            newSizeOptions.add(row.size);
+                            newPatternOptions.add(row.pattern_type);
+                            newSubSegmentOptions.add(item.sub_segment);
+                          }
+                        }
+                      } else {
+                        if (selectedFilters.has("Select Pattern")) {
+                          if (
+                            row.pattern_type ===
+                            selectedFilters.get("Select Pattern")
+                          ) {
+                            newMachineryOptions.add(row.machinery.name);
+                            newRimOptions.add(
+                              row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                            );
+                            newSizeOptions.add(row.size);
+                            newPatternOptions.add(row.pattern_type);
+                            newSubSegmentOptions.add(item.sub_segment);
+                          }
+                        } else {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      }
+                    }
+                  } else {
+                    if (selectedFilters.has("Select Size")) {
+                      if (row.size === selectedFilters.get("Select Size")) {
+                        if (selectedFilters.has("Select Pattern")) {
+                          if (
+                            row.pattern_type ===
+                            selectedFilters.get("Select Pattern")
+                          ) {
+                            newMachineryOptions.add(row.machinery.name);
+                            newRimOptions.add(
+                              row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                            );
+                            newSizeOptions.add(row.size);
+                            newPatternOptions.add(row.pattern_type);
+                            newSubSegmentOptions.add(item.sub_segment);
+                          }
+                        } else {
+                          newMachineryOptions.add(row.machinery.name);
+                          newPatternOptions.add(row.pattern_type);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      }
+                    } else {
+                      if (selectedFilters.has("Select Pattern")) {
+                        if (
+                          row.pattern_type ===
+                          selectedFilters.get("Select Pattern")
+                        ) {
+                          newMachineryOptions.add(row.machinery.name);
+                          newPatternOptions.add(row.pattern_type);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      } else {
+                        newMachineryOptions.add(row.machinery.name);
+                        newPatternOptions.add(row.pattern_type);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    }
+                  }
+                }
+              } else {
+                if (selectedFilters.has("Select Rim")) {
                   if (
-                    row.machinery.name ===
-                    selectedFilters.get("Select Machinery")
+                    row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
+                    selectedFilters.get("Select Rim")
                   ) {
-                    newMachineryOptions.add(row.machinery.name);
+                    if (selectedFilters.has("Select Size")) {
+                      if (row.size === selectedFilters.get("Select Size")) {
+                        if (selectedFilters.has("Select Pattern")) {
+                          if (
+                            row.pattern_type ===
+                            selectedFilters.get("Select Pattern")
+                          ) {
+                            newMachineryOptions.add(row.machinery.name);
+                            newRimOptions.add(
+                              row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                            );
+                            newSizeOptions.add(row.size);
+                            newPatternOptions.add(row.pattern_type);
+                            newSubSegmentOptions.add(item.sub_segment);
+                          }
+                        } else {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      }
+                    } else {
+                      if (selectedFilters.has("Select Pattern")) {
+                        if (
+                          row.pattern_type ===
+                          selectedFilters.get("Select Pattern")
+                        ) {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      } else {
+                        newMachineryOptions.add(row.machinery.name);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newPatternOptions.add(row.pattern_type);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    }
                   }
                 } else {
-                  newMachineryOptions.add(row.machinery.name);
+                  if (selectedFilters.has("Select Size")) {
+                    if (row.size === selectedFilters.get("Select Size")) {
+                      if (selectedFilters.has("Select Pattern")) {
+                        if (
+                          row.pattern_type ===
+                          selectedFilters.get("Select Pattern")
+                        ) {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      } else {
+                        newMachineryOptions.add(row.machinery.name);
+                        newPatternOptions.add(row.pattern_type);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    }
+                  } else {
+                    if (selectedFilters.has("Select Pattern")) {
+                      if (
+                        row.pattern_type ===
+                        selectedFilters.get("Select Pattern")
+                      ) {
+                        newMachineryOptions.add(row.machinery.name);
+                        newPatternOptions.add(row.pattern_type);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    } else {
+                      newMachineryOptions.add(row.machinery.name);
+                      newPatternOptions.add(row.pattern_type);
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      newSizeOptions.add(row.size);
+                      newSubSegmentOptions.add(item.sub_segment);
+                    }
+                  }
                 }
               }
+            }
+          }
+        } else {
+          if (row.machinery && row.machinery.name) {
+            if (selectedFilters.has("Select Machinery")) {
+              if (
+                row.machinery.name === selectedFilters.get("Select Machinery")
+              ) {
+                if (selectedFilters.has("Select Rim")) {
+                  if (
+                    row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
+                    selectedFilters.get("Select Rim")
+                  ) {
+                    if (selectedFilters.has("Select Size")) {
+                      if (row.size === selectedFilters.get("Select Size")) {
+                        if (selectedFilters.has("Select Pattern")) {
+                          if (
+                            row.pattern_type ===
+                            selectedFilters.get("Select Pattern")
+                          ) {
+                            newMachineryOptions.add(row.machinery.name);
+                            newRimOptions.add(
+                              row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                            );
+                            newSizeOptions.add(row.size);
+                            newPatternOptions.add(row.pattern_type);
+                            newSubSegmentOptions.add(item.sub_segment);
+                          }
+                        } else {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      }
+                    } else {
+                      if (selectedFilters.has("Select Pattern")) {
+                        if (
+                          row.pattern_type ===
+                          selectedFilters.get("Select Pattern")
+                        ) {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      } else {
+                        newMachineryOptions.add(row.machinery.name);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newPatternOptions.add(row.pattern_type);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    }
+                  }
+                } else {
+                  if (selectedFilters.has("Select Size")) {
+                    if (row.size === selectedFilters.get("Select Size")) {
+                      if (selectedFilters.has("Select Pattern")) {
+                        if (
+                          row.pattern_type ===
+                          selectedFilters.get("Select Pattern")
+                        ) {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      } else {
+                        newMachineryOptions.add(row.machinery.name);
+                        newPatternOptions.add(row.pattern_type);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    }
+                  } else {
+                    if (selectedFilters.has("Select Pattern")) {
+                      if (
+                        row.pattern_type ===
+                        selectedFilters.get("Select Pattern")
+                      ) {
+                        newMachineryOptions.add(row.machinery.name);
+                        newPatternOptions.add(row.pattern_type);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    } else {
+                      newMachineryOptions.add(row.machinery.name);
+                      newPatternOptions.add(row.pattern_type);
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      newSizeOptions.add(row.size);
+                      newSubSegmentOptions.add(item.sub_segment);
+                    }
+                  }
+                }
+              }
+            } else {
               if (selectedFilters.has("Select Rim")) {
                 if (
                   row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
@@ -1474,339 +1793,180 @@ const Segments = ({ pageData, pagination }) => {
                 ) {
                   if (selectedFilters.has("Select Size")) {
                     if (row.size === selectedFilters.get("Select Size")) {
-                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      if (selectedFilters.has("Select Pattern")) {
+                        if (
+                          row.pattern_type ===
+                          selectedFilters.get("Select Pattern")
+                        ) {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      } else {
+                        newMachineryOptions.add(row.machinery.name);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newPatternOptions.add(row.pattern_type);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
                     }
                   } else {
-                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    if (selectedFilters.has("Select Pattern")) {
+                      if (
+                        row.pattern_type ===
+                        selectedFilters.get("Select Pattern")
+                      ) {
+                        newMachineryOptions.add(row.machinery.name);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newPatternOptions.add(row.pattern_type);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    } else {
+                      newMachineryOptions.add(row.machinery.name);
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      newSizeOptions.add(row.size);
+                      newPatternOptions.add(row.pattern_type);
+                      newSubSegmentOptions.add(item.sub_segment);
+                    }
                   }
                 }
               } else {
                 if (selectedFilters.has("Select Size")) {
                   if (row.size === selectedFilters.get("Select Size")) {
-                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-                  }
-                } else {
-                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-                }
-              }
-              if (selectedFilters.has("Select Size")) {
-                if (row.size === selectedFilters.get("Select Size")) {
-                  if (selectedFilters.has("Select Rim")) {
-                    if (
-                      row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
-                      selectedFilters.get("Select Rim")
-                    ) {
-                      newSizeOptions.add(row.size);
-                    }
-                  } else {
-                    newSizeOptions.add(row.size);
-                  }
-                }
-              } else {
-                if (selectedFilters.has("Select Rim")) {
-                  if (
-                    row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
-                    selectedFilters.get("Select Rim")
-                  ) {
-                    newSizeOptions.add(row.size);
-                  }
-                } else {
-                  newSizeOptions.add(row.size);
-                }
-              }
-              if (selectedFilters.has("Select Pattern")) {
-                if (
-                  row.pattern_type === selectedFilters.get("Select Pattern")
-                ) {
-                  newPatternOptions.add(row.pattern_type);
-                }
-              } else {
-                newPatternOptions.add(row.pattern_type);
-              }
-              setFiltersArray((prevData) => [
-                [...(prevData[0] || [])],
-                [...newMachineryOptions],
-                [...newRimOptions],
-                [...newSizeOptions],
-                [...newPatternOptions],
-              ]);
-            }
-            break;
-          case "Select Machinery":
-            if (row.machinery && filterValue === row.machinery.name) {
-              if (selectedFilters.has("Select Sub-section")) {
-                if (
-                  item.sub_segment === selectedFilters.get("Select Sub-section")
-                ) {
-                  newSubSegmentOptions.add(item.sub_segment);
-                }
-              } else {
-                newSubSegmentOptions.add(item.sub_segment);
-              }
-              if (selectedFilters.has("Select Rim")) {
-                if (
-                  row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
-                  selectedFilters.get("Select Rim")
-                ) {
-                  if (selectedFilters.has("Select Size")) {
-                    if (row.size === selectedFilters.get("Select Size")) {
+                    if (selectedFilters.has("Select Pattern")) {
+                      if (
+                        row.pattern_type ===
+                        selectedFilters.get("Select Pattern")
+                      ) {
+                        newMachineryOptions.add(row.machinery.name);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newPatternOptions.add(row.pattern_type);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    } else {
+                      newMachineryOptions.add(row.machinery.name);
+                      newPatternOptions.add(row.pattern_type);
                       newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-                    }
-                  } else {
-                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-                  }
-                }
-              } else {
-                if (selectedFilters.has("Select Size")) {
-                  if (row.size === selectedFilters.get("Select Size")) {
-                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-                  }
-                } else {
-                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-                }
-              }
-              if (selectedFilters.has("Select Size")) {
-                if (row.size === selectedFilters.get("Select Size")) {
-                  if (selectedFilters.has("Select Rim")) {
-                    if (
-                      row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
-                      selectedFilters.get("Select Rim")
-                    ) {
                       newSizeOptions.add(row.size);
+                      newSubSegmentOptions.add(item.sub_segment);
                     }
-                  } else {
-                    newSizeOptions.add(row.size);
-                  }
-                }
-              } else {
-                if (selectedFilters.has("Select Rim")) {
-                  if (
-                    row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
-                    selectedFilters.get("Select Rim")
-                  ) {
-                    newSizeOptions.add(row.size);
                   }
                 } else {
-                  newSizeOptions.add(row.size);
-                }
-              }
-              if (selectedFilters.has("Select Pattern")) {
-                if (
-                  row.pattern_type === selectedFilters.get("Select Pattern")
-                ) {
-                  newPatternOptions.add(row.pattern_type);
-                }
-              } else {
-                newPatternOptions.add(row.pattern_type);
-              }
-              setFiltersArray((prevData) => [
-                [...newSubSegmentOptions],
-                [...(prevData[1] || [])],
-                [...newRimOptions],
-                [...newSizeOptions],
-                [...newPatternOptions],
-              ]);
-            }
-            break;
-          case "Select Rim":
-            if (row.size.match(/(\d+)(?=[\s-]*$)/)[0] === filterValue) {
-              if (selectedFilters.has("Select Sub-section")) {
-                if (
-                  item.sub_segment === selectedFilters.get("Select Sub-section")
-                ) {
-                  newSubSegmentOptions.add(item.sub_segment);
-                }
-              } else {
-                newSubSegmentOptions.add(item.sub_segment);
-              }
-              if (row.machinery && row.machinery.name) {
-                if (selectedFilters.has("Select Machinery")) {
-                  if (
-                    row.machinery.name ===
-                    selectedFilters.get("Select Machinery")
-                  ) {
-                    newMachineryOptions.add(row.machinery.name);
-                  }
-                } else {
-                  newMachineryOptions.add(row.machinery.name);
-                }
-              }
-              if (selectedFilters.has("Select Size")) {
-                if (row.size === selectedFilters.get("Select Size")) {
-                  if (selectedFilters.has("Select Rim")) {
+                  if (selectedFilters.has("Select Pattern")) {
                     if (
-                      row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
-                      selectedFilters.get("Select Rim")
+                      row.pattern_type === selectedFilters.get("Select Pattern")
                     ) {
-                      newSizeOptions.add(row.size);
-                    }
-                  } else {
-                    newSizeOptions.add(row.size);
-                  }
-                }
-              } else {
-                if (selectedFilters.has("Select Rim")) {
-                  if (
-                    row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
-                    selectedFilters.get("Select Rim")
-                  ) {
-                    newSizeOptions.add(row.size);
-                  }
-                } else {
-                  newSizeOptions.add(row.size);
-                }
-              }
-              if (selectedFilters.has("Select Pattern")) {
-                if (
-                  row.pattern_type === selectedFilters.get("Select Pattern")
-                ) {
-                  newPatternOptions.add(row.pattern_type);
-                }
-              } else {
-                newPatternOptions.add(row.pattern_type);
-              }
-              setFiltersArray((prevData) => [
-                [...newSubSegmentOptions],
-                [...newMachineryOptions],
-                [...(prevData[2] || [])],
-                [...newSizeOptions],
-                [...newPatternOptions],
-              ]);
-            }
-            break;
-          case "Select Size":
-            if (filterValue === row.size) {
-              if (selectedFilters.has("Select Sub-section")) {
-                if (
-                  item.sub_segment === selectedFilters.get("Select Sub-section")
-                ) {
-                  newSubSegmentOptions.add(item.sub_segment);
-                }
-              } else {
-                newSubSegmentOptions.add(item.sub_segment);
-              }
-              if (row.machinery && row.machinery.name) {
-                if (selectedFilters.has("Select Machinery")) {
-                  if (
-                    row.machinery.name ===
-                    selectedFilters.get("Select Machinery")
-                  ) {
-                    newMachineryOptions.add(row.machinery.name);
-                  }
-                } else {
-                  newMachineryOptions.add(row.machinery.name);
-                }
-              }
-              if (selectedFilters.has("Select Rim")) {
-                if (
-                  row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
-                  selectedFilters.get("Select Rim")
-                ) {
-                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-                }
-              } else {
-                newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-              }
-              if (selectedFilters.has("Select Pattern")) {
-                if (
-                  row.pattern_type === selectedFilters.get("Select Pattern")
-                ) {
-                  newPatternOptions.add(row.pattern_type);
-                }
-              } else {
-                newPatternOptions.add(row.pattern_type);
-              }
-              setFiltersArray((prevData) => [
-                [...newSubSegmentOptions],
-                [...newMachineryOptions],
-                [...newRimOptions],
-                [...(prevData[3] || [])],
-                [...newPatternOptions],
-              ]);
-            }
-            break;
-          case "Select Pattern":
-            if (filterValue === row.pattern_type) {
-              if (selectedFilters.has("Select Sub-section")) {
-                if (
-                  item.sub_segment === selectedFilters.get("Select Sub-section")
-                ) {
-                  newSubSegmentOptions.add(item.sub_segment);
-                }
-              } else {
-                newSubSegmentOptions.add(item.sub_segment);
-              }
-              if (row.machinery && row.machinery.name) {
-                if (selectedFilters.has("Select Machinery")) {
-                  if (
-                    row.machinery.name ===
-                    selectedFilters.get("Select Machinery")
-                  ) {
-                    newMachineryOptions.add(row.machinery.name);
-                  }
-                } else {
-                  newMachineryOptions.add(row.machinery.name);
-                }
-              }
-              if (selectedFilters.has("Select Rim")) {
-                if (
-                  row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
-                  selectedFilters.get("Select Rim")
-                ) {
-                  if (selectedFilters.has("Select Size")) {
-                    if (row.size === selectedFilters.get("Select Size")) {
+                      newMachineryOptions.add(row.machinery.name);
+                      newPatternOptions.add(row.pattern_type);
                       newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-                    }
-                  } else {
-                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-                  }
-                }
-              } else {
-                if (selectedFilters.has("Select Size")) {
-                  if (row.size === selectedFilters.get("Select Size")) {
-                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-                  }
-                } else {
-                  newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-                }
-              }
-              if (selectedFilters.has("Select Size")) {
-                if (row.size === selectedFilters.get("Select Size")) {
-                  if (selectedFilters.has("Select Rim")) {
-                    if (
-                      row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
-                      selectedFilters.get("Select Rim")
-                    ) {
                       newSizeOptions.add(row.size);
+                      newSubSegmentOptions.add(item.sub_segment);
                     }
                   } else {
+                    newMachineryOptions.add(row.machinery.name);
+                    newPatternOptions.add(row.pattern_type);
+                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
                     newSizeOptions.add(row.size);
+                    newSubSegmentOptions.add(item.sub_segment);
                   }
-                }
-              } else {
-                if (selectedFilters.has("Select Rim")) {
-                  if (
-                    row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
-                    selectedFilters.get("Select Rim")
-                  ) {
-                    newSizeOptions.add(row.size);
-                  }
-                } else {
-                  newSizeOptions.add(row.size);
                 }
               }
-              setFiltersArray((prevData) => [
-                [...newSubSegmentOptions],
-                [...newMachineryOptions],
-                [...newRimOptions],
-                [...newSizeOptions],
-                [...(prevData[4] || [])],
-              ]);
             }
-            break;
+          }
         }
+
+        if (isFilterFirstTime) {
+          switch (filterTitle) {
+            case "Select Sub-section":
+              tempfilterList.add(item.sub_segment);
+              break;
+            case "Select Machinery":
+              tempfilterList.add(row.machinery.name);
+              break;
+            case "Select Rim":
+              tempfilterList.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+              break;
+            case "Select Size":
+              tempfilterList.add(row.size);
+              break;
+            case "Select Pattern":
+              tempfilterList.add(row.pattern_type);
+              break;
+          }
+        }
+
+        setFiltersArray((prevData) => [
+          [...newSubSegmentOptions],
+          [...newMachineryOptions],
+          [...newRimOptions],
+          [...newSizeOptions],
+          [...newPatternOptions],
+        ]);
       });
     });
+
+    if (isFilterFirstTime) {
+      switch (filterTitle) {
+        case "Select Sub-section":
+          setFiltersArray((prevData) => [
+            [...tempfilterList],
+            [...(prevData[1] || [])],
+            [...(prevData[2] || [])],
+            [...(prevData[3] || [])],
+            [...(prevData[4] || [])],
+          ]);
+          break;
+        case "Select Machinery":
+          setFiltersArray((prevData) => [
+            [...(prevData[0] || [])],
+            [...tempfilterList],
+            [...(prevData[2] || [])],
+            [...(prevData[3] || [])],
+            [...(prevData[4] || [])],
+          ]);
+          break;
+        case "Select Rim":
+          setFiltersArray((prevData) => [
+            [...(prevData[0] || [])],
+            [...(prevData[1] || [])],
+            [...tempfilterList],
+            [...(prevData[3] || [])],
+            [...(prevData[4] || [])],
+          ]);
+          break;
+        case "Select Size":
+          setFiltersArray((prevData) => [
+            [...(prevData[0] || [])],
+            [...(prevData[1] || [])],
+            [...(prevData[2] || [])],
+            [...tempfilterList],
+            [...(prevData[4] || [])],
+          ]);
+          break;
+        case "Select Pattern":
+          setFiltersArray((prevData) => [
+            [...(prevData[0] || [])],
+            [...(prevData[1] || [])],
+            [...(prevData[2] || [])],
+            [...(prevData[3] || [])],
+            [...tempfilterList],
+          ]);
+          break;
+      }
+    }
+    isFilterFirstTime = false;
   }
 
   const updateItem = (index, newValue) => {
@@ -1819,7 +1979,6 @@ const Segments = ({ pageData, pagination }) => {
 
   const updateSelectedFilters = (updateFilterTitle, value) => {
     filterTitle = updateFilterTitle;
-    filterValue = value;
     setSelectedFilters((prevFilters) => {
       const updatedFilters = new Map(prevFilters);
       // if(value === ""){
@@ -1851,10 +2010,14 @@ const Segments = ({ pageData, pagination }) => {
   };
 
   const clearFilters = () => {
+    isFilterFirstTime = true;
     setSelectedFilters(new Map());
     setValue([]);
     setFiltersArray([]);
     initFilterData();
+    setProductsData([]);
+    fetchData("");
+    push(pathname);
   };
 
   const handlePageClick = (event) => {
@@ -1886,129 +2049,98 @@ const Segments = ({ pageData, pagination }) => {
     }
   };
 
-  const queryToString = (queryToStringValue) => {
+  const queryToString = () => {
     const filterQueries = [];
-    if (pageData?.filters && pageData.filters.length > 4) {
-      if (queryToStringValue[0]) {
-        if (searchParams.has("sub_segment")) {
-          searchParams.set("sub_segment", queryToStringValue[0]);
-        } else {
-          searchParams.append("sub_segment", queryToStringValue[0]);
-        }
-        filterQueries.push(
-          `filters[sub_segment][$eq]=${queryToStringValue[0]}`
+    if (selectedFilters.has("Select Sub-section")) {
+      if (searchParams.has("sub_segment")) {
+        searchParams.set(
+          "sub_segment",
+          selectedFilters.get("Select Sub-section")
         );
       } else {
-        if (searchParams.has("sub_segment")) searchParams.delete("sub_segment");
-      }
-      if (queryToStringValue[1]) {
-        if (searchParams.has("machinery")) {
-          searchParams.set("machinery", queryToStringValue[1]);
-        } else {
-          searchParams.append("machinery", queryToStringValue[1]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][machinery][name][$eq]=${queryToStringValue[1]}`
+        searchParams.append(
+          "sub_segment",
+          selectedFilters.get("Select Sub-section")
         );
-      } else {
-        if (searchParams.has("machinery")) searchParams.delete("machinery");
       }
-      if (queryToStringValue[2]) {
-        if (searchParams.has("rim_recommended")) {
-          searchParams.set("rim_recommended", queryToStringValue[2]);
-        } else {
-          searchParams.append("rim_recommended", queryToStringValue[2]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][size][$endsWith]=${queryToStringValue[2]}`
-        );
-      } else {
-        if (searchParams.has("rim_recommended"))
-          searchParams.delete("rim_recommended");
-      }
-      if (queryToStringValue[3]) {
-        if (searchParams.has("size")) {
-          searchParams.set("size", queryToStringValue[3]);
-        } else {
-          searchParams.append("size", queryToStringValue[3]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][size][$eq]=${queryToStringValue[3]}`
-        );
-      } else {
-        if (searchParams.has("size")) searchParams.delete("size");
-      }
-      if (queryToStringValue[4]) {
-        if (searchParams.has("pattern_type")) {
-          searchParams.set("pattern_type", queryToStringValue[4]);
-        } else {
-          searchParams.append("pattern_type", queryToStringValue[4]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][pattern_type][$eq]=${queryToStringValue[4]}`
-        );
-      } else {
-        if (searchParams.has("pattern_type"))
-          searchParams.delete("pattern_type");
-      }
+      filterQueries.push(
+        `filters[sub_segment][$eq]=${selectedFilters.get("Select Sub-section")}`
+      );
     } else {
-      if (queryToStringValue[1]) {
-        if (searchParams.has("machinery")) {
-          searchParams.set("machinery", queryToStringValue[1]);
-        } else {
-          searchParams.append("machinery", queryToStringValue[1]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][machinery][name][$eq]=${queryToStringValue[1]}`
-        );
+      if (searchParams.has("sub_segment")) searchParams.delete("sub_segment");
+    }
+    if (selectedFilters.has("Select Machinery")) {
+      if (searchParams.has("machinery")) {
+        searchParams.set("machinery", selectedFilters.get("Select Machinery"));
       } else {
-        if (searchParams.has("machinery")) searchParams.delete("machinery");
-      }
-      if (queryToStringValue[2]) {
-        if (searchParams.has("rim_recommended")) {
-          searchParams.set("rim_recommended", queryToStringValue[2]);
-        } else {
-          searchParams.append("rim_recommended", queryToStringValue[2]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][size][$endsWith]=${queryToStringValue[2]}`
+        searchParams.append(
+          "machinery",
+          selectedFilters.get("Select Machinery")
         );
-      } else {
-        if (searchParams.has("rim_recommended"))
-          searchParams.delete("rim_recommended");
       }
-      if (queryToStringValue[3]) {
-        if (searchParams.has("size")) {
-          searchParams.set("size", queryToStringValue[3]);
-        } else {
-          searchParams.append("size", queryToStringValue[3]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][size][$eq]=${queryToStringValue[3]}`
+      filterQueries.push(
+        `filters[tables][table][row][machinery][name][$eq]=${selectedFilters.get(
+          "Select Machinery"
+        )}`
+      );
+    } else {
+      if (searchParams.has("machinery")) searchParams.delete("machinery");
+    }
+    if (selectedFilters.has("Select Rim")) {
+      if (searchParams.has("rim_recommended")) {
+        searchParams.set("rim_recommended", selectedFilters.get("Select Rim"));
+      } else {
+        searchParams.append(
+          "rim_recommended",
+          selectedFilters.get("Select Rim")
         );
-      } else {
-        if (searchParams.has("size")) searchParams.delete("size");
       }
-      if (queryToStringValue[4]) {
-        if (searchParams.has("pattern_type")) {
-          searchParams.set("pattern_type", queryToStringValue[4]);
-        } else {
-          searchParams.append("pattern_type", queryToStringValue[4]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][pattern_type][$eq]=${queryToStringValue[4]}`
+      filterQueries.push(
+        `filters[tables][table][row][size][$endsWith]=${selectedFilters.get(
+          "Select Rim"
+        )}`
+      );
+    } else {
+      if (searchParams.has("rim_recommended"))
+        searchParams.delete("rim_recommended");
+    }
+    if (selectedFilters.has("Select Size")) {
+      if (searchParams.has("size")) {
+        searchParams.set("size", selectedFilters.get("Select Size"));
+      } else {
+        searchParams.append("size", selectedFilters.get("Select Size"));
+      }
+      filterQueries.push(
+        `filters[tables][table][row][size][$eq]=${selectedFilters.get(
+          "Select Size"
+        )}`
+      );
+    } else {
+      if (searchParams.has("size")) searchParams.delete("size");
+    }
+    if (selectedFilters.has("Select Pattern")) {
+      if (searchParams.has("pattern_type")) {
+        searchParams.set("pattern_type", selectedFilters.get("Select Pattern"));
+      } else {
+        searchParams.append(
+          "pattern_type",
+          selectedFilters.get("Select Pattern")
         );
-      } else {
-        if (searchParams.has("pattern_type"))
-          searchParams.delete("pattern_type");
       }
+      filterQueries.push(
+        `filters[tables][table][row][pattern_type][$eq]=${selectedFilters.get(
+          "Select Pattern"
+        )}`
+      );
+    } else {
+      if (searchParams.has("pattern_type")) searchParams.delete("pattern_type");
     }
     return filterQueries.length > 0 ? "&" + filterQueries.join("&") : "";
   };
 
-  const productFilters = (submitValue) => {
+  const productFilters = () => {
     setProductsData([]);
-    fetchData(queryToString(submitValue));
+    fetchData(queryToString());
     if (searchParams.toString()) {
       push(pathname.replace(/\/page\/\d+/, "") + "?" + searchParams.toString());
     } else {
@@ -2133,7 +2265,7 @@ const Segments = ({ pageData, pagination }) => {
               ))}
               <div className="flex flex-row gap-1 w-full">
                 <button
-                  onClick={() => productFilters(value)}
+                  onClick={() => productFilters()}
                   className="tablinks cat-btn active-cat-btn items-center gap-1 !w-full max-h-[46px] !h-full !text-[18px] leading-[27.75px] md:col-span-2 xl:col-span-1"
                 >
                   <svg
