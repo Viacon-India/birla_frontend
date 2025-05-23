@@ -2298,7 +2298,7 @@ const Segments = ({ pageData, pagination }) => {
                   <Product
                     key={product.id}
                     data={product}
-                    selectedFilterSize={selectedFilters.get("Select Size")}
+                    selectedFilterSize={selectedFilters.get("Select Size") ?? selectedFilters.get("Select Rim")}
                   />
                 ))}
               </div>

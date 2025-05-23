@@ -95,7 +95,7 @@ export default function Product({ data, selectedFilterSize }) {
         data.tables.table.forEach((tableEntry) => {
           if (tableEntry.standard === "USA") {
             tableEntry.row.forEach((rowEntry) => {
-              if(selectedFilterSize === rowEntry.size) {
+              if(String(rowEntry.size).endsWith(selectedFilterSize)) {
                 sizes.push(rowEntry.size);
                 return sizes;
               }
