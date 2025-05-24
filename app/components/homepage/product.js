@@ -39,6 +39,66 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Products({ Heading = "", Title = "", Data = {} }) {
   const [activeTab, setActiveTab] = useState("TBB");
 
+  // Product catalogue form
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    country: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      data: {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        country: formData.country,
+      },
+    };
+
+    try {
+      const res = await fetch(
+        "http://birlatyres.viaconprojects.com:1337/api/product-catalogues",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      if (res.ok) {
+        // Open PDF in new tab
+        window.open("/assets/master-catalogue.pdf", "_blank");
+
+        
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          country: "",
+        });
+        document.getElementById('my_modal_3').close();
+      } else {
+        alert("Failed to submit. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error submitting form.");
+    }
+  };
+
   // Define the animation function
   const animateProductCardImage = () => {
     gsap.fromTo(
@@ -179,16 +239,22 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
                           </Link>
                           <dialog id="my_modal_3" className="modal">
                             <div className="modal-box">
-                              <form method="dialog flex flex-col gap-3">
-                                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                                  ✕
-                                </button>
+                              <button
+                                type="button"
+                                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                                onClick={() =>
+                                  document.getElementById("my_modal_3").close()
+                                }
+                              >
+                                ✕
+                              </button>
+                              <form
+                                onSubmit={handleSubmit}
+                                className="flex flex-col gap-3"
+                              >
                                 <div className="form-row">
-                                  <label
-                                    className="contact-label"
-                                    htmlFor="form1Description"
-                                  >
-                                    Enter Your Name
+                                  <label className="contact-label">
+                                    Enter Your Name{" "}
                                     <span className="text-red-600 pl-[2px]">
                                       *
                                     </span>
@@ -196,56 +262,53 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
                                   <input
                                     className="contact-input"
                                     type="text"
-                                    name="form1Description"
+                                    name="name"
                                     placeholder="Enter Your Name"
-                                    // onChange={handleChange}
-                                    // required
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
                                   />
                                 </div>
+
                                 <div className="form-row">
-                                  <label
-                                    className="contact-label"
-                                    htmlFor="form1Description"
-                                  >
-                                    Enter Your Email
+                                  <label className="contact-label">
+                                    Enter Your Email{" "}
                                     <span className="text-red-600 pl-[2px]">
                                       *
                                     </span>
                                   </label>
                                   <input
                                     className="contact-input"
-                                    type="text"
-                                    name="form1Description"
+                                    type="email"
+                                    name="email"
                                     placeholder="Enter Your Email"
-                                    // onChange={handleChange}
-                                    // required
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
                                   />
                                 </div>
+
                                 <div className="form-row">
-                                  <label
-                                    className="contact-label"
-                                    htmlFor="form1Description"
-                                  >
-                                    Enter Your Mobile Number
+                                  <label className="contact-label">
+                                    Enter Your Mobile Number{" "}
                                     <span className="text-red-600 pl-[2px]">
                                       *
                                     </span>
                                   </label>
                                   <input
                                     className="contact-input"
-                                    type="number"
-                                    name="form1Description"
+                                    type="tel"
+                                    name="phone"
                                     placeholder="Enter Your Mobile Number"
-                                    // onChange={handleChange}
-                                    // required
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    required
                                   />
                                 </div>
+
                                 <div className="form-row">
-                                  <label
-                                    className="contact-label"
-                                    htmlFor="form1Description"
-                                  >
-                                    Enter Your Company Name
+                                  <label className="contact-label">
+                                    Enter Your Company Name{" "}
                                     <span className="text-red-600 pl-[2px]">
                                       *
                                     </span>
@@ -253,18 +316,17 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
                                   <input
                                     className="contact-input"
                                     type="text"
-                                    name="form1Description"
+                                    name="company"
                                     placeholder="Enter Your Company Name"
-                                    // onChange={handleChange}
-                                    // required
+                                    value={formData.company}
+                                    onChange={handleChange}
+                                    required
                                   />
                                 </div>
+
                                 <div className="form-row">
-                                  <label
-                                    className="contact-label"
-                                    htmlFor="form1Description"
-                                  >
-                                    Enter Your Country
+                                  <label className="contact-label">
+                                    Enter Your Country{" "}
                                     <span className="text-red-600 pl-[2px]">
                                       *
                                     </span>
@@ -272,21 +334,23 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
                                   <input
                                     className="contact-input"
                                     type="text"
-                                    name="form1Description"
+                                    name="country"
                                     placeholder="Enter Your Country"
-                                    // onChange={handleChange}
-                                    // required
+                                    value={formData.country}
+                                    onChange={handleChange}
+                                    required
                                   />
                                 </div>
+
                                 <div className="flex justify-center mt-4">
-                                  <Link
-                                  href="#"
+                                  <button
+                                    type="submit"
                                     className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
                                   >
                                     <span data-hover="Submit and Download">
                                       Submit and Download
                                     </span>
-                                  </Link>
+                                  </button>
                                 </div>
                               </form>
                             </div>
