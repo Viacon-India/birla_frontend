@@ -187,7 +187,7 @@ export function Float(data) {
           </button> */}
         </div>
       )}
-      <Chatbot />
+      {/* <Chatbot /> */}
     </>
   );
 }
@@ -943,4 +943,12 @@ export function InnerBanner({ Title, Banner }) {
       <SmallButton />
     </section>
   );
+}
+
+
+
+export function CatalogueDownload({ pageData }) {
+  return <>
+
+  </>;
 }
