@@ -213,12 +213,13 @@ export default function Footer() {
                       {newMenu.attributes.segments?.data &&
                         newMenu.attributes.segments.data.map((submenu) => (
                           <li key={submenu.id}>
-                            <Link
+                            {submenu?.attributes?.permalink && (
+                              <Link
                               href={`${submenu.attributes.permalink}`}
                               
                               className="footer-list-item"
                             >
-                              {submenu.attributes.title}
+                              {submenu.attributes.title || 'Link'}
                               <svg
                                 width="8"
                                 height="8"
@@ -233,7 +234,7 @@ export default function Footer() {
                                   stroke-linejoin="round"
                                 />
                               </svg>
-                            </Link>
+                            </Link>)}
                           </li>
                         ))}
                       {newMenu.attributes.pages?.data &&
