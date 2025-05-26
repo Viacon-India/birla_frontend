@@ -5,8 +5,13 @@ import { getStrapiMedia } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Footer() {
+    const { push } = useRouter();
+  const handleClick = (permalink) => {
+    push(permalink);
+  };
   const [footerData, setFooterData] = useState({});
   useEffect(() => {
     fetch("http://birlatyres.viaconprojects.com:1337/api/footer")
@@ -213,9 +218,13 @@ export default function Footer() {
                       {newMenu.attributes.segments?.data &&
                         newMenu.attributes.segments.data.map((submenu) => (
                           <li key={submenu.id}>
-                            <Link
-                              href={`${submenu.attributes.permalink}`}
+                            <button
                               className="footer-list-item"
+                              onClick={() =>
+                                handleClick(submenu.attributes.permalink)
+                              }
+                              prefetch={true}
+                              scroll={false}
                             >
                               {submenu.attributes.title}
                               <svg
@@ -232,7 +241,7 @@ export default function Footer() {
                                   stroke-linejoin="round"
                                 />
                               </svg>
-                            </Link>
+                            </button>
                           </li>
                         ))}
                       {newMenu.attributes.pages?.data &&
