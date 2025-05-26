@@ -17,6 +17,7 @@ import {
   PageEnd,
   Float,
   InnerBanner,
+  CatalogueDownload
 } from "../pageCommon/pageCommon";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -2189,30 +2190,31 @@ const Segments = ({ pageData, pagination }) => {
             )}
             {pageData?.catalogue && (
               <div className="cat-btn-sec flex items-center gap-3 relative z-10">
-                <Link
-                  href={getStrapiMedia(pageData.catalogue?.url)}
-                  className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]"
-                  target="_blank"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M14.875 9.875V14.25C14.875 14.4158 14.8092 14.5747 14.6919 14.6919C14.5747 14.8092 14.4158 14.875 14.25 14.875H1.75C1.58424 14.875 1.42527 14.8092 1.30806 14.6919C1.19085 14.5747 1.125 14.4158 1.125 14.25V9.875M4.71875 6.59461L8 9.875L11.2812 6.59461M8 1.125V9.8727"
-                      stroke="#F5811E"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                  Download Product Catalogue
-                </Link>
+                <button
+        onClick={() => document.getElementById('catalogue_modal').showModal()}
+        className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.875 9.875V14.25C14.875 14.4158 14.8092 14.5747 14.6919 14.6919C14.5747 14.8092 14.4158 14.875 14.25 14.875H1.75C1.58424 14.875 1.42527 14.8092 1.30806 14.6919C1.19085 14.5747 1.125 14.4158 1.125 14.25V9.875M4.71875 6.59461L8 9.875L11.2812 6.59461M8 1.125V9.8727"
+            stroke="#F5811E"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        Download Product Catalogue
+      </button>
               </div>
+              
             )}
+            <CatalogueDownload pageData={pageData} />
           </div>
           {pageData?.filters && pageData.filters.length > 0 && (
             <div className="bg-[#F4F5F6] rounded-xl flex flex-col xl:flex-row gap-4 p-6 items-end">

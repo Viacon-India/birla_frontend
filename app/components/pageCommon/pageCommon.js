@@ -948,7 +948,103 @@ export function InnerBanner({ Title, Banner }) {
 
 
 export function CatalogueDownload({ pageData }) {
-  return <>
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    country: "",
+  });
 
-  </>;
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      data: { ...formData },
+    };
+
+    try {
+      const res = await fetch(
+        "http://birlatyres.viaconprojects.com:1337/api/product-catalogues",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      if (res.ok) {
+        const catalogueUrl = getStrapiMedia(pageData?.catalogue?.url);
+        if (catalogueUrl) {
+          window.open(catalogueUrl, "_blank");
+        } else {
+          alert("Catalogue URL not found.");
+        }
+
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          country: "",
+        });
+
+        document.getElementById("catalogue_modal").close();
+      } else {
+        alert("Failed to submit. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error submitting form.");
+    }
+  };
+
+  return (
+    <dialog id="catalogue_modal" className="modal">
+      <div className="modal-box relative">
+        <button
+          type="button"
+          className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+          onClick={() => document.getElementById("catalogue_modal").close()}
+        >
+          ✕
+        </button>
+
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          {["name", "email", "phone", "company", "country"].map((field) => (
+            <div key={field} className="form-row">
+              <label className="contact-label">
+                Enter Your {field.charAt(0).toUpperCase() + field.slice(1)}{" "}
+                <span className="text-red-600 pl-[2px]">*</span>
+              </label>
+              <input
+                className="contact-input"
+                type={field === "email" ? "email" : "text"}
+                name={field}
+                placeholder={`Enter Your ${field}`}
+                value={formData[field]}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          ))}
+
+          <div className="flex justify-center mt-4">
+            <button
+              type="submit"
+              className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
+            >
+              <span data-hover="Submit and Download">
+                Submit and Download
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+  );
 }
