@@ -345,7 +345,7 @@ export function ContactUs({ pageData }) {
                                     {details.description}
                                   </h3>
                                   <Image
-                                    className={`w-[260px] mb-1 ${
+                                    className={`w-[260px] xl:w-[310px] mb-1 ${
                                       index === 0 || index === 1 ? "hidden" : ""
                                     }`}
                                     src={greenImg}
