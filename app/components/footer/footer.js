@@ -223,7 +223,7 @@ export default function Footer() {
                               onClick={() =>
                                 handleClick(submenu.attributes.permalink)
                               }
-                              prefetch={true}
+                              prefetch={false}
                               scroll={false}
                             >
                               {submenu.attributes.title}
