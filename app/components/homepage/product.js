@@ -233,7 +233,7 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
                               document.getElementById("my_modal_3").showModal()
                             }
                           >
-                            <span data-hover="View The Complete Range">
+                            <span data-hover="Download Master Catalogue">
                               Download Master Catalogue
                             </span>
                           </Link>
