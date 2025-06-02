@@ -1291,7 +1291,7 @@ const Segments = ({ pageData, pagination }) => {
   const [selectURLParameter, setSelectURLParameter] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const pageSize = 9;
-  const currentPage = pagination;
+  let currentPage = pagination;
   const [meta, setProductsMeta] = useState({});
   const [selectedFilters, setSelectedFilters] = useState(new Map());
 
@@ -2022,31 +2022,35 @@ const Segments = ({ pageData, pagination }) => {
 
   const handlePageClick = (event) => {
     const selectedPage = event.selected;
-    if (selectedPage == 0) {
-      if (pathname.includes("/page/")) {
-        push(pathname.replace(/\/page\/\d+/, "?" + searchParams.toString()));
-      }
-    } else {
-      if (pathname.includes("/page/")) {
-        push(
-          pathname.replace(
-            /\/page\/\d+/,
-            "/page/" + (selectedPage + 1) + "?" + searchParams.toString()
-          )
-        );
-      } else {
-        push(
-          pathname.replace(
-            pathname,
-            pathname +
-              "/page/" +
-              (selectedPage + 1) +
-              "?" +
-              searchParams.toString()
-          )
-        );
-      }
+    if (selectedPage != 0) {
+      currentPage = selectedPage + 1;
     }
+    productFilters();
+    // if (selectedPage == 0) {
+    //   if (pathname.includes("/page/")) {
+    //     push(pathname.replace(/\/page\/\d+/, "?" + searchParams.toString()));
+    //   }
+    // } else {
+    //   if (pathname.includes("/page/")) {
+    //     push(
+    //       pathname.replace(
+    //         /\/page\/\d+/,
+    //         "/page/" + (selectedPage + 1) + "?" + searchParams.toString()
+    //       )
+    //     );
+    //   } else {
+    //     push(
+    //       pathname.replace(
+    //         pathname,
+    //         pathname +
+    //           "/page/" +
+    //           (selectedPage + 1) +
+    //           "?" +
+    //           searchParams.toString()
+    //       )
+    //     );
+    //   }
+    // }
   };
 
   const queryToString = () => {
