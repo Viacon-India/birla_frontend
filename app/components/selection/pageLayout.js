@@ -17,7 +17,7 @@ import {
   PageEnd,
   Float,
   InnerBanner,
-  CatalogueDownload
+  CatalogueDownload,
 } from "../pageCommon/pageCommon";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -1282,6 +1282,10 @@ export function Pages({ pageData }) {
 }
 
 let filterTitle = "";
+let firstFilterTitle = "";
+let isFilterFirstTime = true;
+const tempfilterList = new Set();
+
 const Segments = ({ pageData, pagination }) => {
   const { push } = useRouter();
   const searchParams = new URLSearchParams(useSearchParams());
@@ -1296,7 +1300,6 @@ const Segments = ({ pageData, pagination }) => {
   const [meta, setProductsMeta] = useState({});
   const [selectedFilters, setSelectedFilters] = useState(new Map());
 
-  let isFilterFirstTime = true;
   const subSegmentOptions = new Set();
   const machineryOptions = new Set();
   const rimOptions = new Set();
@@ -1330,62 +1333,28 @@ const Segments = ({ pageData, pagination }) => {
         );
         const filters = await response.json();
         setFilterData(filters.data);
-        const checkURLParameter = [];
-        if (searchParams.toString()) {
-          if (
-            pageData.data?.attributes.categories.data[activeTabIndex].attributes
-              .filters.length > 4
-          ) {
-            if (searchParams.has("sub_segment"))
-              checkURLParameter[0] = searchParams
-                .get("sub_segment")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("machinery"))
-              checkURLParameter[1] = searchParams
-                .get("machinery")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("rim_recommended"))
-              checkURLParameter[2] = searchParams
-                .get("rim_recommended")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("size"))
-              checkURLParameter[3] = searchParams
-                .get("size")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("pattern_type"))
-              checkURLParameter[4] = searchParams
-                .get("pattern_type")
-                .replace("+", " ")
-                .replace("%2F", "/");
-          } else {
-            if (searchParams.has("machinery"))
-              checkURLParameter[0] = searchParams
-                .get("machinery")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("rim_recommended"))
-              checkURLParameter[1] = searchParams
-                .get("rim_recommended")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("size"))
-              checkURLParameter[2] = searchParams
-                .get("size")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("pattern_type"))
-              checkURLParameter[3] = searchParams
-                .get("pattern_type")
-                .replace("+", " ")
-                .replace("%2F", "/");
-          }
+        if (typeof window !== "undefined") {
+          const params = new URLSearchParams(window.location.search);
+          const newSelectedFilters = new Map();
+          if (params.get("sub_segment"))
+            newSelectedFilters.set(
+              "Select Sub-section",
+              params.get("sub_segment")
+            );
+          if (params.get("machinery"))
+            newSelectedFilters.set("Select Machinery", params.get("machinery"));
+          if (params.get("rim_recommended"))
+            newSelectedFilters.set("Select Rim", params.get("rim_recommended"));
+          if (params.get("size"))
+            newSelectedFilters.set("Select Size", params.get("size"));
+          if (params.get("pattern_type"))
+            newSelectedFilters.set(
+              "Select Pattern",
+              params.get("pattern_type")
+            );
+          setSelectedFilters(newSelectedFilters);
         }
-        setSelectURLParameter(checkURLParameter);
-        fetchData(queryToString(checkURLParameter));
+        fetchData(queryToString());
       } catch (error) {
         console.error("Error fetching initial data:", error);
       }
@@ -1448,7 +1417,6 @@ const Segments = ({ pageData, pagination }) => {
     const newRimOptions = new Set();
     const newSizeOptions = new Set();
     const newPatternOptions = new Set();
-    const tempfilterList = new Set();
 
     filterData.forEach((item) => {
       const rows = item.tables.table[0].row;
@@ -1888,8 +1856,8 @@ const Segments = ({ pageData, pagination }) => {
           }
         }
 
-        if (isFilterFirstTime) {
-          switch (filterTitle) {
+        if (firstFilterTitle != "") {
+          switch (firstFilterTitle) {
             case "Select Sub-section":
               tempfilterList.add(item.sub_segment);
               break;
@@ -1918,8 +1886,7 @@ const Segments = ({ pageData, pagination }) => {
       });
     });
 
-    if (isFilterFirstTime) {
-      switch (filterTitle) {
+      switch (firstFilterTitle) {
         case "Select Sub-section":
           setFiltersArray((prevData) => [
             [...tempfilterList],
@@ -1966,8 +1933,6 @@ const Segments = ({ pageData, pagination }) => {
           ]);
           break;
       }
-    }
-    isFilterFirstTime = false;
   }
 
   const updateItem = (index, newValue) => {
@@ -1979,35 +1944,18 @@ const Segments = ({ pageData, pagination }) => {
   };
 
   const updateSelectedFilters = (updateFilterTitle, value) => {
+    if(isFilterFirstTime && firstFilterTitle === "") {
+      firstFilterTitle = updateFilterTitle;
+    } else if(firstFilterTitle == updateFilterTitle) {
+      setSelectedFilters([]);
+    }
     filterTitle = updateFilterTitle;
     setSelectedFilters((prevFilters) => {
       const updatedFilters = new Map(prevFilters);
-      // if(value === ""){
-      //   switch (filterTitle) {
-      //     case "Select Machinery":
-      //       updatedFilters.delete("Select Machinery");
-      //       updatedFilters.delete("Select Rim");
-      //       updatedFilters.delete("Select Size");
-      //       updatedFilters.delete("Select Pattern");
-      //       break;
-      //     case "Select Rim":
-      //       updatedFilters.delete("Select Rim");
-      //       updatedFilters.delete("Select Size");
-      //       updatedFilters.delete("Select Pattern");
-      //       break;
-      //     case "Select Size":
-      //       updatedFilters.delete("Select Size");
-      //       updatedFilters.delete("Select Pattern");
-      //       break;
-      //     case "Select Pattern":
-      //       updatedFilters.delete("Select Pattern");
-      //       break;
-      //   }
-      // } else {
       updatedFilters.set(updateFilterTitle, value);
-      // }
       return updatedFilters;
     });
+    isFilterFirstTime = false;
   };
 
   const clearFilters = () => {
@@ -2019,6 +1967,12 @@ const Segments = ({ pageData, pagination }) => {
     setProductsData([]);
     fetchData("");
     push(pathname);
+    setTimeout(() => {
+      window.scrollTo({
+        top: (100 * window.innerHeight) / 100,
+        behavior: "smooth",
+      });
+    }, 1000);
   };
 
   const handlePageClick = (event) => {
@@ -2195,28 +2149,29 @@ const Segments = ({ pageData, pagination }) => {
             {pageData?.catalogue && (
               <div className="cat-btn-sec flex items-center gap-3 relative z-10">
                 <button
-        onClick={() => document.getElementById('catalogue_modal').showModal()}
-        className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]"
-      >
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M14.875 9.875V14.25C14.875 14.4158 14.8092 14.5747 14.6919 14.6919C14.5747 14.8092 14.4158 14.875 14.25 14.875H1.75C1.58424 14.875 1.42527 14.8092 1.30806 14.6919C1.19085 14.5747 1.125 14.4158 1.125 14.25V9.875M4.71875 6.59461L8 9.875L11.2812 6.59461M8 1.125V9.8727"
-            stroke="#F5811E"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        Download Product Catalogue
-      </button>
+                  onClick={() =>
+                    document.getElementById("catalogue_modal").showModal()
+                  }
+                  className="flex items-center gap-2 text-primary border border-primary rounded-[4px] p-1 text-[16px]"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14.875 9.875V14.25C14.875 14.4158 14.8092 14.5747 14.6919 14.6919C14.5747 14.8092 14.4158 14.875 14.25 14.875H1.75C1.58424 14.875 1.42527 14.8092 1.30806 14.6919C1.19085 14.5747 1.125 14.4158 1.125 14.25V9.875M4.71875 6.59461L8 9.875L11.2812 6.59461M8 1.125V9.8727"
+                      stroke="#F5811E"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Download Product Catalogue
+                </button>
               </div>
-              
             )}
             <CatalogueDownload pageData={pageData} />
           </div>
@@ -2304,7 +2259,10 @@ const Segments = ({ pageData, pagination }) => {
                   <Product
                     key={product.id}
                     data={product}
-                    selectedFilterSize={selectedFilters.get("Select Size") ?? selectedFilters.get("Select Rim")}
+                    selectedFilterSize={
+                      selectedFilters.get("Select Size") ??
+                      selectedFilters.get("Select Rim")
+                    }
                   />
                 ))}
               </div>
