@@ -3066,6 +3066,19 @@ export function Products({ pageData }) {
                                   : ""}
                               </th>
                             )}
+                                                        {table.row[0]?.pattern_name && (
+                              <th
+                                onClick={() => handleSort("pattern_name")}
+                                style={{ cursor: "pointer" }}
+                              >
+                                Pattern Name{" "}
+                                {sortColumn === "pattern_name"
+                                  ? sortOrder === "asc"
+                                    ? "▲"
+                                    : "▼"
+                                  : ""}
+                              </th>
+                            )}
                             {table.row[0]?.type && (
                               <th
                                 onClick={() => handleSort("type")}
@@ -3326,6 +3339,9 @@ export function Products({ pageData }) {
                           {table.row.map((rowData) => (
                             <tr key={rowData.id}>
                               {rowData?.size && <td>{rowData.size}</td>}
+                                                            {rowData?.pattern_name && (
+                                <td>{rowData.pattern_name}</td>
+                              )}
                               {rowData?.type && <td>{rowData.type}</td>}
                               {rowData?.ply_rating && (
                                 <td>{rowData.ply_rating}</td>
