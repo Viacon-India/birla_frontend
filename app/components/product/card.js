@@ -27,6 +27,7 @@ export default function Product({ data, selectedFilterSize }) {
   const pattern_type = searchParams.get("pattern_type");
 
   const [filteredSizes, setFilteredSizes] = useState([]);
+  const [selectedSizeTra, setSelectedSizeTra] = useState(null);
 
   // useEffect(() => {
   //   gsap.fromTo(
@@ -97,6 +98,7 @@ export default function Product({ data, selectedFilterSize }) {
             tableEntry.row.forEach((rowEntry) => {
               if(String(rowEntry.size).endsWith(selectedFilterSize)) {
                 sizes.push(rowEntry.size);
+                setSelectedSizeTra(rowEntry.tra_code);
                 return sizes;
               }
               const matchesFilters = [
@@ -169,7 +171,7 @@ export default function Product({ data, selectedFilterSize }) {
                       TRA
                     </p>
                     <p className="text-[15px] !text-[#727C8D] !mb-0">
-                      {data.type.tra}
+                      {selectedSizeTra ? selectedSizeTra : data.type.tra}
                     </p>
                   </span>
                 </div>
