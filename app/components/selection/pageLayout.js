@@ -1281,7 +1281,6 @@ export function Pages({ pageData }) {
   );
 }
 
-let filterTitle = "";
 let firstFilterTitle = "";
 let isFilterFirstTime = true;
 const tempfilterList = new Set();
@@ -1310,6 +1309,9 @@ const Segments = ({ pageData, pagination }) => {
 
   const fetchData = async (query) => {
     try {
+      tempfilterList.clear();
+      firstFilterTitle = "";
+      isFilterFirstTime = true;
       const response = await fetch(
         getStrapiMedia(
           `/api/products?pagination[pageSize]=${pageSize}&pagination[page]=${currentPage}&sort[0]=premium:desc&sort[1]=id:asc&filters[segment][slug][$eq]=${pageData.slug}${query}`
@@ -1949,7 +1951,6 @@ const Segments = ({ pageData, pagination }) => {
     } else if(firstFilterTitle == updateFilterTitle) {
       setSelectedFilters([]);
     }
-    filterTitle = updateFilterTitle;
     setSelectedFilters((prevFilters) => {
       const updatedFilters = new Map(prevFilters);
       updatedFilters.set(updateFilterTitle, value);
