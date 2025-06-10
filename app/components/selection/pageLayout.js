@@ -1374,6 +1374,11 @@ const Segments = ({ pageData, pagination }) => {
     updateFilterData();
   }, [selectedFilters]);
 
+  const getSize = (str) => {
+    const match = str.match(/(\d{2})\D*$/);
+    return match ? parseInt(match[1], 10) : 0;
+  };
+
   async function initFilterData() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     filterData.forEach((item) => {
@@ -1405,11 +1410,11 @@ const Segments = ({ pageData, pagination }) => {
     });
 
     setFiltersArray([
-      Array.from(subSegmentOptions),
-      Array.from(machineryOptions),
-      Array.from(rimOptions),
-      Array.from(sizeOptions),
-      Array.from(patternOptions),
+      Array.from(subSegmentOptions).sort(),
+      Array.from(machineryOptions).sort(),
+      Array.from(rimOptions).sort(),
+      Array.from(sizeOptions).sort((a, b) =>getSize(a) - getSize(b)),
+      Array.from(patternOptions).sort(),
     ]);
   }
 
@@ -1879,11 +1884,11 @@ const Segments = ({ pageData, pagination }) => {
         }
 
         setFiltersArray((prevData) => [
-          [...newSubSegmentOptions],
-          [...newMachineryOptions],
-          [...newRimOptions],
-          [...newSizeOptions],
-          [...newPatternOptions],
+          [...newSubSegmentOptions].sort(),
+          [...newMachineryOptions].sort(),
+          [...newRimOptions].sort(),
+          [...newSizeOptions].sort((a, b)=>getSize(a) - getSize(b)),
+          [...newPatternOptions].sort(),
         ]);
       });
     });
@@ -1891,47 +1896,47 @@ const Segments = ({ pageData, pagination }) => {
       switch (firstFilterTitle) {
         case "Select Sub-section":
           setFiltersArray((prevData) => [
-            [...tempfilterList],
-            [...(prevData[1] || [])],
-            [...(prevData[2] || [])],
-            [...(prevData[3] || [])],
-            [...(prevData[4] || [])],
+            [...tempfilterList].sort(),
+            [...(prevData[1] || [])].sort(),
+            [...(prevData[2] || [])].sort(),
+            [...(prevData[3] || [])].sort((a, b)=>getSize(a) - getSize(b)),
+            [...(prevData[4] || [])].sort(),
           ]);
           break;
         case "Select Machinery":
           setFiltersArray((prevData) => [
-            [...(prevData[0] || [])],
-            [...tempfilterList],
-            [...(prevData[2] || [])],
-            [...(prevData[3] || [])],
-            [...(prevData[4] || [])],
+            [...(prevData[0] || [])].sort(),
+            [...tempfilterList].sort(),
+            [...(prevData[2] || [])].sort(),
+            [...(prevData[3] || [])].sort((a, b)=>getSize(a) - getSize(b)),
+            [...(prevData[4] || [])].sort(),
           ]);
           break;
         case "Select Rim":
           setFiltersArray((prevData) => [
-            [...(prevData[0] || [])],
-            [...(prevData[1] || [])],
-            [...tempfilterList],
-            [...(prevData[3] || [])],
-            [...(prevData[4] || [])],
+            [...(prevData[0] || [])].sort(),
+            [...(prevData[1] || [])].sort(),
+            [...tempfilterList].sort(),
+            [...(prevData[3] || [])].sort((a, b)=>getSize(a) - getSize(b)),
+            [...(prevData[4] || [])].sort(),
           ]);
           break;
         case "Select Size":
           setFiltersArray((prevData) => [
-            [...(prevData[0] || [])],
-            [...(prevData[1] || [])],
-            [...(prevData[2] || [])],
-            [...tempfilterList],
-            [...(prevData[4] || [])],
+            [...(prevData[0] || [])].sort(),
+            [...(prevData[1] || [])].sort(),
+            [...(prevData[2] || [])].sort(),
+            [...tempfilterList].sort((a, b) =>getSize(a) - getSize(b)),
+            [...(prevData[4] || [])].sort(),
           ]);
           break;
         case "Select Pattern":
           setFiltersArray((prevData) => [
-            [...(prevData[0] || [])],
-            [...(prevData[1] || [])],
-            [...(prevData[2] || [])],
-            [...(prevData[3] || [])],
-            [...tempfilterList],
+            [...(prevData[0] || [])].sort(),
+            [...(prevData[1] || [])].sort(),
+            [...(prevData[2] || [])].sort((a, b)=>getSize(a) - getSize(b)),
+            [...(prevData[3] || [])].sort(),
+            [...tempfilterList].sort(),
           ]);
           break;
       }
@@ -1982,31 +1987,6 @@ const Segments = ({ pageData, pagination }) => {
       currentPage = selectedPage + 1;
     }
     productFilters();
-    // if (selectedPage == 0) {
-    //   if (pathname.includes("/page/")) {
-    //     push(pathname.replace(/\/page\/\d+/, "?" + searchParams.toString()));
-    //   }
-    // } else {
-    //   if (pathname.includes("/page/")) {
-    //     push(
-    //       pathname.replace(
-    //         /\/page\/\d+/,
-    //         "/page/" + (selectedPage + 1) + "?" + searchParams.toString()
-    //       )
-    //     );
-    //   } else {
-    //     push(
-    //       pathname.replace(
-    //         pathname,
-    //         pathname +
-    //           "/page/" +
-    //           (selectedPage + 1) +
-    //           "?" +
-    //           searchParams.toString()
-    //       )
-    //     );
-    //   }
-    // }
   };
 
   const queryToString = () => {
@@ -2205,7 +2185,6 @@ const Segments = ({ pageData, pagination }) => {
                         filtersArray[isSubSegment ? index : index + 1]
                       ) &&
                         filtersArray[isSubSegment ? index : index + 1]
-                          .sort()
                           .map((item) => (
                             <option
                               key={item !== undefined && item && item.id}
