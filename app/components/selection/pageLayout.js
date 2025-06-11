@@ -1281,7 +1281,7 @@ export function Pages({ pageData }) {
   );
 }
 
-let firstFilterTitle = "";
+let lastSelectedFilterTitle = "";
 let isFilterFirstTime = true;
 const tempfilterList = new Set();
 
@@ -1310,7 +1310,7 @@ const Segments = ({ pageData, pagination }) => {
   const fetchData = async (query) => {
     try {
       tempfilterList.clear();
-      firstFilterTitle = "";
+      lastSelectedFilterTitle = "";
       isFilterFirstTime = true;
       const response = await fetch(
         getStrapiMedia(
@@ -1413,7 +1413,7 @@ const Segments = ({ pageData, pagination }) => {
       Array.from(subSegmentOptions).sort(),
       Array.from(machineryOptions).sort(),
       Array.from(rimOptions).sort(),
-      Array.from(sizeOptions).sort((a, b) =>getSize(a) - getSize(b)),
+      Array.from(sizeOptions).sort((a, b) => getSize(a) - getSize(b)),
       Array.from(patternOptions).sort(),
     ]);
   }
@@ -1863,83 +1863,106 @@ const Segments = ({ pageData, pagination }) => {
           }
         }
 
-        if (firstFilterTitle != "") {
-          switch (firstFilterTitle) {
-            case "Select Sub-section":
-              tempfilterList.add(item.sub_segment);
-              break;
-            case "Select Machinery":
-              tempfilterList.add(row.machinery.name);
-              break;
-            case "Select Rim":
-              tempfilterList.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
-              break;
-            case "Select Size":
-              tempfilterList.add(row.size);
-              break;
-            case "Select Pattern":
-              tempfilterList.add(row.pattern_type);
-              break;
-          }
-        }
-
         setFiltersArray((prevData) => [
           [...newSubSegmentOptions].sort(),
           [...newMachineryOptions].sort(),
           [...newRimOptions].sort(),
-          [...newSizeOptions].sort((a, b)=>getSize(a) - getSize(b)),
+          [...newSizeOptions].sort((a, b) => getSize(a) - getSize(b)),
           [...newPatternOptions].sort(),
         ]);
       });
     });
 
-      switch (firstFilterTitle) {
+    if (lastSelectedFilterTitle != "" && isFilterFirstTime) {
+      tempfilterList.clear();
+      switch (lastSelectedFilterTitle) {
         case "Select Sub-section":
-          setFiltersArray((prevData) => [
-            [...tempfilterList].sort(),
-            [...(prevData[1] || [])].sort(),
-            [...(prevData[2] || [])].sort(),
-            [...(prevData[3] || [])].sort((a, b)=>getSize(a) - getSize(b)),
-            [...(prevData[4] || [])].sort(),
-          ]);
+          filtersArray[0].forEach(item => tempfilterList.add(item));
           break;
         case "Select Machinery":
-          setFiltersArray((prevData) => [
-            [...(prevData[0] || [])].sort(),
-            [...tempfilterList].sort(),
-            [...(prevData[2] || [])].sort(),
-            [...(prevData[3] || [])].sort((a, b)=>getSize(a) - getSize(b)),
-            [...(prevData[4] || [])].sort(),
-          ]);
+          filtersArray[1].forEach(item => tempfilterList.add(item));
           break;
         case "Select Rim":
-          setFiltersArray((prevData) => [
-            [...(prevData[0] || [])].sort(),
-            [...(prevData[1] || [])].sort(),
-            [...tempfilterList].sort(),
-            [...(prevData[3] || [])].sort((a, b)=>getSize(a) - getSize(b)),
-            [...(prevData[4] || [])].sort(),
-          ]);
+          filtersArray[2].forEach(item => tempfilterList.add(item));
           break;
         case "Select Size":
-          setFiltersArray((prevData) => [
-            [...(prevData[0] || [])].sort(),
-            [...(prevData[1] || [])].sort(),
-            [...(prevData[2] || [])].sort(),
-            [...tempfilterList].sort((a, b) =>getSize(a) - getSize(b)),
-            [...(prevData[4] || [])].sort(),
-          ]);
+          filtersArray[3].forEach(item => tempfilterList.add(item));
           break;
         case "Select Pattern":
-          setFiltersArray((prevData) => [
-            [...(prevData[0] || [])].sort(),
-            [...(prevData[1] || [])].sort(),
-            [...(prevData[2] || [])].sort((a, b)=>getSize(a) - getSize(b)),
-            [...(prevData[3] || [])].sort(),
-            [...tempfilterList].sort(),
-          ]);
+          filtersArray[4].forEach(item => tempfilterList.add(item));
           break;
       }
+    }
+
+    switch (lastSelectedFilterTitle) {
+      case "Select Sub-section":
+        setFiltersArray((prevData) => [
+          [...tempfilterList].sort(),
+          [...(prevData[1] || [])].sort(),
+          [...(prevData[2] || [])].sort(),
+          [...(prevData[3] || [])].sort((a, b) => getSize(a) - getSize(b)),
+          [...(prevData[4] || [])].sort(),
+        ]);
+        break;
+      case "Select Machinery":
+        setFiltersArray((prevData) => [
+          [...(prevData[0] || [])].sort(),
+          [...tempfilterList].sort(),
+          [...(prevData[2] || [])].sort(),
+          [...(prevData[3] || [])].sort((a, b) => getSize(a) - getSize(b)),
+          [...(prevData[4] || [])].sort(),
+        ]);
+        break;
+      case "Select Rim":
+        setFiltersArray((prevData) => [
+          [...(prevData[0] || [])].sort(),
+          [...(prevData[1] || [])].sort(),
+          [...tempfilterList].sort(),
+          [...(prevData[3] || [])].sort((a, b) => getSize(a) - getSize(b)),
+          [...(prevData[4] || [])].sort(),
+        ]);
+        break;
+      case "Select Size":
+        setFiltersArray((prevData) => [
+          [...(prevData[0] || [])].sort(),
+          [...(prevData[1] || [])].sort(),
+          [...(prevData[2] || [])].sort(),
+          [...tempfilterList].sort((a, b) => getSize(a) - getSize(b)),
+          [...(prevData[4] || [])].sort(),
+        ]);
+        break;
+      case "Select Pattern":
+        setFiltersArray((prevData) => [
+          [...(prevData[0] || [])].sort(),
+          [...(prevData[1] || [])].sort(),
+          [...(prevData[2] || [])].sort((a, b) => getSize(a) - getSize(b)),
+          [...(prevData[3] || [])].sort(),
+          [...tempfilterList].sort(),
+        ]);
+        break;
+    }
+
+    if (lastSelectedFilterTitle != "") {
+      tempfilterList.clear();
+      switch (lastSelectedFilterTitle) {
+        case "Select Sub-section":
+          filtersArray[0].forEach(item => tempfilterList.add(item));
+          break;
+        case "Select Machinery":
+          filtersArray[1].forEach(item => tempfilterList.add(item));
+          break;
+        case "Select Rim":
+          filtersArray[2].forEach(item => tempfilterList.add(item));
+          break;
+        case "Select Size":
+          filtersArray[3].forEach(item => tempfilterList.add(item));
+          break;
+        case "Select Pattern":
+          filtersArray[4].forEach(item => tempfilterList.add(item));
+          break;
+      }
+      isFilterFirstTime = false;
+    }
   }
 
   const updateItem = (index, newValue) => {
@@ -1951,9 +1974,9 @@ const Segments = ({ pageData, pagination }) => {
   };
 
   const updateSelectedFilters = (updateFilterTitle, value) => {
-    if(isFilterFirstTime && firstFilterTitle === "") {
-      firstFilterTitle = updateFilterTitle;
-    } else if(firstFilterTitle == updateFilterTitle) {
+    if (isFilterFirstTime && lastSelectedFilterTitle === "") {
+      lastSelectedFilterTitle = updateFilterTitle;
+    } else if (lastSelectedFilterTitle == updateFilterTitle) {
       setSelectedFilters([]);
     }
     setSelectedFilters((prevFilters) => {
@@ -1961,7 +1984,7 @@ const Segments = ({ pageData, pagination }) => {
       updatedFilters.set(updateFilterTitle, value);
       return updatedFilters;
     });
-    isFilterFirstTime = false;
+    lastSelectedFilterTitle = updateFilterTitle;
   };
 
   const clearFilters = () => {
