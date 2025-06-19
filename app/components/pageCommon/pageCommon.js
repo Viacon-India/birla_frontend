@@ -24,7 +24,7 @@ export function MainButton() {
           : "hidden md:flex flex-col gap-5 relative z-10"
       }
     >
-      {pathname != "/find-tyre" && (
+      {  pathname != "/find-tyre" && (
         <Link href="/find-tyre" className="primary-btn-1">
           Find a Tyre
         </Link>
@@ -538,7 +538,7 @@ export function Chatbot() {
   const response = async (message) => {
     try {
       const res = await axios.post(
-        "http://birlatyres.viaconprojects.com:5005/webhooks/rest/webhook",
+        "https://birlatyres.viaconprojects.com:5005/webhooks/rest/webhook",
         { message }
       );
 
@@ -969,7 +969,7 @@ export function CatalogueDownload({ pageData }) {
 
     try {
       const res = await fetch(
-        "http://birlatyres.viaconprojects.com:1337/api/product-catalogues",
+        "https://birlatyres.viaconprojects.com:1337/api/product-catalogues",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

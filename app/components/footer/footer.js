@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function Footer() {
   const [footerData, setFooterData] = useState({});
   useEffect(() => {
-    fetch("http://birlatyres.viaconprojects.com:1337/api/footer")
+    fetch("https://birlatyres.viaconprojects.com/api/footer")
       .then((res) => res.json())
       .then((footer) => {
         setFooterData(footer);

@@ -66,7 +66,7 @@ const NavbarComponent = () => {
   };
 
   useEffect(() => {
-    fetch("http://birlatyres.viaconprojects.com:1337/api/header")
+    fetch("https://birlatyres.viaconprojects.com/api/header")
       .then((res) => res.json())
       .then((header) => {
         setHeaderData(header);
@@ -115,7 +115,7 @@ const NavbarComponent = () => {
                       className="primary-btn-1 !w-[100%] !justify-center flex md:hidden !py-[4px]"
                     >
                       Find a Tyre
-                    </Link>
+                    </Link> 
                   </div>
 
                   <div className="navbar-center flex items-center gap-6 lg:flex pl-3 xl:pl-7 ml-[-10%] md:ml-0">

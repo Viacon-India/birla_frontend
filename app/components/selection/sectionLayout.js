@@ -1473,7 +1473,7 @@ export function JobApplication({ section }) {
     formData.append("files", file);
     try {
       const response = await fetch(
-        "http://birlatyres.viaconprojects.com:1337/api/upload",
+        "https://birlatyres.viaconprojects.com/api/upload",
         {
           method: "POST",
           body: formData,
@@ -1518,7 +1518,7 @@ export function JobApplication({ section }) {
     };
     try {
       const response = await fetch(
-        "http://birlatyres.viaconprojects.com:1337/api/job-applications",
+        "https://birlatyres.viaconprojects.com/api/job-applications",
         {
           method: "POST",
           body: JSON.stringify(dataToSend),

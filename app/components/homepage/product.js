@@ -67,7 +67,7 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
 
     try {
       const res = await fetch(
-        "http://birlatyres.viaconprojects.com:1337/api/product-catalogues",
+        "https://birlatyres.viaconprojects.com/api/product-catalogues",
         {
           method: "POST",
           headers: {

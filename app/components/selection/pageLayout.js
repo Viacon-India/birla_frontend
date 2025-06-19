@@ -232,7 +232,7 @@ export function ContactUs({ pageData }) {
     try {
       // partner-inquiries
       const response = await fetch(
-        "http://birlatyres.viaconprojects.com:1337/api/general-inquiries",
+        "https://birlatyres.viaconprojects.com/api/general-inquiries",
         {
           method: "POST",
           body: JSON.stringify(dataToSend),
@@ -285,7 +285,7 @@ export function ContactUs({ pageData }) {
     };
     try {
       const response = await fetch(
-        "http://birlatyres.viaconprojects.com:1337/api/partner-inquiries",
+        "https://birlatyres.viaconprojects.com/api/partner-inquiries",
         {
           method: "POST",
           body: JSON.stringify(dataToSend),

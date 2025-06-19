@@ -6,9 +6,8 @@ const nextConfig = {
         unoptimized: true,
         remotePatterns: [
             {
-                protocol: "http",
+                protocol: "https",
                 hostname: "birlatyres.viaconprojects.com",
-                port: "1337",
                 pathname: "/uploads/**/*",
             },
         ],
