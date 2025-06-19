@@ -1472,13 +1472,13 @@ export function JobApplication({ section }) {
     const formData = new FormData();
     formData.append("files", file);
     try {
-      const response = await fetch(
-        "https://birlatyres.viaconprojects.com/api/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+const response = await fetch(
+  `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/upload`,
+  {
+    method: "POST",
+    body: formData,
+  }
+);
       if (!response.ok) {
         throw new Error("Failed to upload file");
       } else {

@@ -8,13 +8,19 @@ import Link from "next/link";
 
 export default function Footer() {
   const [footerData, setFooterData] = useState({});
-  useEffect(() => {
-    fetch("https://birlatyres.viaconprojects.com/api/footer")
-      .then((res) => res.json())
-      .then((footer) => {
-        setFooterData(footer);
-      });
-  }, []);
+useEffect(() => {
+  const fetchFooterData = async () => {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/footer`);
+      const footer = await res.json();
+      setFooterData(footer);
+    } catch (error) {
+      console.error("Error fetching footer:", error);
+    }
+  };
+
+  fetchFooterData();
+}, []);
 
   const goToTop = () => {
     window.scrollTo({

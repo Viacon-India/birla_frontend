@@ -66,16 +66,16 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
     };
 
     try {
-      const res = await fetch(
-        "https://birlatyres.viaconprojects.com/api/product-catalogues",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+     const res = await fetch(
+  `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/product-catalogues`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  }
+);
 
       if (res.ok) {
         // Open PDF in new tab
