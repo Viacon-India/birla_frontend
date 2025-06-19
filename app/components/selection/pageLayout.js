@@ -1877,19 +1877,19 @@ const Segments = ({ pageData, pagination }) => {
       tempfilterList.clear();
       switch (lastSelectedFilterTitle) {
         case "Select Sub-section":
-          filtersArray[0].forEach(item => tempfilterList.add(item));
+          filtersArray[0].forEach((item) => tempfilterList.add(item));
           break;
         case "Select Machinery":
-          filtersArray[1].forEach(item => tempfilterList.add(item));
+          filtersArray[1].forEach((item) => tempfilterList.add(item));
           break;
         case "Select Rim":
-          filtersArray[2].forEach(item => tempfilterList.add(item));
+          filtersArray[2].forEach((item) => tempfilterList.add(item));
           break;
         case "Select Size":
-          filtersArray[3].forEach(item => tempfilterList.add(item));
+          filtersArray[3].forEach((item) => tempfilterList.add(item));
           break;
         case "Select Pattern":
-          filtersArray[4].forEach(item => tempfilterList.add(item));
+          filtersArray[4].forEach((item) => tempfilterList.add(item));
           break;
       }
     }
@@ -1946,19 +1946,19 @@ const Segments = ({ pageData, pagination }) => {
       tempfilterList.clear();
       switch (lastSelectedFilterTitle) {
         case "Select Sub-section":
-          filtersArray[0].forEach(item => tempfilterList.add(item));
+          filtersArray[0].forEach((item) => tempfilterList.add(item));
           break;
         case "Select Machinery":
-          filtersArray[1].forEach(item => tempfilterList.add(item));
+          filtersArray[1].forEach((item) => tempfilterList.add(item));
           break;
         case "Select Rim":
-          filtersArray[2].forEach(item => tempfilterList.add(item));
+          filtersArray[2].forEach((item) => tempfilterList.add(item));
           break;
         case "Select Size":
-          filtersArray[3].forEach(item => tempfilterList.add(item));
+          filtersArray[3].forEach((item) => tempfilterList.add(item));
           break;
         case "Select Pattern":
-          filtersArray[4].forEach(item => tempfilterList.add(item));
+          filtersArray[4].forEach((item) => tempfilterList.add(item));
           break;
       }
       isFilterFirstTime = false;
@@ -1974,6 +1974,16 @@ const Segments = ({ pageData, pagination }) => {
   };
 
   const updateSelectedFilters = (updateFilterTitle, value) => {
+    if (value == "") {
+      isFilterFirstTime = true;
+      lastSelectedFilterTitle = "";
+      setSelectedFilters((prevFilters) => {
+        const updatedFilters = new Map(prevFilters);
+        updatedFilters.delete(updateFilterTitle);
+        return updatedFilters;
+      });
+      return;
+    }
     if (isFilterFirstTime && lastSelectedFilterTitle === "") {
       lastSelectedFilterTitle = updateFilterTitle;
     } else if (lastSelectedFilterTitle == updateFilterTitle) {
@@ -2207,8 +2217,8 @@ const Segments = ({ pageData, pagination }) => {
                       {Array.isArray(
                         filtersArray[isSubSegment ? index : index + 1]
                       ) &&
-                        filtersArray[isSubSegment ? index : index + 1]
-                          .map((item) => (
+                        filtersArray[isSubSegment ? index : index + 1].map(
+                          (item) => (
                             <option
                               key={item !== undefined && item && item.id}
                               value={item ? item.replace(/"/g, "") : ""}
@@ -2222,7 +2232,8 @@ const Segments = ({ pageData, pagination }) => {
                             >
                               {item}
                             </option>
-                          ))}
+                          )
+                        )}
                     </select>
                   )}
                 </div>
@@ -3069,7 +3080,7 @@ export function Products({ pageData }) {
                                   : ""}
                               </th>
                             )}
-                                                        {table.row[0]?.pattern_name && (
+                            {table.row[0]?.pattern_name && (
                               <th
                                 onClick={() => handleSort("pattern_name")}
                                 style={{ cursor: "pointer" }}
@@ -3342,7 +3353,7 @@ export function Products({ pageData }) {
                           {table.row.map((rowData) => (
                             <tr key={rowData.id}>
                               {rowData?.size && <td>{rowData.size}</td>}
-                                                            {rowData?.pattern_name && (
+                              {rowData?.pattern_name && (
                                 <td>{rowData.pattern_name}</td>
                               )}
                               {rowData?.type && <td>{rowData.type}</td>}

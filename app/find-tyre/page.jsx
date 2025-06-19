@@ -22,14 +22,17 @@ import BannerAGRI from "@/app/assets/images/find-AGRI.jpg";
 import find2 from "@/app/assets/images/find2.png";
 import Product from "@/app/components/product/card";
 import { delay } from "framer-motion";
-import loadGif from "../assets/images/loading.gif"
+import loadGif from "../assets/images/loading.gif";
+
+let lastSelectedFilterTitle = "";
+let isFilterFirstTime = true;
+const tempfilterList = new Set();
 
 const FindTyre = () => {
   const { push } = useRouter();
   const searchParams = new URLSearchParams(useSearchParams());
   const pathname = usePathname();
   const [pageData, setPageData] = useState([]);
-  const [selectURLParameter, setSelectURLParameter] = useState([]);
   const [searchTyre, setSearchTyre] = useState(
     searchParams.get("search")
       ? searchParams.get("search").replace("+", " ").replace("%2F", "/")
@@ -43,19 +46,36 @@ const FindTyre = () => {
   );
   const [productData, setProductsData] = useState([]);
   const pageSize = 9;
-  const currentPage = 1;
+  let currentPage = 1;
   const [meta, setProductsMeta] = useState({});
 
   const [activeBannerImage, setActiveBannerImage] = useState(BannerTTB);
 
+  const [value, setValue] = useState([]);
+  const [filtersArray, setFiltersArray] = useState([]);
+  const [selectURLParameter, setSelectURLParameter] = useState([]);
+  const [filterData, setFilterData] = useState([]);
+  const [selectedFilters, setSelectedFilters] = useState(new Map());
+
+  const subSegmentOptions = new Set();
+  const machineryOptions = new Set();
+  const rimOptions = new Set();
+  const sizeOptions = new Set();
+  const patternOptions = new Set();
+  const isSubSegment = activeBannerImage == BannerOTR ? true : false;
+
   const handlePageClick = (event) => {
     const selectedPage = event.selected;
-    push(
-      pathname.replace(
-        pathname,
-        pathname + "/page/" + (selectedPage + 1) + "?" + searchParams.toString()
-      )
-    );
+    // push(
+    //   pathname.replace(
+    //     pathname,
+    //     pathname + "/page/" + (selectedPage + 1) + "?" + searchParams.toString()
+    //   )
+    // );
+    if (selectedPage != 0) {
+      currentPage = selectedPage + 1;
+    }
+    productFilters();
   };
 
   const handleSearch = () => {
@@ -80,10 +100,9 @@ const FindTyre = () => {
   };
 
   const handleClick = (category, index) => {
-
-    if (category === 'TBB' ) {
+    if (category === "TBB") {
       setActiveBannerImage(BannerTTB);
-    } else if (category === 'OTR') {
+    } else if (category === "OTR") {
       setActiveBannerImage(BannerOTR);
     } else {
       setActiveBannerImage(BannerAGRI);
@@ -102,145 +121,231 @@ const FindTyre = () => {
     fetchData(category, "");
   };
 
-  const [value, setValue] = useState([]);
-  const [filterData, setFilterData] = useState([]);
-
-  const updateItem = (index, newValue) => {
-    setValue((prevData) => {
-      const newData = [...prevData];
-      newData[index] = newValue;
-      return newData;
-    });
-  };
-
-  const queryToString = (queryToStringValue) => {
+  const queryToString = () => {
     const filterQueries = [];
-    if (
-      pageData.data?.attributes.categories.data[activeTabIndex].attributes
-        .filters.length > 4
-    ) {
-      if (queryToStringValue[0]) {
-        if (searchParams.has("sub_segment")) {
-          searchParams.set("sub_segment", queryToStringValue[0]);
-        } else {
-          searchParams.append("sub_segment", queryToStringValue[0]);
-        }
-        filterQueries.push(
-          `filters[sub_segment][$eq]=${queryToStringValue[0]}`
+    if (selectedFilters.has("Select Sub-section")) {
+      if (searchParams.has("sub_segment")) {
+        searchParams.set(
+          "sub_segment",
+          selectedFilters.get("Select Sub-section")
         );
       } else {
-        if (searchParams.has("sub_segment")) searchParams.delete("sub_segment");
-      }
-      if (queryToStringValue[1]) {
-        if (searchParams.has("machinery")) {
-          searchParams.set("machinery", queryToStringValue[1]);
-        } else {
-          searchParams.append("machinery", queryToStringValue[1]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][machinery][name][$eq]=${queryToStringValue[1]}`
+        searchParams.append(
+          "sub_segment",
+          selectedFilters.get("Select Sub-section")
         );
-      } else {
-        if (searchParams.has("machinery")) searchParams.delete("machinery");
       }
-      if (queryToStringValue[2]) {
-        if (searchParams.has("rim_recommended")) {
-          searchParams.set("rim_recommended", queryToStringValue[2]);
-        } else {
-          searchParams.append("rim_recommended", queryToStringValue[2]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][size][$contains]=${queryToStringValue[2]}`
-        );
-      } else {
-        if (searchParams.has("rim_recommended"))
-          searchParams.delete("rim_recommended");
-      }
-      if (queryToStringValue[3]) {
-        if (searchParams.has("size")) {
-          searchParams.set("size", queryToStringValue[3]);
-        } else {
-          searchParams.append("size", queryToStringValue[3]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][size][$eq]=${queryToStringValue[3]}`
-        );
-      } else {
-        if (searchParams.has("size")) searchParams.delete("size");
-      }
-      if (queryToStringValue[4]) {
-        if (searchParams.has("pattern_type")) {
-          searchParams.set("pattern_type", queryToStringValue[4]);
-        } else {
-          searchParams.append("pattern_type", queryToStringValue[4]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][pattern_type][$eq]=${queryToStringValue[4]}`
-        );
-      } else {
-        if (searchParams.has("pattern_type"))
-          searchParams.delete("pattern_type");
-      }
+      filterQueries.push(
+        `filters[sub_segment][$eq]=${selectedFilters.get("Select Sub-section")}`
+      );
     } else {
-      if (queryToStringValue[0]) {
-        if (searchParams.has("machinery")) {
-          searchParams.set("machinery", queryToStringValue[0]);
-        } else {
-          searchParams.append("machinery", queryToStringValue[0]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][machinery][name][$eq]=${queryToStringValue[0]}`
-        );
-      } else {
-        if (searchParams.has("machinery")) searchParams.delete("machinery");
-      }
-      if (queryToStringValue[1]) {
-        if (searchParams.has("rim_recommended")) {
-          searchParams.set("rim_recommended", queryToStringValue[1]);
-        } else {
-          searchParams.append("rim_recommended", queryToStringValue[1]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][size][$contains]=${queryToStringValue[1]}`
-        );
-      } else {
-        if (searchParams.has("rim_recommended"))
-          searchParams.delete("rim_recommended");
-      }
-      if (queryToStringValue[2]) {
-        if (searchParams.has("size")) {
-          searchParams.set("size", queryToStringValue[2]);
-        } else {
-          searchParams.append("size", queryToStringValue[2]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][size][$eq]=${queryToStringValue[2]}`
-        );
-      } else {
-        if (searchParams.has("size")) searchParams.delete("size");
-      }
-      if (queryToStringValue[3]) {
-        if (searchParams.has("pattern_type")) {
-          searchParams.set("pattern_type", queryToStringValue[3]);
-        } else {
-          searchParams.append("pattern_type", queryToStringValue[3]);
-        }
-        filterQueries.push(
-          `filters[tables][table][row][pattern_type][$eq]=${queryToStringValue[3]}`
-        );
-      } else {
-        if (searchParams.has("pattern_type"))
-          searchParams.delete("pattern_type");
-      }
+      if (searchParams.has("sub_segment")) searchParams.delete("sub_segment");
     }
-    const queryString =
-      filterQueries.length > 0 ? "&" + filterQueries.join("&") : "";
-    return queryString;
+    if (selectedFilters.has("Select Machinery")) {
+      if (searchParams.has("machinery")) {
+        searchParams.set("machinery", selectedFilters.get("Select Machinery"));
+      } else {
+        searchParams.append(
+          "machinery",
+          selectedFilters.get("Select Machinery")
+        );
+      }
+      filterQueries.push(
+        `filters[tables][table][row][machinery][name][$eq]=${selectedFilters.get(
+          "Select Machinery"
+        )}`
+      );
+    } else {
+      if (searchParams.has("machinery")) searchParams.delete("machinery");
+    }
+    if (selectedFilters.has("Select Rim")) {
+      if (searchParams.has("rim_recommended")) {
+        searchParams.set("rim_recommended", selectedFilters.get("Select Rim"));
+      } else {
+        searchParams.append(
+          "rim_recommended",
+          selectedFilters.get("Select Rim")
+        );
+      }
+      filterQueries.push(
+        `filters[tables][table][row][size][$endsWith]=${selectedFilters.get(
+          "Select Rim"
+        )}`
+      );
+    } else {
+      if (searchParams.has("rim_recommended"))
+        searchParams.delete("rim_recommended");
+    }
+    if (selectedFilters.has("Select Size")) {
+      if (searchParams.has("size")) {
+        searchParams.set("size", selectedFilters.get("Select Size"));
+      } else {
+        searchParams.append("size", selectedFilters.get("Select Size"));
+      }
+      filterQueries.push(
+        `filters[tables][table][row][size][$eq]=${selectedFilters.get(
+          "Select Size"
+        )}`
+      );
+    } else {
+      if (searchParams.has("size")) searchParams.delete("size");
+    }
+    if (selectedFilters.has("Select Pattern")) {
+      if (searchParams.has("pattern_type")) {
+        searchParams.set("pattern_type", selectedFilters.get("Select Pattern"));
+      } else {
+        searchParams.append(
+          "pattern_type",
+          selectedFilters.get("Select Pattern")
+        );
+      }
+      filterQueries.push(
+        `filters[tables][table][row][pattern_type][$eq]=${selectedFilters.get(
+          "Select Pattern"
+        )}`
+      );
+    } else {
+      if (searchParams.has("pattern_type")) searchParams.delete("pattern_type");
+    }
+    return filterQueries.length > 0 ? "&" + filterQueries.join("&") : "";
   };
 
-  const productFilters = (submitValue) => {
+  // const updateItem = (index, newValue) => {
+  //   setValue((prevData) => {
+  //     const newData = [...prevData];
+  //     newData[index] = newValue;
+  //     return newData;
+  //   });
+  // };
+
+  // const queryToString = (queryToStringValue) => {
+  //   const filterQueries = [];
+  //   if (
+  //     pageData.data?.attributes.categories.data[activeTabIndex].attributes
+  //       .filters.length > 4
+  //   ) {
+  //     if (queryToStringValue[0]) {
+  //       if (searchParams.has("sub_segment")) {
+  //         searchParams.set("sub_segment", queryToStringValue[0]);
+  //       } else {
+  //         searchParams.append("sub_segment", queryToStringValue[0]);
+  //       }
+  //       filterQueries.push(
+  //         `filters[sub_segment][$eq]=${queryToStringValue[0]}`
+  //       );
+  //     } else {
+  //       if (searchParams.has("sub_segment")) searchParams.delete("sub_segment");
+  //     }
+  //     if (queryToStringValue[1]) {
+  //       if (searchParams.has("machinery")) {
+  //         searchParams.set("machinery", queryToStringValue[1]);
+  //       } else {
+  //         searchParams.append("machinery", queryToStringValue[1]);
+  //       }
+  //       filterQueries.push(
+  //         `filters[tables][table][row][machinery][name][$eq]=${queryToStringValue[1]}`
+  //       );
+  //     } else {
+  //       if (searchParams.has("machinery")) searchParams.delete("machinery");
+  //     }
+  //     if (queryToStringValue[2]) {
+  //       if (searchParams.has("rim_recommended")) {
+  //         searchParams.set("rim_recommended", queryToStringValue[2]);
+  //       } else {
+  //         searchParams.append("rim_recommended", queryToStringValue[2]);
+  //       }
+  //       filterQueries.push(
+  //         `filters[tables][table][row][size][$contains]=${queryToStringValue[2]}`
+  //       );
+  //     } else {
+  //       if (searchParams.has("rim_recommended"))
+  //         searchParams.delete("rim_recommended");
+  //     }
+  //     if (queryToStringValue[3]) {
+  //       if (searchParams.has("size")) {
+  //         searchParams.set("size", queryToStringValue[3]);
+  //       } else {
+  //         searchParams.append("size", queryToStringValue[3]);
+  //       }
+  //       filterQueries.push(
+  //         `filters[tables][table][row][size][$eq]=${queryToStringValue[3]}`
+  //       );
+  //     } else {
+  //       if (searchParams.has("size")) searchParams.delete("size");
+  //     }
+  //     if (queryToStringValue[4]) {
+  //       if (searchParams.has("pattern_type")) {
+  //         searchParams.set("pattern_type", queryToStringValue[4]);
+  //       } else {
+  //         searchParams.append("pattern_type", queryToStringValue[4]);
+  //       }
+  //       filterQueries.push(
+  //         `filters[tables][table][row][pattern_type][$eq]=${queryToStringValue[4]}`
+  //       );
+  //     } else {
+  //       if (searchParams.has("pattern_type"))
+  //         searchParams.delete("pattern_type");
+  //     }
+  //   } else {
+  //     if (queryToStringValue[0]) {
+  //       if (searchParams.has("machinery")) {
+  //         searchParams.set("machinery", queryToStringValue[0]);
+  //       } else {
+  //         searchParams.append("machinery", queryToStringValue[0]);
+  //       }
+  //       filterQueries.push(
+  //         `filters[tables][table][row][machinery][name][$eq]=${queryToStringValue[0]}`
+  //       );
+  //     } else {
+  //       if (searchParams.has("machinery")) searchParams.delete("machinery");
+  //     }
+  //     if (queryToStringValue[1]) {
+  //       if (searchParams.has("rim_recommended")) {
+  //         searchParams.set("rim_recommended", queryToStringValue[1]);
+  //       } else {
+  //         searchParams.append("rim_recommended", queryToStringValue[1]);
+  //       }
+  //       filterQueries.push(
+  //         `filters[tables][table][row][size][$contains]=${queryToStringValue[1]}`
+  //       );
+  //     } else {
+  //       if (searchParams.has("rim_recommended"))
+  //         searchParams.delete("rim_recommended");
+  //     }
+  //     if (queryToStringValue[2]) {
+  //       if (searchParams.has("size")) {
+  //         searchParams.set("size", queryToStringValue[2]);
+  //       } else {
+  //         searchParams.append("size", queryToStringValue[2]);
+  //       }
+  //       filterQueries.push(
+  //         `filters[tables][table][row][size][$eq]=${queryToStringValue[2]}`
+  //       );
+  //     } else {
+  //       if (searchParams.has("size")) searchParams.delete("size");
+  //     }
+  //     if (queryToStringValue[3]) {
+  //       if (searchParams.has("pattern_type")) {
+  //         searchParams.set("pattern_type", queryToStringValue[3]);
+  //       } else {
+  //         searchParams.append("pattern_type", queryToStringValue[3]);
+  //       }
+  //       filterQueries.push(
+  //         `filters[tables][table][row][pattern_type][$eq]=${queryToStringValue[3]}`
+  //       );
+  //     } else {
+  //       if (searchParams.has("pattern_type"))
+  //         searchParams.delete("pattern_type");
+  //     }
+  //   }
+  //   const queryString =
+  //     filterQueries.length > 0 ? "&" + filterQueries.join("&") : "";
+  //   return queryString;
+  // };
+
+  const productFilters = () => {
     setProductsData([]);
-    fetchData(activeTab, queryToString(submitValue));
+    fetchData(activeTab, queryToString());
     if (searchParams.toString()) {
       push(pathname.replace(/\/page\/\d+/, "") + "?" + searchParams.toString());
     }
@@ -293,59 +398,81 @@ const FindTyre = () => {
   useEffect(() => {
     const fetchInitialData = async () => {
       try {
-        const checkURLParameter = [];
-        if (searchParams.toString()) {
-          if (
-            pageData.data?.attributes.categories.data[activeTabIndex].attributes
-              .filters.length > 4
-          ) {
-            if (searchParams.has("sub_segment"))
-              checkURLParameter[0] = searchParams
-                .get("sub_segment")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("machinery"))
-              checkURLParameter[1] = searchParams
-                .get("machinery")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("rim_recommended"))
-              checkURLParameter[2] = searchParams
-                .get("rim_recommended")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("size"))
-              checkURLParameter[3] = searchParams
-                .get("size")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("pattern_type"))
-              checkURLParameter[4] = searchParams
-                .get("pattern_type")
-                .replace("+", " ")
-                .replace("%2F", "/");
-          } else {
-            if (searchParams.has("machinery"))
-              checkURLParameter[0] = searchParams
-                .get("machinery")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("rim_recommended"))
-              checkURLParameter[1] = searchParams
-                .get("rim_recommended")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("size"))
-              checkURLParameter[2] = searchParams
-                .get("size")
-                .replace("+", " ")
-                .replace("%2F", "/");
-            if (searchParams.has("pattern_type"))
-              checkURLParameter[3] = searchParams
-                .get("pattern_type")
-                .replace("+", " ")
-                .replace("%2F", "/");
-          }
+        // const checkURLParameter = [];
+        // if (searchParams.toString()) {
+        //   if (
+        //     pageData.data?.attributes.categories.data[activeTabIndex].attributes
+        //       .filters.length > 4
+        //   ) {
+        //     if (searchParams.has("sub_segment"))
+        //       checkURLParameter[0] = searchParams
+        //         .get("sub_segment")
+        //         .replace("+", " ")
+        //         .replace("%2F", "/");
+        //     if (searchParams.has("machinery"))
+        //       checkURLParameter[1] = searchParams
+        //         .get("machinery")
+        //         .replace("+", " ")
+        //         .replace("%2F", "/");
+        //     if (searchParams.has("rim_recommended"))
+        //       checkURLParameter[2] = searchParams
+        //         .get("rim_recommended")
+        //         .replace("+", " ")
+        //         .replace("%2F", "/");
+        //     if (searchParams.has("size"))
+        //       checkURLParameter[3] = searchParams
+        //         .get("size")
+        //         .replace("+", " ")
+        //         .replace("%2F", "/");
+        //     if (searchParams.has("pattern_type"))
+        //       checkURLParameter[4] = searchParams
+        //         .get("pattern_type")
+        //         .replace("+", " ")
+        //         .replace("%2F", "/");
+        //   } else {
+        //     if (searchParams.has("machinery"))
+        //       checkURLParameter[0] = searchParams
+        //         .get("machinery")
+        //         .replace("+", " ")
+        //         .replace("%2F", "/");
+        //     if (searchParams.has("rim_recommended"))
+        //       checkURLParameter[1] = searchParams
+        //         .get("rim_recommended")
+        //         .replace("+", " ")
+        //         .replace("%2F", "/");
+        //     if (searchParams.has("size"))
+        //       checkURLParameter[2] = searchParams
+        //         .get("size")
+        //         .replace("+", " ")
+        //         .replace("%2F", "/");
+        //     if (searchParams.has("pattern_type"))
+        //       checkURLParameter[3] = searchParams
+        //         .get("pattern_type")
+        //         .replace("+", " ")
+        //         .replace("%2F", "/");
+        //   }
+        // }
+
+        if (typeof window !== "undefined") {
+          const params = new URLSearchParams(window.location.search);
+          const newSelectedFilters = new Map();
+          if (params.get("sub_segment"))
+            newSelectedFilters.set(
+              "Select Sub-section",
+              params.get("sub_segment")
+            );
+          if (params.get("machinery"))
+            newSelectedFilters.set("Select Machinery", params.get("machinery"));
+          if (params.get("rim_recommended"))
+            newSelectedFilters.set("Select Rim", params.get("rim_recommended"));
+          if (params.get("size"))
+            newSelectedFilters.set("Select Size", params.get("size"));
+          if (params.get("pattern_type"))
+            newSelectedFilters.set(
+              "Select Pattern",
+              params.get("pattern_type")
+            );
+          setSelectedFilters(newSelectedFilters);
         }
         setSelectURLParameter(checkURLParameter);
         fetchData(activeTab, queryToString(checkURLParameter));
@@ -357,47 +484,692 @@ const FindTyre = () => {
     fetchInitialData();
   }, [pageData]);
 
-  const subSegmentOptions = new Set();
-  const machineryOptions = new Set();
-  const rimOptions = new Set();
-  const sizeOptions = new Set();
-  const patternOptions = new Set();
-  filterData.forEach((item) => {
-    const rows = item.tables.table[0].row;
-    if (item.sub_segment) {
-      subSegmentOptions.add(item.sub_segment);
+  useEffect(() => {
+    if (filterData.length > 0) {
+      initFilterData();
     }
-    rows.forEach((row) => {
-      if (row.machinery && row.machinery.name) {
-        machineryOptions.add(row.machinery.name);
+  }, [filterData]);
+
+  useEffect(() => {
+    updateFilterData();
+  }, [selectedFilters]);
+
+  const getSize = (str) => {
+    const match = str.match(/(\d{2})\D*$/);
+    return match ? parseInt(match[1], 10) : 0;
+  };
+
+  // filterData.forEach((item) => {
+  //   const rows = item.tables.table[0].row;
+  //   if (item.sub_segment) {
+  //     subSegmentOptions.add(item.sub_segment);
+  //   }
+  //   rows.forEach((row) => {
+  //     if (row.machinery && row.machinery.name) {
+  //       machineryOptions.add(row.machinery.name);
+  //     }
+  //     if (row.size) {
+  //       rimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]+'"');
+  //     }
+  //     if (row.size) {
+  //       sizeOptions.add(row.size);
+  //     }
+  //     if (row.pattern_type) {
+  //       patternOptions.add(row.pattern_type);
+  //     }
+  //   });
+  // });
+  // const filtersArray =
+  //   pageData.data?.attributes.categories.data[activeTabIndex].attributes.filters
+  //     .length > 4
+  //     ? [
+  //         Array.from(subSegmentOptions),
+  //         Array.from(machineryOptions),
+  //         Array.from(rimOptions),
+  //         Array.from(sizeOptions),
+  //         Array.from(patternOptions),
+  //       ]
+  //     : [
+  //         Array.from(machineryOptions),
+  //         Array.from(rimOptions),
+  //         Array.from(sizeOptions),
+  //         Array.from(patternOptions),
+  //       ];
+
+  async function initFilterData() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    filterData.forEach((item) => {
+      const rows = item.tables.table[0].row;
+      let rim_recommended;
+      let size;
+      let pattern_type;
+
+      if (item.sub_segment) {
+        subSegmentOptions.add(item.sub_segment);
       }
-      if (row.size) {
-        rimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]+'"');
-      }
-      if (row.size) {
-        sizeOptions.add(row.size);
-      }
-      if (row.pattern_type) {
-        patternOptions.add(row.pattern_type);
-      }
+      rows.forEach((row) => {
+        if (row.rim_recommended) {
+          rim_recommended = row.size.match(/(\d+)(?=[\s-]*$)/)[0];
+          rimOptions.add(rim_recommended);
+        }
+        if (row.size) {
+          size = row.size;
+          sizeOptions.add(size);
+        }
+        if (row.pattern_type) {
+          pattern_type = row.pattern_type;
+          patternOptions.add(pattern_type);
+        }
+        if (row.machinery && row.machinery.name) {
+          machineryOptions.add(row.machinery.name);
+        }
+      });
     });
-  });
-  const filtersArray =
-    pageData.data?.attributes.categories.data[activeTabIndex].attributes.filters
-      .length > 4
-      ? [
-          Array.from(subSegmentOptions),
-          Array.from(machineryOptions),
-          Array.from(rimOptions),
-          Array.from(sizeOptions),
-          Array.from(patternOptions),
-        ]
-      : [
-          Array.from(machineryOptions),
-          Array.from(rimOptions),
-          Array.from(sizeOptions),
-          Array.from(patternOptions),
-        ];
+
+    setFiltersArray([
+      Array.from(subSegmentOptions).sort(),
+      Array.from(machineryOptions).sort(),
+      Array.from(rimOptions).sort(),
+      Array.from(sizeOptions).sort((a, b) => getSize(a) - getSize(b)),
+      Array.from(patternOptions).sort(),
+    ]);
+  }
+
+  function updateFilterData() {
+    const newSubSegmentOptions = new Set();
+    const newMachineryOptions = new Set();
+    const newRimOptions = new Set();
+    const newSizeOptions = new Set();
+    const newPatternOptions = new Set();
+
+    filterData.forEach((item) => {
+      const rows = item.tables.table[0].row;
+      rows.forEach((row) => {
+        if (selectedFilters.has("Select Sub-section")) {
+          if (item.sub_segment === selectedFilters.get("Select Sub-section")) {
+            if (row.machinery && row.machinery.name) {
+              if (selectedFilters.has("Select Machinery")) {
+                if (
+                  row.machinery.name === selectedFilters.get("Select Machinery")
+                ) {
+                  if (selectedFilters.has("Select Rim")) {
+                    if (
+                      row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
+                      selectedFilters.get("Select Rim")
+                    ) {
+                      if (selectedFilters.has("Select Size")) {
+                        if (row.size === selectedFilters.get("Select Size")) {
+                          if (selectedFilters.has("Select Pattern")) {
+                            if (
+                              row.pattern_type ===
+                              selectedFilters.get("Select Pattern")
+                            ) {
+                              newMachineryOptions.add(row.machinery.name);
+                              newRimOptions.add(
+                                row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                              );
+                              newSizeOptions.add(row.size);
+                              newPatternOptions.add(row.pattern_type);
+                              newSubSegmentOptions.add(item.sub_segment);
+                            }
+                          } else {
+                            newMachineryOptions.add(row.machinery.name);
+                            newRimOptions.add(
+                              row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                            );
+                            newSizeOptions.add(row.size);
+                            newPatternOptions.add(row.pattern_type);
+                            newSubSegmentOptions.add(item.sub_segment);
+                          }
+                        }
+                      } else {
+                        if (selectedFilters.has("Select Pattern")) {
+                          if (
+                            row.pattern_type ===
+                            selectedFilters.get("Select Pattern")
+                          ) {
+                            newMachineryOptions.add(row.machinery.name);
+                            newRimOptions.add(
+                              row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                            );
+                            newSizeOptions.add(row.size);
+                            newPatternOptions.add(row.pattern_type);
+                            newSubSegmentOptions.add(item.sub_segment);
+                          }
+                        } else {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      }
+                    }
+                  } else {
+                    if (selectedFilters.has("Select Size")) {
+                      if (row.size === selectedFilters.get("Select Size")) {
+                        if (selectedFilters.has("Select Pattern")) {
+                          if (
+                            row.pattern_type ===
+                            selectedFilters.get("Select Pattern")
+                          ) {
+                            newMachineryOptions.add(row.machinery.name);
+                            newRimOptions.add(
+                              row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                            );
+                            newSizeOptions.add(row.size);
+                            newPatternOptions.add(row.pattern_type);
+                            newSubSegmentOptions.add(item.sub_segment);
+                          }
+                        } else {
+                          newMachineryOptions.add(row.machinery.name);
+                          newPatternOptions.add(row.pattern_type);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      }
+                    } else {
+                      if (selectedFilters.has("Select Pattern")) {
+                        if (
+                          row.pattern_type ===
+                          selectedFilters.get("Select Pattern")
+                        ) {
+                          newMachineryOptions.add(row.machinery.name);
+                          newPatternOptions.add(row.pattern_type);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      } else {
+                        newMachineryOptions.add(row.machinery.name);
+                        newPatternOptions.add(row.pattern_type);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    }
+                  }
+                }
+              } else {
+                if (selectedFilters.has("Select Rim")) {
+                  if (
+                    row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
+                    selectedFilters.get("Select Rim")
+                  ) {
+                    if (selectedFilters.has("Select Size")) {
+                      if (row.size === selectedFilters.get("Select Size")) {
+                        if (selectedFilters.has("Select Pattern")) {
+                          if (
+                            row.pattern_type ===
+                            selectedFilters.get("Select Pattern")
+                          ) {
+                            newMachineryOptions.add(row.machinery.name);
+                            newRimOptions.add(
+                              row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                            );
+                            newSizeOptions.add(row.size);
+                            newPatternOptions.add(row.pattern_type);
+                            newSubSegmentOptions.add(item.sub_segment);
+                          }
+                        } else {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      }
+                    } else {
+                      if (selectedFilters.has("Select Pattern")) {
+                        if (
+                          row.pattern_type ===
+                          selectedFilters.get("Select Pattern")
+                        ) {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      } else {
+                        newMachineryOptions.add(row.machinery.name);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newPatternOptions.add(row.pattern_type);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    }
+                  }
+                } else {
+                  if (selectedFilters.has("Select Size")) {
+                    if (row.size === selectedFilters.get("Select Size")) {
+                      if (selectedFilters.has("Select Pattern")) {
+                        if (
+                          row.pattern_type ===
+                          selectedFilters.get("Select Pattern")
+                        ) {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      } else {
+                        newMachineryOptions.add(row.machinery.name);
+                        newPatternOptions.add(row.pattern_type);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    }
+                  } else {
+                    if (selectedFilters.has("Select Pattern")) {
+                      if (
+                        row.pattern_type ===
+                        selectedFilters.get("Select Pattern")
+                      ) {
+                        newMachineryOptions.add(row.machinery.name);
+                        newPatternOptions.add(row.pattern_type);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    } else {
+                      newMachineryOptions.add(row.machinery.name);
+                      newPatternOptions.add(row.pattern_type);
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      newSizeOptions.add(row.size);
+                      newSubSegmentOptions.add(item.sub_segment);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        } else {
+          if (row.machinery && row.machinery.name) {
+            if (selectedFilters.has("Select Machinery")) {
+              if (
+                row.machinery.name === selectedFilters.get("Select Machinery")
+              ) {
+                if (selectedFilters.has("Select Rim")) {
+                  if (
+                    row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
+                    selectedFilters.get("Select Rim")
+                  ) {
+                    if (selectedFilters.has("Select Size")) {
+                      if (row.size === selectedFilters.get("Select Size")) {
+                        if (selectedFilters.has("Select Pattern")) {
+                          if (
+                            row.pattern_type ===
+                            selectedFilters.get("Select Pattern")
+                          ) {
+                            newMachineryOptions.add(row.machinery.name);
+                            newRimOptions.add(
+                              row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                            );
+                            newSizeOptions.add(row.size);
+                            newPatternOptions.add(row.pattern_type);
+                            newSubSegmentOptions.add(item.sub_segment);
+                          }
+                        } else {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      }
+                    } else {
+                      if (selectedFilters.has("Select Pattern")) {
+                        if (
+                          row.pattern_type ===
+                          selectedFilters.get("Select Pattern")
+                        ) {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      } else {
+                        newMachineryOptions.add(row.machinery.name);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newPatternOptions.add(row.pattern_type);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    }
+                  }
+                } else {
+                  if (selectedFilters.has("Select Size")) {
+                    if (row.size === selectedFilters.get("Select Size")) {
+                      if (selectedFilters.has("Select Pattern")) {
+                        if (
+                          row.pattern_type ===
+                          selectedFilters.get("Select Pattern")
+                        ) {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      } else {
+                        newMachineryOptions.add(row.machinery.name);
+                        newPatternOptions.add(row.pattern_type);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    }
+                  } else {
+                    if (selectedFilters.has("Select Pattern")) {
+                      if (
+                        row.pattern_type ===
+                        selectedFilters.get("Select Pattern")
+                      ) {
+                        newMachineryOptions.add(row.machinery.name);
+                        newPatternOptions.add(row.pattern_type);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    } else {
+                      newMachineryOptions.add(row.machinery.name);
+                      newPatternOptions.add(row.pattern_type);
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      newSizeOptions.add(row.size);
+                      newSubSegmentOptions.add(item.sub_segment);
+                    }
+                  }
+                }
+              }
+            } else {
+              if (selectedFilters.has("Select Rim")) {
+                if (
+                  row.size.match(/(\d+)(?=[\s-]*$)/)[0] ===
+                  selectedFilters.get("Select Rim")
+                ) {
+                  if (selectedFilters.has("Select Size")) {
+                    if (row.size === selectedFilters.get("Select Size")) {
+                      if (selectedFilters.has("Select Pattern")) {
+                        if (
+                          row.pattern_type ===
+                          selectedFilters.get("Select Pattern")
+                        ) {
+                          newMachineryOptions.add(row.machinery.name);
+                          newRimOptions.add(
+                            row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                          );
+                          newSizeOptions.add(row.size);
+                          newPatternOptions.add(row.pattern_type);
+                          newSubSegmentOptions.add(item.sub_segment);
+                        }
+                      } else {
+                        newMachineryOptions.add(row.machinery.name);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newPatternOptions.add(row.pattern_type);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    }
+                  } else {
+                    if (selectedFilters.has("Select Pattern")) {
+                      if (
+                        row.pattern_type ===
+                        selectedFilters.get("Select Pattern")
+                      ) {
+                        newMachineryOptions.add(row.machinery.name);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newPatternOptions.add(row.pattern_type);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    } else {
+                      newMachineryOptions.add(row.machinery.name);
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      newSizeOptions.add(row.size);
+                      newPatternOptions.add(row.pattern_type);
+                      newSubSegmentOptions.add(item.sub_segment);
+                    }
+                  }
+                }
+              } else {
+                if (selectedFilters.has("Select Size")) {
+                  if (row.size === selectedFilters.get("Select Size")) {
+                    if (selectedFilters.has("Select Pattern")) {
+                      if (
+                        row.pattern_type ===
+                        selectedFilters.get("Select Pattern")
+                      ) {
+                        newMachineryOptions.add(row.machinery.name);
+                        newRimOptions.add(
+                          row.size.match(/(\d+)(?=[\s-]*$)/)[0]
+                        );
+                        newSizeOptions.add(row.size);
+                        newPatternOptions.add(row.pattern_type);
+                        newSubSegmentOptions.add(item.sub_segment);
+                      }
+                    } else {
+                      newMachineryOptions.add(row.machinery.name);
+                      newPatternOptions.add(row.pattern_type);
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      newSizeOptions.add(row.size);
+                      newSubSegmentOptions.add(item.sub_segment);
+                    }
+                  }
+                } else {
+                  if (selectedFilters.has("Select Pattern")) {
+                    if (
+                      row.pattern_type === selectedFilters.get("Select Pattern")
+                    ) {
+                      newMachineryOptions.add(row.machinery.name);
+                      newPatternOptions.add(row.pattern_type);
+                      newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                      newSizeOptions.add(row.size);
+                      newSubSegmentOptions.add(item.sub_segment);
+                    }
+                  } else {
+                    newMachineryOptions.add(row.machinery.name);
+                    newPatternOptions.add(row.pattern_type);
+                    newRimOptions.add(row.size.match(/(\d+)(?=[\s-]*$)/)[0]);
+                    newSizeOptions.add(row.size);
+                    newSubSegmentOptions.add(item.sub_segment);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        setFiltersArray((prevData) => [
+          [...newSubSegmentOptions].sort(),
+          [...newMachineryOptions].sort(),
+          [...newRimOptions].sort(),
+          [...newSizeOptions].sort((a, b) => getSize(a) - getSize(b)),
+          [...newPatternOptions].sort(),
+        ]);
+      });
+    });
+
+    if (lastSelectedFilterTitle != "" && isFilterFirstTime) {
+      tempfilterList.clear();
+      switch (lastSelectedFilterTitle) {
+        case "Select Sub-section":
+          filtersArray[0]?.forEach((item) => tempfilterList.add(item));
+          break;
+        case "Select Machinery":
+          filtersArray[1]?.forEach((item) => tempfilterList.add(item));
+          break;
+        case "Select Rim":
+          filtersArray[2]?.forEach((item) => tempfilterList.add(item));
+          break;
+        case "Select Size":
+          filtersArray[3]?.forEach((item) => tempfilterList.add(item));
+          break;
+        case "Select Pattern":
+          filtersArray[4]?.forEach((item) => tempfilterList.add(item));
+          break;
+      }
+    }
+
+    switch (lastSelectedFilterTitle) {
+      case "Select Sub-section":
+        setFiltersArray((prevData) => [
+          [...tempfilterList].sort(),
+          [...(prevData[1] || [])].sort(),
+          [...(prevData[2] || [])].sort(),
+          [...(prevData[3] || [])].sort((a, b) => getSize(a) - getSize(b)),
+          [...(prevData[4] || [])].sort(),
+        ]);
+        break;
+      case "Select Machinery":
+        setFiltersArray((prevData) => [
+          [...(prevData[0] || [])].sort(),
+          [...tempfilterList].sort(),
+          [...(prevData[2] || [])].sort(),
+          [...(prevData[3] || [])].sort((a, b) => getSize(a) - getSize(b)),
+          [...(prevData[4] || [])].sort(),
+        ]);
+        break;
+      case "Select Rim":
+        setFiltersArray((prevData) => [
+          [...(prevData[0] || [])].sort(),
+          [...(prevData[1] || [])].sort(),
+          [...tempfilterList].sort(),
+          [...(prevData[3] || [])].sort((a, b) => getSize(a) - getSize(b)),
+          [...(prevData[4] || [])].sort(),
+        ]);
+        break;
+      case "Select Size":
+        setFiltersArray((prevData) => [
+          [...(prevData[0] || [])].sort(),
+          [...(prevData[1] || [])].sort(),
+          [...(prevData[2] || [])].sort(),
+          [...tempfilterList].sort((a, b) => getSize(a) - getSize(b)),
+          [...(prevData[4] || [])].sort(),
+        ]);
+        break;
+      case "Select Pattern":
+        setFiltersArray((prevData) => [
+          [...(prevData[0] || [])].sort(),
+          [...(prevData[1] || [])].sort(),
+          [...(prevData[2] || [])].sort((a, b) => getSize(a) - getSize(b)),
+          [...(prevData[3] || [])].sort(),
+          [...tempfilterList].sort(),
+        ]);
+        break;
+    }
+
+    if (lastSelectedFilterTitle != "") {
+      tempfilterList.clear();
+      switch (lastSelectedFilterTitle) {
+        case "Select Sub-section":
+          filtersArray[0]?.forEach((item) => tempfilterList.add(item));
+          break;
+        case "Select Machinery":
+          filtersArray[1]?.forEach((item) => tempfilterList.add(item));
+          break;
+        case "Select Rim":
+          filtersArray[2]?.forEach((item) => tempfilterList.add(item));
+          break;
+        case "Select Size":
+          filtersArray[3]?.forEach((item) => tempfilterList.add(item));
+          break;
+        case "Select Pattern":
+          filtersArray[4]?.forEach((item) => tempfilterList.add(item));
+          break;
+      }
+      isFilterFirstTime = false;
+    }
+  }
+
+  const updateItem = (index, newValue) => {
+    setValue((prevData) => {
+      const newData = [...prevData];
+      newData[index] = newValue;
+      return newData.slice(0, index + 1);
+    });
+  };
+
+  const updateSelectedFilters = (updateFilterTitle, value) => {
+    if (value == "") {
+      isFilterFirstTime = true;
+      lastSelectedFilterTitle = "";
+      setSelectedFilters((prevFilters) => {
+        const updatedFilters = new Map(prevFilters);
+        updatedFilters.delete(updateFilterTitle);
+        return updatedFilters;
+      });
+      return;
+    }
+    if (isFilterFirstTime && lastSelectedFilterTitle === "") {
+      lastSelectedFilterTitle = updateFilterTitle;
+    } else if (lastSelectedFilterTitle == updateFilterTitle) {
+      setSelectedFilters([]);
+    }
+    setSelectedFilters((prevFilters) => {
+      const updatedFilters = new Map(prevFilters);
+      updatedFilters.set(updateFilterTitle, value);
+      return updatedFilters;
+    });
+    lastSelectedFilterTitle = updateFilterTitle;
+  };
+
+  const clearFilters = () => {
+    isFilterFirstTime = true;
+    setSelectedFilters(new Map());
+    setValue([]);
+    setFiltersArray([]);
+    initFilterData();
+    setProductsData([]);
+    fetchData("");
+    push(pathname);
+    setTimeout(() => {
+      window.scrollTo({
+        top: (100 * window.innerHeight) / 100,
+        behavior: "smooth",
+      });
+    }, 1000);
+  };
 
   if (
     typeof meta === "undefined" ||
@@ -537,48 +1309,66 @@ const FindTyre = () => {
                                             >
                                               {filter.title}
                                             </label>
-                                            {filter?.items && (
-                                              <select
-                                                name={
-                                                  categories.attributes.name +
-                                                  "-" +
-                                                  filter.title.replace(
-                                                    "Select ",
-                                                    ""
-                                                  )
-                                                }
-                                                onChange={(e) => {
-                                                  updateItem(
-                                                    index,
-                                                    e.target.value
-                                                  );
-                                                }}
-                                                className="tyre-form-select"
-                                              >
-                                                {filter.items.map((item) => (
-                                                  <option
-                                                    key={item.id}
-                                                    value={
-                                                      item?.value
-                                                        ? item.value
-                                                        : ""
-                                                    }
-                                                    selected=""
-                                                  >
-                                                    {item?.name}
+                                            {filter?.items &&
+                                              filter.items.length > 0 && (
+                                                <select
+                                                  value={
+                                                    selectedFilters.get(
+                                                      filter.title
+                                                    ) || ""
+                                                  }
+                                                  onChange={(e) => {
+                                                    updateSelectedFilters(
+                                                      filter.title,
+                                                      e.target.value
+                                                    );
+                                                    updateItem(
+                                                      isSubSegment
+                                                        ? index
+                                                        : index + 1,
+                                                      e.target.value
+                                                    );
+                                                  }}
+                                                  className="tyre-form-select"
+                                                >
+                                                  <option value="">
+                                                    Select{" "}
+                                                    {filter.title.replace(
+                                                      "Select ",
+                                                      ""
+                                                    )}
                                                   </option>
-                                                ))}
-                                                {filtersArray &&
-                                                  filtersArray.length > 0 &&
-                                                  filtersArray[index]
-                                                    .sort()
-                                                    .map((item) => (
+                                                  {Array.isArray(
+                                                    filtersArray[
+                                                      isSubSegment
+                                                        ? index
+                                                        : index + 1
+                                                    ]
+                                                  ) &&
+                                                    filtersArray[
+                                                      isSubSegment
+                                                        ? index
+                                                        : index + 1
+                                                    ].map((item) => (
                                                       <option
-                                                        key={item.id}
-                                                        value={item.replace(/"/g, '')}
+                                                        key={
+                                                          item !== undefined &&
+                                                          item &&
+                                                          item.id
+                                                        }
+                                                        value={
+                                                          item
+                                                            ? item.replace(
+                                                                /"/g,
+                                                                ""
+                                                              )
+                                                            : ""
+                                                        }
                                                         selected={
                                                           selectURLParameter[
-                                                            index
+                                                            isSubSegment
+                                                              ? index
+                                                              : index + 1
                                                           ] == item
                                                             ? "selected"
                                                             : ""
@@ -587,13 +1377,13 @@ const FindTyre = () => {
                                                         {item}
                                                       </option>
                                                     ))}
-                                              </select>
-                                            )}
+                                                </select>
+                                              )}
                                           </div>
                                         )
                                     )}
                                   <button
-                                    onClick={() => productFilters(value)}
+                                    onClick={() => productFilters()}
                                     className="primary-btn !w-full flip-animate-2 after:!hidden text-center !flex !justify-center !items-center mt-2"
                                   >
                                     <svg
@@ -609,6 +1399,12 @@ const FindTyre = () => {
                                       />
                                     </svg>
                                     <span data-hover="Search">Search</span>
+                                  </button>
+                                  <button
+                                    onClick={() => clearFilters()}
+                                    className="tablinks cat-btn active-cat-btn items-center gap-1 !w-full max-h-[38px] !h-full !text-[15px] leading-[27.75px] md:col-span-2 xl:col-span-1 whitespace-nowrap"
+                                  >
+                                    Clear Filter
                                   </button>
                                 </div>
                               </div>
@@ -640,7 +1436,14 @@ const FindTyre = () => {
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 2xl:gap-10 mt-6 md:mt-8 2xl:mt-10">
                   {productData.map((product) => (
-                    <Product key={product.id} data={product} />
+                    <Product
+                      key={product.id}
+                      data={product}
+                      selectedFilterSize={
+                        selectedFilters.get("Select Size") ??
+                        selectedFilters.get("Select Rim")
+                      }
+                    />
                   ))}
                 </div>
                 {meta?.pagination?.pageCount > 1 && (
