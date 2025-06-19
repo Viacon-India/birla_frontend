@@ -1190,13 +1190,13 @@ a.current_dot {
   @apply text-[14px] md:text-[15px] 2xl:text-[16px] text-[#454545]
  }
  .form-content{
-  @apply bg-[#FFFFFF] border border-[#DEE1E5] p-6 md:p-[20px] 2xl:p-[40px] rounded-[12px] relative
+  @apply bg-[#FFFFFF] border border-[#DEE1E5] p-6 rounded-[12px] relative
  }
  .form-btn-sec{
-  @apply flex w-full mb-4 2xl:mb-10 border border-secondary rounded-[12px] 
+  @apply flex w-full mb-4 2xl:mb-5 border border-secondary rounded-[12px] 
  }
  .form-btn{
-  @apply w-1/2 flex justify-center items-center py-2 2xl:py-[12px] rounded-[10px] text-[14px] 2xl:text-[18px] font-semibold text-secondary
+  @apply w-1/2 flex justify-center items-center py-2 2xl:py-[6px] rounded-[10px] text-[14px] 2xl:text-[18px] font-semibold text-secondary
  }
  .form-active-btn{
   @apply bg-secondary text-white

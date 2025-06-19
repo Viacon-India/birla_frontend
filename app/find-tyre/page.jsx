@@ -1285,7 +1285,7 @@ const FindTyre = () => {
                                 key={categories.id}
                                 id={categories.attributes.name}
                               >
-                                <div className="w-full flex flex-col gap-2 2xl:gap-5">
+                                <div className="w-full flex flex-col gap-2">
                                   {categories.attributes?.filters &&
                                     categories.attributes.filters.length > 0 &&
                                     categories.attributes.filters.map(
