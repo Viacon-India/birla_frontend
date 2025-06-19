@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 
 
 export function getStrapiURL() {
-  return process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://birlatyres.viaconprojects.com:1337";
+  return process.env.NEXT_PUBLIC_STRAPI_URL ?? "https://admin.birlatyre.com/";
 }
 
 export function getStrapiMedia(url: string | null) {

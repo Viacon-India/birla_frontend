@@ -65,13 +65,21 @@ const NavbarComponent = () => {
     }
   };
 
-  useEffect(() => {
-    fetch("https://birlatyres.viaconprojects.com/api/header")
-      .then((res) => res.json())
-      .then((header) => {
-        setHeaderData(header);
-      });
-  }, []);
+useEffect(() => {
+  const fetchHeaderData = async () => {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/header`);
+      const header = await res.json();
+      setHeaderData(header);
+    } catch (error) {
+      console.error("Error fetching header:", error);
+    }
+  };
+
+  fetchHeaderData();
+}, []);
+
+  
 
   return (
     <Suspense
