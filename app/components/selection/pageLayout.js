@@ -239,16 +239,16 @@ export function ContactUs({ pageData }) {
     };
     try {
       // partner-inquiries
-      const response = await fetch(
-        "https://birlatyres.viaconprojects.com/api/general-inquiries",
-        {
-          method: "POST",
-          body: JSON.stringify(dataToSend),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+const response = await fetch(
+  `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/general-inquiries`,
+  {
+    method: "POST",
+    body: JSON.stringify(dataToSend),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }
+);
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Error: ${response.status} - ${errorText}`);
@@ -293,15 +293,15 @@ export function ContactUs({ pageData }) {
     };
     try {
       const response = await fetch(
-        "https://birlatyres.viaconprojects.com/api/partner-inquiries",
-        {
-          method: "POST",
-          body: JSON.stringify(dataToSend),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+  `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/partner-inquiries`,
+  {
+    method: "POST",
+    body: JSON.stringify(dataToSend),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }
+);
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Error: ${response.status} - ${errorText}`);

@@ -538,7 +538,8 @@ export function Chatbot() {
   const response = async (message) => {
     try {
       const res = await axios.post(
-        "https://birlatyres.viaconprojects.com:5005/webhooks/rest/webhook",
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}:5005/webhooks/rest/webhook`,
+        
         { message }
       );
 

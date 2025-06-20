@@ -1517,16 +1517,16 @@ const response = await fetch(
       },
     };
     try {
-      const response = await fetch(
-        "https://birlatyres.viaconprojects.com/api/job-applications",
-        {
-          method: "POST",
-          body: JSON.stringify(dataToSend),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+const response = await fetch(
+  `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/job-applications`,
+  {
+    method: "POST",
+    body: JSON.stringify(dataToSend),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }
+);
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Error: ${response.status} - ${errorText}`);
