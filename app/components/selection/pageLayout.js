@@ -45,6 +45,7 @@ import greenImg from "../../assets/images/green.png";
 import Triangle1 from "@/app/assets/images/triangle1.png";
 
 import { useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function PageSelection({
   page,
@@ -171,6 +172,7 @@ export function ContactUs({ pageData }) {
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [value, setValue] = useState();
+  const [captchaValue, setCaptchaValue] = useState(null);
 
   const countries = Country.getAllCountries();
   const states = selectedCountry
@@ -205,6 +207,12 @@ export function ContactUs({ pageData }) {
     setForm1Error("");
     setLoading(true);
     e.preventDefault();
+    if (!captchaValue) return alert("Verify CAPTCHA!");
+    const res = await fetch('/api/submit-form', {
+      method: 'POST',
+      body: JSON.stringify({ captcha: captchaValue })
+    });
+    if(res.status !== 200 && res.success !== true) return alert("CAPTCHA verification failed");
     if (
       !formData.form1ContactNumber ||
       !/^\+?\d{1,4}[\s\-\(\)]?\(?[\d\(\)\-\s\+]{6,20}$/g.test(
@@ -758,6 +766,10 @@ export function ContactUs({ pageData }) {
                                 </p>
                               )}
                               <div className="flex gap-2 xl:gap-4 items-center">
+                                <ReCAPTCHA
+                                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                                onChange={(token) => setCaptchaValue(token)}
+                                />
                                 <button
                                   type="submit"
                                   className="primary-btn w-fit flip-animate-2"
@@ -1108,6 +1120,10 @@ export function ContactUs({ pageData }) {
                                 </p>
                               )}
                               <div className="flex gap-2 xl:gap-4 items-center">
+                                <ReCAPTCHA
+                                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                                onChange={(token) => setCaptchaValue(token)}
+                                />
                                 <button
                                   type="submit"
                                   className="primary-btn w-fit flip-animate-2"
