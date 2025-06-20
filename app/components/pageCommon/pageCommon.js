@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import Tiger from "../../assets/images/tiger-mask3.png";
 import Bot from "../../assets/images/bot.png";
 import smallTiger from "../../assets/images/small-tiger.png";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export function MainButton() {
   const pathname = usePathname();
@@ -24,7 +25,7 @@ export function MainButton() {
           : "hidden md:flex flex-col gap-5 relative z-10"
       }
     >
-      {  pathname != "/find-tyre" && (
+      {pathname != "/find-tyre" && (
         <Link href="/find-tyre" className="primary-btn-1">
           Find a Tyre
         </Link>
@@ -539,7 +540,7 @@ export function Chatbot() {
     try {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}:5005/webhooks/rest/webhook`,
-        
+
         { message }
       );
 
@@ -946,16 +947,15 @@ export function InnerBanner({ Title, Banner }) {
   );
 }
 
-
-
 export function CatalogueDownload({ pageData }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
-    company: "",
-    country: "",
+    mobile_no: "",
+    company_name: "",
+    country_name: "",
   });
+  const [captchaValue, setCaptchaValue] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -963,20 +963,27 @@ export function CatalogueDownload({ pageData }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!captchaValue) return alert("Verify CAPTCHA!");
+    const res = await fetch("/api/submit-form", {
+      method: "POST",
+      body: JSON.stringify({ captcha: captchaValue }),
+    });
+    if (res.status !== 200 && res.success !== true)
+      return alert("CAPTCHA verification failed");
 
     const payload = {
       data: { ...formData },
     };
 
     try {
-const res = await fetch(
-  `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/product-catalogues`,
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  }
-);
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/product-catalogues`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (res.ok) {
         const catalogueUrl = getStrapiMedia(pageData?.catalogue?.url);
@@ -989,9 +996,9 @@ const res = await fetch(
         setFormData({
           name: "",
           email: "",
-          phone: "",
-          company: "",
-          country: "",
+          mobile_no: "",
+          company_name: "",
+          country_name: "",
         });
 
         document.getElementById("catalogue_modal").close();
@@ -1016,7 +1023,7 @@ const res = await fetch(
         </button>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          {["name", "email", "phone", "company", "country"].map((field) => (
+          {["name", "email", "mobile_no", "company_name", "country_name"].map((field) => (
             <div key={field} className="form-row">
               <label className="contact-label">
                 Enter Your {field.charAt(0).toUpperCase() + field.slice(1)}{" "}
@@ -1034,14 +1041,16 @@ const res = await fetch(
             </div>
           ))}
 
-          <div className="flex justify-center mt-4">
+          <div className="flex flex-col gap-1 justify-center mt-4">
+            <ReCAPTCHA
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+              onChange={(token) => setCaptchaValue(token)}
+            />
             <button
               type="submit"
-              className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
+              className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2 !self-center"
             >
-              <span data-hover="Submit and Download">
-                Submit and Download
-              </span>
+              <span data-hover="Submit and Download">Submit and Download</span>
             </button>
           </div>
         </form>

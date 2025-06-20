@@ -33,6 +33,7 @@ import load from "../../assets/images/load-rated.png";
 import pattern from "../../assets/images/pattern.png";
 import construction from "../../assets/images/axle.png";
 import Product from "@/app/components/product/card";
+import ReCAPTCHA from "react-google-recaptcha";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,10 +44,11 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
-    company: "",
-    country: "",
+    mobile_no: "",
+    company_name: "",
+    country_name: "",
   });
+  const [captchaValue, setCaptchaValue] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -54,42 +56,47 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!captchaValue) return alert("Verify CAPTCHA!");
+    const res = await fetch('/api/submit-form', {
+      method: 'POST',
+      body: JSON.stringify({ captcha: captchaValue })
+    });
+    if(res.status !== 200 && res.success !== true) return alert("CAPTCHA verification failed");
 
     const payload = {
       data: {
         name: formData.name,
         email: formData.email,
-        phone: formData.phone,
-        company: formData.company,
-        country: formData.country,
+        mobile_no: formData.mobile_no,
+        company_name: formData.company_name,
+        country_name: formData.country_name,
       },
     };
 
     try {
-     const res = await fetch(
-  `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/product-catalogues`,
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  }
-);
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/product-catalogues`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (res.ok) {
         // Open PDF in new tab
         window.open("/assets/master-catalogue.pdf", "_blank");
 
-        
         setFormData({
           name: "",
           email: "",
-          phone: "",
-          company: "",
-          country: "",
+          mobile_no: "",
+          company_name: "",
+          country_name: "",
         });
-        document.getElementById('my_modal_3').close();
+        document.getElementById("my_modal_3").close();
       } else {
         alert("Failed to submit. Please try again.");
       }
@@ -217,7 +224,7 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
                         ))}
                       </Swiper>
                       {tab.attributes?.permalink && (
-                        <div className="mt-5 2xl:mt-[32px] flex justify-between items-center">
+                        <div className="mt-5 2xl:mt-[32px] flex flex-col gap-1 md:flex-row justify-between">
                           <Link
                             href={tab.attributes.permalink}
                             className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
@@ -298,9 +305,9 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
                                   <input
                                     className="contact-input"
                                     type="tel"
-                                    name="phone"
+                                    name="mobile_no"
                                     placeholder="Enter Your Mobile Number"
-                                    value={formData.phone}
+                                    value={formData.mobile_no}
                                     onChange={handleChange}
                                     required
                                   />
@@ -316,9 +323,9 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
                                   <input
                                     className="contact-input"
                                     type="text"
-                                    name="company"
+                                    name="company_name"
                                     placeholder="Enter Your Company Name"
-                                    value={formData.company}
+                                    value={formData.company_name}
                                     onChange={handleChange}
                                     required
                                   />
@@ -334,18 +341,24 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
                                   <input
                                     className="contact-input"
                                     type="text"
-                                    name="country"
+                                    name="country_name"
                                     placeholder="Enter Your Country"
-                                    value={formData.country}
+                                    value={formData.country_name}
                                     onChange={handleChange}
                                     required
                                   />
                                 </div>
 
-                                <div className="flex justify-center mt-4">
+                                <div className="flex flex-col gap-1 justify-center mt-4">
+                                  <ReCAPTCHA
+                                    sitekey={
+                                      process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+                                    }
+                                    onChange={(token) => setCaptchaValue(token)}
+                                  />
                                   <button
                                     type="submit"
-                                    className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2"
+                                    className="primary-btn w-fit !px-4 md:!px-6 flip-animate-2 self-center"
                                   >
                                     <span data-hover="Submit and Download">
                                       Submit and Download
