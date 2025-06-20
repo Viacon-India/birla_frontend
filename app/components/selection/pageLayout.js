@@ -208,11 +208,12 @@ export function ContactUs({ pageData }) {
     setLoading(true);
     e.preventDefault();
     if (!captchaValue) return alert("Verify CAPTCHA!");
-    const res = await fetch('/api/submit-form', {
-      method: 'POST',
-      body: JSON.stringify({ captcha: captchaValue })
+    const res = await fetch("/api/submit-form", {
+      method: "POST",
+      body: JSON.stringify({ captcha: captchaValue }),
     });
-    if(res.status !== 200 && res.success !== true) return alert("CAPTCHA verification failed");
+    if (res.status !== 200 && res.success !== true)
+      return alert("CAPTCHA verification failed");
     if (
       !formData.form1ContactNumber ||
       !/^\+?\d{1,4}[\s\-\(\)]?\(?[\d\(\)\-\s\+]{6,20}$/g.test(
@@ -239,16 +240,16 @@ export function ContactUs({ pageData }) {
     };
     try {
       // partner-inquiries
-const response = await fetch(
-  `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/general-inquiries`,
-  {
-    method: "POST",
-    body: JSON.stringify(dataToSend),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }
-);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/general-inquiries`,
+        {
+          method: "POST",
+          body: JSON.stringify(dataToSend),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Error: ${response.status} - ${errorText}`);
@@ -293,15 +294,15 @@ const response = await fetch(
     };
     try {
       const response = await fetch(
-  `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/partner-inquiries`,
-  {
-    method: "POST",
-    body: JSON.stringify(dataToSend),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }
-);
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/partner-inquiries`,
+        {
+          method: "POST",
+          body: JSON.stringify(dataToSend),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Error: ${response.status} - ${errorText}`);
@@ -765,10 +766,12 @@ const response = await fetch(
                                   Application submitted successfully!
                                 </p>
                               )}
-                              <div className="flex gap-2 xl:gap-4 items-center">
+                              <div className="flex flex-col lg:flex-row justify-between gap-2 xl:gap-4 items-center">
                                 <ReCAPTCHA
-                                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                                onChange={(token) => setCaptchaValue(token)}
+                                  sitekey={
+                                    process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+                                  }
+                                  onChange={(token) => setCaptchaValue(token)}
                                 />
                                 <button
                                   type="submit"
@@ -788,6 +791,7 @@ const response = await fetch(
                                     />
                                   </>
                                 )}
+
                               </div>
                             </form>
                           </div>
@@ -1119,10 +1123,12 @@ const response = await fetch(
                                   Application submitted successfully!
                                 </p>
                               )}
-                              <div className="flex gap-2 xl:gap-4 items-center">
+                              <div className="flex flex-col lg:flex-row justify-between gap-2 xl:gap-4 items-center">
                                 <ReCAPTCHA
-                                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                                onChange={(token) => setCaptchaValue(token)}
+                                  sitekey={
+                                    process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+                                  }
+                                  onChange={(token) => setCaptchaValue(token)}
                                 />
                                 <button
                                   type="submit"
@@ -1254,7 +1260,7 @@ export function Pages({ pageData }) {
               {managementPersonnelList.map((section, index) => (
                 <div key={section.id ?? index} className="sub-leader-card">
                   <figure
-                    className="w-full h-[300px] lg:h-[235px] 2xl:h-[260px] relative glare"
+                    className="w-full h-[350px] lg:h-[235px] 2xl:h-[260px] relative glare"
                     data-aos="flip-right"
                     data-aos-duration="1500"
                   >
