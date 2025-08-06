@@ -33,40 +33,38 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
         setPageData(page);
       });
 
-  // faq accordion
-  var acc = document.getElementsByClassName("ham-accordion");
-  var i;
+    // faq accordion
+    var acc = document.getElementsByClassName("ham-accordion");
+    var i;
 
-  // if (acc.length > 0) {
-  //   acc[0].classList.add("accActive");
-  //   var firstPanel = acc[0].nextElementSibling;
-  //   firstPanel.style.maxHeight = firstPanel.scrollHeight + "px";
-  // }
+    // if (acc.length > 0) {
+    //   acc[0].classList.add("accActive");
+    //   var firstPanel = acc[0].nextElementSibling;
+    //   firstPanel.style.maxHeight = firstPanel.scrollHeight + "px";
+    // }
 
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
-      for (var j = 0; j < acc.length; j++) {
-        if (acc[j] !== this) {
-          acc[j].classList.remove("accActive");
-          var otherPanel = acc[j].nextElementSibling;
-          if (otherPanel.style.maxHeight) {
-            otherPanel.style.maxHeight = null;
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        for (var j = 0; j < acc.length; j++) {
+          if (acc[j] !== this) {
+            acc[j].classList.remove("accActive");
+            var otherPanel = acc[j].nextElementSibling;
+            if (otherPanel.style.maxHeight) {
+              otherPanel.style.maxHeight = null;
+            }
           }
         }
-      }
 
-      this.classList.toggle("accActive");
-      var panel = this.nextElementSibling;
-      if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-      }
-    });
-  }
+        this.classList.toggle("accActive");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
   }, [Heading]);
-
-
 
   return (
     <section className="faq-sec sec-gap !pb-[60px] md:!pb-[100px] 2xl:!pb-[150px] relative">
@@ -98,7 +96,10 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
               )}
               {Data?.title && (
                 <div className="section-title-wrapper">
-                  <GradualSpacing className="section-title-home" text={Data.title} />
+                  <GradualSpacing
+                    className="section-title-home"
+                    text={Data.title}
+                  />
                 </div>
               )}
               <div className="flex flex-col lg:flex-row gap-4 md:gap-10 mt-5 2xl:mt-10">
@@ -116,6 +117,8 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                       <Image
                         className="absolute -z-1 w-[90%] h-[90%]"
                         src={Triangle1}
+                        width={525}
+                        height={479}
                         alt="triangle"
                       />
                       <Image
@@ -138,16 +141,18 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                   >
                     {Data.items.map((item, index) => (
                       <div key={item.id} className="accordion-content-wrapper">
-                        <h4 className="accordion-title ham-accordion cursor-pointer flex gap-2 justify-between">
+                        <div className="accordion-title ham-accordion cursor-pointer flex gap-2 justify-between">
                           {item?.title}
-                        </h4>
+                        </div>
                         <div className="panel">
                           {item?.content && item.content.length > 0 && (
                             <BlocksRenderer
                               content={item.content}
                               blocks={{
                                 paragraph: ({ children }) => (
-                                  <p className="text-[#4F5662] py-1">{children}</p>
+                                  <p className="text-[#4F5662] py-1">
+                                    {children}
+                                  </p>
                                 ),
                                 heading: ({ children, level }) => {
                                   switch (level) {
@@ -156,12 +161,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                                     case 2:
                                       return <h2>{children}</h2>;
                                     case 3:
-                                      return (
-                                        <h3
-                                        >
-                                          {children}
-                                        </h3>
-                                      );
+                                      return <h3>{children}</h3>;
                                     case 4:
                                       return <h4>{children}</h4>;
                                     case 5:
@@ -174,23 +174,16 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                                 },
                                 list: (props) => {
                                   if (props.format === "ordered") {
-                                    return (
-                                      <ol
-                                      >
-                                        {props.children}
-                                      </ol>
-                                    );
+                                    return <ol>{props.children}</ol>;
                                   }
                                   return (
-                                    <ul
-                                    className="!pl-0"
-                                    >
-                                      {props.children}
-                                    </ul>
+                                    <ul className="!pl-0">{props.children}</ul>
                                   );
                                 },
                                 "list-item": (props) => (
-                                  <li className="text-[#4F5662] py-1">{props.children}</li>
+                                  <li className="text-[#4F5662] py-1">
+                                    {props.children}
+                                  </li>
                                 ),
                                 link: ({ children, url }) => (
                                   <Link href={url}>{children}</Link>

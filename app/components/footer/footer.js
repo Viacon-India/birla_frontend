@@ -284,7 +284,7 @@ useEffect(() => {
                   </p>
                 ))}
 
-              <button onClick={goToTop} className="bottom-top-btn">
+              <button aria-label="Back to Top" onClick={goToTop} className="bottom-top-btn">
                 <svg
                   width="18"
                   height="10"
