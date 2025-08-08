@@ -2775,7 +2775,7 @@ export function Products({ pageData }) {
                         onClick={() => openPopup(index)}
                       >
                         <figure className="w-[180px] lg:w-[300px] 2xl:w-[320px] h-[240px] 2xl:h-[380px] pt-3 md:pt-0 zoom_image">
-                          <img
+                          <Image
                             width={gallery?.width}
                             height={gallery?.height}
                             src={getStrapiMedia(gallery?.url)}
@@ -2827,7 +2827,7 @@ export function Products({ pageData }) {
                             className="!flex !justify-center !items-center"
                           >
                             <figure className="w-[280px] h-[280px]">
-                              <img
+                              <Image
                                 width={gallery?.width}
                                 height={gallery?.height}
                                 src={getStrapiMedia(gallery?.url)}

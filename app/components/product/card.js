@@ -123,7 +123,7 @@ export default function Product({ data, selectedFilterSize }) {
     };
 
     setFilteredSizes(filterSizes(data));
-  }, [machinery, rim_recommended, size, pattern_type, sub_segment, data]);
+  }, [machinery, rim_recommended, size, pattern_type, sub_segment, selectedFilterSize, data]);
 
   let newTableData = [];
 

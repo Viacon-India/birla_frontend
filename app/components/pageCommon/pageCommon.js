@@ -683,7 +683,7 @@ export function Chatbot() {
       }, 100);
       return () => clearInterval(intervalId);
     }
-  }, []);
+  }, [messages.length]);
 
   useEffect(() => {
     if (bottom == "0px" && messages.length == 0) {
