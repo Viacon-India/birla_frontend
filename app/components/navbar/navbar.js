@@ -136,7 +136,7 @@ useEffect(() => {
                                 href={menu.link}
                                 className="nav-links nav-hov flip-animate"
                               >
-                                <span data-hover={menu.title}>
+                                <span className="nav-new" data-hover={menu.title}>
                                   {menu.title}
                                 </span>
                                 <svg
@@ -155,7 +155,7 @@ useEffect(() => {
                               </Link>
                             ) : (
                               <button className="nav-links nav-hov flip-animate">
-                                <span data-hover={menu.title}>
+                                <span className="nav-new" data-hover={menu.title}>
                                   {menu.title}
                                 </span>
                                 <svg
@@ -269,7 +269,7 @@ useEffect(() => {
                               className="nav-links nav-hov flip-animate"
                               href={`${menu.attributes.permalink}`}
                             >
-                              <span data-hover={menu.attributes.name}>
+                              <span className="nav-new" data-hover={menu.attributes.name}>
                                 {menu.attributes.name}
                               </span>
                             </Link>
