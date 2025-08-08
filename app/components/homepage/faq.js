@@ -129,6 +129,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                         width={Data.images.data[0].attributes?.width}
                         height={Data.images.data[0].attributes?.height}
                         alt={Data.images.data[0].attributes?.alternativeText}
+                        priority={true}
                       />
                     </figure>
                   </div>

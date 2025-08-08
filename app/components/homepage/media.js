@@ -66,6 +66,7 @@ export default function Media({ Heading = "", Title = "" }) {
                                 media.attributes.image.data.attributes
                                   .alternativeText
                               }
+                              priority={true}
                             />
                           </Link>
                           <span></span>

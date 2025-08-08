@@ -61,6 +61,7 @@ export default function NewAbout({ Data }) {
                   width={Data.image.data.attributes?.width}
                   height={Data.image.data.attributes?.height}
                   alt={Data.image.data.attributes?.alternativeText}
+                  priority={true}
                 />
               </figure>
             )}

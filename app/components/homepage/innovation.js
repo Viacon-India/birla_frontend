@@ -119,6 +119,7 @@ export default function Innovation({ Heading='', Title='', Data={}}) {
                             width={slider.attributes.featured.data.attributes?.width}
                             height={slider.attributes.featured.data.attributes?.height}
                             alt={slider.attributes.featured.data.attributes?.alternativeText}
+                            priority={true}
                           />
                         </Link>
                       </figure>
@@ -154,6 +155,7 @@ export default function Innovation({ Heading='', Title='', Data={}}) {
                             width={slider.attributes.featured.data.attributes?.width}
                             height={slider.attributes.featured.data.attributes?.height}
                             alt={slider.attributes.featured.data.attributes?.alternativeText}
+                            priority={true}
                           />
                         </Link>
                       </figure>

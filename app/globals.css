@@ -38,6 +38,7 @@ ol, ul{
 @font-face {
   font-family: Oak Sans, sans-serif;
   src: url(../app/assets/variable/OakSansVF.ttf);
+  font-display: swap;
 }
 .cursor {
   transition: all 200ms ease-out;
@@ -125,6 +126,7 @@ ol, ul{
 .nav-links{
   @apply text-[#1A1D21] text-[15px] hover:bg-transparent rounded-none font-medium flex items-center relative group-hover:text-primary
   uppercase font-oak-sans active:!bg-transparent
+  
 }
 .line{
   @apply w-[2px] h-[30px] md:h-[50px] bg-[#C9CDD3] mt-4
@@ -746,21 +748,7 @@ a.current_dot {
   @apply opacity-100
 }
 
-/* .footer-list-box{
-  @apply text-secondary text-[20px] leading-[1.2] capitalize
-}
-.footer-list-box:first-child{
-  @apply md:row-span-2
-}
-.footer-list-box:nth-child(2){
-  @apply md:row-span-2
-}
-.footer-list-box:nth-child(3){
-  @apply md:row-span-2
-}
-.footer-list-box:nth-child(4){
-  @apply md:row-span-2
-} */
+
 .footer-list-box h2{
   @apply text-secondary text-[20px] leading-[1.2] capitalize opacity-100 font-semibold
 }
