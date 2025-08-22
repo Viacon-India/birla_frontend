@@ -322,6 +322,8 @@ export function SingleTypeSeo({ pageData, page = "page" }) {
       {pageData.data?.attributes?.title && (
         <title>{pageData.data.attributes.title}</title>
       )}
+      
+    <meta name="google-site-verification" content="M99YrbaDtKwQg9Kuv_9Ip5VI6UlQgSx8ZvkCkNSWsaA" />
       {pageData.data?.attributes?.seo_description && (
         <meta
           name="description"
