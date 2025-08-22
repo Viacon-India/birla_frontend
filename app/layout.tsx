@@ -50,6 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             `,
           }}
         />
+        <meta name="google-site-verification" content="M99YrbaDtKwQg9Kuv_9Ip5VI6UlQgSx8ZvkCkNSWsaA" />
       </head>
       <body className={inter.className}>
         {/* GTM noscript fallback */}
