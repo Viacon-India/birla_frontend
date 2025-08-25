@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { use } from "react";
 import { useState, useEffect } from "react";
 import { getStrapiMedia } from "@/lib/utils";
 import Image from "next/image";
