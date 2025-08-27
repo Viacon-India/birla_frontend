@@ -5,6 +5,7 @@ import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import Image from "next/image";
 import Link from "next/link";
+import GradualSpacing from "@/components/GradualSpacing";
 
 export default function Blogs({ Data = {} }) {
   const [pageData, setPageData] = useState([]);
