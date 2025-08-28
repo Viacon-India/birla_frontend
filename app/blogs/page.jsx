@@ -45,7 +45,7 @@ export default function Blogs() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 !mt-14 md:!mt-6 2xl:mt-10">
               {pageData.data.map(
                 (blog) =>
-                  blog.attributes?.link && (
+                  blog.attributes?.title && (
                     <div key={blog.id} className="media-card">
                       {blog.attributes.image?.data && (
                         <figure>
