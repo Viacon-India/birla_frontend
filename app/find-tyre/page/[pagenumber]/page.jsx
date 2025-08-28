@@ -19,6 +19,7 @@ import Banner from "@/app/assets/images/find1.jpg";
 import find2 from "@/app/assets/images/find2.png";
 import Product from "@/app/components/product/card";
 import loadGif from "../../../assets/images/loading.gif"
+import SchemaOrg from "@/app/components/pageCommon/SchemaOrg";
 
 const FindTyre = ({ params }) => {
   const { push } = useRouter();
@@ -419,10 +420,27 @@ const FindTyre = ({ params }) => {
     return <Error404 />;
   }
 
+
+  const domain = process.env.DOMAIN_NAME;
+  let schema = {};
+
+  if (!pageData || !pageData.data) {
+    return <div>Loading...</div>;
+  }
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: pageData.data?.attributes?.title,
+    url: domain + pageData.data?.attributes?.permalink,
+    logo: getStrapiMedia(pageData?.seo_image?.url),
+    description: pageData.seo_description,
+  };
+
   return (
     pageData?.data && (
       <>
-        <SingleTypeSeo pageData={pageData} />
+        {/* <SingleTypeSeo pageData={pageData} /> */}
+        <SchemaOrg schema={schema} />
         <Navbar />
         <section className="top-banner-sec">
           <span className="tyre-overlay"></span>

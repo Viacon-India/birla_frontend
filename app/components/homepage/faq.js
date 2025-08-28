@@ -25,7 +25,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
   useEffect(() => {
     fetch(
       getStrapiMedia(
-        "/api/blogs?sort[0]=date:desc&fields[0]=title&fields[1]=description&fields[2]=date&fields[3]=link&populate[image][fields][0]=name&populate[image][fields][1]=width&populate[image][fields][2]=height&populate[image][fields][3]=url&populate[image][fields][4]=alternativeText&pagination[pageSize]=2&pagination[page]=1"
+        "/api/blogs?sort[0]=date:desc&fields[0]=title&fields[1]=description&fields[2]=date&fields[3]=link&fields[4]=slug&populate[image][fields][0]=name&populate[image][fields][1]=width&populate[image][fields][2]=height&populate[image][fields][3]=url&populate[image][fields][4]=alternativeText&pagination[pageSize]=2&pagination[page]=1"
       )
     )
       .then((res) => res.json())
@@ -231,7 +231,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                       >
                         {blog.attributes.image?.data && (
                           <figure>
-                            <Link target="_blank" href={blog.attributes.link}>
+                            <Link href={`/blogs/${blog.attributes.slug}`}>
                               <Image
                                 className="media-card-image"
                                 src={getStrapiMedia(
@@ -261,7 +261,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                             )}
                           </div>
                           {blog.attributes?.title && (
-                            <Link target="_blank" href={blog.attributes.link}>
+                            <Link href={`/blogs/${blog.attributes.slug}`}>
                               <h2 className="media-title">
                                 {blog.attributes.title}
                               </h2>
@@ -273,7 +273,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
                             </p>
                           )}
                           <Link
-                            href={blog.attributes.link}
+                            href={`/blogs/${blog.attributes.slug}`}
                             className="primary-btn w-fit !px-6 flip-animate-2"
                           >
                             <span data-hover="Read More">Read More</span>

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { getStrapiMedia } from "@/lib/utils";
 
-import { SingleTypeSeo, Popup } from "@/app/components/pageCommon/pageCommon";
+import { Popup } from "@/app/components/pageCommon/pageCommon";
 
 import Hero from "./Hero";
 import Innovation from "./innovation";
@@ -13,20 +13,37 @@ import Media from "./media";
 // import dynamic from "next/dynamic";
 import Faq from "./faq";
 // const Faq = dynamic(() => import("./faq"), { ssr: false });
+// import SingleTypeSeo from "@/app/components/pageCommon/singleTypeComponent";
+import SchemaOrg from "@/app/components/pageCommon/SchemaOrg";
 
-export default function Homepage() {
-  const [pageData, setPageData] = useState([]);
+export default function Homepage({ pageData }) {
+  // const [pageData, setPageData] = useState([]);
 
-  useEffect(() => {
-    fetch(getStrapiMedia("/api/home"))
-      .then((res) => res.json())
-      .then((page) => {
-        setPageData(page);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(getStrapiMedia("/api/home"))
+  //     .then((res) => res.json())
+  //     .then((page) => {
+  //       setPageData(page);
+  //     });
+  // }, []);
+  const domain = process.env.DOMAIN_NAME;
+  let schema = {}
+
+  if (!pageData || !pageData.data) {
+    return <div>Loading...</div>;
+  }
+    schema = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: pageData.data?.attributes?.title,
+      url: domain + pageData.data?.attributes?.permalink,
+      logo: getStrapiMedia(pageData?.seo_image?.url),
+      description: pageData.seo_description,
+    };
   return (
     <>
-      <SingleTypeSeo pageData={pageData} page="website" />
+      {/* <SingleTypeSeo pageData={pageData} page="website" /> */}
+      <SchemaOrg schema={schema} />
       <Hero Data={pageData.data?.attributes?.categories}/>
       <Popup />
       <Innovation
