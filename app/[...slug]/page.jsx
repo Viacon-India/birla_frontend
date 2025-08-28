@@ -10,16 +10,17 @@ export async function generateMetadata({ params }) {
 
   try {
     const res = await fetch(getStrapiMedia(`/api/pages/${lastSlug}`), {
-      next: { revalidate: 10 }, // cache/revalidate every 60s
+      next: { revalidate: 10 },
     });
 
     if (!res.ok) throw new Error("Page not found");
+
     const pageData = await res.json();
 
-    const attrs = pageData?.data?.attributes || {};
+    const attrs = pageData || {};
 
     return {
-      title: attrs.seo_title || attrs.title || "",
+      title: attrs.seo_title || attrs.title || "Default Title",
       description: attrs.seo_description || "Default Description",
       keywords: attrs.seo_keywords || "",
       openGraph: {
@@ -27,13 +28,13 @@ export async function generateMetadata({ params }) {
         description: attrs.seo_description,
         url: process.env.DOMAIN_NAME + (attrs.permalink || ""),
         siteName: "Birla Tyres",
-        images: attrs.seo_image?.data
+        images: attrs.seo_image
           ? [
               {
-                url: getStrapiMedia(attrs.seo_image.data.attributes?.url),
-                width: attrs.seo_image.data.attributes?.width,
-                height: attrs.seo_image.data.attributes?.height,
-                type: attrs.seo_image.data.attributes?.mime,
+                url: getStrapiMedia(attrs.seo_image?.url),
+                width: attrs.seo_image?.width,
+                height: attrs.seo_image?.height,
+                type: attrs.seo_image?.mime,
               },
             ]
           : [],
@@ -43,9 +44,7 @@ export async function generateMetadata({ params }) {
         card: "summary_large_image",
         title: attrs.seo_title,
         description: attrs.seo_description,
-        images: attrs.seo_image?.data
-          ? [getStrapiMedia(attrs.seo_image.data.attributes?.url)]
-          : [],
+        images: attrs.seo_image ? [getStrapiMedia(attrs.seo_image?.url)] : [],
       },
       alternates: {
         canonical: process.env.DOMAIN_NAME + (attrs.permalink || ""),
@@ -97,7 +96,12 @@ export default async function Page({ params }) {
   return (
     <>
       <Navbar />
-      <PageSelection page={page} pageData={pageData} sidebar={sidebar} slugs={slugs} />
+      <PageSelection
+        page={page}
+        pageData={pageData}
+        sidebar={sidebar}
+        slugs={slugs}
+      />
       <Footer />
     </>
   );
