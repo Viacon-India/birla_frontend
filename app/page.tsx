@@ -57,12 +57,12 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  // const apiUrl = getStrapiMedia("/api/home");
-  // if (!apiUrl) {
-  //   throw new Error("API URL is null");
-  // }
-  // const res = await fetch(apiUrl);
-  // const pageData = await res.json();
+  const apiUrl = getStrapiMedia("/api/home");
+  if (!apiUrl) {
+    throw new Error("API URL is null");
+  }
+  const res = await fetch(apiUrl);
+  pageData = await res.json();
 
   // const [isLoading, setLoading] = useState(true);
 
