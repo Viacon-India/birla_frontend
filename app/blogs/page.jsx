@@ -5,10 +5,10 @@ import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import Image from "next/image";
 import Link from "next/link";
-import GradualSpacing from "../../components/GradualSpacing";
 
-export default function Blogs({ Data = {} }) {
+export default function Blogs() {
   const [pageData, setPageData] = useState([]);
+
   const formatDate = (dateString) => {
     const options = { day: "2-digit", month: "long", year: "numeric" };
     const date = new Date(dateString);
@@ -21,7 +21,6 @@ export default function Blogs({ Data = {} }) {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?sort[0]=date:desc&fields[0]=title&fields[1]=description&fields[2]=date&fields[3]=link&fields[4]=slug&populate[image][fields][0]=name&populate[image][fields][1]=width&populate[image][fields][2]=height&populate[image][fields][3]=url&populate[image][fields][4]=alternativeText&pagination[pageSize]=2&pagination[page]=1`
         );
-
         const data = await res.json();
         setPageData(data);
       } catch (error) {
@@ -35,27 +34,19 @@ export default function Blogs({ Data = {} }) {
   return (
     <>
       <Navbar />
-      <section className="faq-sec sec-gap !pb-[60px] md:!pb-[100px] 2xl:!pb-[150px] relative">
+      <section className="faq-sec sec-gap !pt-[120px] !pb-[60px] md:!pb-[100px] 2xl:!pb-[150px] relative">
         <div className="container mx-auto overflow-hidden relative">
-          {Data?.title && (
-            <div className="section-title-wrapper">
-              <GradualSpacing
-                className="section-title-home"
-                text={Data.title}
-              />
-            </div>
-          )}
+          {/* You can hardcode a section title if you want */}
+          <div className="section-title-wrapper">
+            <h2 className="section-title-home">Our Blogs</h2>
+          </div>
+
           {pageData?.data && pageData.data.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 !mt-14 md:!mt-6 2xl:mt-10">
               {pageData.data.map(
                 (blog) =>
                   blog.attributes?.link && (
-                    <div
-                      key={blog.id}
-                      className="media-card"
-                      data-aos="fade-right"
-                      data-aos-duration="1000"
-                    >
+                    <div key={blog.id} className="media-card">
                       {blog.attributes.image?.data && (
                         <figure>
                           <Link href={`/blogs/${blog.attributes.slug}`}>
@@ -72,7 +63,7 @@ export default function Blogs({ Data = {} }) {
                               }
                               alt={
                                 blog.attributes.image.data.attributes
-                                  .alternativeText
+                                  .alternativeText || "Blog Image"
                               }
                             />
                           </Link>
@@ -113,7 +104,6 @@ export default function Blogs({ Data = {} }) {
           )}
         </div>
       </section>
-
       <Footer />
     </>
   );
