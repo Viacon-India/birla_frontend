@@ -1,6 +1,6 @@
 // "use client"
 
-import { useState,Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import Link from 'next/link';
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
@@ -9,13 +9,15 @@ import Image from "next/image";
 import loadGif from "./assets/images/loading.gif";
 import { getStrapiMedia } from "@/lib/utils";
 
+let pageData:any = null;
+
 export async function generateMetadata() {
   const apiUrl = getStrapiMedia("/api/home");
   if (!apiUrl) {
     throw new Error("API URL is null");
   }
   const res = await fetch(apiUrl);
-  const pageData = await res.json();
+  pageData = await res.json();
 
   const attrs = pageData?.data?.attributes || {};
 
@@ -55,12 +57,12 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  const apiUrl = getStrapiMedia("/api/home");
-  if (!apiUrl) {
-    throw new Error("API URL is null");
-  }
-  const res = await fetch(apiUrl);
-  const pageData = await res.json();
+  // const apiUrl = getStrapiMedia("/api/home");
+  // if (!apiUrl) {
+  //   throw new Error("API URL is null");
+  // }
+  // const res = await fetch(apiUrl);
+  // const pageData = await res.json();
 
   // const [isLoading, setLoading] = useState(true);
 
