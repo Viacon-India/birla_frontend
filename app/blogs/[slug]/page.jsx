@@ -4,7 +4,7 @@ import Footer from "../../components/footer/footer";
 import Image from "next/image";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import BlocksRendererClient from "../../components/BlocksRendererClient";
-
+ 
 async function getBlogData(slug) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?filters[slug][$eq]=${slug}&populate=image`,
@@ -13,17 +13,17 @@ async function getBlogData(slug) {
   const data = await res.json();
   return data?.data?.[0] || null;
 }
-
+ 
 export default async function BlogDetail({ params }) {
   const { slug } = params;
   const blog = await getBlogData(params.slug);
-
+ 
   if (!blog) {
     return <div>Blog not found</div>;
   }
-
+ 
   const { title, description, content, date, image } = blog.attributes;
-
+ 
   return (
     <>
       <Navbar />
