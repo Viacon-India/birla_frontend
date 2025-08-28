@@ -2,9 +2,9 @@ import { getStrapiMedia } from "@/lib/utils";
 import Navbar from "../../../app/components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import Image from "next/image";
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import BlocksRendererClient from "../../components/BlocksRendererClient";
- 
+
+// --- Fetch Blog Data ---
 async function getBlogData(slug) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?filters[slug][$eq]=${slug}&populate=image`,
@@ -13,17 +13,66 @@ async function getBlogData(slug) {
   const data = await res.json();
   return data?.data?.[0] || null;
 }
- 
-export default async function BlogDetail({ params }) {
-  const { slug } = params;
+
+// --- SEO Metadata ---
+export async function generateMetadata({ params }) {
   const blog = await getBlogData(params.slug);
- 
+
+  if (!blog) {
+    return {
+      title: "Blog Not Found | Birla Tyres",
+      description: "The blog post you are looking for does not exist.",
+    };
+  }
+
+  const attrs = blog.attributes;
+
+  return {
+    title: attrs.seo_title || attrs.title,
+    description: attrs.seo_description || attrs.description,
+    keywords: attrs.seo_keywords || "",
+    openGraph: {
+      title: attrs.seo_title || attrs.title,
+      description: attrs.seo_description || attrs.description,
+      url: process.env.DOMAIN_NAME + "/blogs/" + attrs.slug,
+      siteName: "Birla Tyres",
+      images: attrs.image?.data
+        ? [
+            {
+              url: getStrapiMedia(attrs.image.data.attributes?.url),
+              width: attrs.image.data.attributes?.width,
+              height: attrs.image.data.attributes?.height,
+              alt: attrs.image.data.attributes?.alternativeText,
+            },
+          ]
+        : [],
+      type: "article",
+      publishedTime: attrs.date,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: attrs.seo_title || attrs.title,
+      description: attrs.seo_description || attrs.description,
+      images: attrs.image?.data
+        ? [getStrapiMedia(attrs.image.data.attributes?.url)]
+        : [],
+    },
+    alternates: {
+      canonical: process.env.DOMAIN_NAME + "/blogs/" + attrs.slug,
+    },
+  };
+}
+
+// --- Blog Page ---
+export default async function BlogDetail({ params }) {
+  const blog = await getBlogData(params.slug);
+
   if (!blog) {
     return <div>Blog not found</div>;
   }
- 
+
   const { title, description, content, date, image } = blog.attributes;
- 
+
   return (
     <>
       <Navbar />
@@ -34,13 +83,13 @@ export default async function BlogDetail({ params }) {
             src={getStrapiMedia(image.data.attributes.url)}
             width={image.data.attributes.width}
             height={image.data.attributes.height}
-            alt={image.data.attributes.alternativeText}
+            alt={image.data.attributes.alternativeText || title}
             className="w-full mb-6 rounded-[16px]"
           />
         )}
         {date && (
           <p className="text-gray-500 mb-6">
-            Date :
+            Date:{" "}
             {new Date(date).toLocaleDateString("en-GB", {
               day: "2-digit",
               month: "long",
