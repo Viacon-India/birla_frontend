@@ -2160,9 +2160,9 @@ const Segments = ({ pageData, pagination }) => {
 
   return (
     <>
-      {pageData && pageData?.products && (
+      {/* {pageData && pageData?.products && (
         <CollectionTypeSeo page="category" pageData={pageData} />
-      )}
+      )} */}
       {/* <PageBanner Title={pageData.title} Banner={pageData.hero} /> */}
       <InnerBanner Title={pageData.title} Banner={pageData.inner_video} />
       <section className="product-sec pt-10 md:pt-[60px] 2xl:pt-[100px]">
@@ -2668,7 +2668,7 @@ export function Products({ pageData }) {
 
   return (
     <>
-      <CollectionTypeSeo page="product" pageData={pageData} />
+      {/* <CollectionTypeSeo page="product" pageData={pageData} /> */}
       <section className="pt-[100px] 2xl:pt-[140px] bg-[#F8F8F8]">
         <div className="container mx-auto">
           <div className="flex items-center gap-1">
