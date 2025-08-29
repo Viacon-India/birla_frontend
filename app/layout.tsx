@@ -57,6 +57,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="M99YrbaDtKwQg9Kuv_9Ip5VI6UlQgSx8ZvkCkNSWsaA"
         />
+        <meta name="robots" content="index, follow" />
 
         {/* JSON-LD Schema: WebSite */}
         <Script
