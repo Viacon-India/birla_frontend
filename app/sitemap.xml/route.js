@@ -1,14 +1,13 @@
 export async function GET() {
   // Fallback and normalize domain
   let domain = process.env.DOMAIN_NAME || "https://www.example.com";
-  // Remove trailing slash if present
-  domain = domain.replace(/\/$/, "");
+  domain = domain.replace(/\/$/, ""); // remove trailing slash
 
   // Helper: fetch collection
   async function fetchCollection(endpoint) {
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/${endpoint}?populate=*`,
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/${endpoint}?populate=deep`,
         { cache: "no-store" }
       );
       if (res.ok) {
@@ -31,27 +30,67 @@ export async function GET() {
     fetchCollection("products"),
   ]);
 
-  // Combine them with permalink handling
+  // Combine entries
   const allEntries = [
     ...pages.map((item) => ({
-      ...item.attributes,
-      permalink: item.permalink || item.attributes?.permalink || item.attributes?.slug || "",
-      type: "page",
+      permalink:
+        item.permalink ||
+        item.attributes?.permalink ||
+        item.attributes?.slug ||
+        "",
       updatedAt: item.attributes?.updatedAt || item.updatedAt,
+      type: "page",
     })),
     ...blogs.map((item) => ({
-      ...item.attributes,
-      permalink: item.permalink || item.attributes?.permalink || item.attributes?.slug || "",
+      permalink:
+        item.permalink ||
+        item.attributes?.permalink ||
+        item.attributes?.slug ||
+        "",
+      updatedAt: item.attributes?.updatedAt || item.updatedAt,
       type: "blog",
-      updatedAt: item.attributes?.updatedAt || item.updatedAt,
     })),
-    ...products.map((item) => ({
-      ...item.attributes,
-      permalink: item.permalink || item.attributes?.permalink || item.attributes?.slug || "",
-      type: "product",
-      updatedAt: item.attributes?.updatedAt || item.updatedAt,
-    })),
+    ...products.flatMap((item) => {
+      const productAttr = item.attributes || item;
+
+      const productUrl =
+        productAttr.permalink ||
+        productAttr.slug ||
+        "";
+      const productUpdated = productAttr.updatedAt || new Date().toISOString();
+
+      // Segment URL if available
+      const segmentUrl =
+        productAttr.segment?.permalink || productAttr.segment?.slug || null;
+
+      const entries = [
+        {
+          permalink: productUrl,
+          updatedAt: productUpdated,
+          type: "product",
+        },
+      ];
+
+      if (segmentUrl) {
+        entries.push({
+          permalink: segmentUrl,
+          updatedAt: productUpdated,
+          type: "segment",
+        });
+      }
+
+      return entries;
+    }),
   ];
+
+  // Deduplicate by permalink
+  const seen = new Set();
+  const uniqueEntries = allEntries.filter((entry) => {
+    if (!entry.permalink) return false;
+    if (seen.has(entry.permalink)) return false;
+    seen.add(entry.permalink);
+    return true;
+  });
 
   // Build XML
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -60,11 +99,10 @@ export async function GET() {
     <loc>${domain}/</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
   </url>
-${allEntries
+${uniqueEntries
   .map((entry) => {
     let permalink = entry.permalink || "";
-    // Ensure permalink starts with a single slash
-    permalink = "/" + permalink.replace(/^\/+/, "");
+    permalink = "/" + permalink.replace(/^\/+/, ""); // ensure single leading slash
     const url = `${domain}${permalink}`;
     const updated = entry.updatedAt || new Date().toISOString();
 
