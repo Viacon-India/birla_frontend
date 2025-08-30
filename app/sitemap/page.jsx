@@ -7,7 +7,7 @@ async function fetchCollection(endpoint) {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/${endpoint}?populate=*`,
-      { next: { revalidate: 60 } } // ✅ cache with revalidation (avoid dynamic error)
+      { next: { revalidate: 60 } }
     );
     if (res.ok) {
       const data = await res.json();
@@ -20,7 +20,7 @@ async function fetchCollection(endpoint) {
   }
 }
 
-export default async function HtmlSiteMap() {
+export default async function SiteMap() {
   // Fetch all collections
   const [pages, blogs, products] = await Promise.all([
     fetchCollection("pages"),
