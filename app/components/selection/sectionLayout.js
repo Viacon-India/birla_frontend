@@ -896,7 +896,7 @@ export function TitleContentFull({ section }) {
                 )}
                 {section?.title && (
                   <div className="section-title-wrapper">
-                    <h3 className="section-title">{section.title}</h3>
+                    <h1 className="section-title">{section.title}</h1>
                   </div>
                 )}
               </div>

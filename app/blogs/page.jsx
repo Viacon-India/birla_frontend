@@ -53,7 +53,7 @@ export default function Blogs() {
         <div className="container mx-auto overflow-hidden relative">
           {/* You can hardcode a section title if you want */}
           <div className="section-title-wrapper">
-            <h2 className="section-title-home">Our Blogs</h2>
+            <h1 className="section-title-home">Our Blogs</h1>
           </div>
 
           {pageData?.data && pageData.data.length > 0 && (
