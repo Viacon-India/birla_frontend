@@ -341,7 +341,7 @@ export function ContactUs({ pageData }) {
                           {section?.heading}
                         </span>
                         <div className="section-title-wrapper">
-                          <h3 className="section-title">{section?.title}</h3>
+                          <h1 className="section-title">{section?.title}</h1>
                         </div>
                       </div>
                       {section?.data &&
@@ -2920,9 +2920,9 @@ export function Products({ pageData }) {
               id="product-name"
             >
               {pageData?.name && (
-                <h2 className="text-secondary text-[28px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px]">
+                <h1 className="text-secondary text-[28px] md:text-[36px] 2xl:text-[48px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px]">
                   {pageData.name}
-                </h2>
+                </h1>
               )}
               {pageData?.description && (
                 <p className="text-[#1A202C] text-[16px] pt-2 font-semibold">

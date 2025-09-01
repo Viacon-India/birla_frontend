@@ -1211,9 +1211,9 @@ const FindTyre = ({ pageDataFromParent }) => {
                   <div className="flex flex-col justify-between h-full w-full md:w-1/2 gap-[100px] 2xl:gap-[200px]">
                     <MainButton />
                     <div className="relative flex flex-col gap-2 xl:gap-6 z-10">
-                      <h3 className="text-white text-[32px] md:text-[42px] 2xl:text-[56px] font-bold ">
+                      <h1 className="text-white text-[32px] md:text-[42px] 2xl:text-[56px] font-bold ">
                         Find A Tyre
-                      </h3>
+                      </h1>
                       <p className="text-white text-[16px] md:text-[20px] hidden md:block">
                         Use the filters to get type the product or you can
                         simply search by it’s name.

@@ -44,14 +44,16 @@ export default async function SiteMap() {
     })),
 
     // Blogs
-    ...blogs.map((item) => ({
-      url: `${domain}${item.permalink || "/blogs/" + item.slug}`.replace(
-        /\/+$/,
-        ""
-      ),
-      title: item.title || item.slug || "Untitled",
-      type: "Blog",
-    })),
+ // Blogs
+...blogs.map((item) => {
+  const attrs = item.attributes || {};
+  return {
+    url: attrs.link || `${domain}/blogs/${attrs.slug}`,
+    title: attrs.title || attrs.slug || "Untitled",
+    type: "Blog",
+  };
+}),
+
 
     // Product Segments (deduplicate later)
     ...products
@@ -93,7 +95,7 @@ export default async function SiteMap() {
           <ul className="flex flex-col gap-2 mt-6 text-[15px] md:text-[18px]">
             {/* Home */}
             <li>
-              <Link href={domain + "/"}>Home :{" "}</Link>
+              {/* <Link href={domain + "/"}>Home :{" "}</Link> */}
               <Link
                 href={domain + "/"}
                 className="text-[#888888] hover:text-primary hover:underline"
@@ -106,7 +108,7 @@ export default async function SiteMap() {
             {uniqueEntries.map((entry, idx) => (
               <li key={idx}>
                 <Link href={entry.url} target="_blank" rel="noopener noreferrer">
-                  {entry.title} :{" "}
+                  {/* {entry.title} :{" "} */}
                   <span className="text-[#888888] hover:text-primary hover:underline">
                     {entry.url}
                   </span>

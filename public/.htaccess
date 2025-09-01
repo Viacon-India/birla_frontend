@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.birlatyre\.com [NC]
+RewriteRule ^ https://birlatyre.com%{REQUEST_URI} [L,R=301]
