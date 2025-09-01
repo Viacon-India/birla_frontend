@@ -18,11 +18,26 @@ export default function Blogs() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?sort[0]=date:desc&fields[0]=title&fields[1]=description&fields[2]=date&fields[3]=link&fields[4]=slug&populate[image][fields][0]=name&populate[image][fields][1]=width&populate[image][fields][2]=height&populate[image][fields][3]=url&populate[image][fields][4]=alternativeText&pagination[pageSize]=2&pagination[page]=1`
-        );
-        const data = await res.json();
-        setPageData(data);
+        let page = 1;
+        let allBlogs = [];
+        let hasMore = true;
+
+        while (hasMore) {
+          const res = await fetch(
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?sort[0]=date:desc&fields[0]=title&fields[1]=description&fields[2]=date&fields[3]=link&fields[4]=slug&populate[image][fields][0]=name&populate[image][fields][1]=width&populate[image][fields][2]=height&populate[image][fields][3]=url&populate[image][fields][4]=alternativeText&pagination[pageSize]=100&pagination[page]=${page}`
+          );
+          const data = await res.json();
+
+          allBlogs = [...allBlogs, ...data.data];
+
+          if (data.meta.pagination.page < data.meta.pagination.pageCount) {
+            page++;
+          } else {
+            hasMore = false;
+          }
+        }
+
+        setPageData({ data: allBlogs });
       } catch (error) {
         console.error("Error fetching blogs:", error);
       }
