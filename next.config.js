@@ -27,6 +27,22 @@ const nextConfig = {
             },
         ]
     },
+    
+
+
+    async headers() {
+    return [
+      {
+        source: '/(.*)', // apply to all routes
+        headers: [
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000', // 1 year, no includeSubDomains, no preload
+          },
+        ],
+      },
+    ];
+  },
 };
  
 module.exports = nextConfig;
