@@ -22,7 +22,7 @@ import img2 from "../../assets/images/about-img-2.jpg";
 import img3 from "../../assets/images/about-img-3.jpg";
 import img4 from "../../assets/images/about-img-4.jpg";
 import img1H from "../../assets/images/about-icon1.png";
-import GradualSpacing from "@/components/GradualSpacing";
+import TypingAnimation from "@/components/TypingAnimation";
 import mask1 from "../../assets/images/iconmask-1.png";
 import mask2 from "../../assets/images/iconmask-2.png";
 import mask3 from "../../assets/images/iconmask-3.png";
@@ -71,7 +71,7 @@ export default function NewAbout({ Data }) {
               )}
               {Data?.title && (
                 <div className="section-title-wrapper mb-6 md:mb-8 2xl:mb-10">
-                  <GradualSpacing
+                  <TypingAnimation
                     className="section-title-home"
                     text={Data.title}
                   />

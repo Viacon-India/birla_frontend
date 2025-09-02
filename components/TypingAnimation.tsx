@@ -33,7 +33,7 @@ export default function TypingAnimation({
   return (
     <div ref={ref} className="flex">
       {text.split("").map((char, i) => (
-        <motion.h1
+        <motion.span
           key={i}
           variants={typingVariant}
           initial="initial"
@@ -45,7 +45,7 @@ export default function TypingAnimation({
           )}
         >
           {char === " " ? <span>&nbsp;</span> : char}
-        </motion.h1>
+        </motion.span>
       ))}
     </div>
   );

@@ -14,7 +14,6 @@ import img3 from "../../assets/images/truck3.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import TypingAnimation from "@/components/TypingAnimation";
-import GradualSpacing from "@/components/GradualSpacing";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { features } from "process";
@@ -63,7 +62,7 @@ export default function Innovation({ Heading='', Title='', Data={}}) {
             }
             {Title &&
               <div className="section-title-wrapper">
-                <GradualSpacing className="section-title-home" text={Title} />
+                <TypingAnimation className="section-title-home" text={Title} />
               </div>
             }
           </div>

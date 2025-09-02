@@ -17,7 +17,7 @@ import tyre7 from "../../assets/images/tyre7.png";
 import tyre8 from "../../assets/images/tyre8.png";
 import tyre9 from "../../assets/images/tyre9.png";
 import tyre10 from "../../assets/images/tyre-totate.gif";
-import GradualSpacing from "@/components/GradualSpacing";
+import TypingAnimation from "@/components/TypingAnimation";
 import prodSvg from "../../assets/images/product-svg.png";
 import tbbIcon from "../../assets/images/tbb-icon.png";
 import prodSvg2 from "../../assets/images/product-svg2.png";
@@ -156,7 +156,7 @@ export default function Products({ Heading = "", Title = "", Data = {} }) {
               {Heading && <span className="section-heading">{Heading}</span>}
               {Title && (
                 <div className="section-title-wrapper">
-                  <GradualSpacing className="section-title-home" text={Title} />
+                  <TypingAnimation className="section-title-home" text={Title} />
                 </div>
               )}
             </div>

@@ -8,6 +8,7 @@ import Image from "next/image";
 import gallary1 from "../../assets/images/blog1.jpg";
 import gallary2 from "../../assets/images/blog2.jpg";
 import GradualSpacing from "@/components/GradualSpacing";
+import TypingAnimation from "@/components/TypingAnimation";
 import Link from "next/link";
 import faqImage from "../../assets/images/faq-img.jpg";
 import Triangle1 from "../../assets/images/triangle1.png";
@@ -96,7 +97,7 @@ export default function Faq({ Heading = "", Title = "", Data = {} }) {
               )}
               {Data?.title && (
                 <div className="section-title-wrapper">
-                  <GradualSpacing
+                  <TypingAnimation
                     className="section-title-home"
                     text={Data.title}
                   />

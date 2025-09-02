@@ -497,6 +497,7 @@ text-white transition-all duration-500 relative hover:left-[-190px]
 }
 .section-title-home{
   @apply text-secondary text-[22px] md:text-[32px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] font-oak-sans
+  !normal-case
 }
 .section-sub-title{
   @apply text-secondary text-[20px] md:text-[28px] font-bold leading-[1] flex gap-3 items-center tracking-[-0.5px] mb-2

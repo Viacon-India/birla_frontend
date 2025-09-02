@@ -33,7 +33,7 @@ export default function LetterPullup({
   return (
     <div ref={ref} className="flex">
       {letters.map((letter, i) => (
-        <motion.h1
+        <motion.span
           key={i}
           variants={pullupVariant}
           initial="initial"
@@ -45,7 +45,7 @@ export default function LetterPullup({
           )}
         >
           {letter === " "? <span>&nbsp;</span> : letter}
-        </motion.h1>
+        </motion.span>
       ))}
     </div>
   );
