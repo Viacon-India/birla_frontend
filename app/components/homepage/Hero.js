@@ -15,6 +15,7 @@ import {
 import Link from "next/link";
 import GradualSpacing from "@/components/GradualSpacing";
 import LetterPullup from "@/components/LetterPullup";
+import TypingAnimation from "@/components/TypingAnimation";
 import { MainButton, SmallButton } from "../pageCommon/pageCommon";
 
 export default function Hero({ Data }) {
@@ -102,8 +103,8 @@ export default function Hero({ Data }) {
                           />
                         )}
                         {slider.attributes?.title && (
-                          <GradualSpacing
-                            className="hero-sec-heading md:hidden"
+                          <TypingAnimation
+                            className="hero-sec-heading md:hidden !uppercase"
                             text={slider.attributes.name}
                           />
                         )}
