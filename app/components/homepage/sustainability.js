@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import GradualSpacing from "@/components/GradualSpacing";
+import TypingAnimation from "@/components/TypingAnimation";
 import { getStrapiMedia } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -70,7 +70,7 @@ export default function Sustainability({
           {Heading && <span className="section-heading">{Heading}</span>}
           {Title && (
             <div className="section-title-wrapper">
-              <GradualSpacing className="section-title-home" text={Title} />
+              <TypingAnimation className="section-title-home" text={Title} />
             </div>
           )}
           {Description && (

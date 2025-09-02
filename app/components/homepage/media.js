@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getStrapiMedia } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import GradualSpacing from "@/components/GradualSpacing";
+import TypingAnimation from "@/components/TypingAnimation";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -35,7 +35,7 @@ export default function Media({ Heading = "", Title = "" }) {
           {Heading && <span className="section-heading">{Heading}</span>}
           {Title && (
             <div className="section-title-wrapper">
-              <GradualSpacing className="section-title-home" text={Title} />
+              <TypingAnimation className="section-title-home" text={Title} />
             </div>
           )}
           {pageData?.data && pageData.data.length > 0 && (
