@@ -17,6 +17,8 @@ import GradualSpacing from "@/components/GradualSpacing";
 import LetterPullup from "@/components/LetterPullup";
 import TypingAnimation from "@/components/TypingAnimation";
 import { MainButton, SmallButton } from "../pageCommon/pageCommon";
+import Image from "next/image";
+import partnerImage from "../../../public/assets/partner-post.jpg";
 
 export default function Hero({ Data }) {
   const swiperRef = useRef(null);
@@ -62,7 +64,7 @@ export default function Hero({ Data }) {
           pagination={{ clickable: true }}
           autoplay={false}
           modules={[EffectCreative, Autoplay, EffectFade, Pagination]}
-          className="mySwiper relative !pt-[74px] md:!pt-0 !h-[264px] md:!h-[430px] lg:!h-[550px] xl:!h-[100vh]"
+          className="mySwiper relative !pt-[74px] md:!pt-12 !h-[264px] md:!h-[430px] lg:!h-[550px] xl:!h-[100vh]"
         >
           <div className="w-full">
             <div className="container mx-auto">
@@ -130,6 +132,17 @@ export default function Hero({ Data }) {
             ) : null
           )}
 
+          <SwiperSlide>
+            <div className="swiper-card-main">
+              <div className="w-full !h-full flex items-end pb-8 md:pb-2 lg:pb-[24px] xl:pb-[60px]">
+                <Image
+                  src={partnerImage}
+                  alt="partner-banner"
+                  className="absolute top-0 w-full h-full"
+                />
+              </div>
+            </div>
+          </SwiperSlide>
           {/* Static Slide for Additional Video */}
           <SwiperSlide>
             <div className="swiper-card-main">
