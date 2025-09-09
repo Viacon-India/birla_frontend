@@ -49,6 +49,11 @@ export default function Hero({ Data }) {
                   const videoElement = activeSlide.querySelector("video");
                   if (videoElement) {
                     handleSwiperVideoPlay(videoElement);
+                  } else {
+                    // No video → auto move after 5s
+                    setTimeout(() => {
+                      if (swiperRef.current) swiperRef.current.slideNext();
+                    }, 5000);
                   }
                 }
               }
@@ -71,6 +76,19 @@ export default function Hero({ Data }) {
               <MainButton />
             </div>
           </div>
+
+          {/* partnership image */}
+          <SwiperSlide>
+            <div className="swiper-card-main">
+              <div className="w-full !h-full flex items-end pb-8 md:pb-2 lg:pb-[24px] xl:pb-[60px]">
+                <Image
+                  src={partnerImage}
+                  alt="partner-banner"
+                  className="absolute top-0 w-full h-full"
+                />
+              </div>
+            </div>
+          </SwiperSlide>
 
           {Data.data.map((slider) =>
             slider.attributes?.permalink ? (
@@ -132,17 +150,6 @@ export default function Hero({ Data }) {
             ) : null
           )}
 
-          <SwiperSlide>
-            <div className="swiper-card-main">
-              <div className="w-full !h-full flex items-end pb-8 md:pb-2 lg:pb-[24px] xl:pb-[60px]">
-                <Image
-                  src={partnerImage}
-                  alt="partner-banner"
-                  className="absolute top-0 w-full h-full"
-                />
-              </div>
-            </div>
-          </SwiperSlide>
           {/* Static Slide for Additional Video */}
           <SwiperSlide>
             <div className="swiper-card-main">
