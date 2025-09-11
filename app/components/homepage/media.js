@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { use } from "react";
 import { useState, useEffect } from "react";
 import { getStrapiMedia } from "@/lib/utils";
@@ -7,6 +7,10 @@ import Link from "next/link";
 import TypingAnimation from "@/components/TypingAnimation";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { FreeMode, Autoplay, Navigation } from "swiper/modules";
+import "swiper/css/navigation";
 
 export default function Media({ Heading = "", Title = "" }) {
   const [pageData, setPageData] = useState([]);
@@ -29,7 +33,7 @@ export default function Media({ Heading = "", Title = "" }) {
   }, [Heading]);
 
   return (
-    <section className="media-sec sec-gap">
+    <section className="media-sec sec-gap" id="media-sec">
       <div className="container mx-auto overflow-hidden">
         <div className="upper-title-sec">
           {Heading && <span className="section-heading">{Heading}</span>}
@@ -39,68 +43,183 @@ export default function Media({ Heading = "", Title = "" }) {
             </div>
           )}
           {pageData?.data && pageData.data.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 2xl:gap-8 mt-5 2xl:mt-10">
-              {pageData.data.map(
-                (media) =>
-                  media.attributes?.link && (
-                    <div
-                      key={media.id}
-                      className="media-card"
-                      data-aos="fade-right"
-                      data-aos-duration="1500"
-                    >
-                      {media.attributes.image?.data && (
-                        <figure>
-                          <Link target="_blank" href={media.attributes.link}>
-                            <Image
-                              className="media-card-image"
-                              src={getStrapiMedia(
-                                media.attributes.image.data.attributes.url
-                              )}
-                              width={
-                                media.attributes.image.data.attributes.width
-                              }
-                              height={
-                                media.attributes.image.data.attributes.height
-                              }
-                              alt={
-                                media.attributes.image.data.attributes
-                                  .alternativeText
-                              }
-                              priority={true}
-                            />
-                          </Link>
-                          <span></span>
-                        </figure>
-                      )}
-                      <div className="media-card-detail">
-                        <div className="flex justify-between items-center mb-3">
-                          <span className="card-cat">Media</span>
-                          {media.attributes?.date &&
-                          <span className="card-date">{formatDate(media.attributes.date)}</span>
-                        }
-                        </div>
-                        <h2 className="media-title">
-                          <Link target="_blank" href={media.attributes.link}>
-                            {media.attributes?.title}
-                          </Link>
-                        </h2>
-                        {media.attributes?.description && (
-                          <p className="media-detail">
-                            {media.attributes.description}
-                          </p>
-                        )}
-                        <Link
-                          target="_blank"
-                          href={media.attributes.link}
-                          className="primary-btn w-fit !px-6 flip-animate-2"
+            <div className="mt-5 2xl:mt-10">
+              <Swiper
+                navigation={true}
+                // freeMode={true}
+                // speed={2400}
+                loop={true}
+                autoplay={{
+                  delay: 2500,
+                  disableOnInteraction: false,
+                }}
+                pagination={{
+                  clickable: true,
+                }}
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                  },
+                  1280: {
+                    slidesPerView: 3,
+                    spaceBetween: 48,
+                  },
+                }}
+                modules={[Navigation]}
+                className="mySwiper !px-6"
+              >
+                {pageData.data.map(
+                  (media) =>
+                    media.attributes?.link && (
+                      <SwiperSlide key={media.id}>
+                        <div
+                          className="media-card"
+                          data-aos="fade-right"
+                          data-aos-duration="1500"
                         >
-                          <span data-hover="Read More">Read More</span>
-                        </Link>
-                      </div>
-                    </div>
-                  )
-              )}
+                          {media.attributes.image?.data && (
+                            <figure>
+                              <Link
+                                target="_blank"
+                                href={media.attributes.link}
+                              >
+                                <Image
+                                  className="media-card-image"
+                                  src={getStrapiMedia(
+                                    media.attributes.image.data.attributes.url
+                                  )}
+                                  width={
+                                    media.attributes.image.data.attributes.width
+                                  }
+                                  height={
+                                    media.attributes.image.data.attributes
+                                      .height
+                                  }
+                                  alt={
+                                    media.attributes.image.data.attributes
+                                      .alternativeText
+                                  }
+                                  priority={true}
+                                />
+                              </Link>
+                              <span></span>
+                            </figure>
+                          )}
+                          <div className="media-card-detail">
+                            <div className="flex justify-between items-center mb-3">
+                              <span className="card-cat">Media</span>
+                              {media.attributes?.date && (
+                                <span className="card-date">
+                                  {formatDate(media.attributes.date)}
+                                </span>
+                              )}
+                            </div>
+                            <h2 className="media-title">
+                              <Link
+                                target="_blank"
+                                href={media.attributes.link}
+                              >
+                                {media.attributes?.title}
+                              </Link>
+                            </h2>
+                            {media.attributes?.description && (
+                              <p className="media-detail">
+                                {media.attributes.description}
+                              </p>
+                            )}
+                            <Link
+                              target="_blank"
+                              href={media.attributes.link}
+                              className="primary-btn w-fit !px-6 flip-animate-2"
+                            >
+                              <span data-hover="Read More">Read More</span>
+                            </Link>
+                          </div>
+                        </div>
+                      </SwiperSlide>
+                    )
+                )}
+                {pageData.data.map(
+                  (media) =>
+                    media.attributes?.link && (
+                      <SwiperSlide key={media.id}>
+                        <div
+                          className="media-card"
+                          data-aos="fade-right"
+                          data-aos-duration="1500"
+                        >
+                          {media.attributes.image?.data && (
+                            <figure>
+                              <Link
+                                target="_blank"
+                                href={media.attributes.link}
+                              >
+                                <Image
+                                  className="media-card-image"
+                                  src={getStrapiMedia(
+                                    media.attributes.image.data.attributes.url
+                                  )}
+                                  width={
+                                    media.attributes.image.data.attributes.width
+                                  }
+                                  height={
+                                    media.attributes.image.data.attributes
+                                      .height
+                                  }
+                                  alt={
+                                    media.attributes.image.data.attributes
+                                      .alternativeText
+                                  }
+                                  priority={true}
+                                />
+                              </Link>
+                              <span></span>
+                            </figure>
+                          )}
+                          <div className="media-card-detail">
+                            <div className="flex justify-between items-center mb-3">
+                              <span className="card-cat">Media</span>
+                              {media.attributes?.date && (
+                                <span className="card-date">
+                                  {formatDate(media.attributes.date)}
+                                </span>
+                              )}
+                            </div>
+                            <h2 className="media-title">
+                              <Link
+                                target="_blank"
+                                href={media.attributes.link}
+                              >
+                                {media.attributes?.title}
+                              </Link>
+                            </h2>
+                            {media.attributes?.description && (
+                              <p className="media-detail">
+                                {media.attributes.description}
+                              </p>
+                            )}
+                            <Link
+                              target="_blank"
+                              href={media.attributes.link}
+                              className="primary-btn w-fit !px-6 flip-animate-2"
+                            >
+                              <span data-hover="Read More">Read More</span>
+                            </Link>
+                          </div>
+                        </div>
+                      </SwiperSlide>
+                    )
+                )}
+              </Swiper>
             </div>
           )}
         </div>
