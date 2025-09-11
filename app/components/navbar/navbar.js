@@ -65,21 +65,21 @@ const NavbarComponent = () => {
     }
   };
 
-useEffect(() => {
-  const fetchHeaderData = async () => {
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/header`);
-      const header = await res.json();
-      setHeaderData(header);
-    } catch (error) {
-      console.error("Error fetching header:", error);
-    }
-  };
+  useEffect(() => {
+    const fetchHeaderData = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/header`
+        );
+        const header = await res.json();
+        setHeaderData(header);
+      } catch (error) {
+        console.error("Error fetching header:", error);
+      }
+    };
 
-  fetchHeaderData();
-}, []);
-
-  
+    fetchHeaderData();
+  }, []);
 
   return (
     <Suspense
@@ -123,7 +123,7 @@ useEffect(() => {
                       className="primary-btn-1 !w-[100%] !justify-center flex md:hidden !py-[4px]"
                     >
                       Find a Tyre
-                    </Link> 
+                    </Link>
                   </div>
 
                   <div className="navbar-center flex items-center gap-6 lg:flex pl-3 xl:pl-7 ml-[-10%] md:ml-0">
@@ -136,7 +136,10 @@ useEffect(() => {
                                 href={menu.link}
                                 className="nav-links nav-hov flip-animate"
                               >
-                                <span className="nav-new" data-hover={menu.title}>
+                                <span
+                                  className="nav-new"
+                                  data-hover={menu.title}
+                                >
                                   {menu.title}
                                 </span>
                                 <svg
@@ -155,7 +158,10 @@ useEffect(() => {
                               </Link>
                             ) : (
                               <button className="nav-links nav-hov flip-animate">
-                                <span className="nav-new" data-hover={menu.title}>
+                                <span
+                                  className="nav-new"
+                                  data-hover={menu.title}
+                                >
                                   {menu.title}
                                 </span>
                                 <svg
@@ -269,7 +275,10 @@ useEffect(() => {
                               className="nav-links nav-hov flip-animate"
                               href={`${menu.attributes.permalink}`}
                             >
-                              <span className="nav-new" data-hover={menu.attributes.name}>
+                              <span
+                                className="nav-new"
+                                data-hover={menu.attributes.name}
+                              >
                                 {menu.attributes.name}
                               </span>
                             </Link>
@@ -288,6 +297,14 @@ useEffect(() => {
                           </li>
                         )
                       )}
+                      <li className="nav-drop group">
+                        <Link
+                          className="nav-links nav-hov flip-animate"
+                          href="/#media-sec"
+                        >
+                          <span data-hover="media">media</span>
+                        </Link>
+                      </li>
                     </ul>
                     <div
                       className={cn(
