@@ -22,7 +22,7 @@ export default function Media({ Heading = "", Title = "" }) {
   useEffect(() => {
     fetch(
       getStrapiMedia(
-        "/api/media-presences?sort[0]=date:desc&fields[0]=title&fields[1]=description&fields[2]=date&fields[3]=link&populate[image][fields][0]=name&populate[image][fields][1]=width&populate[image][fields][2]=height&populate[image][fields][3]=url&populate[image][fields][4]=alternativeText&pagination[pageSize]=3&pagination[page]=1"
+        "/api/media-presences?sort[0]=date:desc&fields[0]=title&fields[1]=description&fields[2]=date&fields[3]=link&populate[image][fields][0]=name&populate[image][fields][1]=width&populate[image][fields][2]=height&populate[image][fields][3]=url&populate[image][fields][4]=alternativeText&pagination[pageSize]=100&pagination[page]=1"
       )
     )
       .then((res) => res.json())
@@ -77,77 +77,6 @@ export default function Media({ Heading = "", Title = "" }) {
                 modules={[Navigation]}
                 className="mySwiper !px-6"
               >
-                {pageData.data.map(
-                  (media) =>
-                    media.attributes?.link && (
-                      <SwiperSlide key={media.id}>
-                        <div
-                          className="media-card"
-                          data-aos="fade-right"
-                          data-aos-duration="1500"
-                        >
-                          {media.attributes.image?.data && (
-                            <figure>
-                              <Link
-                                target="_blank"
-                                href={media.attributes.link}
-                              >
-                                <Image
-                                  className="media-card-image"
-                                  src={getStrapiMedia(
-                                    media.attributes.image.data.attributes.url
-                                  )}
-                                  width={
-                                    media.attributes.image.data.attributes.width
-                                  }
-                                  height={
-                                    media.attributes.image.data.attributes
-                                      .height
-                                  }
-                                  alt={
-                                    media.attributes.image.data.attributes
-                                      .alternativeText
-                                  }
-                                  priority={true}
-                                />
-                              </Link>
-                              <span></span>
-                            </figure>
-                          )}
-                          <div className="media-card-detail">
-                            <div className="flex justify-between items-center mb-3">
-                              <span className="card-cat">Media</span>
-                              {media.attributes?.date && (
-                                <span className="card-date">
-                                  {formatDate(media.attributes.date)}
-                                </span>
-                              )}
-                            </div>
-                            <h2 className="media-title">
-                              <Link
-                                target="_blank"
-                                href={media.attributes.link}
-                              >
-                                {media.attributes?.title}
-                              </Link>
-                            </h2>
-                            {media.attributes?.description && (
-                              <p className="media-detail">
-                                {media.attributes.description}
-                              </p>
-                            )}
-                            <Link
-                              target="_blank"
-                              href={media.attributes.link}
-                              className="primary-btn w-fit !px-6 flip-animate-2"
-                            >
-                              <span data-hover="Read More">Read More</span>
-                            </Link>
-                          </div>
-                        </div>
-                      </SwiperSlide>
-                    )
-                )}
                 {pageData.data.map(
                   (media) =>
                     media.attributes?.link && (
