@@ -76,6 +76,28 @@ export default function Hero({ Data }) {
               <MainButton />
             </div>
           </div>
+          
+          {/* {stadium video} */}
+          <SwiperSlide>
+            <div className="swiper-card-main">
+              <div className="w-full !h-full flex items-end pb-8 md:pb-2 lg:pb-[24px] xl:pb-[60px]">
+                <video
+                  className="absolute top-0 w-full h-auto object-contain"
+                  loop={false}
+                  muted
+                  playsInline
+                  preload="auto"
+                  onPlay={(e) => handleSwiperVideoPlay(e.target)}
+                >
+                  <source
+                    src="/assets/videos/stadium.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </SwiperSlide>
 
           {/* partnership image */}
           <SwiperSlide>
